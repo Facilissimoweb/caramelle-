@@ -110,7 +110,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
               <div className="absolute bottom-6 left-6 text-[#F8F7F4] space-y-1">
                 <p className="font-display font-bold text-lg">M. Teresa Rogani</p>
                 <p className="text-[9px] font-mono text-[#E35930] uppercase tracking-widest font-bold">
-                  Milano, Italia (Operatività Globale)
+                  Macerata (Marche), Italia
                 </p>
               </div>
             </div>

@@ -8,6 +8,34 @@ import ContattiView from "./components/ContattiView";
 import ChatView from "./components/ChatView";
 import InfoModal from "./components/InfoModal";
 
+const SEO_METADATA: Record<string, { title: string; description: string; keywords: string }> = {
+  home: {
+    title: "Facilissimo Web — Realizzazione Siti Web Macerata e Marche",
+    description: "Studio Facilissimo Web a Macerata (Marche). Progettazione e realizzazione siti web veloci, moderni e ottimizzati SEO con Intelligenza Artificiale di M. Teresa Rogani.",
+    keywords: "realizzazione siti web macerata, web designer marche, siti web veloci marche, siti web economici macerata, intelligenza artificiale macerata, seo macerata, m teresa rogani",
+  },
+  "chi-sono": {
+    title: "Chi Sono — Facilissimo Web | Teresa Rogani Web Designer Macerata",
+    description: "Scopri chi c'è dietro Facilissimo Web. M. Teresa Rogani, freelance web designer e AI specialist a Macerata, Marche. Creazione siti web professionali e su misura.",
+    keywords: "teresa rogani, freelance web designer macerata, ai specialist marche, realizzazione siti web professionali marche, sviluppo siti web marche",
+  },
+  proposte: {
+    title: "Proposte e Listino Prezzi — Facilissimo Web Macerata",
+    description: "Piani e prezzi trasparenti per la creazione del tuo sito web professionale nelle Marche. Soluzioni Landing Page, siti multipagina e e-commerce con IA integrata.",
+    keywords: "prezzi siti web macerata, costo sito internet marche, preventivo sito web macerata, listino prezzi web agency macerata",
+  },
+  contatti: {
+    title: "Contatti — Facilissimo Web | Preventivo Sito Web Macerata",
+    description: "Richiedi un preventivo gratuito per il tuo nuovo sito web a Macerata e nelle Marche. Scrivi a facilissimoweb.mc@gmail.com o chiama il +39 379 360 3321.",
+    keywords: "contatti web designer macerata, telefono facilissimo web, email facilissimo web, preventivo sito internet macerata",
+  },
+  chat: {
+    title: "Assistente AI Live — Facilissimo Web Macerata",
+    description: "Parla subito con il nostro Assistente Virtuale basato su IA. Ricevi risposte istantanee su servizi, tempi e prezzi per siti web a Macerata e nelle Marche.",
+    keywords: "chat ai macerata, assistente virtuale marche, intelligenza artificiale assistente, consulenza ai marche",
+  },
+};
+
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>("home");
   const [lang, setLang] = useState<"it" | "en">("it");
@@ -16,6 +44,50 @@ export default function App() {
     return saved === "true";
   });
   const [activeModal, setActiveModal] = useState<"privacy" | "terms" | "ethics" | null>(null);
+
+  // SEO Dynamic Updates
+  useEffect(() => {
+    const meta = SEO_METADATA[currentTab] || SEO_METADATA.home;
+    
+    // Set Document Title
+    document.title = meta.title;
+
+    // Set or Update Meta Description
+    let descTag = document.querySelector('meta[name="description"]');
+    if (!descTag) {
+      descTag = document.createElement('meta');
+      descTag.setAttribute('name', 'description');
+      document.head.appendChild(descTag);
+    }
+    descTag.setAttribute('content', meta.description);
+
+    // Set or Update Meta Keywords
+    let keywordsTag = document.querySelector('meta[name="keywords"]');
+    if (!keywordsTag) {
+      keywordsTag = document.createElement('meta');
+      keywordsTag.setAttribute('name', 'keywords');
+      document.head.appendChild(keywordsTag);
+    }
+    keywordsTag.setAttribute('content', meta.keywords);
+
+    // Set or Update OpenGraph Tags
+    const ogTags = [
+      { property: "og:title", content: meta.title },
+      { property: "og:description", content: meta.description },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: window.location.href }
+    ];
+
+    ogTags.forEach(({ property, content }) => {
+      let ogTag = document.querySelector(`meta[property="${property}"]`);
+      if (!ogTag) {
+        ogTag = document.createElement('meta');
+        ogTag.setAttribute('property', property);
+        document.head.appendChild(ogTag);
+      }
+      ogTag.setAttribute('content', content);
+    });
+  }, [currentTab]);
 
   useEffect(() => {
     localStorage.setItem("facilissimo-lang", lang);

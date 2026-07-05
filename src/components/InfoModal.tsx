@@ -45,7 +45,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
             <p><strong>2. Tipologia di dati raccolti:</strong> Raccogliamo esclusivamente i dati inseriti volontariamente dall'utente attraverso il modulo di contatto (Nome, Email, Azienda, Tipologia di progetto, Budget stimato e Messaggio privato). Non utilizziamo cookie di profilazione di terze parti né vendiamo dati a soggetti esterni.</p>
             <p><strong>3. Finalità del trattamento:</strong> I dati raccolti sono trattati al solo scopo di formulare preventivi, rispondere a richieste di informazioni e gestire i rapporti pre-contrattuali o contrattuali di collaborazione professionale freelancing.</p>
             <p><strong>4. Base giuridica e Conservazione:</strong> Il trattamento si basa sul consenso dell'interessato o sull'esecuzione di misure pre-contrattuali. I dati saranno conservati per il tempo strettamente necessario all'evasione della richiesta o per gli adempimenti previsti dalla legge (massimo 10 anni in caso di instaurazione del rapporto contrattuale).</p>
-            <p><strong>5. Diritti dell'utente:</strong> Ai sensi del Regolamento GDPR, l'utente ha il diritto in qualsiasi momento di accedere, rettificare, revocare o richiedere la cancellazione totale dei propri dati personali scrivendo direttamente a: <em>mariateresarogani@gmail.com</em>.</p>
+            <p><strong>5. Diritti dell'utente:</strong> Ai sensi del Regolamento GDPR, l'utente ha il diritto in qualsiasi momento di accedere, rettificare, revocare o richiedere la cancellazione totale dei propri dati personali scrivendo direttamente a: <em>facilissimoweb.mc@gmail.com</em>.</p>
           </div>
         ),
         facilitated: (
@@ -120,7 +120,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
             <p><strong>2. Types of Data Collected:</strong> We exclusively collect data voluntarily submitted via the contact form (Name, Email, Company, Project Type, Estimated Budget, and Private Message). We do not use third-party profiling cookies or sell data to third parties.</p>
             <p><strong>3. Purpose of Processing:</strong> Collected data is processed solely for preparing estimates, answering information requests, and managing pre-contractual and contractual relations.</p>
             <p><strong>4. Retention Period:</strong> Data is kept only as long as necessary to process your request or satisfy legal obligations (maximum 10 years if a contract is signed).</p>
-            <p><strong>5. Your Rights:</strong> Under GDPR regulations, you have the right to access, edit, withdraw consent, or request deletion of your personal data at any time by emailing: <em>mariateresarogani@gmail.com</em>.</p>
+            <p><strong>5. Your Rights:</strong> Under GDPR regulations, you have the right to access, edit, withdraw consent, or request deletion of your personal data at any time by emailing: <em>facilissimoweb.mc@gmail.com</em>.</p>
           </div>
         ),
         facilitated: (
@@ -217,7 +217,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
     else if (currentGoogleLang === "es") speechLang = "es-ES";
     else if (currentGoogleLang === "pt") speechLang = "pt-PT";
     else if (currentGoogleLang === "ru") speechLang = "ru-RU";
-    else if (currentGoogleLang === "zh") speechLang = "zh-CN";
+    else if (currentGoogleLang === "zh-CN") speechLang = "zh-CN";
 
     utterance.lang = speechLang;
     utterance.rate = 0.95; // Slightly slower for readability

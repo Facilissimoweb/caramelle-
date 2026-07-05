@@ -1,6 +1,6 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { motion } from "motion/react";
-import { Mail, Send, Calendar, CheckCircle, Database, FileText, MapPin } from "lucide-react";
+import { Mail, Send, Calendar, CheckCircle, Database, FileText, MapPin, Phone } from "lucide-react";
 import { ContactSubmission } from "../types";
 
 interface ContattiViewProps {
@@ -125,10 +125,27 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
                     Email Diretta
                   </h4>
                   <a
-                    href="mailto:mariateresarogani@gmail.com"
+                    href="mailto:facilissimoweb.mc@gmail.com"
                     className="text-sm text-[#F8F7F4] hover:underline font-mono"
                   >
-                    mariateresarogani@gmail.com
+                    facilissimoweb.mc@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex gap-4 items-start">
+                <div className="w-10 h-10 border border-[rgba(248,247,244,0.1)] flex items-center justify-center text-[#E35930] shrink-0">
+                  <Phone className="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="text-[10px] uppercase tracking-widest font-mono font-bold text-[#E35930] mb-1">
+                    Telefono / WhatsApp
+                  </h4>
+                  <a
+                    href="tel:+393793603321"
+                    className="text-sm text-[#F8F7F4] hover:underline font-mono"
+                  >
+                    +39 379 360 3321
                   </a>
                 </div>
               </div>
@@ -142,7 +159,7 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
                     Operatività
                   </h4>
                   <p className="text-sm text-[#F8F7F4]/70">
-                    Milano (Italia) — Collaborazioni attive in tutto il territorio nazionale ed europeo tramite video-call settimanali.
+                    Macerata (Marche, Italia) — Collaborazioni e consulenze attive di persona sul territorio ed in video-call in tutta Italia.
                   </p>
                 </div>
               </div>

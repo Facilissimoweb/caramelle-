@@ -1,4 +1,4 @@
-import { Mail, ArrowUp } from "lucide-react";
+import { Mail, ArrowUp, Phone, MapPin } from "lucide-react";
 
 interface FooterProps {
   setCurrentTab: (tab: string) => void;
@@ -31,6 +31,9 @@ export default function Footer({ setCurrentTab, onOpenModal, lang }: FooterProps
           <div className="pt-2 text-[10px] text-[#E35930] font-mono space-y-1 uppercase tracking-wider font-bold">
             <p>Titolare: M. Teresa Rogani</p>
             <p>Freelance Web Designer &amp; AI Specialist</p>
+            <p className="text-[#F8F7F4]/60 flex items-center gap-1.5 normal-case font-sans">
+              <MapPin className="w-3.5 h-3.5 text-[#E35930]" /> Macerata (Marche), Italia
+            </p>
             <p className="text-[#F8F7F4]/40 font-normal">P.IVA: IT01234567890 (Simulata)</p>
           </div>
         </div>
@@ -68,14 +71,23 @@ export default function Footer({ setCurrentTab, onOpenModal, lang }: FooterProps
           <p className="text-xs sm:text-sm text-[#F8F7F4]/70 leading-relaxed font-sans">
             Nessun intermediario, nessun call center. Parli direttamente con me per ogni singola riga di codice o pixel di design.
           </p>
-          <div className="flex items-center gap-3 pt-2">
+          <div className="flex flex-col gap-2.5 pt-2">
             <a
-              href="mailto:mariateresarogani@gmail.com"
-              className="flex items-center gap-2 text-sm text-[#F8F7F4] hover:text-[#E35930] transition-all border border-[rgba(248,247,244,0.15)] hover:border-[#E35930] px-3 py-2 rounded-none"
+              href="mailto:facilissimoweb.mc@gmail.com"
+              className="flex items-center gap-2.5 text-xs text-[#F8F7F4] hover:text-[#E35930] transition-all border border-[rgba(248,247,244,0.15)] hover:border-[#E35930] px-3.5 py-2.5 rounded-none w-fit"
               title="Invia Email"
             >
               <Mail className="w-4 h-4 text-[#E35930]" />
-              <span className="font-medium font-mono text-xs">mariateresarogani@gmail.com</span>
+              <span className="font-medium font-mono">facilissimoweb.mc@gmail.com</span>
+            </a>
+            
+            <a
+              href="tel:+393793603321"
+              className="flex items-center gap-2.5 text-xs text-[#F8F7F4] hover:text-[#E35930] transition-all border border-[rgba(248,247,244,0.15)] hover:border-[#E35930] px-3.5 py-2.5 rounded-none w-fit"
+              title="Chiama al Telefono"
+            >
+              <Phone className="w-4 h-4 text-[#E35930]" />
+              <span className="font-medium font-mono">+39 379 360 3321</span>
             </a>
           </div>
         </div>

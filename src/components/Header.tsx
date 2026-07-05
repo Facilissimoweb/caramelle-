@@ -19,7 +19,7 @@ const LANGUAGES = [
   { code: "es", label: "Español", flag: "🇪🇸" },
   { code: "pt", label: "Português", flag: "🇵🇹" },
   { code: "ru", label: "Русский", flag: "🇷🇺" },
-  { code: "zh", label: "简体中文", flag: "🇨🇳" },
+  { code: "zh-CN", label: "简体中文", flag: "🇨🇳" },
 ];
 
 export default function Header({
@@ -33,6 +33,7 @@ export default function Header({
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const [isMobileLangOpen, setIsMobileLangOpen] = useState(false);
   const [currentGoogleLang, setCurrentGoogleLang] = useState<string>(() => {
     return localStorage.getItem("facilissimo-google-lang") || "it";
   });
@@ -279,7 +280,7 @@ export default function Header({
             <div className="flex flex-col gap-3 mt-2 border-t border-[rgba(248,247,244,0.1)] pt-6">
               <div className="flex justify-between items-center px-1">
                 <span className="font-mono text-[9px] uppercase tracking-widest text-[#F8F7F4]/40 font-bold">
-                  {lang === "it" ? "Seleziona Lingua" : "Select Language"}
+                  {lang === "it" ? "Opzioni Accessibilità" : "Accessibility Options"}
                 </span>
                 
                 <button
@@ -296,24 +297,45 @@ export default function Header({
                 </button>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                {LANGUAGES.map((item) => {
-                  const isSelected = currentGoogleLang === item.code;
-                  return (
-                    <button
-                      key={item.code}
-                      onClick={() => selectLanguage(item.code)}
-                      className={`py-2.5 px-3 border transition-all flex items-center justify-center gap-2 cursor-pointer font-mono text-[10px] uppercase tracking-wider font-bold ${
-                        isSelected
-                          ? "bg-[#E35930] border-[#E35930] text-[#111113] scale-102"
-                          : "border-[rgba(248,247,244,0.1)] text-[#F8F7F4]/80 hover:text-[#E35930] hover:border-[#E35930]"
-                      }`}
-                    >
-                      <span className="text-xs">{item.flag}</span>
-                      <span>{item.code.toUpperCase()}</span>
-                    </button>
-                  );
-                })}
+              {/* Collapsible Mobile Language Selector */}
+              <div className="flex flex-col gap-2 mt-1">
+                <button
+                  onClick={() => setIsMobileLangOpen(!isMobileLangOpen)}
+                  className="py-3 px-4 border border-[rgba(248,247,244,0.1)] text-[#F8F7F4] hover:text-[#E35930] hover:border-[#E35930] transition-all flex items-center justify-between cursor-pointer font-mono text-[10px] uppercase tracking-wider font-bold"
+                  id="mobile-lang-trigger"
+                >
+                  <div className="flex items-center gap-2">
+                    <Globe className="w-4 h-4 text-[#E35930]" />
+                    <span>{lang === "it" ? "Cambia Lingua" : "Change Language"}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs">{activeLangObj.flag}</span>
+                    <span className="text-[10px] text-[#F8F7F4]/50">{activeLangObj.label}</span>
+                    <span className={`text-[8px] transition-transform duration-200 ${isMobileLangOpen ? "rotate-180" : ""}`}>▼</span>
+                  </div>
+                </button>
+
+                {isMobileLangOpen && (
+                  <div className="grid grid-cols-2 gap-2 p-2 bg-[#151518] border border-[rgba(248,247,244,0.05)] transition-all">
+                    {LANGUAGES.map((item) => {
+                      const isSelected = currentGoogleLang === item.code;
+                      return (
+                        <button
+                          key={item.code}
+                          onClick={() => selectLanguage(item.code)}
+                          className={`py-2 px-2.5 border transition-all flex items-center justify-start gap-2.5 cursor-pointer font-mono text-[9px] uppercase tracking-wider font-bold ${
+                            isSelected
+                              ? "bg-[#E35930] border-[#E35930] text-[#111113]"
+                              : "border-[rgba(248,247,244,0.1)] text-[#F8F7F4]/80 hover:text-[#E35930]"
+                          }`}
+                        >
+                          <span className="text-xs">{item.flag}</span>
+                          <span>{item.label}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             </div>
 
