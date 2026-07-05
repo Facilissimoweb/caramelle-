@@ -50,6 +50,14 @@
 }
 
 /* Editorial design classes aligned with M. Teresa Rogani — Facilissimo Web Studio Dark Style */
+.accessibility-high-contrast {
+  filter: contrast(1.35) saturate(1.2) brightness(1.05);
+}
+
+.accessibility-facilitated-contrast {
+  filter: contrast(1.15);
+}
+
 .glass-card {
   background: rgba(17, 17, 19, 0.85);
   backdrop-filter: blur(12px);

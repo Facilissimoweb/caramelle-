@@ -239,9 +239,7 @@ export default function App() {
     <div className={`min-h-screen bg-[#111113] text-[#F8F7F4] flex flex-col selection:bg-[#E35930]/20 selection:text-[#E35930] antialiased ${
       readableFont ? "font-mono tracking-wide" : "font-sans"
     } ${
-      highContrast ? "contrast-150 saturate-125 brightness-105" : ""
-    } ${
-      isFacilitated ? "text-lg contrast-125" : ""
+      isFacilitated ? "text-lg" : ""
     }`}>
       {/* Navigation Header */}
       <Header
@@ -254,7 +252,11 @@ export default function App() {
       />
 
       {/* Main View Area with top offset to clear fixed header */}
-      <main className="flex-grow pt-20">
+      <main className={`flex-grow pt-20 ${
+        highContrast ? "accessibility-high-contrast" : ""
+      } ${
+        isFacilitated ? "accessibility-facilitated-contrast" : ""
+      }`}>
         <div className="w-full">
           {isFacilitated && (
             <div className="bg-[#E35930] text-[#111113] text-center text-xs py-2 px-4 font-mono font-bold uppercase tracking-wider animate-pulse" id="facilitated-badge-banner">
