@@ -1,13 +1,12 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Check, HelpCircle, ChevronDown, Box, ShieldCheck } from "lucide-react";
+import { motion } from "motion/react";
+import { Check, Box, ShieldCheck } from "lucide-react";
+import FAQAccordion from "./FAQAccordion";
 
 interface ProposteViewProps {
   setCurrentTab: (tab: string) => void;
 }
 
 export default function ProposteView({ setCurrentTab }: ProposteViewProps) {
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const tiers = [
     {
@@ -235,58 +234,7 @@ export default function ProposteView({ setCurrentTab }: ProposteViewProps) {
 
       {/* FAQ Section */}
       <section className="py-24 bg-[#111113]">
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="text-center mb-16 space-y-4">
-            <HelpCircle className="w-8 h-8 text-[#E35930] mx-auto" />
-            <h2 className="font-display text-3xl font-bold text-[#F8F7F4]">
-              Domande Frequenti
-            </h2>
-            <p className="text-[#F8F7F4]/70 text-xs sm:text-sm font-sans">
-              Tutto quello che c'è da sapere sul processo creativo, la gestione del budget e la consegna dei lavori.
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {faqs.map((faq, i) => {
-              const isOpen = openFaq === i;
-              return (
-                <div
-                  key={i}
-                  className="border-b border-[rgba(248,247,244,0.1)] bg-transparent transition-all duration-300"
-                >
-                  <button
-                    onClick={() => setOpenFaq(isOpen ? null : i)}
-                    className="w-full py-5 flex justify-between items-center text-left focus:outline-none cursor-pointer"
-                  >
-                    <span className="font-display font-semibold text-sm sm:text-base text-[#F8F7F4] pr-4">
-                      {faq.q}
-                    </span>
-                    <ChevronDown
-                      className={`w-4 h-4 text-[#E35930] transition-transform duration-300 shrink-0 ${
-                        isOpen ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25 }}
-                      >
-                        <div className="pb-6 pt-1 text-xs sm:text-sm text-[#F8F7F4]/75 leading-relaxed font-sans bg-transparent">
-                          {faq.a}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <FAQAccordion items={faqs} />
       </section>
     </div>
   );

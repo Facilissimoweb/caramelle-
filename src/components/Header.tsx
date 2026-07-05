@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 interface HeaderProps {
@@ -8,6 +8,22 @@ interface HeaderProps {
 
 export default function Header({ currentTab, setCurrentTab }: HeaderProps) {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        const progress = (window.scrollY / totalHeight) * 100;
+        setScrollProgress(progress);
+      } else {
+        setScrollProgress(0);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { id: "home", label: "Inizio" },
@@ -25,6 +41,12 @@ export default function Header({ currentTab, setCurrentTab }: HeaderProps) {
 
   return (
     <header className="fixed top-0 left-0 w-full bg-[#111113]/90 backdrop-blur-md z-50 border-b border-[rgba(248,247,244,0.1)] transition-all duration-300">
+      {/* Scroll Progress Bar */}
+      <div
+        className="absolute top-0 left-0 h-[3px] bg-[#E35930] transition-all duration-100 ease-out z-50"
+        style={{ width: `${scrollProgress}%` }}
+        id="scroll-progress-bar"
+      />
       <div className="max-w-7xl mx-auto px-6 md:px-12 h-20 flex justify-between items-center">
         {/* Logo */}
         <button
