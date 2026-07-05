@@ -7,6 +7,8 @@ import ProposteView from "./components/ProposteView";
 import ContattiView from "./components/ContattiView";
 import ChatView from "./components/ChatView";
 import InfoModal from "./components/InfoModal";
+import CookieBanner from "./components/CookieBanner";
+
 
 const SEO_METADATA: Record<string, { title: string; description: string; keywords: string }> = {
   home: {
@@ -44,6 +46,8 @@ export default function App() {
     return saved === "true";
   });
   const [activeModal, setActiveModal] = useState<"privacy" | "terms" | "ethics" | null>(null);
+  const [forceShowCookieBanner, setForceShowCookieBanner] = useState<boolean>(false);
+
 
   // SEO Dynamic Updates
   useEffect(() => {
@@ -143,7 +147,12 @@ export default function App() {
       </main>
 
       {/* Page Footer */}
-      <Footer setCurrentTab={setCurrentTab} onOpenModal={setActiveModal} lang={lang} />
+      <Footer 
+        setCurrentTab={setCurrentTab} 
+        onOpenModal={setActiveModal} 
+        lang={lang} 
+        onOpenCookieSettings={() => setForceShowCookieBanner(true)} 
+      />
 
       {/* Popups (Modals) */}
       <InfoModal
@@ -152,6 +161,14 @@ export default function App() {
         onClose={() => setActiveModal(null)}
         lang={lang}
         isFacilitated={isFacilitated}
+      />
+
+      {/* Cookie Consent Banner */}
+      <CookieBanner
+        lang={lang}
+        isFacilitated={isFacilitated}
+        forceShow={forceShowCookieBanner}
+        onCloseForceShow={() => setForceShowCookieBanner(false)}
       />
     </div>
   );

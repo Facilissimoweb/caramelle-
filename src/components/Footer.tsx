@@ -4,9 +4,10 @@ interface FooterProps {
   setCurrentTab: (tab: string) => void;
   onOpenModal: (type: "privacy" | "terms" | "ethics") => void;
   lang: "it" | "en";
+  onOpenCookieSettings: () => void;
 }
 
-export default function Footer({ setCurrentTab, onOpenModal, lang }: FooterProps) {
+export default function Footer({ setCurrentTab, onOpenModal, lang, onOpenCookieSettings }: FooterProps) {
   const handleNavClick = (tabId: string) => {
     setCurrentTab(tabId);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -119,6 +120,13 @@ export default function Footer({ setCurrentTab, onOpenModal, lang }: FooterProps
             id="footer-ethics-btn"
           >
             {lang === "it" ? "AI Ethics & Trasparenza" : "AI Ethics & Transparency"}
+          </button>
+          <button
+            onClick={onOpenCookieSettings}
+            className="hover:text-[#E35930] transition-colors cursor-pointer bg-transparent border-none p-0 text-[9px] uppercase tracking-wider font-mono font-bold text-[#E35930]"
+            id="footer-cookie-btn"
+          >
+            {lang === "it" ? "Gestione Cookie" : "Cookie Preferences"}
           </button>
         </div>
         <button
