@@ -152,6 +152,11 @@ Rispondi sempre in italiano in modo amichevole, professionale, chiaro ed elegant
 
 // Vite/Static handler setup
 async function setupViteOrStatic() {
+  if (process.env.VERCEL) {
+    console.log("Running on Vercel - serverless environment. Skipping app.listen().");
+    return;
+  }
+
   if (process.env.NODE_ENV !== "production") {
     const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
@@ -173,3 +178,5 @@ async function setupViteOrStatic() {
 }
 
 setupViteOrStatic();
+
+export default app;
