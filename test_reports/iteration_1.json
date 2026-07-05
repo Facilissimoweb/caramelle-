@@ -1,0 +1,34 @@
+{
+  "summary": "Smoke tested backend and frontend of Facilissimo Web. Health, contact create, contact list, hero, all 5 nav tabs, and contact form submission (incl. registro real-time) all PASS. Chat endpoint FAILS with HTTP 500 due to Emergent LLM Key budget exhausted (Max budget: 0.0). Frontend chat UI stays stuck on 'Teresa AI sta scrivendo' with no response.",
+  "tested_scope": ["backend", "frontend", "integration"],
+  "passed": [
+    "GET /api/health -> 200 {status: ok, service: facilissimo-web}",
+    "POST /api/contact -> 200 {success:true, submission:{id,...}} persisted",
+    "GET /api/contact/submissions -> 200 list contains new + prior submissions",
+    "Hero loads with heading 'Siti web che vivono nel futuro costruiti con l'Intelligenza Artificiale.'",
+    "Navigation testids nav-home / nav-chi-sono / nav-proposte / nav-contatti / nav-chat all switch views",
+    "Contact form (input-name/email/company, project-type-select, budget-select, message-textarea, submit-contact-btn) submits successfully; contact-success visible; submission appears in Registro Real-Time"
+  ],
+  "failed": [
+    {
+      "area": "backend / integration",
+      "issue": "POST /api/chat returns HTTP 500. Emergent LLM Key rejected by LiteLLM: 'Budget has been exceeded! Current cost: 0.0, Max budget: 0.0'. Claude Sonnet 4.6 call fails for every request.",
+      "evidence": "curl POST /api/chat with italian question about AI Professional timeline -> {\"detail\":\"Errore AI: Failed to generate chat completion: litellm.BadRequestError: OpenAIException - Budget has been exceeded! Current cost: 0.0, Max budget: 0.0\"} HTTP:500",
+      "priority": "HIGH"
+    },
+    {
+      "area": "frontend / chat UI",
+      "issue": "Chat UI on /chat sends the message but never receives an AI reply; remains on 'Teresa AI sta scrivendo' indefinitely. No user-facing error surfaced from the 500 response.",
+      "evidence": "chat-messages inner text after send + 6s wait: welcome bubble + user message + 'Teresa AI sta scrivendo' (no assistant response). Root cause is backend 500 above.",
+      "priority": "HIGH"
+    }
+  ],
+  "action_items": [
+    "Refresh / top-up the EMERGENT_LLM_KEY budget (currently Max budget: 0.0) in /app/backend/.env, or request a new key with budget allocation, then re-test POST /api/chat.",
+    "Improve ChatView error handling: surface a visible error toast/message when /api/chat returns non-2xx instead of leaving the typing indicator forever."
+  ],
+  "success_rate": {"backend": "75%", "frontend": "88%"},
+  "retest_needed": true,
+  "full_testing_deferred": true,
+  "test_credentials": "N/A - app has no auth flow"
+}
