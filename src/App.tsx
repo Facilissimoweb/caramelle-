@@ -28,22 +28,18 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#05030d] text-[#f2ecff] font-sans flex flex-col antialiased" data-testid="app-root">
-      {/* Ambient background layers */}
-      <div className="aurora-bg" aria-hidden="true">
-        <div className="aurora-blob b1" />
-        <div className="aurora-blob b2" />
-        <div className="aurora-blob b3" />
-      </div>
-      <div className="grid-overlay" aria-hidden="true" />
-      <div className="grain-overlay" aria-hidden="true" />
-
+    <div className="min-h-screen bg-background text-on-background font-sans flex flex-col selection:bg-secondary/20 selection:text-secondary antialiased">
+      {/* Navigation Header */}
       <Header currentTab={currentTab} setCurrentTab={setCurrentTab} />
 
-      <main className="section flex-grow pt-24">
-        <div className="w-full">{renderActiveView()}</div>
+      {/* Main View Area with top offset to clear fixed header */}
+      <main className="flex-grow pt-20">
+        <div className="w-full">
+          {renderActiveView()}
+        </div>
       </main>
 
+      {/* Page Footer */}
       <Footer setCurrentTab={setCurrentTab} />
     </div>
   );
