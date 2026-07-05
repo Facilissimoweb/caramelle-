@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Brain, Cpu, Zap, ArrowRight, Heart, CheckCircle2 } from "lucide-react";
 import { translations } from "../translations";
+import FAQAccordion from "./FAQAccordion";
 
 interface HomeViewProps {
   setCurrentTab: (tab: string) => void;
@@ -283,6 +284,65 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated }: HomeVie
             </p>
           </div>
         </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 border-b border-[rgba(248,247,244,0.1)] bg-[#111113]">
+        <FAQAccordion
+          title={lang === "it" ? "Domande Frequenti" : "Frequently Asked Questions"}
+          subtitle={
+            lang === "it"
+              ? "Tutto quello che c'è da sapere sulla realizzazione di siti web professionali con l'ausilio dell'Intelligenza Artificiale."
+              : "Everything you need to know about professional web design services powered by Artificial Intelligence."
+          }
+          items={
+            lang === "it"
+              ? [
+                  {
+                    q: "Cos'è un sito web potenziato dall'Intelligenza Artificiale?",
+                    a: "È un sito web progettato sfruttando flussi di lavoro e algoritmi di IA avanzati per ottimizzare la stesura del codice pulito, analizzare le strutture SEO semantiche ed eliminare passaggi manuali ripetitivi. Questo ci consente di consegnare siti ultra-veloci, sicuri ed estremamente performanti a una frazione del costo tradizionale.",
+                  },
+                  {
+                    q: "L'Intelligenza Artificiale sostituisce il lavoro manuale del web designer?",
+                    a: "Assolutamente no. L'IA funge da incredibile acceleratore e assistente tecnico. Ogni singola riga di codice, combinazione cromatica, ottimizzazione SEO e scelta visiva di design viene curata, verificata, integrata e testata a mano da me (Teresa) per assicurare un risultato artigianale ed esclusivo di altissimo livello.",
+                  },
+                  {
+                    q: "Quali sono i reali vantaggi in termini di tempi e di budget?",
+                    a: "Mentre un'agenzia web tradizionale impiega solitamente dai 30 ai 60 giorni per un progetto medio richiedendo budget molto elevati, i nostri processi intelligenti ci permettono di consegnare una Landing Page professionale in soli 7 giorni ed un sito multipagina completo in 14 giorni, riducendo i prezzi fino al 60%.",
+                  },
+                  {
+                    q: "Il mio sito web sarà ottimizzato per posizionarsi su Google?",
+                    a: "Sì. Utilizziamo modelli linguistici di IA semantica per mappare le reali intenzioni di ricerca dei clienti e per definire la migliore strategia di parole chiave. Il codice del sito viene generato per essere super leggero, garantendo tempi di caricamento immediati, fondamentali per scalare le prime posizioni su Google.",
+                  },
+                  {
+                    q: "Cosa succede dopo la consegna del sito? C'è supporto gratuito?",
+                    a: "Una volta completato il pagamento, la proprietà del sito e di tutto il codice sorgente passa al 100% a te. Inoltre, per garantirti la massima tranquillità, ogni pacchetto include 30 giorni di assistenza tecnica gratuita e diretta per correggere bug, chiarire dubbi o effettuare piccole rifiniture.",
+                  },
+                ]
+              : [
+                  {
+                    q: "What is an AI-powered website?",
+                    a: "It is a website built using advanced AI workflows to streamline clean code generation, analyze semantic SEO structures, and eliminate repetitive tasks. This enables the delivery of ultra-fast, secure, and extremely high-performance sites at a fraction of the cost of traditional methods.",
+                  },
+                  {
+                    q: "Does AI replace the manual touch of a designer?",
+                    a: "Not at all. AI acts as a powerful technical assistant. Every single line of code, color palette, SEO setting, and visual design layout is manually reviewed, integrated, and polished by hand by me (Teresa) to ensure a premium, artisan finish that fits your brand.",
+                  },
+                  {
+                    q: "What are the exact time and cost advantages?",
+                    a: "While standard web agencies typically take 30 to 60 days to launch a project and require heavy budgets, our intelligent workflows allow me to deliver a professional Landing Page in 7 days and a complete multi-page site in 14 days, reducing overall costs by up to 60%.",
+                  },
+                  {
+                    q: "Will my website be optimized to rank on Google?",
+                    a: "Yes. We leverage semantic AI models to analyze search intent and map out high-value keywords. The structural code of the website is generated to be ultra-lightweight, ensuring immediate loading times which are highly favored by search engine ranking algorithms.",
+                  },
+                  {
+                    q: "What happens after the website is delivered? Is there support?",
+                    a: "Once final payment is cleared, you receive 100% full ownership of your website and all its files. To guarantee absolute peace of mind, every project includes 30 days of free direct technical support to resolve any minor bugs, answer questions, or make small tweaks.",
+                  },
+                ]
+          }
+        />
       </section>
 
       {/* Call To Action Section */}
