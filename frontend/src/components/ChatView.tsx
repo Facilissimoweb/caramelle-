@@ -54,8 +54,14 @@ export default function ChatView() {
         body: JSON.stringify({ message: textToSend, history, session_id: sessionId }),
       });
 
-      if (!res.ok) throw new Error("Errore di connessione al server AI.");
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        const detail = (data && (data.detail || data.error)) || "Errore di connessione al server AI.";
+        const friendly = String(detail).includes("Budget")
+          ? "Il credito dell'AI Key è esaurito. Ricarica il saldo dell'Emergent LLM Key per riprendere la conversazione."
+          : String(detail);
+        throw new Error(friendly);
+      }
 
       const aiMessage: ChatMessage = {
         id: Math.random().toString(36).substring(2, 9),
