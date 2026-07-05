@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;500;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Mono", monospace;
+  --font-display: "Syne", sans-serif;
+  --font-mono: "Space Mono", monospace;
+
+  /* Theme Palette Definitions based on the new Dark Brutalist/Swiss design */
+  --color-primary: #E35930; /* orange-red/accent */
+  --color-on-primary: #111113; /* background */
+  --color-primary-container: #111113;
+  --color-on-primary-container: #F8F7F4;
+
+  --color-secondary: #E35930;
+  --color-on-secondary: #111113;
+  --color-secondary-container: rgba(227, 89, 48, 0.1);
+  --color-on-secondary-container: #F8F7F4;
+  --color-secondary-fixed: #E35930;
+  --color-secondary-fixed-dim: #C54B26;
+
+  --color-tertiary: #F8F7F4;
+  --color-on-tertiary: #111113;
+  --color-tertiary-container: #111113;
+  --color-on-tertiary-container: #F8F7F4;
+
+  --color-background: #111113;
+  --color-on-background: #F8F7F4;
+
+  --color-surface: #111113;
+  --color-on-surface: #F8F7F4;
+  --color-surface-dim: rgba(248, 247, 244, 0.05);
+  --color-surface-bright: #111113;
+  --color-surface-variant: rgba(248, 247, 244, 0.04);
+  --color-on-surface-variant: rgba(248, 247, 244, 0.7);
+
+  --color-surface-container-lowest: #0c0c0e;
+  --color-surface-container-low: #111113;
+  --color-surface-container: #151518;
+  --color-surface-container-high: #1a1a1f;
+  --color-surface-container-highest: #24242b;
+
+  --color-outline: rgba(248, 247, 244, 0.1);
+  --color-outline-variant: rgba(248, 247, 244, 0.05);
+
+  --color-error: #E35930;
+  --color-on-error: #F8F7F4;
+  --color-error-container: rgba(227, 89, 48, 0.15);
+  --color-on-error-container: #5A0004;
+}
+
+/* Editorial design classes aligned with M. Teresa Rogani — Facilissimo Web Studio Dark Style */
+.glass-card {
+  background: rgba(17, 17, 19, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(248, 247, 244, 0.1);
+}
+
+.ambient-shadow {
+  box-shadow: 0 15px 40px -20px rgba(0, 0, 0, 0.8);
+}
+
+.hero-gradient {
+  background: radial-gradient(circle at 75% 25%, rgba(227, 89, 48, 0.08), transparent 60%),
+              #111113;
+}
+
+.editorial-tag {
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  padding: 6px 12px;
+  border: 1px solid rgba(248, 247, 244, 0.15);
+  background: rgba(248, 247, 244, 0.05);
+  color: #E35930;
+}
+
+.editorial-button-primary {
+  background-color: #E35930;
+  color: #111113;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  padding: 14px 28px;
+  transition: all 0.2s ease;
+  border: 1px solid #E35930;
+}
+
+.editorial-button-primary:hover {
+  background-color: transparent;
+  color: #E35930;
+  border-color: #E35930;
+}
+
+.editorial-button-secondary {
+  background-color: transparent;
+  color: #F8F7F4;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  padding: 14px 28px;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(248, 247, 244, 0.2);
+}
+
+.editorial-button-secondary:hover {
+  background-color: rgba(248, 247, 244, 0.05);
+  border-color: #F8F7F4;
+}
+
+
