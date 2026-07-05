@@ -154,5 +154,28 @@
   animation-delay: 500ms;
 }
 
+/* Hide standard Google Translate top-bar, frames, banner and widgets */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+#goog-te-wel-frame,
+.goog-te-gadget-simple,
+.goog-te-balloon-frame,
+iframe[class*="goog"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
+body {
+  top: 0px !important;
+}
+
+.skiptranslate {
+  display: none !important;
+}
+
+
 
 
