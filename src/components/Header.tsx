@@ -17,6 +17,9 @@ const LANGUAGES = [
   { code: "fr", label: "Français", flag: "🇫🇷" },
   { code: "de", label: "Deutsch", flag: "🇩🇪" },
   { code: "es", label: "Español", flag: "🇪🇸" },
+  { code: "pt", label: "Português", flag: "🇵🇹" },
+  { code: "ru", label: "Русский", flag: "🇷🇺" },
+  { code: "zh", label: "简体中文", flag: "🇨🇳" },
 ];
 
 export default function Header({
@@ -33,6 +36,37 @@ export default function Header({
   const [currentGoogleLang, setCurrentGoogleLang] = useState<string>(() => {
     return localStorage.getItem("facilissimo-google-lang") || "it";
   });
+
+  const getCookieDomains = () => {
+    const hostname = window.location.hostname;
+    const domains = [hostname, `.${hostname}`];
+    const parts = hostname.split(".");
+    for (let i = 1; i < parts.length; i++) {
+      const d = parts.slice(i).join(".");
+      if (d && d !== "com" && d !== "app" && d !== "net" && d !== "org") {
+        domains.push(d);
+        domains.push(`.${d}`);
+      }
+    }
+    return Array.from(new Set(domains));
+  };
+
+  const setGoogleTranslateCookie = (code: string) => {
+    const value = code === "it" ? "/it/it" : `/it/${code}`;
+    const domains = getCookieDomains();
+    
+    // First clear any existing ones on all domains to prevent multiple stacked cookies
+    for (const d of domains) {
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${d};`;
+    }
+    document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+
+    // Set on all domains
+    for (const d of domains) {
+      document.cookie = `googtrans=${value}; path=/; domain=${d};`;
+    }
+    document.cookie = `googtrans=${value}; path=/;`;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,16 +86,20 @@ export default function Header({
   // Ensure cookie is in sync on load (so reload behaves correctly)
   useEffect(() => {
     const savedGoogleLang = localStorage.getItem("facilissimo-google-lang") || "it";
-    const domain = window.location.hostname;
-    const cookieValue = savedGoogleLang === "it" ? "" : `/it/${savedGoogleLang}`;
-
-    // Read cookie to verify presence
-    const hasGoogTrans = document.cookie.split(";").some((item) => item.trim().startsWith("googtrans="));
     
-    if (savedGoogleLang !== "it" && !hasGoogTrans) {
-      document.cookie = `googtrans=${cookieValue}; path=/;`;
-      document.cookie = `googtrans=${cookieValue}; path=/; domain=.${domain};`;
-      document.cookie = `googtrans=${cookieValue}; path=/; domain=${domain};`;
+    const match = document.cookie.match(new RegExp('(^| )googtrans=([^;]+)'));
+    const currentCookieVal = match ? decodeURIComponent(match[2]) : null;
+    const expectedCookieVal = savedGoogleLang === "it" ? "/it/it" : `/it/${savedGoogleLang}`;
+
+    if (currentCookieVal !== expectedCookieVal) {
+      // If it is 'it' and the cookie is null or empty, it's already in Italian, so no need to reload
+      if (savedGoogleLang === "it" && (currentCookieVal === null || currentCookieVal === "" || currentCookieVal === "/it/it")) {
+        setGoogleTranslateCookie("it");
+        return;
+      }
+
+      setGoogleTranslateCookie(savedGoogleLang);
+      window.location.reload();
     }
   }, []);
 
@@ -69,31 +107,13 @@ export default function Header({
     localStorage.setItem("facilissimo-google-lang", code);
     setCurrentGoogleLang(code);
 
-    // Sync native dictionary language for English vs Italian base
-    if (code === "en") {
-      setLang("en");
-      localStorage.setItem("facilissimo-lang", "en");
-    } else {
-      setLang("it");
-      localStorage.setItem("facilissimo-lang", "it");
-    }
+    // Keep the React dictionary base as Italian to ensure high-quality source for translation
+    setLang("it");
+    localStorage.setItem("facilissimo-lang", "it");
 
-    const domain = window.location.hostname;
-    const cookieValue = code === "it" ? "" : `/it/${code}`;
-
-    // Clear old cookies to avoid translation conflicts
-    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${domain};`;
-    document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${domain};`;
-
-    if (code !== "it") {
-      document.cookie = `googtrans=${cookieValue}; path=/;`;
-      document.cookie = `googtrans=${cookieValue}; path=/; domain=.${domain};`;
-      document.cookie = `googtrans=${cookieValue}; path=/; domain=${domain};`;
-    }
+    setGoogleTranslateCookie(code);
 
     setIsLangOpen(false);
-    // Reload immediately so Google Translate re-evaluates page and performs automatic translation
     window.location.reload();
   };
 

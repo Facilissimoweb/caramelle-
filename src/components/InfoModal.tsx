@@ -199,8 +199,27 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
       return;
     }
 
-    const utterance = new SpeechSynthesisUtterance(activeContent.speechText);
-    utterance.lang = lang === "it" ? "it-IT" : "en-US";
+    const currentGoogleLang = localStorage.getItem("facilissimo-google-lang") || "it";
+    
+    // Dynamically retrieve text from the DOM so we read the actually translated text!
+    const modalBody = document.getElementById("modal-content-body");
+    const modalTitle = document.querySelector("#info-modal-" + type + " h2");
+    
+    const textToRead = (modalTitle ? modalTitle.textContent + ". " : "") + 
+                       (modalBody ? modalBody.innerText : activeContent.speechText);
+
+    const utterance = new SpeechSynthesisUtterance(textToRead);
+    
+    let speechLang = "it-IT";
+    if (currentGoogleLang === "en") speechLang = "en-US";
+    else if (currentGoogleLang === "fr") speechLang = "fr-FR";
+    else if (currentGoogleLang === "de") speechLang = "de-DE";
+    else if (currentGoogleLang === "es") speechLang = "es-ES";
+    else if (currentGoogleLang === "pt") speechLang = "pt-PT";
+    else if (currentGoogleLang === "ru") speechLang = "ru-RU";
+    else if (currentGoogleLang === "zh") speechLang = "zh-CN";
+
+    utterance.lang = speechLang;
     utterance.rate = 0.95; // Slightly slower for readability
     utterance.onend = () => setIsPlaying(false);
     utterance.onerror = () => setIsPlaying(false);

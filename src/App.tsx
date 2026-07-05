@@ -10,10 +10,7 @@ import InfoModal from "./components/InfoModal";
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>("home");
-  const [lang, setLang] = useState<"it" | "en">(() => {
-    const saved = localStorage.getItem("facilissimo-lang");
-    return saved === "en" ? "en" : "it";
-  });
+  const [lang, setLang] = useState<"it" | "en">("it");
   const [isFacilitated, setIsFacilitated] = useState<boolean>(() => {
     const saved = localStorage.getItem("facilissimo-facil");
     return saved === "true";
