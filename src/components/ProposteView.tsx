@@ -22,7 +22,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
         "Design responsive ottimizzato mobile",
         "Logo design personalizzato (3 concept)",
         "Dominio, hosting ed email aziendale (1 anno)",
-        "Ottimizzazione SEO di base",
+        "Ottimizzazione SEO semantica con analisi predittiva base",
         "Consegna garantita in 7-10 giorni",
         "Supporto tecnico post-lancio per 3 mesi",
       ],
@@ -38,7 +38,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
       features: [
         "Sito Multi-pagina completo (fino a 6 pagine)",
         "Copywriting persuasivo potenziato dall'IA",
-        "SEO semantica avanzata con parole chiave mirate",
+        "SEO Predittiva avanzata (identificazione dei trend futuri e bisogni latenti)",
         "Brand Book ufficiale (palette, tipografia, loghi)",
         "Kit Social Media coordinato (grafiche per post)",
         "Form contatti integrato e newsletter setup",
@@ -58,6 +58,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
         "Sito Web custom o E-commerce completo (infiniti prodotti)",
         "Integrazione API Intelligenza Artificiale (es. Chatbot dedicato)",
         "Copywriting strategico e posizionamento di mercato",
+        "SEO Predittiva Enterprise con cluster semantici avanzati",
         "Dashboard amministratore personalizzata per statistiche",
         "Integrazione sistemi di pagamento sicuri (Stripe, PayPal)",
         "Sessioni di formazione video registrate per la gestione",
@@ -70,6 +71,10 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
   ];
 
   const faqs = [
+    {
+      q: "Cos'è la SEO Predittiva e come funziona nei vostri pacchetti?",
+      a: "La SEO Predittiva è l'evoluzione del posizionamento su Google. Invece di limitarci ad analizzare cosa le persone hanno cercato in passato, utilizziamo l'IA e modelli linguistici semantici per anticipare i futuri trend di ricerca e le necessità latenti degli utenti. Configurando metadati dinamici, strutture Schema.org mirate e testi strutturati in modo specifico, posizioniamo il tuo sito per le domande che i tuoi clienti (locali a Macerata/Marche o nazionali/esteri) cercheranno tra qualche mese, anticipando tutti i tuoi concorrenti.",
+    },
     {
       q: "Cosa significa 'sito web potenziato dall'Intelligenza Artificiale'?",
       a: "Significa che utilizzo sofisticati modelli linguistici (come Gemini o ChatGPT) e generatori grafici vettoriali per accelerare i processi di scrittura di codice di base, ottimizzazione SEO semantica e copywriting persuasivo. Questo mi permette di lavorare con una velocità incredibile e ridurre i tempi di consegna, lasciando a me tutto lo spazio per curare l'estetica, la logica di navigazione e l'esperienza utente.",
