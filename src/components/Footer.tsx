@@ -2,7 +2,7 @@ import { Mail, ArrowUp, Phone, MapPin } from "lucide-react";
 
 interface FooterProps {
   setCurrentTab: (tab: string) => void;
-  onOpenModal: (type: "privacy" | "terms" | "ethics") => void;
+  onOpenModal: (type: "privacy" | "terms" | "ethics" | "sitemap") => void;
   lang: "it" | "en";
   onOpenCookieSettings: () => void;
 }
@@ -95,35 +95,42 @@ export default function Footer({ setCurrentTab, onOpenModal, lang, onOpenCookieS
       </div>
 
       {/* Under Footer */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 mt-12 pt-8 border-t border-[rgba(248,247,244,0.1)] flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] text-[#F8F7F4]/50 font-mono">
-        <div>
+      <div className="max-w-7xl mx-auto px-6 md:px-12 mt-12 pt-8 border-t border-[rgba(248,247,244,0.1)] flex flex-col lg:flex-row justify-between items-center gap-6 text-xs text-[#F8F7F4]/50 font-mono">
+        <div className="text-center lg:text-left">
           © {currentYear} Facilissimo Web di M. Teresa Rogani. Tutti i diritti riservati.
         </div>
-        <div className="flex flex-wrap gap-4 md:gap-6 uppercase tracking-wider text-[9px]">
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 uppercase tracking-wider text-xs md:text-sm">
           <button
             onClick={() => onOpenModal("privacy")}
-            className="hover:text-[#E35930] transition-colors cursor-pointer bg-transparent border-none p-0 text-[9px] uppercase tracking-wider font-mono font-bold"
+            className="hover:text-[#E35930] transition-colors cursor-pointer bg-transparent border-none p-0 text-xs md:text-sm uppercase tracking-wider font-mono font-bold"
             id="footer-privacy-btn"
           >
             {lang === "it" ? "Privacy Policy" : "Privacy Policy"}
           </button>
           <button
             onClick={() => onOpenModal("terms")}
-            className="hover:text-[#E35930] transition-colors cursor-pointer bg-transparent border-none p-0 text-[9px] uppercase tracking-wider font-mono font-bold"
+            className="hover:text-[#E35930] transition-colors cursor-pointer bg-transparent border-none p-0 text-xs md:text-sm uppercase tracking-wider font-mono font-bold"
             id="footer-terms-btn"
           >
             {lang === "it" ? "Termini di Servizio" : "Terms of Service"}
           </button>
           <button
             onClick={() => onOpenModal("ethics")}
-            className="hover:text-[#E35930] transition-colors cursor-pointer bg-transparent border-none p-0 text-[9px] uppercase tracking-wider font-mono font-bold"
+            className="hover:text-[#E35930] transition-colors cursor-pointer bg-transparent border-none p-0 text-xs md:text-sm uppercase tracking-wider font-mono font-bold"
             id="footer-ethics-btn"
           >
             {lang === "it" ? "AI Ethics & Trasparenza" : "AI Ethics & Transparency"}
           </button>
           <button
+            onClick={() => onOpenModal("sitemap")}
+            className="hover:text-[#E35930] transition-colors cursor-pointer bg-transparent border-none p-0 text-xs md:text-sm uppercase tracking-wider font-mono font-bold"
+            id="footer-sitemap-btn"
+          >
+            {lang === "it" ? "Sitemap" : "Sitemap"}
+          </button>
+          <button
             onClick={onOpenCookieSettings}
-            className="hover:text-[#E35930] transition-colors cursor-pointer bg-transparent border-none p-0 text-[9px] uppercase tracking-wider font-mono font-bold text-[#E35930]"
+            className="hover:text-[#E35930] transition-colors cursor-pointer bg-transparent border-none p-0 text-xs md:text-sm uppercase tracking-wider font-mono font-bold text-[#E35930]"
             id="footer-cookie-btn"
           >
             {lang === "it" ? "Gestione Cookie" : "Cookie Preferences"}
@@ -131,7 +138,7 @@ export default function Footer({ setCurrentTab, onOpenModal, lang, onOpenCookieS
         </div>
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex items-center gap-1.5 hover:text-[#E35930] transition-colors font-mono tracking-widest cursor-pointer uppercase text-[9px] font-bold"
+          className="flex items-center gap-1.5 hover:text-[#E35930] transition-colors font-mono tracking-widest cursor-pointer uppercase text-xs font-bold shrink-0"
           id="scroll-to-top"
         >
           <span>Torna su</span>

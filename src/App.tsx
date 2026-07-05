@@ -8,6 +8,7 @@ import ContattiView from "./components/ContattiView";
 import ChatView from "./components/ChatView";
 import InfoModal from "./components/InfoModal";
 import CookieBanner from "./components/CookieBanner";
+import AccessibilityWidget from "./components/AccessibilityWidget";
 
 
 const SEO_METADATA: Record<string, { title: string; description: string; keywords: string }> = {
@@ -122,8 +123,20 @@ export default function App() {
     const saved = localStorage.getItem("facilissimo-facil");
     return saved === "true";
   });
-  const [activeModal, setActiveModal] = useState<"privacy" | "terms" | "ethics" | null>(null);
+  const [activeModal, setActiveModal] = useState<"privacy" | "terms" | "ethics" | "sitemap" | null>(null);
   const [forceShowCookieBanner, setForceShowCookieBanner] = useState<boolean>(false);
+  const [fontSize, setFontSize] = useState<number>(() => {
+    const saved = localStorage.getItem("facilissimo-font-size");
+    return saved ? parseInt(saved, 10) : 100;
+  });
+  const [highContrast, setHighContrast] = useState<boolean>(() => {
+    const saved = localStorage.getItem("facilissimo-contrast");
+    return saved === "true";
+  });
+  const [readableFont, setReadableFont] = useState<boolean>(() => {
+    const saved = localStorage.getItem("facilissimo-readable");
+    return saved === "true";
+  });
 
 
   // SEO Dynamic Updates
@@ -178,6 +191,21 @@ export default function App() {
     localStorage.setItem("facilissimo-facil", String(isFacilitated));
   }, [isFacilitated]);
 
+  useEffect(() => {
+    localStorage.setItem("facilissimo-font-size", String(fontSize));
+    if (typeof window !== "undefined") {
+      document.documentElement.style.fontSize = `${fontSize}%`;
+    }
+  }, [fontSize]);
+
+  useEffect(() => {
+    localStorage.setItem("facilissimo-contrast", String(highContrast));
+  }, [highContrast]);
+
+  useEffect(() => {
+    localStorage.setItem("facilissimo-readable", String(readableFont));
+  }, [readableFont]);
+
   // Initial call to load tracking scripts dynamically if user consent was previously given
   useEffect(() => {
     initTrackingConsentUtility();
@@ -201,7 +229,11 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen bg-[#111113] text-[#F8F7F4] font-sans flex flex-col selection:bg-[#E35930]/20 selection:text-[#E35930] antialiased ${
+    <div className={`min-h-screen bg-[#111113] text-[#F8F7F4] flex flex-col selection:bg-[#E35930]/20 selection:text-[#E35930] antialiased ${
+      readableFont ? "font-mono tracking-wide" : "font-sans"
+    } ${
+      highContrast ? "contrast-150 saturate-125 brightness-105" : ""
+    } ${
       isFacilitated ? "text-lg contrast-125" : ""
     }`}>
       {/* Navigation Header */}
@@ -251,6 +283,19 @@ export default function App() {
         isFacilitated={isFacilitated}
         forceShow={forceShowCookieBanner}
         onCloseForceShow={() => setForceShowCookieBanner(false)}
+      />
+
+      {/* Accessibility Floating Panel Widget */}
+      <AccessibilityWidget
+        lang={lang}
+        isFacilitated={isFacilitated}
+        setIsFacilitated={setIsFacilitated}
+        fontSize={fontSize}
+        setFontSize={setFontSize}
+        highContrast={highContrast}
+        setHighContrast={setHighContrast}
+        readableFont={readableFont}
+        setReadableFont={setReadableFont}
       />
     </div>
   );

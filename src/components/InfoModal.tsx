@@ -1,10 +1,10 @@
-import { X, Volume2, VolumeX, ShieldAlert, FileText, Sparkles } from "lucide-react";
+import { X, Volume2, VolumeX, ShieldAlert, FileText, Sparkles, Compass } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 
 interface InfoModalProps {
   isOpen: boolean;
-  type: "privacy" | "terms" | "ethics" | null;
+  type: "privacy" | "terms" | "ethics" | "sitemap" | null;
   onClose: () => void;
   lang: "it" | "en";
   isFacilitated: boolean;
@@ -108,6 +108,57 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         ),
         speechText: "Manifesto sull'Intelligenza Artificiale. Usiamo l'intelligenza artificiale per eliminare i compiti ripetitivi e abbassare i costi per te. Ogni dettaglio visivo e riga di codice viene però controllato, rifinito e testato a mano da Teresa per garantire la massima qualità e cura.",
       },
+      sitemap: {
+        title: "Mappa del Sito (Sitemap)",
+        facilitatedTitle: "Le Pagine del Sito in modo semplice",
+        icon: <Compass className="w-8 h-8 text-[#E35930]" />,
+        normal: (
+          <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
+            <p>Questa mappa mostra l'architettura logica e la gerarchia dei contenuti presenti su <strong>Facilissimo Web</strong>, facilitando l'indicizzazione da parte dei motori di ricerca e la navigazione per tutti gli utenti:</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-[#111113]/50 p-4 border border-[rgba(248,247,244,0.08)]">
+              <div className="space-y-2">
+                <h4 className="font-display font-bold text-xs uppercase tracking-wider text-[#E35930]">1. Navigazione Principale</h4>
+                <ul className="space-y-1.5 pl-3 border-l border-[rgba(248,247,244,0.15)] text-[11px] font-mono">
+                  <li>• <strong>Inizio (Home):</strong> Vetrina, Filosofia, SEO Predittiva e FAQ</li>
+                  <li>• <strong>Chi Sono:</strong> Profilo professionale di M. Teresa Rogani</li>
+                  <li>• <strong>Proposte:</strong> I 3 pacchetti di sviluppo web e prezzi trasparente</li>
+                  <li>• <strong>Contatti:</strong> Modulo di preventivo rapido e contatti diretti</li>
+                  <li>• <strong>Assistente Chat AI:</strong> Simulazione interattiva preventivo con IA</li>
+                </ul>
+              </div>
+              <div className="space-y-2">
+                <h4 className="font-display font-bold text-xs uppercase tracking-wider text-[#E35930]">2. Moduli ed Utility</h4>
+                <ul className="space-y-1.5 pl-3 border-l border-[rgba(248,247,244,0.15)] text-[11px] font-mono">
+                  <li>• <strong>SEO Predittiva:</strong> Sezione informativa sui trend di ricerca latenti</li>
+                  <li>• <strong>Widget Accessibilità:</strong> Regolazione caratteri, contrasto e semplificazione</li>
+                  <li>• <strong>Gestione Cookie:</strong> Pannello GDPR per controllare liberamente i tracciamenti</li>
+                  <li>• <strong>Informativa Legale:</strong> Privacy Policy, Termini e AI Ethics Manifesto</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        ),
+        facilitated: (
+          <div className="space-y-6 text-base text-[#F8F7F4] leading-relaxed font-sans">
+            <p className="bg-[#151518] p-4 border-l-4 border-[#E35930] text-sm">
+              <strong>Mappa del Sito:</strong> Qui trovi l'elenco semplice di tutto quello che c'è su questo sito web.
+            </p>
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-bold text-[#E35930]">Pagine principali che puoi visitare:</h4>
+                <ul className="list-disc pl-5 mt-2 space-y-1.5 text-sm">
+                  <li><strong>Home Page:</strong> Presentazione del mio studio, cos'è la SEO Predittiva e risposte alle domande comuni.</li>
+                  <li><strong>Chi Sono:</strong> Conosci meglio me, Teresa, e come lavoro.</li>
+                  <li><strong>Proposte e Prezzi:</strong> Scopri i 3 pacchetti per creare il tuo sito web a prezzi chiari.</li>
+                  <li><strong>Contatti:</strong> Mandami un messaggio o chiamami per iniziare il tuo progetto.</li>
+                  <li><strong>Assistente AI:</strong> Parla con il mio assistente virtuale per un preventivo guidato.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        ),
+        speechText: "Mappa del sito. Elenco delle sezioni disponibili: Home Page con presentazione e domande frequenti; Chi Sono con il mio profilo professionale; Proposte con i pacchetti di sviluppo; Contatti per richiedere preventivi; Assistente virtuale per preventivo guidato.",
+      },
     },
     en: {
       privacy: {
@@ -182,6 +233,57 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
           </div>
         ),
         speechText: "AI Ethics. We use artificial intelligence to speed up basic coding and keep prices low. Every visual detail and final script is crafted, tested, and perfected by hand by Teresa for premium quality.",
+      },
+      sitemap: {
+        title: "Website Sitemap",
+        facilitatedTitle: "Simple Website Map",
+        icon: <Compass className="w-8 h-8 text-[#E35930]" />,
+        normal: (
+          <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
+            <p>This sitemap illustrates the logical hierarchy and content structure of <strong>Facilissimo Web</strong>, ensuring search engines can index pages and users can browse efficiently:</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-[#111113]/50 p-4 border border-[rgba(248,247,244,0.08)]">
+              <div className="space-y-2">
+                <h4 className="font-display font-bold text-xs uppercase tracking-wider text-[#E35930]">1. Core Navigation</h4>
+                <ul className="space-y-1.5 pl-3 border-l border-[rgba(248,247,244,0.15)] text-[11px] font-mono">
+                  <li>• <strong>Home:</strong> Studio intro, Predictive SEO section, FAQ accordion</li>
+                  <li>• <strong>About:</strong> Professional profile of M. Teresa Rogani</li>
+                  <li>• <strong>Proposals:</strong> 3 specific website packages and pricing models</li>
+                  <li>• <strong>Contact:</strong> Estimate forms and direct communication info</li>
+                  <li>• <strong>AI Assistant Chat:</strong> Interactive guidance and AI-powered quote planner</li>
+                </ul>
+              </div>
+              <div className="space-y-2">
+                <h4 className="font-display font-bold text-xs uppercase tracking-wider text-[#E35930]">2. Modality &amp; Preferences</h4>
+                <ul className="space-y-1.5 pl-3 border-l border-[rgba(248,247,244,0.15)] text-[11px] font-mono">
+                  <li>• <strong>Predictive SEO:</strong> Latent intent marketing section</li>
+                  <li>• <strong>Accessibility:</strong> Widget for layout zoom and high contrast</li>
+                  <li>• <strong>Cookie Preferences:</strong> GDPR compliant tracking toggles</li>
+                  <li>• <strong>Legal Documentation:</strong> Privacy Policy, Terms of Service, and AI Ethics</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        ),
+        facilitated: (
+          <div className="space-y-6 text-base text-[#F8F7F4] leading-relaxed font-sans">
+            <p className="bg-[#151518] p-4 border-l-4 border-[#E35930] text-sm">
+              <strong>Sitemap:</strong> Here is a simple, easy list of everything available on this website.
+            </p>
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-bold text-[#E35930]">Main pages you can explore:</h4>
+                <ul className="list-disc pl-5 mt-2 space-y-1.5 text-sm">
+                  <li><strong>Home:</strong> My studio introduction, Predictive SEO explanation, and helpful FAQs.</li>
+                  <li><strong>About Me:</strong> Read more about me, Teresa, and my working style.</li>
+                  <li><strong>Offers &amp; Prices:</strong> Check the 3 plans to create your website with clear pricing.</li>
+                  <li><strong>Contact:</strong> Send me a message or call me directly to start.</li>
+                  <li><strong>AI Assistant:</strong> Speak with my smart helper to draft a guided proposal.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        ),
+        speechText: "Sitemap. Overview of the sections: Home page with presentation and FAQs; About me page; Offers and prices page; Contact page for direct messages; AI assistant for custom quotes.",
       },
     },
   };
