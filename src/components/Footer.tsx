@@ -2,9 +2,11 @@ import { Mail, ArrowUp } from "lucide-react";
 
 interface FooterProps {
   setCurrentTab: (tab: string) => void;
+  onOpenModal: (type: "privacy" | "terms" | "ethics") => void;
+  lang: "it" | "en";
 }
 
-export default function Footer({ setCurrentTab }: FooterProps) {
+export default function Footer({ setCurrentTab, onOpenModal, lang }: FooterProps) {
   const handleNavClick = (tabId: string) => {
     setCurrentTab(tabId);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -84,10 +86,28 @@ export default function Footer({ setCurrentTab }: FooterProps) {
         <div>
           © {currentYear} Facilissimo Web di M. Teresa Rogani. Tutti i diritti riservati.
         </div>
-        <div className="flex gap-6 uppercase tracking-wider text-[9px]">
-          <a href="#" className="hover:text-[#E35930] transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-[#E35930] transition-colors">Termini di Servizio</a>
-          <a href="#" className="hover:text-[#E35930] transition-colors">AI Ethics</a>
+        <div className="flex flex-wrap gap-4 md:gap-6 uppercase tracking-wider text-[9px]">
+          <button
+            onClick={() => onOpenModal("privacy")}
+            className="hover:text-[#E35930] transition-colors cursor-pointer bg-transparent border-none p-0 text-[9px] uppercase tracking-wider font-mono font-bold"
+            id="footer-privacy-btn"
+          >
+            {lang === "it" ? "Privacy Policy" : "Privacy Policy"}
+          </button>
+          <button
+            onClick={() => onOpenModal("terms")}
+            className="hover:text-[#E35930] transition-colors cursor-pointer bg-transparent border-none p-0 text-[9px] uppercase tracking-wider font-mono font-bold"
+            id="footer-terms-btn"
+          >
+            {lang === "it" ? "Termini di Servizio" : "Terms of Service"}
+          </button>
+          <button
+            onClick={() => onOpenModal("ethics")}
+            className="hover:text-[#E35930] transition-colors cursor-pointer bg-transparent border-none p-0 text-[9px] uppercase tracking-wider font-mono font-bold"
+            id="footer-ethics-btn"
+          >
+            {lang === "it" ? "AI Ethics & Trasparenza" : "AI Ethics & Transparency"}
+          </button>
         </div>
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

@@ -1,12 +1,24 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe, Accessibility } from "lucide-react";
+import { translations } from "../translations";
 
 interface HeaderProps {
   currentTab: string;
   setCurrentTab: (tab: string) => void;
+  lang: "it" | "en";
+  setLang: (lang: "it" | "en") => void;
+  isFacilitated: boolean;
+  setIsFacilitated: (val: boolean) => void;
 }
 
-export default function Header({ currentTab, setCurrentTab }: HeaderProps) {
+export default function Header({
+  currentTab,
+  setCurrentTab,
+  lang,
+  setLang,
+  isFacilitated,
+  setIsFacilitated,
+}: HeaderProps) {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -25,12 +37,14 @@ export default function Header({ currentTab, setCurrentTab }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const t = translations[lang][isFacilitated ? "facilitated" : "normal"];
+
   const navItems = [
-    { id: "home", label: "Inizio" },
-    { id: "chi-sono", label: "Chi Sono" },
-    { id: "proposte", label: "Proposte" },
-    { id: "contatti", label: "Contatti" },
-    { id: "chat", label: "Chat AI" },
+    { id: "home", label: t.navInizio },
+    { id: "chi-sono", label: t.navChiSono },
+    { id: "proposte", label: t.navProposte },
+    { id: "contatti", label: t.navContatti },
+    { id: "chat", label: t.navChat },
   ];
 
   const handleNavClick = (tabId: string) => {
@@ -83,14 +97,40 @@ export default function Header({ currentTab, setCurrentTab }: HeaderProps) {
           })}
         </nav>
 
-        {/* Action Button */}
+        {/* Action Button & Language / Accessibility Toggles */}
         <div className="hidden md:flex items-center gap-4">
+          {/* Language Toggle */}
+          <button
+            onClick={() => setLang(lang === "it" ? "en" : "it")}
+            className="p-2 border border-[rgba(248,247,244,0.1)] hover:border-[#E35930] text-[#F8F7F4]/70 hover:text-[#E35930] transition-all flex items-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold"
+            title={t.languageLabel}
+            id="lang-toggle-desktop"
+          >
+            <Globe className="w-3.5 h-3.5" />
+            <span>{lang === "it" ? "EN" : "IT"}</span>
+          </button>
+
+          {/* Accessibility Toggle */}
+          <button
+            onClick={() => setIsFacilitated(!isFacilitated)}
+            className={`p-2 border transition-all flex items-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold ${
+              isFacilitated 
+                ? "bg-[#E35930] border-[#E35930] text-[#111113] hover:opacity-90 animate-pulse"
+                : "border-[rgba(248,247,244,0.1)] hover:border-[#E35930] text-[#F8F7F4]/70 hover:text-[#E35930]"
+            }`}
+            title={isFacilitated ? t.facilitatedOff : t.facilitatedOn}
+            id="access-toggle-desktop"
+          >
+            <Accessibility className="w-3.5 h-3.5" />
+            <span>{isFacilitated ? "Std" : "Easy"}</span>
+          </button>
+
           <button
             onClick={() => handleNavClick("contatti")}
             className="px-6 py-3 bg-[#E35930] text-[#111113] font-bold text-[10px] tracking-widest uppercase hover:bg-transparent hover:text-[#E35930] hover:border-[#E35930] transition-all duration-300 cursor-pointer border border-[#E35930]"
             id="header-cta-btn"
           >
-            Lavoriamo Insieme
+            {lang === "it" ? "Lavoriamo Insieme" : "Let's Work Together"}
           </button>
         </div>
 
@@ -126,12 +166,37 @@ export default function Header({ currentTab, setCurrentTab }: HeaderProps) {
                 </button>
               );
             })}
+            {/* Mobile Accessibility & Language Toggles */}
+            <div className="grid grid-cols-2 gap-3 mt-2 border-t border-[rgba(248,247,244,0.1)] pt-6">
+              <button
+                onClick={() => setLang(lang === "it" ? "en" : "it")}
+                className="py-3 px-4 border border-[rgba(248,247,244,0.1)] text-[#F8F7F4]/80 hover:text-[#E35930] hover:border-[#E35930] transition-all flex items-center justify-center gap-2 cursor-pointer font-mono text-[10px] uppercase tracking-wider font-bold"
+                id="lang-toggle-mobile"
+              >
+                <Globe className="w-4 h-4 text-[#E35930]" />
+                <span>{lang === "it" ? "English" : "Italiano"}</span>
+              </button>
+
+              <button
+                onClick={() => setIsFacilitated(!isFacilitated)}
+                className={`py-3 px-4 border transition-all flex items-center justify-center gap-2 cursor-pointer font-mono text-[10px] uppercase tracking-wider font-bold ${
+                  isFacilitated
+                    ? "bg-[#E35930] border-[#E35930] text-[#111113]"
+                    : "border-[rgba(248,247,244,0.1)] text-[#F8F7F4]/80 hover:text-[#E35930] hover:border-[#E35930]"
+                }`}
+                id="access-toggle-mobile"
+              >
+                <Accessibility className="w-4 h-4" />
+                <span>{isFacilitated ? "Standard" : "Easy Mode"}</span>
+              </button>
+            </div>
+
             <button
               onClick={() => handleNavClick("contatti")}
               className="mt-4 w-full py-4 bg-[#E35930] text-[#111113] text-center text-xs font-bold uppercase tracking-widest hover:bg-transparent hover:text-[#E35930] transition-all duration-300 cursor-pointer border border-[#E35930]"
               id="mobile-header-cta-btn"
             >
-              Richiedi Preventivo
+              {lang === "it" ? "Richiedi Preventivo" : "Request a Quote"}
             </button>
           </div>
         </div>

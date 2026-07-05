@@ -3,7 +3,12 @@ import { motion, AnimatePresence } from "motion/react";
 import { Send, MessageSquare, AlertCircle, RefreshCw, Cpu } from "lucide-react";
 import { ChatMessage } from "../types";
 
-export default function ChatView() {
+interface ChatViewProps {
+  lang: "it" | "en";
+  isFacilitated: boolean;
+}
+
+export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: "welcome",

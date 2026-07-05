@@ -3,41 +3,49 @@ import { ShieldCheck, Zap, Heart, Sparkles, Code, Pencil } from "lucide-react";
 
 interface AboutViewProps {
   setCurrentTab: (tab: string) => void;
+  lang: "it" | "en";
+  isFacilitated: boolean;
 }
 
-export default function AboutView({ setCurrentTab }: AboutViewProps) {
+export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutViewProps) {
   const values = [
     {
       icon: <ShieldCheck className="w-5 h-5 text-[#E35930]" />,
-      title: "Interlocutore Unico",
-      desc: "Niente account manager, niente segretarie o sviluppatori junior che lavorano al tuo sito di nascosto. Parli, discuti e definisci tutto direttamente con me.",
+      title: lang === "it" ? "Interlocutore Unico" : "Single Point of Contact",
+      desc: lang === "it"
+        ? "Niente account manager, niente segretarie o sviluppatori junior che lavorano al tuo sito di nascosto. Parli, discuti e definisci tutto direttamente con me."
+        : "No account managers, no secretaries or junior coders working on your site in secret. You talk, discuss, and define everything directly with me.",
     },
     {
       icon: <Zap className="w-5 h-5 text-[#E35930]" />,
-      title: "Velocità senza Burocrazia",
-      desc: "I processi decisionali in agenzia richiedono giorni. Qui possiamo decidere una modifica al mattino e vederla live nel pomeriggio.",
+      title: lang === "it" ? "Velocità senza Burocrazia" : "No-Bureaucracy Speed",
+      desc: lang === "it"
+        ? "I processi decisionali in agenzia richiedono giorni. Qui possiamo decidere una modifica al mattino e vederla live nel pomeriggio."
+        : "Agency approval pipelines take days. Here, we can discuss a modification in the morning and see it live in the afternoon.",
     },
     {
       icon: <Heart className="w-5 h-5 text-[#E35930]" />,
-      title: "Massimo Risparmio",
-      desc: "Lavorando da sola come freelance non ho uffici fisici imponenti o personale da stipendiare. Questo si traduce in tariffe fino a 3 volte inferiori.",
+      title: lang === "it" ? "Massimo Risparmio" : "Maximum Value",
+      desc: lang === "it"
+        ? "Lavorando da sola come freelance non ho uffici fisici imponenti o personale da stipendiare. Questo si traduce in tariffe fino a 3 volte inferiori."
+        : "Working alone as a freelance developer, I don't run hefty physical offices or maintain auxiliary staff. This means rates up to 3 times lower.",
     },
   ];
 
   const skillCategories = [
     {
       icon: <Code className="w-5 h-5 text-[#E35930]" />,
-      title: "Sviluppo & Strumenti",
+      title: lang === "it" ? "Sviluppo & Strumenti" : "Development & Tools",
       skills: ["React / Vite", "Tailwind CSS", "HTML5 & CSS3", "Express Node.js Server", "Figma", "Cursor / AI IDEs"],
     },
     {
       icon: <Sparkles className="w-5 h-5 text-[#E35930]" />,
-      title: "AI Integration & Prompting",
+      title: lang === "it" ? "Integrazione IA" : "AI Integration & Prompting",
       skills: ["Gemini LLMs API", "OpenAI Advanced API", "Midjourney & Stable Diffusion", "Vector Search / Embeddings", "AI-driven Copywriting"],
     },
     {
       icon: <Pencil className="w-5 h-5 text-[#E35930]" />,
-      title: "Marketing & Strategy",
+      title: lang === "it" ? "Marketing & Strategia" : "Marketing & Strategy",
       skills: ["SEO Predittiva", "Google Analytics", "Brand Identity Manuals", "CRO (Conversion Optimization)", "Copywriting Persuasivo"],
     },
   ];

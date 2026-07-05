@@ -3,7 +3,12 @@ import { motion } from "motion/react";
 import { Mail, Send, Calendar, CheckCircle, Database, FileText, MapPin } from "lucide-react";
 import { ContactSubmission } from "../types";
 
-export default function ContattiView() {
+interface ContattiViewProps {
+  lang: "it" | "en";
+  isFacilitated: boolean;
+}
+
+export default function ContattiView({ lang, isFacilitated }: ContattiViewProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",

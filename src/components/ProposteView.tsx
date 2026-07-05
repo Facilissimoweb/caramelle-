@@ -4,9 +4,11 @@ import FAQAccordion from "./FAQAccordion";
 
 interface ProposteViewProps {
   setCurrentTab: (tab: string) => void;
+  lang: "it" | "en";
+  isFacilitated: boolean;
 }
 
-export default function ProposteView({ setCurrentTab }: ProposteViewProps) {
+export default function ProposteView({ setCurrentTab, lang, isFacilitated }: ProposteViewProps) {
 
   const tiers = [
     {

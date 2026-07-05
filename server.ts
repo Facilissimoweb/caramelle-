@@ -42,6 +42,34 @@ interface ContactSubmission {
 const contactSubmissions: ContactSubmission[] = [];
 
 // API routes first
+app.get("/api/health", async (req, res) => {
+  const hasKey = !!process.env.GEMINI_API_KEY;
+  let apiStatus = "unconfigured";
+  
+  if (hasKey && ai) {
+    try {
+      const response = await ai.models.generateContent({
+        model: "gemini-3.5-flash",
+        contents: "Hi",
+      });
+      if (response && response.text) {
+        apiStatus = "active";
+      } else {
+        apiStatus = "empty_response";
+      }
+    } catch (err: any) {
+      apiStatus = "error";
+    }
+  }
+
+  res.json({
+    status: "ok",
+    geminiKeyConfigured: hasKey,
+    geminiApiStatus: apiStatus,
+    timestamp: new Date().toISOString()
+  });
+});
+
 app.post("/api/contact", (req, res) => {
   const { name, email, company, projectType, budget, message } = req.body;
   if (!name || !email || !message) {

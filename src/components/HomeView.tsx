@@ -1,47 +1,53 @@
 import { motion } from "motion/react";
 import { Brain, Cpu, Zap, ArrowRight, Heart, CheckCircle2 } from "lucide-react";
+import { translations } from "../translations";
 
 interface HomeViewProps {
   setCurrentTab: (tab: string) => void;
+  lang: "it" | "en";
+  isFacilitated: boolean;
 }
 
-export default function HomeView({ setCurrentTab }: HomeViewProps) {
+export default function HomeView({ setCurrentTab, lang, isFacilitated }: HomeViewProps) {
+  const t = translations[lang][isFacilitated ? "facilitated" : "normal"];
+
   const features = [
     {
-      icon: <Brain className="w-5 h-5 text-[#E35930]" />,
-      title: "Sviluppo Web AI",
-      description:
-        "Siti web veloci, dinamici e leggeri. Utilizzo l'Intelligenza Artificiale per velocizzare la scrittura del codice e ottimizzare i flussi logici, garantendo un rilascio rapidissimo.",
-      tags: ["INTELLIGENZA ARTIFICIALE", "FAST-DEV"],
+      icon: <Zap className="w-5 h-5 text-[#E35930]" />,
+      title: t.feat1Title,
+      description: t.feat1Desc,
+      tags: lang === "it" ? ["VELOCITÀ", "SEO-DATO"] : ["SPEED", "SEO-DRIVEN"],
     },
     {
       icon: <Cpu className="w-5 h-5 text-[#E35930]" />,
-      title: "UI/UX Design Moderno",
-      description:
-        "Interfacce utente progettate con precisione millimetrica. Layout fluidi e moderni orientati all'utente finale per massimizzare il coinvolgimento visivo su mobile e desktop.",
-      tags: ["TECH-FORWARD", "USER-CENTRIC"],
+      title: t.feat2Title,
+      description: t.feat2Desc,
+      tags: lang === "it" ? ["INTEGRAZIONE IA", "AUTOMAZIONE"] : ["AI INTEGRATION", "AUTOMATION"],
     },
     {
-      icon: <Zap className="w-5 h-5 text-[#E35930]" />,
-      title: "Ottimizzazione Conversioni",
-      description:
-        "Ottimizzazione automatica basata sui dati reali. Scrittura di testi ottimizzati per motori di ricerca (SEO) e conversioni per trasformare ogni visitatore in cliente.",
-      tags: ["SEO PREVENTIVA", "CONVERSIONS"],
+      icon: <Brain className="w-5 h-5 text-[#E35930]" />,
+      title: t.feat3Title,
+      description: t.feat3Desc,
+      tags: lang === "it" ? ["DESIGN PIXEL-PERFECT", "SU MISURA"] : ["PIXEL-PERFECT", "CUSTOM DESIGN"],
     },
   ];
 
   const projects = [
     {
       title: "Amala Pizza",
-      category: "Sito Multipagina & Logo Redesign",
-      desc: "Riprogettazione dell'identità visiva, nuovo logo design e sviluppo di un sito web multipagina completo ospitato su Hostinger. Un classico pacchetto completo \"chiavi in mano\" per valorizzare un brand di ristorazione d'eccellenza.",
+      category: lang === "it" ? "Sito Multipagina & Logo Redesign" : "Multi-page Site & Logo Redesign",
+      desc: lang === "it"
+        ? "Riprogettazione dell'identità visiva, nuovo logo design e sviluppo di un sito web multipagina completo ospitato su Hostinger. Un classico pacchetto completo \"chiavi in mano\" per valorizzare un brand di ristorazione d'eccellenza."
+        : "Visual identity redesign, brand new logo design, and development of a complete multi-page business website hosted on Hostinger. A classic, ready-to-run turn-key package to elevate an artisan food brand.",
       image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800",
       link: "https://amalapizza.it/",
     },
     {
       title: "Nexa AI Hub",
-      category: "Brand Identity & Platform Design",
-      desc: "Interfaccia di controllo bento-grid per l'analisi dati e la gestione dei flussi cloud di Nexa. Palette modernissima e grafica interamente vettoriale.",
+      category: lang === "it" ? "Brand Identity & Platform Design" : "Brand Identity & Platform Design",
+      desc: lang === "it"
+        ? "Interfaccia di controllo bento-grid per l'analisi dati e la gestione dei flussi cloud di Nexa. Palette modernissima e grafica interamente vettoriale."
+        : "An analytics control center dashboard with dynamic metrics, data visualization tools, and clean vector graphics.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
     },
   ];
@@ -52,56 +58,58 @@ export default function HomeView({ setCurrentTab }: HomeViewProps) {
       <section className="relative min-h-[85vh] flex items-center py-20 overflow-hidden border-b border-[rgba(248,247,244,0.1)]">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">          <div className="lg:col-span-7 space-y-6">
             <span className="text-[10px] uppercase tracking-[0.25em] text-[#E35930] font-mono font-bold block mb-2 animate-fade-in-up">
-              [ M. TERESA ROGANI — STUDIO ]
+              {t.heroPreTitle}
             </span>
-
+ 
             <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-bold text-[#F8F7F4] leading-[0.95] tracking-tight animate-fade-in-up delay-75">
-              Siti Web Evoluti con{" "}
+              {t.heroTitleRegular}{" "}
               <span className="italic block mt-1 font-normal text-[#E35930] font-display">
-                l'Intelligenza Artificiale
+                {t.heroTitleItalic}
               </span>
             </h1>
-
+ 
             <p className="font-sans text-sm sm:text-base text-[#F8F7F4]/80 max-w-xl leading-relaxed animate-fade-in-up delay-150">
-              Progetto e sviluppo esperienze digitali moderne, performanti e su misura per far crescere il tuo brand velocemente, eliminando i costi di agenzia e ottimizzando la SEO semantica.
+              {t.heroDesc}
             </p>
-
+ 
             <div className="flex flex-wrap gap-4 pt-4 animate-fade-in-up delay-200">
               <button
                 onClick={() => setCurrentTab("contatti")}
                 className="editorial-button-primary flex items-center gap-2 cursor-pointer"
+                id="hero-cta-main"
               >
-                Lavoriamo Insieme
+                {t.heroBtnPrimary}
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
               <button
-                onClick={() => setCurrentTab("chi-sono")}
+                onClick={() => setCurrentTab("proposte")}
                 className="editorial-button-secondary cursor-pointer"
+                id="hero-cta-sec"
               >
-                Scopri il mio metodo
+                {t.heroBtnSecondary}
               </button>
             </div>
-
+ 
             {/* Micro proof badges */}
             <div className="flex flex-wrap items-center gap-6 pt-8 border-t border-[rgba(248,247,244,0.1)] text-[9px] uppercase tracking-widest font-mono text-[#F8F7F4]/50 max-w-lg animate-fade-in-up delay-300">
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#E35930]" />
-                <span>100% DIRETTO</span>
+                <span>{t.proofDirect}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#E35930]" />
-                <span>VELOCITÀ IA</span>
+                <span>{t.proofDelivery}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#E35930]" />
-                <span>PREZZI TRASPARENTI</span>
+                <span>{t.proofPrices}</span>
               </div>
             </div>
           </div>
-
+ 
           {/* Right illustration / image representation */}
           <div className="lg:col-span-5 relative animate-fade-in-up delay-400">
-            <div className="relative w-full aspect-[4/3] sm:aspect-square bg-[#151518] p-4 overflow-hidden border border-[rgba(248,247,244,0.1)]">
+            <div className="relative w-full aspect-[4/3] sm:aspect-square bg-[#151518] p-4 overflow-hidden border border-[rgba(248,247,244,0.15)]">
               <img
                 src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800"
                 alt="Modern workspace showing digital wireframe of an AI application"
@@ -126,19 +134,19 @@ export default function HomeView({ setCurrentTab }: HomeViewProps) {
           </div>
         </div>
       </section>
-
+ 
       {/* Services / Focus Grid */}
       <section className="py-24 bg-[#151518] border-b border-[rgba(248,247,244,0.1)]">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
-              [ APPROCCIO E FILOSOFIA ]
+              {t.approachPre}
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#F8F7F4]">
-              Innovazione e Performance
+              {t.approachTitle}
             </h2>
             <p className="text-[#F8F7F4]/70 font-sans text-xs sm:text-sm">
-              Soluzioni digitali d'avanguardia che uniscono estetica moderna, usabilità e algoritmi intelligenti per scalare la tua attività.
+              {t.approachDesc}
             </p>
           </div>
 
@@ -183,20 +191,21 @@ export default function HomeView({ setCurrentTab }: HomeViewProps) {
           <div className="flex flex-col sm:flex-row justify-between items-end gap-6 mb-16">
             <div className="max-w-xl space-y-3">
               <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
-                [ FEATURED WORK ]
+                {t.portfolioPre}
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#F8F7F4]">
-                Progetti Evoluti
+                {t.portfolioTitle}
               </h2>
               <p className="text-[#F8F7F4]/70 text-xs sm:text-sm">
-                Uno sguardo ad alcuni progetti realizzati combinando cura artigianale del design e flussi di ottimizzazione guidati dall'IA.
+                {t.portfolioDesc}
               </p>
             </div>
             <button
               onClick={() => setCurrentTab("proposte")}
               className="text-[#E35930] hover:text-[#F8F7F4] font-mono text-[10px] font-bold tracking-widest uppercase flex items-center gap-1.5 transition-all group cursor-pointer"
+              id="portfolio-view-services-btn"
             >
-              Vedi i miei servizi
+              {t.portfolioViewAll}
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
@@ -237,7 +246,7 @@ export default function HomeView({ setCurrentTab }: HomeViewProps) {
                     </p>
                     <div className="pt-2">
                       <span className="text-[10px] font-mono text-[#E35930] font-bold tracking-widest uppercase border-b border-[#E35930]/20 pb-0.5 group-hover:border-[#E35930] transition-colors">
-                        {proj.link ? "Visita il Sito Web →" : "Dettagli Case Study →"}
+                        {proj.link ? t.portfolioVisitSite : t.portfolioCaseStudy}
                       </span>
                     </div>
                   </div>
@@ -256,7 +265,7 @@ export default function HomeView({ setCurrentTab }: HomeViewProps) {
           </div>
 
           <h2 className="font-display text-2xl sm:text-3xl font-medium italic tracking-tight text-[#F8F7F4] leading-relaxed">
-            "Lavorare con Teresa Rogani è stato fantastico. Essendo l'unico interlocutore, le decisioni vengono prese all'istante, la sua consulenza sulla SEO IA ha fatto decollare le nostre vendite e il sito è stato consegnato in sole due settimane."
+            {t.testimonialQuote}
           </h2>
 
           <div className="flex flex-col items-center space-y-2">
@@ -268,9 +277,9 @@ export default function HomeView({ setCurrentTab }: HomeViewProps) {
                 referrerPolicy="no-referrer"
               />
             </div>
-            <p className="font-bold text-[#F8F7F4] text-base">Alessandro Bianchi</p>
+            <p className="font-bold text-[#F8F7F4] text-base">{t.testimonialAuthor}</p>
             <p className="text-[9px] text-[#E35930] font-mono tracking-widest uppercase font-bold">
-              CEO, Innova Solutions
+              {t.testimonialRole}
             </p>
           </div>
         </div>
@@ -281,26 +290,28 @@ export default function HomeView({ setCurrentTab }: HomeViewProps) {
         <div className="max-w-7xl mx-auto bg-[#151518] text-[#F8F7F4] p-12 md:p-20 relative overflow-hidden border border-[rgba(248,247,244,0.1)]">
           <div className="relative z-10 text-center max-w-2xl mx-auto space-y-6">
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
-              [ INIZIA ORA ]
+              {t.ctaPre}
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#F8F7F4]">
-              Il tuo business merita di dominare.
+              {t.ctaTitle}
             </h2>
             <p className="text-[#F8F7F4]/80 font-sans text-xs sm:text-sm leading-relaxed">
-              Trasformiamo la tua visione in realtà digitale oggi, con un design d'impatto e testi scritti per convertire i tuoi contatti. Parla direttamente con me.
+              {t.ctaDesc}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
               <button
                 onClick={() => setCurrentTab("contatti")}
                 className="px-8 py-4 bg-[#E35930] text-[#111113] font-bold text-[10px] tracking-widest uppercase hover:bg-transparent hover:text-[#E35930] hover:border-[#E35930] transition-all cursor-pointer border border-[#E35930]"
+                id="cta-contact-btn"
               >
-                Parliamo del tuo progetto
+                {t.ctaBtnPrimary}
               </button>
               <button
                 onClick={() => setCurrentTab("chat")}
                 className="px-8 py-4 bg-transparent hover:bg-[rgba(248,247,244,0.05)] border border-[rgba(248,247,244,0.2)] text-[#F8F7F4] font-bold text-[10px] tracking-widest uppercase transition-all cursor-pointer"
+                id="cta-chat-btn"
               >
-                Chatta con l'AI Assistant
+                {t.ctaBtnSecondary}
               </button>
             </div>
           </div>
