@@ -38,6 +38,83 @@ const SEO_METADATA: Record<string, { title: string; description: string; keyword
   },
 };
 
+declare global {
+  interface Window {
+    dataLayer?: any[];
+    gtag?: (...args: any[]) => void;
+    fbq?: any;
+    [key: string]: any;
+  }
+}
+
+// Utility to dynamically load tracking scripts based on local storage consent
+export const initTrackingConsentUtility = () => {
+  if (typeof window === "undefined") return;
+
+  const savedConsent = localStorage.getItem("facilissimo-cookie-consent");
+  if (!savedConsent) return;
+
+  try {
+    const prefs = JSON.parse(savedConsent);
+    const GA4_ID = "G-P2D3B89Z1L";
+    const META_PIXEL_ID = "109823485761234";
+
+    // 1. Google Analytics 4
+    if (prefs.ga4) {
+      if (!document.getElementById("gtag-js")) {
+        const script = document.createElement("script");
+        script.id = "gtag-js";
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`;
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function gtag() {
+          // eslint-disable-next-line prefer-rest-params
+          window.dataLayer!.push(arguments);
+        };
+        window.gtag("js", new Date());
+        window.gtag("config", GA4_ID, { anonymize_ip: true });
+        console.log(`[Tracking Utility] Google Analytics 4 (GA4) caricato dinamicamente dall'inizializzazione dell'app.`);
+      } else {
+        window[`ga-disable-${GA4_ID}`] = false;
+      }
+    } else {
+      window[`ga-disable-${GA4_ID}`] = true;
+    }
+
+    // 2. Meta Pixel
+    if (prefs.metaPixel) {
+      if (!document.getElementById("meta-pixel-js")) {
+        /* eslint-disable */
+        (function (f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
+          if (f.fbq) return;
+          n = f.fbq = function () {
+            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+          };
+          if (!f._fbq) f._fbq = n;
+          n.push = n;
+          n.loaded = !0;
+          n.version = "2.0";
+          n.queue = [];
+          t = b.createElement(e);
+          t.async = !0;
+          t.src = v;
+          s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s);
+        })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+        /* eslint-enable */
+
+        window.fbq("init", META_PIXEL_ID);
+        window.fbq("track", "PageView");
+        console.log(`[Tracking Utility] Meta Pixel caricato dinamicamente dall'inizializzazione dell'app.`);
+      }
+    }
+  } catch (e) {
+    console.error("Error with tracking consent initialization utility:", e);
+  }
+};
+
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>("home");
   const [lang, setLang] = useState<"it" | "en">("it");
@@ -100,6 +177,11 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem("facilissimo-facil", String(isFacilitated));
   }, [isFacilitated]);
+
+  // Initial call to load tracking scripts dynamically if user consent was previously given
+  useEffect(() => {
+    initTrackingConsentUtility();
+  }, []);
 
   const renderActiveView = () => {
     switch (currentTab) {
