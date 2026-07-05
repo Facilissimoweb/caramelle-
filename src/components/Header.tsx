@@ -33,7 +33,7 @@ export default function Header({ currentTab, setCurrentTab }: HeaderProps) {
           id="logo-button"
         >
           <span className="font-display font-extrabold text-xl md:text-2xl text-[#F8F7F4] tracking-tighter uppercase italic leading-none group-hover:text-[#E35930] transition-colors">
-            Facilissimo WE
+            Facilissimo Web
           </span>
           <span className="text-[9px] text-[#E35930] tracking-widest uppercase font-mono font-bold">
             / studio
