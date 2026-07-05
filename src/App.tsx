@@ -138,6 +138,13 @@ export default function App() {
     return saved === "true";
   });
 
+  // Scroll to top automatically when currentTab changes
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.scrollTo(0, 0);
+    }
+  }, [currentTab]);
+
 
   // SEO Dynamic Updates
   useEffect(() => {

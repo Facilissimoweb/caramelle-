@@ -8,29 +8,53 @@ interface AboutViewProps {
 }
 
 export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutViewProps) {
-  const values = [
-    {
-      icon: <ShieldCheck className="w-5 h-5 text-[#E35930]" />,
-      title: lang === "it" ? "Interlocutore Unico" : "Single Point of Contact",
-      desc: lang === "it"
-        ? "Niente account manager, niente segretarie o sviluppatori junior che lavorano al tuo sito di nascosto. Parli, discuti e definisci tutto direttamente con me."
-        : "No account managers, no secretaries or junior coders working on your site in secret. You talk, discuss, and define everything directly with me.",
-    },
-    {
-      icon: <Zap className="w-5 h-5 text-[#E35930]" />,
-      title: lang === "it" ? "Velocità senza Burocrazia" : "No-Bureaucracy Speed",
-      desc: lang === "it"
-        ? "I processi decisionali in agenzia richiedono giorni. Qui possiamo decidere una modifica al mattino e vederla live nel pomeriggio."
-        : "Agency approval pipelines take days. Here, we can discuss a modification in the morning and see it live in the afternoon.",
-    },
-    {
-      icon: <Heart className="w-5 h-5 text-[#E35930]" />,
-      title: lang === "it" ? "Massimo Risparmio" : "Maximum Value",
-      desc: lang === "it"
-        ? "Lavorando da sola come freelance non ho uffici fisici imponenti o personale da stipendiare. Questo si traduce in tariffe fino a 3 volte inferiori."
-        : "Working alone as a freelance developer, I don't run hefty physical offices or maintain auxiliary staff. This means rates up to 3 times lower.",
-    },
-  ];
+  const values = isFacilitated
+    ? [
+        {
+          icon: <ShieldCheck className="w-5 h-5 text-[#E35930]" />,
+          title: lang === "it" ? "Parli solo con me" : "Speak only with me",
+          desc: lang === "it"
+            ? "Non ci sono intermediari, segretarie o programmatori junior. Parli direttamente con me (Teresa) per ogni cosa."
+            : "No managers or helpers. You speak directly with me (Teresa) for everything.",
+        },
+        {
+          icon: <Zap className="w-5 h-5 text-[#E35930]" />,
+          title: lang === "it" ? "Modifiche all'istante" : "Changes instantly",
+          desc: lang === "it"
+            ? "Nelle agenzie ci vogliono giorni per fare modifiche. Con me, parliamo al mattino e la modifica è online al pomeriggio."
+            : "Big agencies take days to approve edits. With me, we decide a change in the morning and it is online in the afternoon.",
+        },
+        {
+          icon: <Heart className="w-5 h-5 text-[#E35930]" />,
+          title: lang === "it" ? "Grande risparmio" : "Great savings",
+          desc: lang === "it"
+            ? "Lavoro da sola e non ho uffici fisici o dipendenti da pagare. Per questo i miei prezzi sono molto più bassi delle agenzie."
+            : "I work by myself with no office rent. That is why my prices are much lower than big agencies.",
+        },
+      ]
+    : [
+        {
+          icon: <ShieldCheck className="w-5 h-5 text-[#E35930]" />,
+          title: lang === "it" ? "Interlocutore Unico" : "Single Point of Contact",
+          desc: lang === "it"
+            ? "Niente account manager, niente segretarie o sviluppatori junior che lavorano al tuo sito di nascosto. Parli, discuti e definisci tutto direttamente con me."
+            : "No account managers, no secretaries or junior coders working on your site in secret. You talk, discuss, and define everything directly with me.",
+        },
+        {
+          icon: <Zap className="w-5 h-5 text-[#E35930]" />,
+          title: lang === "it" ? "Velocità senza Burocrazia" : "No-Bureaucracy Speed",
+          desc: lang === "it"
+            ? "I processi decisionali in agenzia richiedono giorni. Qui possiamo decidere una modifica al mattino e vederla live nel pomeriggio."
+            : "Agency approval pipelines take days. Here, we can discuss a modification in the morning and see it live in the afternoon.",
+        },
+        {
+          icon: <Heart className="w-5 h-5 text-[#E35930]" />,
+          title: lang === "it" ? "Massimo Risparmio" : "Maximum Value",
+          desc: lang === "it"
+            ? "Lavorando da sola come freelance non ho uffici fisici imponenti o personale da stipendiare. Questo si traduce in tariffe fino a 3 volte inferiori."
+            : "Working alone as a freelance developer, I don't run hefty physical offices or maintain auxiliary staff. This means rates up to 3 times lower.",
+        },
+      ];
 
   const skillCategories = [
     {
@@ -63,23 +87,36 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
             className="lg:col-span-6 space-y-6"
           >
             <span className="text-[10px] uppercase tracking-[0.25em] text-[#E35930] font-mono font-bold block mb-2">
-              [ CHI C'È DIETRO FACILISSIMO WEB ]
+              {lang === "it" ? "[ CHI C'È DIETRO FACILISSIMO WEB ]" : "[ WHO IS BEHIND FACILISSIMO WEB ]"}
             </span>
             
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F8F7F4] tracking-tighter leading-none">
               M. Teresa Rogani
             </h1>
             <p className="font-mono text-[10px] text-[#E35930] uppercase tracking-widest font-bold">
-              Freelance Web Designer &amp; Sviluppatrice AI-Powered
+              {lang === "it" ? "Freelance Web Designer & Sviluppatrice AI-Powered" : "Freelance Web Designer & AI-Powered Developer"}
             </p>
 
             <div className="space-y-4 font-sans text-xs sm:text-sm text-[#F8F7F4]/80 leading-relaxed">
-              <p>
-                Sono la fondatrice e <strong className="text-[#E35930]">unica titolare</strong> di Facilissimo Web. Ho creato questo studio con un'idea ben precisa: abbattere le barriere del web design tradizionale e offrire siti web ultra-professionali, veloci e ottimizzati, sfruttando le tecnologie di Intelligenza Artificiale di ultima generazione.
-              </p>
-              <p>
-                A differenza delle agenzie tradizionali dove il tuo progetto passa di mano in mano, qui <strong className="text-[#E35930]">non c'è nessun team</strong>. Lavoro da sola. Questo è il mio più grande punto di forza: garantisco un canale di comunicazione diretto, trasparente ed estremamente veloce.
-              </p>
+              {isFacilitated ? (
+                <>
+                  <p>
+                    Sono Teresa Rogani e sono l'<strong>unica titolare</strong> di Facilissimo Web. Ho creato questo studio per realizzare siti internet professionali, veloci ed economici usando l'intelligenza artificiale per aiutarmi nel codice.
+                  </p>
+                  <p>
+                    Qui <strong>non c'è nessun team</strong> o intermediario. Lavoro da sola così parli solo con chi fa il lavoro. Questo ti garantisce risposte immediate e un servizio trasparente e affidabile.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p>
+                    Sono la fondatrice e <strong className="text-[#E35930]">unica titolare</strong> di Facilissimo Web. Ho creato questo studio con un'idea ben precisa: abbattere le barriere del web design tradizionale e offrire siti web ultra-professionali, veloci e ottimizzati, sfruttando le tecnologie di Intelligenza Artificiale di ultima generazione.
+                  </p>
+                  <p>
+                    A differenza delle agenzie tradizionali dove il tuo progetto passa di mano in mano, qui <strong className="text-[#E35930]">non c'è nessun team</strong>. Lavoro da sola. Questo è il mio più grande punto di forza: garantisco un canale di comunicazione diretto, trasparente ed estremamente veloce.
+                  </p>
+                </>
+              )}
             </div>
 
             <div className="flex gap-4 pt-2">
@@ -87,7 +124,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
                 onClick={() => setCurrentTab("contatti")}
                 className="editorial-button-primary cursor-pointer"
               >
-                Parliamo del tuo sito
+                {lang === "it" ? "Parliamo del tuo sito" : "Let's discuss your site"}
               </button>
             </div>
           </motion.div>
@@ -124,13 +161,15 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
-              [ EFFICIENZA &amp; VALORE ]
+              {isFacilitated ? "[ I MIEI VALORI ]" : "[ EFFICIENZA & VALORE ]"}
             </span>
             <h2 className="font-display text-3xl font-bold text-[#F8F7F4]">
-              Il Vantaggio del Freelance Unico
+              {isFacilitated ? "Perché lavorare con me conviene" : "Il Vantaggio del Freelance Unico"}
             </h2>
             <p className="text-[#F8F7F4]/70 font-sans text-xs sm:text-sm">
-              Perché collaborare con una sola persona qualificata è una scelta vincente per la tua azienda rispetto a un'agenzia elefantiaca.
+              {isFacilitated 
+                ? "I vantaggi di avere una sola persona esperta che segue il tuo progetto dall'inizio alla fine."
+                : "Perché collaborare con una sola persona qualificata è una scelta vincente per la tua azienda rispetto a un'agenzia elefantiaca."}
             </p>
           </div>
 
@@ -170,21 +209,34 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
             className="lg:col-span-5 space-y-6"
           >
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
-              [ INTELLIGENZA ARTIGIANALE ]
+              {isFacilitated ? "[ METODO DI LAVORO ]" : "[ INTELLIGENZA ARTIGIANALE ]"}
             </span>
             <h2 className="font-display text-3xl font-bold text-[#F8F7F4]">
-              Artigianato &amp; Intelligenza Artificiale
+              {isFacilitated ? "Grafica e Assistenza con Computer" : "Artigianato & Intelligenza Artificiale"}
             </h2>
             <div className="space-y-4 text-xs sm:text-sm text-[#F8F7F4]/70 leading-relaxed font-sans">
-              <p>
-                Molti pensano che l'Intelligenza Artificiale sostituisca il lavoro umano. Per me, è l'esatto contrario: <strong className="text-[#E35930]">l'IA lo potenzia ed eleva ad un livello superiore</strong>.
-              </p>
-              <p>
-                Utilizzo l'IA in ogni fase del mio flusso di lavoro per eliminare i compiti ripetitivi (come la scrittura di codice di base o la generazione di bozze provvisorie). Questo mi permette di concentrarmi completamente su ciò che conta davvero per te: <strong className="text-[#E35930]">la strategia di comunicazione, l'eleganza estetica, l'ottimizzazione dell'esperienza utente e la conversione dei clienti</strong>.
-              </p>
-              <p>
-                Il risultato è un sito web che costa la metà, viene consegnato nella metà del tempo, ma vanta una qualità tecnica e grafica sbalorditiva.
-              </p>
+              {isFacilitated ? (
+                <>
+                  <p>
+                    Uso l'Intelligenza Artificiale per velocizzare la parte noiosa del codice. Questo mi permette di dedicare tutto il tempo a quello che conta di più per te: <strong>la grafica su misura, la facilità d'uso del sito e la scrittura di testi semplici per convincere i clienti</strong>.
+                  </p>
+                  <p>
+                    In questo modo ottieni un sito web moderno, curato in ogni dettaglio, pronto in soli 14 giorni e con una spesa molto contenuta.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p>
+                    Molti pensano che l'Intelligenza Artificiale sostituisca il lavoro umano. Per me, è l'esatto contrario: <strong className="text-[#E35930]">l'IA lo potenzia ed eleva ad un livello superiore</strong>.
+                  </p>
+                  <p>
+                    Utilizzo l'IA in ogni fase del mio flusso di lavoro per eliminare i compiti ripetitivi (como la scrittura di codice di base o la generazione di bozze provvisorie). Questo mi permette di concentrarmi completamente su ciò che conta davvero per te: <strong className="text-[#E35930]">la strategia di comunicazione, l'eleganza estetica, l'ottimizzazione dell'esperienza utente e la conversione dei clienti</strong>.
+                  </p>
+                  <p>
+                    Il risultato è un sito web che costa la metà, viene consegnato nella metà del tempo, ma vanta una qualità tecnica e grafica sbalorditiva.
+                  </p>
+                </>
+              )}
             </div>
           </motion.div>
 
@@ -223,20 +275,22 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
       <section className="py-24 bg-[#151518] text-[#F8F7F4] text-center border-t border-[rgba(248,247,244,0.1)]">
         <div className="max-w-2xl mx-auto px-6 space-y-6">
           <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
-            [ DIRETTO &amp; VELOCE ]
+            {isFacilitated ? "[ DIRETTO & VELOCE ]" : "[ DIRETTO & VELOCE ]"}
           </span>
           <h2 className="font-display text-3xl font-bold tracking-tight text-[#F8F7F4]">
-            Pronto a lavorare direttamente con me?
+            {isFacilitated ? "Vuoi creare il tuo sito con me?" : "Pronto a lavorare direttamente con me?"}
           </h2>
           <p className="text-[#F8F7F4]/80 font-sans text-xs sm:text-sm leading-relaxed">
-            Elimina i passaggi burocratici, i preventivi gonfiati e i tempi morti di un'agenzia. Parla direttamente con me e sviluppiamo il tuo nuovo sito web in tempi record.
+            {isFacilitated 
+              ? "Evita le lunghe attese delle grandi agenzie e i preventivi troppo alti. Parla direttamente con me e sviluppiamo il tuo nuovo sito web."
+              : "Elimina i passaggi burocratici, i preventivi gonfiati e i tempi morti di un'agenzia. Parla direttamente con me e sviluppiamo il tuo nuovo sito web in tempi record."}
           </p>
           <div className="pt-4">
             <button
               onClick={() => setCurrentTab("contatti")}
               className="px-8 py-4 bg-[#E35930] text-[#111113] font-bold text-xs uppercase tracking-widest hover:bg-transparent hover:text-[#E35930] transition-all cursor-pointer border border-[#E35930]"
             >
-              Avvia la collaborazione
+              {lang === "it" ? "Avvia la collaborazione" : "Start cooperation"}
             </button>
           </div>
         </div>
@@ -244,4 +298,3 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
     </div>
   );
 }
-
