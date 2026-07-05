@@ -32,10 +32,11 @@ export default function HomeView({ setCurrentTab }: HomeViewProps) {
 
   const projects = [
     {
-      title: "Lumina Skincare AI",
-      category: "E-commerce Evoluto & AI Integration",
-      desc: "Un e-commerce cosmetico di lusso con assistente di routine personalizzato basato su intelligenza artificiale. Interfaccia pulita, transizioni fluide e checkout istantaneo.",
-      image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=800",
+      title: "Amala Pizza",
+      category: "Sito Multipagina & Logo Redesign",
+      desc: "Riprogettazione dell'identità visiva, nuovo logo design e sviluppo di un sito web multipagina completo ospitato su Hostinger. Un classico pacchetto completo \"chiavi in mano\" per valorizzare un brand di ristorazione d'eccellenza.",
+      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800",
+      link: "https://amalapizza.it/",
     },
     {
       title: "Nexa AI Hub",
@@ -212,41 +213,48 @@ export default function HomeView({ setCurrentTab }: HomeViewProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {projects.map((proj, index) => (
-              <motion.div
-                key={proj.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group cursor-pointer bg-[#111113] border border-[rgba(248,247,244,0.1)] hover:border-[#E35930]/40 transition-all"
-              >
-                <div className="aspect-[16/10] overflow-hidden relative bg-[#151518] border-b border-[rgba(248,247,244,0.1)]">
-                  <img
-                    src={proj.image}
-                    alt={proj.title}
-                    className="w-full h-full object-cover grayscale contrast-125 opacity-80 group-hover:scale-102 transition-transform duration-700"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute top-4 left-4 bg-[#E35930] text-[#111113] px-3 py-1 text-[9px] font-mono tracking-widest uppercase font-bold">
-                    {proj.category}
+            {projects.map((proj, index) => {
+              const CardComponent = proj.link ? motion.a : motion.div;
+              const extraProps = proj.link
+                ? { href: proj.link, target: "_blank", rel: "noopener noreferrer" }
+                : {};
+              return (
+                <CardComponent
+                  key={proj.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="group cursor-pointer bg-[#111113] border border-[rgba(248,247,244,0.1)] hover:border-[#E35930]/40 transition-all block"
+                  {...extraProps}
+                >
+                  <div className="aspect-[16/10] overflow-hidden relative bg-[#151518] border-b border-[rgba(248,247,244,0.1)]">
+                    <img
+                      src={proj.image}
+                      alt={proj.title}
+                      className="w-full h-full object-cover grayscale contrast-125 opacity-80 group-hover:scale-102 transition-transform duration-700"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute top-4 left-4 bg-[#E35930] text-[#111113] px-3 py-1 text-[9px] font-mono tracking-widest uppercase font-bold">
+                      {proj.category}
+                    </div>
                   </div>
-                </div>
-                <div className="p-8 space-y-4">
-                  <h3 className="font-display text-xl font-bold text-[#F8F7F4] group-hover:text-[#E35930] transition-colors">
-                    {proj.title}
-                  </h3>
-                  <p className="text-xs text-[#F8F7F4]/70 leading-relaxed font-sans">
-                    {proj.desc}
-                  </p>
-                  <div className="pt-2">
-                    <span className="text-[10px] font-mono text-[#E35930] font-bold tracking-widest uppercase border-b border-[#E35930]/20 pb-0.5 group-hover:border-[#E35930] transition-colors">
-                      Dettagli Case Study →
-                    </span>
+                  <div className="p-8 space-y-4">
+                    <h3 className="font-display text-xl font-bold text-[#F8F7F4] group-hover:text-[#E35930] transition-colors">
+                      {proj.title}
+                    </h3>
+                    <p className="text-xs text-[#F8F7F4]/70 leading-relaxed font-sans">
+                      {proj.desc}
+                    </p>
+                    <div className="pt-2">
+                      <span className="text-[10px] font-mono text-[#E35930] font-bold tracking-widest uppercase border-b border-[#E35930]/20 pb-0.5 group-hover:border-[#E35930] transition-colors">
+                        {proj.link ? "Visita il Sito Web →" : "Dettagli Case Study →"}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </CardComponent>
+              );
+            })}
           </div>
         </div>
       </section>
