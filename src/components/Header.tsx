@@ -148,13 +148,13 @@ export default function Header({
         {/* Logo */}
         <button
           onClick={() => handleNavClick("home")}
-          className="flex items-baseline gap-1 sm:gap-1.5 text-left focus:outline-none group cursor-pointer min-w-0"
+          className="flex flex-col items-start justify-center text-left focus:outline-none group cursor-pointer min-w-0"
           id="logo-button"
         >
           <span className="font-display font-extrabold text-base sm:text-xl xl:text-2xl text-[#F8F7F4] tracking-tighter uppercase italic leading-none group-hover:text-[#E35930] transition-colors truncate">
             Facilissimo Web
           </span>
-          <span className="text-[9px] text-[#E35930] tracking-widest uppercase font-mono font-bold hidden sm:inline flex-shrink-0">
+          <span className="text-[9px] sm:text-[10px] text-[#E35930] tracking-[0.25em] uppercase font-mono font-bold mt-1.5 flex-shrink-0">
             / studio
           </span>
         </button>
@@ -250,7 +250,7 @@ export default function Header({
           id="mobile-menu-toggle"
           aria-label="Toggle menu"
         >
-          {isMobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {isMobileOpen ? <X className="w-[33px] h-[33px]" /> : <Menu className="w-[33px] h-[33px]" />}
         </button>
       </div>
 
