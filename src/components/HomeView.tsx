@@ -76,7 +76,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated }: HomeVie
             <div className="flex flex-wrap gap-4 pt-4 animate-fade-in-up delay-200">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="editorial-button-primary flex items-center gap-2 cursor-pointer"
+                className="editorial-button-primary flex items-center gap-2 cursor-pointer !text-[13px]"
                 id="hero-cta-main"
               >
                 {t.heroBtnPrimary}
