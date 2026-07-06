@@ -41,6 +41,46 @@ interface ContactSubmission {
 
 const contactSubmissions: ContactSubmission[] = [];
 
+// Google Analytics 4 Measurement Protocol server-side event helper
+async function trackServerEvent(eventName: string, params: Record<string, any> = {}) {
+  const apiSecret = process.env.GA_API_SECRET;
+  const measurementId = process.env.GA_MEASUREMENT_ID || process.env.VITE_GA_MEASUREMENT_ID;
+
+  if (!apiSecret || !measurementId) {
+    console.log(`[GA Server Tracking Skipped] Missing GA_API_SECRET or GA_MEASUREMENT_ID for event: ${eventName}`);
+    return;
+  }
+
+  try {
+    const url = `https://www.google-analytics.com/mp/collect?api_secret=${apiSecret}&measurement_id=${measurementId}`;
+    const payload = {
+      client_id: params.clientId || `server_${Math.random().toString(36).substring(2, 15)}`,
+      events: [
+        {
+          name: eventName,
+          params: {
+            engagement_time_msec: "100",
+            ...params,
+          },
+        },
+      ],
+    };
+
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    console.log(`[GA Server Tracking] Event "${eventName}" sent. Status: ${response.status}`);
+  } catch (err) {
+    console.error("[GA Server Tracking Error]:", err);
+  }
+}
+
+
 // API routes first
 app.get("/api/health", async (req, res) => {
   const hasKey = !!process.env.GEMINI_API_KEY;
@@ -88,6 +128,14 @@ app.post("/api/contact", (req, res) => {
   };
 
   contactSubmissions.push(submission);
+  
+  // Track contact form submission server-side in Google Analytics
+  trackServerEvent("contact_form_submission", {
+    project_type: projectType || "general",
+    budget: budget || "none",
+    company_provided: !!company,
+  });
+
   res.status(201).json({ success: true, submission });
 });
 
@@ -143,6 +191,14 @@ Rispondi sempre in italiano in modo amichevole, professionale, chiaro ed elegant
     });
 
     const result = await chat.sendMessage({ message: message });
+    
+    // Track chatbot interaction server-side in Google Analytics
+    trackServerEvent("chatbot_message_processed", {
+      message_length: message.length,
+      response_length: result.text ? result.text.length : 0,
+      has_history: !!(history && history.length),
+    });
+
     res.json({ text: result.text });
   } catch (error: any) {
     console.error("Errore chiamata Gemini:", error);

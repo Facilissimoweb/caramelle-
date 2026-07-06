@@ -55,7 +55,7 @@
 }
 
 .accessibility-facilitated-contrast {
-  filter: contrast(1.15);
+  /* No intensive GPU filters here to prevent rasterization lag when rendering nested motion elements/animations */
 }
 
 .glass-card {

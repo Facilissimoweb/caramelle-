@@ -30,7 +30,10 @@ export default function AccessibilityWidget({
   // Auto-close widget on pressing Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setIsOpen(false);
+      if (e.key === "Escape") {
+        console.debug("[AccessibilityWidget] Escape key pressed, closing panel");
+        setIsOpen(false);
+      }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
@@ -38,6 +41,7 @@ export default function AccessibilityWidget({
 
   // Prevent background scrolling when full screen is open
   useEffect(() => {
+    console.debug(`[AccessibilityWidget] Panel visibility state changed: isOpen = ${isOpen}`);
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
@@ -48,7 +52,46 @@ export default function AccessibilityWidget({
     };
   }, [isOpen]);
 
+  const handleToggleOpen = () => {
+    const nextVal = !isOpen;
+    console.debug(`[AccessibilityWidget] Toggle visibility click: current = ${isOpen}, next = ${nextVal}`);
+    setIsOpen(nextVal);
+  };
+
+  const handleClose = () => {
+    console.debug("[AccessibilityWidget] Closing panel");
+    setIsOpen(false);
+  };
+
+  const handleFontSizeChange = (size: number) => {
+    console.debug(`[AccessibilityWidget] Font size change requested: current = ${fontSize}%, next = ${size}%`);
+    setFontSize(size);
+  };
+
+  const handleFacilitatedToggle = () => {
+    const nextVal = !isFacilitated;
+    console.debug(`[AccessibilityWidget] Toggle simplified mode (isFacilitated): current = ${isFacilitated}, next = ${nextVal}`);
+    setIsFacilitated(nextVal);
+    if (nextVal && fontSize < 130) {
+      console.debug(`[AccessibilityWidget] Auto-boosting font size to 130% for improved visibility under simplified mode`);
+      setFontSize(130);
+    }
+  };
+
+  const handleHighContrastToggle = () => {
+    const nextVal = !highContrast;
+    console.debug(`[AccessibilityWidget] Toggle high contrast: current = ${highContrast}, next = ${nextVal}`);
+    setHighContrast(nextVal);
+  };
+
+  const handleReadableFontToggle = () => {
+    const nextVal = !readableFont;
+    console.debug(`[AccessibilityWidget] Toggle readable font: current = ${readableFont}, next = ${nextVal}`);
+    setReadableFont(nextVal);
+  };
+
   const resetSettings = () => {
+    console.debug("[AccessibilityWidget] Resetting all accessibility settings to default values");
     setFontSize(100);
     setIsFacilitated(false);
     setHighContrast(false);
@@ -69,7 +112,7 @@ export default function AccessibilityWidget({
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={handleToggleOpen}
           className={`w-14 h-14 rounded-full shadow-2xl flex items-center justify-center cursor-pointer transition-all border-2 ${
             isOpen
               ? "bg-[#E35930] text-[#111113] border-[#E35930] rotate-90"
@@ -95,7 +138,7 @@ export default function AccessibilityWidget({
           >
             <div className="min-h-screen w-full flex items-start justify-center p-4 sm:p-8 md:p-12 py-12">
               {/* Close action backdrop click */}
-              <div className="absolute inset-0 cursor-default" onClick={() => setIsOpen(false)} />
+              <div className="absolute inset-0 cursor-default" onClick={handleClose} />
 
               <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 35 }}
@@ -107,7 +150,7 @@ export default function AccessibilityWidget({
               >
                 {/* Close Button Top Right */}
                 <button
-                  onClick={() => setIsOpen(false)}
+                  onClick={handleClose}
                   className="absolute top-4 right-4 sm:top-6 sm:right-6 w-12 h-12 rounded-full bg-[#111113] hover:bg-[#E35930] text-[#F8F7F4] hover:text-[#111113] border border-[rgba(248,247,244,0.15)] hover:border-[#E35930] flex items-center justify-center cursor-pointer transition-all shadow-lg"
                   aria-label={lang === "it" ? "Chiudi pannello" : "Close panel"}
                   id="close-accessibility-overlay"
@@ -162,7 +205,7 @@ export default function AccessibilityWidget({
                         return (
                           <button
                             key={s.value}
-                            onClick={() => setFontSize(s.value)}
+                            onClick={() => handleFontSizeChange(s.value)}
                             className={`w-full text-left px-4 py-3.5 text-xs sm:text-sm font-mono flex items-center justify-between border-2 transition-all cursor-pointer ${
                               isActive
                                 ? "bg-[#E35930]/10 border-[#E35930] text-[#E35930] font-bold"
@@ -188,13 +231,7 @@ export default function AccessibilityWidget({
                           <span>{lang === "it" ? "2. Semplificazione Semantica" : "2. Simple Semantics"}</span>
                         </div>
                         <button
-                          onClick={() => {
-                            const nextVal = !isFacilitated;
-                            setIsFacilitated(nextVal);
-                            if (nextVal && fontSize < 130) {
-                              setFontSize(130); // Automatically increase font size for accessibility
-                            }
-                          }}
+                          onClick={handleFacilitatedToggle}
                           className={`relative inline-flex h-7 w-12 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
                             isFacilitated ? "bg-[#E35930]" : "bg-[rgba(248,247,244,0.2)]"
                           }`}
@@ -225,7 +262,7 @@ export default function AccessibilityWidget({
                           <span>{lang === "it" ? "3. Contrasto Elevato" : "3. High Contrast"}</span>
                         </div>
                         <button
-                          onClick={() => setHighContrast(!highContrast)}
+                          onClick={handleHighContrastToggle}
                           className={`relative inline-flex h-7 w-12 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
                             highContrast ? "bg-[#E35930]" : "bg-[rgba(248,247,244,0.2)]"
                           }`}
@@ -256,7 +293,7 @@ export default function AccessibilityWidget({
                           <span>{lang === "it" ? "4. Carattere Leggibile" : "4. Dyslexia Friendly Font"}</span>
                         </div>
                         <button
-                          onClick={() => setReadableFont(!readableFont)}
+                          onClick={handleReadableFontToggle}
                           className={`relative inline-flex h-7 w-12 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
                             readableFont ? "bg-[#E35930]" : "bg-[rgba(248,247,244,0.2)]"
                           }`}

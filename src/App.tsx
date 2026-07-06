@@ -57,7 +57,7 @@ export const initTrackingConsentUtility = () => {
 
   try {
     const prefs = JSON.parse(savedConsent);
-    const GA4_ID = "G-P2D3B89Z1L";
+    const GA4_ID = (import.meta as any).env.VITE_GA_MEASUREMENT_ID || "G-WXMTZF53RL";
     const META_PIXEL_ID = "109823485761234";
 
     // 1. Google Analytics 4
@@ -191,14 +191,17 @@ export default function App() {
   }, [currentTab]);
 
   useEffect(() => {
+    console.debug(`[App State Sync] Language changed to: ${lang}`);
     localStorage.setItem("facilissimo-lang", lang);
   }, [lang]);
 
   useEffect(() => {
+    console.debug(`[App State Sync] isFacilitated changed to: ${isFacilitated}`);
     localStorage.setItem("facilissimo-facil", String(isFacilitated));
   }, [isFacilitated]);
 
   useEffect(() => {
+    console.debug(`[App State Sync] fontSize changed to: ${fontSize}%`);
     localStorage.setItem("facilissimo-font-size", String(fontSize));
     if (typeof window !== "undefined") {
       document.documentElement.style.fontSize = `${fontSize}%`;
@@ -206,10 +209,12 @@ export default function App() {
   }, [fontSize]);
 
   useEffect(() => {
+    console.debug(`[App State Sync] highContrast changed to: ${highContrast}`);
     localStorage.setItem("facilissimo-contrast", String(highContrast));
   }, [highContrast]);
 
   useEffect(() => {
+    console.debug(`[App State Sync] readableFont changed to: ${readableFont}`);
     localStorage.setItem("facilissimo-readable", String(readableFont));
   }, [readableFont]);
 
