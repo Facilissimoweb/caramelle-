@@ -58,7 +58,7 @@ export const initTrackingConsentUtility = () => {
   try {
     const prefs = JSON.parse(savedConsent);
     const GA4_ID = (import.meta as any).env.VITE_GA_MEASUREMENT_ID || "G-WXMTZF53RL";
-    const META_PIXEL_ID = "109823485761234";
+    const META_PIXEL_ID = (import.meta as any).env.VITE_META_PIXEL_ID || "109823485761234";
 
     // 1. Google Analytics 4
     if (prefs.ga4) {

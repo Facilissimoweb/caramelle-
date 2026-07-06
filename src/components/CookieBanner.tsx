@@ -25,7 +25,7 @@ export interface CookiePreferences {
 }
 
 const GA4_PLACEHOLDER_ID = (import.meta as any).env.VITE_GA_MEASUREMENT_ID || "G-WXMTZF53RL"; // Dynamic config with fallback
-const META_PIXEL_PLACEHOLDER_ID = "109823485761234"; // Ready for actual ID
+const META_PIXEL_PLACEHOLDER_ID = (import.meta as any).env.VITE_META_PIXEL_ID || "109823485761234"; // Dynamic config with fallback
 
 // Helper to inject scripts based on consent
 export const applyTrackingConsent = (prefs: CookiePreferences) => {
