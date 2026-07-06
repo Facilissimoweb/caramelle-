@@ -218,13 +218,18 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
                     <p className="text-xs text-[#F8F7F4]/60 h-10 leading-normal font-sans">
                       {tier.tagline}
                     </p>
-                    <div className="pt-2 border-t border-[rgba(248,247,244,0.1)] flex items-baseline gap-1">
-                      <span className="text-3xl font-bold text-[#F8F7F4] font-mono">
-                        €{tier.price}
+                    <div className="pt-2 border-t border-[rgba(248,247,244,0.1)] space-y-1">
+                      <span className="text-[10px] uppercase font-mono tracking-widest text-[#E35930] block font-bold">
+                        {lang === "it" ? "A PARTIRE DA" : "STARTING FROM"}
                       </span>
-                      <span className="text-[10px] text-[#F8F7F4]/50 font-mono">
-                        {lang === "it" ? "+ IVA (prezzo fisso)" : "+ VAT (fixed price)"}
-                      </span>
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-3xl font-bold text-[#F8F7F4] font-mono">
+                          €{tier.price}
+                        </span>
+                        <span className="text-[10px] text-[#F8F7F4]/50 font-mono">
+                          {lang === "it" ? "+ IVA (prezzo fisso)" : "+ VAT (fixed price)"}
+                        </span>
+                      </div>
                     </div>
                     <div className="text-[10px] font-bold text-[#E35930] font-mono tracking-widest uppercase">
                       {tier.period}
