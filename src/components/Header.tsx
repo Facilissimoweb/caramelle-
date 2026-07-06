@@ -144,23 +144,23 @@ export default function Header({
         style={{ width: `${scrollProgress}%` }}
         id="scroll-progress-bar"
       />
-      <div className="w-full px-6 lg:px-12 h-20 flex justify-between items-center gap-6">
+      <div className="w-full px-4 sm:px-6 xl:px-12 h-20 flex justify-between items-center gap-4 sm:gap-6">
         {/* Logo */}
         <button
           onClick={() => handleNavClick("home")}
-          className="flex items-baseline gap-1.5 text-left focus:outline-none group cursor-pointer flex-shrink-0"
+          className="flex items-baseline gap-1 sm:gap-1.5 text-left focus:outline-none group cursor-pointer min-w-0"
           id="logo-button"
         >
-          <span className="font-display font-extrabold text-xl lg:text-2xl text-[#F8F7F4] tracking-tighter uppercase italic leading-none group-hover:text-[#E35930] transition-colors">
+          <span className="font-display font-extrabold text-base sm:text-xl xl:text-2xl text-[#F8F7F4] tracking-tighter uppercase italic leading-none group-hover:text-[#E35930] transition-colors truncate">
             Facilissimo Web
           </span>
-          <span className="text-[9px] text-[#E35930] tracking-widest uppercase font-mono font-bold">
+          <span className="text-[9px] text-[#E35930] tracking-widest uppercase font-mono font-bold hidden sm:inline flex-shrink-0">
             / studio
           </span>
         </button>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center justify-center flex-1 gap-8 lg:gap-12 xl:gap-16 max-w-4xl mx-auto">
+        <nav className="hidden xl:flex items-center justify-center flex-1 gap-8 xl:gap-12 max-w-4xl mx-auto">
           {navItems.map((item) => {
             const isActive = currentTab === item.id;
             return (
@@ -181,7 +181,7 @@ export default function Header({
         </nav>
 
         {/* Action Button & Language / Accessibility Toggles */}
-        <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
+        <div className="hidden xl:flex items-center gap-4 flex-shrink-0">
           {/* Custom Dropdown language selector */}
           <div className="relative">
             <button
@@ -246,7 +246,7 @@ export default function Header({
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileOpen(!isMobileOpen)}
-          className="lg:hidden p-2 text-[#F8F7F4] hover:text-[#E35930] focus:outline-none cursor-pointer"
+          className="xl:hidden p-2 text-[#F8F7F4] hover:text-[#E35930] focus:outline-none cursor-pointer flex-shrink-0"
           id="mobile-menu-toggle"
           aria-label="Toggle menu"
         >
@@ -256,7 +256,7 @@ export default function Header({
 
       {/* Mobile Drawer */}
       {isMobileOpen && (
-        <div className="lg:hidden border-t border-[rgba(248,247,244,0.1)] bg-[#111113]/98 backdrop-blur-2xl absolute top-20 left-0 w-full shadow-lg transition-all duration-300">
+        <div className="xl:hidden border-t border-[rgba(248,247,244,0.1)] bg-[#111113]/98 backdrop-blur-2xl absolute top-20 left-0 w-full shadow-lg transition-all duration-300">
           <div className="px-6 py-8 flex flex-col gap-4">
             {navItems.map((item) => {
               const isActive = currentTab === item.id;
