@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronLeft, ChevronRight, Home, Share2, Copy, Check } from "lucide-react";
+import { ChevronLeft, ChevronRight, Home, Share2, Copy, Check, ArrowUp } from "lucide-react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomeView from "./components/HomeView";
@@ -131,6 +131,7 @@ export default function App() {
   const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
   const [slideDirection, setSlideDirection] = useState<"left" | "right">("left");
   const [showBreadcrumb, setShowBreadcrumb] = useState<boolean>(true);
+  const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
   const lastScrollY = React.useRef<number>(0);
 
   // Dynamic Breadcrumb Show/Hide on Scroll Up/Down
@@ -147,6 +148,13 @@ export default function App() {
       } else {
         // Scrolling up -> show breadcrumb
         setShowBreadcrumb(true);
+      }
+      
+      // Show/Hide back to top button
+      if (currentScrollY > 400) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
       }
       
       lastScrollY.current = currentScrollY;
@@ -707,6 +715,24 @@ export default function App() {
         readableFont={readableFont}
         setReadableFont={setReadableFont}
       />
+
+      {/* Floating Back to Top Button */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 10 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="fixed bottom-6 right-6 z-40 w-11 h-11 bg-[#151518]/95 hover:bg-[#E35930] text-[#F8F7F4] hover:text-[#111113] border border-[rgba(248,247,244,0.3)] hover:border-[#E35930] rounded-none flex items-center justify-center cursor-pointer transition-all shadow-xl font-mono text-[9px] font-bold group"
+            title={lang === "it" ? "Torna su" : "Back to top"}
+            id="back-to-top-btn"
+            aria-label={lang === "it" ? "Torna in cima alla pagina" : "Back to top"}
+          >
+            <ArrowUp className="w-4 h-4 text-[#E35930] group-hover:text-[#111113] transition-colors" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
