@@ -374,20 +374,7 @@ export default function GallerySection({ lang, isFacilitated }: GallerySectionPr
           })}
         </div>
 
-        {/* Upload Sandbox Guide Info */}
-        <div className="mt-8 p-4 border border-[rgba(248,247,244,0.06)] bg-[#151518]/50 flex gap-3 items-start max-w-3xl">
-          <HelpCircle className="w-4 h-4 text-[#E35930] shrink-0 mt-0.5" />
-          <div className="space-y-1">
-            <h4 className="font-display font-bold text-xs text-[#F8F7F4]">
-              {lang === "it" ? "Come caricare i file effettivi sul server?" : "How to upload real files to the server?"}
-            </h4>
-            <p className="text-[10px] text-[#F8F7F4]/50 leading-relaxed font-sans">
-              {lang === "it"
-                ? "Per rendere definitive le immagini della galleria sul sito reale, è sufficiente inserire i file .jpg o .png all'interno della cartella '/public/assets/images/' con i rispettivi nomi specificati sopra (es. 'ristorante-amala.jpg'). Il browser caricherà automaticamente il file fisico locale invece del segnaposto!"
-                : "To make your gallery images permanent on the live site, simply place your .jpg or .png files inside the '/public/assets/images/' directory using the exact file names shown above (e.g. 'ristorante-amala.jpg'). The browser will automatically resolve the physical file and bypass the placeholder!"}
-            </p>
-          </div>
-        </div>
+
       </div>
 
       {/* Lightbox / Modal */}

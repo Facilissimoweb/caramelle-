@@ -3,6 +3,7 @@ import path from "path";
 import dotenv from "dotenv";
 import { GoogleGenAI } from "@google/genai";
 import { Groq } from "groq-sdk";
+import nodemailer from "nodemailer";
 
 dotenv.config();
 
@@ -41,6 +42,99 @@ interface ContactSubmission {
 }
 
 const contactSubmissions: ContactSubmission[] = [];
+
+// Initialize Nodemailer transporter
+const getMailTransporter = () => {
+  const host = process.env.SMTP_HOST || "smtp.gmail.com";
+  const port = parseInt(process.env.SMTP_PORT || "587");
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+
+  if (!user || !pass) {
+    console.warn("⚠️ SMTP_USER and SMTP_PASS are not configured. Real email to facilissimoweb.mc@gmail.com was not sent, but submission is saved in-memory.");
+    return null;
+  }
+
+  return nodemailer.createTransport({
+    host,
+    port,
+    secure: port === 465, // true for 465, false for other ports
+    auth: {
+      user,
+      pass,
+    },
+  });
+};
+
+async function sendContactEmail(submission: ContactSubmission) {
+  const transporter = getMailTransporter();
+  if (!transporter) return false;
+
+  const mailOptions = {
+    from: `"Facilissimo Web Form" <${process.env.SMTP_USER}>`,
+    to: "facilissimoweb.mc@gmail.com",
+    replyTo: submission.email,
+    subject: `[Facilissimo Web] Nuova richiesta di contatto da ${submission.name}`,
+    text: `Nuova richiesta di contatto ricevuta!\n\nNome & Cognome: ${submission.name}\nEmail: ${submission.email}\nAzienda: ${submission.company || "N/D"}\nTipo di Progetto: ${submission.projectType}\nBudget Stimato: ${submission.budget}\nData: ${new Date(submission.date).toLocaleString("it-IT")}\n\nMessaggio:\n${submission.message}\n`,
+    html: `
+      <div style="font-family: 'Inter', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e4e4e7; background-color: #fcfcfc;">
+        <div style="text-align: center; border-bottom: 2px solid #E35930; padding-bottom: 20px; margin-bottom: 20px;">
+          <h1 style="color: #111113; margin: 0; font-size: 24px;">Facilissimo Web</h1>
+          <p style="color: #E35930; margin: 5px 0 0 0; font-size: 12px; text-transform: uppercase; letter-spacing: 2px;">Nuova Richiesta di Contatto</p>
+        </div>
+        
+        <div style="margin-bottom: 25px;">
+          <h2 style="color: #111113; font-size: 18px; border-bottom: 1px solid #e4e4e7; padding-bottom: 8px; margin-top: 0;">Riepilogo Dati</h2>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+              <td style="padding: 6px 0; color: #71717a; font-weight: bold; width: 35%;">Nome & Cognome:</td>
+              <td style="padding: 6px 0; color: #111113;">\${submission.name}</td>
+            </tr>
+            <tr>
+              <td style="padding: 6px 0; color: #71717a; font-weight: bold;">Email:</td>
+              <td style="padding: 6px 0; color: #111113;"><a href="mailto:\${submission.email}" style="color: #E35930; text-decoration: none;">\${submission.email}</a></td>
+            </tr>
+            <tr>
+              <td style="padding: 6px 0; color: #71717a; font-weight: bold;">Azienda:</td>
+              <td style="padding: 6px 0; color: #111113;">\${submission.company || "Non specificata"}</td>
+            </tr>
+            <tr>
+              <td style="padding: 6px 0; color: #71717a; font-weight: bold;">Tipo Progetto:</td>
+              <td style="padding: 6px 0; color: #E35930; font-weight: bold;">\${submission.projectType}</td>
+            </tr>
+            <tr>
+              <td style="padding: 6px 0; color: #71717a; font-weight: bold;">Budget Stimato:</td>
+              <td style="padding: 6px 0; color: #111113; font-weight: bold;">\${submission.budget}</td>
+            </tr>
+            <tr>
+              <td style="padding: 6px 0; color: #71717a; font-weight: bold;">Ricevuto il:</td>
+              <td style="padding: 6px 0; color: #71717a; font-size: 12px;">\${new Date(submission.date).toLocaleString("it-IT")}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div style="background-color: #f4f4f5; padding: 15px; border-left: 4px solid #E35930; margin-bottom: 25px;">
+          <h3 style="color: #111113; margin-top: 0; margin-bottom: 10px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Messaggio:</h3>
+          <p style="color: #27272a; margin: 0; font-size: 14px; line-height: 1.6; white-space: pre-wrap;">\${submission.message}</p>
+        </div>
+
+        <div style="text-align: center; font-size: 11px; color: #a1a1aa; border-top: 1px solid #e4e4e7; padding-top: 15px; margin-top: 20px;">
+          Questo messaggio è stato generato automaticamente dal modulo di contatto di Facilissimo Web.<br>
+          Puoi rispondere direttamente a questa email per metterti in contatto con l'utente.
+        </div>
+      </div>
+    `,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log(`✅ Email inviata con successo a facilissimoweb.mc@gmail.com da \${submission.email}`);
+    return true;
+  } catch (err) {
+    console.error("❌ Errore durante l'invio dell'email:", err);
+    return false;
+  }
+}
 
 // Google Analytics 4 Measurement Protocol server-side event helper
 async function trackServerEvent(eventName: string, params: Record<string, any> = {}) {
@@ -140,7 +234,7 @@ app.get("/api/health", async (req, res) => {
   });
 });
 
-app.post("/api/contact", (req, res) => {
+app.post("/api/contact", async (req, res) => {
   const { name, email, company, projectType, budget, message } = req.body;
   if (!name || !email || !message) {
     return res.status(400).json({ error: "Nome, Email e Messaggio sono obbligatori." });
@@ -166,7 +260,14 @@ app.post("/api/contact", (req, res) => {
     company_provided: !!company,
   });
 
-  res.status(201).json({ success: true, submission });
+  // Attempt to send real email
+  const emailSent = await sendContactEmail(submission);
+
+  res.status(201).json({ 
+    success: true, 
+    submission,
+    emailSent
+  });
 });
 
 app.get("/api/contact/submissions", (req, res) => {

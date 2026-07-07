@@ -20,6 +20,7 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [emailSent, setEmailSent] = useState<boolean | null>(null);
   const [error, setError] = useState("");
   const [submissions, setSubmissions] = useState<ContactSubmission[]>([]);
 
@@ -65,7 +66,9 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
         throw new Error(data.error || "Qualcosa è andato storto.");
       }
 
+      const data = await res.json();
       setSuccess(true);
+      setEmailSent(data.emailSent || false);
       setFormData({
         name: "",
         email: "",
@@ -210,6 +213,22 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
                     <p className="text-xs sm:text-sm text-[#F8F7F4]/70 max-w-md mx-auto leading-relaxed">
                       Grazie per avermi scritto. Ho registrato la tua richiesta nel sistema. Ti risponderò via email entro poche ore per fissare una video-call conoscitiva gratuita.
                     </p>
+                    <div className="pt-2">
+                      {emailSent ? (
+                        <span className="inline-flex items-center gap-1.5 text-[10px] font-mono text-emerald-400 uppercase tracking-wider bg-emerald-950/40 border border-emerald-800 px-3 py-1 mt-2">
+                          ● Email recapitata con successo a facilissimoweb.mc@gmail.com
+                        </span>
+                      ) : (
+                        <div className="space-y-1.5 mt-2">
+                          <span className="inline-flex items-center gap-1.5 text-[10px] font-mono text-amber-400 uppercase tracking-wider bg-amber-950/40 border border-amber-800 px-3 py-1">
+                            ▲ Richiesta salvata nel database (SMTP non configurato)
+                          </span>
+                          <p className="text-[10px] text-[#F8F7F4]/50 max-w-md mx-auto">
+                            Per abilitare l'invio reale a <strong>facilissimoweb.mc@gmail.com</strong>, configura <code>SMTP_USER</code> e <code>SMTP_PASS</code> nelle impostazioni (Secrets) di AI Studio.
+                          </p>
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <button
                     onClick={() => setSuccess(false)}
