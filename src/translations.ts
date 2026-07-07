@@ -5,6 +5,7 @@ export interface TranslationSet {
   navProposte: string;
   navContatti: string;
   navChat: string;
+  navBlog: string;
 
   // Header / Accessibility Bar
   facilitatedOn: string;
@@ -65,6 +66,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       navProposte: "Proposte",
       navContatti: "Contatti",
       navChat: "Chat AI",
+      navBlog: "Blog & News",
       facilitatedOn: "Attiva Modalità Facilitata",
       facilitatedOff: "Disattiva Modalità Facilitata",
       facilitatedBadge: "Modalità Semplificata Attiva",
@@ -115,6 +117,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       navProposte: "Proposte",
       navContatti: "Contatti",
       navChat: "Chat AI",
+      navBlog: "Articoli",
       facilitatedOn: "Semplifica Lettura",
       facilitatedOff: "Torna alla Grafica Standard",
       facilitatedBadge: "Modalità Facile Attiva (Testo più grande, colori ad alto contrasto)",
@@ -167,6 +170,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       navProposte: "Offers",
       navContatti: "Contact",
       navChat: "AI Chat",
+      navBlog: "Blog & News",
       facilitatedOn: "Activate Easy Mode",
       facilitatedOff: "Deactivate Easy Mode",
       facilitatedBadge: "Simplified Mode Active",
@@ -217,6 +221,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       navProposte: "Offers",
       navContatti: "Contact",
       navChat: "AI Chat",
+      navBlog: "Articles",
       facilitatedOn: "Simplify Reading",
       facilitatedOff: "Back to Standard Design",
       facilitatedBadge: "Easy Mode Active (Larger text, high-contrast colors)",

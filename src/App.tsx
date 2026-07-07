@@ -6,6 +6,7 @@ import AboutView from "./components/AboutView";
 import ProposteView from "./components/ProposteView";
 import ContattiView from "./components/ContattiView";
 import ChatView from "./components/ChatView";
+import BlogView from "./components/BlogView";
 import InfoModal from "./components/InfoModal";
 import CookieBanner from "./components/CookieBanner";
 import AccessibilityWidget from "./components/AccessibilityWidget";
@@ -36,6 +37,11 @@ const SEO_METADATA: Record<string, { title: string; description: string; keyword
     title: "Assistente AI Live — Facilissimo Web Macerata",
     description: "Parla subito con il nostro Assistente Virtuale basato su IA. Ricevi risposte istantanee su servizi, tempi e prezzi per siti web a Macerata e nelle Marche.",
     keywords: "chat ai macerata, assistente virtuale marche, intelligenza artificiale assistente, consulenza ai marche",
+  },
+  blog: {
+    title: "Blog & News — Facilissimo Web | SEO Predittiva e IA",
+    description: "Leggi gli articoli di approfondimento su SEO Predittiva, Web Design con Intelligenza Artificiale e strategie digitali per microimprese a Macerata e nelle Marche.",
+    keywords: "seo predittiva, blog intelligenza artificiale, web design marche, teresa rogani blog, novità seo ia, blog facilissimo web",
   },
 };
 
@@ -235,6 +241,8 @@ export default function App() {
         return <ContattiView lang={lang} isFacilitated={isFacilitated} />;
       case "chat":
         return <ChatView lang={lang} isFacilitated={isFacilitated} />;
+      case "blog":
+        return <BlogView lang={lang} isFacilitated={isFacilitated} setCurrentTab={setCurrentTab} />;
       default:
         return <HomeView setCurrentTab={setCurrentTab} lang={lang} isFacilitated={isFacilitated} />;
     }
