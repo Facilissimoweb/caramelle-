@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import dotenv from "dotenv";
+import fs from "fs";
 import { GoogleGenAI } from "@google/genai";
 import { Groq } from "groq-sdk";
 import nodemailer from "nodemailer";
@@ -272,6 +273,74 @@ app.post("/api/contact", async (req, res) => {
 
 app.get("/api/contact/submissions", (req, res) => {
   res.json(contactSubmissions);
+});
+
+// Blog Articles Metadata for Rich Social Previews (Open Graph / Twitter Meta Tags)
+const BLOG_ARTICLES: Record<string, { title: string; desc: string; image: string }> = {
+  "ai-act-regolamento-europeo": {
+    title: "L’AI Act è legge: l’Europa ridisegna il futuro dell’Intelligenza Artificiale",
+    desc: "L'Unione Europea ha tracciato una linea netta nel panorama tecnologico mondiale con l'approvazione definitiva dell'AI Act, la prima legge organica al mondo che regolamenta l'Intelligenza Artificiale.",
+    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1200"
+  },
+  "seo-predittiva": {
+    title: "La Rivoluzione della SEO Predittiva: Come l'IA anticipa i motori di ricerca",
+    desc: "La SEO tradizionale è ormai un esercizio del passato. Guardare cosa le persone hanno già cercato significa inseguire costantemente la concorrenza. La SEO Predittiva stravolge questo paradigma.",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1200"
+  },
+  "sito-statico-vs-wordpress": {
+    title: "Sito Statico vs WordPress: Perché la velocità di caricamento è la vera SEO",
+    desc: "Nel web moderno, l'attenzione dell'utente medio si misura in frazioni di secondo. Se il tuo sito web impiega più di due secondi per caricarsi sui telefoni dei tuoi clienti, oltre la metà di loro tornerà indietro.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200"
+  }
+};
+
+// Direct blog link handler with dynamic metadata injection for social previews
+app.get("/blog/:slug", (req, res) => {
+  const slug = req.params.slug;
+  const article = BLOG_ARTICLES[slug];
+
+  const isProd = process.env.NODE_ENV === "production";
+  const indexPath = isProd 
+    ? path.join(process.cwd(), "dist", "index.html")
+    : path.join(process.cwd(), "index.html");
+
+  if (fs.existsSync(indexPath)) {
+    let html = fs.readFileSync(indexPath, "utf8");
+
+    if (article) {
+      const title = `${article.title} - Facilissimo Web`;
+      const desc = article.desc;
+      const imageUrl = article.image;
+      const url = `${req.protocol}://${req.get("host")}${req.originalUrl}`;
+
+      // Clean existing tags to prevent duplicates
+      html = html.replace(/<title>.*?<\/title>/g, "");
+      html = html.replace(/<meta name="description"[^>]*>/g, "");
+      html = html.replace(/<meta property="og:[^>]*>/g, "");
+      html = html.replace(/<meta name="twitter:[^>]*>/g, "");
+
+      const metaTags = `
+    <title>${title}</title>
+    <meta name="description" content="${desc}" />
+    <meta property="og:title" content="${title}" />
+    <meta property="og:description" content="${desc}" />
+    <meta property="og:image" content="${imageUrl}" />
+    <meta property="og:url" content="${url}" />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${title}" />
+    <meta name="twitter:description" content="${desc}" />
+    <meta name="twitter:image" content="${imageUrl}" />
+      `;
+
+      html = html.replace("<head>", `<head>${metaTags}`);
+    }
+
+    res.send(html);
+  } else {
+    // If build files are not fully ready yet, fallback nicely
+    res.sendFile(path.join(process.cwd(), "index.html"));
+  }
 });
 
 // AI Chatbot with Groq exclusively

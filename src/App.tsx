@@ -130,6 +130,31 @@ export default function App() {
   const [currentTab, setCurrentTab] = useState<string>("home");
   const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
   const [slideDirection, setSlideDirection] = useState<"left" | "right">("left");
+  const [showBreadcrumb, setShowBreadcrumb] = useState<boolean>(true);
+  const lastScrollY = React.useRef<number>(0);
+
+  // Dynamic Breadcrumb Show/Hide on Scroll Up/Down
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // If we are close to the top, always show breadcrumb
+      if (currentScrollY < 80) {
+        setShowBreadcrumb(true);
+      } else if (currentScrollY > lastScrollY.current) {
+        // Scrolling down -> hide breadcrumb
+        setShowBreadcrumb(false);
+      } else {
+        // Scrolling up -> show breadcrumb
+        setShowBreadcrumb(true);
+      }
+      
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Centralized Navigate To helper that pushes state to browser history
   const navigateTo = (tab: string, articleSlug: string | null = null, pushHistory = true) => {
@@ -489,7 +514,13 @@ export default function App() {
             }
 
             return (
-              <div className="w-full bg-[#131315]/70 border-b border-[rgba(248,247,244,0.05)] py-3 px-4 sm:px-6 xl:px-12 backdrop-blur-sm relative z-40 select-none">
+              <div 
+                className={`sticky top-20 left-0 w-full bg-[#131315]/90 border-b border-[rgba(248,247,244,0.05)] py-3 px-4 sm:px-6 xl:px-12 backdrop-blur-md z-40 select-none transition-all duration-300 ease-in-out ${
+                  showBreadcrumb 
+                    ? "translate-y-0 opacity-100" 
+                    : "-translate-y-full opacity-0 pointer-events-none"
+                }`}
+              >
                 <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-[10px] tracking-wider uppercase font-bold text-[#F8F7F4]/60">
                   <div className="flex items-center flex-wrap gap-1.5 sm:gap-2 text-[#F8F7F4]/40">
                     <Home className="w-3.5 h-3.5 text-[#E35930] mr-1 inline shrink-0" />

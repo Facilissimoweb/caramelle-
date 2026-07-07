@@ -55,21 +55,17 @@ export default function BlogView({
   }, [selectedArticle]);
 
   const handleCopyLink = () => {
-    const url = window.location.origin + window.location.pathname + "#/blog/" + (selectedArticle || "ai-act-regolamento-europeo");
+    const articleSlug = selectedArticle || "ai-act-regolamento-europeo";
+    const url = window.location.origin + "/blog/" + articleSlug;
     navigator.clipboard.writeText(url).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });
   };
 
-  const triggerShare = (platform: "linkedin" | "twitter" | "facebook") => {
-    const directUrl = window.location.origin + window.location.pathname + "#/blog/" + (selectedArticle || "ai-act-regolamento-europeo");
+  const openSocialShare = (platform: "linkedin" | "twitter" | "facebook", directUrl: string, title: string, text: string) => {
     const url = encodeURIComponent(directUrl);
-    const text = encodeURIComponent(
-      lang === "it"
-        ? "Leggi questo fantastico articolo su Facilissimo Web!"
-        : "Check out this amazing article on Facilissimo Web!"
-    );
+    const shareText = encodeURIComponent(`${title} - ${text}`);
     let shareUrl = "";
 
     switch (platform) {
@@ -77,7 +73,7 @@ export default function BlogView({
         shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
         break;
       case "twitter":
-        shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+        shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${shareText}`;
         break;
       case "facebook":
         shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
@@ -91,6 +87,37 @@ export default function BlogView({
         : `Sharing on ${platform.toUpperCase()} initiated!`
     );
     setTimeout(() => setShareToast(null), 3000);
+  };
+
+  const triggerShare = (platform: "linkedin" | "twitter" | "facebook") => {
+    const articleSlug = selectedArticle || "ai-act-regolamento-europeo";
+    const article = articles.find((a) => a.slug === articleSlug);
+    const directUrl = window.location.origin + "/blog/" + articleSlug;
+    
+    const titleText = article ? article.title[lang] : "Facilissimo Web Blog";
+    const descText = article ? article.description[lang] : "";
+    // Grab first 20 words
+    const first20Words = descText ? descText.split(/\s+/).slice(0, 20).join(" ") + "..." : "";
+
+    if (navigator.share) {
+      navigator.share({
+        title: titleText,
+        text: `${first20Words}\n\n`,
+        url: directUrl
+      }).then(() => {
+        setShareToast(
+          lang === "it"
+            ? "Articolo condiviso con successo!"
+            : "Article shared successfully!"
+        );
+        setTimeout(() => setShareToast(null), 3000);
+      }).catch((err) => {
+        console.log("Native share failed or dismissed", err);
+        openSocialShare(platform, directUrl, titleText, first20Words);
+      });
+    } else {
+      openSocialShare(platform, directUrl, titleText, first20Words);
+    }
   };
 
   const articles: Article[] = [
