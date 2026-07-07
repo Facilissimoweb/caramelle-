@@ -91,6 +91,9 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         normal: (
           <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
             <p><strong>Il Manifesto Etico di Facilissimo Web sull'Intelligenza Artificiale:</strong> Credo che l'Intelligenza Artificiale sia uno strumento straordinario per potenziare il talento umano, e non per rimpiazzarlo o generare contenuti di bassa qualità.</p>
+            <div className="bg-[#E35930]/10 border border-[#E35930]/30 p-4 text-[#F8F7F4] font-sans my-4">
+              <strong>Dichiarazione di Co-creazione:</strong> Dichiariamo espressamente che tutti gli articoli, le immagini e i contenuti presenti su questo sito web sono stati creati ed elaborati con il coinvolgimento e l'ausilio di sistemi di Intelligenza Artificiale (AI), successivamente supervisionati, riscritti e rifiniti interamente a mano da Teresa per garantire la massima qualità e cura artigianale.
+            </div>
             <p><strong>1. Trasparenza Radicale:</strong> Dichiaro apertamente che utilizzo algoritmi generativi avanzati e LLM (como i modelli Gemini di Google) esclusivamente per velocizzare la scrittura del codice ripetitivo, analizzare dati di mercato complessi e strutturare la SEO semantica iniziale.</p>
             <p><strong>2. Controllo e Supervisione Umana (Human-in-the-Loop):</strong> Nessun sito web viene mai generato interamente da una macchina. Ogni singola riga di codice, struttura di database, layout visivo e micro-animazione è interamente revisionata, rifinita e validata manualmente da M. Teresa Rogani per garantire la massima eccellenza artigianale.</p>
             <p><strong>3. Rispetto del Diritto d'Autore:</strong> Non utilizzo strumenti di generazione di immagini o testi che violino il copyright. Fornisco solo contenuti testuali unici e veritieri, rifiutando la creazione di spam o "slop" generati in massa.</p>
@@ -217,7 +220,10 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         normal: (
           <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
             <p><strong>Manifesto Etico di Facilissimo Web sull'Intelligenza Artificiale:</strong> Credo che l'Intelligenza Artificiale sia uno strumento straordinario per potenziare il talento umano, e non per rimpiazzarlo o generare contenuti di bassa qualità.</p>
-            <p><strong>1. Trasparenza:</strong> Dichiaro apertamente che utilizzo modelli generativi avanzati (come Google Gemini) esclusivamente per velocizzare la scrittura del codice ripetitivo, analizzare dati complessi dei concorrenti e abbozzare le strutture SEO iniziali.</p>
+            <div className="bg-[#E35930]/10 border border-[#E35930]/30 p-4 text-[#F8F7F4] font-sans my-4">
+              <strong>Co-creation Disclosure:</strong> We explicitly declare that all articles, images, and content on this website have been created with the involvement and assistance of Artificial Intelligence (AI) systems, and subsequently supervised, rewritten, and manually refined by Teresa to guarantee maximum quality and craftsmanship.
+            </div>
+            <p><strong>1. Trasparenza:</strong> Dichiaro apertamente che utilizzo modelli generativi avanzati (como Google Gemini) esclusivamente per velocizzare la scrittura del codice ripetitivo, analizzare dati complessi dei concorrenti e abbozzare le strutture SEO iniziali.</p>
             <p><strong>2. Supervisione Umana:</strong> Nessun sito viene mai creato interamente dalle macchine. Ogni linea di codice, schema di database, elemento visivo e animazione viene revisionato, rifinito e testato manualmente da M. Teresa Rogani.</p>
             <p><strong>3. Correttezza professionale:</strong> Non utilizzo strumenti che violano il diritto d'autore. Offro grafiche e testi unici e di alta qualità, rifiutando attivamente la generazione automatica di spam o contenuti 'slop' scadenti.</p>
           </div>

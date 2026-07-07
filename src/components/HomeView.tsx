@@ -1,5 +1,6 @@
-import { motion } from "motion/react";
-import { Brain, Cpu, Zap, ArrowRight, Heart, CheckCircle2 } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { Brain, Cpu, Zap, ArrowRight, Heart, CheckCircle2, Sparkles } from "lucide-react";
 import { translations } from "../translations";
 import FAQAccordion from "./FAQAccordion";
 import GallerySection from "./GallerySection";
@@ -9,10 +10,25 @@ interface HomeViewProps {
   setCurrentTab: (tab: string) => void;
   lang: "it" | "en";
   isFacilitated: boolean;
+  onOpenModal?: (type: "privacy" | "terms" | "ethics" | "sitemap") => void;
 }
 
-export default function HomeView({ setCurrentTab, lang, isFacilitated }: HomeViewProps) {
+export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenModal }: HomeViewProps) {
   const t = translations[lang][isFacilitated ? "facilitated" : "normal"];
+
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+  const bgImages = [
+    "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1920",
+    "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=1920",
+    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1920"
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentBgIndex((prev) => (prev + 1) % bgImages.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
   const features = [
     {
@@ -59,7 +75,26 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated }: HomeVie
     <div className="w-full bg-[#111113] text-[#F8F7F4]">
       {/* Hero Section */}
       <section className="relative min-h-[85vh] flex items-center py-20 overflow-hidden border-b border-[rgba(248,247,244,0.1)]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">          <div className="lg:col-span-7 space-y-6">
+        {/* Ambient Background Slideshow */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          {bgImages.map((imgUrl, idx) => (
+            <div
+              key={imgUrl}
+              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+                idx === currentBgIndex ? "opacity-15 grayscale scale-100" : "opacity-0 grayscale scale-102"
+              }`}
+              style={{
+                backgroundImage: `url(${imgUrl})`,
+                transitionProperty: "opacity",
+              }}
+            />
+          ))}
+          {/* Deep Dark Overlay to keep text contrast clean and high-contrast */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#111113] via-[#111113]/90 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#111113]/40 via-transparent to-[#111113]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">          <div className="lg:col-span-7 space-y-6">
             <span className="text-[10px] uppercase tracking-[0.25em] text-[#E35930] font-mono font-bold block mb-2 animate-fade-in-up">
               {t.heroPreTitle}
             </span>
@@ -337,6 +372,37 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated }: HomeVie
               {t.testimonialRole}
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* AI Co-creation Disclosure */}
+      <section className="py-16 bg-[#151518]/60 border-b border-[rgba(248,247,244,0.1)]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="space-y-3 max-w-3xl text-left">
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 border border-[#E35930]/30 bg-[#E35930]/5 text-[#E35930] font-mono text-[9px] font-bold tracking-[0.2em] uppercase">
+              <Sparkles className="w-3.5 h-3.5 animate-pulse" />
+              <span>{lang === "it" ? "TRASPARENZA & CO-CREAZIONE AI" : "AI TRANSPARENCY & CO-CREATION"}</span>
+            </div>
+            <h3 className="font-display text-xl sm:text-2xl font-bold text-[#F8F7F4]">
+              {lang === "it" 
+                ? "Dichiarazione sul coinvolgimento dell'Intelligenza Artificiale" 
+                : "Declaration on Artificial Intelligence Involvement"}
+            </h3>
+            <p className="text-xs sm:text-sm text-[#F8F7F4]/70 leading-relaxed font-sans">
+              {lang === "it" 
+                ? "Dichiariamo espressamente che tutti gli articoli, le immagini e i contenuti presenti su questo sito sono stati creati o ottimizzati con il coinvolgimento di sistemi di Intelligenza Artificiale (AI), successivamente supervisionati, riscritti e rifiniti interamente a mano da Teresa per garantire la massima accuratezza."
+                : "We explicitly declare that all articles, images, and content on this website have been created or optimized with the involvement and assistance of Artificial Intelligence (AI) systems, subsequently reviewed, rewritten, and manually refined by Teresa to guarantee maximum accuracy."}
+            </p>
+          </div>
+          {onOpenModal && (
+            <button 
+              onClick={() => onOpenModal("ethics")}
+              className="text-[#E35930] hover:text-[#F8F7F4] font-mono text-[10px] font-bold tracking-widest uppercase border border-[#E35930]/30 hover:border-[#E35930] px-5 py-3 transition-all whitespace-nowrap cursor-pointer shrink-0 hover:bg-[#E35930]/5"
+              id="ai-disclosure-learn-more"
+            >
+              {lang === "it" ? "AI Ethics & Manifesto" : "AI Ethics & Manifesto"}
+            </button>
+          )}
         </div>
       </section>
 

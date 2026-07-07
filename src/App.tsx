@@ -303,7 +303,7 @@ export default function App() {
   const renderActiveView = () => {
     switch (currentTab) {
       case "home":
-        return <HomeView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} />;
+        return <HomeView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} onOpenModal={setActiveModal} />;
       case "chi-sono":
         return <AboutView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} />;
       case "proposte":
@@ -315,7 +315,7 @@ export default function App() {
       case "blog":
         return <BlogView lang={lang} isFacilitated={isFacilitated} setCurrentTab={handleSetTab} />;
       default:
-        return <HomeView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} />;
+        return <HomeView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} onOpenModal={setActiveModal} />;
     }
   };
 

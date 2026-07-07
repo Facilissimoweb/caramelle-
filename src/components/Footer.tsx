@@ -38,6 +38,12 @@ export default function Footer({ setCurrentTab, onOpenModal, lang, onOpenCookieS
             <p className="text-[#F8F7F4]/40 font-normal">P.IVA: IT01234567890 (Simulata)</p>
           </div>
           
+          <p className="text-[10px] text-[#F8F7F4]/50 leading-relaxed font-sans italic border-t border-[rgba(248,247,244,0.08)] pt-3 mt-3">
+            {lang === "it"
+              ? "Sito co-creato con AI: tutti gli articoli, le immagini e i contenuti presenti su questo sito sono stati creati con il coinvolgimento di sistemi di Intelligenza Artificiale (AI) e rifiniti manualmente."
+              : "AI Co-created site: all articles, images, and content displayed on this website were created with the involvement of Artificial Intelligence (AI) and manually refined."}
+          </p>
+          
           <div className="pt-4 space-y-2">
             <span className="text-[9px] font-mono tracking-[0.2em] text-[#F8F7F4]/40 uppercase block">
               {lang === "it" ? "METODI DI PAGAMENTO ACCETTATI" : "ACCEPTED PAYMENT METHODS"}

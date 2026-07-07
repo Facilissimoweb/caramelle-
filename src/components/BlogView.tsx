@@ -467,12 +467,15 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
             </div>
 
             {/* Featured Article Card */}
-            <div className="border border-[rgba(248,247,244,0.1)] bg-[#151518]/60 grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden hover:border-[#E35930]/35 transition-all duration-300">
+            <div 
+              onClick={() => setSelectedArticle(articles[0].slug)}
+              className="border border-[rgba(248,247,244,0.1)] bg-[#151518]/60 grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden hover:border-[#E35930]/45 hover:shadow-[0_0_30px_rgba(227,89,48,0.03)] transition-all duration-300 cursor-pointer group"
+            >
               <div className="lg:col-span-7 h-64 lg:h-auto relative overflow-hidden border-b lg:border-b-0 lg:border-r border-[rgba(248,247,244,0.1)]">
                 <img
                   src={articles[0].coverImage}
                   alt={articles[0].title[lang]}
-                  className="w-full h-full object-cover grayscale contrast-125 hover:scale-101 transition-all duration-700"
+                  className="w-full h-full object-cover grayscale contrast-125 group-hover:scale-102 group-hover:grayscale-0 transition-all duration-700"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute top-4 left-4 bg-[#E35930] text-[#111113] px-3 py-1 text-[9px] font-mono tracking-widest uppercase font-bold">
@@ -487,7 +490,7 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
                     <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5 text-[#E35930]" /> {articles[0].readTime[lang]}</span>
                   </div>
                   
-                  <h2 className="font-display text-xl sm:text-2xl font-bold text-[#F8F7F4] hover:text-[#E35930] transition-colors leading-snug cursor-pointer" onClick={() => setSelectedArticle(articles[0].slug)}>
+                  <h2 className="font-display text-xl sm:text-2xl font-bold text-[#F8F7F4] group-hover:text-[#E35930] transition-colors leading-snug">
                     {articles[0].title[lang]}
                   </h2>
                   
@@ -505,10 +508,10 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
                 </div>
 
                 <div className="pt-4 border-t border-[rgba(248,247,244,0.06)] flex justify-between items-center">
-                  <button onClick={() => setSelectedArticle(articles[0].slug)} className="text-[#E35930] hover:text-[#F8F7F4] font-mono text-[10px] font-bold tracking-widest uppercase flex items-center gap-2 transition-colors">
+                  <span className="text-[#E35930] group-hover:text-[#F8F7F4] font-mono text-[10px] font-bold tracking-widest uppercase flex items-center gap-2 transition-colors">
                     {lang === "it" ? "LEGGI ARTICOLO COMPLETO" : "READ FULL ARTICLE"}
                     <ArrowUpRight className="w-3.5 h-3.5" />
-                  </button>
+                  </span>
                 </div>
               </div>
             </div>
@@ -516,13 +519,17 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
             {/* Rest of Articles Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
               {articles.slice(1).map((article) => (
-                <div key={article.slug} className="border border-[rgba(248,247,244,0.1)] bg-[#151518]/40 overflow-hidden hover:border-[#E35930]/35 transition-all duration-300 flex flex-col justify-between">
+                <div 
+                  key={article.slug} 
+                  onClick={() => setSelectedArticle(article.slug)}
+                  className="border border-[rgba(248,247,244,0.1)] bg-[#151518]/40 overflow-hidden hover:border-[#E35930]/45 hover:shadow-[0_0_30px_rgba(227,89,48,0.03)] transition-all duration-300 flex flex-col justify-between cursor-pointer group"
+                >
                   <div>
                     <div className="h-48 relative overflow-hidden border-b border-[rgba(248,247,244,0.1)]">
                       <img
                         src={article.coverImage}
                         alt={article.title[lang]}
-                        className="w-full h-full object-cover grayscale contrast-125"
+                        className="w-full h-full object-cover grayscale contrast-125 group-hover:scale-102 group-hover:grayscale-0 transition-all duration-700"
                         referrerPolicy="no-referrer"
                       />
                       <div className="absolute top-4 left-4 bg-[#111113]/90 border border-[rgba(248,247,244,0.1)] text-[#E35930] px-3 py-1 text-[9px] font-mono tracking-widest uppercase font-bold">
@@ -536,7 +543,7 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
                         <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-[#E35930]" /> {article.readTime[lang]}</span>
                       </div>
                       
-                      <h3 className="font-display text-lg font-bold text-[#F8F7F4] hover:text-[#E35930] transition-colors cursor-pointer" onClick={() => setSelectedArticle(article.slug)}>
+                      <h3 className="font-display text-lg font-bold text-[#F8F7F4] group-hover:text-[#E35930] transition-colors">
                         {article.title[lang]}
                       </h3>
                       
@@ -556,10 +563,10 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
                     </div>
                     
                     <div className="pt-4 border-t border-[rgba(248,247,244,0.06)]">
-                      <button onClick={() => setSelectedArticle(article.slug)} className="text-[#E35930] hover:text-[#F8F7F4] font-mono text-[10px] font-bold tracking-widest uppercase flex items-center gap-1.5 transition-colors">
+                      <span className="text-[#E35930] group-hover:text-[#F8F7F4] font-mono text-[10px] font-bold tracking-widest uppercase flex items-center gap-1.5 transition-colors">
                         {lang === "it" ? "LEGGI ARTICOLO" : "READ ARTICLE"}
                         <ChevronRight className="w-3.5 h-3.5" />
-                      </button>
+                      </span>
                     </div>
                   </div>
                 </div>
