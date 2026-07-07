@@ -230,6 +230,7 @@ Rispondi sempre in italiano in modo amichevole, professionale, chiaro ed elegant
       content: message
     });
 
+    let lastGroqError = "";
     for (const model of GROQ_MODELS) {
       try {
         console.log(`Trying Groq model: ${model}`);
@@ -268,16 +269,21 @@ Rispondi sempre in italiano in modo amichevole, professionale, chiaro ed elegant
           throw new Error("Groq API returned empty completion choice.");
         }
       } catch (err: any) {
-        console.error(`Error with Groq model ${model}:`, err.message || err);
+        lastGroqError = err.message || err;
+        console.error(`Error with Groq model ${model}:`, lastGroqError);
       }
     }
-    console.warn("All Groq models failed. Falling back to Gemini...");
+    
+    // If we are here, Groq was forced/configured but failed
+    return res.status(502).json({
+      error: `Tutti i modelli Groq sono falliti. Ultimo errore riscontrato: ${lastGroqError}. Verifica la tua chiave GROQ_API_KEY nei Secrets di Vercel/AI Studio.`
+    });
   }
 
-  // 2. FALLBACK TO GEMINI
+  // 2. FALLBACK TO GEMINI (ONLY IF GROQ IS NOT CONFIGURED)
   if (!ai) {
     return res.status(503).json({
-      error: "Servizio AI non disponibile. Verifica le chiavi GROQ_API_KEY o GEMINI_API_KEY.",
+      error: "Servizio AI non configurato. Inserisci la chiave GROQ_API_KEY o GEMINI_API_KEY per abilitare la chat.",
     });
   }
 
