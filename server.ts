@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 import dotenv from "dotenv";
 import { GoogleGenAI } from "@google/genai";
-import Groq from "groq-sdk";
+import { Groq } from "groq-sdk";
 
 dotenv.config();
 
@@ -175,7 +175,7 @@ app.get("/api/contact/submissions", (req, res) => {
 
 // AI Chatbot with Groq exclusively
 app.post("/api/chat", async (req, res) => {
-  const { message, history } = req.body;
+  const { message, history, stream } = req.body;
 
   if (!message) {
     return res.status(400).json({ error: "Il messaggio è richiesto." });
@@ -232,7 +232,43 @@ Rispondi sempre in italiano in modo amichevole, professionale, chiaro ed elegant
       content: message
     });
 
-    console.log("Calling Groq SDK client with model: llama-3.3-70b-versatile...");
+    if (stream) {
+      // Setup Server-Sent Events (SSE) headers
+      res.setHeader("Content-Type", "text/event-stream");
+      res.setHeader("Cache-Control", "no-cache");
+      res.setHeader("Connection", "keep-alive");
+
+      console.log("Calling Groq SDK client in streaming mode with model: llama-3.3-70b-versatile...");
+      const chatCompletion = await groq.chat.completions.create({
+        model: "llama-3.3-70b-versatile",
+        messages: messagesPayload,
+        temperature: 0.7,
+        max_tokens: 1024,
+        stream: true
+      });
+
+      let fullResponseText = "";
+      for await (const chunk of chatCompletion) {
+        const content = chunk.choices[0]?.delta?.content || "";
+        if (content) {
+          fullResponseText += content;
+          res.write(`data: ${JSON.stringify({ text: content })}\n\n`);
+        }
+      }
+
+      trackServerEvent("chatbot_message_processed_groq_stream", {
+        model: "llama-3.3-70b-versatile",
+        message_length: message.length,
+        response_length: fullResponseText.length,
+        has_history: !!(history && history.length),
+      });
+
+      res.write("data: [DONE]\n\n");
+      res.end();
+      return;
+    }
+
+    console.log("Calling Groq SDK client in standard mode with model: llama-3.3-70b-versatile...");
     const completion = await groq.chat.completions.create({
       model: "llama-3.3-70b-versatile",
       messages: messagesPayload,
@@ -256,7 +292,14 @@ Rispondi sempre in italiano in modo amichevole, professionale, chiaro ed elegant
     }
   } catch (error: any) {
     console.error("Errore chiamata Groq Client:", error);
-    res.status(500).json({ error: error.message || "Errore del server durante l'elaborazione dell'AI." });
+    // If it's a stream error, we might have already sent headers
+    if (stream && !res.headersSent) {
+      res.status(500).json({ error: error.message || "Errore del server durante l'elaborazione dell'AI." });
+    } else if (!res.headersSent) {
+      res.status(500).json({ error: error.message || "Errore del server durante l'elaborazione dell'AI." });
+    } else {
+      res.end();
+    }
   }
 });
 

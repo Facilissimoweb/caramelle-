@@ -68,6 +68,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
         body: JSON.stringify({
           message: textToSend,
           history: history,
+          stream: true,
         }),
       });
 
@@ -75,16 +76,67 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
         throw new Error("Errore di connessione al server AI.");
       }
 
-      const data = await res.json();
+      const contentType = res.headers.get("content-type");
+      if (contentType && contentType.includes("text/event-stream")) {
+        const reader = res.body?.getReader();
+        if (!reader) throw new Error("Stream non leggibile.");
 
-      const aiMessage: ChatMessage = {
-        id: Math.random().toString(36).substring(2, 9),
-        role: "model",
-        text: data.text,
-        timestamp: new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" }),
-      };
+        const decoder = new TextDecoder("utf-8");
+        let aiText = "";
 
-      setMessages((prev) => [...prev, aiMessage]);
+        const aiMessageId = Math.random().toString(36).substring(2, 9);
+        const placeholderMessage: ChatMessage = {
+          id: aiMessageId,
+          role: "model",
+          text: "",
+          timestamp: new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" }),
+        };
+        setMessages((prev) => [...prev, placeholderMessage]);
+
+        let buffer = "";
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split("\n");
+          // Keep the last partial line in the buffer
+          buffer = lines.pop() || "";
+
+          for (const line of lines) {
+            const cleanLine = line.trim();
+            if (cleanLine.startsWith("data: ")) {
+              const dataStr = cleanLine.slice(6).trim();
+              if (dataStr === "[DONE]") {
+                break;
+              }
+              try {
+                const parsed = JSON.parse(dataStr);
+                const textChunk = parsed.text || "";
+                aiText += textChunk;
+
+                // Update placeholder in real-time
+                setMessages((prev) =>
+                  prev.map((msg) =>
+                    msg.id === aiMessageId ? { ...msg, text: aiText } : msg
+                  )
+                );
+              } catch (e) {
+                // Ignore parsing errors for partial/incomplete JSON chunks
+              }
+            }
+          }
+        }
+      } else {
+        const data = await res.json();
+        const aiMessage: ChatMessage = {
+          id: Math.random().toString(36).substring(2, 9),
+          role: "model",
+          text: data.text,
+          timestamp: new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" }),
+        };
+        setMessages((prev) => [...prev, aiMessage]);
+      }
     } catch (err: any) {
       console.error("Errore chat:", err);
       setError(err.message || "Impossibile ottenere risposta dal server.");
