@@ -218,6 +218,21 @@ body {
   opacity: 0.8;
 }
 
+/* Custom Scrollbar for Cyberpunk Terminal Text */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(21, 21, 24, 0.4);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(227, 89, 48, 0.3);
+  border-radius: 2px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(227, 89, 48, 0.6);
+}
+
 
 
 

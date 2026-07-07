@@ -387,7 +387,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated }: HomeVie
               </div>
 
               <div className="lg:col-span-6 flex justify-center w-full">
-                <CyberAiGuideApp />
+                <CyberAiGuideApp lang={lang} />
               </div>
             </div>
           </div>
