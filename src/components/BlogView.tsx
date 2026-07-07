@@ -112,7 +112,7 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
             <div className="my-8 p-6 bg-[#151518] border-l-4 border-[#E35930] space-y-3">
               <span className="font-mono text-xs text-[#E35930] tracking-widest block uppercase">// IL CUORE DELLA STRATEGIA PREDITTIVA</span>
               <p className="text-xs sm:text-sm text-[#F8F7F4]/70">
-                La SEO Predittiva, potenziata dall'Intelligenza Artificiale, analizza il comportamento in tempo reale degli utenti e l'evoluzione degli algoritmi per prevedere le tendenze di ricerca con mesi di anticipo. Questo ci permette di posizionare il tuo brand prima di chiunque altro.
+                La SEO Predittiva, potenziata dall'Intelligenza Artificiale, analizza il comportamento in tempo reale degli utenti e l'evoluzione degli algoritmi per prevedere le tendenze di ricerca con mesi di anticipo. Questo permette a Facilissimo Web di posizionare il tuo brand prima di chiunque altro.
               </p>
             </div>
 
@@ -122,25 +122,25 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
               <div className="p-5 border border-[rgba(248,247,244,0.1)] bg-[#151518]/60">
                 <span className="font-mono text-xs font-bold text-[#E35930] block mb-2">01. Analisi dei Trend Latenti</span>
                 <p className="text-xs text-[#F8F7F4]/70 leading-relaxed">
-                  Interroghiamo modelli linguistici avanzati di intelligenza artificiale per analizzare i comportamenti d'acquisto emergenti, anticipando le parole chiave specifiche che diventeranno popolari nei prossimi mesi prima dei concorrenti.
+                  Interrogo modelli linguistici avanzati di intelligenza artificiale per analizzare i comportamenti d'acquisto emergenti, anticipando le parole chiave specifiche che diventeranno popolari nei prossimi mesi prima dei concorrenti.
                 </p>
               </div>
               <div className="p-5 border border-[rgba(248,247,244,0.1)] bg-[#151518]/60">
                 <span className="font-mono text-xs font-bold text-[#E35930] block mb-2">02. Mappatura Intenti di Ricerca</span>
                 <p className="text-xs text-[#F8F7F4]/70 leading-relaxed">
-                  Raggruppiamo i bisogni espressi dagli utenti in "cluster semantici" ancor prima che i motori di ricerca tradizionali li classifichino, strutturando le risposte ottimali per gli utenti del tuo territorio.
+                  Raggruppo i bisogni espressi dagli utenti in "cluster semantici" ancor prima che i motori di ricerca tradizionali li classifichino, strutturando le risposte ottimali per gli utenti del tuo territorio.
                 </p>
               </div>
               <div className="p-5 border border-[rgba(248,247,244,0.1)] bg-[#151518]/60">
                 <span className="font-mono text-xs font-bold text-[#E35930] block mb-2">03. Codice Leggero e Predittivo</span>
                 <p className="text-xs text-[#F8F7F4]/70 leading-relaxed">
-                  Sviluppiamo l'architettura dei dati del sito in modo ultra-pulito usando i markup ufficiali (schema.org) affinché gli assistenti AI e gli algoritmi di Google e Bing leggano e riconoscano istantaneamente l'autorità del brand.
+                  Sviluppo l'architettura dei dati del sito in modo ultra-pulito usando i markup ufficiali (schema.org) affinché gli assistenti AI e gli algoritmi di Google e Bing leggano e riconoscano istantaneamente l'autorità del brand.
                 </p>
               </div>
               <div className="p-5 border border-[rgba(248,247,244,0.1)] bg-[#151518]/60">
                 <span className="font-mono text-xs font-bold text-[#E35930] block mb-2">04. Adattamento Dinamico</span>
                 <p className="text-xs text-[#F8F7F4]/70 leading-relaxed">
-                  Attraverso controlli e algoritmi continui, perfezioniamo i contenuti e i meta-tag del tuo sito per mantenerli allineati in tempo reale con i mutamenti delle ricerche locali e nazionali.
+                  Attraverso controlli e algoritmi continui, perfeziono i contenuti e i meta-tag del tuo sito per mantenerli allineati in tempo reale con i mutamenti delle ricerche locali e nazionali.
                 </p>
               </div>
             </div>
@@ -158,7 +158,7 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
               Sempre più persone cercano risposte direttamente all'interno delle chat AI come ChatGPT, Perplexity o Google Gemini, anziché scorrere una lista di link blu. I siti web tradizionali realizzati su WordPress, pesanti e privi di tag semantici strutturati, sono invisibili a queste IA. 
             </p>
             <p>
-              I nostri siti web "predittivi" sono scritti in codice leggerissimo, con dati strutturati puliti e risposte ottimizzate per essere citate come fonti autorevoli dalle risposte generate da questi motori del futuro.
+              I siti web "predittivi" di Facilissimo Web sono scritti in codice leggerissimo, con dati strutturati puliti e risposte ottimizzate per essere citate come fonti autorevoli dalle risposte generate da questi motori del futuro.
             </p>
           </div>
         ),
@@ -171,7 +171,7 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
             <div className="my-8 p-6 bg-[#151518] border-l-4 border-[#E35930] space-y-3">
               <span className="font-mono text-xs text-[#E35930] tracking-widest block uppercase">// THE HEART OF PREDICTIVE STRATEGY</span>
               <p className="text-xs sm:text-sm text-[#F8F7F4]/70">
-                Predictive SEO, powered by Artificial Intelligence, analyzes real-time user behavior trends and search engine algorithm evolutions to predict search queries months in advance. This lets us position your brand before anyone else.
+                Predictive SEO, powered by Artificial Intelligence, analyzes real-time user behavior trends and search engine algorithm evolutions to predict search queries months in advance. This lets Facilissimo Web position your brand before anyone else.
               </p>
             </div>
 
@@ -312,7 +312,7 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
                 {lang === "it" ? "[ TRASPARENZA E CONOSCENZA ]" : "[ INSIGHTS & UPDATES ]"}
               </span>
               <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#F8F7F4]">
-                {lang === "it" ? "Il Nostro Blog & News" : "Our Blog & News"}
+                {lang === "it" ? "Il Blog & News di Facilissimo Web" : "Facilissimo Web Blog & News"}
               </h1>
               <p className="text-[#F8F7F4]/70 font-sans text-xs sm:text-sm">
                 {lang === "it"
@@ -558,8 +558,8 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
                     </h3>
                     <p className="text-xs text-[#F8F7F4]/60 font-sans">
                       {lang === "it" 
-                        ? "Progettiamo strategie semantiche su misura per darti un vantaggio duraturo sulla concorrenza." 
-                        : "We design custom semantic strategies to grant your business a long-lasting advantage."}
+                        ? "Progetto strategie semantiche su misura per darti un vantaggio duraturo sulla concorrenza." 
+                        : "Facilissimo Web designs custom semantic strategies to grant your business a long-lasting advantage."}
                     </p>
                   </div>
                   <button

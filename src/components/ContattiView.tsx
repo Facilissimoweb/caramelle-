@@ -95,7 +95,7 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
             [ DISEGNA IL TUO FUTURO ]
           </span>
           <h1 className="font-display text-4xl font-bold tracking-tight text-[#F8F7F4] sm:text-5xl">
-            Entriamo in Contatto
+            Entra in Contatto
           </h1>
           <p className="font-sans text-xs sm:text-sm text-[#F8F7F4]/70 leading-relaxed">
             Hai un'idea per il tuo sito web? Scrivimi. Analizzerò i tuoi requisiti e ti risponderò direttamente con una proposta dedicata.
@@ -374,7 +374,7 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
           </div>
 
           <p className="text-[10px] text-[#F8F7F4]/60 max-w-2xl font-mono uppercase tracking-wide">
-            Questo blocco si aggiorna istantaneamente interrogando le API del nostro server per dimostrare il corretto funzionamento dell'invio e della persistenza della tua richiesta.
+            Questo blocco si aggiorna istantaneamente interrogando le API di Facilissimo Web per dimostrare il corretto funzionamento dell'invio e della persistenza della tua richiesta.
           </p>
 
           {submissions.length === 0 ? (

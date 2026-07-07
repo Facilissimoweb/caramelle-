@@ -278,8 +278,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated }: HomeVie
                 </h3>
                 <p className="text-[#F8F7F4]/70 font-sans text-xs sm:text-sm leading-relaxed">
                   {lang === "it"
-                    ? "Vuoi capire come l'Intelligenza Artificiale può davvero far decollare la tua attività o il tuo studio professionale a Macerata e nelle Marche, senza spendere un patrimonio? Abbiamo sviluppato questa guida e-book interattiva in stile Cyberdeck per sfatare i miti comuni e darti risposte trasparenti in pochi secondi."
-                    : "Want to understand how Artificial Intelligence can realistically elevate your local microenterprise or freelance practice, without spending a fortune? We built this interactive, cyberpunk-style mobile deck guide to break down common myths and provide plain answers instantly."}
+                    ? "Vuoi capire come l'Intelligenza Artificiale può davvero far decollare la tua attività o il tuo studio professionale a Macerata e nelle Marche, senza spendere un patrimonio? Ho sviluppato questa guida e-book interattiva in stile Cyberdeck per sfatare i miti comuni e darti risposte trasparenti in pochi secondi."
+                    : "Want to understand how Artificial Intelligence can realistically elevate your local microenterprise or freelance practice, without spending a fortune? I built this interactive, cyberpunk-style mobile deck guide to break down common myths and provide plain answers instantly."}
                 </p>
 
                 <div className="space-y-4 font-sans text-xs text-[#F8F7F4]/70 leading-relaxed">
@@ -354,7 +354,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated }: HomeVie
               ? [
                   {
                     q: "Cos'è un sito web potenziato dall'Intelligenza Artificiale?",
-                    a: "È un sito web progettato sfruttando flussi di lavoro e algoritmi di IA avanzati per ottimizzare la stesura del codice pulito, analizzare le strutture SEO semantiche ed eliminare passaggi manuali ripetitivi. Questo ci consente di consegnare siti ultra-veloci, sicuri ed estremamente performanti a una frazione del costo tradizionale.",
+                    a: "È un sito web progettato sfruttando flussi di lavoro e algoritmi di IA avanzati per ottimizzare la stesura del codice pulito, analizzare le strutture SEO semantiche ed eliminare passaggi manuali ripetitivi. Questo consente a Facilissimo Web di consegnare siti ultra-veloci, sicuri ed estremamente performanti a una frazione del costo tradizionale.",
                   },
                   {
                     q: "L'Intelligenza Artificiale sostituisce il lavoro manuale del web designer?",
@@ -362,15 +362,15 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated }: HomeVie
                   },
                   {
                     q: "Quali sono i reali vantaggi in termini di tempi e di budget?",
-                    a: "Mentre un'agenzia web tradizionale impiega solitamente dai 30 ai 60 giorni per un progetto medio richiedendo budget molto elevati, i nostri processi intelligenti ci permettono di consegnare una Landing Page professionale in soli 7 giorni ed un sito multipagina completo in 14 giorni, riducendo i prezzi fino al 60%.",
+                    a: "Mentre un'agenzia web tradizionale impiega solitamente dai 30 ai 60 giorni per un progetto medio richiedendo budget molto elevati, i processi intelligenti di Facilissimo Web mi permettono di consegnare una Landing Page professionale in soli 7 giorni ed un sito multipagina completo in 14 giorni, riducendo i prezzi fino al 60%.",
                   },
                   {
                     q: "Il mio sito web sarà ottimizzato per posizionarsi su Google?",
-                    a: "Sì. Utilizziamo modelli linguistici di IA semantica per mappare le reali intenzioni di ricerca dei clienti e per definire la migliore strategia di parole chiave. Il codice del sito viene generato per essere super leggero, garantendo tempi di caricamento immediati, fondamentali per scalare le prime posizioni su Google.",
+                    a: "Sì. Utilizzo modelli linguistici di IA semantica per mappare le reali intenzioni di ricerca dei clienti e per definire la migliore strategia di parole chiave. Il codice del sito viene generato per essere super leggero, garantendo tempi di caricamento immediati, fondamentali per scalare le prime posizioni su Google.",
                   },
                   {
                     q: "Cos'è la SEO Predittiva e come funziona sul mio sito?",
-                    a: "La SEO Predittiva è un metodo avanzato che utilizza l'IA per analizzare e anticipare i futuri trend di ricerca degli utenti prima dei tuoi competitor. Nel tuo sito web integriamo marcatori semantici, strutture di dati Schema.org avanzate e testi ottimizzati per intercettare i bisogni latenti dei clienti (locali nelle Marche o nazionali/esteri) non appena iniziano a manifestarsi. Questo ti posiziona davanti a tutti sui motori di ricerca con mesi di anticipo.",
+                    a: "La SEO Predittiva è un metodo avanzato che utilizza l'IA per analizzare e anticipare i futuri trend di ricerca degli utenti prima dei tuoi competitor. Nel tuo sito web Facilissimo Web integra marcatori semantici, strutture di dati Schema.org avanzate e testi ottimizzati per intercettare i bisogni latenti dei clienti (locali nelle Marche o nazionali/esteri) non appena iniziano a manifestarsi. Questo ti posiziona davanti a tutti sui motori di ricerca con mesi di anticipo.",
                   },
                   {
                     q: "Cosa succede dopo la consegna del sito? C'è supporto gratuito?",
@@ -380,7 +380,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated }: HomeVie
               : [
                   {
                     q: "What is an AI-powered website?",
-                    a: "It is a website built using advanced AI workflows to streamline clean code generation, analyze semantic SEO structures, and eliminate repetitive tasks. This enables the delivery of ultra-fast, secure, and extremely high-performance sites at a fraction of the cost of traditional methods.",
+                    a: "It is a website built using advanced AI workflows to streamline clean code generation, analyze semantic SEO structures, and eliminate repetitive tasks. This enables the delivery of ultra-fast, secure, and extremely high-performance sites by Facilissimo Web at a fraction of the cost of traditional methods.",
                   },
                   {
                     q: "Does AI replace the manual touch of a designer?",
@@ -388,15 +388,15 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated }: HomeVie
                   },
                   {
                     q: "What are the exact time and cost advantages?",
-                    a: "While standard web agencies typically take 30 to 60 days to launch a project and require heavy budgets, our intelligent workflows allow me to deliver a professional Landing Page in 7 days and a complete multi-page site in 14 days, reducing overall costs by up to 60%.",
+                    a: "While standard web agencies typically take 30 to 60 days to launch a project and require heavy budgets, the intelligent workflows of Facilissimo Web allow me to deliver a professional Landing Page in 7 days and a complete multi-page site in 14 days, reducing overall costs by up to 60%.",
                   },
                   {
                     q: "Will my website be optimized to rank on Google?",
-                    a: "Yes. We leverage semantic AI models to analyze search intent and map out high-value keywords. The structural code of the website is generated to be ultra-lightweight, ensuring immediate loading times which are highly favored by search engine ranking algorithms.",
+                    a: "Yes. I leverage semantic AI models to analyze search intent and map out high-value keywords. The structural code of the website is generated to be ultra-lightweight, ensuring immediate loading times which are highly favored by search engine ranking algorithms.",
                   },
                   {
                     q: "What is Predictive SEO and how is it built into my site?",
-                    a: "Predictive SEO is an advanced method using AI to discover and anticipate user search trends before your competitors do. We build your site with precise semantic markups, schema.org schemas, and targeted content designed to catch latent user needs as they emerge. This grants your business a head start on search engine results weeks or months before others adapt.",
+                    a: "Predictive SEO is an advanced method using AI to discover and anticipate user search trends before your competitors do. I build your site with precise semantic markups, schema.org schemas, and targeted content designed to catch latent user needs as they emerge. This grants your business a head start on search engine results weeks or months before others adapt.",
                   },
                   {
                     q: "What happens after the website is delivered? Is there support?",

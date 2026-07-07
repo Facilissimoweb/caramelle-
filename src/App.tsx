@@ -35,7 +35,7 @@ const SEO_METADATA: Record<string, { title: string; description: string; keyword
   },
   chat: {
     title: "Assistente AI Live — Facilissimo Web Macerata",
-    description: "Parla subito con il nostro Assistente Virtuale basato su IA. Ricevi risposte istantanee su servizi, tempi e prezzi per siti web a Macerata e nelle Marche.",
+    description: "Parla subito con l'Assistente Virtuale di Facilissimo Web basato su IA. Ricevi risposte istantanee su servizi, tempi e prezzi per siti web a Macerata e nelle Marche.",
     keywords: "chat ai macerata, assistente virtuale marche, intelligenza artificiale assistente, consulenza ai marche",
   },
   blog: {

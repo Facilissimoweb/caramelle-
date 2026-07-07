@@ -244,7 +244,7 @@ export default function Header({
             className="px-6 py-3 bg-[#E35930] text-[#111113] font-bold text-[10px] tracking-widest uppercase hover:bg-transparent hover:text-[#E35930] hover:border-[#E35930] transition-all duration-300 cursor-pointer border border-[#E35930]"
             id="header-cta-btn"
           >
-            {lang === "it" ? "Lavoriamo Insieme" : "Let's Work Together"}
+            {lang === "it" ? "Lavora con Me" : "Work with Me"}
           </button>
         </div>
 

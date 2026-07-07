@@ -307,8 +307,8 @@ export default function CookieBanner({ lang, isFacilitated, forceShow = false, o
                       </div>
                       <p className="text-[11px] text-[#F8F7F4]/60 leading-relaxed font-sans">
                         {lang === "it"
-                          ? "Permette di capire se i visitatori provengono dalle nostre sponsorizzazioni o post su Facebook e Instagram, ottimizzando il budget pubblicitario del nostro brand."
-                          : "Enables measuring if visitors come from our Facebook and Instagram campaigns or posts, helping us optimize marketing efficiency."}
+                          ? "Permette di capire se i visitatori provengono dalle sponsorizzazioni o dai post di Facilissimo Web su Facebook e Instagram, ottimizzando il budget pubblicitario."
+                          : "Enables measuring if visitors come from Facebook and Instagram campaigns or posts, helping optimize marketing efficiency for Facilissimo Web."}
                       </p>
                     </div>
                     <div className="flex items-center justify-between pt-1">

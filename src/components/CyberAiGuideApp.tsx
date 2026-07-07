@@ -84,8 +84,8 @@ const slides: Slide[] = [
       en: "Are my business data safe?"
     },
     content: {
-      it: "L'IA è sicura se la usi con consapevolezza. La regola d'oro: non inserire mai password, dati bancari o segreti industriali nelle chat pubbliche. Usala per generare idee, bozze e strategie pubbliche. Noi di Facilissimo Web ti insegniamo a farlo senza rischi.",
-      en: "AI is secure when used with awareness. The golden rule: never input passwords, bank details, or industrial secrets in public chats. Use it to generate ideas, drafts, and public strategies. We teach you how to do this safely."
+      it: "L'IA è sicura se la usi con consapevolezza. La regola d'oro: non inserire mai password, dati bancari o segreti industriali nelle chat pubbliche. Usala per generare idee, bozze e strategie pubbliche. Facilissimo Web ti insegna a farlo senza rischi.",
+      en: "AI is secure when used with awareness. The golden rule: never input passwords, bank details, or industrial secrets in public chats. Use it to generate ideas, drafts, and public strategies. Facilissimo Web teaches you how to do this safely."
     },
     neonColor: "green"
   }
