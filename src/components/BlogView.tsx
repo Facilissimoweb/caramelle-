@@ -73,6 +73,151 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
 
   const articles: Article[] = [
     {
+      slug: "ai-act-regolamento-europeo",
+      title: {
+        it: "L’AI Act è legge: l’Europa ridisegna il futuro dell’Intelligenza Artificiale con il sistema dei quattro rischi",
+        en: "The AI Act is Law: Europe Redesigns the Future of Artificial Intelligence with the Four Risks System"
+      },
+      description: {
+        it: "L'Unione Europea traccia una linea netta con l'approvazione dell'AI Act, la prima legge organica al mondo che regolamenta l'Intelligenza Artificiale con l'approccio dei quattro rischi.",
+        en: "The European Union draws a clear line with the final approval of the AI Act, the world's first comprehensive law regulating Artificial Intelligence through a four-risk model."
+      },
+      category: {
+        it: "Normative & IA",
+        en: "Regulations & AI"
+      },
+      tags: ["AI Act", "Unione Europea", "Normative", "Copyright", "Intelligenza Artificiale"],
+      publishDate: "07 Luglio 2026",
+      readTime: {
+        it: "6 min di lettura",
+        en: "6 min read"
+      },
+      author: "M. Teresa Rogani",
+      coverImage: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1200",
+      metaTitle: {
+        it: "L'AI Act è Legge: Come Funzionano i 4 Livelli di Rischio",
+        en: "The EU AI Act is Law: Understanding the 4 Risk Categories"
+      },
+      metaDescription: {
+        it: "Scopri come la prima legge europea sull'Intelligenza Artificiale regola i sistemi di IA generica, copyright e le quattro categorie di rischio.",
+        en: "Learn how the first European law on Artificial Intelligence regulates general-purpose AI, copyright, and the four risk tiers."
+      },
+      content: {
+        it: (
+          <div className="space-y-6 text-[#F8F7F4]/85 text-sm sm:text-base font-sans leading-relaxed font-normal">
+            <p className="font-medium text-lg text-[#F8F7F4]">
+              L'Unione Europea ha tracciato una linea netta nel panorama tecnologico mondiale con l'approvazione definitiva dell'AI Act, la prima legge organica al mondo che regolamenta l'Intelligenza Artificiale. L'obiettivo della normativa non è frenare l'innovazione, ma garantire che lo sviluppo tecnologico avvenga nel pieno rispetto dei diritti fondamentali, della sicurezza e della privacy dei cittadini. La legge adotta un approccio pragmatico e proporzionale basato interamente sul livello di rischio che i diversi sistemi possono generare per la società.
+            </p>
+
+            <h3 className="font-display text-xl sm:text-2xl font-bold text-[#F8F7F4] pt-4">Una piramide basata sul rischio</h3>
+            <p>
+              Il cuore pulsante dell'AI Act è la suddivisione delle tecnologie in quattro precise categorie di rischio, a ciascuna delle quali corrispondono obblighi e divieti ben definiti:
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+              <div className="p-5 border border-red-500/10 bg-red-500/5">
+                <span className="font-mono text-xs font-bold text-red-500 block mb-2">01. RISCHIO INACCETTABILE (SISTEMI VIETATI)</span>
+                <p className="text-xs text-[#F8F7F4]/70 leading-relaxed">
+                  L'Europa bandisce categoricamente tutte le applicazioni che minacciano la libertà e la dignità umana. Tra queste figurano i sistemi di punteggio sociale (social scoring), la manipolazione del comportamento umano per eludere il libero arbitrio e i sistemi di identificazione biometrica remota in tempo reale negli spazi pubblici (salvo limitatissime eccezioni legate alla sicurezza nazionale o alla prevenzione di gravi reati).
+                </p>
+              </div>
+              <div className="p-5 border border-amber-500/10 bg-amber-500/5">
+                <span className="font-mono text-xs font-bold text-amber-500 block mb-2">02. RISCHIO ALTO (SISTEMI VIGILATI)</span>
+                <p className="text-xs text-[#F8F7F4]/70 leading-relaxed">
+                  In questa fascia rientrano le tecnologie utilizzate in settori critici come la sanità, le infrastrutture strategiche, l'istruzione, la gestione del personale (software di selezione dei candidati) e l'amministrazione della giustizia. Questi sistemi non sono vietati, ma per essere immessi sul mercato devono superare severi controlli di qualità dei dati, garantire una documentazione tecnica trasparente, implementare rigorose misure di cybersecurity e assicurare una costante supervisione umana.
+                </p>
+              </div>
+              <div className="p-5 border border-blue-500/10 bg-blue-500/5">
+                <span className="font-mono text-xs font-bold text-blue-500 block mb-2">03. RISCHIO LIMITATO (OBBLIGO DI TRASPARENZA)</span>
+                <p className="text-xs text-[#F8F7F4]/70 leading-relaxed">
+                  Riguarda le tecnologie con cui gli utenti interagiscono quotidianamente, come i chatbot di assistenza clienti o i generatori di immagini e video. La regola d'oro qui è la trasparenza: i cittadini devono essere esplicitamente informati quando stanno parlando con una macchina o quando un contenuto visivo o testuale è un "deepfake" generato dall'IA.
+                </p>
+              </div>
+              <div className="p-5 border border-emerald-500/10 bg-emerald-500/5">
+                <span className="font-mono text-xs font-bold text-emerald-500 block mb-2">04. RISCHIO MINIMO O NULLO</span>
+                <p className="text-xs text-[#F8F7F4]/70 leading-relaxed">
+                  È la categoria che comprende la stragrande maggioranza delle applicazioni attuali, come i filtri antispam delle email o i sistemi di intelligenza artificiale integrati nei videogiochi. Per queste tecnologie non è previsto alcun vincolo legale o burocratico aggiuntivo.
+                </p>
+              </div>
+            </div>
+
+            <h3 className="font-display text-xl sm:text-2xl font-bold text-[#F8F7F4] pt-4">Il nodo dell'IA Generativa e del Copyright</h3>
+            <p>
+              Un capitolo cruciale della normativa è dedicato ai modelli di IA generica (General Purpose AI), come i grandi modelli linguistici dietro i moderni assistenti virtuali. L'AI Act impone ai colossi tecnologici massima trasparenza sui processi di addestramento degli algoritmi. Gli sviluppatori sono obbligati a rispettare la normativa europea sul diritto d'autore e a pubblicare sintesi dettagliate dei dati e delle opere protette da copyright utilizzate per istruire i propri modelli, tutelando così il lavoro di creatori, editori e artisti.
+            </p>
+
+            <h3 className="font-display text-xl sm:text-2xl font-bold text-[#F8F7F4] pt-4">Le sanzioni e la tabella di marcia</h3>
+            <p>
+              Per garantire il rispetto delle regole, l'Unione Europea ha previsto un sistema sanzionatorio estremamente severo, con multe che possono raggiungere i 35 milioni di euro o fino al 7% del fatturato globale annuo delle aziende inadempienti. L'applicazione del regolamento è strutturata in modo progressivo, concedendo a imprese e sviluppatori il tempo necessario per adeguarsi ai nuovi standard e garantire una transizione fluida verso un'interazione con l'IA che sia, prima di tutto, sicura e antropocentrica.
+            </p>
+            
+            <div className="mt-8 pt-6 border-t border-[rgba(248,247,244,0.08)] bg-[#151518] p-6 space-y-3">
+              <h4 className="font-display font-bold text-base text-[#F8F7F4]">Approfondisci l'argomento con me</h4>
+              <p className="text-xs text-[#F8F7F4]/75">
+                Se vuoi approfondire l'argomento, possiamo concentrarci su un aspetto specifico. Ad esempio, preferisci analizzare l'impatto della legge sul copyright per gli artisti, capire quali sono le sanzioni per le aziende o approfondire i sistemi ad alto rischio? Parliamone direttamente via chat o contatti!
+              </p>
+            </div>
+          </div>
+        ),
+        en: (
+          <div className="space-y-6 text-[#F8F7F4]/85 text-sm sm:text-base font-sans leading-relaxed font-normal">
+            <p className="font-medium text-lg text-[#F8F7F4]">
+              The European Union has drawn a clear line across the global technological landscape with the definitive approval of the AI Act, the world's first comprehensive legislation regulating Artificial Intelligence. The purpose of this law is not to halt innovation, but to ensure technological development fully respects fundamental rights, security, and citizen privacy. The law adopts a pragmatic, risk-proportionate approach based entirely on the level of potential harm a system can bring to society.
+            </p>
+
+            <h3 className="font-display text-xl sm:text-2xl font-bold text-[#F8F7F4] pt-4">The Risk Pyramid</h3>
+            <p>
+              At the heart of the AI Act lies the categorization of technologies into four distinct risk tiers, each governed by specific rules, obligations, and prohibitions:
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+              <div className="p-5 border border-red-500/10 bg-red-500/5">
+                <span className="font-mono text-xs font-bold text-red-500 block mb-2">01. UNACCEPTABLE RISK (PROHIBITED SYSTEMS)</span>
+                <p className="text-xs text-[#F8F7F4]/70 leading-relaxed">
+                  Europe strictly bans all systems posing threats to human freedom and dignity. This includes social scoring, cognitive behavioral manipulation, and real-time remote biometric identification in public spaces (except for very limited exceptions regarding national security or prevention of severe crimes).
+                </p>
+              </div>
+              <div className="p-5 border border-amber-500/10 bg-amber-500/5">
+                <span className="font-mono text-xs font-bold text-amber-500 block mb-2">02. HIGH RISK (REGULATED SYSTEMS)</span>
+                <p className="text-xs text-[#F8F7F4]/70 leading-relaxed">
+                  This tier comprises critical sectors like healthcare, critical infrastructure, education, employment management (e.g. CV screening tools), and law enforcement. These must pass rigorous data quality controls, provide transparent technical documentation, implement strict cybersecurity, and maintain continuous human oversight.
+                </p>
+              </div>
+              <div className="p-5 border border-blue-500/10 bg-blue-500/5">
+                <span className="font-mono text-xs font-bold text-blue-500 block mb-2">03. LIMITED RISK (TRANSPARENCY MANDATES)</span>
+                <p className="text-xs text-[#F8F7F4]/70 leading-relaxed">
+                  This relates to technologies users interact with daily, like customer support chatbots or image/video generators. The golden rule here is transparency: citizens must be clearly informed when they are interacting with AI or when content is a synthetic deepfake.
+                </p>
+              </div>
+              <div className="p-5 border border-emerald-500/10 bg-emerald-500/5">
+                <span className="font-mono text-xs font-bold text-emerald-500 block mb-2">04. MINIMAL OR NO RISK</span>
+                <p className="text-xs text-[#F8F7F4]/70 leading-relaxed">
+                  This covers the majority of current systems, such as spam filters or AI within video games. These tools are subject to no extra legal or bureaucratic burdens.
+                </p>
+              </div>
+            </div>
+
+            <h3 className="font-display text-xl sm:text-2xl font-bold text-[#F8F7F4] pt-4">The Generative AI and Copyright Crux</h3>
+            <p>
+              A major chapter of the regulation is dedicated to General Purpose AI, such as the large language models (LLMs) driving today's smart assistants. The AI Act demands absolute transparency on algorithmic training datasets. Developers must comply with EU copyright laws and publish transparent summaries of copyrighted material used for training, thereby protecting creative artists, publishers, and authors.
+            </p>
+
+            <h3 className="font-display text-xl sm:text-2xl font-bold text-[#F8F7F4] pt-4">Penalties and Roadmap</h3>
+            <p>
+              To ensure compliance, the EU has established massive fines—up to 35 million Euros or up to 7% of global annual turnover for non-compliant companies. The rollout is progressive, allowing developers and organizations sufficient time to adjust to the high standards and achieve a human-centric relationship with AI.
+            </p>
+            
+            <div className="mt-8 pt-6 border-t border-[rgba(248,247,244,0.08)] bg-[#151518] p-6 space-y-3">
+              <h4 className="font-display font-bold text-base text-[#F8F7F4]">Delve deeper into this with me</h4>
+              <p className="text-xs text-[#F8F7F4]/75">
+                If you want to delve deeper into this topic, we can focus on a specific aspect. For instance, would you prefer to analyze the impact of the copyright law for artists, understand corporate fines, or explore high-risk systems? Let's discuss it directly via chat or contacts!
+              </p>
+            </div>
+          </div>
+        )
+      }
+    },
+    {
       slug: "seo-predittiva",
       title: {
         it: "La Rivoluzione della SEO Predittiva: Come l'IA anticipa i motori di ricerca",
