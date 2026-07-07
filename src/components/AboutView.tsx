@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { ShieldCheck, Zap, Heart, Sparkles, Code, Pencil } from "lucide-react";
 
@@ -8,6 +9,19 @@ interface AboutViewProps {
 }
 
 export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutViewProps) {
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+  const bgImages = [
+    "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1920",
+    "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=1920",
+    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1920"
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentBgIndex((prev) => (prev + 1) % bgImages.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
   const values = isFacilitated
     ? [
         {
@@ -77,8 +91,25 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
   return (
     <div className="w-full bg-[#111113] text-[#F8F7F4]">
       {/* Intro Header */}
-      <section className="py-24 relative border-b border-[rgba(248,247,244,0.1)]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <section className="py-24 relative border-b border-[rgba(248,247,244,0.1)] overflow-hidden">
+        {/* Ambient Background Slideshow */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          {bgImages.map((imgUrl, idx) => (
+            <div
+              key={imgUrl}
+              className={`absolute inset-0 bg-cover bg-center transition-all duration-[2000ms] ${
+                idx === currentBgIndex ? "opacity-40 scale-100" : "opacity-0 scale-105"
+              }`}
+              style={{
+                backgroundImage: `url(${imgUrl})`,
+              }}
+            />
+          ))}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#111113] via-[#111113]/80 to-[#111113]/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#111113]/30 via-transparent to-[#111113]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
           
           <motion.div
             initial={{ opacity: 0, x: -30 }}

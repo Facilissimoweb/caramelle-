@@ -9,6 +9,20 @@ interface ContattiViewProps {
 }
 
 export default function ContattiView({ lang, isFacilitated }: ContattiViewProps) {
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+  const bgImages = [
+    "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1920",
+    "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=1920",
+    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1920"
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentBgIndex((prev) => (prev + 1) % bgImages.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -89,8 +103,25 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
   return (
     <div className="w-full bg-[#111113] text-[#F8F7F4]">
       {/* Header Banner */}
-      <section className="py-24 text-center border-b border-[rgba(248,247,244,0.1)]">
-        <div className="max-w-2xl mx-auto px-6 space-y-4">
+      <section className="py-24 text-center relative border-b border-[rgba(248,247,244,0.1)] overflow-hidden">
+        {/* Ambient Background Slideshow */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          {bgImages.map((imgUrl, idx) => (
+            <div
+              key={imgUrl}
+              className={`absolute inset-0 bg-cover bg-center transition-all duration-[2000ms] ${
+                idx === currentBgIndex ? "opacity-40 scale-100" : "opacity-0 scale-105"
+              }`}
+              style={{
+                backgroundImage: `url(${imgUrl})`,
+              }}
+            />
+          ))}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#111113]/90 via-[#111113]/80 to-[#111113]/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#111113]/30 via-transparent to-[#111113]" />
+        </div>
+
+        <div className="max-w-2xl mx-auto px-6 space-y-4 relative z-10">
           <span className="text-[10px] uppercase tracking-[0.25em] text-[#E35930] font-mono font-bold block mb-2">
             [ DISEGNA IL TUO FUTURO ]
           </span>

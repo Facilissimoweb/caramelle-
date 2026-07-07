@@ -80,18 +80,17 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           {bgImages.map((imgUrl, idx) => (
             <div
               key={imgUrl}
-              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
-                idx === currentBgIndex ? "opacity-15 grayscale scale-100" : "opacity-0 grayscale scale-102"
+              className={`absolute inset-0 bg-cover bg-center transition-all duration-[2000ms] ${
+                idx === currentBgIndex ? "opacity-40 scale-100" : "opacity-0 scale-105"
               }`}
               style={{
                 backgroundImage: `url(${imgUrl})`,
-                transitionProperty: "opacity",
               }}
             />
           ))}
           {/* Deep Dark Overlay to keep text contrast clean and high-contrast */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#111113] via-[#111113]/90 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#111113]/40 via-transparent to-[#111113]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#111113] via-[#111113]/80 to-[#111113]/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#111113]/30 via-transparent to-[#111113]" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">          <div className="lg:col-span-7 space-y-6">

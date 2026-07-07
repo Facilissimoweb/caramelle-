@@ -24,6 +24,20 @@ interface BlogViewProps {
 }
 
 export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogViewProps) {
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+  const bgImages = [
+    "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1920",
+    "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=1920",
+    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1920"
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentBgIndex((prev) => (prev + 1) % bgImages.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
   const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [shareToast, setShareToast] = useState<string | null>(null);
@@ -440,7 +454,7 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
   const currentArticle = selectedArticle ? articles.find((a) => a.slug === selectedArticle) : null;
 
   return (
-    <div className="w-full bg-[#111113] py-12 text-[#F8F7F4] min-h-[80vh]">
+    <div className="w-full bg-[#111113] pb-12 text-[#F8F7F4] min-h-[80vh]">
       {/* Toast Notification */}
       {shareToast && (
         <div className="fixed bottom-6 right-6 z-50 bg-[#E35930] text-[#111113] font-mono text-xs font-bold px-4 py-3 shadow-[0_0_20px_rgba(227,89,48,0.3)] uppercase tracking-wider animate-bounce">
@@ -448,11 +462,28 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
         </div>
       )}
 
-      <div className="max-w-6xl mx-auto px-6 md:px-12">
-        {!currentArticle ? (
-          // BLOG INDEX VIEW
-          <div className="space-y-12">
-            <div className="space-y-4 text-center max-w-2xl mx-auto">
+      {!currentArticle ? (
+        <>
+          {/* Header Banner */}
+          <section className="py-24 text-center relative border-b border-[rgba(248,247,244,0.1)] overflow-hidden mb-12">
+            {/* Ambient Background Slideshow */}
+            <div className="absolute inset-0 z-0 overflow-hidden">
+              {bgImages.map((imgUrl, idx) => (
+                <div
+                  key={imgUrl}
+                  className={`absolute inset-0 bg-cover bg-center transition-all duration-[2000ms] ${
+                    idx === currentBgIndex ? "opacity-40 scale-100" : "opacity-0 scale-105"
+                  }`}
+                  style={{
+                    backgroundImage: `url(${imgUrl})`,
+                  }}
+                />
+              ))}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#111113]/90 via-[#111113]/80 to-[#111113]/90" />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#111113]/30 via-transparent to-[#111113]" />
+            </div>
+
+            <div className="max-w-2xl mx-auto px-6 space-y-4 relative z-10">
               <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
                 {lang === "it" ? "[ TRASPARENZA E CONOSCENZA ]" : "[ INSIGHTS & UPDATES ]"}
               </span>
@@ -465,8 +496,11 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
                   : "Stay ahead of the curve with predictive SEO, business artificial intelligence, and cutting-edge web design trends."}
               </p>
             </div>
+          </section>
 
-            {/* Featured Article Card */}
+          <div className="max-w-6xl mx-auto px-6 md:px-12">
+            <div className="space-y-12">
+              {/* Featured Article Card */}
             <div 
               onClick={() => setSelectedArticle(articles[0].slug)}
               className="border border-[rgba(248,247,244,0.1)] bg-[#151518]/60 grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden hover:border-[#E35930]/45 hover:shadow-[0_0_30px_rgba(227,89,48,0.03)] transition-all duration-300 cursor-pointer group"
@@ -573,8 +607,11 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
               ))}
             </div>
           </div>
-        ) : (
-          // SINGLE ARTICLE VIEW
+        </div>
+      </>
+    ) : (
+        <div className="max-w-6xl mx-auto px-6 md:px-12 py-12">
+          {/* SINGLE ARTICLE VIEW */}
           <motion.div 
             initial={{ opacity: 0, y: 15 }} 
             animate={{ opacity: 1, y: 0 }}
@@ -724,8 +761,8 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
               </div>
             </div>
           </motion.div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
