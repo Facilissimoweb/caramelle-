@@ -113,7 +113,7 @@ app.get("/api/health", async (req, res) => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "llama-3.1-8b-instant",
+          model: "llama-3.3-70b-versatile",
           messages: [{ role: "user", content: "Hi" }],
           max_tokens: 5
         })
@@ -203,9 +203,7 @@ Rispondi sempre in italiano in modo amichevole, professionale, chiaro ed elegant
   if (groqKey) {
     console.log("Using Groq API for chat processing...");
     const GROQ_MODELS = [
-      "llama-3.3-70b-versatile",
-      "llama-3.1-8b-instant",
-      "mixtral-8x7b-32768"
+      "llama-3.3-70b-versatile"
     ];
 
     const messagesPayload = [
