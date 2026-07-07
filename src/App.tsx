@@ -707,6 +707,7 @@ export default function App() {
       {/* Accessibility Floating Panel Widget */}
       <AccessibilityWidget
         lang={lang}
+        currentTab={currentTab}
         isFacilitated={isFacilitated}
         setIsFacilitated={setIsFacilitated}
         fontSize={fontSize}

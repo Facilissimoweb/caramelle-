@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Accessibility, Check, X, Eye, Type, BookOpen, RotateCcw } from "lucide-react";
+import { Accessibility, Check, X, Eye, Type, BookOpen, RotateCcw, Volume2, Play, Pause, Square, ChevronDown } from "lucide-react";
 
 interface AccessibilityWidgetProps {
   lang: "it" | "en";
+  currentTab: string;
   isFacilitated: boolean;
   setIsFacilitated: (val: boolean) => void;
   fontSize: number;
@@ -16,6 +17,7 @@ interface AccessibilityWidgetProps {
 
 export default function AccessibilityWidget({
   lang,
+  currentTab,
   isFacilitated,
   setIsFacilitated,
   fontSize,
@@ -26,6 +28,198 @@ export default function AccessibilityWidget({
   setReadableFont,
 }: AccessibilityWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);
+
+  // Text-To-Speech (TTS) States
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [selectedVoiceName, setSelectedVoiceName] = useState<string>("");
+  const [readingSpeed, setReadingSpeed] = useState<number>(0.95);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
+  const [textBlocks, setTextBlocks] = useState<string[]>([]);
+  const [currentBlockIndex, setCurrentBlockIndex] = useState<number>(0);
+  const [isVoiceDropdownOpen, setIsVoiceDropdownOpen] = useState<boolean>(false);
+
+  const synth = typeof window !== "undefined" ? window.speechSynthesis : null;
+
+  // Load browser voice synthesis options
+  const loadVoices = () => {
+    if (!synth) return;
+    const allVoices = synth.getVoices();
+    const langPrefix = lang === "it" ? "it" : "en";
+    const filtered = allVoices.filter((v) => v.lang.startsWith(langPrefix));
+    setVoices(filtered);
+    
+    if (filtered.length > 0) {
+      // Prioritize natural or neural voices
+      const premiumVoice = filtered.find((v) => 
+        v.name.includes("Google") || 
+        v.name.includes("Natural") || 
+        v.name.includes("Neural") || 
+        v.name.includes("Alice") || 
+        v.name.includes("Luca") ||
+        v.name.includes("Siri")
+      );
+      setSelectedVoiceName((prev) => {
+        if (prev && filtered.some((v) => v.name === prev)) return prev;
+        return premiumVoice ? premiumVoice.name : filtered[0].name;
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (!synth) return;
+    loadVoices();
+    if (synth.onvoiceschanged !== undefined) {
+      synth.onvoiceschanged = loadVoices;
+    }
+  }, [lang]);
+
+  // Dynamic Text Block Extraction from the active page view DOM
+  const extractPageText = (): string[] => {
+    const mainElement = document.querySelector("main");
+    if (!mainElement) return [];
+
+    const blocks: string[] = [];
+    
+    const traverse = (node: Node) => {
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        const el = node as HTMLElement;
+        const tagName = el.tagName.toLowerCase();
+        
+        // Exclude UI controls, buttons, forms, scripts, widgets
+        if (
+          tagName === "button" ||
+          tagName === "nav" ||
+          tagName === "form" ||
+          tagName === "script" ||
+          tagName === "style" ||
+          el.getAttribute("aria-hidden") === "true" ||
+          el.id === "accessibility-widget-root" ||
+          el.id === "back-to-top-btn" ||
+          el.classList.contains("sr-only") ||
+          el.id === "facilitated-badge-banner" ||
+          el.closest("#accessibility-widget-root") ||
+          el.closest("#back-to-top-btn")
+        ) {
+          return;
+        }
+
+        // Capture headings, paragraphs, list items, quotes
+        if (["h1", "h2", "h3", "h4", "h5", "h6", "p", "li", "blockquote"].includes(tagName)) {
+          const text = el.innerText?.trim();
+          if (text && text.length > 1) {
+            const cleanText = text.replace(/\s+/g, " ");
+            blocks.push(cleanText);
+          }
+          return; // Skip deep child elements under these blocks to prevent text duplication
+        }
+      }
+      
+      for (let i = 0; i < node.childNodes.length; i++) {
+        traverse(node.childNodes[i]);
+      }
+    };
+
+    traverse(mainElement);
+    return blocks;
+  };
+
+  // Speaks a specific text block sequentially
+  const speakBlock = (index: number, blocks: string[]) => {
+    if (!synth || index >= blocks.length) {
+      setIsPlaying(false);
+      setIsPaused(false);
+      setCurrentBlockIndex(0);
+      return;
+    }
+
+    setCurrentBlockIndex(index);
+    synth.cancel();
+
+    const text = blocks[index];
+    const utterance = new SpeechSynthesisUtterance(text);
+    
+    if (selectedVoiceName) {
+      const voice = voices.find((v) => v.name === selectedVoiceName);
+      if (voice) {
+        utterance.voice = voice;
+      }
+    }
+
+    // Set voice speed (0.95x standard provides high-fidelity, calm, natural cadence)
+    utterance.rate = readingSpeed;
+    utterance.pitch = 1.0;
+
+    utterance.onend = () => {
+      speakBlock(index + 1, blocks);
+    };
+
+    utterance.onerror = (e) => {
+      console.warn("[AccessibilityWidget] Utterance event:", e.type);
+      if (e.error !== "interrupted") {
+        setIsPlaying(false);
+        setIsPaused(false);
+      }
+    };
+
+    synth.speak(utterance);
+  };
+
+  const handlePlaySpeech = () => {
+    if (!synth) return;
+
+    if (isPaused) {
+      setIsPaused(false);
+      setIsPlaying(true);
+      speakBlock(currentBlockIndex, textBlocks);
+    } else {
+      const blocks = extractPageText();
+      if (blocks.length === 0) {
+        console.warn("[AccessibilityWidget] No readable text blocks found.");
+        return;
+      }
+      setTextBlocks(blocks);
+      setIsPlaying(true);
+      setIsPaused(false);
+      speakBlock(0, blocks);
+    }
+  };
+
+  const handlePauseSpeech = () => {
+    if (!synth) return;
+    synth.cancel();
+    setIsPaused(true);
+    setIsPlaying(false);
+  };
+
+  const handleStopSpeech = () => {
+    if (!synth) return;
+    synth.cancel();
+    setIsPlaying(false);
+    setIsPaused(false);
+    setCurrentBlockIndex(0);
+  };
+
+  const cleanVoiceName = (name: string) => {
+    return name
+      .replace(/microsoft/gi, "")
+      .replace(/desktop/gi, "")
+      .replace(/google/gi, "Chrome")
+      .replace(/apple/gi, "")
+      .replace(/- italian \(italy\)/gi, "")
+      .replace(/- english \(united states\)/gi, "")
+      .replace(/- english \(united kingdom\)/gi, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  };
+
+  // Stop speaking when currentTab changes to prevent overlapping audio
+  useEffect(() => {
+    if (isPlaying || isPaused) {
+      console.debug("[AccessibilityWidget] Tab changed, stopping voice reader");
+      handleStopSpeech();
+    }
+  }, [currentTab]);
 
   // Auto-close widget on pressing Escape key
   useEffect(() => {
@@ -96,6 +290,8 @@ export default function AccessibilityWidget({
     setIsFacilitated(false);
     setHighContrast(false);
     setReadableFont(false);
+    handleStopSpeech();
+    setReadingSpeed(0.95);
   };
 
   const sizes = [
@@ -318,8 +514,193 @@ export default function AccessibilityWidget({
                   </div>
                 </div>
 
+                {/* Section 3: Assistente Vocale / Speech Reader */}
+                <div className="space-y-5 bg-[#111113]/40 p-6 sm:p-8 border border-[rgba(248,247,244,0.06)] mt-6 sm:mt-8">
+                  <div className="flex items-center gap-2.5 text-xs uppercase tracking-wider font-mono text-[#E35930] font-extrabold">
+                    <Volume2 className="w-4 h-4" />
+                    <span>{lang === "it" ? "5. Assistente Vocale (Lettura Pagina)" : "5. Voice Assistant (Page Reader)"}</span>
+                  </div>
+                  <p className="text-xs text-[#F8F7F4]/70 leading-relaxed">
+                    {lang === "it"
+                      ? "Ascolta una lettura naturale, fluida e ad alta fedeltà di tutto il contenuto scritto di questa pagina."
+                      : "Listen to a natural, fluent, and high-fidelity vocal rendering of all written page content."}
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
+                    {/* Controller Buttons */}
+                    <div className="md:col-span-4 flex flex-col gap-2">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-[#F8F7F4]/40 font-bold">
+                        {lang === "it" ? "Controlli Lettore" : "Reader Controls"}
+                      </span>
+                      <div className="flex items-center gap-2">
+                        {!isPlaying ? (
+                          <button
+                            onClick={handlePlaySpeech}
+                            className="flex-grow flex items-center justify-center gap-2 px-4 py-3 bg-[#E35930] hover:bg-[#E35930]/95 text-[#111113] hover:scale-[1.02] transition-all cursor-pointer text-xs uppercase font-mono font-bold"
+                            id="tts-play-btn"
+                          >
+                            <Play className="w-4 h-4 fill-current" />
+                            <span>{lang === "it" ? "Ascolta" : "Listen"}</span>
+                          </button>
+                        ) : (
+                          <button
+                            onClick={handlePauseSpeech}
+                            className="flex-grow flex items-center justify-center gap-2 px-4 py-3 bg-[#E35930] text-[#111113] hover:scale-[1.02] transition-all cursor-pointer text-xs uppercase font-mono font-bold animate-pulse"
+                            id="tts-pause-btn"
+                          >
+                            <Pause className="w-4 h-4 fill-current" />
+                            <span>{lang === "it" ? "Pausa" : "Pause"}</span>
+                          </button>
+                        )}
+
+                        {(isPlaying || isPaused || currentBlockIndex > 0) && (
+                          <button
+                            onClick={handleStopSpeech}
+                            className="p-3 bg-[#111113] hover:bg-[#E35930] border border-[rgba(248,247,244,0.15)] text-[#F8F7F4] hover:text-[#111113] transition-colors cursor-pointer"
+                            title={lang === "it" ? "Interrompi" : "Stop"}
+                            id="tts-stop-btn"
+                          >
+                            <Square className="w-4 h-4 fill-current" />
+                          </button>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Voice Selection */}
+                    <div className="md:col-span-4 flex flex-col gap-2 relative">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-[#F8F7F4]/40 font-bold">
+                        {lang === "it" ? "Sintetizzatore Vocale" : "Vocal Synthesizer"}
+                      </span>
+                      
+                      {voices.length > 0 ? (
+                        <div className="relative">
+                          <button
+                            onClick={() => setIsVoiceDropdownOpen(!isVoiceDropdownOpen)}
+                            className="w-full px-4 py-3 bg-[#111113] hover:bg-[#111113]/80 border border-[rgba(248,247,244,0.1)] hover:border-[rgba(248,247,244,0.25)] text-xs font-mono text-[#F8F7F4] flex items-center justify-between cursor-pointer transition-colors"
+                            id="tts-voice-dropdown-trigger"
+                          >
+                            <span className="truncate">
+                              {selectedVoiceName ? cleanVoiceName(selectedVoiceName) : (lang === "it" ? "Seleziona Voce" : "Select Voice")}
+                            </span>
+                            <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isVoiceDropdownOpen ? "rotate-180" : ""}`} />
+                          </button>
+
+                          <AnimatePresence>
+                            {isVoiceDropdownOpen && (
+                              <motion.div
+                                initial={{ opacity: 0, y: 5 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 5 }}
+                                className="absolute bottom-full mb-1 left-0 w-full max-h-48 overflow-y-auto bg-[#151518] border border-[rgba(248,247,244,0.15)] z-50 shadow-2xl"
+                              >
+                                {voices.map((voice) => {
+                                  const isSelected = voice.name === selectedVoiceName;
+                                  return (
+                                    <button
+                                      key={voice.name}
+                                      onClick={() => {
+                                        setSelectedVoiceName(voice.name);
+                                        setIsVoiceDropdownOpen(false);
+                                        if (isPlaying) {
+                                          synth?.cancel();
+                                          speakBlock(currentBlockIndex, textBlocks);
+                                        }
+                                      }}
+                                      className={`w-full text-left px-4 py-2.5 text-[11px] font-mono transition-colors flex items-center justify-between cursor-pointer hover:bg-[#E35930]/10 hover:text-[#E35930] ${
+                                        isSelected ? "bg-[#E35930]/10 text-[#E35930] font-bold" : "text-[#F8F7F4]/80"
+                                      }`}
+                                    >
+                                      <span className="truncate">{cleanVoiceName(voice.name)}</span>
+                                      {isSelected && <Check className="w-3.5 h-3.5" />}
+                                    </button>
+                                  );
+                                })}
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      ) : (
+                        <div className="px-4 py-3 bg-[#111113] border border-[rgba(248,247,244,0.05)] text-[11px] font-mono text-[#F8F7F4]/40">
+                          {lang === "it" ? "Voci di sistema non rilevate" : "System voices not detected"}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Speed Slider */}
+                    <div className="md:col-span-4 flex flex-col gap-2">
+                      <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-wider font-bold">
+                        <span className="text-[#F8F7F4]/40">{lang === "it" ? "Velocità di Lettura" : "Reading Speed"}</span>
+                        <span className="text-[#E35930]">{readingSpeed === 0.95 ? (lang === "it" ? "0.95x (Consigliata)" : "0.95x (Recommended)") : `${readingSpeed.toFixed(2)}x`}</span>
+                      </div>
+                      <div className="flex items-center gap-3 py-1 px-1">
+                        <span className="text-[10px] text-[#F8F7F4]/40 font-mono">0.7x</span>
+                        <input
+                          type="range"
+                          min="0.7"
+                          max="1.3"
+                          step="0.05"
+                          value={readingSpeed}
+                          onChange={(e) => {
+                            const val = parseFloat(e.target.value);
+                            setReadingSpeed(val);
+                            if (isPlaying) {
+                              synth?.cancel();
+                              speakBlock(currentBlockIndex, textBlocks);
+                            }
+                          }}
+                          className="flex-grow accent-[#E35930] h-1 bg-[rgba(248,247,244,0.15)] rounded-lg appearance-none cursor-pointer"
+                        />
+                        <span className="text-[10px] text-[#F8F7F4]/40 font-mono">1.3x</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Equalizer and progress details */}
+                  {(isPlaying || isPaused) && (
+                    <div className="bg-[#111113]/60 border border-[rgba(248,247,244,0.05)] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono">
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-0.5 h-4 w-6 shrink-0">
+                          {[1, 2, 3, 4, 5].map((i) => (
+                            <motion.span
+                              key={i}
+                              animate={{
+                                height: isPlaying 
+                                  ? [4, i * 3 + 2, 4] 
+                                  : 4
+                              }}
+                              transition={{
+                                duration: 0.6 + i * 0.1,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                              }}
+                              className="w-1 bg-[#E35930]"
+                            />
+                          ))}
+                        </div>
+                        <span className="text-[#F8F7F4]/80">
+                          {lang === "it" ? "Lettore Attivo" : "Voice Reader Active"}
+                        </span>
+                      </div>
+
+                      {textBlocks.length > 0 && (
+                        <div className="text-[10px] text-[#F8F7F4]/50 flex items-center gap-2">
+                          <span>
+                            {lang === "it" ? `Paragrafo ${currentBlockIndex + 1} di ${textBlocks.length}` : `Paragraph ${currentBlockIndex + 1} of ${textBlocks.length}`}
+                          </span>
+                          <div className="w-24 bg-[rgba(248,247,244,0.1)] h-1 rounded-sm overflow-hidden">
+                            <div 
+                              className="bg-[#E35930] h-full transition-all duration-300"
+                              style={{ width: `${((currentBlockIndex + 1) / textBlocks.length) * 100}%` }}
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+
                 {/* Bottom Reset Button */}
-                <div className="flex justify-center border-t border-[rgba(248,247,244,0.08)] pt-6 mt-2">
+                <div className="flex justify-center border-t border-[rgba(248,247,244,0.08)] pt-6 mt-6">
                   <button
                     onClick={resetSettings}
                     className="flex items-center gap-2 px-6 py-3.5 bg-[#111113] hover:bg-[#E35930] border border-[rgba(248,247,244,0.15)] text-[#F8F7F4] hover:text-[#111113] transition-all cursor-pointer text-xs uppercase tracking-wider font-mono font-bold"
@@ -337,6 +718,66 @@ export default function AccessibilityWidget({
                     : "Your accessibility parameters are automatically saved in the browser for future visits."}
                 </div>
               </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Floating Mini Player (Visible when reading is active, even if accessibility panel is closed) */}
+      <AnimatePresence>
+        {(isPlaying || isPaused) && !isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 50, x: "-50%" }}
+            animate={{ opacity: 1, scale: 1, y: 0, x: "-50%" }}
+            exit={{ opacity: 0, scale: 0.9, y: 50, x: "-50%" }}
+            className="fixed bottom-6 left-1/2 z-40 bg-[#151518]/95 border border-[rgba(248,247,244,0.15)] shadow-2xl p-3 px-5 text-[#F8F7F4] flex items-center gap-4 backdrop-blur-md select-none font-mono text-[10px] tracking-wider uppercase font-bold text-center"
+            id="floating-voice-player"
+          >
+            <div className="flex items-center gap-2">
+              <div className="w-2.5 h-2.5 rounded-full bg-[#E35930] relative flex items-center justify-center">
+                {isPlaying && (
+                  <span className="absolute inset-0 rounded-full bg-[#E35930] animate-ping opacity-75" />
+                )}
+              </div>
+              <span className="text-[#F8F7F4]/70 hidden sm:inline">
+                {lang === "it" ? "Sintesi Vocale" : "Voice Reader"}
+              </span>
+            </div>
+
+            {textBlocks.length > 0 && (
+              <span className="text-[#E35930]">
+                {currentBlockIndex + 1}/{textBlocks.length}
+              </span>
+            )}
+
+            <div className="h-4 w-[1px] bg-[rgba(248,247,244,0.15)]" />
+
+            <div className="flex items-center gap-1.5">
+              {isPlaying ? (
+                <button
+                  onClick={handlePauseSpeech}
+                  className="p-1.5 hover:bg-[#E35930] text-[#E35930] hover:text-[#111113] transition-colors cursor-pointer"
+                  title={lang === "it" ? "Pausa" : "Pause"}
+                >
+                  <Pause className="w-3.5 h-3.5 fill-current" />
+                </button>
+              ) : (
+                <button
+                  onClick={handlePlaySpeech}
+                  className="p-1.5 hover:bg-[#E35930] text-[#E35930] hover:text-[#111113] transition-colors cursor-pointer"
+                  title={lang === "it" ? "Riproduci" : "Play"}
+                >
+                  <Play className="w-3.5 h-3.5 fill-current" />
+                </button>
+              )}
+
+              <button
+                onClick={handleStopSpeech}
+                className="p-1.5 hover:bg-[#E35930] text-[#F8F7F4]/60 hover:text-[#111113] transition-colors cursor-pointer"
+                title={lang === "it" ? "Interrompi" : "Stop"}
+              >
+                <Square className="w-3.5 h-3.5 fill-current" />
+              </button>
             </div>
           </motion.div>
         )}
