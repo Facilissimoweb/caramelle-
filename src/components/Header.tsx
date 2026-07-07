@@ -160,18 +160,22 @@ export default function Header({
         </button>
 
         {/* Desktop Navigation */}
-        <nav className="hidden xl:flex items-center justify-center flex-1 gap-8 xl:gap-12 max-w-4xl mx-auto">
+        <nav 
+          className="hidden xl:flex items-center justify-center flex-1 gap-8 xl:gap-12 max-w-4xl mx-auto"
+          style={{ fontSize: "19px" }}
+        >
           {navItems.map((item) => {
             const isActive = currentTab === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`text-[10px] uppercase tracking-[0.2em] font-bold py-1.5 border-b-2 relative cursor-pointer transition-all ${
+                className={`uppercase tracking-[0.2em] font-bold py-1.5 border-b-2 relative cursor-pointer transition-all ${
                   isActive
                     ? "text-[#E35930] border-[#E35930]"
                     : "text-[#F8F7F4]/50 hover:text-[#F8F7F4] border-transparent hover:border-[#F8F7F4]/20"
                 }`}
+                style={{ fontSize: "19px" }}
                 id={`nav-${item.id}`}
               >
                 {item.label}
