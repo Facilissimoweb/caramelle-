@@ -55,7 +55,9 @@ export default function CyberAiGuideApp() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [imgError, setImgError] = useState<Record<number, boolean>>({});
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchStartY, setTouchStartY] = useState<number | null>(null);
   const [touchEndX, setTouchEndX] = useState<number | null>(null);
+  const [touchEndY, setTouchEndY] = useState<number | null>(null);
 
   const nextSlide = () => {
     if (currentSlide < slides.length - 1) setCurrentSlide(currentSlide + 1);
@@ -69,63 +71,68 @@ export default function CyberAiGuideApp() {
 
   const isLastSlide = currentSlide === slides.length - 1;
 
-  // Touch Swipe Handlers for mobile navigation
+  // Touch Swipe Handlers for mobile navigation without page scroll interference
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.targetTouches[0].clientX);
+    setTouchStartY(e.targetTouches[0].clientY);
     setTouchEndX(null);
+    setTouchEndY(null);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
     setTouchEndX(e.targetTouches[0].clientX);
+    setTouchEndY(e.targetTouches[0].clientY);
   };
 
   const handleTouchEnd = () => {
-    if (touchStartX === null || touchEndX === null) return;
-    const distance = touchStartX - touchEndX;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
+    if (touchStartX === null || touchEndX === null || touchStartY === null || touchEndY === null) return;
+    const diffX = touchStartX - touchEndX;
+    const diffY = touchStartY - touchEndY;
 
-    if (isLeftSwipe) {
-      nextSlide();
-    } else if (isRightSwipe) {
-      prevSlide();
+    // Only trigger horizontal swipe if movement is mostly horizontal & exceeds 50px
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+      if (diffX > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
     }
   };
 
-  // Gestione colori neon dinamici
+  // Gestione colori neon dinamici garantiti (no purge Tailwind)
   const getNeonStyles = (colorStr: "cyan" | "pink" | "yellow" | "green") => {
     const colors = {
-      cyan: { text: 'text-cyan-400', border: 'border-cyan-500', shadow: 'shadow-[0_0_15px_rgba(6,182,212,0.6)]' },
-      pink: { text: 'text-pink-500', border: 'border-pink-500', shadow: 'shadow-[0_0_15px_rgba(236,72,153,0.6)]' },
-      yellow: { text: 'text-yellow-400', border: 'border-yellow-400', shadow: 'shadow-[0_0_15px_rgba(250,204,21,0.6)]' },
-      green: { text: 'text-green-400', border: 'border-green-400', shadow: 'shadow-[0_0_15px_rgba(74,222,128,0.6)]' }
+      cyan: { text: 'text-cyan-400', border: 'border-cyan-500/40', shadow: '0 0 15px rgba(6,182,212,0.5)', rgb: '#22d3ee' },
+      pink: { text: 'text-pink-500', border: 'border-pink-500/40', shadow: '0 0 15px rgba(236,72,153,0.5)', rgb: '#ec4899' },
+      yellow: { text: 'text-yellow-400', border: 'border-yellow-400/40', shadow: '0 0 15px rgba(250,204,21,0.5)', rgb: '#facc15' },
+      green: { text: 'text-green-400', border: 'border-green-400/40', shadow: '0 0 15px rgba(74,222,128,0.5)', rgb: '#4ade80' }
     };
     return colors[colorStr] || colors.cyan;
   };
 
   return (
-    <div className="flex items-center justify-center p-1.5 sm:p-4 bg-transparent font-mono w-full">
-      {/* Contenitore stile Smartphone / Cyberdeck */}
-      <div className="relative w-full max-w-[460px] h-[660px] sm:h-[720px] bg-[#111113] border-2 border-gray-800 rounded-3xl overflow-hidden flex flex-col shadow-[0_0_50px_rgba(227,89,48,0.1)]">
+    <div className="flex items-center justify-center p-2 sm:p-4 bg-transparent font-mono w-full">
+      {/* Contenitore stile Smartphone / Cyberdeck con cornice reale floating */}
+      <div className="relative w-[92%] min-[390px]:w-[86%] xs:w-[80%] sm:w-full sm:max-w-[420px] h-[640px] sm:h-[700px] bg-[#111113] border-4 border-[#1b1b1f] rounded-[38px] overflow-hidden flex flex-col shadow-[0_0_50px_rgba(227,89,48,0.12)] ring-[10px] ring-black/60">
         
         {/* Header Terminale */}
-        <div className="px-4 py-3 bg-[#151518] border-b border-gray-800 flex justify-between items-center z-10">
+        <div className="px-5 py-3.5 bg-[#151518] border-b border-gray-800 flex justify-between items-center z-10">
           <div className="flex items-center gap-2">
             <Cpu className="w-4 h-4 text-[#E35930] animate-pulse" />
             <span className="font-bold text-gray-300 text-[10px] tracking-[0.2em] uppercase">
               SYS.FAQ_V1.0
             </span>
           </div>
-          <div className="flex gap-1">
-            <div className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_5px_rgba(239,68,68,0.8)]"></div>
-            <div className="w-1.5 h-1.5 rounded-full bg-yellow-500 shadow-[0_0_5px_rgba(234,179,8,0.8)]"></div>
-            <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_5px_rgba(34,197,94,0.8)]"></div>
+          <div className="flex gap-1.5">
+            <div className="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_5px_rgba(239,68,68,0.8)]"></div>
+            <div className="w-2 h-2 rounded-full bg-yellow-500 shadow-[0_0_5px_rgba(234,179,8,0.8)]"></div>
+            <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_5px_rgba(34,197,94,0.8)]"></div>
           </div>
         </div>
 
         {/* Corpo Scorrevole */}
         <div 
-          className="flex-grow relative overflow-hidden bg-[#111113] touch-pan-y"
+          className="flex-grow relative overflow-hidden bg-[#111113]"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -134,6 +141,9 @@ export default function CyberAiGuideApp() {
           <div className="absolute inset-0 opacity-10 pointer-events-none" 
                style={{ backgroundImage: 'linear-gradient(transparent 95%, #E35930 100%), linear-gradient(90deg, transparent 95%, #E35930 100%)', backgroundSize: '25px 25px' }}>
           </div>
+
+          {/* CRT Scanline Overlay Effect */}
+          <div className="scanline-effect"></div>
 
           {slides.map((slide, index) => {
             const neon = getNeonStyles(slide.neonColor);
@@ -155,16 +165,27 @@ export default function CyberAiGuideApp() {
                   {/* Effetto scanline sopra l'immagine */}
                   <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==')] z-20 pointer-events-none opacity-50"></div>
                   
-                  <img 
-                    src={imgError[slide.id] ? "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" : slide.image} 
-                    alt={`Immagine Cyberpunk per ${slide.title}`}
-                    onError={() => setImgError(prev => ({ ...prev, [slide.id]: true }))}
-                    className="w-full h-full object-cover opacity-80 mix-blend-luminosity filter contrast-125 brightness-75"
-                    referrerPolicy="no-referrer"
-                  />
+                  {imgError[slide.id] ? (
+                    <div className="absolute inset-0 bg-slate-950 flex flex-col items-center justify-center p-4">
+                      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#E35930_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                      <Cpu className="w-8 h-8 text-gray-600 mb-2 animate-pulse" />
+                      <span className="text-[9px] font-mono text-gray-500 uppercase tracking-widest">DATA_STREAM_OFFLINE</span>
+                    </div>
+                  ) : (
+                    <img 
+                      src={slide.image} 
+                      alt={`Immagine Cyberpunk per ${slide.title}`}
+                      onError={() => setImgError(prev => ({ ...prev, [slide.id]: true }))}
+                      className="w-full h-full object-cover opacity-80 mix-blend-luminosity filter contrast-125 brightness-75"
+                      referrerPolicy="no-referrer"
+                    />
+                  )}
                   
                   {/* Etichetta sopra l'immagine */}
-                  <div className={`absolute bottom-3 left-3 z-30 bg-black/85 px-2.5 py-1 text-[10px] border ${neon.border} ${neon.text} uppercase tracking-widest backdrop-blur-sm font-mono font-bold`}>
+                  <div 
+                    className={`absolute bottom-3 left-3 z-30 bg-black/85 px-2.5 py-1 text-[10px] border uppercase tracking-widest backdrop-blur-sm font-mono font-bold ${neon.text}`}
+                    style={{ borderColor: neon.rgb, boxShadow: neon.shadow }}
+                  >
                     // {slide.title}
                   </div>
                 </div>
@@ -179,7 +200,7 @@ export default function CyberAiGuideApp() {
                      <span className="text-gray-500 text-[10px] uppercase tracking-widest block font-mono">QUERY:</span>
                      <h2 className={`text-base font-bold ${neon.text} uppercase leading-tight mt-1 font-mono flex items-center gap-1.5`}>
                        &gt; {slide.faq}
-                       <span className="relative flex h-2 w-2">
+                       <span className="relative flex h-2 w-2" style={{ color: neon.rgb }}>
                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-current opacity-75"></span>
                          <span className="relative inline-flex rounded-full h-2 w-2 bg-current"></span>
                        </span>
@@ -202,19 +223,22 @@ export default function CyberAiGuideApp() {
         <div className="bg-[#151518] p-5 border-t border-gray-800 z-10">
           {/* Indicatore Dati */}
           <div className="flex gap-2 mb-4">
-            {slides.map((s, idx) => (
-              <div 
-                key={idx} 
-                className={`h-1 flex-grow transition-all duration-300 ${
-                  idx === currentSlide 
-                    ? `bg-${s.neonColor}-500 shadow-[0_0_10px_currentColor]` 
-                    : idx < currentSlide 
-                      ? 'bg-gray-700' 
-                      : 'bg-gray-900'
-                }`}
-                style={{ backgroundColor: idx === currentSlide ? (s.neonColor === 'cyan' ? '#06b6d4' : s.neonColor === 'pink' ? '#ec4899' : s.neonColor === 'yellow' ? '#eab308' : '#22c55e') : undefined }}
-              />
-            ))}
+            {slides.map((s, idx) => {
+              const isActive = idx === currentSlide;
+              const isPassed = idx < currentSlide;
+              const neon = getNeonStyles(s.neonColor);
+              
+              return (
+                <div 
+                  key={idx} 
+                  className="h-1 flex-grow transition-all duration-300"
+                  style={{ 
+                    backgroundColor: isActive ? neon.rgb : isPassed ? '#374151' : '#1f2937',
+                    boxShadow: isActive ? neon.shadow : 'none'
+                  }}
+                />
+              );
+            })}
           </div>
 
           {/* Pulsanti */}
