@@ -345,8 +345,9 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated }: HomeVie
         </div>
       </section>
 
-      {/* Dynamic Gallery & Media Assets */}
-      <GallerySection lang={lang} isFacilitated={isFacilitated} />
+
+      {/* Dynamic Gallery & Media Assets - Hidden from online public view as requested */}
+      {/* <GallerySection lang={lang} isFacilitated={isFacilitated} /> */}
 
       {/* Testimonial Section */}
       <section className="py-24 bg-[#151518] border-y border-[rgba(248,247,244,0.1)] relative overflow-hidden">
