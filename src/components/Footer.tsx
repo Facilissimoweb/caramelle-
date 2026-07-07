@@ -67,6 +67,7 @@ export default function Footer({ setCurrentTab, onOpenModal, lang, onOpenCookieS
               { id: "proposte", label: "Proposte" },
               { id: "contatti", label: "Contatti" },
               { id: "chat", label: "Assistente Chat AI" },
+              { id: "blog", label: "Blog & News" },
             ].map((link) => (
               <li key={link.id}>
                 <button

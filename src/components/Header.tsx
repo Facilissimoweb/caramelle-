@@ -122,11 +122,11 @@ export default function Header({
 
   const navItems = [
     { id: "home", label: t.navInizio },
-    { id: "blog", label: t.navBlog },
     { id: "chi-sono", label: t.navChiSono },
     { id: "proposte", label: t.navProposte },
     { id: "contatti", label: t.navContatti },
     { id: "chat", label: t.navChat },
+    { id: "blog", label: t.navBlog },
   ];
 
   const handleNavClick = (tabId: string) => {

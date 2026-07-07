@@ -13,7 +13,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
     {
       id: "welcome",
       role: "model",
-      text: "Ciao! Sono l'assistente virtuale di **Facilissimo Web**. \n\nPosso aiutarti a capire come lavora **M. Teresa Rogani**, spiegarti i dettagli delle proposte (Starter, Professional, Enterprise) e guidarti nella definizione degli obiettivi per il tuo nuovo sito web. \n\nCosa vorresti chiedermi oggi?",
+      text: "Ciao! Sono **M. Teresa Rogani**, titolare di **Facilissimo Web**. \n\nLavoro da sola come Freelance Web Designer per garantire cura diretta, velocità e prezzi chiari per ciascuno dei miei clienti. Posso spiegarti come posso aiutarti, illustrarti le mie proposte (Starter, Professional, Enterprise) e guidarti nel definire il tuo nuovo sito web. \n\nCosa vorresti chiedermi oggi?",
       timestamp: new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" }),
     },
   ]);
@@ -25,9 +25,9 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
 
   const quickQuestions = [
     "Quali sono i tempi per il piano AI Professional?",
-    "Teresa lavora da sola o c'è un team?",
-    "Come l'Intelligenza Artificiale riduce i costi?",
-    "Che tipo di supporto tecnico è incluso?",
+    "Lavori da sola o hai un team?",
+    "Come usi l'Intelligenza Artificiale per ridurre i costi?",
+    "Che tipo di supporto tecnico offri?",
   ];
 
   const scrollToBottom = () => {
@@ -355,7 +355,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
                 >
                   <div className="bg-[#111113] p-4 rounded-none border border-[rgba(248,247,244,0.1)] flex items-center gap-2 shadow-sm">
                     <span className="text-xs font-mono text-[#F8F7F4]/60 italic">
-                      Teresa sta formulando la risposta
+                      Teresa sta scrivendo
                     </span>
                     <span className="flex gap-1">
                       <span className="w-1 h-1 bg-[#E35930] animate-bounce delay-100"></span>
