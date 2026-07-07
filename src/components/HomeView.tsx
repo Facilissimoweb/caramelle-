@@ -3,6 +3,7 @@ import { Brain, Cpu, Zap, ArrowRight, Heart, CheckCircle2 } from "lucide-react";
 import { translations } from "../translations";
 import FAQAccordion from "./FAQAccordion";
 import GallerySection from "./GallerySection";
+import CyberAiGuideApp from "./CyberAiGuideApp";
 
 interface HomeViewProps {
   setCurrentTab: (tab: string) => void;
@@ -341,6 +342,54 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated }: HomeVie
                 </CardComponent>
               );
             })}
+          </div>
+
+          {/* Interactive Advanced AI Project App Showcase */}
+          <div className="mt-20 pt-20 border-t border-[rgba(248,247,244,0.1)]">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              <div className="lg:col-span-6 space-y-6">
+                <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
+                  {lang === "it" ? "[ CODICE INTERATTIVO LIVE ]" : "[ LIVE INTERACTIVE CODE ]"}
+                </span>
+                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#F8F7F4] leading-[1.1]">
+                  {lang === "it" ? (
+                    <>
+                      Guida all'IA per <span className="italic font-normal text-[#E35930]">Microimprese Locali</span>
+                    </>
+                  ) : (
+                    <>
+                      AI Handbook for <span className="italic font-normal text-[#E35930]">Local Businesses</span>
+                    </>
+                  )}
+                </h3>
+                <p className="text-[#F8F7F4]/70 font-sans text-xs sm:text-sm leading-relaxed">
+                  {lang === "it"
+                    ? "Vuoi capire come l'Intelligenza Artificiale può davvero far decollare la tua attività o il tuo studio professionale a Macerata e nelle Marche, senza spendere un patrimonio? Abbiamo sviluppato questa guida e-book interattiva in stile Cyberdeck per sfatare i miti comuni e darti risposte trasparenti in pochi secondi."
+                    : "Want to understand how Artificial Intelligence can realistically elevate your local microenterprise or freelance practice, without spending a fortune? We built this interactive, cyberpunk-style mobile deck guide to break down common myths and provide plain answers instantly."}
+                </p>
+
+                <div className="space-y-4 font-sans text-xs text-[#F8F7F4]/70 leading-relaxed">
+                  <div className="flex gap-3 items-start">
+                    <div className="w-5 h-5 rounded-full bg-emerald-950 border border-emerald-800 flex items-center justify-center text-emerald-400 text-[10px] font-mono shrink-0 mt-0.5">✓</div>
+                    <div>
+                      <h4 className="font-display font-bold text-xs text-[#F8F7F4]">{lang === "it" ? "Interazione in tempo reale" : "Real-time interaction"}</h4>
+                      <p className="text-[11px] text-[#F8F7F4]/50 leading-relaxed">{lang === "it" ? "Prova subito il dispositivo virtuale scorrendo le schede FAQ tramite il pulsante 'Execute'." : "Test the virtual device instantly by swiping through the FAQ slides with the 'Execute' control."}</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3 items-start">
+                    <div className="w-5 h-5 rounded-full bg-emerald-950 border border-emerald-800 flex items-center justify-center text-emerald-400 text-[10px] font-mono shrink-0 mt-0.5">✓</div>
+                    <div>
+                      <h4 className="font-display font-bold text-xs text-[#F8F7F4]">{lang === "it" ? "Nessun reindirizzamento esterno" : "Zero external redirects"}</h4>
+                      <p className="text-[11px] text-[#F8F7F4]/50 leading-relaxed">{lang === "it" ? "La mini-applicazione è integrata direttamente per farti testare le performance del codice leggero." : "The mini-application is directly embedded to let you experience the high performance of optimized code."}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="lg:col-span-6 flex justify-center w-full">
+                <CyberAiGuideApp />
+              </div>
+            </div>
           </div>
         </div>
       </section>
