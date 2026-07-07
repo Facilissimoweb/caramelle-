@@ -37,6 +37,22 @@ export default function Footer({ setCurrentTab, onOpenModal, lang, onOpenCookieS
             </p>
             <p className="text-[#F8F7F4]/40 font-normal">P.IVA: IT01234567890 (Simulata)</p>
           </div>
+          
+          <div className="pt-4 space-y-2">
+            <span className="text-[9px] font-mono tracking-[0.2em] text-[#F8F7F4]/40 uppercase block">
+              {lang === "it" ? "METODI DI PAGAMENTO ACCETTATI" : "ACCEPTED PAYMENT METHODS"}
+            </span>
+            <div className="flex flex-wrap gap-1.5">
+              {["Stripe", "Visa", "Mastercard", "Apple Pay", "Google Pay", "Bonifico SEPA"].map((method) => (
+                <span
+                  key={method}
+                  className="px-2 py-0.5 bg-[#1a1a1e] border border-[rgba(248,247,244,0.06)] text-[9px] font-mono tracking-wider text-[#F8F7F4]/70 hover:border-[#E35930]/30 transition-colors cursor-default"
+                >
+                  {method}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Navigation Links */}

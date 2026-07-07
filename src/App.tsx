@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomeView from "./components/HomeView";
@@ -122,8 +124,77 @@ export const initTrackingConsentUtility = () => {
   }
 };
 
+const TABS_ORDER = ["home", "blog", "chi-sono", "proposte", "contatti", "chat"];
+
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>("home");
+  const [slideDirection, setSlideDirection] = useState<"left" | "right">("left");
+
+  // Touch Swipe Gesture Tracking for "sfogliabile scivolando"
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 60; // Next page (slide to right, screen moves left)
+    const isRightSwipe = distance < -60; // Previous page (slide to left, screen moves right)
+
+    const currentIndex = TABS_ORDER.indexOf(currentTab);
+
+    if (isLeftSwipe && currentIndex < TABS_ORDER.length - 1) {
+      setSlideDirection("left");
+      setCurrentTab(TABS_ORDER[currentIndex + 1]);
+    } else if (isRightSwipe && currentIndex > 0) {
+      setSlideDirection("right");
+      setCurrentTab(TABS_ORDER[currentIndex - 1]);
+    }
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
+  const handleSetTab = (newTab: string) => {
+    if (newTab === currentTab) return;
+    const currentIndex = TABS_ORDER.indexOf(currentTab);
+    const newIndex = TABS_ORDER.indexOf(newTab);
+    if (newIndex !== -1 && currentIndex !== -1) {
+      setSlideDirection(newIndex > currentIndex ? "left" : "right");
+    }
+    setCurrentTab(newTab);
+  };
+
+  const getTabLabel = (tabId: string) => {
+    if (lang === "it") {
+      switch (tabId) {
+        case "home": return "Inizio";
+        case "blog": return "Blog & News";
+        case "chi-sono": return "Chi Sono";
+        case "proposte": return "Proposte";
+        case "contatti": return "Contatti";
+        case "chat": return "Assistente AI";
+        default: return tabId;
+      }
+    } else {
+      switch (tabId) {
+        case "home": return "Home";
+        case "blog": return "Blog & News";
+        case "chi-sono": return "About Me";
+        case "proposte": return "Proposals";
+        case "contatti": return "Contact";
+        case "chat": return "AI Chat";
+        default: return tabId;
+      }
+    }
+  };
+
   const [lang, setLang] = useState<"it" | "en">("it");
   const [isFacilitated, setIsFacilitated] = useState<boolean>(() => {
     const saved = localStorage.getItem("facilissimo-facil");
@@ -232,21 +303,23 @@ export default function App() {
   const renderActiveView = () => {
     switch (currentTab) {
       case "home":
-        return <HomeView setCurrentTab={setCurrentTab} lang={lang} isFacilitated={isFacilitated} />;
+        return <HomeView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} />;
       case "chi-sono":
-        return <AboutView setCurrentTab={setCurrentTab} lang={lang} isFacilitated={isFacilitated} />;
+        return <AboutView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} />;
       case "proposte":
-        return <ProposteView setCurrentTab={setCurrentTab} lang={lang} isFacilitated={isFacilitated} />;
+        return <ProposteView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} />;
       case "contatti":
         return <ContattiView lang={lang} isFacilitated={isFacilitated} />;
       case "chat":
         return <ChatView lang={lang} isFacilitated={isFacilitated} />;
       case "blog":
-        return <BlogView lang={lang} isFacilitated={isFacilitated} setCurrentTab={setCurrentTab} />;
+        return <BlogView lang={lang} isFacilitated={isFacilitated} setCurrentTab={handleSetTab} />;
       default:
-        return <HomeView setCurrentTab={setCurrentTab} lang={lang} isFacilitated={isFacilitated} />;
+        return <HomeView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} />;
     }
   };
+
+  const currentIndex = TABS_ORDER.indexOf(currentTab);
 
   return (
     <div className={`min-h-screen bg-[#111113] text-[#F8F7F4] flex flex-col selection:bg-[#E35930]/20 selection:text-[#E35930] antialiased ${
@@ -257,19 +330,24 @@ export default function App() {
       {/* Navigation Header */}
       <Header
         currentTab={currentTab}
-        setCurrentTab={setCurrentTab}
+        setCurrentTab={handleSetTab}
         lang={lang}
         setLang={setLang}
         isFacilitated={isFacilitated}
         setIsFacilitated={setIsFacilitated}
       />
 
-      {/* Main View Area with top offset to clear fixed header */}
-      <main className={`flex-grow pt-20 ${
-        highContrast ? "accessibility-high-contrast" : ""
-      } ${
-        isFacilitated ? "accessibility-facilitated-contrast" : ""
-      }`}>
+      {/* Main View Area with top offset to clear fixed header and touch swipe gesture handlers */}
+      <main 
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        className={`flex-grow pt-20 overflow-x-hidden ${
+          highContrast ? "accessibility-high-contrast" : ""
+        } ${
+          isFacilitated ? "accessibility-facilitated-contrast" : ""
+        }`}
+      >
         <div className="w-full">
           {isFacilitated && (
             <div className="bg-[#E35930] text-[#111113] text-center text-xs py-2 px-4 font-mono font-bold uppercase tracking-wider animate-pulse" id="facilitated-badge-banner">
@@ -278,13 +356,112 @@ export default function App() {
                 : "Simplified Mode Active — Larger fonts and simpler layout"}
             </div>
           )}
-          {renderActiveView()}
+          
+          <AnimatePresence mode="wait" custom={slideDirection}>
+            <motion.div
+              key={currentTab}
+              custom={slideDirection}
+              initial={{ opacity: 0, x: slideDirection === "left" ? 24 : -24 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: slideDirection === "left" ? -24 : 24 }}
+              transition={{ duration: 0.28, ease: "easeInOut" }}
+              className="w-full"
+            >
+              {renderActiveView()}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </main>
 
+      {/* Interactive Page-Turning Slide Navigator */}
+      <div className="w-full border-t border-[rgba(248,247,244,0.06)] bg-[#131315]/95 backdrop-blur-md py-6 px-6 relative z-30">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 font-mono">
+          {/* Previous Page Button */}
+          {currentIndex > 0 ? (
+            <button
+              onClick={() => {
+                setSlideDirection("right");
+                setCurrentTab(TABS_ORDER[currentIndex - 1]);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="flex items-center gap-2.5 text-xs text-[#F8F7F4]/60 hover:text-[#E35930] transition-all py-2 border border-transparent hover:border-[rgba(248,247,244,0.08)] px-4 bg-transparent cursor-pointer group"
+              id="slide-nav-prev"
+            >
+              <ChevronLeft className="w-4 h-4 text-[#E35930] group-hover:-translate-x-1 transition-transform" />
+              <div className="text-left">
+                <span className="text-[9px] block text-[#F8F7F4]/40 uppercase tracking-widest font-normal">
+                  {lang === "it" ? "Sezione Precedente" : "Previous Section"}
+                </span>
+                <span className="font-bold uppercase tracking-wider text-[11px] text-[#F8F7F4]/80 group-hover:text-[#E35930]">
+                  {getTabLabel(TABS_ORDER[currentIndex - 1])}
+                </span>
+              </div>
+            </button>
+          ) : (
+            <div className="hidden sm:block w-40" />
+          )}
+
+          {/* Center Swipe Indicator & Dots */}
+          <div className="flex flex-col items-center gap-2 py-1">
+            <div className="flex items-center gap-2">
+              <span className="w-1 h-1 bg-[#E35930] rounded-full animate-ping" />
+              <span className="text-[9px] tracking-[0.25em] uppercase text-[#F8F7F4]/40 font-bold">
+                {lang === "it" ? "Scivola o trascina per sfogliare" : "Swipe or click to slide"}
+              </span>
+              <span className="w-1 h-1 bg-[#E35930] rounded-full animate-ping" />
+            </div>
+            
+            {/* Nav dots */}
+            <div className="flex items-center gap-1.5">
+              {TABS_ORDER.map((tab, idx) => (
+                <button
+                  key={tab}
+                  onClick={() => {
+                    const direction = idx > currentIndex ? "left" : "right";
+                    setSlideDirection(direction);
+                    setCurrentTab(tab);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className={`h-1.5 transition-all duration-300 rounded-full cursor-pointer ${
+                    tab === currentTab ? "w-6 bg-[#E35930]" : "w-1.5 bg-[rgba(248,247,244,0.15)] hover:bg-[#E35930]/40"
+                  }`}
+                  title={getTabLabel(tab)}
+                  id={`slide-nav-dot-${tab}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Next Page Button */}
+          {currentIndex < TABS_ORDER.length - 1 ? (
+            <button
+              onClick={() => {
+                setSlideDirection("left");
+                setCurrentTab(TABS_ORDER[currentIndex + 1]);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="flex items-center gap-2.5 text-xs text-[#F8F7F4]/60 hover:text-[#E35930] transition-all py-2 border border-transparent hover:border-[rgba(248,247,244,0.08)] px-4 bg-transparent cursor-pointer text-right group"
+              id="slide-nav-next"
+            >
+              <div className="text-right">
+                <span className="text-[9px] block text-[#F8F7F4]/40 uppercase tracking-widest font-normal">
+                  {lang === "it" ? "Prossima Sezione" : "Next Section"}
+                </span>
+                <span className="font-bold uppercase tracking-wider text-[11px] text-[#F8F7F4]/80 group-hover:text-[#E35930]">
+                  {getTabLabel(TABS_ORDER[currentIndex + 1])}
+                </span>
+              </div>
+              <ChevronRight className="w-4 h-4 text-[#E35930] group-hover:translate-x-1 transition-transform" />
+            </button>
+          ) : (
+            <div className="hidden sm:block w-40" />
+          )}
+        </div>
+      </div>
+
       {/* Page Footer */}
       <Footer 
-        setCurrentTab={setCurrentTab} 
+        setCurrentTab={handleSetTab} 
         onOpenModal={setActiveModal} 
         lang={lang} 
         onOpenCookieSettings={() => setForceShowCookieBanner(true)} 

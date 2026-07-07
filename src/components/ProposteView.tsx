@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Check, Box, ShieldCheck } from "lucide-react";
 import FAQAccordion from "./FAQAccordion";
+import StripePaymentsDemo from "./StripePaymentsDemo";
 
 interface ProposteViewProps {
   setCurrentTab: (tab: string) => void;
@@ -324,6 +325,9 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
           </div>
         </div>
       </section>
+
+      {/* Stripe Payment Integration Guide and Sandbox Demo */}
+      <StripePaymentsDemo lang={lang} isFacilitated={isFacilitated} />
 
       {/* FAQ Section */}
       <section className="py-24 bg-[#111113]">
