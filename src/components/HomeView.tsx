@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Brain, Cpu, Zap, ArrowRight, Heart, CheckCircle2 } from "lucide-react";
 import { translations } from "../translations";
 import FAQAccordion from "./FAQAccordion";
+import GallerySection from "./GallerySection";
 
 interface HomeViewProps {
   setCurrentTab: (tab: string) => void;
@@ -343,6 +344,9 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated }: HomeVie
           </div>
         </div>
       </section>
+
+      {/* Dynamic Gallery & Media Assets */}
+      <GallerySection lang={lang} isFacilitated={isFacilitated} />
 
       {/* Testimonial Section */}
       <section className="py-24 bg-[#151518] border-y border-[rgba(248,247,244,0.1)] relative overflow-hidden">
