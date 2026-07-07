@@ -345,66 +345,6 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
 
       {/* Dynamic Gallery & Media Assets - Hidden from online public view as requested */}
       {/* <GallerySection lang={lang} isFacilitated={isFacilitated} /> */}
-
-      {/* Testimonial Section */}
-      <section className="py-24 bg-[#151518] border-y border-[rgba(248,247,244,0.1)] relative overflow-hidden">
-        <div className="max-w-3xl mx-auto px-6 text-center relative z-10 space-y-8">
-          <div className="inline-flex p-3 border border-[#E35930]/30 text-[#E35930]">
-            <Heart className="w-5 h-5" />
-          </div>
-
-          <h2 className="font-display text-2xl sm:text-3xl font-medium italic tracking-tight text-[#F8F7F4] leading-relaxed">
-            {t.testimonialQuote}
-          </h2>
-
-          <div className="flex flex-col items-center space-y-2">
-            <div className="w-16 h-16 border border-[#E35930]/30 overflow-hidden bg-[#111113]">
-              <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200"
-                alt="Alessandro Bianchi client headshot"
-                className="w-full h-full object-cover grayscale contrast-110"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-            <p className="font-bold text-[#F8F7F4] text-base">{t.testimonialAuthor}</p>
-            <p className="text-[9px] text-[#E35930] font-mono tracking-widest uppercase font-bold">
-              {t.testimonialRole}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* AI Co-creation Disclosure */}
-      <section className="py-16 bg-[#151518]/60 border-b border-[rgba(248,247,244,0.1)]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="space-y-3 max-w-3xl text-left">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 border border-[#E35930]/30 bg-[#E35930]/5 text-[#E35930] font-mono text-[9px] font-bold tracking-[0.2em] uppercase">
-              <Sparkles className="w-3.5 h-3.5 animate-pulse" />
-              <span>{lang === "it" ? "TRASPARENZA & CO-CREAZIONE AI" : "AI TRANSPARENCY & CO-CREATION"}</span>
-            </div>
-            <h3 className="font-display text-xl sm:text-2xl font-bold text-[#F8F7F4]">
-              {lang === "it" 
-                ? "Dichiarazione sul coinvolgimento dell'Intelligenza Artificiale" 
-                : "Declaration on Artificial Intelligence Involvement"}
-            </h3>
-            <p className="text-xs sm:text-sm text-[#F8F7F4]/70 leading-relaxed font-sans">
-              {lang === "it" 
-                ? "Dichiariamo espressamente che tutti gli articoli, le immagini e i contenuti presenti su questo sito sono stati creati o ottimizzati con il coinvolgimento di sistemi di Intelligenza Artificiale (AI), successivamente supervisionati, riscritti e rifiniti interamente a mano da Teresa per garantire la massima accuratezza."
-                : "We explicitly declare that all articles, images, and content on this website have been created or optimized with the involvement and assistance of Artificial Intelligence (AI) systems, subsequently reviewed, rewritten, and manually refined by Teresa to guarantee maximum accuracy."}
-            </p>
-          </div>
-          {onOpenModal && (
-            <button 
-              onClick={() => onOpenModal("ethics")}
-              className="text-[#E35930] hover:text-[#F8F7F4] font-mono text-[10px] font-bold tracking-widest uppercase border border-[#E35930]/30 hover:border-[#E35930] px-5 py-3 transition-all whitespace-nowrap cursor-pointer shrink-0 hover:bg-[#E35930]/5"
-              id="ai-disclosure-learn-more"
-            >
-              {lang === "it" ? "AI Ethics & Manifesto" : "AI Ethics & Manifesto"}
-            </button>
-          )}
-        </div>
-      </section>
-
       {/* FAQ Section */}
       <section className="py-24 border-b border-[rgba(248,247,244,0.1)] bg-[#111113]">
         <FAQAccordion

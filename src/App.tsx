@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Home, Share2, Copy, Check } from "lucide-react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomeView from "./components/HomeView";
@@ -128,7 +128,31 @@ const TABS_ORDER = ["home", "chi-sono", "proposte", "contatti", "chat", "blog"];
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>("home");
+  const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
   const [slideDirection, setSlideDirection] = useState<"left" | "right">("left");
+
+  // Centralized Navigate To helper that pushes state to browser history
+  const navigateTo = (tab: string, articleSlug: string | null = null, pushHistory = true) => {
+    const currentIndex = TABS_ORDER.indexOf(currentTab);
+    const newIndex = TABS_ORDER.indexOf(tab);
+    if (newIndex !== -1 && currentIndex !== -1 && currentIndex !== newIndex) {
+      setSlideDirection(newIndex > currentIndex ? "left" : "right");
+    }
+    
+    setCurrentTab(tab);
+    setSelectedArticle(articleSlug);
+
+    let newHash = `#/${tab}`;
+    if (tab === "blog" && articleSlug) {
+      newHash = `#/${tab}/${articleSlug}`;
+    }
+
+    if (pushHistory) {
+      window.history.pushState({ tab, articleSlug }, "", newHash);
+    } else {
+      window.history.replaceState({ tab, articleSlug }, "", newHash);
+    }
+  };
 
   // Touch Swipe Gesture Tracking for "sfogliabile scivolando"
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -145,30 +169,27 @@ export default function App() {
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 60; // Next page (slide to right, screen moves left)
-    const isRightSwipe = distance < -60; // Previous page (slide to left, screen moves right)
+    const isLeftSwipe = distance > 60; // Next page
+    const isRightSwipe = distance < -60; // Previous page
 
     const currentIndex = TABS_ORDER.indexOf(currentTab);
 
     if (isLeftSwipe && currentIndex < TABS_ORDER.length - 1) {
-      setSlideDirection("left");
-      setCurrentTab(TABS_ORDER[currentIndex + 1]);
+      navigateTo(TABS_ORDER[currentIndex + 1], null, true);
     } else if (isRightSwipe && currentIndex > 0) {
-      setSlideDirection("right");
-      setCurrentTab(TABS_ORDER[currentIndex - 1]);
+      navigateTo(TABS_ORDER[currentIndex - 1], null, true);
     }
     setTouchStart(null);
     setTouchEnd(null);
   };
 
   const handleSetTab = (newTab: string) => {
-    if (newTab === currentTab) return;
-    const currentIndex = TABS_ORDER.indexOf(currentTab);
-    const newIndex = TABS_ORDER.indexOf(newTab);
-    if (newIndex !== -1 && currentIndex !== -1) {
-      setSlideDirection(newIndex > currentIndex ? "left" : "right");
-    }
-    setCurrentTab(newTab);
+    if (newTab === currentTab && !selectedArticle) return;
+    navigateTo(newTab, null, true);
+  };
+
+  const handleSetArticle = (slug: string | null) => {
+    navigateTo("blog", slug, true);
   };
 
   const getTabLabel = (tabId: string) => {
@@ -300,6 +321,90 @@ export default function App() {
     initTrackingConsentUtility();
   }, []);
 
+  // URL Hash Sync Effect (Router for deep linking & back gesture support)
+  useEffect(() => {
+    const handleUrlSync = () => {
+      const hash = window.location.hash;
+      const cleanHash = hash.replace(/^#\/?/, ""); // e.g. "blog/ai-act-regolamento-europeo"
+
+      if (!cleanHash) {
+        navigateTo("home", null, false);
+        return;
+      }
+
+      if (cleanHash.startsWith("blog/")) {
+        const slug = cleanHash.substring("blog/".length);
+        navigateTo("blog", slug, false);
+      } else {
+        const tab = cleanHash.split("?")[0];
+        if (TABS_ORDER.includes(tab)) {
+          navigateTo(tab, null, false);
+        } else {
+          navigateTo("home", null, false);
+        }
+      }
+    };
+
+    // Run on initial load
+    handleUrlSync();
+
+    // Listen to hash changes or popstate (prevents exiting site on back gestures)
+    window.addEventListener("hashchange", handleUrlSync);
+    window.addEventListener("popstate", handleUrlSync);
+
+    return () => {
+      window.removeEventListener("hashchange", handleUrlSync);
+      window.removeEventListener("popstate", handleUrlSync);
+    };
+  }, []);
+
+  // Anti-copy, anti-theft, and content-protection event listeners
+  useEffect(() => {
+    const preventDefault = (e: Event) => e.preventDefault();
+
+    // Prevent right-click context menu
+    document.addEventListener("contextmenu", preventDefault);
+
+    // Prevent copy, cut, and drag events
+    document.addEventListener("copy", preventDefault);
+    document.addEventListener("cut", preventDefault);
+    document.addEventListener("dragstart", preventDefault);
+
+    // Block keyboard shortcuts (Ctrl/Cmd + C, Ctrl/Cmd + X, Ctrl/Cmd + U, F12, Ctrl+Shift+I/C/J)
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const isMetaOrCtrl = e.ctrlKey || e.metaKey;
+      
+      // Block F12
+      if (e.key === "F12") {
+        e.preventDefault();
+        return;
+      }
+
+      if (isMetaOrCtrl) {
+        const key = e.key.toLowerCase();
+        // Block C, X, U
+        if (key === "c" || key === "x" || key === "u" || key === "s") {
+          e.preventDefault();
+          return;
+        }
+        // Block I, J, C (Inspect/Devtools)
+        if (e.shiftKey && (key === "i" || key === "j" || key === "c")) {
+          e.preventDefault();
+          return;
+        }
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("contextmenu", preventDefault);
+      document.removeEventListener("copy", preventDefault);
+      document.removeEventListener("cut", preventDefault);
+      document.removeEventListener("dragstart", preventDefault);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   const renderActiveView = () => {
     switch (currentTab) {
       case "home":
@@ -313,7 +418,15 @@ export default function App() {
       case "chat":
         return <ChatView lang={lang} isFacilitated={isFacilitated} />;
       case "blog":
-        return <BlogView lang={lang} isFacilitated={isFacilitated} setCurrentTab={handleSetTab} />;
+        return (
+          <BlogView
+            lang={lang}
+            isFacilitated={isFacilitated}
+            setCurrentTab={handleSetTab}
+            selectedArticle={selectedArticle}
+            setSelectedArticle={handleSetArticle}
+          />
+        );
       default:
         return <HomeView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} onOpenModal={setActiveModal} />;
     }
@@ -349,6 +462,71 @@ export default function App() {
         }`}
       >
         <div className="w-full">
+          {/* Dynamic Breadcrumbs Bar */}
+          {(() => {
+            const breadcrumbItems = [
+              { id: "home", label: lang === "it" ? "Inizio" : "Home" }
+            ];
+            
+            if (currentTab !== "home") {
+              breadcrumbItems.push({
+                id: currentTab,
+                label: getTabLabel(currentTab),
+              });
+              
+              if (currentTab === "blog" && selectedArticle) {
+                const articleTitles: Record<string, string> = {
+                  "ai-act-regolamento-europeo": lang === "it" ? "L'AI Act è Legge" : "The AI Act is Law",
+                  "seo-predittiva": lang === "it" ? "SEO Predittiva" : "Predictive SEO",
+                  "sito-statico-vs-wordpress": lang === "it" ? "Sito Statico vs WordPress" : "Static vs WordPress",
+                };
+                const title = articleTitles[selectedArticle] || selectedArticle;
+                breadcrumbItems.push({
+                  id: "article",
+                  label: title,
+                });
+              }
+            }
+
+            return (
+              <div className="w-full bg-[#131315]/70 border-b border-[rgba(248,247,244,0.05)] py-3 px-4 sm:px-6 xl:px-12 backdrop-blur-sm relative z-40 select-none">
+                <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-[10px] tracking-wider uppercase font-bold text-[#F8F7F4]/60">
+                  <div className="flex items-center flex-wrap gap-1.5 sm:gap-2 text-[#F8F7F4]/40">
+                    <Home className="w-3.5 h-3.5 text-[#E35930] mr-1 inline shrink-0" />
+                    {breadcrumbItems.map((item, index) => (
+                      <React.Fragment key={item.id}>
+                        {index > 0 && <span className="text-[#F8F7F4]/20 font-light mx-0.5 sm:mx-1 shrink-0">/</span>}
+                        {index === breadcrumbItems.length - 1 ? (
+                          <span className="text-[#E35930] font-extrabold truncate max-w-[200px] sm:max-w-none">{item.label}</span>
+                        ) : (
+                          <button
+                            onClick={() => {
+                              if (item.id === "home") {
+                                handleSetTab("home");
+                              } else {
+                                navigateTo(item.id, null, true);
+                              }
+                            }}
+                            className="text-[#F8F7F4]/60 hover:text-[#E35930] cursor-pointer transition-colors uppercase font-bold shrink-0"
+                          >
+                            {item.label}
+                          </button>
+                        )}
+                      </React.Fragment>
+                    ))}
+                  </div>
+                  
+                  <div className="hidden sm:flex items-center gap-4 text-[9px] uppercase font-bold text-[#F8F7F4]/40 select-none">
+                    <span>{lang === "it" ? "Posizione Attiva" : "Active Location"}</span>
+                    <span className="px-2 py-0.5 bg-[#E35930]/10 border border-[#E35930]/20 text-[#E35930] rounded-sm text-[9px]">
+                      {currentTab === "blog" && selectedArticle ? "ARTICLE_VIEW" : `${currentTab.toUpperCase()}_VIEW`}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
+
           {isFacilitated && (
             <div className="bg-[#E35930] text-[#111113] text-center text-xs py-2 px-4 font-mono font-bold uppercase tracking-wider animate-pulse" id="facilitated-badge-banner">
               {lang === "it"
@@ -465,6 +643,8 @@ export default function App() {
         onOpenModal={setActiveModal} 
         lang={lang} 
         onOpenCookieSettings={() => setForceShowCookieBanner(true)} 
+        currentTab={currentTab}
+        selectedArticle={selectedArticle}
       />
 
       {/* Popups (Modals) */}

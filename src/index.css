@@ -233,6 +233,34 @@ body {
   background: rgba(227, 89, 48, 0.6);
 }
 
+/* Global Content and Copy Protection Styles (Anti-Theft) */
+* {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  -webkit-touch-callout: none !important; /* Prevents long-press save menu on iOS */
+}
+
+/* Allow selection inside input fields, textareas, and editable areas so users can type comfortably */
+input, 
+textarea, 
+input *, 
+textarea *,
+[contenteditable="true"], 
+[contenteditable="true"] * {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+}
+
+/* Prevent image dragging to protect custom visuals */
+img {
+  -webkit-user-drag: none !important;
+  user-drag: none !important;
+}
+
 
 
 

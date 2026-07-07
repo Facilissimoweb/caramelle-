@@ -228,13 +228,13 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
       <section className="py-16 text-center border-b border-[rgba(248,247,244,0.1)]">
         <div className="max-w-2xl mx-auto px-6 space-y-3">
           <span className="text-[10px] uppercase tracking-[0.25em] text-[#E35930] font-mono font-bold block mb-2">
-            [ AI CONSULTANCY INTERATTIVA ]
+            [ CHAT INTERATTIVA DIRETTA ]
           </span>
           <h1 className="font-display text-3xl font-bold tracking-tight text-[#F8F7F4] sm:text-4xl">
-            Assistente Virtuale IA
+            Parla con Me
           </h1>
           <p className="font-sans text-xs sm:text-sm text-[#F8F7F4]/70 max-w-lg mx-auto leading-relaxed">
-            Poni domande sul metodo di Teresa, stima i costi o chiedi chiarimenti sul funzionamento dei servizi. La risposta è istantanea!
+            Poni domande sul mio metodo, chiedimi una stima dei costi o qualsiasi chiarimento sul funzionamento dei miei servizi. Ti rispondo all'istante!
           </p>
         </div>
       </section>
@@ -249,11 +249,11 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
               <div className="flex items-center gap-2">
                 <Cpu className="w-4 h-4 text-[#E35930]" />
                 <h3 className="font-display font-bold text-xs text-[#F8F7F4] uppercase tracking-widest">
-                  Tecnologia Gemini
+                  Tecnologia di Supporto
                 </h3>
               </div>
               <p className="text-xs text-[#F8F7F4]/70 leading-relaxed font-sans">
-                Questo assistente è alimentato dal modello server-side **Gemini 2.5 Flash** configurato con il manuale operativo e la filosofia di Facilissimo Web.
+                Questa chat interattiva risponde istantaneamente grazie a un modello AI addestrato sul mio manuale operativo, sulle mie tariffe e sulla filosofia di **Facilissimo Web**.
               </p>
             </div>
 
@@ -299,15 +299,15 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-sm text-[#F8F7F4] leading-none">
-                    Virtual Assistant
+                    M. Teresa Rogani
                   </h3>
                   <p className="text-[9px] text-[#E35930] font-mono mt-1 uppercase tracking-widest">
-                    FACILISSIMO WEB ENGINE
+                    FACILISSIMO WEB
                   </p>
                 </div>
               </div>
               <span className="text-[9px] border border-[#E35930]/20 text-[#E35930] px-2.5 py-1 font-mono font-bold uppercase tracking-widest">
-                Attivo
+                Disponibile
               </span>
             </div>
 
@@ -355,7 +355,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
                 >
                   <div className="bg-[#111113] p-4 rounded-none border border-[rgba(248,247,244,0.1)] flex items-center gap-2 shadow-sm">
                     <span className="text-xs font-mono text-[#F8F7F4]/60 italic">
-                      Teresa sta scrivendo
+                      Sto scrivendo...
                     </span>
                     <span className="flex gap-1">
                       <span className="w-1 h-1 bg-[#E35930] animate-bounce delay-100"></span>

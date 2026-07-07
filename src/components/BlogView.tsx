@@ -21,9 +21,17 @@ interface BlogViewProps {
   lang: "it" | "en";
   isFacilitated: boolean;
   setCurrentTab: (tab: string) => void;
+  selectedArticle: string | null;
+  setSelectedArticle: (slug: string | null) => void;
 }
 
-export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogViewProps) {
+export default function BlogView({
+  lang,
+  isFacilitated,
+  setCurrentTab,
+  selectedArticle,
+  setSelectedArticle,
+}: BlogViewProps) {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const bgImages = [
     "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1920",
@@ -38,7 +46,6 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
     return () => clearInterval(timer);
   }, []);
 
-  const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [shareToast, setShareToast] = useState<string | null>(null);
 
@@ -48,7 +55,7 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
   }, [selectedArticle]);
 
   const handleCopyLink = () => {
-    const url = window.location.href + "?article=" + (selectedArticle || "seo-predittiva");
+    const url = window.location.origin + window.location.pathname + "#/blog/" + (selectedArticle || "ai-act-regolamento-europeo");
     navigator.clipboard.writeText(url).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -56,7 +63,8 @@ export default function BlogView({ lang, isFacilitated, setCurrentTab }: BlogVie
   };
 
   const triggerShare = (platform: "linkedin" | "twitter" | "facebook") => {
-    const url = encodeURIComponent(window.location.href);
+    const directUrl = window.location.origin + window.location.pathname + "#/blog/" + (selectedArticle || "ai-act-regolamento-europeo");
+    const url = encodeURIComponent(directUrl);
     const text = encodeURIComponent(
       lang === "it"
         ? "Leggi questo fantastico articolo su Facilissimo Web!"
