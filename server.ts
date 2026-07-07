@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import dotenv from "dotenv";
 import { GoogleGenAI } from "@google/genai";
+import Groq from "groq-sdk";
 
 dotenv.config();
 
@@ -172,7 +173,7 @@ app.get("/api/contact/submissions", (req, res) => {
   res.json(contactSubmissions);
 });
 
-// AI Chatbot with Groq (Primary) and Gemini (Fallback)
+// AI Chatbot with Groq exclusively
 app.post("/api/chat", async (req, res) => {
   const { message, history } = req.body;
 
@@ -180,7 +181,18 @@ app.post("/api/chat", async (req, res) => {
     return res.status(400).json({ error: "Il messaggio è richiesto." });
   }
 
-  const systemInstruction = `Sei l'assistente virtuale ufficiale di "Facilissimo Web", lo studio di freelance web design di Maria Teresa Rogani (detta M. Teresa Rogani).
+  const groqKey = process.env.GROQ_API_KEY;
+  if (!groqKey) {
+    return res.status(503).json({
+      error: "Servizio AI non configurato. Inserisci la chiave GROQ_API_KEY nei Secrets per abilitare la chat."
+    });
+  }
+
+  try {
+    // Lazy initialize the Groq client as recommended
+    const groq = new Groq({ apiKey: groqKey });
+
+    const systemInstruction = `Sei l'assistente virtuale ufficiale di "Facilissimo Web", lo studio di freelance web design di Maria Teresa Rogani (detta M. Teresa Rogani).
 Maria Teresa Rogani è l'unica titolare, designer e sviluppatrice di Facilissimo Web. Non c'è nessun team, lavora da sola come Freelance Web Designer per garantire la massima cura, attenzione diretta, velocità e trasparenza per ciascun cliente.
 Il tuo ruolo è rispondere ai potenziali clienti, spiegare i servizi offerti, descrivere le tariffe/proposte e invitarli a contattarla direttamente per un preventivo personalizzato.
 
@@ -198,15 +210,7 @@ Ecco i dettagli chiave su Facilissimo Web e M. Teresa Rogani:
 
 Rispondi sempre in italiano in modo amichevole, professionale, chiaro ed elegante. Mantieni le risposte connesse al contesto, utili e non eccessivamente lunghe. Usa formattazioni markdown (grassetto, elenchi puntati) per rendere il testo scansionabile. Non inventare informazioni non presenti. Invita sempre a compilare il form nella pagina "Contatti" per iniziare.`;
 
-  // 1. TRY GROQ IF AVAILABLE
-  const groqKey = process.env.GROQ_API_KEY;
-  if (groqKey) {
-    console.log("Using Groq API for chat processing...");
-    const GROQ_MODELS = [
-      "llama-3.3-70b-versatile"
-    ];
-
-    const messagesPayload = [
+    const messagesPayload: any[] = [
       { role: "system", content: systemInstruction }
     ];
 
@@ -228,87 +232,30 @@ Rispondi sempre in italiano in modo amichevole, professionale, chiaro ed elegant
       content: message
     });
 
-    let lastGroqError = "";
-    for (const model of GROQ_MODELS) {
-      try {
-        console.log(`Trying Groq model: ${model}`);
-        const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${groqKey}`,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            model: model,
-            messages: messagesPayload,
-            temperature: 0.7,
-            max_tokens: 1024
-          })
-        });
+    console.log("Calling Groq SDK client with model: llama-3.3-70b-versatile...");
+    const completion = await groq.chat.completions.create({
+      model: "llama-3.3-70b-versatile",
+      messages: messagesPayload,
+      temperature: 0.7,
+      max_tokens: 1024
+    });
 
-        if (!response.ok) {
-          const errText = await response.text();
-          throw new Error(`Groq API returned status ${response.status}: ${errText}`);
-        }
+    const text = completion.choices[0]?.message?.content;
+    if (text) {
+      // Track chatbot interaction server-side in Google Analytics
+      trackServerEvent("chatbot_message_processed_groq", {
+        model: "llama-3.3-70b-versatile",
+        message_length: message.length,
+        response_length: text.length,
+        has_history: !!(history && history.length),
+      });
 
-        const data = await response.json();
-        const text = data?.choices?.[0]?.message?.content;
-        if (text) {
-          // Track chatbot interaction server-side in Google Analytics
-          trackServerEvent("chatbot_message_processed_groq", {
-            model: model,
-            message_length: message.length,
-            response_length: text.length,
-            has_history: !!(history && history.length),
-          });
-
-          return res.json({ text: text, provider: "groq", model: model });
-        } else {
-          throw new Error("Groq API returned empty completion choice.");
-        }
-      } catch (err: any) {
-        lastGroqError = err.message || err;
-        console.error(`Error with Groq model ${model}:`, lastGroqError);
-      }
+      return res.json({ text: text, provider: "groq", model: "llama-3.3-70b-versatile" });
+    } else {
+      throw new Error("Il client Groq ha restituito un completamento vuoto.");
     }
-    
-    // If we are here, Groq was forced/configured but failed
-    return res.status(502).json({
-      error: `Tutti i modelli Groq sono falliti. Ultimo errore riscontrato: ${lastGroqError}. Verifica la tua chiave GROQ_API_KEY nei Secrets di Vercel/AI Studio.`
-    });
-  }
-
-  // 2. FALLBACK TO GEMINI (ONLY IF GROQ IS NOT CONFIGURED)
-  if (!ai) {
-    return res.status(503).json({
-      error: "Servizio AI non configurato. Inserisci la chiave GROQ_API_KEY o GEMINI_API_KEY per abilitare la chat.",
-    });
-  }
-
-  try {
-    const chat = ai.chats.create({
-      model: "gemini-3.5-flash",
-      config: {
-        systemInstruction: systemInstruction,
-        temperature: 0.7,
-      },
-      history: history ? history.map((item: any) => ({
-        role: item.role === 'user' ? 'user' : 'model',
-        parts: [{ text: item.text }]
-      })) : []
-    });
-
-    const result = await chat.sendMessage({ message: message });
-    
-    trackServerEvent("chatbot_message_processed_gemini", {
-      message_length: message.length,
-      response_length: result.text ? result.text.length : 0,
-      has_history: !!(history && history.length),
-    });
-
-    res.json({ text: result.text, provider: "gemini", model: "gemini-3.5-flash" });
   } catch (error: any) {
-    console.error("Errore chiamata Gemini:", error);
+    console.error("Errore chiamata Groq Client:", error);
     res.status(500).json({ error: error.message || "Errore del server durante l'elaborazione dell'AI." });
   }
 });
