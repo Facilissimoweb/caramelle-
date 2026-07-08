@@ -47,7 +47,7 @@ export default function Footer({
             <p className="text-[#F8F7F4]/60 flex items-center gap-1.5 normal-case font-sans">
               <MapPin className="w-3.5 h-3.5 text-[#E35930]" /> Macerata (Marche), Italia
             </p>
-            <p className="text-[#F8F7F4]/40 font-normal">P.IVA: IT01234567890 (Simulata)</p>
+            <p className="text-[#F8F7F4]/40 font-normal">P.IVA: 02136780430</p>
           </div>
           
           <p className="text-[10px] text-[#F8F7F4]/50 leading-relaxed font-sans italic border-t border-[rgba(248,247,244,0.08)] pt-3 mt-3">
