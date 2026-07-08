@@ -89,34 +89,34 @@ async function sendContactEmail(submission: ContactSubmission) {
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
               <td style="padding: 6px 0; color: #71717a; font-weight: bold; width: 35%;">Nome & Cognome:</td>
-              <td style="padding: 6px 0; color: #111113;">\${submission.name}</td>
+              <td style="padding: 6px 0; color: #111113;">${submission.name}</td>
             </tr>
             <tr>
               <td style="padding: 6px 0; color: #71717a; font-weight: bold;">Email:</td>
-              <td style="padding: 6px 0; color: #111113;"><a href="mailto:\${submission.email}" style="color: #E35930; text-decoration: none;">\${submission.email}</a></td>
+              <td style="padding: 6px 0; color: #111113;"><a href="mailto:${submission.email}" style="color: #E35930; text-decoration: none;">${submission.email}</a></td>
             </tr>
             <tr>
               <td style="padding: 6px 0; color: #71717a; font-weight: bold;">Azienda:</td>
-              <td style="padding: 6px 0; color: #111113;">\${submission.company || "Non specificata"}</td>
+              <td style="padding: 6px 0; color: #111113;">${submission.company || "Non specificata"}</td>
             </tr>
             <tr>
               <td style="padding: 6px 0; color: #71717a; font-weight: bold;">Tipo Progetto:</td>
-              <td style="padding: 6px 0; color: #E35930; font-weight: bold;">\${submission.projectType}</td>
+              <td style="padding: 6px 0; color: #E35930; font-weight: bold;">${submission.projectType}</td>
             </tr>
             <tr>
               <td style="padding: 6px 0; color: #71717a; font-weight: bold;">Budget Stimato:</td>
-              <td style="padding: 6px 0; color: #111113; font-weight: bold;">\${submission.budget}</td>
+              <td style="padding: 6px 0; color: #111113; font-weight: bold;">${submission.budget}</td>
             </tr>
             <tr>
               <td style="padding: 6px 0; color: #71717a; font-weight: bold;">Ricevuto il:</td>
-              <td style="padding: 6px 0; color: #71717a; font-size: 12px;">\${new Date(submission.date).toLocaleString("it-IT")}</td>
+              <td style="padding: 6px 0; color: #71717a; font-size: 12px;">${new Date(submission.date).toLocaleString("it-IT")}</td>
             </tr>
           </table>
         </div>
 
         <div style="background-color: #f4f4f5; padding: 15px; border-left: 4px solid #E35930; margin-bottom: 25px;">
           <h3 style="color: #111113; margin-top: 0; margin-bottom: 10px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Messaggio:</h3>
-          <p style="color: #27272a; margin: 0; font-size: 14px; line-height: 1.6; white-space: pre-wrap;">\${submission.message}</p>
+          <p style="color: #27272a; margin: 0; font-size: 14px; line-height: 1.6; white-space: pre-wrap;">${submission.message}</p>
         </div>
 
         <div style="text-align: center; font-size: 11px; color: #a1a1aa; border-top: 1px solid #e4e4e7; padding-top: 15px; margin-top: 20px;">
@@ -129,7 +129,7 @@ async function sendContactEmail(submission: ContactSubmission) {
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log(`✅ Email inviata con successo a facilissimoweb.mc@gmail.com da \${submission.email}`);
+    console.log(`✅ Email inviata con successo a facilissimoweb.mc@gmail.com da ${submission.email}`);
     return true;
   } catch (err) {
     console.error("❌ Errore durante l'invio dell'email:", err);

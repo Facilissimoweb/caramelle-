@@ -163,7 +163,7 @@ export default function Header({
         {/* Desktop Navigation */}
         <nav 
           className="hidden xl:flex items-center justify-center flex-1 gap-8 xl:gap-12 max-w-4xl mx-auto"
-          style={{ fontSize: "16px" }}
+          style={{ fontSize: "14px" }}
         >
           {navItems.map((item) => {
             const isActive = currentTab === item.id;
@@ -176,7 +176,7 @@ export default function Header({
                     ? "text-[#E35930] border-[#E35930]"
                     : "text-[#F8F7F4]/50 hover:text-[#F8F7F4] border-transparent hover:border-[#F8F7F4]/20"
                 }`}
-                style={{ fontSize: "16px" }}
+                style={{ fontSize: "14px" }}
                 id={`nav-${item.id}`}
               >
                 {item.label}
