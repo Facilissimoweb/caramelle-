@@ -4,7 +4,7 @@ import { Brain, Cpu, Zap, ArrowRight, Heart, CheckCircle2, Sparkles } from "luci
 import { translations } from "../translations";
 import FAQAccordion from "./FAQAccordion";
 import GallerySection from "./GallerySection";
-import GustoPassioneApp from "./GustoPassioneApp";
+import TattooMacerataApp from "./TattooMacerataApp";
 
 interface HomeViewProps {
   setCurrentTab: (tab: string) => void;
@@ -292,18 +292,18 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#F8F7F4] leading-[1.1]">
                   {lang === "it" ? (
                     <>
-                      Gusto &amp; Passione — <span className="italic font-normal text-[#E35930]">Menu Digitale Premium</span>
+                      Tattoo Macerata — <span className="italic font-normal text-[#E35930]">Demo Mobile-First</span>
                     </>
                   ) : (
                     <>
-                      Gusto &amp; Passione — <span className="italic font-normal text-[#E35930]">Premium Digital Menu</span>
+                      Tattoo Macerata — <span className="italic font-normal text-[#E35930]">Mobile-First Demo</span>
                     </>
                   )}
                 </h3>
                 <p className="text-[#F8F7F4]/70 font-sans text-xs sm:text-sm leading-relaxed">
                   {lang === "it"
-                    ? "Hai un ristorante, pizzeria o locale nelle Marche e vuoi automatizzare le ordinazioni d'asporto e a domicilio senza costose commissioni? Ho realizzato questo simulatore interattivo di web-app premium: un menu digitale completo con carrello, club fedeltà con accumulo punti automatico in locale, simulatore di pagamento sicuro e inoltro d'ordine diretto su WhatsApp."
-                    : "Do you run a restaurant, pizzeria, or local shop and want to automate takeaway and delivery orders without paying high commissions? I developed this interactive premium web-app simulator: a complete digital menu with an elegant shopping cart, local loyalty points engine, secure payment checkout simulator, and direct WhatsApp dispatch."}
+                    ? "Hai uno studio di tatuaggi, un salone o un'attività professionale nelle Marche e vuoi automatizzare la gestione di preventivi e prenotazioni? Ho realizzato questa demo interattiva premium: un'applicazione mobile-first ad altissimo impatto estetico gotico, con calcolatore preventivi dinamico in base alle dimensioni, colori e complessità del tatuaggio, gestione di prenotazioni sedute e feed recensioni in tempo reale."
+                    : "Do you own a tattoo studio, beauty salon, or local business in Marche and want to automate quote calculations and booking requests? I developed this premium interactive mobile-first simulator: a high-impact gothic/dark app equipped with a dynamic tattoo price estimator, booking scheduler, and live feedback review board."}
                 </p>
 
                 <div className="space-y-4 font-sans text-xs text-[#F8F7F4]/70 leading-relaxed">
@@ -311,21 +311,29 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                     <div className="w-5 h-5 rounded-full bg-emerald-950 border border-emerald-800 flex items-center justify-center text-emerald-400 text-[10px] font-mono shrink-0 mt-0.5">✓</div>
                     <div>
                       <h4 className="font-display font-bold text-xs text-[#F8F7F4]">{lang === "it" ? "Interazione in tempo reale" : "Real-time interaction"}</h4>
-                      <p className="text-[11px] text-[#F8F7F4]/50 leading-relaxed">{lang === "it" ? "Prova subito il simulatore a fianco: aggiungi i piatti al carrello, riscatta i premi del Club Fedeltà e invia l'ordine." : "Try the simulator right here: add delicious dishes to your cart, redeem loyalty club gifts, and place your order."}</p>
+                      <p className="text-[11px] text-[#F8F7F4]/50 leading-relaxed">
+                        {lang === "it" 
+                          ? "Prova subito il simulatore a fianco: calcola un preventivo in tempo reale, inseriscilo direttamente nel modulo di prenotazione e invia la richiesta." 
+                          : "Test the simulator on the side: configure your tattoo size and complexity, load the quote instantly into the booking scheduler, and submit your request."}
+                      </p>
                     </div>
                   </div>
                   <div className="flex gap-3 items-start">
                     <div className="w-5 h-5 rounded-full bg-emerald-950 border border-emerald-800 flex items-center justify-center text-emerald-400 text-[10px] font-mono shrink-0 mt-0.5">✓</div>
                     <div>
-                      <h4 className="font-display font-bold text-xs text-[#F8F7F4]">{lang === "it" ? "Persistenza Locale e GDPR" : "Local Persistence & GDPR"}</h4>
-                      <p className="text-[11px] text-[#F8F7F4]/50 leading-relaxed">{lang === "it" ? "I tuoi dati e i punti fedeltà vengono memorizzati nel browser locale in modo sicuro e trasparente." : "Your customer details and loyalty points are safely stored inside your browser local storage."}</p>
+                      <h4 className="font-display font-bold text-xs text-[#F8F7F4]">{lang === "it" ? "Design Altamente Personalizzato" : "Tailored Aesthetic Identity"}</h4>
+                      <p className="text-[11px] text-[#F8F7F4]/50 leading-relaxed">
+                        {lang === "it" 
+                          ? "Lo stile visivo richiama i caratteri gotici medievali ed esoterici, integrando caratteri unici che non entrano in conflitto con il layout pulito del sito principale." 
+                          : "The visual theme utilizes classic medieval gothic typography and deep purple accents, fully isolated to run flawlessly without affecting the main site's design."}
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="lg:col-span-6 flex justify-center w-full">
-                <GustoPassioneApp lang={lang} />
+                <TattooMacerataApp lang={lang} />
               </div>
             </div>
           </div>
