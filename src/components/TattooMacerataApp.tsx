@@ -234,7 +234,7 @@ export default function TattooMacerataApp({ lang = "it" }: TattooMacerataAppProp
   };
 
   return (
-    <div className="flex items-center justify-center p-0.5 sm:p-2 bg-transparent font-sans w-full relative z-10 text-gray-100">
+    <div className="flex items-center justify-center p-0.5 sm:p-2 bg-transparent font-poppins w-full relative z-10 text-gray-100">
       
       {/* TOAST NOTIFICATION SYSTEM */}
       <AnimatePresence>
@@ -306,12 +306,12 @@ export default function TattooMacerataApp({ lang = "it" }: TattooMacerataAppProp
           {currentTab === "home" && (
             <div className="space-y-6">
               
-              {/* Hero Banner con Grafica Gotica */}
-              <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#121214] via-purple-950/20 to-black border border-purple-900/40 p-6 flex flex-col justify-end min-h-[220px]">
+              {/* Hero Banner con Grafica Gotica ed Immagine di Copertura */}
+              <div className="relative rounded-2xl overflow-hidden bg-cover bg-center border border-purple-900/40 p-6 flex flex-col justify-end min-h-[240px] shadow-lg" style={{ backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.95) 30%, rgba(18,18,20,0.5) 100%), url('https://images.unsplash.com/photo-1598121698156-557c5a9be3b5?auto=format&fit=crop&q=80&w=600')` }}>
                 <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#8b5cf6_1px,transparent_1px)] [background-size:16px_16px]"></div>
                 
                 {/* Gotico decorativo */}
-                <svg className="absolute top-2 right-2 w-16 h-16 text-purple-900/30" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
+                <svg className="absolute top-2 right-2 w-16 h-16 text-purple-600/20" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M10 10 H90 V90 M30 10 V70 H90 M10 30 H70 V90" />
                   <circle cx="50" cy="50" r="5" className="fill-current" />
                 </svg>
@@ -385,10 +385,9 @@ export default function TattooMacerataApp({ lang = "it" }: TattooMacerataAppProp
                   <p>{lang === "it" ? "Lun - Sab: 10:30 - 19:30 (Domenica chiuso)" : "Mon - Sat: 10:30 - 19:30 (Sunday closed)"}</p>
                   <p className="text-purple-400">Tel / WhatsApp: +39 333 456 7890</p>
                 </div>
-                {/* Mini Mappa Fittizia */}
-                <div className="h-24 bg-purple-950/20 rounded-lg overflow-hidden relative border border-purple-900/20 flex items-center justify-center">
-                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#00ff88_1px,transparent_1px)] [background-size:12px_12px]"></div>
-                  <span className="z-10 bg-black/80 px-3 py-1.5 rounded border border-[#00ff88]/30 text-[10px] text-[#00ff88] flex items-center gap-1.5 cursor-pointer">
+                {/* Mini Mappa Fittizia con Sfondo Studio */}
+                <div className="h-28 bg-cover bg-center rounded-lg overflow-hidden relative border border-purple-900/40 flex items-center justify-center" style={{ backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1605497746444-ac9dbd324ce8?auto=format&fit=crop&q=80&w=600')` }}>
+                  <span className="z-10 bg-black/90 px-3 py-1.5 rounded-xl border border-[#00ff88]/40 text-[10px] text-[#00ff88] flex items-center gap-1.5 cursor-pointer hover:bg-black transition">
                     <Navigation className="w-3 h-3" /> {lang === "it" ? "Apri in Google Maps" : "Open Google Maps"}
                   </span>
                 </div>
@@ -411,9 +410,8 @@ export default function TattooMacerataApp({ lang = "it" }: TattooMacerataAppProp
 
               {/* ARTISTA 1 */}
               <div className="bg-[#121214] rounded-2xl border border-purple-950/60 overflow-hidden">
-                <div className="relative h-40 bg-gradient-to-b from-purple-900/30 to-black flex items-center justify-center overflow-hidden">
-                  <Users className="w-16 h-16 text-purple-950/80" />
-                  <div className="absolute bottom-3 left-3 bg-black/80 px-2.5 py-1 rounded-md border border-[#00ff88]/40">
+                <div className="relative h-48 bg-cover bg-center flex items-end overflow-hidden" style={{ backgroundImage: `linear-gradient(to top, rgba(18,18,20,0.95), rgba(18,18,20,0.1)), url('https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&q=80&w=600')` }}>
+                  <div className="absolute bottom-3 left-3 bg-black/80 px-2.5 py-1 rounded-md border border-[#00ff88]/40 z-10">
                     <span className="text-[9px] text-[#00ff88] font-mono uppercase">Master Artist</span>
                   </div>
                 </div>
@@ -437,9 +435,8 @@ export default function TattooMacerataApp({ lang = "it" }: TattooMacerataAppProp
 
               {/* ARTISTA 2 */}
               <div className="bg-[#121214] rounded-2xl border border-purple-950/60 overflow-hidden">
-                <div className="relative h-40 bg-gradient-to-b from-purple-900/30 to-black flex items-center justify-center overflow-hidden">
-                  <Users className="w-16 h-16 text-purple-950/80" />
-                  <div className="absolute bottom-3 left-3 bg-black/80 px-2.5 py-1 rounded-md border border-[#00ff88]/40">
+                <div className="relative h-48 bg-cover bg-center flex items-end overflow-hidden" style={{ backgroundImage: `linear-gradient(to top, rgba(18,18,20,0.95), rgba(18,18,20,0.1)), url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600')` }}>
+                  <div className="absolute bottom-3 left-3 bg-black/80 px-2.5 py-1 rounded-md border border-[#00ff88]/40 z-10">
                     <span className="text-[9px] text-[#00ff88] font-mono uppercase">Fineline Expert</span>
                   </div>
                 </div>
@@ -463,9 +460,8 @@ export default function TattooMacerataApp({ lang = "it" }: TattooMacerataAppProp
 
               {/* ARTISTA 3 */}
               <div className="bg-[#121214] rounded-2xl border border-purple-950/60 overflow-hidden">
-                <div className="relative h-40 bg-gradient-to-b from-purple-900/30 to-black flex items-center justify-center overflow-hidden">
-                  <Users className="w-16 h-16 text-purple-950/80" />
-                  <div className="absolute bottom-3 left-3 bg-black/80 px-2.5 py-1 rounded-md border border-[#00ff88]/40">
+                <div className="relative h-48 bg-cover bg-center flex items-end overflow-hidden" style={{ backgroundImage: `linear-gradient(to top, rgba(18,18,20,0.95), rgba(18,18,20,0.1)), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600')` }}>
+                  <div className="absolute bottom-3 left-3 bg-black/80 px-2.5 py-1 rounded-md border border-[#00ff88]/40 z-10">
                     <span className="text-[9px] text-[#00ff88] font-mono uppercase">Surrealist Guru</span>
                   </div>
                 </div>

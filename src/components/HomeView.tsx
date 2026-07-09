@@ -5,6 +5,7 @@ import { translations } from "../translations";
 import FAQAccordion from "./FAQAccordion";
 import GallerySection from "./GallerySection";
 import TattooMacerataApp from "./TattooMacerataApp";
+import GustoPassioneApp from "./GustoPassioneApp";
 
 interface HomeViewProps {
   setCurrentTab: (tab: string) => void;
@@ -212,19 +213,22 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
         </div>
       </section>
 
-      {/* Portfolio / Progetti Evoluti */}
-      <section className="py-24 bg-[#111113]">
+      {/* Portfolio / Progetti Evoluti — Live Interactive Showcases */}
+      <section className="py-24 bg-[#111113] border-b border-[rgba(248,247,244,0.1)]">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
+          
           <div className="flex flex-col sm:flex-row justify-between items-end gap-6 mb-16">
-            <div className="max-w-xl space-y-3">
+            <div className="max-w-2xl space-y-3">
               <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
-                {t.portfolioPre}
+                {lang === "it" ? "[ DEMO LIVE INTERATTIVE ]" : "[ LIVE INTERACTIVE DEMOS ]"}
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#F8F7F4]">
-                {t.portfolioTitle}
+                {lang === "it" ? "I Nostri Progetti Evoluti" : "Our Advanced Projects"}
               </h2>
-              <p className="text-[#F8F7F4]/70 text-xs sm:text-sm">
-                {t.portfolioDesc}
+              <p className="text-[#F8F7F4]/70 text-xs sm:text-sm leading-relaxed max-w-xl">
+                {lang === "it"
+                  ? "Sperimenta in tempo reale la fluidità e il design su misura delle nostre applicazioni mobile-first. Clicca, ordina o calcola un preventivo direttamente nei simulatori."
+                  : "Experience in real time the fluidity and bespoke design of our mobile-first applications. Click, order, or estimate pricing directly inside the simulators."}
               </p>
             </div>
             <button
@@ -237,106 +241,138 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {projects.map((proj, index) => {
-              const CardComponent = proj.link ? motion.a : motion.div;
-              const extraProps = proj.link
-                ? { href: proj.link, target: "_blank", rel: "noopener noreferrer" }
-                : {};
-              return (
-                <CardComponent
-                  key={proj.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="group cursor-pointer bg-[#111113] border border-[rgba(248,247,244,0.1)] hover:border-[#E35930]/40 transition-all block"
-                  {...extraProps}
-                >
-                  <div className="aspect-[16/10] overflow-hidden relative bg-[#151518] border-b border-[rgba(248,247,244,0.1)]">
-                    <img
-                      src={proj.image}
-                      alt={proj.title}
-                      className="w-full h-full object-cover grayscale contrast-125 opacity-80 group-hover:scale-102 transition-transform duration-700"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute top-4 left-4 bg-[#E35930] text-[#111113] px-3 py-1 text-[9px] font-mono tracking-widest uppercase font-bold">
-                      {proj.category}
-                    </div>
-                  </div>
-                  <div className="p-8 space-y-4">
-                    <h3 className="font-display text-xl font-bold text-[#F8F7F4] group-hover:text-[#E35930] transition-colors">
-                      {proj.title}
-                    </h3>
-                    <p className="text-xs text-[#F8F7F4]/70 leading-relaxed font-sans">
-                      {proj.desc}
-                    </p>
-                    <div className="pt-2">
-                      <span className="text-[10px] font-mono text-[#E35930] font-bold tracking-widest uppercase border-b border-[#E35930]/20 pb-0.5 group-hover:border-[#E35930] transition-colors">
-                        {proj.link ? t.portfolioVisitSite : t.portfolioCaseStudy}
-                      </span>
-                    </div>
-                  </div>
-                </CardComponent>
-              );
-            })}
-          </div>
-
-          {/* Interactive Advanced AI Project App Showcase */}
-          <div className="mt-20 pt-20 border-t border-[rgba(248,247,244,0.1)]">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-              <div className="lg:col-span-6 space-y-6">
-                <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
-                  {lang === "it" ? "[ WEB APP INTERATTIVA LIVE ]" : "[ LIVE INTERACTIVE WEB APP ]"}
-                </span>
+          {/* DUAL INTERACTIVE APPS GRID */}
+          <div className="space-y-24">
+            
+            {/* APP 1: GUSTO & PASSIONE (FIRST VISIBLE APP) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8">
+              <div className="lg:col-span-5 space-y-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full">
+                  <Sparkles className="w-3 h-3 text-amber-400" />
+                  <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-amber-400">
+                    {lang === "it" ? "DEMO LIVE — FACILISSIMO WEB" : "LIVE DEMO — FACILISSIMO WEB"}
+                  </span>
+                </div>
+                
                 <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#F8F7F4] leading-[1.1]">
-                  {lang === "it" ? (
-                    <>
-                      Tattoo Macerata — <span className="italic font-normal text-[#E35930]">Demo Mobile-First</span>
-                    </>
-                  ) : (
-                    <>
-                      Tattoo Macerata — <span className="italic font-normal text-[#E35930]">Mobile-First Demo</span>
-                    </>
-                  )}
+                  Gusto &amp; Passione — <span className="italic font-normal text-amber-500">{lang === "it" ? "Ristorazione & Delivery" : "Food Delivery App"}</span>
                 </h3>
+                
                 <p className="text-[#F8F7F4]/70 font-sans text-xs sm:text-sm leading-relaxed">
                   {lang === "it"
-                    ? "Hai uno studio di tatuaggi, un salone o un'attività professionale nelle Marche e vuoi automatizzare la gestione di preventivi e prenotazioni? Ho realizzato questa demo interattiva premium: un'applicazione mobile-first ad altissimo impatto estetico gotico, con calcolatore preventivi dinamico in base alle dimensioni, colori e complessità del tatuaggio, gestione di prenotazioni sedute e feed recensioni in tempo reale."
-                    : "Do you own a tattoo studio, beauty salon, or local business in Marche and want to automate quote calculations and booking requests? I developed this premium interactive mobile-first simulator: a high-impact gothic/dark app equipped with a dynamic tattoo price estimator, booking scheduler, and live feedback review board."}
+                    ? "Una piattaforma premium sviluppata in ottica mobile-first per ristoranti, pizzerie e locali enogastronomici. Unisce la bellezza estetica delle immagini culinarie alla potenza dell'interattività: menu con categorie intuitive, ricerca rapida dei piatti, carrello dinamico con fidelizzazione punti lealtà e checkout simulato con carta di credito."
+                    : "A premium restaurant platform designed from the ground up for mobile devices. It merges stunning culinary imagery with deep interactive mechanics: tabbed categories, real-time product search, dynamic shopping cart, a point-based customer loyalty card, and a mock credit card transaction gateway."}
                 </p>
 
                 <div className="space-y-4 font-sans text-xs text-[#F8F7F4]/70 leading-relaxed">
                   <div className="flex gap-3 items-start">
                     <div className="w-5 h-5 rounded-full bg-emerald-950 border border-emerald-800 flex items-center justify-center text-emerald-400 text-[10px] font-mono shrink-0 mt-0.5">✓</div>
                     <div>
-                      <h4 className="font-display font-bold text-xs text-[#F8F7F4]">{lang === "it" ? "Interazione in tempo reale" : "Real-time interaction"}</h4>
+                      <h4 className="font-display font-bold text-xs text-[#F8F7F4]">{lang === "it" ? "Menu & Carrello Completi" : "Full Interactive Ordering"}</h4>
                       <p className="text-[11px] text-[#F8F7F4]/50 leading-relaxed">
                         {lang === "it" 
-                          ? "Prova subito il simulatore a fianco: calcola un preventivo in tempo reale, inseriscilo direttamente nel modulo di prenotazione e invia la richiesta." 
-                          : "Test the simulator on the side: configure your tattoo size and complexity, load the quote instantly into the booking scheduler, and submit your request."}
+                          ? "Filtra per pizze, primi o bibite marchigiane, aggiungi elementi speciali nel carrello e completa l'acquisto simulato." 
+                          : "Filter dishes, customize order notes, manage the live cart items, and complete the simulated checkout process."}
                       </p>
                     </div>
                   </div>
                   <div className="flex gap-3 items-start">
                     <div className="w-5 h-5 rounded-full bg-emerald-950 border border-emerald-800 flex items-center justify-center text-emerald-400 text-[10px] font-mono shrink-0 mt-0.5">✓</div>
                     <div>
-                      <h4 className="font-display font-bold text-xs text-[#F8F7F4]">{lang === "it" ? "Design Altamente Personalizzato" : "Tailored Aesthetic Identity"}</h4>
+                      <h4 className="font-display font-bold text-xs text-[#F8F7F4]">{lang === "it" ? "Fidelity Card Marchigiana" : "Local Loyalty Card"}</h4>
                       <p className="text-[11px] text-[#F8F7F4]/50 leading-relaxed">
                         {lang === "it" 
-                          ? "Lo stile visivo richiama i caratteri gotici medievali ed esoterici, integrando caratteri unici che non entrano in conflitto con il layout pulito del sito principale." 
-                          : "The visual theme utilizes classic medieval gothic typography and deep purple accents, fully isolated to run flawlessly without affecting the main site's design."}
+                          ? "I clienti accumulano punti reali da convertire in regali gastronomici (es. Cantucci o Birra) visibili nella seconda scheda dell'app." 
+                          : "Simulates actual reward collection based on order size, redeemable for local delicacies inside the loyalty reward tab."}
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="lg:col-span-6 flex justify-center w-full">
-                <TattooMacerataApp lang={lang} />
+              <div className="lg:col-span-7 flex justify-center w-full">
+                <div className="w-full max-w-[390px] bg-[#151518] rounded-[40px] p-3.5 border-4 border-zinc-800/80 shadow-2xl relative overflow-hidden">
+                  {/* Speaker slot & camera bar */}
+                  <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-32 h-4.5 bg-zinc-900 rounded-full z-50 flex items-center justify-center gap-1.5 border border-zinc-800">
+                    <span className="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                    <span className="w-10 h-1 bg-zinc-800 rounded-full"></span>
+                  </div>
+                  
+                  {/* App Frame Inner Content */}
+                  <div className="rounded-[28px] overflow-hidden bg-white border border-zinc-900 h-[640px] relative scrollbar-none">
+                    <GustoPassioneApp lang={lang} />
+                  </div>
+                </div>
               </div>
             </div>
+
+            {/* DIVIDER */}
+            <div className="h-px bg-gradient-to-r from-transparent via-[rgba(248,247,244,0.15)] to-transparent"></div>
+
+            {/* APP 2: TATTOO MACERATA (SECOND VISIBLE APP) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              <div className="lg:col-span-5 space-y-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-500/10 border border-purple-500/30 rounded-full">
+                  <Sparkles className="w-3 h-3 text-purple-400" />
+                  <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-purple-400">
+                    {lang === "it" ? "DEMO LIVE — FACILISSIMO WEB" : "LIVE DEMO — FACILISSIMO WEB"}
+                  </span>
+                </div>
+                
+                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#F8F7F4] leading-[1.1]">
+                  Tattoo Macerata — <span className="italic font-normal text-purple-400">{lang === "it" ? "Studio Tattoo & Booking" : "Tattoo Studio App"}</span>
+                </h3>
+                
+                <p className="text-[#F8F7F4]/70 font-sans text-xs sm:text-sm leading-relaxed">
+                  {lang === "it"
+                    ? "Un'applicazione mobile-first ad altissimo impatto scenico gotico, progettata per studi di tatuaggi d'elite, barbieri o attività artistiche delle Marche. Combina l'estetica delle texture di inchiostro scuro a calcolatori dinamici di preventivo basati su dimensioni e complessità del tatuaggio, prenotazione della prima consulenza gratuita e recensioni reali."
+                    : "A highly evocative dark/gothic-themed mobile app tailored for elite tattoo artists, studios, and niche artistic services. Integrates comprehensive studio details, an interactive price slider reflecting design dimensions and color complexities, and a live testimonial feed."}
+                </p>
+
+                <div className="space-y-4 font-sans text-xs text-[#F8F7F4]/70 leading-relaxed">
+                  <div className="flex gap-3 items-start">
+                    <div className="w-5 h-5 rounded-full bg-emerald-950 border border-emerald-800 flex items-center justify-center text-emerald-400 text-[10px] font-mono shrink-0 mt-0.5">✓</div>
+                    <div>
+                      <h4 className="font-display font-bold text-xs text-[#F8F7F4]">{lang === "it" ? "Preventivatore di Costo Rapido" : "Instant Price Estimator"}</h4>
+                      <p className="text-[11px] text-[#F8F7F4]/50 leading-relaxed">
+                        {lang === "it" 
+                          ? "Sposta il cursore per simulare la dimensione del tatuaggio, seleziona i colori e la complessità per calcolare istantaneamente la stima del prezzo." 
+                          : "Move the slider to configure size, choose colors and complexity to get an immediate cost estimation range."}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3 items-start">
+                    <div className="w-5 h-5 rounded-full bg-emerald-950 border border-emerald-800 flex items-center justify-center text-emerald-400 text-[10px] font-mono shrink-0 mt-0.5">✓</div>
+                    <div>
+                      <h4 className="font-display font-bold text-xs text-[#F8F7F4]">{lang === "it" ? "Integrazione Automatica del Preventivo" : "One-Click Quote Transfer"}</h4>
+                      <p className="text-[11px] text-[#F8F7F4]/50 leading-relaxed">
+                        {lang === "it" 
+                          ? "Invia i parametri del preventivo direttamente nel modulo di prenotazione con un semplice click, facilitando la prenotazione della consulenza." 
+                          : "Transfer the calculated cost estimation directly into the booking parameters with one click to streamline consultation scheduling."}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="lg:col-span-7 flex justify-center w-full">
+                <div className="w-full max-w-[390px] bg-[#151518] rounded-[40px] p-3.5 border-4 border-zinc-800/80 shadow-2xl relative overflow-hidden">
+                  {/* Speaker slot & camera bar */}
+                  <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-32 h-4.5 bg-zinc-900 rounded-full z-50 flex items-center justify-center gap-1.5 border border-zinc-800">
+                    <span className="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                    <span className="w-10 h-1 bg-zinc-800 rounded-full"></span>
+                  </div>
+                  
+                  {/* App Frame Inner Content */}
+                  <div className="rounded-[28px] overflow-hidden bg-black border border-zinc-900 h-[640px] relative scrollbar-none">
+                    <TattooMacerataApp lang={lang} />
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
+
         </div>
       </section>
 
