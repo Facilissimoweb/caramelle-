@@ -4,7 +4,7 @@ import { Brain, Cpu, Zap, ArrowRight, Heart, CheckCircle2, Sparkles } from "luci
 import { translations } from "../translations";
 import FAQAccordion from "./FAQAccordion";
 import GallerySection from "./GallerySection";
-import CyberAiGuideApp from "./CyberAiGuideApp";
+import GustoPassioneApp from "./GustoPassioneApp";
 
 interface HomeViewProps {
   setCurrentTab: (tab: string) => void;
@@ -51,15 +51,14 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
     },
   ];
 
-  const projects = [
+  const projects: { title: string; category: string; desc: string; image: string; link?: string }[] = [
     {
-      title: "Amala Pizza",
-      category: lang === "it" ? "Sito Multipagina & Logo Redesign" : "Multi-page Site & Logo Redesign",
+      title: "Gusto & Passione",
+      category: lang === "it" ? "Web App Interattiva & Loyalty Club" : "Interactive Web App & Loyalty Club",
       desc: lang === "it"
-        ? "Riprogettazione dell'identità visiva, nuovo logo design e sviluppo di un sito web multipagina completo ospitato su Hostinger. Un classico pacchetto completo \"chiavi in mano\" per valorizzare un brand di ristorazione d'eccellenza."
-        : "Visual identity redesign, brand new logo design, and development of a complete multi-page business website hosted on Hostinger. A classic, ready-to-run turn-key package to elevate an artisan food brand.",
+        ? "Sviluppo di un menu digitale premium con carrello interattivo, accumulo automatico di punti fedeltà nel browser dell'utente, simulazione di pagamenti protetti e inoltro d'ordine diretto su WhatsApp. Una soluzione ad altissima conversione per la ristorazione locale."
+        : "Development of a premium digital menu with an integrated interactive shopping cart, client-side loyalty points, secure credit card simulation, and direct WhatsApp order dispatch for local restaurants.",
       image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800",
-      link: "https://amalapizza.it/",
     },
     {
       title: "Nexa AI Hub",
@@ -297,23 +296,23 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-6 space-y-6">
                 <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
-                  {lang === "it" ? "[ CODICE INTERATTIVO LIVE ]" : "[ LIVE INTERACTIVE CODE ]"}
+                  {lang === "it" ? "[ WEB APP INTERATTIVA LIVE ]" : "[ LIVE INTERACTIVE WEB APP ]"}
                 </span>
                 <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#F8F7F4] leading-[1.1]">
                   {lang === "it" ? (
                     <>
-                      Guida all'IA per <span className="italic font-normal text-[#E35930]">Microimprese Locali</span>
+                      Gusto &amp; Passione — <span className="italic font-normal text-[#E35930]">Menu Digitale Premium</span>
                     </>
                   ) : (
                     <>
-                      AI Handbook for <span className="italic font-normal text-[#E35930]">Local Businesses</span>
+                      Gusto &amp; Passione — <span className="italic font-normal text-[#E35930]">Premium Digital Menu</span>
                     </>
                   )}
                 </h3>
                 <p className="text-[#F8F7F4]/70 font-sans text-xs sm:text-sm leading-relaxed">
                   {lang === "it"
-                    ? "Vuoi capire come l'Intelligenza Artificiale può davvero far decollare la tua attività o il tuo studio professionale a Macerata e nelle Marche, senza spendere un patrimonio? Ho sviluppato questa guida e-book interattiva in stile Cyberdeck per sfatare i miti comuni e darti risposte trasparenti in pochi secondi."
-                    : "Want to understand how Artificial Intelligence can realistically elevate your local microenterprise or freelance practice, without spending a fortune? I built this interactive, cyberpunk-style mobile deck guide to break down common myths and provide plain answers instantly."}
+                    ? "Hai un ristorante, pizzeria o locale nelle Marche e vuoi automatizzare le ordinazioni d'asporto e a domicilio senza costose commissioni? Ho realizzato questo simulatore interattivo di web-app premium: un menu digitale completo con carrello, club fedeltà con accumulo punti automatico in locale, simulatore di pagamento sicuro e inoltro d'ordine diretto su WhatsApp."
+                    : "Do you run a restaurant, pizzeria, or local shop and want to automate takeaway and delivery orders without paying high commissions? I developed this interactive premium web-app simulator: a complete digital menu with an elegant shopping cart, local loyalty points engine, secure payment checkout simulator, and direct WhatsApp dispatch."}
                 </p>
 
                 <div className="space-y-4 font-sans text-xs text-[#F8F7F4]/70 leading-relaxed">
@@ -321,21 +320,21 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                     <div className="w-5 h-5 rounded-full bg-emerald-950 border border-emerald-800 flex items-center justify-center text-emerald-400 text-[10px] font-mono shrink-0 mt-0.5">✓</div>
                     <div>
                       <h4 className="font-display font-bold text-xs text-[#F8F7F4]">{lang === "it" ? "Interazione in tempo reale" : "Real-time interaction"}</h4>
-                      <p className="text-[11px] text-[#F8F7F4]/50 leading-relaxed">{lang === "it" ? "Prova subito il dispositivo virtuale scorrendo le schede FAQ tramite il pulsante 'Execute'." : "Test the virtual device instantly by swiping through the FAQ slides with the 'Execute' control."}</p>
+                      <p className="text-[11px] text-[#F8F7F4]/50 leading-relaxed">{lang === "it" ? "Prova subito il simulatore a fianco: aggiungi i piatti al carrello, riscatta i premi del Club Fedeltà e invia l'ordine." : "Try the simulator right here: add delicious dishes to your cart, redeem loyalty club gifts, and place your order."}</p>
                     </div>
                   </div>
                   <div className="flex gap-3 items-start">
                     <div className="w-5 h-5 rounded-full bg-emerald-950 border border-emerald-800 flex items-center justify-center text-emerald-400 text-[10px] font-mono shrink-0 mt-0.5">✓</div>
                     <div>
-                      <h4 className="font-display font-bold text-xs text-[#F8F7F4]">{lang === "it" ? "Nessun reindirizzamento esterno" : "Zero external redirects"}</h4>
-                      <p className="text-[11px] text-[#F8F7F4]/50 leading-relaxed">{lang === "it" ? "La mini-applicazione è integrata direttamente per farti testare le performance del codice leggero." : "The mini-application is directly embedded to let you experience the high performance of optimized code."}</p>
+                      <h4 className="font-display font-bold text-xs text-[#F8F7F4]">{lang === "it" ? "Persistenza Locale e GDPR" : "Local Persistence & GDPR"}</h4>
+                      <p className="text-[11px] text-[#F8F7F4]/50 leading-relaxed">{lang === "it" ? "I tuoi dati e i punti fedeltà vengono memorizzati nel browser locale in modo sicuro e trasparente." : "Your customer details and loyalty points are safely stored inside your browser local storage."}</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="lg:col-span-6 flex justify-center w-full">
-                <CyberAiGuideApp lang={lang} />
+                <GustoPassioneApp lang={lang} />
               </div>
             </div>
           </div>
