@@ -6,6 +6,7 @@ import FAQAccordion from "./FAQAccordion";
 import GallerySection from "./GallerySection";
 import TattooMacerataApp from "./TattooMacerataApp";
 import GustoPassioneApp from "./GustoPassioneApp";
+import NidoSogniApp from "./NidoSogniApp";
 
 interface HomeViewProps {
   setCurrentTab: (tab: string) => void;
@@ -18,9 +19,9 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
   const t = translations[lang][isFacilitated ? "facilitated" : "normal"];
 
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
-  const [activeFullScreenApp, setActiveFullScreenApp] = useState<"gusto" | "tattoo" | null>(null);
+  const [activeFullScreenApp, setActiveFullScreenApp] = useState<"gusto" | "tattoo" | "nido" | null>(null);
 
-  const handleOpenFullScreen = (app: "gusto" | "tattoo") => {
+  const handleOpenFullScreen = (app: "gusto" | "tattoo" | "nido") => {
     setActiveFullScreenApp(app);
     document.body.style.overflow = "hidden";
   };
@@ -413,6 +414,80 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               </div>
             </div>
 
+            {/* DIVIDER */}
+            <div className="h-px bg-gradient-to-r from-transparent via-[rgba(248,247,244,0.15)] to-transparent"></div>
+
+            {/* APP 3: IL NIDO DEI SOGNI (THIRD VISIBLE APP) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              <div className="lg:col-span-5 space-y-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-pink-500/10 border border-pink-500/30 rounded-full">
+                  <Sparkles className="w-3 h-3 text-pink-400" />
+                  <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-pink-400">
+                    {lang === "it" ? "DEMO LIVE — FACILISSIMO WEB" : "LIVE DEMO — FACILISSIMO WEB"}
+                  </span>
+                </div>
+                
+                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#F8F7F4] leading-[1.1]">
+                  Il Nido dei Sogni — <span className="italic font-normal text-pink-400">{lang === "it" ? "Asilo Nido & Servizi Infanzia" : "Nursery & Childcare App"}</span>
+                </h3>
+                
+                <p className="text-[#F8F7F4]/70 font-sans text-xs sm:text-sm leading-relaxed">
+                  {lang === "it"
+                    ? "Un'applicazione mobile-first luminosa e rassicurante, su misura per asili nido, scuole dell'infanzia, ludoteche o educatrici professionali di Macerata e delle Marche. Integra la bellezza delle foto delle aule biologiche a strumenti pedagogici e interattivi per le famiglie: un generatore di avatar mascotte per l'armadietto dei bambini, il diario di bordo giornaliero digitale (pasti, sonno, umore) e prenotazione visite guidate."
+                    : "A bright and welcoming mobile-first web app designed for nurseries, kindergartens, playrooms, and child education professionals in Macerata. Merges high-quality classroom imagery with engaging features: a customized mascot avatar generator for kids, a daily digital board reporting meal and sleep statuses, and a streamlined tour booking form."}
+                </p>
+
+                <div className="space-y-4 font-sans text-xs text-[#F8F7F4]/70 leading-relaxed">
+                  <div className="flex gap-3 items-start">
+                    <div className="w-5 h-5 rounded-full bg-emerald-950 border border-emerald-800 flex items-center justify-center text-emerald-400 text-[10px] font-mono shrink-0 mt-0.5">✓</div>
+                    <div>
+                      <h4 className="font-display font-bold text-xs text-[#F8F7F4]">{lang === "it" ? "Generatore di Mascotte Interattivo" : "Interactive Mascot Builder"}</h4>
+                      <p className="text-[11px] text-[#F8F7F4]/50 leading-relaxed">
+                        {lang === "it" 
+                          ? "I genitori possono digitare il nome del bambino, scegliere l'animaletto della sezione, il colore preferito e un simpatico accessorio creando l'avatar per l'armadietto." 
+                          : "Parents can personalize school cabinet labels by writing the child's name, picking a cartoon mascot, customizing the brand color, and overlaying sweet decorations."}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3 items-start">
+                    <div className="w-5 h-5 rounded-full bg-emerald-950 border border-emerald-800 flex items-center justify-center text-emerald-400 text-[10px] font-mono shrink-0 mt-0.5">✓</div>
+                    <div>
+                      <h4 className="font-display font-bold text-xs text-[#F8F7F4]">{lang === "it" ? "Diario di Bordo Digitale" : "Live Children Log Sheet"}</h4>
+                      <p className="text-[11px] text-[#F8F7F4]/50 leading-relaxed">
+                        {lang === "it" 
+                          ? "Simula la bacheca in tempo reale che mostra l'andamento della giornata: orari del pranzo bio, ore di riposino e livello di felicità per tenere i genitori sereni." 
+                          : "Simulates daily activity logs tracking bio-organic meals, nap cycles, and sensory play milestones to provide full family visibility."}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="lg:col-span-7 flex flex-col items-center gap-4 w-full">
+                <div className="w-full max-w-[390px] bg-[#151518] rounded-[40px] p-3.5 border-4 border-zinc-800/80 shadow-2xl relative overflow-hidden">
+                  {/* Speaker slot & camera bar */}
+                  <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-32 h-4.5 bg-zinc-900 rounded-full z-50 flex items-center justify-center gap-1.5 border border-zinc-800">
+                    <span className="w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                    <span className="w-10 h-1 bg-zinc-800 rounded-full"></span>
+                  </div>
+                  
+                  {/* App Frame Inner Content */}
+                  <div className="rounded-[28px] overflow-hidden bg-[#FFF5F5] border border-zinc-900 h-[640px] relative scrollbar-none">
+                    <NidoSogniApp lang={lang} />
+                  </div>
+                </div>
+
+                {/* APRI A PAGINA INTERA Button */}
+                <button
+                  onClick={() => handleOpenFullScreen("nido")}
+                  className="w-full max-w-[390px] py-3.5 px-6 border border-[#F472B6] hover:bg-[#F472B6] text-[#F472B6] hover:text-[#111113] font-mono text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg shadow-[#F472B6]/10"
+                >
+                  <Maximize2 className="w-4 h-4 animate-pulse" />
+                  {lang === "it" ? "APRI A PAGINA INTERA" : "OPEN FULL PAGE"}
+                </button>
+              </div>
+            </div>
+
           </div>
 
         </div>
@@ -538,7 +613,9 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#F8F7F4]/90">
                   {activeFullScreenApp === "gusto" 
                     ? (lang === "it" ? "Gusto & Passione — Demo Web App" : "Gusto & Passione — Food Delivery Web App")
-                    : (lang === "it" ? "Tattoo Macerata — Demo Web App" : "Tattoo Macerata — Tattoo Booking Web App")
+                    : activeFullScreenApp === "tattoo"
+                    ? (lang === "it" ? "Tattoo Macerata — Demo Web App" : "Tattoo Macerata — Tattoo Booking Web App")
+                    : (lang === "it" ? "Il Nido dei Sogni — Demo Web App" : "Dreamy Nursery — Childcare Web App")
                   }
                 </span>
                 <span className="hidden sm:inline px-2.5 py-0.5 bg-[#F8F7F4]/5 border border-[rgba(248,247,244,0.1)] font-mono text-[9px] text-[#F8F7F4]/50 rounded font-bold uppercase tracking-widest">
@@ -563,9 +640,13 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   <div className="w-full h-full bg-zinc-50 overflow-hidden relative text-zinc-950">
                     <GustoPassioneApp lang={lang} />
                   </div>
-                ) : (
+                ) : activeFullScreenApp === "tattoo" ? (
                   <div className="w-full h-full bg-[#09070f] overflow-hidden relative text-gray-100">
                     <TattooMacerataApp lang={lang} />
+                  </div>
+                ) : (
+                  <div className="w-full h-full bg-[#FFF5F5] overflow-hidden relative text-slate-700">
+                    <NidoSogniApp lang={lang} />
                   </div>
                 )}
               </div>

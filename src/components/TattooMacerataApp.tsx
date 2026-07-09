@@ -391,7 +391,7 @@ export default function TattooMacerataApp({ lang = "it" }: TattooMacerataAppProp
 
               {/* ARTISTA 1 */}
               <div className="bg-[#121214] rounded-2xl border border-purple-950/60 overflow-hidden">
-                <div className="relative h-44 bg-cover bg-center flex items-end overflow-hidden" style={{ backgroundImage: `linear-gradient(to top, rgba(18,18,20,0.95), rgba(18,18,20,0.1)), url('https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&q=80&w=600')` }}>
+                <div className="relative h-44 bg-cover bg-center flex items-end overflow-hidden" style={{ backgroundImage: `linear-gradient(to top, rgba(18,18,20,0.95), rgba(18,18,20,0.1)), url('https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&q=80&w=600')` }}>
                   <div className="absolute bottom-3 left-3 bg-black/80 px-2.5 py-1 rounded-md border border-[#00ff88]/40 z-10">
                     <span className="text-[10px] text-[#00ff88] font-mono uppercase font-poppins">Master Artist</span>
                   </div>
@@ -416,7 +416,7 @@ export default function TattooMacerataApp({ lang = "it" }: TattooMacerataAppProp
 
               {/* ARTISTA 2 */}
               <div className="bg-[#121214] rounded-2xl border border-purple-950/60 overflow-hidden">
-                <div className="relative h-44 bg-cover bg-center flex items-end overflow-hidden" style={{ backgroundImage: `linear-gradient(to top, rgba(18,18,20,0.95), rgba(18,18,20,0.1)), url('https://images.unsplash.com/photo-1594744803329-e58b31de215f?auto=format&fit=crop&q=80&w=600')` }}>
+                <div className="relative h-44 bg-cover bg-center flex items-end overflow-hidden" style={{ backgroundImage: `linear-gradient(to top, rgba(18,18,20,0.95), rgba(18,18,20,0.1)), url('https://images.unsplash.com/photo-1541257265330-226e382d62a9?auto=format&fit=crop&q=80&w=600')` }}>
                   <div className="absolute bottom-3 left-3 bg-black/80 px-2.5 py-1 rounded-md border border-[#00ff88]/40 z-10">
                     <span className="text-[10px] text-[#00ff88] font-mono uppercase font-poppins">Fineline Expert</span>
                   </div>
@@ -441,7 +441,7 @@ export default function TattooMacerataApp({ lang = "it" }: TattooMacerataAppProp
 
               {/* ARTISTA 3 */}
               <div className="bg-[#121214] rounded-2xl border border-purple-950/60 overflow-hidden">
-                <div className="relative h-44 bg-cover bg-center flex items-end overflow-hidden" style={{ backgroundImage: `linear-gradient(to top, rgba(18,18,20,0.95), rgba(18,18,20,0.1)), url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600')` }}>
+                <div className="relative h-44 bg-cover bg-center flex items-end overflow-hidden" style={{ backgroundImage: `linear-gradient(to top, rgba(18,18,20,0.95), rgba(18,18,20,0.1)), url('https://images.unsplash.com/photo-1515462277126-270d878326e5?auto=format&fit=crop&q=80&w=600')` }}>
                   <div className="absolute bottom-3 left-3 bg-black/80 px-2.5 py-1 rounded-md border border-[#00ff88]/40 z-10">
                     <span className="text-[10px] text-[#00ff88] font-mono uppercase font-poppins">Surrealist Guru</span>
                   </div>
