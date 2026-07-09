@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Brain, Cpu, Zap, ArrowRight, Heart, CheckCircle2, Sparkles } from "lucide-react";
+import { Brain, Cpu, Zap, ArrowRight, Heart, CheckCircle2, Sparkles, Maximize2, X } from "lucide-react";
 import { translations } from "../translations";
 import FAQAccordion from "./FAQAccordion";
 import GallerySection from "./GallerySection";
@@ -18,6 +18,30 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
   const t = translations[lang][isFacilitated ? "facilitated" : "normal"];
 
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
+  const [activeFullScreenApp, setActiveFullScreenApp] = useState<"gusto" | "tattoo" | null>(null);
+
+  const handleOpenFullScreen = (app: "gusto" | "tattoo") => {
+    setActiveFullScreenApp(app);
+    document.body.style.overflow = "hidden";
+  };
+
+  const handleCloseFullScreen = () => {
+    setActiveFullScreenApp(null);
+    document.body.style.overflow = "unset";
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        handleCloseFullScreen();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
+    };
+  }, []);
   const bgImages = [
     "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1920",
     "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=1920",
@@ -290,7 +314,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 </div>
               </div>
 
-              <div className="lg:col-span-7 flex justify-center w-full">
+              <div className="lg:col-span-7 flex flex-col items-center gap-4 w-full">
                 <div className="w-full max-w-[390px] bg-[#151518] rounded-[40px] p-3.5 border-4 border-zinc-800/80 shadow-2xl relative overflow-hidden">
                   {/* Speaker slot & camera bar */}
                   <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-32 h-4.5 bg-zinc-900 rounded-full z-50 flex items-center justify-center gap-1.5 border border-zinc-800">
@@ -303,6 +327,15 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                     <GustoPassioneApp lang={lang} />
                   </div>
                 </div>
+
+                {/* APRI A PAGINA INTERA Button */}
+                <button
+                  onClick={() => handleOpenFullScreen("gusto")}
+                  className="w-full max-w-[390px] py-3.5 px-6 border border-[#E35930] hover:bg-[#E35930] text-[#E35930] hover:text-[#111113] font-mono text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg shadow-[#E35930]/10"
+                >
+                  <Maximize2 className="w-4 h-4 animate-pulse" />
+                  {lang === "it" ? "APRI A PAGINA INTERA" : "OPEN FULL PAGE"}
+                </button>
               </div>
             </div>
 
@@ -355,7 +388,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 </div>
               </div>
 
-              <div className="lg:col-span-7 flex justify-center w-full">
+              <div className="lg:col-span-7 flex flex-col items-center gap-4 w-full">
                 <div className="w-full max-w-[390px] bg-[#151518] rounded-[40px] p-3.5 border-4 border-zinc-800/80 shadow-2xl relative overflow-hidden">
                   {/* Speaker slot & camera bar */}
                   <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-32 h-4.5 bg-zinc-900 rounded-full z-50 flex items-center justify-center gap-1.5 border border-zinc-800">
@@ -368,6 +401,15 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                     <TattooMacerataApp lang={lang} />
                   </div>
                 </div>
+
+                {/* APRI A PAGINA INTERA Button */}
+                <button
+                  onClick={() => handleOpenFullScreen("tattoo")}
+                  className="w-full max-w-[390px] py-3.5 px-6 border border-[#00ff88] hover:bg-[#00ff88] text-[#00ff88] hover:text-[#09070f] font-mono text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg shadow-[#00ff88]/10"
+                >
+                  <Maximize2 className="w-4 h-4 animate-pulse" />
+                  {lang === "it" ? "APRI A PAGINA INTERA" : "OPEN FULL PAGE"}
+                </button>
               </div>
             </div>
 
@@ -478,6 +520,59 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           </div>
         </div>
       </section>
+
+      {/* FULL-SCREEN OVERLAY PORTAL FOR DEMO APPS */}
+      <AnimatePresence>
+        {activeFullScreenApp && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="fixed inset-0 bg-[#111113] z-[99999] flex flex-col overflow-hidden font-sans text-[#F8F7F4]"
+          >
+            {/* Top control and branding bar */}
+            <div className="bg-[#151518] border-b border-[rgba(248,247,244,0.08)] px-4 sm:px-6 py-3.5 flex items-center justify-between shrink-0 select-none">
+              <div className="flex items-center gap-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#E35930] animate-pulse"></span>
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#F8F7F4]/90">
+                  {activeFullScreenApp === "gusto" 
+                    ? (lang === "it" ? "Gusto & Passione — Demo Web App" : "Gusto & Passione — Food Delivery Web App")
+                    : (lang === "it" ? "Tattoo Macerata — Demo Web App" : "Tattoo Macerata — Tattoo Booking Web App")
+                  }
+                </span>
+                <span className="hidden sm:inline px-2.5 py-0.5 bg-[#F8F7F4]/5 border border-[rgba(248,247,244,0.1)] font-mono text-[9px] text-[#F8F7F4]/50 rounded font-bold uppercase tracking-widest">
+                  {lang === "it" ? "Pagina Intera" : "Full View Mode"}
+                </span>
+              </div>
+              
+              <button
+                onClick={handleCloseFullScreen}
+                className="px-4 py-2 bg-transparent hover:bg-[#E35930] text-[#E35930] hover:text-[#111113] border border-[#E35930]/30 hover:border-[#E35930] font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-250 flex items-center gap-2 cursor-pointer"
+                title={lang === "it" ? "Chiudi e torna al sito" : "Close and return to site"}
+              >
+                <X className="w-4 h-4" />
+                <span>{lang === "it" ? "TORNA INDIETRO" : "CLOSE FULL SCREEN"}</span>
+              </button>
+            </div>
+
+            {/* Simulated browser window wrapper / main workspace */}
+            <div className="flex-grow w-full bg-[#111113] flex justify-center items-center overflow-hidden p-0 sm:p-4">
+              <div className="w-full h-full max-w-5xl bg-[#111113] shadow-2xl sm:border border-[rgba(248,247,244,0.08)] flex flex-col overflow-hidden relative">
+                {activeFullScreenApp === "gusto" ? (
+                  <div className="w-full h-full bg-zinc-50 overflow-hidden relative text-zinc-950">
+                    <GustoPassioneApp lang={lang} />
+                  </div>
+                ) : (
+                  <div className="w-full h-full bg-[#09070f] overflow-hidden relative text-gray-100">
+                    <TattooMacerataApp lang={lang} />
+                  </div>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
