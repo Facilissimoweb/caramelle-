@@ -50,16 +50,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       tags: lang === "it" ? ["DESIGN PIXEL-PERFECT", "SU MISURA"] : ["PIXEL-PERFECT", "CUSTOM DESIGN"],
     },
   ];
-
   const projects: { title: string; category: string; desc: string; image: string; link?: string }[] = [
-    {
-      title: "Gusto & Passione",
-      category: lang === "it" ? "Web App Interattiva & Loyalty Club" : "Interactive Web App & Loyalty Club",
-      desc: lang === "it"
-        ? "Sviluppo di un menu digitale premium con carrello interattivo, accumulo automatico di punti fedeltà nel browser dell'utente, simulazione di pagamenti protetti e inoltro d'ordine diretto su WhatsApp. Una soluzione ad altissima conversione per la ristorazione locale."
-        : "Development of a premium digital menu with an integrated interactive shopping cart, client-side loyalty points, secure credit card simulation, and direct WhatsApp order dispatch for local restaurants.",
-      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800",
-    },
     {
       title: "Nexa AI Hub",
       category: lang === "it" ? "Brand Identity & Platform Design" : "Brand Identity & Platform Design",
