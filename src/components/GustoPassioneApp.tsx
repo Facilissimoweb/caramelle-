@@ -545,14 +545,10 @@ export default function GustoPassioneApp({ lang = "it" }: GustoPassioneAppProps)
   };
 
   return (
-    <div className="flex items-center justify-center p-0.5 sm:p-2 bg-transparent font-sans w-full relative z-10">
-      {/* Smartphone mockup layout */}
-      <div className="relative w-full max-w-[420px] h-[820px] bg-zinc-50 sm:rounded-[40px] shadow-2xl flex flex-col overflow-hidden border-4 sm:border-[10px] border-zinc-900 shadow-zinc-950/50">
-        {/* Notch Speaker details */}
-        <div className="hidden sm:block absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-zinc-900 rounded-b-2xl z-50"></div>
-
-        {/* Dynamic Toast System */}
-        <AnimatePresence>
+    <div className="w-full h-full bg-zinc-50 font-sans relative flex flex-col overflow-hidden text-zinc-900">
+      
+      {/* Dynamic Toast System */}
+      <AnimatePresence>
           {toast.visible && (
             <motion.div
               initial={{ opacity: 0, y: -50, scale: 0.9 }}
@@ -1536,6 +1532,5 @@ export default function GustoPassioneApp({ lang = "it" }: GustoPassioneAppProps)
           )}
         </AnimatePresence>
       </div>
-    </div>
-  );
-}
+    );
+  }
