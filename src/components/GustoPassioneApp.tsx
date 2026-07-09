@@ -28,6 +28,8 @@ import {
   Plus,
   ChevronRight,
   Phone,
+  CupSoda,
+  Beef,
 } from "lucide-react";
 
 interface Product {
@@ -249,6 +251,9 @@ export default function GustoPassioneApp({ lang = "it" }: GustoPassioneAppProps)
 
   // Loyalty rewards applied states
   const [rewardApplied, setRewardApplied] = useState<boolean>(false);
+
+  // Interactive Loyalty Calculator states
+  const [calcSpendAmount, setCalcSpendAmount] = useState<number>(50);
 
   // FAQ Accordion Open Indexes
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
@@ -718,20 +723,41 @@ export default function GustoPassioneApp({ lang = "it" }: GustoPassioneAppProps)
               </div>
 
               {/* Categories scroll panel */}
-              <div className="flex gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+              <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
                 {categories.map((cat) => {
                   const isAct = cat === currentCategory;
+                  const count = cat === "Tutti"
+                    ? products.length
+                    : products.filter(p => p.category === cat).length;
+                  
+                  let icon = <Pizza className="w-4 h-4" />;
+                  if (cat === "Primi") icon = <UtensilsCrossed className="w-4 h-4" />;
+                  else if (cat === "Secondi") icon = <Beef className="w-4 h-4" />;
+                  else if (cat === "Bibite") icon = <CupSoda className="w-4 h-4" />;
+                  else if (cat === "Dolci") icon = <Cookie className="w-4 h-4" />;
+                  else if (cat === "Tutti") icon = <BookOpen className="w-4 h-4" />;
+
                   return (
                     <button
                       key={cat}
                       onClick={() => setCurrentCategory(cat)}
-                      className={`px-3.5 py-1.5 rounded-full text-[10px] transition whitespace-nowrap font-semibold ${
+                      className={`px-3.5 py-2 rounded-2xl transition-all duration-200 flex items-center gap-2 shrink-0 border cursor-pointer ${
                         isAct
-                          ? "bg-amber-500 text-zinc-950 font-extrabold shadow-sm"
-                          : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200"
+                          ? "bg-gradient-to-r from-amber-500 to-amber-600 text-zinc-950 font-bold border-amber-500 shadow-md shadow-amber-500/20"
+                          : "bg-white text-zinc-600 border-zinc-100 hover:border-zinc-200 hover:bg-zinc-50"
                       }`}
                     >
-                      {cat}
+                      <div className={`w-6 h-6 rounded-xl flex items-center justify-center shrink-0 ${
+                        isAct ? "bg-zinc-950/10 text-zinc-950" : "bg-zinc-100 text-zinc-500"
+                      }`}>
+                        {icon}
+                      </div>
+                      <div className="text-left leading-none">
+                        <p className="text-[10px] font-extrabold tracking-tight uppercase">{cat}</p>
+                        <p className={`text-[8px] ${isAct ? "text-zinc-900/60" : "text-zinc-400"} mt-0.5 font-medium`}>
+                          {count} {lang === "it" ? "piatti" : "dishes"}
+                        </p>
+                      </div>
                     </button>
                   );
                 })}
@@ -904,6 +930,108 @@ export default function GustoPassioneApp({ lang = "it" }: GustoPassioneAppProps)
                 </div>
               </div>
 
+              {/* INTERACTIVE LOYALTY CALCULATOR & SIMULATOR */}
+              <div className="bg-white p-4 rounded-2xl border border-zinc-100 shadow-sm space-y-3">
+                <div className="flex items-center justify-between">
+                  <h4 className="font-extrabold text-xs text-zinc-900 flex items-center gap-1.5">
+                    <Gem className="text-amber-500 w-4 h-4" />
+                    {lang === "it" ? "Calcolatore Punti & Risparmio" : "Points & Savings Calculator"}
+                  </h4>
+                  <span className="text-[8px] bg-amber-500/15 text-amber-700 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
+                    {lang === "it" ? "Interattivo" : "Interactive"}
+                  </span>
+                </div>
+
+                <p className="text-[10px] text-zinc-500 leading-relaxed">
+                  {lang === "it"
+                    ? "Sposta il cursore per stimare i punti accumulabili con il tuo prossimo pasto e calcolare il controvalore dei premi!"
+                    : "Move the slider to estimate points for your next order and calculate rewards value!"}
+                </p>
+
+                {/* Slider and inputs */}
+                <div className="bg-zinc-50 p-3 rounded-xl space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-[10px] font-bold text-zinc-500">
+                      {lang === "it" ? "Simula Spesa Pasto:" : "Simulate Bill Amount:"}
+                    </span>
+                    <span className="text-xs font-black text-amber-600 bg-amber-50 px-2 py-1 rounded-lg">
+                      € {calcSpendAmount}
+                    </span>
+                  </div>
+
+                  <input
+                    type="range"
+                    min="10"
+                    max="200"
+                    step="5"
+                    value={calcSpendAmount}
+                    onChange={(e) => setCalcSpendAmount(Number(e.target.value))}
+                    className="w-full accent-amber-500 h-1.5 bg-zinc-200 rounded-lg appearance-none cursor-pointer"
+                  />
+
+                  {/* Calculation Metrics */}
+                  <div className="grid grid-cols-2 gap-2 pt-0.5">
+                    <div className="bg-white p-2 rounded-lg border border-zinc-100 text-center">
+                      <p className="text-[8px] text-zinc-400 font-bold uppercase">
+                        {lang === "it" ? "Punti Ottenuti" : "Points Unlocked"}
+                      </p>
+                      <p className="text-xs font-extrabold text-zinc-800 mt-1">
+                        +{calcSpendAmount} pti ★
+                      </p>
+                    </div>
+                    <div className="bg-white p-2 rounded-lg border border-zinc-100 text-center">
+                      <p className="text-[8px] text-zinc-400 font-bold uppercase">
+                        {lang === "it" ? "Valore Regalo (10%)" : "Cashback Value (10%)"}
+                      </p>
+                      <p className="text-xs font-extrabold text-emerald-600 mt-1">
+                        € {(calcSpendAmount * 0.10).toFixed(2)}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Simulator buttons */}
+                  <div className="flex gap-2 pt-0.5">
+                    <button
+                      onClick={() => {
+                        const newPoints = points + calcSpendAmount;
+                        setPoints(newPoints);
+                        saveStateToLocal(newPoints, cookieAccepted);
+                        showToast(
+                          lang === "it"
+                            ? `Tessera aggiornata: +${calcSpendAmount} Punti caricati!`
+                            : `Card updated: +${calcSpendAmount} Points loaded!`,
+                          "gift"
+                        );
+                      }}
+                      className="flex-grow bg-zinc-900 hover:bg-zinc-800 text-white font-extrabold py-2 rounded-xl text-[9px] transition uppercase tracking-wider flex items-center justify-center gap-1 cursor-pointer"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                      {lang === "it" ? "Carica su Tessera" : "Load onto Card"}
+                    </button>
+                    
+                    <button
+                      onClick={() => {
+                        setPoints(0);
+                        saveStateToLocal(0, cookieAccepted);
+                        showToast(
+                          lang === "it" ? "Tessera svuotata!" : "Card reset to 0!",
+                          "info"
+                        );
+                      }}
+                      className="bg-zinc-100 hover:bg-zinc-200 text-zinc-500 font-bold px-3 py-2 rounded-xl text-[9px] transition uppercase cursor-pointer"
+                    >
+                      {lang === "it" ? "Azzera" : "Reset"}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="text-[8.5px] text-zinc-400 text-center leading-snug italic">
+                  {lang === "it"
+                    ? "💡 Carica i punti per sbloccare e riscattare subito il Tiramisù in omaggio!"
+                    : "💡 Load simulated points to immediately unlock and redeem your free Tiramisù!"}
+                </div>
+              </div>
+
               {/* Reward claim section */}
               <div className="space-y-2.5">
                 <h4 className="font-bold text-xs text-zinc-800">{lang === "it" ? "Premi Disponibili" : "Rewards"}</h4>
@@ -1069,19 +1197,33 @@ export default function GustoPassioneApp({ lang = "it" }: GustoPassioneAppProps)
         {/* PRODUCT DETAIL MODAL */}
         <AnimatePresence>
           {selectedProduct && (
-            <div className="absolute inset-0 bg-zinc-950/60 z-45 flex items-end justify-center">
+            <div 
+              onClick={() => setSelectedProduct(null)}
+              className="absolute inset-0 bg-zinc-950/60 z-45 flex items-end justify-center cursor-pointer"
+            >
               <motion.div
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 exit={{ y: "100%" }}
                 transition={{ type: "spring", damping: 25 }}
-                className="bg-white w-full rounded-t-[32px] p-6 max-h-[85%] overflow-y-auto flex flex-col gap-4 shadow-2xl relative"
+                onClick={(e) => e.stopPropagation()}
+                className="bg-white w-full rounded-t-[32px] p-6 max-h-[85%] overflow-y-auto flex flex-col gap-4 shadow-2xl relative text-zinc-900 cursor-default"
               >
+                {/* Visual Swipe handle */}
                 <button
                   onClick={() => setSelectedProduct(null)}
                   className="w-12 h-1.5 bg-zinc-200 rounded-full mx-auto focus:outline-none cursor-pointer mb-1 shrink-0"
                   aria-label="Close"
                 />
+
+                {/* Explicit prominent Close button (X) */}
+                <button
+                  onClick={() => setSelectedProduct(null)}
+                  className="absolute top-4 right-4 w-8 h-8 bg-zinc-100 hover:bg-zinc-200 text-zinc-600 hover:text-zinc-900 rounded-full flex items-center justify-center transition cursor-pointer z-50 shadow-sm"
+                  aria-label="Close details"
+                >
+                  <X className="w-4 h-4" />
+                </button>
 
                 <div className="flex justify-between items-start mt-1">
                   <div>
