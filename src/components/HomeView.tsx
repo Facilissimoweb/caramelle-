@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Brain, Cpu, Zap, ArrowRight, Heart, CheckCircle2, Sparkles, Maximize2, X } from "lucide-react";
+import { Brain, Cpu, Zap, ArrowRight, Heart, CheckCircle2, Sparkles, Maximize2, X, TrendingUp, BarChart3, ArrowUpRight, Check } from "lucide-react";
 import { translations } from "../translations";
 import FAQAccordion from "./FAQAccordion";
 import GallerySection from "./GallerySection";
@@ -20,6 +20,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
 
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const [activeFullScreenApp, setActiveFullScreenApp] = useState<"gusto" | "tattoo" | "nido" | null>(null);
+  const [selectedFeatureIndex, setSelectedFeatureIndex] = useState<number>(0);
+  const [activeFeaturePopupIndex, setActiveFeaturePopupIndex] = useState<number | null>(null);
 
   const handleOpenFullScreen = (app: "gusto" | "tattoo" | "nido") => {
     setActiveFullScreenApp(app);
@@ -31,10 +33,22 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
     document.body.style.overflow = "unset";
   };
 
+  const handleOpenFeaturePopup = (index: number) => {
+    setSelectedFeatureIndex(index);
+    setActiveFeaturePopupIndex(index);
+    document.body.style.overflow = "hidden";
+  };
+
+  const handleCloseFeaturePopup = () => {
+    setActiveFeaturePopupIndex(null);
+    document.body.style.overflow = "unset";
+  };
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         handleCloseFullScreen();
+        handleCloseFeaturePopup();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -61,20 +75,107 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       icon: <Zap className="w-5 h-5 text-[#E35930]" />,
       title: t.feat1Title,
       description: t.feat1Desc,
+      image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=800",
       tags: lang === "it" ? ["VELOCITÀ", "SEO-DATO"] : ["SPEED", "SEO-DRIVEN"],
+      highlightMetrics: lang === "it"
+        ? ["Tempo di Caricamento: 0.4s", "PageSpeed Score: 99/100", "Rimbalzo Mobile: < 2%"]
+        : ["Interactive Time: 0.4s", "PageSpeed Score: 99/100", "Bounce Rate: < 2%"]
     },
     {
       icon: <Cpu className="w-5 h-5 text-[#E35930]" />,
       title: t.feat2Title,
       description: t.feat2Desc,
+      image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800",
       tags: lang === "it" ? ["INTEGRAZIONE IA", "AUTOMAZIONE"] : ["AI INTEGRATION", "AUTOMATION"],
+      highlightMetrics: lang === "it"
+        ? ["Integrazione Gemini API", "Efficienza Operativa: +85%", "Automazione Form: 24/7"]
+        : ["Gemini API Pipelines", "Operational Gain: +85%", "Form Automation: 24/7"]
     },
     {
       icon: <Brain className="w-5 h-5 text-[#E35930]" />,
       title: t.feat3Title,
       description: t.feat3Desc,
+      image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800",
       tags: lang === "it" ? ["DESIGN PIXEL-PERFECT", "SU MISURA"] : ["PIXEL-PERFECT", "CUSTOM DESIGN"],
+      highlightMetrics: lang === "it"
+        ? ["100% Codice Artigianale", "Memorabilità Brand: 95%", "UX Mobile Ottimizzata"]
+        : ["100% Handcrafted Code", "Brand Recall: 95%", "Optimized Mobile UX"]
     },
+  ];
+
+  const statsData = [
+    {
+      title: lang === "it" ? "Criterio 1: Velocità di Caricamento" : "Criterion 1: Load Speed Efficiency",
+      subtitle: lang === "it" ? "Performance reale mobile e desktop" : "Real-world mobile & desktop performance",
+      metricValue: "0.4s",
+      metricLabel: lang === "it" ? "Tempo di Caricamento" : "Time to Interactive",
+      badgeText: lang === "it" ? "Punteggio 99/100 PageSpeed" : "99/100 PageSpeed Score",
+      description: lang === "it" 
+        ? "La velocità non è solo un dettaglio tecnico: è il fattore primario per non perdere clienti. Un caricamento lento riduce le conversioni del 20% per ogni secondo aggiuntivo. La nostra architettura statica carica all'istante, garantendo un'esperienza utente impeccabile e un posizionamento Google prioritario."
+        : "Speed is not just a technical detail: it's the primary factor for customer retention. A slow website reduces conversions by 20% for every additional second. Our static lightweight architecture loads instantly, ensuring a flawless user experience and higher rankings.",
+      comparisonTitle: lang === "it" ? "Velocità di Caricamento (Secondi — Meno è meglio)" : "Load Time Comparison (Seconds — Lower is better)",
+      bars: [
+        { label: lang === "it" ? "Il Mio Criterio (Facilissimo Web)" : "My Build Criteria (Facilissimo Web)", value: "0.4s", percentage: 12, isPrimary: true },
+        { label: lang === "it" ? "Sito Standard / Template WordPress" : "Standard Site / WordPress Template", value: "3.2s", percentage: 100, isPrimary: false },
+      ],
+      metricsList: lang === "it" ? [
+        { name: "Tasso di Rimbalzo (Bounce)", standard: "45% - 65%", mine: "< 2%", description: "La percentuale di utenti che abbandonano subito la pagina." },
+        { name: "Ottimizzazione Mobile", standard: "60 / 100", mine: "100 / 100", description: "Punteggio ufficiale Google PageSpeed per dispositivi mobili." },
+        { name: "Tasso di Conversione", standard: "1.2%", mine: "4.8%", description: "Percentuale di visitatori che si convertono in contatti caldi." },
+      ] : [
+        { name: "Bounce Rate", standard: "45% - 65%", mine: "< 2%", description: "Percentage of users who leave the page immediately." },
+        { name: "Mobile Optimization", standard: "60 / 100", mine: "100 / 100", description: "Google PageSpeed's official performance score for mobile." },
+        { name: "Conversion Rate", standard: "1.2%", mine: "4.8%", description: "Percentage of visitors who turn into hot leads." },
+      ]
+    },
+    {
+      title: lang === "it" ? "Criterio 2: Intelligenza Artificiale Integrata" : "Criterion 2: Integrated AI Automations",
+      subtitle: lang === "it" ? "Automazione e posizionamento semantico" : "Automation & semantic positioning",
+      metricValue: "85%",
+      metricLabel: lang === "it" ? "Efficienza Operativa" : "Operational Efficiency",
+      badgeText: lang === "it" ? "SEO Semantica & Assistenza 24/7" : "Semantic SEO & 24/7 Support",
+      description: lang === "it"
+        ? "L'integrazione di motori intelligenti (es. Gemini API) e calcolatori dinamici permette di qualificare i clienti e automatizzare il 100% delle risposte ripetitive, eliminando i colli di bottiglia e convertendo gli utenti anche di notte. Inoltre, i modelli linguistici avanzati ottimizzano la SEO predittiva per intercettare i futuri trend dei motori di ricerca."
+        : "Integrating smart models (like Gemini API) and custom dynamic calculators lets you qualify leads and automate 100% of repetitive customer inquiries. This keeps your business active 24/7. Additionally, semantic AI keyword mapping helps intercept search trend shifts weeks before competitors.",
+      comparisonTitle: lang === "it" ? "Tasso di Risposta & Risoluzione Richieste (%)" : "Lead Response & Resolution Rate (%)",
+      bars: [
+        { label: lang === "it" ? "Il Mio Criterio (AI Integrata & Automazioni)" : "My Build Criteria (AI & Automation)", value: "85%", percentage: 85, isPrimary: true },
+        { label: lang === "it" ? "Sito Comune (Solo Form di Contatto Statico)" : "Standard Site (Static Contact Form Only)", value: "5%", percentage: 5, isPrimary: false },
+      ],
+      metricsList: lang === "it" ? [
+        { name: "Tempo di Risposta al Cliente", standard: "4-12 ore", mine: "Immediato (< 2s)", description: "Velocità nel fornire preventivi o risposte a domande comuni." },
+        { name: "Keyword SEO Indicizzate", standard: "Bassa densità", mine: "+150% espansione", description: "Parole chiave semantiche uniche indicizzate grazie alla SEO predittiva." },
+        { name: "Fidelizzazione e Interazione", standard: "Molto bassa", mine: "Fino a 3x più alta", description: "Gli utenti giocano con i preventivatori interattivi e gli avatar restando sul sito." },
+      ] : [
+        { name: "Lead Response Time", standard: "4-12 hours", mine: "Instant (< 2s)", description: "Time required to reply to common queries or calculate estimations." },
+        { name: "Indexed SEO Keywords", standard: "Low density", mine: "+150% expansion", description: "Unique semantic keywords mapped and ranking on search engines." },
+        { name: "User Retention", standard: "Very low", mine: "Up to 3x higher", description: "Users engage with calculators and interactive elements longer." },
+      ]
+    },
+    {
+      title: lang === "it" ? "Criterio 3: Design Su Misura Pixel-Perfect" : "Criterion 3: Bespoke Pixel-Perfect Design",
+      subtitle: lang === "it" ? "Estetica distintiva e psicologia della conversione" : "Distinctive aesthetics & conversion psychology",
+      metricValue: "95%",
+      metricLabel: lang === "it" ? "Memorabilità del Brand" : "Brand Memorability Score",
+      badgeText: lang === "it" ? "Nessun Template Preconfezionato" : "Zero Boilerplates/Templates",
+      description: lang === "it"
+        ? "I template pronti e i boilerplate generici standardizzano la tua comunicazione, rendendoti indistinguibile dai concorrenti. Un design su misura, curato pixel per pixel, comunica prestigio, cura del dettaglio e autorevolezza. Questo impatto visivo consolida l'affidabilità del tuo brand e spinge l'utente all'azione."
+        : "Pre-made layouts and cookie-cutter templates make your business blend in and look generic. A tailored custom layout built pixel-by-pixel conveys authority, precision, and luxury. High-quality visual hierarchy builds immediate consumer trust and triggers direct actions.",
+      comparisonTitle: lang === "it" ? "Affidabilità e Percezione del Brand (%)" : "Perceived Brand Quality & Trust Score (%)",
+      bars: [
+        { label: lang === "it" ? "Il Mio Criterio (Codice & Design Artigianale)" : "My Build Criteria (Handcrafted Code & UI)", value: "95%", percentage: 95, isPrimary: true },
+        { label: lang === "it" ? "Sito Standard (Template di Massa)" : "Standard Site (Cheap Mass-Market Template)", value: "20%", percentage: 20, isPrimary: false },
+      ],
+      metricsList: lang === "it" ? [
+        { name: "Autorevolezza Percepita", standard: "Standard / Bassa", mine: "Premium / Eccellente", description: "L'impatto visivo iniziale che determina se l'utente si fida del brand." },
+        { name: "Esperienza Mobile (UX)", standard: "Elementi disallineati", mine: "Ottimizzazione Fluida", description: "Adattabilità alle gesture e alla dimensione di ogni smartphone." },
+        { name: "Tasso di Memorabilità", standard: "Dimenticato in 10s", mine: "Fisso nella mente", description: "Percentuale di utenti che ricordano il nome del brand dopo la visita." },
+      ] : [
+        { name: "Perceived Authority", standard: "Standard / Low", mine: "Premium / Outstanding", description: "The initial visual impact that decides if the user trusts you." },
+        { name: "Mobile UX Fluidity", standard: "Broken alignment", mine: "Fluid Layouts", description: "Adherence to touch targets and smooth phone viewport resizing." },
+        { name: "Brand Recall Rate", standard: "Forgotten in 10s", mine: "Highly Memorable", description: "Percentage of visitors who recall the brand name after leaving." },
+      ]
+    }
   ];
   const projects: { title: string; category: string; desc: string; image: string; link?: string }[] = [
     {
@@ -211,29 +312,232 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-8 border border-[rgba(248,247,244,0.1)] bg-[#111113] transition-all duration-300 group hover:border-[#E35930]/40"
+                onClick={() => handleOpenFeaturePopup(index)}
+                className={`flex flex-col border bg-[#111113] transition-all duration-300 group relative cursor-pointer overflow-hidden p-6 ${
+                  selectedFeatureIndex === index 
+                    ? "border-[#E35930] shadow-[0_0_25px_rgba(227,89,48,0.12)] scale-[1.01]" 
+                    : "border-[rgba(248,247,244,0.1)] hover:border-[rgba(248,247,244,0.3)] hover:scale-[1.01]"
+                }`}
               >
-                <div className="w-10 h-10 border border-[rgba(248,247,244,0.15)] flex items-center justify-center mb-6 group-hover:bg-[#E35930] group-hover:text-[#111113] transition-all">
-                  {feat.icon}
+                {/* Image Container representing each card visually */}
+                <div className="relative w-full aspect-[16/10] overflow-hidden mb-5 border border-[rgba(248,247,244,0.08)] bg-zinc-950">
+                  <img
+                    src={feat.image}
+                    alt={feat.title}
+                    className="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
+                    referrerPolicy="no-referrer"
+                  />
+                  {/* Subtle gradient overlay to blend */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#111113] via-[#111113]/20 to-transparent"></div>
+                  
+                  {/* Floating Icon */}
+                  <div className={`absolute bottom-3 left-3 w-8 h-8 border flex items-center justify-center transition-all ${
+                    selectedFeatureIndex === index 
+                      ? "bg-[#E35930] text-[#111113] border-[#E35930]" 
+                      : "bg-[#111113]/80 text-[#F8F7F4] border-[rgba(248,247,244,0.15)] group-hover:bg-[#E35930] group-hover:text-[#111113] group-hover:border-[#E35930]"
+                  }`}>
+                    {feat.icon}
+                  </div>
+                  
+                  {/* Live badge */}
+                  <div className="absolute top-3 right-3 text-[7px] font-mono tracking-widest flex items-center gap-1 bg-[#111113]/90 border border-[#E35930]/30 px-2 py-0.5 text-[#E35930] font-bold">
+                    <span>{lang === "it" ? "APRI CRITERIO" : "OPEN CRITERION"}</span>
+                    <ArrowUpRight className="w-2 h-2" />
+                  </div>
                 </div>
-                <h3 className="font-display text-lg font-bold text-[#F8F7F4] mb-3">
-                  {feat.title}
-                </h3>
-                <p className="text-xs text-[#F8F7F4]/70 leading-relaxed mb-6 font-sans">
-                  {feat.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {feat.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-0.5 border border-[rgba(248,247,244,0.1)] text-[#E35930] text-[9px] font-bold tracking-widest font-mono bg-transparent"
-                    >
-                      {tag}
-                    </span>
+
+                {/* Card Title & Tags */}
+                <div className="space-y-2 mb-4">
+                  <div className="flex flex-wrap gap-1.5">
+                    {feat.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className={`px-2 py-0.5 border text-[8px] font-bold tracking-widest font-mono bg-transparent transition-all ${
+                          selectedFeatureIndex === index
+                            ? "border-[#E35930] text-[#E35930]"
+                            : "border-[rgba(248,247,244,0.1)] text-[#E35930]/80 group-hover:border-[#E35930]/30"
+                        }`}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="font-display text-base font-bold text-[#F8F7F4] group-hover:text-[#E35930] transition-colors">
+                    {feat.title}
+                  </h3>
+                </div>
+
+                {/* Key Metrics instead of long paragraph block */}
+                <div className="mt-auto space-y-2 border-t border-[rgba(248,247,244,0.06)] pt-4">
+                  {feat.highlightMetrics.map((metric, mIdx) => (
+                    <div key={mIdx} className="flex items-center gap-2 text-[11px] font-sans text-[#F8F7F4]/70">
+                      <div className="w-1.5 h-1.5 bg-[#E35930] shrink-0"></div>
+                      <span className="font-medium">{metric}</span>
+                    </div>
                   ))}
+                </div>
+
+                {/* Click action text */}
+                <div className="mt-4 pt-3 border-t border-dashed border-[rgba(248,247,244,0.05)] flex items-center justify-between text-[9px] font-mono tracking-wider uppercase text-[#E35930]/70 group-hover:text-[#E35930] transition-colors">
+                  <span>{lang === "it" ? "Vedi metriche di impatto" : "See impact metrics"}</span>
+                  <ArrowRight className="w-2.5 h-2.5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* DYNAMIC STATISTICS INTERACTIVE PANEL */}
+          <div className="mt-12 border border-[rgba(248,247,244,0.1)] bg-[#111113] relative overflow-hidden" id="criteri-costruzione-stats">
+            {/* Ambient accent background line */}
+            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#E35930] to-transparent"></div>
+            
+            <AnimatePresence mode="wait">
+              {selectedFeatureIndex !== null && (
+                <motion.div
+                  key={selectedFeatureIndex}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.3 }}
+                  className="p-8 md:p-12 space-y-10"
+                >
+                  {/* Stats Header */}
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-[rgba(248,247,244,0.08)]">
+                    <div>
+                      <span className="text-[9px] font-mono tracking-[0.2em] text-[#E35930] font-bold uppercase block mb-1">
+                        {lang === "it" ? "CONFRONTO PRESTAZIONALE & CRITERI" : "PERFORMANCE METRICS & BUILD STANDARDS"}
+                      </span>
+                      <h3 className="font-display text-2xl font-bold text-[#F8F7F4]">
+                        {statsData[selectedFeatureIndex].title}
+                      </h3>
+                      <p className="text-xs text-[#F8F7F4]/50 mt-1 font-sans">
+                        {statsData[selectedFeatureIndex].subtitle}
+                      </p>
+                    </div>
+                    <div className="px-3.5 py-1.5 bg-[#E35930]/10 border border-[#E35930]/30 rounded text-[10px] font-mono font-bold tracking-wider text-[#E35930] uppercase shrink-0">
+                      {statsData[selectedFeatureIndex].badgeText}
+                    </div>
+                  </div>
+
+                  {/* Stats Grid */}
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                    
+                    {/* Left Side: Massive Metric & Deep Selling Content */}
+                    <div className="lg:col-span-5 space-y-6">
+                      <div className="flex items-baseline gap-4">
+                        <span className="font-display text-5xl md:text-7xl font-extrabold text-[#F8F7F4] tracking-tight">
+                          {statsData[selectedFeatureIndex].metricValue}
+                        </span>
+                        <div>
+                          <span className="text-xs font-mono font-bold text-[#E35930] tracking-widest uppercase block">
+                            {statsData[selectedFeatureIndex].metricLabel}
+                          </span>
+                          <span className="text-[10px] text-[#F8F7F4]/40 block font-sans">
+                            {lang === "it" ? "Standard di Teresa Rogani" : "Teresa Rogani's Standard"}
+                          </span>
+                        </div>
+                      </div>
+
+                      <p className="text-[#F8F7F4]/80 font-sans text-xs sm:text-sm leading-relaxed">
+                        {statsData[selectedFeatureIndex].description}
+                      </p>
+
+                      <div className="p-4 bg-[#151518] border border-[rgba(248,247,244,0.06)] rounded space-y-2">
+                        <div className="flex items-center gap-2 text-xs font-bold text-[#F8F7F4] font-display">
+                          <TrendingUp className="w-3.5 h-3.5 text-[#E35930]" />
+                          <span>{lang === "it" ? "L'importanza di questo criterio" : "Why this standard matters"}</span>
+                        </div>
+                        <p className="text-[11px] text-[#F8F7F4]/60 leading-relaxed font-sans">
+                          {lang === "it" 
+                            ? "Applicando rigidi criteri di ottimizzazione del codice ed eliminando la zavorra dei plugin commerciali tipici delle agenzie, proteggiamo il tuo investimento e moltiplichiamo il rendimento del tuo traffico pubblicitario."
+                            : "By enforcing strict code pruning and bypassing the bloat of standard commercial plugins used by traditional agencies, we protect your marketing budget and maximize your return on ad spend."}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Right Side: Charts & Comparisons */}
+                    <div className="lg:col-span-7 space-y-8">
+                      {/* Bars section */}
+                      <div className="space-y-4">
+                        <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#F8F7F4]/70 flex items-center gap-2">
+                          <BarChart3 className="w-4 h-4 text-[#E35930]" />
+                          {statsData[selectedFeatureIndex].comparisonTitle}
+                        </h4>
+                        
+                        <div className="space-y-4 bg-[#151518] p-5 border border-[rgba(248,247,244,0.06)] rounded">
+                          {statsData[selectedFeatureIndex].bars.map((bar, bIdx) => (
+                            <div key={bIdx} className="space-y-1.5">
+                              <div className="flex justify-between text-xs font-sans">
+                                <span className={bar.isPrimary ? "font-bold text-[#F8F7F4] flex items-center gap-1.5" : "text-[#F8F7F4]/60"}>
+                                  {bar.isPrimary && <span className="w-1.5 h-1.5 rounded-full bg-[#E35930]"></span>}
+                                  {bar.label}
+                                </span>
+                                <span className={bar.isPrimary ? "font-mono font-bold text-[#E35930]" : "font-mono text-[#F8F7F4]/50"}>
+                                  {bar.value}
+                                </span>
+                              </div>
+                              <div className="h-2.5 bg-[#111113] border border-[rgba(248,247,244,0.08)] rounded-full overflow-hidden">
+                                <motion.div
+                                  initial={{ width: 0 }}
+                                  animate={{ width: `${bar.percentage}%` }}
+                                  transition={{ duration: 1, delay: 0.2 }}
+                                  className={`h-full rounded-full ${
+                                    bar.isPrimary 
+                                      ? "bg-gradient-to-r from-[#E35930] to-[#f07b57]" 
+                                      : "bg-zinc-700"
+                                  }`}
+                                />
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Detail Metrics comparison table */}
+                      <div className="space-y-3">
+                        <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#F8F7F4]/70">
+                          {lang === "it" ? "PARAMETRI PRESTAZIONALI A CONFRONTO" : "METRIC BY METRIC AUDIT"}
+                        </h4>
+                        
+                        <div className="border border-[rgba(248,247,244,0.06)] rounded overflow-hidden">
+                          {/* Header row */}
+                          <div className="grid grid-cols-12 bg-[#151518] border-b border-[rgba(248,247,244,0.06)] p-3 text-[10px] font-mono text-[#F8F7F4]/40 uppercase tracking-wider">
+                            <div className="col-span-5">{lang === "it" ? "Indicatore" : "Metric"}</div>
+                            <div className="col-span-3 text-center">{lang === "it" ? "Sito Comune" : "Standard Site"}</div>
+                            <div className="col-span-4 text-right text-[#E35930] font-bold">{lang === "it" ? "Il Mio Standard" : "My Standard"}</div>
+                          </div>
+
+                          {/* Data rows */}
+                          <div className="divide-y divide-[rgba(248,247,244,0.06)] bg-[#111113]/40">
+                            {statsData[selectedFeatureIndex].metricsList.map((metric, mIdx) => (
+                              <div key={mIdx} className="p-3.5 space-y-1">
+                                <div className="grid grid-cols-12 items-baseline text-xs">
+                                  <div className="col-span-5 font-bold text-[#F8F7F4] font-display">
+                                    {metric.name}
+                                  </div>
+                                  <div className="col-span-3 text-center text-[#F8F7F4]/50 line-through">
+                                    {metric.standard}
+                                  </div>
+                                  <div className="col-span-4 text-right text-[#E35930] font-bold font-mono flex items-center justify-end gap-1.5">
+                                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                                    <span>{metric.mine}</span>
+                                  </div>
+                                </div>
+                                <p className="text-[10px] text-[#F8F7F4]/40 font-sans leading-relaxed">
+                                  {metric.description}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </section>
@@ -649,6 +953,220 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                     <NidoSogniApp lang={lang} />
                   </div>
                 )}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* FULL-SCREEN OVERLAY PORTAL FOR BUILD CRITERIA POPUPS */}
+      <AnimatePresence>
+        {activeFeaturePopupIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-[#070708]/98 backdrop-blur-xl z-[99999] flex flex-col overflow-y-auto"
+          >
+            {/* Top control header bar */}
+            <div className="sticky top-0 bg-[#0d0d0f]/90 backdrop-blur-md border-b border-[rgba(248,247,244,0.08)] px-6 sm:px-10 py-4 flex items-center justify-between shrink-0 select-none z-50">
+              <div className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-[#E35930] animate-ping"></span>
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#F8F7F4]/90">
+                  {lang === "it" ? "METRICHE PRESTAZIONALI & CRITERI DI COSTRUZIONE" : "PERFORMANCE METRICS & BUILD STANDARDS"}
+                </span>
+              </div>
+              
+              <button
+                onClick={handleCloseFeaturePopup}
+                className="px-4 py-2 bg-transparent hover:bg-[#E35930] text-[#E35930] hover:text-[#111113] border border-[#E35930]/30 hover:border-[#E35930] font-mono text-[10px] font-bold uppercase tracking-widest transition-all flex items-center gap-2 cursor-pointer"
+                title={lang === "it" ? "Chiudi" : "Close"}
+              >
+                <X className="w-4 h-4" />
+                <span>{lang === "it" ? "CHIUDI" : "CLOSE"}</span>
+              </button>
+            </div>
+
+            {/* Inner scrollable area */}
+            <div className="flex-grow max-w-7xl mx-auto w-full px-6 md:px-12 py-10">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                {/* Left Side: Massive visual representation and description */}
+                <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-24">
+                  
+                  {/* Category and active badges */}
+                  <div className="flex flex-wrap items-center gap-3">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#E35930]/10 border border-[#E35930]/30 rounded text-[9px] font-mono font-bold uppercase tracking-widest text-[#E35930]">
+                      {features[activeFeaturePopupIndex].tags[0]}
+                    </div>
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#F8F7F4]/5 border border-[rgba(248,247,244,0.1)] rounded text-[9px] font-mono tracking-widest text-[#F8F7F4]/60">
+                      {features[activeFeaturePopupIndex].tags[1]}
+                    </div>
+                  </div>
+
+                  {/* Main Title */}
+                  <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#F8F7F4] leading-[1.1]">
+                    {statsData[activeFeaturePopupIndex].title}
+                  </h2>
+
+                  {/* Aesthetic Representation - Big Image with dynamic scanlines overlay */}
+                  <div className="relative aspect-[16/10] overflow-hidden border border-[rgba(248,247,244,0.15)] bg-zinc-950 shadow-2xl group">
+                    <img
+                      src={features[activeFeaturePopupIndex].image}
+                      alt={features[activeFeaturePopupIndex].title}
+                      className="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105"
+                      referrerPolicy="no-referrer"
+                    />
+                    {/* Dark filter blend */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+                    
+                    {/* Glowing indicator */}
+                    <div className="absolute bottom-4 left-4 flex items-center gap-2">
+                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                      <span className="font-mono text-[9px] text-[#F8F7F4]/70 tracking-widest">REALTIME PROOF OK</span>
+                    </div>
+
+                    {/* Scanning tech line effect */}
+                    <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#E35930]/50 to-transparent top-1/2 -translate-y-1/2 shadow-[0_0_8px_#E35930] opacity-40"></div>
+                  </div>
+
+                  {/* Full detailed description explaining why it's critical */}
+                  <div className="space-y-4">
+                    <h3 className="font-display font-bold text-sm uppercase tracking-wider text-[#E35930]">
+                      {lang === "it" ? "Perché questo criterio è essenziale" : "Why this standard is vital"}
+                    </h3>
+                    <p className="text-sm text-[#F8F7F4]/80 leading-relaxed font-sans">
+                      {statsData[activeFeaturePopupIndex].description}
+                    </p>
+                  </div>
+
+                  {/* Key Metrics Bullet list */}
+                  <div className="p-5 bg-[#151518] border border-[rgba(248,247,244,0.06)] rounded space-y-3">
+                    <div className="flex items-center gap-2 text-xs font-bold text-[#F8F7F4] font-mono">
+                      <TrendingUp className="w-4 h-4 text-[#E35930]" />
+                      <span>{lang === "it" ? "VALUTAZIONE DI IMPATTO" : "IMPACT SCORE CARD"}</span>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                      {features[activeFeaturePopupIndex].highlightMetrics.map((met, metIdx) => (
+                        <div key={metIdx} className="flex items-center gap-2 text-xs font-sans text-[#F8F7F4]/80 bg-[#111113] p-2.5 border border-[rgba(248,247,244,0.04)]">
+                          <Check className="w-3.5 h-3.5 text-[#E35930]" />
+                          <span>{met}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Side: Detailed Comparison Charts & Audit */}
+                <div className="lg:col-span-7 space-y-10">
+                  
+                  {/* Huge numeric metric indicator */}
+                  <div className="bg-[#151518] border border-[rgba(248,247,244,0.06)] p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#E35930]/5 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                    <div>
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#E35930] block mb-1">
+                        {statsData[activeFeaturePopupIndex].metricLabel}
+                      </span>
+                      <span className="text-xs text-[#F8F7F4]/50 font-sans block">
+                        {lang === "it" ? "Ottenuto applicando il mio processo di sviluppo" : "Achieved applying my build standards"}
+                      </span>
+                    </div>
+                    <div className="text-right">
+                      <span className="font-display text-5xl sm:text-7xl font-black text-[#F8F7F4] tracking-tight block">
+                        {statsData[activeFeaturePopupIndex].metricValue}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Bar Comparison section */}
+                  <div className="space-y-4">
+                    <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#F8F7F4]/70 flex items-center gap-2">
+                      <BarChart3 className="w-4 h-4 text-[#E35930]" />
+                      {statsData[activeFeaturePopupIndex].comparisonTitle}
+                    </h4>
+                    
+                    <div className="space-y-5 bg-[#151518] p-6 border border-[rgba(248,247,244,0.06)] rounded">
+                      {statsData[activeFeaturePopupIndex].bars.map((bar, bIdx) => (
+                        <div key={bIdx} className="space-y-2">
+                          <div className="flex justify-between text-xs font-sans">
+                            <span className={bar.isPrimary ? "font-bold text-[#F8F7F4] flex items-center gap-1.5" : "text-[#F8F7F4]/60"}>
+                              {bar.isPrimary && <span className="w-1.5 h-1.5 rounded-full bg-[#E35930]"></span>}
+                              {bar.label}
+                            </span>
+                            <span className={bar.isPrimary ? "font-mono font-bold text-[#E35930]" : "font-mono text-[#F8F7F4]/50"}>
+                              {bar.value}
+                            </span>
+                          </div>
+                          <div className="h-3 bg-[#111113] border border-[rgba(248,247,244,0.08)] rounded-full overflow-hidden">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              animate={{ width: `${bar.percentage}%` }}
+                              transition={{ duration: 1.2, delay: 0.1 }}
+                              className={`h-full rounded-full ${
+                                bar.isPrimary 
+                                  ? "bg-gradient-to-r from-[#E35930] to-[#f07b57]" 
+                                  : "bg-zinc-700"
+                              }`}
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Detailed Metric comparative audit list */}
+                  <div className="space-y-4">
+                    <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#F8F7F4]/70">
+                      {lang === "it" ? "PARAMETRI DETTAGLIATI A CONFRONTO" : "DETAILED AUDIT METRICS"}
+                    </h4>
+                    
+                    <div className="border border-[rgba(248,247,244,0.06)] rounded overflow-hidden shadow-xl">
+                      {/* Table Header */}
+                      <div className="grid grid-cols-12 bg-[#151518] border-b border-[rgba(248,247,244,0.06)] p-3.5 text-[10px] font-mono text-[#F8F7F4]/40 uppercase tracking-wider">
+                        <div className="col-span-5">{lang === "it" ? "Indicatore Prestazionale" : "Performance KPI"}</div>
+                        <div className="col-span-3 text-center">{lang === "it" ? "Sito Comune" : "Standard Site"}</div>
+                        <div className="col-span-4 text-right text-[#E35930] font-bold">{lang === "it" ? "Il Mio Standard" : "My Build Criteria"}</div>
+                      </div>
+
+                      {/* Comparative Rows */}
+                      <div className="divide-y divide-[rgba(248,247,244,0.06)] bg-[#111113]/40">
+                        {statsData[activeFeaturePopupIndex].metricsList.map((metric, mIdx) => (
+                          <div key={mIdx} className="p-4 space-y-1.5 hover:bg-[#151518]/25 transition-colors">
+                            <div className="grid grid-cols-12 items-baseline text-xs">
+                              <div className="col-span-5 font-bold text-[#F8F7F4] font-display">
+                                {metric.name}
+                              </div>
+                              <div className="col-span-3 text-center text-[#F8F7F4]/40 line-through">
+                                {metric.standard}
+                              </div>
+                              <div className="col-span-4 text-right text-[#E35930] font-bold font-mono flex items-center justify-end gap-1.5">
+                                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+                                <span className="bg-[#E35930]/10 px-2.5 py-0.5 border border-[#E35930]/20 text-[#E35930] text-[11px] rounded">{metric.mine}</span>
+                              </div>
+                            </div>
+                            <p className="text-[11px] text-[#F8F7F4]/50 font-sans leading-relaxed">
+                              {metric.description}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Summary Callout explaining the value */}
+                  <div className="p-6 bg-[#E35930]/5 border border-[#E35930]/20 space-y-3">
+                    <h5 className="text-xs font-mono font-bold uppercase tracking-wider text-[#E35930]">
+                      {lang === "it" ? "✓ Garanzia Teresa Rogani" : "✓ Teresa Rogani Promise"}
+                    </h5>
+                    <p className="text-xs text-[#F8F7F4]/70 font-sans leading-relaxed">
+                      {lang === "it" 
+                        ? "Ogni sito è costruito senza codice ridondante o temi commerciali prefabbricati. Ricevi una soluzione su misura che ti differenzia immediatamente, carica all'istante ed è predisposta per l'indicazione semantica automatica."
+                        : "Every web page is engineered from scratch, free of bloated page-builders and redundant legacy plugins. You receive a custom, high-converting digital product that loads immediately and is ready for automated semantic search ranking."}
+                    </p>
+                  </div>
+
+                </div>
+
               </div>
             </div>
           </motion.div>
