@@ -3,6 +3,8 @@ import { motion } from "motion/react";
 import { Check, Box, ShieldCheck } from "lucide-react";
 import FAQAccordion from "./FAQAccordion";
 import StripePaymentsDemo from "./StripePaymentsDemo";
+// @ts-expect-error - custom png image compiled by Vite
+import logoImage from "../assets/images/regenerated_image_1783686173020.png";
 
 interface ProposteViewProps {
   setCurrentTab: (tab: string) => void;
@@ -207,7 +209,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
         <div className="max-w-2xl mx-auto px-6 space-y-4 relative z-10">
           <div className="flex justify-center mb-4">
             <img
-              src="/images/facilissimo%20web%20siti%20wem%20acerata%20siti%20web%20gratis%20(13).webp"
+              src={logoImage}
               alt="Facilissimo Web Logo"
               className="w-[150px] h-[150px] object-contain"
             />

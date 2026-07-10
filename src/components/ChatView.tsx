@@ -2,6 +2,8 @@ import { useState, useRef, useEffect, ReactNode } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Send, MessageSquare, AlertCircle, RefreshCw, Cpu } from "lucide-react";
 import { ChatMessage } from "../types";
+// @ts-expect-error - custom png image compiled by Vite
+import logoImage from "../assets/images/regenerated_image_1783686173020.png";
 
 interface ChatViewProps {
   lang: "it" | "en";
@@ -238,7 +240,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
         <div className="max-w-2xl mx-auto px-6 space-y-3">
           <div className="flex justify-center mb-4">
             <img
-              src="/images/facilissimo%20web%20siti%20wem%20acerata%20siti%20web%20gratis%20(13).webp"
+              src={logoImage}
               alt="Facilissimo Web Logo"
               className="w-[150px] h-[150px] object-contain"
             />

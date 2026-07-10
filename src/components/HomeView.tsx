@@ -7,8 +7,10 @@ import GallerySection from "./GallerySection";
 import TattooMacerataApp from "./TattooMacerataApp";
 import GustoPassioneApp from "./GustoPassioneApp";
 import NidoSogniApp from "./NidoSogniApp";
+// @ts-expect-error - custom webp image compiled by Vite
+import regeneratedHeroImage from "../assets/images/regenerated_image_1783680261273.webp";
 // @ts-expect-error - custom png image compiled by Vite
-import regeneratedHeroImage from "../assets/images/regenerated_image_1783686173020.png";
+import logoImage from "../assets/images/regenerated_image_1783686173020.png";
 
 interface HomeViewProps {
   setCurrentTab: (tab: string) => void;
@@ -221,7 +223,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           <div className="lg:col-span-7 space-y-6">
             <div className="flex items-center gap-2 mb-4 animate-fade-in-up">
               <img
-                src="/images/facilissimo%20web%20siti%20wem%20acerata%20siti%20web%20gratis%20(13).webp"
+                src={logoImage}
                 alt="Facilissimo Web Logo"
                 className="w-[150px] h-[150px] object-contain"
               />
@@ -296,7 +298,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
             <div className="flex justify-center mb-4">
               <img
-                src="/images/facilissimo%20web%20siti%20wem%20acerata%20siti%20web%20gratis%20(13).webp"
+                src={logoImage}
                 alt="Facilissimo Web Logo"
                 className="w-[150px] h-[150px] object-contain"
               />
@@ -404,7 +406,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             <div className="max-w-2xl space-y-3">
               <div className="flex items-center gap-2 mb-4">
                 <img
-                  src="/images/facilissimo%20web%20siti%20wem%20acerata%20siti%20web%20gratis%20(13).webp"
+                  src={logoImage}
                   alt="Facilissimo Web Logo"
                   className="w-[150px] h-[150px] object-contain"
                 />
@@ -734,7 +736,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           <div className="relative z-10 text-center max-w-2xl mx-auto space-y-6">
             <div className="flex justify-center mb-4">
               <img
-                src="/images/facilissimo%20web%20siti%20wem%20acerata%20siti%20web%20gratis%20(13).webp"
+                src={logoImage}
                 alt="Facilissimo Web Logo"
                 className="w-[150px] h-[150px] object-contain"
               />
