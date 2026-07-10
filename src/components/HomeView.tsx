@@ -266,11 +266,11 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
  
           {/* Right illustration / image representation */}
           <div className="lg:col-span-5 relative animate-fade-in-up delay-400">
-            <div className="relative w-full aspect-[4/3] sm:aspect-square overflow-hidden">
+            <div className="relative w-full aspect-[4/3] sm:aspect-square overflow-hidden flex items-center justify-center">
               <img
                 src={regeneratedHeroImage}
                 alt="Modern workspace showing digital wireframe of an AI application"
-                className="w-full h-full object-cover opacity-90"
+                className="w-full h-full object-contain opacity-90"
                 referrerPolicy="no-referrer"
               />
             </div>
