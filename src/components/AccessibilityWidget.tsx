@@ -309,16 +309,16 @@ export default function AccessibilityWidget({
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleToggleOpen}
-          className={`w-14 h-14 rounded-full shadow-2xl flex items-center justify-center cursor-pointer transition-all border-2 ${
+          className={`w-14 h-14 rounded-full shadow-2xl flex items-center justify-center cursor-pointer transition-all border-2 bg-[#27f16b] ${
             isOpen
-              ? "bg-[#E35930] text-[#111113] border-[#E35930] rotate-90"
-              : "bg-[#151518]/95 hover:bg-[#E35930] text-[#F8F7F4] hover:text-[#111113] border-[rgba(248,247,244,0.3)] hover:border-[#E35930]"
+              ? "text-[#111113] border-[#E35930] rotate-90"
+              : "text-[#F8F7F4] border-[rgba(248,247,244,0.3)] hover:border-[#E35930]"
           }`}
           title={lang === "it" ? "Strumenti di Accessibilità" : "Accessibility Tools"}
           id="accessibility-trigger-btn"
           aria-label={lang === "it" ? "Strumenti di Accessibilità" : "Accessibility Tools"}
         >
-          {isOpen ? <X className="w-6 h-6" /> : <Accessibility className="w-6 h-6" />}
+          {isOpen ? <X className="w-6 h-6 bg-[#191818]" /> : <Accessibility className="w-6 h-6 bg-[#191818]" />}
         </motion.button>
       </div>
 
