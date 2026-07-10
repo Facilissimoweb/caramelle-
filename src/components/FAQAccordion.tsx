@@ -33,7 +33,7 @@ export default function FAQAccordion({
           <div className="text-center mb-16 space-y-4">
             <div className="flex justify-center mb-4">
               <img
-                src="/images/facilissimo web siti wem acerata siti web gratis (13).webp"
+                src="/images/facilissimo%20web%20siti%20wem%20acerata%20siti%20web%20gratis%20(13).webp"
                 alt="Facilissimo Web Logo"
                 className="h-10 sm:h-12 w-auto object-contain"
               />

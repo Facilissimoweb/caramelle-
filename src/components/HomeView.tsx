@@ -202,6 +202,10 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             src="/images/fondo.png"
             alt="Facilissimo Web - Sfondo Professionale"
             className="absolute inset-0 w-full h-full object-cover opacity-65"
+            onError={(e) => {
+              // Graceful fallback to a premium high-quality abstract background if fondo.png is empty or missing
+              e.currentTarget.src = "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1920";
+            }}
             style={{
               y,
               scale: 1.15,
@@ -217,7 +221,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           <div className="lg:col-span-7 space-y-6">
             <div className="flex items-center gap-2 mb-4 animate-fade-in-up">
               <img
-                src="/images/facilissimo web siti wem acerata siti web gratis (13).webp"
+                src="/images/facilissimo%20web%20siti%20wem%20acerata%20siti%20web%20gratis%20(13).webp"
                 alt="Facilissimo Web Logo"
                 className="h-10 sm:h-12 w-auto object-contain"
               />
@@ -292,7 +296,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
             <div className="flex justify-center mb-4">
               <img
-                src="/images/facilissimo web siti wem acerata siti web gratis (13).webp"
+                src="/images/facilissimo%20web%20siti%20wem%20acerata%20siti%20web%20gratis%20(13).webp"
                 alt="Facilissimo Web Logo"
                 className="h-10 sm:h-12 w-auto object-contain"
               />
@@ -400,7 +404,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             <div className="max-w-2xl space-y-3">
               <div className="flex items-center gap-2 mb-4">
                 <img
-                  src="/images/facilissimo web siti wem acerata siti web gratis (13).webp"
+                  src="/images/facilissimo%20web%20siti%20wem%20acerata%20siti%20web%20gratis%20(13).webp"
                   alt="Facilissimo Web Logo"
                   className="h-10 sm:h-12 w-auto object-contain"
                 />
@@ -730,7 +734,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           <div className="relative z-10 text-center max-w-2xl mx-auto space-y-6">
             <div className="flex justify-center mb-4">
               <img
-                src="/images/facilissimo web siti wem acerata siti web gratis (13).webp"
+                src="/images/facilissimo%20web%20siti%20wem%20acerata%20siti%20web%20gratis%20(13).webp"
                 alt="Facilissimo Web Logo"
                 className="h-10 sm:h-12 w-auto object-contain"
               />
