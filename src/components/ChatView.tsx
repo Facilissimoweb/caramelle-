@@ -13,7 +13,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
     {
       id: "welcome",
       role: "model",
-      text: "Ciao! Sono **M. Teresa Rogani**, titolare di **Facilissimo Web**. \n\nLavoro da sola come Freelance Web Designer per garantire cura diretta, velocità e prezzi chiari per ciascuno dei miei clienti. Posso spiegarti come posso aiutarti, illustrarti le mie proposte (Starter, Professional, Enterprise) e guidarti nel definire il tuo nuovo sito web. \n\nCosa vorresti chiedermi oggi?",
+      text: "Ciao! Sono **M. Teresa Rogani**, titolare di **Facilissimo Web**. \n\nLavoro da sola come Freelance Web Designer per garantire cura diretta, velocità e prezzi chiari per ciascuno dei clienti di Facilissimo Web. Posso spiegarti come posso aiutarti, illustrarti le proposte di Facilissimo Web (Starter, Professional, Enterprise) e guidarti nel definire il tuo nuovo sito web. \n\nCosa vorresti chiedermi oggi?",
       timestamp: new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" }),
     },
   ]);
@@ -234,7 +234,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
             Parla con Me
           </h1>
           <p className="font-sans text-xs sm:text-sm text-[#F8F7F4]/70 max-w-lg mx-auto leading-relaxed">
-            Poni domande sul mio metodo, chiedimi una stima dei costi o qualsiasi chiarimento sul funzionamento dei miei servizi. Ti rispondo all'istante!
+            Poni domande sul mio metodo, chiedimi una stima dei costi o qualsiasi chiarimento sul funzionamento dei servizi di Facilissimo Web. Ti rispondo all'istante!
           </p>
         </div>
       </section>

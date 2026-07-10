@@ -166,8 +166,8 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
       ]
     : [
         {
-          q: "Cos'è la SEO Predittiva e come funziona nei vostri pacchetti?",
-          a: "La SEO Predittiva è l'evoluzione del posizionamento su Google. Invece di limitarci ad analizzare cosa le persone hanno cercato in passato, utilizziamo l'IA e modelli linguistici semantici per anticipare i futuri trend di ricerca e le necessità latenti degli utenti. Configurando metadati dinamici, strutture Schema.org mirate e testi strutturati in modo specifico, posizioniamo il tuo sito per le domande che i tuoi clienti (locali a Macerata/Marche o nazionali/esteri) cercheranno tra qualche mese, anticipando tutti i tuoi concorrenti.",
+          q: "Cos'è la SEO Predittiva e come funziona nei pacchetti di Facilissimo Web?",
+          a: "La SEO Predittiva è l'evoluzione del posizionamento su Google. Invece di limitarsi ad analizzare cosa le persone hanno cercato in passato, con Facilissimo Web uso l'IA e modelli linguistici semantici per anticipare i futuri trend di ricerca e le necessità latenti degli utenti. Configurando metadati dinamici, strutture Schema.org mirate e testi strutturati in modo specifico, posiziono il tuo sito per le domande che i tuoi clienti (locali a Macerata/Marche o nazionali/esteri) cercheranno tra qualche mese, anticipando tutti i tuoi concorrenti.",
         },
         {
           q: "Cosa significa 'sito web potenziato dall'Intelligenza Artificiale'?",

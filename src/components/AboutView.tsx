@@ -192,7 +192,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
-              {isFacilitated ? "[ I MIEI VALORI ]" : "[ EFFICIENZA & VALORE ]"}
+              {isFacilitated ? "[ I VALORI DI FACILISSIMO WEB ]" : "[ EFFICIENZA & VALORE ]"}
             </span>
             <h2 className="font-display text-3xl font-bold text-[#F8F7F4]">
               {isFacilitated ? "Perché lavorare con me conviene" : "Il Vantaggio del Freelance Unico"}

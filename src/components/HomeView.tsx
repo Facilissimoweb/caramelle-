@@ -109,11 +109,11 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       metricLabel: lang === "it" ? "Tempo di Caricamento" : "Time to Interactive",
       badgeText: lang === "it" ? "Punteggio 99/100 PageSpeed" : "99/100 PageSpeed Score",
       description: lang === "it" 
-        ? "La velocità non è solo un dettaglio tecnico: è il fattore primario per non perdere clienti. Un caricamento lento riduce le conversioni del 20% per ogni secondo aggiuntivo. La nostra architettura statica carica all'istante, garantendo un'esperienza utente impeccabile e un posizionamento Google prioritario."
-        : "Speed is not just a technical detail: it's the primary factor for customer retention. A slow website reduces conversions by 20% for every additional second. Our static lightweight architecture loads instantly, ensuring a flawless user experience and higher rankings.",
+        ? "La velocità non è solo un dettaglio tecnico: è il fattore primario per non perdere clienti. Un caricamento lento riduce le conversioni del 20% per ogni secondo aggiuntivo. L'architettura statica di Facilissimo Web carica all'istante, garantendo un'esperienza utente impeccabile e un posizionamento Google prioritario."
+        : "Speed is not just a technical detail: it's the primary factor for customer retention. A slow website reduces conversions by 20% for every additional second. Facilissimo Web's static lightweight architecture loads instantly, ensuring a flawless user experience and higher rankings.",
       comparisonTitle: lang === "it" ? "Velocità di Caricamento (Secondi — Meno è meglio)" : "Load Time Comparison (Seconds — Lower is better)",
       bars: [
-        { label: lang === "it" ? "Il Mio Criterio (Facilissimo Web)" : "My Build Criteria (Facilissimo Web)", value: "0.4s", percentage: 12, isPrimary: true },
+        { label: lang === "it" ? "Criterio Facilissimo Web" : "Facilissimo Web Build Criteria", value: "0.4s", percentage: 12, isPrimary: true },
         { label: lang === "it" ? "Sito Standard / Template WordPress" : "Standard Site / WordPress Template", value: "3.2s", percentage: 100, isPrimary: false },
       ],
       metricsList: lang === "it" ? [
@@ -396,12 +396,12 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 {lang === "it" ? "[ DEMO LIVE INTERATTIVE ]" : "[ LIVE INTERACTIVE DEMOS ]"}
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#F8F7F4]">
-                {lang === "it" ? "I Nostri Progetti Evoluti" : "Our Advanced Projects"}
+                {lang === "it" ? "I Progetti di Facilissimo Web" : "Projects by Facilissimo Web"}
               </h2>
               <p className="text-[#F8F7F4]/70 text-xs sm:text-sm leading-relaxed max-w-xl">
                 {lang === "it"
-                  ? "Sperimenta in tempo reale la fluidità e il design su misura delle nostre applicazioni mobile-first. Clicca, ordina o calcola un preventivo direttamente nei simulatori."
-                  : "Experience in real time the fluidity and bespoke design of our mobile-first applications. Click, order, or estimate pricing directly inside the simulators."}
+                  ? "Sperimenta in tempo reale la fluidità e il design su misura delle applicazioni mobile-first di Facilissimo Web. Clicca, ordina o calcola un preventivo direttamente nei simulatori."
+                  : "Experience in real time the fluidity and bespoke design of mobile-first applications by Facilissimo Web. Click, order, or estimate pricing directly inside the simulators."}
               </p>
             </div>
             <button
