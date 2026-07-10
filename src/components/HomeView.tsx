@@ -7,6 +7,8 @@ import GallerySection from "./GallerySection";
 import TattooMacerataApp from "./TattooMacerataApp";
 import GustoPassioneApp from "./GustoPassioneApp";
 import NidoSogniApp from "./NidoSogniApp";
+// @ts-expect-error - custom webp image compiled by Vite
+import regeneratedHeroImage from "../assets/images/regenerated_image_1783680261273.webp";
 
 interface HomeViewProps {
   setCurrentTab: (tab: string) => void;
@@ -266,25 +268,12 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           <div className="lg:col-span-5 relative animate-fade-in-up delay-400">
             <div className="relative w-full aspect-[4/3] sm:aspect-square bg-[#151518] p-4 overflow-hidden border border-[rgba(248,247,244,0.15)]">
               <img
-                src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800"
+                src={regeneratedHeroImage}
                 alt="Modern workspace showing digital wireframe of an AI application"
                 className="w-full h-full object-cover grayscale contrast-125 opacity-90"
                 referrerPolicy="no-referrer"
               />
-              {/* Overlapping interactive overlay simulating AI design element */}
-              <div className="absolute bottom-8 left-8 right-8 bg-[#111113] p-4 border border-[rgba(248,247,244,0.15)] flex items-center gap-3">
-                <div className="w-9 h-9 border border-[#E35930]/30 flex items-center justify-center text-[#E35930]">
-                  <Brain className="w-4 h-4" />
-                </div>
-                <div>
-                  <h4 className="text-[9px] font-bold text-[#E35930] font-mono tracking-widest uppercase">
-                    AI Generative Design
-                  </h4>
-                  <p className="text-[10px] text-[#F8F7F4]/60 font-sans">
-                    Prototypes created instantly &amp; refined manually.
-                  </p>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
