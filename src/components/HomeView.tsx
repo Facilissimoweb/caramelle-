@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import { Brain, Cpu, Zap, ArrowRight, Heart, CheckCircle2, Sparkles, Maximize2, X, TrendingUp, BarChart3, ArrowUpRight, Check } from "lucide-react";
 import { translations } from "../translations";
 import FAQAccordion from "./FAQAccordion";
@@ -55,6 +55,10 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       document.body.style.overflow = "unset";
     };
   }, []);
+
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 1000], [0, 250]);
+
   const bgImages = [
     "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1920",
     "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=1920",
@@ -189,13 +193,17 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
   return (
     <div className="w-full bg-[#111113] text-[#F8F7F4]">
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center py-20 overflow-hidden border-b border-[rgba(248,247,244,0.1)]">
+      <section className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-[rgba(248,247,244,0.1)]">
         {/* Ambient Background Image */}
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <img
+          <motion.img
             src="/images/FACILISSIMO WEB macerata siti web professionali.png"
             alt="Facilissimo Web - Macerata Siti Web Professionali"
-            className="absolute inset-0 w-full h-full object-cover opacity-65 transition-all duration-300"
+            className="absolute inset-0 w-full h-full object-cover opacity-65"
+            style={{
+              y,
+              scale: 1.15,
+            }}
             referrerPolicy="no-referrer"
           />
           {/* Balanced overlay: slightly dark on the left for text legibility, clear/transparent on the right to see the beautiful image */}
