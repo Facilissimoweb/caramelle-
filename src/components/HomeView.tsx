@@ -213,7 +213,15 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           <div className="absolute inset-0 bg-gradient-to-b from-[#111113]/30 via-transparent to-[#111113]" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">          <div className="lg:col-span-7 space-y-6">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">
+          <div className="lg:col-span-7 space-y-6">
+            <div className="flex items-center gap-2 mb-4 animate-fade-in-up">
+              <img
+                src="/images/facilissimo web siti wem acerata siti web gratis (13).webp"
+                alt="Facilissimo Web Logo"
+                className="h-10 sm:h-12 w-auto object-contain"
+              />
+            </div>
             <span className="text-[10px] uppercase tracking-[0.25em] text-[#E35930] font-mono font-bold block mb-2 animate-fade-in-up">
               {t.heroPreTitle}
             </span>
@@ -282,6 +290,13 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       <section className="py-24 bg-[#151518] border-b border-[rgba(248,247,244,0.1)]">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
+            <div className="flex justify-center mb-4">
+              <img
+                src="/images/facilissimo web siti wem acerata siti web gratis (13).webp"
+                alt="Facilissimo Web Logo"
+                className="h-10 sm:h-12 w-auto object-contain"
+              />
+            </div>
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
               {t.approachPre}
             </span>
@@ -383,6 +398,13 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           
           <div className="flex flex-col sm:flex-row justify-between items-end gap-6 mb-16">
             <div className="max-w-2xl space-y-3">
+              <div className="flex items-center gap-2 mb-4">
+                <img
+                  src="/images/facilissimo web siti wem acerata siti web gratis (13).webp"
+                  alt="Facilissimo Web Logo"
+                  className="h-10 sm:h-12 w-auto object-contain"
+                />
+              </div>
               <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
                 {lang === "it" ? "[ DEMO LIVE INTERATTIVE ]" : "[ LIVE INTERACTIVE DEMOS ]"}
               </span>
@@ -706,6 +728,13 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       <section className="py-24 px-6 md:px-12 bg-[#111113]">
         <div className="max-w-7xl mx-auto bg-[#151518] text-[#F8F7F4] p-12 md:p-20 relative overflow-hidden border border-[rgba(248,247,244,0.1)]">
           <div className="relative z-10 text-center max-w-2xl mx-auto space-y-6">
+            <div className="flex justify-center mb-4">
+              <img
+                src="/images/facilissimo web siti wem acerata siti web gratis (13).webp"
+                alt="Facilissimo Web Logo"
+                className="h-10 sm:h-12 w-auto object-contain"
+              />
+            </div>
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
               {t.ctaPre}
             </span>

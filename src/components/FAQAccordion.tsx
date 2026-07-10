@@ -31,6 +31,13 @@ export default function FAQAccordion({
       <div className="max-w-3xl mx-auto px-6">
         {(title || subtitle || showIcon) && (
           <div className="text-center mb-16 space-y-4">
+            <div className="flex justify-center mb-4">
+              <img
+                src="/images/facilissimo web siti wem acerata siti web gratis (13).webp"
+                alt="Facilissimo Web Logo"
+                className="h-10 sm:h-12 w-auto object-contain"
+              />
+            </div>
             {showIcon && <HelpCircle className="w-8 h-8 text-[#E35930] mx-auto animate-pulse" id="faq-icon" />}
             {title && (
               <h2 className="font-display text-3xl font-bold text-[#F8F7F4]" id="faq-title">
