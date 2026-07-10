@@ -22,6 +22,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const chatEndRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
 
   const quickQuestions = [
     "Quali sono i tempi per il piano AI Professional?",
@@ -35,6 +36,14 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
   };
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     scrollToBottom();
   }, [messages, loading]);
 
