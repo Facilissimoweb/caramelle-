@@ -190,20 +190,16 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
     <div className="w-full bg-[#111113] text-[#F8F7F4]">
       {/* Hero Section */}
       <section className="relative min-h-[85vh] flex items-center py-20 overflow-hidden border-b border-[rgba(248,247,244,0.1)]">
-        {/* Ambient Background Video */}
+        {/* Ambient Background Image */}
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-75"
-          >
-            <source src="/video/facilissimo%20web%20home%20.mp4" type="video/mp4" />
-            <source src="/video/facilissimo web home .mp4" type="video/mp4" />
-          </video>
-          {/* Perfectly balanced overlay: dark on the left for text legibility, transparent/light on the right to show the video */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#111113]/90 via-[#111113]/60 to-[#111113]/25" />
+          <img
+            src="/images/FACILISSIMO WEB macerata siti web professionali.png"
+            alt="Facilissimo Web - Macerata Siti Web Professionali"
+            className="absolute inset-0 w-full h-full object-cover opacity-65 transition-all duration-300"
+            referrerPolicy="no-referrer"
+          />
+          {/* Balanced overlay: slightly dark on the left for text legibility, clear/transparent on the right to see the beautiful image */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#111113]/90 via-[#111113]/50 to-[#111113]/20" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#111113]/30 via-transparent to-[#111113]" />
         </div>
 
