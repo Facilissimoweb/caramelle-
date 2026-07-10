@@ -20,7 +20,6 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
 
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const [activeFullScreenApp, setActiveFullScreenApp] = useState<"gusto" | "tattoo" | "nido" | null>(null);
-  const [selectedFeatureIndex, setSelectedFeatureIndex] = useState<number>(0);
   const [activeFeaturePopupIndex, setActiveFeaturePopupIndex] = useState<number | null>(null);
 
   const handleOpenFullScreen = (app: "gusto" | "tattoo" | "nido") => {
@@ -34,7 +33,6 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
   };
 
   const handleOpenFeaturePopup = (index: number) => {
-    setSelectedFeatureIndex(index);
     setActiveFeaturePopupIndex(index);
     document.body.style.overflow = "hidden";
   };
@@ -314,7 +312,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 onClick={() => handleOpenFeaturePopup(index)}
                 className={`flex flex-col border bg-[#111113] transition-all duration-300 group relative cursor-pointer overflow-hidden p-6 ${
-                  selectedFeatureIndex === index 
+                  activeFeaturePopupIndex === index 
                     ? "border-[#E35930] shadow-[0_0_25px_rgba(227,89,48,0.12)] scale-[1.01]" 
                     : "border-[rgba(248,247,244,0.1)] hover:border-[rgba(248,247,244,0.3)] hover:scale-[1.01]"
                 }`}
@@ -332,7 +330,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   
                   {/* Floating Icon */}
                   <div className={`absolute bottom-3 left-3 w-8 h-8 border flex items-center justify-center transition-all ${
-                    selectedFeatureIndex === index 
+                    activeFeaturePopupIndex === index 
                       ? "bg-[#E35930] text-[#111113] border-[#E35930]" 
                       : "bg-[#111113]/80 text-[#F8F7F4] border-[rgba(248,247,244,0.15)] group-hover:bg-[#E35930] group-hover:text-[#111113] group-hover:border-[#E35930]"
                   }`}>
@@ -353,7 +351,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                       <span
                         key={tag}
                         className={`px-2 py-0.5 border text-[8px] font-bold tracking-widest font-mono bg-transparent transition-all ${
-                          selectedFeatureIndex === index
+                          activeFeaturePopupIndex === index
                             ? "border-[#E35930] text-[#E35930]"
                             : "border-[rgba(248,247,244,0.1)] text-[#E35930]/80 group-hover:border-[#E35930]/30"
                         }`}
@@ -384,160 +382,6 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 </div>
               </motion.div>
             ))}
-          </div>
-
-          {/* DYNAMIC STATISTICS INTERACTIVE PANEL */}
-          <div className="mt-12 border border-[rgba(248,247,244,0.1)] bg-[#111113] relative overflow-hidden" id="criteri-costruzione-stats">
-            {/* Ambient accent background line */}
-            <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#E35930] to-transparent"></div>
-            
-            <AnimatePresence mode="wait">
-              {selectedFeatureIndex !== null && (
-                <motion.div
-                  key={selectedFeatureIndex}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.3 }}
-                  className="p-8 md:p-12 space-y-10"
-                >
-                  {/* Stats Header */}
-                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-[rgba(248,247,244,0.08)]">
-                    <div>
-                      <span className="text-[9px] font-mono tracking-[0.2em] text-[#E35930] font-bold uppercase block mb-1">
-                        {lang === "it" ? "CONFRONTO PRESTAZIONALE & CRITERI" : "PERFORMANCE METRICS & BUILD STANDARDS"}
-                      </span>
-                      <h3 className="font-display text-2xl font-bold text-[#F8F7F4]">
-                        {statsData[selectedFeatureIndex].title}
-                      </h3>
-                      <p className="text-xs text-[#F8F7F4]/50 mt-1 font-sans">
-                        {statsData[selectedFeatureIndex].subtitle}
-                      </p>
-                    </div>
-                    <div className="px-3.5 py-1.5 bg-[#E35930]/10 border border-[#E35930]/30 rounded text-[10px] font-mono font-bold tracking-wider text-[#E35930] uppercase shrink-0">
-                      {statsData[selectedFeatureIndex].badgeText}
-                    </div>
-                  </div>
-
-                  {/* Stats Grid */}
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-                    
-                    {/* Left Side: Massive Metric & Deep Selling Content */}
-                    <div className="lg:col-span-5 space-y-6">
-                      <div className="flex items-baseline gap-4">
-                        <span className="font-display text-5xl md:text-7xl font-extrabold text-[#F8F7F4] tracking-tight">
-                          {statsData[selectedFeatureIndex].metricValue}
-                        </span>
-                        <div>
-                          <span className="text-xs font-mono font-bold text-[#E35930] tracking-widest uppercase block">
-                            {statsData[selectedFeatureIndex].metricLabel}
-                          </span>
-                          <span className="text-[10px] text-[#F8F7F4]/40 block font-sans">
-                            {lang === "it" ? "Standard di Teresa Rogani" : "Teresa Rogani's Standard"}
-                          </span>
-                        </div>
-                      </div>
-
-                      <p className="text-[#F8F7F4]/80 font-sans text-xs sm:text-sm leading-relaxed">
-                        {statsData[selectedFeatureIndex].description}
-                      </p>
-
-                      <div className="p-4 bg-[#151518] border border-[rgba(248,247,244,0.06)] rounded space-y-2">
-                        <div className="flex items-center gap-2 text-xs font-bold text-[#F8F7F4] font-display">
-                          <TrendingUp className="w-3.5 h-3.5 text-[#E35930]" />
-                          <span>{lang === "it" ? "L'importanza di questo criterio" : "Why this standard matters"}</span>
-                        </div>
-                        <p className="text-[11px] text-[#F8F7F4]/60 leading-relaxed font-sans">
-                          {lang === "it" 
-                            ? "Applicando rigidi criteri di ottimizzazione del codice ed eliminando la zavorra dei plugin commerciali tipici delle agenzie, proteggiamo il tuo investimento e moltiplichiamo il rendimento del tuo traffico pubblicitario."
-                            : "By enforcing strict code pruning and bypassing the bloat of standard commercial plugins used by traditional agencies, we protect your marketing budget and maximize your return on ad spend."}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Right Side: Charts & Comparisons */}
-                    <div className="lg:col-span-7 space-y-8">
-                      {/* Bars section */}
-                      <div className="space-y-4">
-                        <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#F8F7F4]/70 flex items-center gap-2">
-                          <BarChart3 className="w-4 h-4 text-[#E35930]" />
-                          {statsData[selectedFeatureIndex].comparisonTitle}
-                        </h4>
-                        
-                        <div className="space-y-4 bg-[#151518] p-5 border border-[rgba(248,247,244,0.06)] rounded">
-                          {statsData[selectedFeatureIndex].bars.map((bar, bIdx) => (
-                            <div key={bIdx} className="space-y-1.5">
-                              <div className="flex justify-between text-xs font-sans">
-                                <span className={bar.isPrimary ? "font-bold text-[#F8F7F4] flex items-center gap-1.5" : "text-[#F8F7F4]/60"}>
-                                  {bar.isPrimary && <span className="w-1.5 h-1.5 rounded-full bg-[#E35930]"></span>}
-                                  {bar.label}
-                                </span>
-                                <span className={bar.isPrimary ? "font-mono font-bold text-[#E35930]" : "font-mono text-[#F8F7F4]/50"}>
-                                  {bar.value}
-                                </span>
-                              </div>
-                              <div className="h-2.5 bg-[#111113] border border-[rgba(248,247,244,0.08)] rounded-full overflow-hidden">
-                                <motion.div
-                                  initial={{ width: 0 }}
-                                  animate={{ width: `${bar.percentage}%` }}
-                                  transition={{ duration: 1, delay: 0.2 }}
-                                  className={`h-full rounded-full ${
-                                    bar.isPrimary 
-                                      ? "bg-gradient-to-r from-[#E35930] to-[#f07b57]" 
-                                      : "bg-zinc-700"
-                                  }`}
-                                />
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Detail Metrics comparison table */}
-                      <div className="space-y-3">
-                        <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#F8F7F4]/70">
-                          {lang === "it" ? "PARAMETRI PRESTAZIONALI A CONFRONTO" : "METRIC BY METRIC AUDIT"}
-                        </h4>
-                        
-                        <div className="border border-[rgba(248,247,244,0.06)] rounded overflow-hidden">
-                          {/* Header row */}
-                          <div className="grid grid-cols-12 bg-[#151518] border-b border-[rgba(248,247,244,0.06)] p-3 text-[10px] font-mono text-[#F8F7F4]/40 uppercase tracking-wider">
-                            <div className="col-span-5">{lang === "it" ? "Indicatore" : "Metric"}</div>
-                            <div className="col-span-3 text-center">{lang === "it" ? "Sito Comune" : "Standard Site"}</div>
-                            <div className="col-span-4 text-right text-[#E35930] font-bold">{lang === "it" ? "Il Mio Standard" : "My Standard"}</div>
-                          </div>
-
-                          {/* Data rows */}
-                          <div className="divide-y divide-[rgba(248,247,244,0.06)] bg-[#111113]/40">
-                            {statsData[selectedFeatureIndex].metricsList.map((metric, mIdx) => (
-                              <div key={mIdx} className="p-3.5 space-y-1">
-                                <div className="grid grid-cols-12 items-baseline text-xs">
-                                  <div className="col-span-5 font-bold text-[#F8F7F4] font-display">
-                                    {metric.name}
-                                  </div>
-                                  <div className="col-span-3 text-center text-[#F8F7F4]/50 line-through">
-                                    {metric.standard}
-                                  </div>
-                                  <div className="col-span-4 text-right text-[#E35930] font-bold font-mono flex items-center justify-end gap-1.5">
-                                    <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                                    <span>{metric.mine}</span>
-                                  </div>
-                                </div>
-                                <p className="text-[10px] text-[#F8F7F4]/40 font-sans leading-relaxed">
-                                  {metric.description}
-                                </p>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
-
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
         </div>
       </section>
