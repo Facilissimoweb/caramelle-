@@ -199,8 +199,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
         {/* Ambient Background Image */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <motion.img
-            src="/images/facilissimo web siti wem acerata siti web gratis (13).webp"
-            alt="Facilissimo Web - Siti Web Professionali Macerata"
+            src="/images/fondo.png"
+            alt="Facilissimo Web - Sfondo Professionale"
             className="absolute inset-0 w-full h-full object-cover opacity-65"
             style={{
               y,
@@ -270,7 +270,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               <img
                 src={regeneratedHeroImage}
                 alt="Modern workspace showing digital wireframe of an AI application"
-                className="w-full h-full object-cover grayscale contrast-125 opacity-90"
+                className="w-full h-full object-cover opacity-90 ml-0 pl-[25px] pr-[25px]"
                 referrerPolicy="no-referrer"
               />
 
