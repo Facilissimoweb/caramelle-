@@ -117,6 +117,13 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
             transition={{ duration: 0.7 }}
             className="lg:col-span-6 space-y-6"
           >
+            <div className="flex items-center gap-2 mb-4">
+              <img
+                src="/images/facilissimo%20web%20siti%20wem%20acerata%20siti%20web%20gratis%20(13).webp"
+                alt="Facilissimo Web Logo"
+                className="w-[150px] h-[150px] object-contain"
+              />
+            </div>
             <span className="text-[10px] uppercase tracking-[0.25em] text-[#E35930] font-mono font-bold block mb-2">
               {lang === "it" ? "[ CHI C'È DIETRO FACILISSIMO WEB ]" : "[ WHO IS BEHIND FACILISSIMO WEB ]"}
             </span>

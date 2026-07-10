@@ -35,7 +35,7 @@ export default function FAQAccordion({
               <img
                 src="/images/facilissimo%20web%20siti%20wem%20acerata%20siti%20web%20gratis%20(13).webp"
                 alt="Facilissimo Web Logo"
-                className="h-10 sm:h-12 w-auto object-contain"
+                className="w-[150px] h-[150px] object-contain"
               />
             </div>
             {showIcon && <HelpCircle className="w-8 h-8 text-[#E35930] mx-auto animate-pulse" id="faq-icon" />}

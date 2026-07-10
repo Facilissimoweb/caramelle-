@@ -519,6 +519,13 @@ export default function BlogView({
             </div>
 
             <div className="max-w-2xl mx-auto px-6 space-y-4 relative z-10">
+              <div className="flex justify-center mb-4">
+                <img
+                  src="/images/facilissimo%20web%20siti%20wem%20acerata%20siti%20web%20gratis%20(13).webp"
+                  alt="Facilissimo Web Logo"
+                  className="w-[150px] h-[150px] object-contain"
+                />
+              </div>
               <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
                 {lang === "it" ? "[ TRASPARENZA E CONOSCENZA ]" : "[ INSIGHTS & UPDATES ]"}
               </span>

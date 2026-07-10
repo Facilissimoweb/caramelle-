@@ -223,7 +223,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               <img
                 src="/images/facilissimo%20web%20siti%20wem%20acerata%20siti%20web%20gratis%20(13).webp"
                 alt="Facilissimo Web Logo"
-                className="h-10 sm:h-12 w-auto object-contain"
+                className="w-[150px] h-[150px] object-contain"
               />
             </div>
             <span className="text-[10px] uppercase tracking-[0.25em] text-[#E35930] font-mono font-bold block mb-2 animate-fade-in-up">
@@ -298,7 +298,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               <img
                 src="/images/facilissimo%20web%20siti%20wem%20acerata%20siti%20web%20gratis%20(13).webp"
                 alt="Facilissimo Web Logo"
-                className="h-10 sm:h-12 w-auto object-contain"
+                className="w-[150px] h-[150px] object-contain"
               />
             </div>
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
@@ -406,7 +406,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 <img
                   src="/images/facilissimo%20web%20siti%20wem%20acerata%20siti%20web%20gratis%20(13).webp"
                   alt="Facilissimo Web Logo"
-                  className="h-10 sm:h-12 w-auto object-contain"
+                  className="w-[150px] h-[150px] object-contain"
                 />
               </div>
               <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
@@ -736,7 +736,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               <img
                 src="/images/facilissimo%20web%20siti%20wem%20acerata%20siti%20web%20gratis%20(13).webp"
                 alt="Facilissimo Web Logo"
-                className="h-10 sm:h-12 w-auto object-contain"
+                className="w-[150px] h-[150px] object-contain"
               />
             </div>
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
