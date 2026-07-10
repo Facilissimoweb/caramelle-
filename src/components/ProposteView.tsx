@@ -3,8 +3,7 @@ import { motion } from "motion/react";
 import { Check, Box, ShieldCheck } from "lucide-react";
 import FAQAccordion from "./FAQAccordion";
 import StripePaymentsDemo from "./StripePaymentsDemo";
-// @ts-expect-error - custom png image compiled by Vite
-import logoImage from "../assets/images/regenerated_image_1783686173020.png";
+const logoImage = "/images/facilissimo web siti wem acerata siti web gratis (5).png";
 
 interface ProposteViewProps {
   setCurrentTab: (tab: string) => void;

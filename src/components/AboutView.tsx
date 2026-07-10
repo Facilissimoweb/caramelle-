@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { ShieldCheck, Zap, Heart, Sparkles, Code, Pencil } from "lucide-react";
-// @ts-expect-error - custom png image compiled by Vite
-import logoImage from "../assets/images/regenerated_image_1783686173020.png";
+const logoImage = "/images/facilissimo web siti wem acerata siti web gratis (5).png";
 
 interface AboutViewProps {
   setCurrentTab: (tab: string) => void;

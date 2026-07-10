@@ -2,8 +2,7 @@ import { useState, useRef, useEffect, ReactNode } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Send, MessageSquare, AlertCircle, RefreshCw, Cpu } from "lucide-react";
 import { ChatMessage } from "../types";
-// @ts-expect-error - custom png image compiled by Vite
-import logoImage from "../assets/images/regenerated_image_1783686173020.png";
+const logoImage = "/images/facilissimo web siti wem acerata siti web gratis (5).png";
 
 interface ChatViewProps {
   lang: "it" | "en";

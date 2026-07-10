@@ -2,8 +2,7 @@ import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { motion } from "motion/react";
 import { Mail, Send, Calendar, CheckCircle, Database, FileText, MapPin, Phone } from "lucide-react";
 import { ContactSubmission } from "../types";
-// @ts-expect-error - custom png image compiled by Vite
-import logoImage from "../assets/images/regenerated_image_1783686173020.png";
+const logoImage = "/images/facilissimo web siti wem acerata siti web gratis (5).png";
 
 interface ContattiViewProps {
   lang: "it" | "en";
