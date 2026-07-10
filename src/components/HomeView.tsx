@@ -7,8 +7,8 @@ import GallerySection from "./GallerySection";
 import TattooMacerataApp from "./TattooMacerataApp";
 import GustoPassioneApp from "./GustoPassioneApp";
 import NidoSogniApp from "./NidoSogniApp";
-// @ts-expect-error - custom webp image compiled by Vite
-import regeneratedHeroImage from "../assets/images/regenerated_image_1783680261273.webp";
+// @ts-expect-error - custom png image compiled by Vite
+import regeneratedHeroImage from "../assets/images/regenerated_image_1783686173020.png";
 
 interface HomeViewProps {
   setCurrentTab: (tab: string) => void;
