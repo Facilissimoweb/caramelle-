@@ -197,8 +197,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
         {/* Ambient Background Image */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <motion.img
-            src="/images/FACILISSIMO WEB macerata siti web professionali.png"
-            alt="Facilissimo Web - Macerata Siti Web Professionali"
+            src="/images/facilissimo web siti wem acerata siti web gratis (13).webp"
+            alt="Facilissimo Web - Siti Web Professionali Macerata"
             className="absolute inset-0 w-full h-full object-cover opacity-65"
             style={{
               y,
