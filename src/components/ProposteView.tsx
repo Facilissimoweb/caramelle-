@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { Check, Box, ShieldCheck } from "lucide-react";
 import FAQAccordion from "./FAQAccordion";
 import StripePaymentsDemo from "./StripePaymentsDemo";
-const logoImage = "/images/logo _Facilissimo web siti web professionali.png";
+const logoImage = "/images/logo_Facilissimo web siti web professionali (1).png";
 
 interface ProposteViewProps {
   setCurrentTab: (tab: string) => void;

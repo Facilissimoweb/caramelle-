@@ -2,7 +2,7 @@ import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { motion } from "motion/react";
 import { Mail, Send, Calendar, CheckCircle, Database, FileText, MapPin, Phone } from "lucide-react";
 import { ContactSubmission } from "../types";
-const logoImage = "/images/logo _Facilissimo web siti web professionali.png";
+const logoImage = "/images/logo_Facilissimo web siti web professionali (1).png";
 
 interface ContattiViewProps {
   lang: "it" | "en";
