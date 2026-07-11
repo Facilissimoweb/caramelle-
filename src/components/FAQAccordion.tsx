@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, HelpCircle } from "lucide-react";
-const logoImage = "/images/facilissimo web siti wem acerata siti web gratis (5).png";
+const logoImage = "/images/logo _Facilissimo web siti web professionali.png";
 
 interface FAQItem {
   q: string;

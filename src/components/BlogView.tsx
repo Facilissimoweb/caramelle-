@@ -1,7 +1,7 @@
 import { useState, useEffect, ReactNode } from "react";
 import { Calendar, Clock, User, Share2, Tag, ArrowLeft, Linkedin, Twitter, Facebook, Copy, Check, ChevronRight, Bookmark, ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
-const logoImage = "/images/facilissimo web siti wem acerata siti web gratis (5).png";
+const logoImage = "/images/logo _Facilissimo web siti web professionali.png";
 
 interface Article {
   slug: string;

@@ -7,9 +7,8 @@ import GallerySection from "./GallerySection";
 import TattooMacerataApp from "./TattooMacerataApp";
 import GustoPassioneApp from "./GustoPassioneApp";
 import NidoSogniApp from "./NidoSogniApp";
-// @ts-expect-error - custom png image compiled by Vite
-import regeneratedHeroImage from "../assets/images/regenerated_image_1783689838238.png";
-const logoImage = "/images/facilissimo web siti wem acerata siti web gratis (5).png";
+const regeneratedHeroImage = "/images/facilissimo web siti wem acerata siti web gratis (13).webp";
+const logoImage = "/images/logo _Facilissimo web siti web professionali.png";
 
 interface HomeViewProps {
   setCurrentTab: (tab: string) => void;
