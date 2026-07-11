@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Mail, ArrowUp, Phone, MapPin, Share2, Copy, Check } from "lucide-react";
 
+const logoImage = "/video/Progetto senza titolo (25).png";
+
 interface FooterProps {
   setCurrentTab: (tab: string) => void;
   onOpenModal: (type: "privacy" | "terms" | "ethics" | "sitemap") => void;
@@ -33,7 +35,12 @@ export default function Footer({
         
         {/* Brand Info */}
         <div className="md:col-span-5 space-y-4">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
+            <img
+              src={logoImage}
+              alt="Facilissimo Web Logo"
+              className="w-12 h-12 object-contain rounded-full border border-[rgba(248,247,244,0.1)]"
+            />
             <span className="font-display text-xl font-bold italic text-[#F8F7F4] tracking-tight">
               Facilissimo Web
             </span>

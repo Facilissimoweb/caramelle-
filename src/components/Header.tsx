@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Menu, X, Globe, Accessibility } from "lucide-react";
 import { translations } from "../translations";
 
+const logoImage = "/video/Progetto senza titolo (25).png";
+
 interface HeaderProps {
   currentTab: string;
   setCurrentTab: (tab: string) => void;
@@ -149,15 +151,22 @@ export default function Header({
         {/* Logo */}
         <button
           onClick={() => handleNavClick("home")}
-          className="flex flex-col items-start justify-center text-left focus:outline-none group cursor-pointer min-w-0"
+          className="flex items-center gap-3 text-left focus:outline-none group cursor-pointer min-w-0"
           id="logo-button"
         >
-          <span className="font-display font-extrabold text-base sm:text-xl xl:text-2xl text-[#F8F7F4] tracking-tighter uppercase italic leading-none group-hover:text-[#E35930] transition-colors truncate">
-            Facilissimo Web
-          </span>
-          <span className="text-[9px] sm:text-[10px] text-[#E35930] tracking-[0.25em] uppercase font-mono font-bold mt-1.5 flex-shrink-0">
-            / studio
-          </span>
+          <img
+            src={logoImage}
+            alt="Facilissimo Web Logo"
+            className="w-10 h-10 object-contain rounded-full border border-[rgba(248,247,244,0.1)] group-hover:border-[#E35930] transition-colors shrink-0"
+          />
+          <div className="flex flex-col items-start min-w-0">
+            <span className="font-display font-extrabold text-xs text-[#F8F7F4] tracking-tighter uppercase italic leading-none group-hover:text-[#E35930] transition-colors truncate">
+              Facilissimo Web
+            </span>
+            <span className="text-[9px] sm:text-[10px] text-[#E35930] tracking-[0.25em] uppercase font-mono font-bold mt-1.5 flex-shrink-0">
+              / studio
+            </span>
+          </div>
         </button>
 
         {/* Desktop Navigation */}

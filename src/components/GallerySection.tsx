@@ -13,6 +13,8 @@ import {
   HelpCircle
 } from "lucide-react";
 
+const logoImage = "/video/Progetto senza titolo (25).png";
+
 interface GalleryItem {
   id: string;
   filename: string;
@@ -207,6 +209,13 @@ export default function GallerySection({ lang, isFacilitated }: GallerySectionPr
         {/* Header Block */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
           <div className="max-w-xl space-y-3">
+            <div className="mb-2">
+              <img
+                src={logoImage}
+                alt="Facilissimo Web Logo"
+                className="w-24 h-24 object-contain"
+              />
+            </div>
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
               {lang === "it" ? "[ MEDIA MANAGER & ASSETS ]" : "[ MEDIA MANAGER & ASSETS ]"}
             </span>
