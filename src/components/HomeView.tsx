@@ -7,6 +7,7 @@ import GallerySection from "./GallerySection";
 import TattooMacerataApp from "./TattooMacerataApp";
 import GustoPassioneApp from "./GustoPassioneApp";
 import NidoSogniApp from "./NidoSogniApp";
+import ParticleSystem from "./ParticleSystem";
 const regeneratedHeroImage = "/assets/images/1facilissimo web .png";
 const logoImage = "/video/Progetto senza titolo (25).png";
 
@@ -214,13 +215,15 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               playsInline
             />
           </motion.div>
+          {/* Particle System Animation */}
+          <ParticleSystem lang={lang} />
           {/* Balanced overlay: slightly dark on the left for text legibility, clear/transparent on the right to see the beautiful video */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#111113]/95 via-[#111113]/60 to-[#111113]/25" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#111113]/30 via-transparent to-[#111113]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#111113]/95 via-[#111113]/60 to-[#111113]/25 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#111113]/30 via-transparent to-[#111113] pointer-events-none" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-10 xl:col-span-9 space-y-6">
             <div className="flex items-center gap-2 mb-4 animate-fade-in-up">
               <img
                 src={logoImage}
@@ -275,18 +278,6 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#E35930]" />
                 <span>{t.proofPrices}</span>
               </div>
-            </div>
-          </div>
- 
-          {/* Right illustration / image representation */}
-          <div className="lg:col-span-5 relative animate-fade-in-up delay-400">
-            <div className="relative w-full aspect-[4/3] sm:aspect-square overflow-hidden flex items-center justify-center">
-              <img
-                src={regeneratedHeroImage}
-                alt="Modern workspace showing digital wireframe of an AI application"
-                className="w-full h-full object-contain opacity-90"
-                referrerPolicy="no-referrer"
-              />
             </div>
           </div>
         </div>
