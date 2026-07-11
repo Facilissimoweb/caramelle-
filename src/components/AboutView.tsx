@@ -129,7 +129,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
               {lang === "it" ? "[ CHI C'È DIETRO FACILISSIMO WEB ]" : "[ WHO IS BEHIND FACILISSIMO WEB ]"}
             </span>
             
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F8F7F4] tracking-tighter leading-none">
+            <h1 className="font-tan text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F8F7F4] tracking-tighter leading-none">
               M. Teresa Rogani
             </h1>
             <p className="font-mono text-[10px] text-[#E35930] uppercase tracking-widest font-bold">

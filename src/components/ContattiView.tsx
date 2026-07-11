@@ -133,7 +133,7 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
           <span className="text-[10px] uppercase tracking-[0.25em] text-[#E35930] font-mono font-bold block mb-2">
             [ DISEGNA IL TUO FUTURO ]
           </span>
-          <h1 className="font-display text-4xl font-bold tracking-tight text-[#F8F7F4] sm:text-5xl">
+          <h1 className="font-tan text-4xl font-bold tracking-tight text-[#F8F7F4] sm:text-5xl">
             Entra in Contatto
           </h1>
           <p className="font-sans text-xs sm:text-sm text-[#F8F7F4]/70 leading-relaxed">
