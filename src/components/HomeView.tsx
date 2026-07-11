@@ -206,7 +206,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             className="absolute inset-0 w-full h-full"
           >
             <video
-              src="/facilissimo web (5).mp4"
+              src="/facilissimo web (6).mp4"
               className="absolute inset-0 w-full h-full object-cover opacity-60"
               autoPlay
               loop
