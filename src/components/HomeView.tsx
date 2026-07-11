@@ -196,24 +196,26 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
     <div className="w-full bg-[#111113] text-[#F8F7F4]">
       {/* Hero Section */}
       <section className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-[rgba(248,247,244,0.1)]">
-        {/* Ambient Background Image */}
+        {/* Ambient Background Video */}
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <motion.img
-            src="/facilissimo web fondo hero section.svg"
-            alt="Facilissimo Web - Sfondo Professionale"
-            className="absolute inset-0 w-full h-full object-cover opacity-65"
-            onError={(e) => {
-              // Graceful fallback to a premium high-quality abstract background if the SVG is empty or missing
-              e.currentTarget.src = "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1920";
-            }}
+          <motion.div
             style={{
               y,
               scale: 1.15,
             }}
-            referrerPolicy="no-referrer"
-          />
-          {/* Balanced overlay: slightly dark on the left for text legibility, clear/transparent on the right to see the beautiful image */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#111113]/90 via-[#111113]/50 to-[#111113]/20" />
+            className="absolute inset-0 w-full h-full"
+          >
+            <video
+              src="/facilissimo web (5).mp4"
+              className="absolute inset-0 w-full h-full object-cover opacity-60"
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+          </motion.div>
+          {/* Balanced overlay: slightly dark on the left for text legibility, clear/transparent on the right to see the beautiful video */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#111113]/95 via-[#111113]/60 to-[#111113]/25" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#111113]/30 via-transparent to-[#111113]" />
         </div>
 
