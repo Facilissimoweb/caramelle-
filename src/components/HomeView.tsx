@@ -230,7 +230,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               {t.heroPreTitle}
             </span>
  
-            <h1 className="font-tan text-4xl sm:text-5xl lg:text-7xl font-bold text-[#F8F7F4] leading-[0.95] tracking-tight animate-fade-in-up delay-75">
+            <h1 className="font-tan text-4xl sm:text-5xl lg:text-7xl font-bold text-[#F8F7F4] leading-[1.3] tracking-tight animate-fade-in-up delay-75">
               {t.heroTitleRegular}{" "}
               <span className="italic block mt-1 font-normal text-[#E35930] font-tan">
                 {t.heroTitleItalic}

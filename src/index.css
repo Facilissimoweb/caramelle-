@@ -215,6 +215,11 @@ body {
 
 h1 {
   font-family: "TAN-NIMBUS", "Syne", sans-serif !important;
+  line-height: 1.35 !important;
+}
+
+h2 {
+  font-family: "TAN-NIMBUS", "Syne", sans-serif !important;
 }
 
 .skiptranslate {
