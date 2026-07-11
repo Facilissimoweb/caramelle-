@@ -247,7 +247,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
           <span className="text-[10px] uppercase tracking-[0.25em] text-[#E35930] font-mono font-bold block mb-2">
             [ CHAT INTERATTIVA DIRETTA ]
           </span>
-          <h1 className="font-tan text-3xl font-bold tracking-tight text-[#F8F7F4] sm:text-4xl">
+          <h1 className="font-tan text-3xl font-bold tracking-wide text-[#F8F7F4] sm:text-4xl">
             Parla con Me
           </h1>
           <p className="font-sans text-xs sm:text-sm text-[#F8F7F4]/70 max-w-lg mx-auto leading-relaxed">

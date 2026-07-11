@@ -210,7 +210,7 @@ export default function GallerySection({ lang, isFacilitated }: GallerySectionPr
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
               {lang === "it" ? "[ MEDIA MANAGER & ASSETS ]" : "[ MEDIA MANAGER & ASSETS ]"}
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#F8F7F4]">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-wide text-[#F8F7F4]">
               {lang === "it" ? "Galleria Asset Dinamici" : "Dynamic Asset Gallery"}
             </h2>
             <p className="text-[#F8F7F4]/70 text-xs sm:text-sm font-sans leading-relaxed">

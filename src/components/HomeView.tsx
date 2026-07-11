@@ -232,7 +232,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               {t.heroPreTitle}
             </span>
  
-            <h1 className="font-tan text-4xl sm:text-5xl lg:text-7xl font-bold text-[#F8F7F4] leading-[1.3] tracking-tight animate-fade-in-up delay-75">
+            <h1 className="font-tan text-4xl sm:text-5xl lg:text-7xl font-bold text-[#F8F7F4] leading-[1.3] tracking-wide animate-fade-in-up delay-75">
               {t.heroTitleRegular}{" "}
               <span className="italic block mt-1 font-normal text-[#E35930] font-tan">
                 {t.heroTitleItalic}
@@ -306,7 +306,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
               {t.approachPre}
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#F8F7F4]">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-wide text-[#F8F7F4]">
               {t.approachTitle}
             </h2>
             <p className="text-[#F8F7F4]/70 font-sans text-xs sm:text-sm">
@@ -414,7 +414,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
                 {lang === "it" ? "[ DEMO LIVE INTERATTIVE ]" : "[ LIVE INTERACTIVE DEMOS ]"}
               </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#F8F7F4]">
+              <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-wide text-[#F8F7F4]">
                 {lang === "it" ? "I Progetti di Facilissimo Web" : "Projects by Facilissimo Web"}
               </h2>
               <p className="text-[#F8F7F4]/70 text-xs sm:text-sm leading-relaxed max-w-xl">
@@ -744,7 +744,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
               {t.ctaPre}
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#F8F7F4]">
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-wide text-[#F8F7F4]">
               {t.ctaTitle}
             </h2>
             <p className="text-[#F8F7F4]/80 font-sans text-xs sm:text-sm leading-relaxed">
@@ -875,7 +875,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   </div>
 
                   {/* Main Title */}
-                  <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#F8F7F4] leading-[1.1]">
+                  <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide text-[#F8F7F4] leading-[1.1]">
                     {statsData[activeFeaturePopupIndex].title}
                   </h2>
 

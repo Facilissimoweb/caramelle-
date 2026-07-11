@@ -216,7 +216,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
           <span className="text-[10px] uppercase tracking-[0.25em] text-[#E35930] font-mono font-bold block mb-2">
             {isFacilitated ? "[ PREZZI CHIARI ]" : "[ TRASPARENZA E PREZZI CHIARI ]"}
           </span>
-          <h1 className="font-tan text-4xl font-bold tracking-tight text-[#F8F7F4] sm:text-5xl">
+          <h1 className="font-tan text-4xl font-bold tracking-wide text-[#F8F7F4] sm:text-5xl">
             {isFacilitated ? "Piani e Prezzi Chiarissimi" : "Piani e Proposte su Misura"}
           </h1>
           <p className="font-sans text-xs sm:text-sm text-[#F8F7F4]/70 leading-relaxed">
@@ -309,7 +309,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
               {isFacilitated ? "[ TUTTO INCLUSO ]" : "[ VALORE AGGIUNTO ]"}
             </span>
-            <h2 className="font-display text-3xl font-bold text-[#F8F7F4] tracking-tight">
+            <h2 className="font-display text-3xl font-bold text-[#F8F7F4] tracking-wide">
               {isFacilitated ? "Servizi inclusi in ogni pacchetto" : "L'Ecosistema Servizi IA di Facilissimo Web"}
             </h2>
             <p className="text-xs sm:text-sm text-[#F8F7F4]/70 leading-relaxed font-sans">

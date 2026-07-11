@@ -121,7 +121,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
               {lang === "it" ? "[ CHI C'È DIETRO FACILISSIMO WEB ]" : "[ WHO IS BEHIND FACILISSIMO WEB ]"}
             </span>
             
-            <h1 className="font-tan text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F8F7F4] tracking-tighter leading-relaxed">
+            <h1 className="font-tan text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F8F7F4] tracking-wide leading-relaxed">
               M. Teresa Rogani
             </h1>
             <p className="font-mono text-[10px] text-[#E35930] uppercase tracking-widest font-bold">
@@ -194,7 +194,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
               {isFacilitated ? "[ I VALORI DI FACILISSIMO WEB ]" : "[ EFFICIENZA & VALORE ]"}
             </span>
-            <h2 className="font-display text-3xl font-bold text-[#F8F7F4]">
+            <h2 className="font-display text-3xl font-bold tracking-wide text-[#F8F7F4]">
               {isFacilitated ? "Perché lavorare con me conviene" : "Il Vantaggio del Freelance Unico"}
             </h2>
             <p className="text-[#F8F7F4]/70 font-sans text-xs sm:text-sm">
@@ -242,7 +242,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
               {isFacilitated ? "[ METODO DI LAVORO ]" : "[ INTELLIGENZA ARTIGIANALE ]"}
             </span>
-            <h2 className="font-display text-3xl font-bold text-[#F8F7F4]">
+            <h2 className="font-display text-3xl font-bold tracking-wide text-[#F8F7F4]">
               {isFacilitated ? "Grafica e Assistenza con Computer" : "Artigianato & Intelligenza Artificiale"}
             </h2>
             <div className="space-y-4 text-xs sm:text-sm text-[#F8F7F4]/70 leading-relaxed font-sans">
@@ -308,7 +308,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
           <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
             {isFacilitated ? "[ DIRETTO & VELOCE ]" : "[ DIRETTO & VELOCE ]"}
           </span>
-          <h2 className="font-display text-3xl font-bold tracking-tight text-[#F8F7F4]">
+          <h2 className="font-display text-3xl font-bold tracking-wide text-[#F8F7F4]">
             {isFacilitated ? "Vuoi creare il tuo sito con me?" : "Pronto a lavorare direttamente con me?"}
           </h2>
           <p className="text-[#F8F7F4]/80 font-sans text-xs sm:text-sm leading-relaxed">
