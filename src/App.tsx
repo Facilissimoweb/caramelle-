@@ -234,7 +234,7 @@ export default function App() {
   const getTabLabel = (tabId: string) => {
     if (lang === "it") {
       switch (tabId) {
-        case "home": return "Inizio";
+        case "home": return "Home";
         case "web-app": return "Web App";
         case "blog": return "Blog & News";
         case "chi-sono": return "Chi Sono";

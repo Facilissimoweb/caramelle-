@@ -62,7 +62,7 @@ export interface TranslationSet {
 export const translations: Record<"it" | "en", { normal: TranslationSet; facilitated: TranslationSet }> = {
   it: {
     normal: {
-      navInizio: "Inizio",
+      navInizio: "Home",
       navWebApp: "Web App",
       navChiSono: "Chi Sono",
       navProposte: "Proposte",
@@ -114,7 +114,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       ctaBtnSecondary: "Chatta con l'AI Assistant",
     },
     facilitated: {
-      navInizio: "Inizio",
+      navInizio: "Home",
       navWebApp: "Siti Web App",
       navChiSono: "Chi Sono",
       navProposte: "Proposte",

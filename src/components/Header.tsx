@@ -1,8 +1,18 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Globe, Accessibility } from "lucide-react";
+import { Menu, X, Globe, Accessibility, Home, Code2, User2, Lightbulb, Mail, MessageSquare, BookOpen } from "lucide-react";
 import { translations } from "../translations";
 
 const logoImage = "/video/Progetto senza titolo (25).png";
+
+const navIcons: Record<string, any> = {
+  home: Home,
+  "web-app": Code2,
+  "chi-sono": User2,
+  proposte: Lightbulb,
+  contatti: Mail,
+  chat: MessageSquare,
+  blog: BookOpen,
+};
 
 interface HeaderProps {
   currentTab: string;
@@ -272,91 +282,101 @@ export default function Header({
       {/* Mobile Drawer */}
       {isMobileOpen && (
         <div className="xl:hidden border-t border-[rgba(248,247,244,0.1)] bg-[#111113]/98 backdrop-blur-2xl absolute top-20 left-0 w-full shadow-lg transition-all duration-300">
-          <div className="px-6 py-8 flex flex-col gap-4">
-            {navItems.map((item) => {
-              const isActive = currentTab === item.id;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className={`text-left text-xs uppercase tracking-widest py-3 px-4 transition-all ${
-                    isActive
-                      ? "bg-[rgba(248,247,244,0.05)] text-[#E35930] font-bold border-l-2 border-[#E35930]"
-                      : "text-[#F8F7F4]/60 hover:bg-[rgba(248,247,244,0.05)] hover:text-[#F8F7F4]"
-                  }`}
-                  id={`mobile-nav-${item.id}`}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-
-            {/* Mobile Accessibility & Custom Google Translate Selection */}
-            <div className="flex flex-col gap-3 mt-2 border-t border-[rgba(248,247,244,0.1)] pt-6">
+          <div className="px-4 py-4 flex flex-col gap-3">
+            {/* Compact Horizontal Grid of Minimal Icons for Navigation */}
+            <div className="flex flex-col gap-1.5" id="mobile-nav-container">
               <div className="flex justify-between items-center px-1">
-                <span className="font-mono text-[9px] uppercase tracking-widest text-[#F8F7F4]/40 font-bold">
-                  {lang === "it" ? "Opzioni Accessibilità" : "Accessibility Options"}
+                <span className="text-[8px] uppercase tracking-[0.2em] text-[#F8F7F4]/40 font-mono font-bold">
+                  {lang === "it" ? "Navigazione" : "Navigation"}
                 </span>
-                
+                <span className="text-[9px] uppercase tracking-wider text-[#E35930] font-mono font-bold">
+                  {navItems.find((item) => item.id === currentTab)?.label}
+                </span>
+              </div>
+              <div className="grid grid-cols-7 gap-1" id="mobile-nav-grid">
+                {navItems.map((item) => {
+                  const isActive = currentTab === item.id;
+                  const IconComponent = navIcons[item.id] || Home;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => handleNavClick(item.id)}
+                      className={`h-11 flex flex-col items-center justify-center transition-all rounded-sm relative cursor-pointer ${
+                        isActive
+                          ? "bg-[#E35930]/20 text-[#E35930] border border-[#E35930]/50"
+                          : "text-[#F8F7F4]/70 bg-[#151518]/60 border border-[rgba(248,247,244,0.06)] hover:bg-[rgba(248,247,244,0.04)]"
+                      }`}
+                      title={item.label}
+                      aria-label={item.label}
+                      id={`mobile-nav-${item.id}`}
+                    >
+                      <IconComponent className="w-5 h-5 shrink-0" />
+                      {isActive && (
+                        <span className="absolute bottom-1 w-1 h-1 bg-[#E35930] rounded-full animate-pulse" />
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Mobile Accessibility & Compact Language Selector Block */}
+            <div className="flex flex-col gap-1.5 mt-1 border-t border-[rgba(248,247,244,0.08)] pt-3">
+              <div className="grid grid-cols-2 gap-1.5">
+                {/* Accessibility Toggle */}
                 <button
                   onClick={() => setIsFacilitated(!isFacilitated)}
-                  className={`py-1.5 px-3 border transition-all flex items-center justify-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold ${
+                  className={`py-2 px-2.5 border rounded-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold ${
                     isFacilitated
                       ? "bg-[#E35930] border-[#E35930] text-[#111113]"
-                      : "border-[rgba(248,247,244,0.1)] text-[#F8F7F4]/80"
+                      : "border-[rgba(248,247,244,0.08)] bg-[#151518]/30 text-[#F8F7F4]/80"
                   }`}
                   id="access-toggle-mobile"
                 >
                   <Accessibility className="w-3.5 h-3.5" />
                   <span>{isFacilitated ? "Std" : "Easy"}</span>
                 </button>
-              </div>
 
-              {/* Collapsible Mobile Language Selector */}
-              <div className="flex flex-col gap-2 mt-1">
+                {/* Mobile Language Trigger */}
                 <button
                   onClick={() => setIsMobileLangOpen(!isMobileLangOpen)}
-                  className="py-3 px-4 border border-[rgba(248,247,244,0.1)] text-[#F8F7F4] hover:text-[#E35930] hover:border-[#E35930] transition-all flex items-center justify-between cursor-pointer font-mono text-[10px] uppercase tracking-wider font-bold"
+                  className="py-2 px-2.5 border border-[rgba(248,247,244,0.08)] bg-[#151518]/30 rounded-sm text-[#F8F7F4] hover:text-[#E35930] transition-all flex items-center justify-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold"
                   id="mobile-lang-trigger"
                 >
-                  <div className="flex items-center gap-2">
-                    <Globe className="w-4 h-4 text-[#E35930]" />
-                    <span>{lang === "it" ? "Cambia Lingua" : "Change Language"}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs">{activeLangObj.flag}</span>
-                    <span className="text-[10px] text-[#F8F7F4]/50">{activeLangObj.label}</span>
-                    <span className={`text-[8px] transition-transform duration-200 ${isMobileLangOpen ? "rotate-180" : ""}`}>▼</span>
-                  </div>
+                  <Globe className="w-3.5 h-3.5 text-[#E35930]" />
+                  <span>{activeLangObj.flag} {activeLangObj.code.toUpperCase()}</span>
+                  <span className={`text-[7px] transition-transform duration-200 ${isMobileLangOpen ? "rotate-180" : ""}`}>▼</span>
                 </button>
-
-                {isMobileLangOpen && (
-                  <div className="grid grid-cols-2 gap-2 p-2 bg-[#151518] border border-[rgba(248,247,244,0.05)] transition-all">
-                    {LANGUAGES.map((item) => {
-                      const isSelected = currentGoogleLang === item.code;
-                      return (
-                        <button
-                          key={item.code}
-                          onClick={() => selectLanguage(item.code)}
-                          className={`py-2 px-2.5 border transition-all flex items-center justify-start gap-2.5 cursor-pointer font-mono text-[9px] uppercase tracking-wider font-bold ${
-                            isSelected
-                              ? "bg-[#E35930] border-[#E35930] text-[#111113]"
-                              : "border-[rgba(248,247,244,0.1)] text-[#F8F7F4]/80 hover:text-[#E35930]"
-                          }`}
-                        >
-                          <span className="text-xs">{item.flag}</span>
-                          <span>{item.label}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
               </div>
+
+              {/* Language Selector Dropdown Grid */}
+              {isMobileLangOpen && (
+                <div className="grid grid-cols-3 gap-1 p-1.5 bg-[#151518] border border-[rgba(248,247,244,0.05)] rounded-sm transition-all">
+                  {LANGUAGES.map((item) => {
+                    const isSelected = currentGoogleLang === item.code;
+                    return (
+                      <button
+                        key={item.code}
+                        onClick={() => selectLanguage(item.code)}
+                        className={`py-1 px-1 rounded-sm border transition-all flex items-center justify-center gap-1 cursor-pointer font-mono text-[8px] uppercase tracking-wider font-semibold ${
+                          isSelected
+                            ? "bg-[#E35930] border-[#E35930] text-[#111113]"
+                            : "border-[rgba(248,247,244,0.05)] text-[#F8F7F4]/70 hover:text-[#E35930]"
+                        }`}
+                      >
+                        <span>{item.flag}</span>
+                        <span>{item.code.toUpperCase()}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
 
+            {/* Compact CTA Button */}
             <button
               onClick={() => handleNavClick("contatti")}
-              className="mt-4 w-full py-4 bg-[#E35930] text-[#111113] text-center text-xs font-bold uppercase tracking-widest hover:bg-transparent hover:text-[#E35930] transition-all duration-300 cursor-pointer border border-[#E35930]"
+              className="mt-1 w-full py-2.5 bg-[#E35930] text-[#111113] text-center text-[10px] sm:text-xs font-bold uppercase tracking-widest hover:bg-transparent hover:text-[#E35930] transition-all duration-300 cursor-pointer border border-[#E35930] rounded-sm"
               id="mobile-header-cta-btn"
             >
               {lang === "it" ? "Richiedi Preventivo" : "Request a Quote"}
