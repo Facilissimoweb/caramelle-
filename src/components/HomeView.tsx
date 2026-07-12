@@ -3,11 +3,9 @@ import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import { Brain, Cpu, Zap, ArrowRight, Heart, CheckCircle2, Sparkles, Maximize2, X, TrendingUp, BarChart3, ArrowUpRight, Check } from "lucide-react";
 import { translations } from "../translations";
 import FAQAccordion from "./FAQAccordion";
-import GallerySection from "./GallerySection";
 import TattooMacerataApp from "./TattooMacerataApp";
 import GustoPassioneApp from "./GustoPassioneApp";
 import NidoSogniApp from "./NidoSogniApp";
-import ParticleSystem from "./ParticleSystem";
 const regeneratedHeroImage = "/assets/images/1facilissimo web .png";
 const logoImage = "/video/Progetto senza titolo (25).png";
 
@@ -215,8 +213,6 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               playsInline
             />
           </motion.div>
-          {/* Particle System Animation */}
-          <ParticleSystem lang={lang} />
           {/* Balanced overlay: slightly dark on the left for text legibility, clear/transparent on the right to see the beautiful video */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#111113]/95 via-[#111113]/60 to-[#111113]/25 pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#111113]/30 via-transparent to-[#111113] pointer-events-none" />
