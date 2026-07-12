@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Terminal, Cpu, ShieldAlert, Zap, ChevronRight, ChevronLeft, RotateCcw, AlertTriangle } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Terminal, Cpu, ShieldAlert, Zap, ChevronRight, ChevronLeft, RotateCcw, AlertTriangle, Play, Pause } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 interface Slide {
   id: number;
@@ -95,10 +96,22 @@ export default function CyberAiGuideApp({ lang = "it" }: CyberAiGuideAppProps) {
   const activeLang = (lang === "en" ? "en" : "it") as "it" | "en";
   const [currentSlide, setCurrentSlide] = useState(0);
   const [imgError, setImgError] = useState<Record<number, boolean>>({});
+  const [isPlaying, setIsPlaying] = useState(true);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
   const [touchEndX, setTouchEndX] = useState<number | null>(null);
   const [touchEndY, setTouchEndY] = useState<number | null>(null);
+
+  // Auto-play effect: switch slide every 5 seconds when isPlaying is true
+  useEffect(() => {
+    if (!isPlaying) return;
+
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev < slides.length - 1 ? prev + 1 : 0));
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [isPlaying, currentSlide]);
 
   const nextSlide = () => {
     if (currentSlide < slides.length - 1) setCurrentSlide(currentSlide + 1);
@@ -158,11 +171,19 @@ export default function CyberAiGuideApp({ lang = "it" }: CyberAiGuideAppProps) {
         
         {/* Header Terminale */}
         <div className="px-5 py-3.5 bg-[#151518] border-b border-gray-800 flex justify-between items-center z-10 select-none">
-          <div className="flex items-center gap-2">
-            <Cpu className="w-4 h-4 text-[#E35930] animate-pulse" />
-            <span className="font-bold text-gray-300 text-[10px] tracking-[0.2em] uppercase">
-              <span>SYS.FAQ_V1.0</span>
-            </span>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <Cpu className="w-4 h-4 text-[#E35930] animate-pulse" />
+              <span className="font-bold text-gray-300 text-[10px] tracking-[0.2em] uppercase">
+                <span>SYS.FAQ_V1.0</span>
+              </span>
+            </div>
+            {isPlaying && (
+              <span className="text-[8px] text-green-500 font-mono tracking-wider animate-pulse flex items-center gap-1 bg-green-950/20 px-1.5 py-0.5 rounded border border-green-500/20">
+                <span className="w-1 h-1 rounded-full bg-green-500 animate-ping"></span>
+                <span>AUTO</span>
+              </span>
+            )}
           </div>
           <div className="flex gap-1.5">
             <div className="w-2 h-2 rounded-full bg-red-500 shadow-[0_0_5px_rgba(239,68,68,0.8)]"></div>
@@ -186,87 +207,88 @@ export default function CyberAiGuideApp({ lang = "it" }: CyberAiGuideAppProps) {
           {/* CRT Scanline Overlay Effect */}
           <div className="scanline-effect"></div>
 
-          {slides.map((slide, index) => {
-            const neon = getNeonStyles(slide.neonColor);
-            const activeTitle = slide.title[activeLang];
-            const activeFaq = slide.faq[activeLang];
-            const activeContent = slide.content[activeLang];
-            
-            return (
-              <div
-                key={slide.id}
-                className={`absolute inset-0 flex flex-col transition-all duration-700 ease-in-out ${
-                  index === currentSlide 
-                    ? 'opacity-100 translate-x-0 pointer-events-auto' 
-                    : index < currentSlide 
-                      ? 'opacity-0 -translate-x-full pointer-events-none' 
-                      : 'opacity-0 translate-x-full pointer-events-none'
-                }`}
-              >
-                {/* Immagine con maschera ed effetto glitch visivo */}
-                <div className="relative h-24 min-[375px]:h-28 xs:h-32 sm:h-44 w-full border-b border-gray-800 bg-gray-900 shrink-0">
-                  <div className="absolute inset-0 bg-black/40 z-10 mix-blend-multiply"></div>
-                  {/* Effetto scanline sopra l'immagine */}
-                  <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==')] z-20 pointer-events-none opacity-50"></div>
-                  
-                  {imgError[slide.id] ? (
-                    <div className="absolute inset-0 bg-slate-950 flex flex-col items-center justify-center p-4">
-                      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#E35930_1px,transparent_1px)] [background-size:16px_16px]"></div>
-                      <Cpu className="w-8 h-8 text-gray-600 mb-2 animate-pulse" />
-                      <span className="text-[9px] font-mono text-gray-500 uppercase tracking-widest">
-                        <span>DATA_STREAM_OFFLINE</span>
-                      </span>
-                    </div>
-                  ) : (
-                    <img 
-                      src={slide.image} 
-                      alt={`Cyberpunk ${activeTitle}`}
-                      onError={() => setImgError(prev => ({ ...prev, [slide.id]: true }))}
-                      className="w-full h-full object-cover opacity-80 mix-blend-luminosity filter contrast-125 brightness-75"
-                      referrerPolicy="no-referrer"
-                    />
-                  )}
-                  
-                  {/* Etichetta sopra l'immagine */}
-                  <div 
-                    className={`absolute bottom-3 left-3 z-30 bg-black/85 px-2.5 py-1 text-[10px] border uppercase tracking-widest backdrop-blur-sm font-mono font-bold ${neon.text}`}
-                    style={{ borderColor: neon.rgb, boxShadow: neon.shadow }}
-                  >
-                    <span>// </span><span>{activeTitle}</span>
-                  </div>
-                </div>
+          <AnimatePresence mode="wait">
+            {(() => {
+              const slide = slides[currentSlide];
+              const neon = getNeonStyles(slide.neonColor);
+              const activeTitle = slide.title[activeLang];
+              const activeFaq = slide.faq[activeLang];
+              const activeContent = slide.content[activeLang];
 
-                {/* Contenuto Testuale FAQ */}
-                <div className="p-4 xs:p-5 flex-grow flex flex-col justify-start relative bg-[#111113] overflow-hidden">
-                  <div className="mb-2 xs:mb-3 inline-flex items-center">
-                    {slide.icon}
+              return (
+                <motion.div
+                  key={slide.id}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.35, ease: "easeInOut" }}
+                  className="absolute inset-0 flex flex-col pointer-events-auto"
+                >
+                  {/* Immagine con maschera ed effetto glitch visivo */}
+                  <div className="relative h-24 min-[375px]:h-28 xs:h-32 sm:h-44 w-full border-b border-gray-800 bg-gray-900 shrink-0">
+                    <div className="absolute inset-0 bg-black/40 z-10 mix-blend-multiply"></div>
+                    {/* Effetto scanline sopra l'immagine */}
+                    <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==')] z-20 pointer-events-none opacity-50"></div>
+                    
+                    {imgError[slide.id] ? (
+                      <div className="absolute inset-0 bg-slate-950 flex flex-col items-center justify-center p-4">
+                        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#E35930_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                        <Cpu className="w-8 h-8 text-gray-600 mb-2 animate-pulse" />
+                        <span className="text-[9px] font-mono text-gray-500 uppercase tracking-widest">
+                          <span>DATA_STREAM_OFFLINE</span>
+                        </span>
+                      </div>
+                    ) : (
+                      <img 
+                        src={slide.image} 
+                        alt={`Cyberpunk ${activeTitle}`}
+                        onError={() => setImgError(prev => ({ ...prev, [slide.id]: true }))}
+                        className="w-full h-full object-cover opacity-80 mix-blend-luminosity filter contrast-125 brightness-75"
+                        referrerPolicy="no-referrer"
+                      />
+                    )}
+                    
+                    {/* Etichetta sopra l'immagine */}
+                    <div 
+                      className={`absolute bottom-3 left-3 z-30 bg-black/85 px-2.5 py-1 text-[10px] border uppercase tracking-widest backdrop-blur-sm font-mono font-bold ${neon.text}`}
+                      style={{ borderColor: neon.rgb, boxShadow: neon.shadow }}
+                    >
+                      <span>// </span><span>{activeTitle}</span>
+                    </div>
                   </div>
-                  
-                  <div className="mb-2 shrink-0">
-                     <span className="text-gray-500 text-[10px] uppercase tracking-widest block font-mono">
-                       <span>QUERY:</span>
-                     </span>
-                     <h2 className={`text-sm xs:text-base font-bold ${neon.text} uppercase leading-tight mt-1 font-mono flex items-center gap-1.5`}>
-                       <span>&gt; </span>
-                       <span>{activeFaq}</span>
-                       <span className="relative flex h-2 w-2 shrink-0" style={{ color: neon.rgb }}>
-                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-current opacity-75"></span>
-                         <span className="relative inline-flex rounded-full h-2 w-2 bg-current"></span>
+
+                  {/* Contenuto Testuale FAQ */}
+                  <div className="p-4 xs:p-5 flex-grow flex flex-col justify-start relative bg-[#111113] overflow-hidden">
+                    <div className="mb-2 xs:mb-3 inline-flex items-center">
+                      {slide.icon}
+                    </div>
+                    
+                    <div className="mb-2 shrink-0">
+                       <span className="text-gray-500 text-[10px] uppercase tracking-widest block font-mono">
+                         <span>QUERY:</span>
                        </span>
-                     </h2>
+                       <h2 className={`text-sm xs:text-base font-bold ${neon.text} uppercase leading-tight mt-1 font-mono flex items-center gap-1.5`}>
+                         <span>&gt; </span>
+                         <span>{activeFaq}</span>
+                         <span className="relative flex h-2 w-2 shrink-0" style={{ color: neon.rgb }}>
+                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-current opacity-75"></span>
+                           <span className="relative inline-flex rounded-full h-2 w-2 bg-current"></span>
+                         </span>
+                       </h2>
+                    </div>
+                    
+                    {/* Content paragraph is scrollable and dynamically expands using flex-grow/flex-1 */}
+                    <div className="mt-2 bg-[#151518] p-3.5 border-l-2 border-gray-600 relative overflow-y-auto flex-1 min-h-0 custom-scrollbar">
+                      <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent to-[#151518]/10 pointer-events-none"></span>
+                      <p className="text-gray-300 text-xs leading-relaxed font-sans font-light">
+                        <span>{activeContent}</span>
+                      </p>
+                    </div>
                   </div>
-                  
-                  {/* Content paragraph is scrollable and dynamically expands using flex-grow/flex-1 */}
-                  <div className="mt-2 bg-[#151518] p-3.5 border-l-2 border-gray-600 relative overflow-y-auto flex-1 min-h-0 custom-scrollbar">
-                    <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent to-[#151518]/10 pointer-events-none"></span>
-                    <p className="text-gray-300 text-xs leading-relaxed font-sans font-light">
-                      <span>{activeContent}</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+                </motion.div>
+              );
+            })()}
+          </AnimatePresence>
         </div>
 
         {/* Controlli di Navigazione (Cyber Console) */}
@@ -289,10 +311,8 @@ export default function CyberAiGuideApp({ lang = "it" }: CyberAiGuideAppProps) {
                 />
               );
             })}
-          </div>
-
-          {/* Pulsanti */}
-          <div className="flex justify-between items-center gap-4">
+               {/* Pulsanti */}
+          <div className="flex justify-between items-center gap-3">
             <button
               onClick={prevSlide}
               disabled={currentSlide === 0}
@@ -301,8 +321,30 @@ export default function CyberAiGuideApp({ lang = "it" }: CyberAiGuideAppProps) {
                   ? 'border-gray-800 text-gray-700 cursor-not-allowed' 
                   : 'border-cyan-900/40 text-cyan-500 hover:bg-cyan-950/20 hover:border-cyan-500 active:scale-95'
               }`}
+              title={activeLang === "it" ? "Precedente" : "Previous"}
             >
               <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            {/* Play/Pause Toggle Button */}
+            <button
+              onClick={() => setIsPlaying(!isPlaying)}
+              className={`p-2.5 rounded-sm border transition-all active:scale-95 ${
+                isPlaying
+                  ? 'border-green-950 text-green-400 bg-green-950/10 hover:bg-green-950/30 hover:border-green-500'
+                  : 'border-yellow-950 text-yellow-500 bg-yellow-950/10 hover:bg-yellow-950/30 hover:border-yellow-500'
+              }`}
+              title={
+                isPlaying 
+                  ? (activeLang === "it" ? "Pausa Riproduzione" : "Pause Autoplay") 
+                  : (activeLang === "it" ? "Avvia Riproduzione" : "Start Autoplay")
+              }
+            >
+              {isPlaying ? (
+                <Pause className="w-5 h-5" />
+              ) : (
+                <Play className="w-5 h-5" />
+              )}
             </button>
 
             {isLastSlide ? (
@@ -322,7 +364,7 @@ export default function CyberAiGuideApp({ lang = "it" }: CyberAiGuideAppProps) {
                 <ChevronRight className="w-4 h-4" />
               </button>
             )}
-          </div>
+          </div>       </div>
         </div>
         
       </div>
