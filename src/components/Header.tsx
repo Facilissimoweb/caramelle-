@@ -310,7 +310,15 @@ export default function Header({
                       aria-label={item.label}
                       id={`mobile-nav-${item.id}`}
                     >
-                      <IconComponent className="w-5 h-5 shrink-0" />
+                      {item.id === "chi-sono" ? (
+                        <img
+                          src={logoImage}
+                          alt=""
+                          className="w-5 h-5 rounded-full object-contain shrink-0 border border-[rgba(248,247,244,0.15)]"
+                        />
+                      ) : (
+                        <IconComponent className="w-5 h-5 shrink-0" />
+                      )}
                       {isActive && (
                         <span className="absolute bottom-1 w-1 h-1 bg-[#E35930] rounded-full animate-pulse" />
                       )}
