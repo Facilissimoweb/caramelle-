@@ -275,6 +275,169 @@ app.get("/api/contact/submissions", (req, res) => {
   res.json(contactSubmissions);
 });
 
+// Dynamic OpenGraph SVG Image Generator
+app.get("/api/og-image", (req, res) => {
+  const tab = (req.query.tab as string) || "home";
+  
+  const SEO_TAB_DEFAULTS: Record<string, { title: string; desc: string }> = {
+    home: {
+      title: "Facilissimo Web — Realizzazione Siti Web",
+      desc: "Progettazione e realizzazione siti web veloci, moderni e ottimizzati SEO con Intelligenza Artificiale a Macerata e Marche."
+    },
+    "web-app": {
+      title: "Web App & Applicativi Interattivi",
+      desc: "Sperimenta le demo live interattive dei nostri applicativi mobile-first realizzati a Macerata. Esperienze native su browser."
+    },
+    "chi-sono": {
+      title: "Chi Sono — M. Teresa Rogani",
+      desc: "Freelance web designer e AI specialist a Macerata, Marche. Creazione di esperienze digitali ad alte prestazioni e su misura."
+    },
+    proposte: {
+      title: "Proposte e Listino Prezzi",
+      desc: "Prezzi trasparenti per la creazione del tuo sito web professionale nelle Marche. Soluzioni Landing Page e Multipagina."
+    },
+    contatti: {
+      title: "Richiedi un Preventivo Gratuito",
+      desc: "Invia una richiesta e ricevi un preventivo personalizzato per il tuo nuovo sito web a Macerata in meno di 24 ore."
+    },
+    chat: {
+      title: "Consulenza e Assistente AI Live",
+      desc: "Parla subito con il nostro assistente virtuale intelligente per risposte istantanee su servizi, tempi e prezzi."
+    },
+    blog: {
+      title: "Blog & News — IA e SEO Predittiva",
+      desc: "Leggi gli articoli su SEO Predittiva, Web Design con Intelligenza Artificiale e strategie digitali per attività locali nelle Marche."
+    }
+  };
+
+  const defaults = SEO_TAB_DEFAULTS[tab] || SEO_TAB_DEFAULTS.home;
+  const title = (req.query.title as string) || defaults.title;
+  const desc = (req.query.desc as string) || defaults.desc;
+
+  // Word wrap helpers
+  function wrapText(text: string, maxChars: number): string[] {
+    const words = text.split(/\s+/);
+    const lines: string[] = [];
+    let currentLine = "";
+    for (const word of words) {
+      if ((currentLine + " " + word).trim().length <= maxChars) {
+        currentLine = (currentLine + " " + word).trim();
+      } else {
+        if (currentLine) lines.push(currentLine);
+        currentLine = word;
+      }
+    }
+    if (currentLine) lines.push(currentLine);
+    return lines;
+  }
+
+  function escapeXml(unsafe: string): string {
+    return unsafe.replace(/[<>&'"]/g, (c) => {
+      switch (c) {
+        case '<': return '&lt;';
+        case '>': return '&gt;';
+        case '&': return '&amp;';
+        case '\'': return '&apos;';
+        case '"': return '&quot;';
+        default: return c;
+      }
+    });
+  }
+
+  const titleLines = wrapText(title, 32).slice(0, 2);
+  const descLines = wrapText(desc, 52).slice(0, 4);
+
+  // Layout calculations
+  const titleYStart = 200;
+  const descYStart = titleYStart + (titleLines.length * 60) + 25;
+
+  const svg = `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <!-- Background subtle glow -->
+    <radialGradient id="bgGlow" cx="85%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#E35930" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#111113" stop-opacity="0" />
+    </radialGradient>
+    
+    <!-- Pulse animations or glowing dot filter -->
+    <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Solid background -->
+  <rect width="1200" height="630" fill="#111113" />
+  
+  <!-- Glowing gradient accent -->
+  <rect width="1200" height="630" fill="url(#bgGlow)" />
+
+  <!-- Abstract Network nodes representing AI -->
+  <g opacity="0.35">
+    <!-- Connections -->
+    <line x1="900" y1="200" x2="1050" y2="150" stroke="#E35930" stroke-width="1.5" stroke-dasharray="2,4" />
+    <line x1="1050" y1="150" x2="1120" y2="280" stroke="#E35930" stroke-width="1.5" />
+    <line x1="1120" y1="280" x2="1000" y2="420" stroke="#E35930" stroke-width="1.5" stroke-dasharray="5,5" />
+    <line x1="1000" y1="420" x2="880" y2="350" stroke="#E35930" stroke-width="1.5" />
+    <line x1="880" y1="350" x2="900" y2="200" stroke="#E35930" stroke-width="1.5" />
+    <line x1="900" y1="200" x2="1000" y2="300" stroke="#E35930" stroke-width="1" />
+    <line x1="1050" y1="150" x2="1000" y2="300" stroke="#E35930" stroke-width="1" />
+    <line x1="1120" y1="280" x2="1000" y2="300" stroke="#E35930" stroke-width="1" />
+    <line x1="1000" y1="420" x2="1000" y2="300" stroke="#E35930" stroke-width="1" />
+    <line x1="880" y1="350" x2="1000" y2="300" stroke="#E35930" stroke-width="1" />
+
+    <!-- Nodes with glow -->
+    <circle cx="900" cy="200" r="6" fill="#F8F7F4" filter="url(#glowEffect)" />
+    <circle cx="1050" cy="150" r="8" fill="#E35930" filter="url(#glowEffect)" />
+    <circle cx="1120" cy="280" r="5" fill="#F8F7F4" filter="url(#glowEffect)" />
+    <circle cx="1000" cy="420" r="9" fill="#E35930" filter="url(#glowEffect)" />
+    <circle cx="880" cy="350" r="6" fill="#F8F7F4" filter="url(#glowEffect)" />
+    <circle cx="1000" cy="300" r="12" fill="#E35930" filter="url(#glowEffect)" />
+  </g>
+
+  <!-- Technical border/decorations -->
+  <rect x="30" y="30" width="1140" height="570" fill="none" stroke="rgba(248, 247, 244, 0.03)" stroke-width="1" />
+  <path d="M 30 70 L 30 30 L 70 30" fill="none" stroke="#E35930" stroke-width="3" />
+  <path d="M 1170 70 L 1170 30 L 1130 30" fill="none" stroke="#E35930" stroke-width="3" />
+  <path d="M 30 560 L 30 600 L 70 600" fill="none" stroke="#E35930" stroke-width="3" />
+  <path d="M 1170 560 L 1170 600 L 1130 600" fill="none" stroke="#E35930" stroke-width="3" />
+
+  <!-- Logo and Branding in top-left -->
+  <g transform="translate(80, 100)">
+    <!-- Small accent square -->
+    <rect x="0" y="-12" width="12" height="12" fill="#E35930" />
+    <text x="24" y="0" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="20" font-weight="900" fill="#F8F7F4" letter-spacing="1.5px">FACILISSIMO WEB</text>
+    <text x="240" y="-1" font-family="monospace" font-size="12" fill="rgba(248, 247, 244, 0.35)" letter-spacing="1px">// STUDIO DESIGN &amp; IA</text>
+  </g>
+
+  <!-- Render Title dynamic tspans -->
+  <text x="80" y="${titleYStart}" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="52" font-weight="900" fill="#F8F7F4" letter-spacing="-1.5px">
+    ${titleLines.map((line, idx) => `<tspan x="80" dy="${idx === 0 ? 0 : 62}">${escapeXml(line)}</tspan>`).join("")}
+  </text>
+
+  <!-- Render Description dynamic tspans -->
+  <text x="80" y="${descYStart}" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="22" fill="rgba(248, 247, 244, 0.65)" font-weight="400" letter-spacing="-0.2px">
+    ${descLines.map((line, idx) => `<tspan x="80" dy="${idx === 0 ? 0 : 34}">${escapeXml(line)}</tspan>`).join("")}
+  </text>
+
+  <!-- Footer Info block -->
+  <g transform="translate(80, 520)">
+    <!-- Custom tab/badge -->
+    <rect x="0" y="-22" rx="4" ry="4" width="130" height="32" fill="rgba(227, 89, 48, 0.15)" stroke="rgba(227, 89, 48, 0.3)" stroke-width="1" />
+    <text x="65" y="-1" font-family="monospace" font-size="11" font-weight="bold" fill="#E35930" letter-spacing="2px" text-anchor="middle">${escapeXml(tab.toUpperCase())}</text>
+    
+    <text x="155" y="0" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="14" fill="rgba(248, 247, 244, 0.4)">•</text>
+    
+    <text x="180" y="-1" font-family="monospace" font-size="13" font-weight="bold" fill="rgba(248, 247, 244, 0.55)" letter-spacing="1px">facilissimoweb.it</text>
+  </g>
+</svg>
+  `.trim();
+
+  res.setHeader("Content-Type", "image/svg+xml");
+  res.send(svg);
+});
+
 // Blog Articles Metadata for Rich Social Previews (Open Graph / Twitter Meta Tags)
 const BLOG_ARTICLES: Record<string, { title: string; desc: string; image: string }> = {
   "ai-act-regolamento-europeo": {

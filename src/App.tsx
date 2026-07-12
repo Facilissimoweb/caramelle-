@@ -15,41 +15,48 @@ import CookieBanner from "./components/CookieBanner";
 import AccessibilityWidget from "./components/AccessibilityWidget";
 
 
-const SEO_METADATA: Record<string, { title: string; description: string; keywords: string }> = {
+const SEO_METADATA: Record<string, { title: string; description: string; keywords: string; image: string }> = {
   home: {
     title: "Facilissimo Web — Realizzazione Siti Web Macerata e Marche",
     description: "Studio Facilissimo Web a Macerata (Marche). Progettazione e realizzazione siti web veloci, moderni e ottimizzati SEO con Intelligenza Artificiale di M. Teresa Rogani.",
     keywords: "realizzazione siti web macerata, web designer marche, siti web veloci marche, siti web economici macerata, intelligenza artificiale macerata, seo macerata, m teresa rogani",
+    image: "/api/og-image?tab=home",
   },
   "web-app": {
     title: "Web App & Applicativi Interattivi — Facilissimo Web Macerata",
     description: "Sperimenta le demo live interattive dei nostri applicativi mobile-first realizzati da Facilissimo Web a Macerata. Gusto & Passione, Tattoo Macerata e molto altro.",
     keywords: "web app macerata, applicativi web marche, gusto e passione, tattoo macerata, il nido dei sogni, m teresa rogani, web designer macerata",
+    image: "/api/og-image?tab=web-app",
   },
   "chi-sono": {
     title: "Chi Sono — Facilissimo Web | Teresa Rogani Web Designer Macerata",
-    description: "Scopri chi c'è dietro Facilissimo Web. M. Teresa Rogani, freelance web designer e AI specialist a Macerata, Marche. Creazione siti web professionali e su misura.",
+    description: "Scopri chi c'è dietro Facilissimo Web. M. Teresa Rogani, freelance web designer and AI specialist a Macerata, Marche. Creazione siti web professionali e su misura.",
     keywords: "teresa rogani, freelance web designer macerata, ai specialist marche, realizzazione siti web professionali marche, sviluppo siti web marche",
+    image: "/api/og-image?tab=chi-sono",
   },
   proposte: {
     title: "Proposte e Listino Prezzi — Facilissimo Web Macerata",
     description: "Piani e prezzi trasparenti per la creazione del tuo sito web professionale nelle Marche. Soluzioni Landing Page, siti multipagina e e-commerce con IA integrata.",
     keywords: "prezzi siti web macerata, costo sito internet marche, preventivo sito web macerata, listino prezzi web agency macerata",
+    image: "/api/og-image?tab=proposte",
   },
   contatti: {
     title: "Contatti — Facilissimo Web | Preventivo Sito Web Macerata",
     description: "Richiedi un preventivo gratuito per il tuo nuovo sito web a Macerata e nelle Marche. Scrivi a facilissimoweb.mc@gmail.com o chiama il +39 379 360 3321.",
     keywords: "contatti web designer macerata, telefono facilissimo web, email facilissimo web, preventivo sito internet macerata",
+    image: "/api/og-image?tab=contatti",
   },
   chat: {
     title: "Assistente AI Live — Facilissimo Web Macerata",
     description: "Parla subito con l'Assistente Virtuale di Facilissimo Web basato su IA. Ricevi risposte istantanee su servizi, tempi e prezzi per siti web a Macerata e nelle Marche.",
     keywords: "chat ai macerata, assistente virtuale marche, intelligenza artificiale assistente, consulenza ai marche",
+    image: "/api/og-image?tab=chat",
   },
   blog: {
     title: "Blog & News — Facilissimo Web | SEO Predittiva e IA",
     description: "Leggi gli articoli di approfondimento su SEO Predittiva, Web Design con Intelligenza Artificiale e strategie digitali per microimprese a Macerata e nelle Marche.",
     keywords: "seo predittiva, blog intelligenza artificiale, web design marche, teresa rogani blog, novità seo ia, blog facilissimo web",
+    image: "/api/og-image?tab=blog",
   },
 };
 
@@ -310,22 +317,31 @@ export default function App() {
     }
     keywordsTag.setAttribute('content', meta.keywords);
 
-    // Set or Update OpenGraph Tags
+    // Build Absolute OpenGraph Image URL
+    const origin = typeof window !== "undefined" ? window.location.origin : "";
+    const ogImageUrl = meta.image.startsWith("http") ? meta.image : `${origin}${meta.image}`;
+
+    // Set or Update OpenGraph & Twitter Tags
     const ogTags = [
-      { property: "og:title", content: meta.title },
-      { property: "og:description", content: meta.description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: window.location.href }
+      { nameOrProperty: "property", value: "og:title", content: meta.title },
+      { nameOrProperty: "property", value: "og:description", content: meta.description },
+      { nameOrProperty: "property", value: "og:type", content: "website" },
+      { nameOrProperty: "property", value: "og:url", content: window.location.href },
+      { nameOrProperty: "property", value: "og:image", content: ogImageUrl },
+      { nameOrProperty: "name", value: "twitter:card", content: "summary_large_image" },
+      { nameOrProperty: "name", value: "twitter:title", content: meta.title },
+      { nameOrProperty: "name", value: "twitter:description", content: meta.description },
+      { nameOrProperty: "name", value: "twitter:image", content: ogImageUrl }
     ];
 
-    ogTags.forEach(({ property, content }) => {
-      let ogTag = document.querySelector(`meta[property="${property}"]`);
-      if (!ogTag) {
-        ogTag = document.createElement('meta');
-        ogTag.setAttribute('property', property);
-        document.head.appendChild(ogTag);
+    ogTags.forEach(({ nameOrProperty, value, content }) => {
+      let tag = document.querySelector(`meta[${nameOrProperty}="${value}"]`);
+      if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute(nameOrProperty, value);
+        document.head.appendChild(tag);
       }
-      ogTag.setAttribute('content', content);
+      tag.setAttribute('content', content);
     });
   }, [currentTab]);
 
