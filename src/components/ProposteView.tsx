@@ -185,24 +185,24 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
       ];
 
   return (
-    <div className="w-full bg-[#111113] text-[#F8F7F4]">
+    <div className="w-full bg-[#F8F7F4] text-[#111113]">
       {/* Header Banner */}
-      <section className="py-24 text-center relative border-b border-[rgba(248,247,244,0.1)] overflow-hidden">
+      <section className="py-24 text-center relative border-b border-[#111113]/10 overflow-hidden">
         {/* Ambient Background Slideshow */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {bgImages.map((imgUrl, idx) => (
             <div
               key={imgUrl}
               className={`absolute inset-0 bg-cover bg-center transition-all duration-[2000ms] ${
-                idx === currentBgIndex ? "opacity-40 scale-100" : "opacity-0 scale-105"
+                idx === currentBgIndex ? "opacity-35 scale-100" : "opacity-0 scale-105"
               }`}
               style={{
                 backgroundImage: `url(${imgUrl})`,
               }}
             />
           ))}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#111113]/90 via-[#111113]/80 to-[#111113]/90" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#111113]/30 via-transparent to-[#111113]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#F8F7F4]/95 via-[#F8F7F4]/70 to-[#F8F7F4]/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F8F7F4]/30 via-transparent to-[#F8F7F4]" />
         </div>
 
         <div className="max-w-2xl mx-auto px-6 space-y-4 relative z-10">
@@ -216,10 +216,10 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
           <span className="text-[10px] uppercase tracking-[0.25em] text-[#E35930] font-mono font-bold block mb-2">
             {isFacilitated ? "[ PREZZI CHIARI ]" : "[ TRASPARENZA E PREZZI CHIARI ]"}
           </span>
-          <h1 className="font-tan text-4xl font-bold tracking-wide text-[#F8F7F4] sm:text-5xl">
+          <h1 className="font-tan text-4xl font-bold tracking-wide text-[#111113] sm:text-5xl">
             {isFacilitated ? "Piani e Prezzi Chiarissimi" : "Piani e Proposte su Misura"}
           </h1>
-          <p className="font-sans text-xs sm:text-sm text-[#F8F7F4]/70 leading-relaxed">
+          <p className="font-sans text-xs sm:text-sm text-[#111113]/70 leading-relaxed">
             {isFacilitated 
               ? "Nessun costo nascosto o sorpresa finale. Qui trovi i miei tre piani con tutto quello che è incluso, spiegato in modo semplice."
               : "Nessun preventivo gonfiato o tariffa oraria ambigua. Qui trovi pacchetti chiari, pensati per adattarsi alle reali necessità del tuo business."}
@@ -228,7 +228,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-24 bg-[#111113]">
+      <section className="py-24 bg-[#FAF9F6]">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
             {tiers.map((tier, index) => (
@@ -240,8 +240,8 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className={`relative p-8 border transition-all duration-300 flex flex-col justify-between ${
                   tier.isPopular
-                    ? "border-[#E35930] bg-[#151518] scale-102 lg:z-10 shadow-lg"
-                    : "border-[rgba(248,247,244,0.1)] hover:border-[#E35930]/40 bg-[#111113]"
+                    ? "border-[#E35930] bg-[#111113] text-[#F8F7F4] scale-102 lg:z-10 shadow-xl"
+                    : "border-[#111113]/10 hover:border-[#E35930]/40 bg-[#F8F7F4] text-[#111113]"
                 }`}
               >
                 {tier.isPopular && (
@@ -252,21 +252,21 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
 
                 <div>
                   <div className="space-y-4 mb-8">
-                    <h3 className="font-display text-2xl font-bold text-[#F8F7F4]">
+                    <h3 className={`font-display text-2xl font-bold ${tier.isPopular ? "text-[#F8F7F4]" : "text-[#111113]"}`}>
                       {tier.name}
                     </h3>
-                    <p className="text-xs text-[#F8F7F4]/60 h-10 leading-normal font-sans">
+                    <p className={`text-xs h-10 leading-normal font-sans ${tier.isPopular ? "text-[#F8F7F4]/70" : "text-[#111113]/70"}`}>
                       {tier.tagline}
                     </p>
-                    <div className="pt-2 border-t border-[rgba(248,247,244,0.1)] space-y-1">
+                    <div className={`pt-2 border-t space-y-1 ${tier.isPopular ? "border-[rgba(248,247,244,0.1)]" : "border-[#111113]/10"}`}>
                       <span className="text-[10px] uppercase font-mono tracking-widest text-[#E35930] block font-bold">
                         {lang === "it" ? "A PARTIRE DA" : "STARTING FROM"}
                       </span>
                       <div className="flex items-baseline gap-1">
-                        <span className="text-3xl font-bold text-[#F8F7F4] font-mono">
+                        <span className={`text-3xl font-bold font-mono ${tier.isPopular ? "text-[#F8F7F4]" : "text-[#111113]"}`}>
                           €{tier.price}
                         </span>
-                        <span className="text-[10px] text-[#F8F7F4]/50 font-mono">
+                        <span className={`text-[10px] font-mono ${tier.isPopular ? "text-[#F8F7F4]/50" : "text-[#111113]/50"}`}>
                           {lang === "it" ? "+ IVA (prezzo fisso)" : "+ VAT (fixed price)"}
                         </span>
                       </div>
@@ -276,7 +276,11 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
                     </div>
                   </div>
 
-                  <ul className="space-y-3.5 mb-8 text-xs text-[#F8F7F4]/70 border-t border-[rgba(248,247,244,0.1)] pt-6 font-sans">
+                  <ul className={`space-y-3.5 mb-8 text-xs border-t pt-6 font-sans ${
+                    tier.isPopular 
+                      ? "text-[#F8F7F4]/80 border-[rgba(248,247,244,0.1)]" 
+                      : "text-[#111113]/80 border-[#111113]/10"
+                  }`}>
                     {tier.features.map((feat) => (
                       <li key={feat} className="flex items-start gap-2.5">
                         <Check className="w-4 h-4 text-[#E35930] mt-0.5 shrink-0" />
@@ -291,7 +295,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
                   className={`w-full py-4 px-4 text-xs font-bold uppercase tracking-widest transition-all cursor-pointer border ${
                     tier.isPopular
                       ? "bg-[#E35930] text-[#111113] border-[#E35930] hover:bg-transparent hover:text-[#E35930]"
-                      : "bg-transparent text-[#F8F7F4] border-[rgba(248,247,244,0.2)] hover:border-[#E35930] hover:text-[#E35930]"
+                      : "bg-transparent text-[#111113] border-[#111113]/20 hover:border-[#E35930] hover:text-[#E35930]"
                   }`}
                 >
                   {tier.ctaText}
@@ -303,16 +307,16 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
       </section>
 
       {/* Ecosystem Details */}
-      <section className="py-24 bg-[#151518] border-y border-[rgba(248,247,244,0.1)]">
+      <section className="py-24 bg-[#FAF9F6] border-y border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
               {isFacilitated ? "[ TUTTO INCLUSO ]" : "[ VALORE AGGIUNTO ]"}
             </span>
-            <h2 className="font-display text-3xl font-bold text-[#F8F7F4] tracking-wide">
+            <h2 className="font-display text-3xl font-bold text-[#111113] tracking-wide">
               {isFacilitated ? "Servizi inclusi in ogni pacchetto" : "L'Ecosistema Servizi IA di Facilissimo Web"}
             </h2>
-            <p className="text-xs sm:text-sm text-[#F8F7F4]/70 leading-relaxed font-sans">
+            <p className="text-xs sm:text-sm text-[#111113]/70 leading-relaxed font-sans">
               {isFacilitated 
                 ? "Ogni piano include una serie di servizi fondamentali per iniziare senza dover pagare professionisti diversi."
                 : "Oltre alla pura programmazione del sito, ogni pacchetto racchiude un insieme di servizi coordinati che solitamente richiederebbero l'ingaggio di più professionisti esterni."}
@@ -320,22 +324,22 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
               <div className="space-y-2">
-                <div className="flex items-center gap-2 text-[#F8F7F4] font-bold text-sm">
+                <div className="flex items-center gap-2 text-[#111113] font-bold text-sm">
                   <Box className="w-4 h-4 text-[#E35930]" />
                   <span>{lang === "it" ? "Logo e Grafica" : "Logo and Graphics"}</span>
                 </div>
-                <p className="text-xs text-[#F8F7F4]/60 leading-relaxed font-sans">
+                <p className="text-xs text-[#111113]/60 leading-relaxed font-sans">
                   {lang === "it"
                     ? "Creo i loghi e i file pronti per essere stampati su biglietti da visita o pubblicati su internet."
                     : "I design professional scalable logo files ready for print and online use."}
                 </p>
               </div>
               <div className="space-y-2">
-                <div className="flex items-center gap-2 text-[#F8F7F4] font-bold text-sm">
+                <div className="flex items-center gap-2 text-[#111113] font-bold text-sm">
                   <ShieldCheck className="w-4 h-4 text-[#E35930]" />
                   <span>{lang === "it" ? "Sicurezza e Server" : "Security & Servers"}</span>
                 </div>
-                <p className="text-xs text-[#F8F7F4]/60 leading-relaxed font-sans">
+                <p className="text-xs text-[#111113]/60 leading-relaxed font-sans">
                   {lang === "it"
                     ? "Proteggo il sito con sistemi anti-virus e lucchetto di sicurezza SSL gratuito."
                     : "I secure the site with advanced antivirus tools and configure free SSL security certificates."}
@@ -344,11 +348,11 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
             </div>
           </div>
 
-          <div className="bg-[#111113] p-8 border border-[rgba(248,247,244,0.1)] space-y-4">
-            <h4 className="font-display font-bold text-lg text-[#F8F7F4]">
+          <div className="bg-[#F8F7F4] p-8 border border-[#111113]/10 space-y-4">
+            <h4 className="font-display font-bold text-lg text-[#111113]">
               {lang === "it" ? "Hai bisogno di qualcosa in più?" : "Need something custom?"}
             </h4>
-            <p className="text-xs sm:text-sm text-[#F8F7F4]/70 leading-relaxed font-sans">
+            <p className="text-xs sm:text-sm text-[#111113]/70 leading-relaxed font-sans">
               {lang === "it"
                 ? "Se vuoi un negozio online molto grande, un database specifico o una funzione di intelligenza artificiale addestrata sui tuoi dati aziendali, scrivimi per un preventivo gratuito."
                 : "If you need a large online shop, a specific database, or a custom AI tool trained on your private data, contact me for a free quote."}
@@ -356,7 +360,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
             <div className="pt-2">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="px-6 py-3.5 bg-[#E35930] text-[#111113] text-xs font-bold uppercase tracking-widest border border-[#E35930] hover:bg-transparent hover:text-[#E35930] transition-all cursor-pointer"
+                className="px-6 py-3.5 bg-[#E35930] text-[#FAF9F6] text-xs font-bold uppercase tracking-widest border border-[#E35930] hover:bg-transparent hover:text-[#E35930] transition-all cursor-pointer"
               >
                 {lang === "it" ? "Invia una richiesta personalizzata" : "Send custom request"}
               </button>
@@ -369,7 +373,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
       <StripePaymentsDemo lang={lang} isFacilitated={isFacilitated} />
 
       {/* FAQ Section */}
-      <section className="py-24 bg-[#111113]">
+      <section className="py-24 bg-[#F8F7F4]">
         <FAQAccordion items={faqs} />
       </section>
     </div>

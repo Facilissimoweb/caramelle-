@@ -192,9 +192,9 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
   ];
 
   return (
-    <div className="w-full bg-[#111113] text-[#F8F7F4]">
+    <div className="w-full bg-[#F8F7F4] text-[#111113]">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-[rgba(248,247,244,0.1)]">
+      <section className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-[#111113]/10">
         {/* Ambient Background Video */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <motion.div
@@ -224,7 +224,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               <img
                 src={logoImage}
                 alt="Facilissimo Web Logo"
-                className="w-[150px] h-[150px] object-contain"
+                className="w-[150px] h-[150px] object-contain animate-pulse"
               />
             </div>
             <span className="text-[10px] uppercase tracking-[0.25em] text-[#E35930] font-mono font-bold block mb-2 animate-fade-in-up">
@@ -280,7 +280,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       </section>
  
       {/* Services / Focus Grid */}
-      <section className="py-24 bg-[#151518] border-b border-[rgba(248,247,244,0.1)]">
+      <section className="py-24 bg-[#FAF9F6] border-b border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
             <div className="flex justify-center mb-4">
@@ -293,10 +293,10 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
               {t.approachPre}
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-wide text-[#F8F7F4]">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-wide text-[#111113]">
               {t.approachTitle}
             </h2>
-            <p className="text-[#F8F7F4]/70 font-sans text-xs sm:text-sm">
+            <p className="text-[#111113]/70 font-sans text-xs sm:text-sm">
               {t.approachDesc}
             </p>
           </div>
@@ -310,14 +310,14 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 onClick={() => handleOpenFeaturePopup(index)}
-                className={`flex flex-col border bg-[#111113] transition-all duration-300 group relative cursor-pointer overflow-hidden p-6 ${
+                className={`flex flex-col border bg-[#F8F7F4] transition-all duration-300 group relative cursor-pointer overflow-hidden p-6 ${
                   activeFeaturePopupIndex === index 
                     ? "border-[#E35930] shadow-[0_0_25px_rgba(227,89,48,0.12)] scale-[1.01]" 
-                    : "border-[rgba(248,247,244,0.1)] hover:border-[rgba(248,247,244,0.3)] hover:scale-[1.01]"
+                    : "border-[#111113]/10 hover:border-[#111113]/30 hover:scale-[1.01]"
                 }`}
               >
                 {/* Image Container representing each card visually */}
-                <div className="relative w-full aspect-[16/10] overflow-hidden mb-5 border border-[rgba(248,247,244,0.08)] bg-zinc-950">
+                <div className="relative w-full aspect-[16/10] overflow-hidden mb-5 border border-[#111113]/10 bg-zinc-105">
                   <img
                     src={feat.image}
                     alt={feat.title}
@@ -325,19 +325,19 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                     referrerPolicy="no-referrer"
                   />
                   {/* Subtle gradient overlay to blend */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#111113] via-[#111113]/20 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#FAF9F6]/40 via-transparent to-transparent"></div>
                   
                   {/* Floating Icon */}
                   <div className={`absolute bottom-3 left-3 w-8 h-8 border flex items-center justify-center transition-all ${
                     activeFeaturePopupIndex === index 
-                      ? "bg-[#E35930] text-[#111113] border-[#E35930]" 
-                      : "bg-[#111113]/80 text-[#F8F7F4] border-[rgba(248,247,244,0.15)] group-hover:bg-[#E35930] group-hover:text-[#111113] group-hover:border-[#E35930]"
+                      ? "bg-[#E35930] text-[#FAF9F6] border-[#E35930]" 
+                      : "bg-[#F8F7F4]/90 text-[#111113] border-[#111113]/15 group-hover:bg-[#E35930] group-hover:text-[#FAF9F6] group-hover:border-[#E35930]"
                   }`}>
                     {feat.icon}
                   </div>
                   
                   {/* Live badge */}
-                  <div className="absolute top-3 right-3 text-[7px] font-mono tracking-widest flex items-center gap-1 bg-[#111113]/90 border border-[#E35930]/30 px-2 py-0.5 text-[#E35930] font-bold">
+                  <div className="absolute top-3 right-3 text-[7px] font-mono tracking-widest flex items-center gap-1 bg-[#F8F7F4]/90 border border-[#E35930]/30 px-2 py-0.5 text-[#E35930] font-bold">
                     <span>{lang === "it" ? "APRI CRITERIO" : "OPEN CRITERION"}</span>
                     <ArrowUpRight className="w-2 h-2" />
                   </div>
@@ -352,22 +352,22 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                         className={`px-2 py-0.5 border text-[8px] font-bold tracking-widest font-mono bg-transparent transition-all ${
                           activeFeaturePopupIndex === index
                             ? "border-[#E35930] text-[#E35930]"
-                            : "border-[rgba(248,247,244,0.1)] text-[#E35930]/80 group-hover:border-[#E35930]/30"
+                            : "border-[#111113]/10 text-[#E35930]/80 group-hover:border-[#E35930]/30"
                         }`}
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <h3 className="font-display text-base font-bold text-[#F8F7F4] group-hover:text-[#E35930] transition-colors">
+                  <h3 className="font-display text-base font-bold text-[#111113] group-hover:text-[#E35930] transition-colors">
                     {feat.title}
                   </h3>
                 </div>
 
                 {/* Key Metrics instead of long paragraph block */}
-                <div className="mt-auto space-y-2 border-t border-[rgba(248,247,244,0.06)] pt-4">
+                <div className="mt-auto space-y-2 border-t border-[#111113]/10 pt-4">
                   {feat.highlightMetrics.map((metric, mIdx) => (
-                    <div key={mIdx} className="flex items-center gap-2 text-[11px] font-sans text-[#F8F7F4]/70">
+                    <div key={mIdx} className="flex items-center gap-2 text-[11px] font-sans text-[#111113]/80">
                       <div className="w-1.5 h-1.5 bg-[#E35930] shrink-0"></div>
                       <span className="font-medium">{metric}</span>
                     </div>
@@ -375,7 +375,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 </div>
 
                 {/* Click action text */}
-                <div className="mt-4 pt-3 border-t border-dashed border-[rgba(248,247,244,0.05)] flex items-center justify-between text-[9px] font-mono tracking-wider uppercase text-[#E35930]/70 group-hover:text-[#E35930] transition-colors">
+                <div className="mt-4 pt-3 border-t border-dashed border-[#111113]/10 flex items-center justify-between text-[9px] font-mono tracking-wider uppercase text-[#E35930]/70 group-hover:text-[#E35930] transition-colors">
                   <span>{lang === "it" ? "Vedi metriche di impatto" : "See impact metrics"}</span>
                   <ArrowRight className="w-2.5 h-2.5 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -388,7 +388,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       {/* Dynamic Gallery & Media Assets - Hidden from online public view as requested */}
       {/* <GallerySection lang={lang} isFacilitated={isFacilitated} /> */}
       {/* FAQ Section */}
-      <section className="py-24 border-b border-[rgba(248,247,244,0.1)] bg-[#111113]">
+      <section className="py-24 border-b border-[#111113]/10 bg-[#F8F7F4]">
         <FAQAccordion
           title={lang === "it" ? "Domande Frequenti" : "Frequently Asked Questions"}
           subtitle={
@@ -455,8 +455,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       </section>
 
       {/* Call To Action Section */}
-      <section className="py-24 px-6 md:px-12 bg-[#111113]">
-        <div className="max-w-7xl mx-auto bg-[#151518] text-[#F8F7F4] p-12 md:p-20 relative overflow-hidden border border-[rgba(248,247,244,0.1)]">
+      <section className="py-24 px-6 md:px-12 bg-[#F8F7F4]">
+        <div className="max-w-7xl mx-auto bg-[#FAF9F6] text-[#111113] p-12 md:p-20 relative overflow-hidden border border-[#111113]/15">
           <div className="relative z-10 text-center max-w-2xl mx-auto space-y-6">
             <div className="flex justify-center mb-4">
               <img
@@ -468,23 +468,23 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
               {t.ctaPre}
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-wide text-[#F8F7F4]">
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-wide text-[#111113]">
               {t.ctaTitle}
             </h2>
-            <p className="text-[#F8F7F4]/80 font-sans text-xs sm:text-sm leading-relaxed">
+            <p className="text-[#111113]/80 font-sans text-xs sm:text-sm leading-relaxed">
               {t.ctaDesc}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="px-8 py-4 bg-[#E35930] text-[#111113] font-bold text-[10px] tracking-widest uppercase hover:bg-transparent hover:text-[#E35930] hover:border-[#E35930] transition-all cursor-pointer border border-[#E35930]"
+                className="px-8 py-4 bg-[#E35930] text-[#FAF9F6] font-bold text-[10px] tracking-widest uppercase hover:bg-transparent hover:text-[#E35930] hover:border-[#E35930] transition-all cursor-pointer border border-[#E35930]"
                 id="cta-contact-btn"
               >
                 {t.ctaBtnPrimary}
               </button>
               <button
                 onClick={() => setCurrentTab("chat")}
-                className="px-8 py-4 bg-transparent hover:bg-[rgba(248,247,244,0.05)] border border-[rgba(248,247,244,0.2)] text-[#F8F7F4] font-bold text-[10px] tracking-widest uppercase transition-all cursor-pointer"
+                className="px-8 py-4 bg-transparent hover:bg-[#111113]/5 border border-[#111113]/25 text-[#111113] font-bold text-[10px] tracking-widest uppercase transition-all cursor-pointer"
                 id="cta-chat-btn"
               >
                 {t.ctaBtnSecondary}

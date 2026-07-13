@@ -151,7 +151,7 @@ export default function Header({
   const activeLangObj = LANGUAGES.find((l) => l.code === currentGoogleLang) || LANGUAGES[0];
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-[#111113]/90 backdrop-blur-md z-50 border-b border-[rgba(248,247,244,0.1)] transition-all duration-300">
+    <header className="fixed top-0 left-0 w-full bg-[#F8F7F4]/90 backdrop-blur-md z-50 border-b border-[#111113]/10 transition-all duration-300">
       {/* Scroll Progress Bar */}
       <div
         className="absolute top-0 left-0 h-[3px] bg-[#E35930] transition-all duration-100 ease-out z-50"
@@ -168,10 +168,10 @@ export default function Header({
           <img
             src={logoImage}
             alt="Facilissimo Web Logo"
-            className="w-10 h-10 object-contain rounded-full border border-[rgba(248,247,244,0.1)] group-hover:border-[#E35930] transition-colors shrink-0"
+            className="w-10 h-10 object-contain rounded-full border border-[#111113]/10 group-hover:border-[#E35930] transition-colors shrink-0"
           />
           <div className="flex flex-col items-start min-w-0">
-            <span className="font-display font-extrabold text-xs text-[#F8F7F4] tracking-tighter uppercase italic leading-none group-hover:text-[#E35930] transition-colors truncate">
+            <span className="font-display font-extrabold text-xs text-[#111113] tracking-tighter uppercase italic leading-none group-hover:text-[#E35930] transition-colors truncate">
               Facilissimo Web
             </span>
             <span className="text-[9px] sm:text-[10px] text-[#E35930] tracking-[0.25em] uppercase font-mono font-bold mt-1.5 flex-shrink-0">
@@ -194,7 +194,7 @@ export default function Header({
                 className={`uppercase tracking-[0.2em] font-bold py-1.5 border-b-2 relative cursor-pointer transition-all ${
                   isActive
                     ? "text-[#E35930] border-[#E35930]"
-                    : "text-[#F8F7F4]/50 hover:text-[#F8F7F4] border-transparent hover:border-[#F8F7F4]/20"
+                    : "text-[#111113]/50 hover:text-[#111113] border-transparent hover:border-[#111113]/20"
                 }`}
                 style={{ fontSize: "14px" }}
                 id={`nav-${item.id}`}
@@ -211,7 +211,7 @@ export default function Header({
           <div className="relative">
             <button
               onClick={() => setIsLangOpen(!isLangOpen)}
-              className="p-2 border border-[rgba(248,247,244,0.1)] hover:border-[#E35930] text-[#F8F7F4]/70 hover:text-[#E35930] transition-all flex items-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold"
+              className="p-2 border border-[#111113]/10 hover:border-[#E35930] text-[#111113]/70 hover:text-[#E35930] transition-all flex items-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold"
               title={t.languageLabel}
               id="lang-toggle-desktop"
             >
@@ -224,15 +224,15 @@ export default function Header({
             {isLangOpen && (
               <>
                 <div className="fixed inset-0 z-40" onClick={() => setIsLangOpen(false)} />
-                <div className="absolute right-0 mt-2 w-44 bg-[#151518]/98 backdrop-blur-md border border-[rgba(248,247,244,0.15)] shadow-2xl z-50 flex flex-col py-1.5">
+                <div className="absolute right-0 mt-2 w-44 bg-[#F8F7F4]/98 backdrop-blur-md border border-[#111113]/15 shadow-2xl z-50 flex flex-col py-1.5">
                   {LANGUAGES.map((item) => (
                     <button
                       key={item.code}
                       onClick={() => selectLanguage(item.code)}
-                      className={`px-4 py-2.5 text-left font-mono text-[10px] uppercase tracking-wider flex items-center gap-2.5 hover:bg-[rgba(248,247,244,0.06)] hover:text-[#E35930] transition-all cursor-pointer ${
+                      className={`px-4 py-2.5 text-left font-mono text-[10px] uppercase tracking-wider flex items-center gap-2.5 hover:bg-[#111113]/5 hover:text-[#E35930] transition-all cursor-pointer ${
                         currentGoogleLang === item.code
-                          ? "text-[#E35930] font-extrabold bg-[rgba(227,89,48,0.06)]"
-                          : "text-[#F8F7F4]/70"
+                          ? "text-[#E35930] font-extrabold bg-[#E35930]/10"
+                          : "text-[#111113]/70"
                       }`}
                     >
                       <span className="text-sm">{item.flag}</span>
@@ -249,8 +249,8 @@ export default function Header({
             onClick={() => setIsFacilitated(!isFacilitated)}
             className={`p-2 border transition-all flex items-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold ${
               isFacilitated
-                ? "bg-[#E35930] border-[#E35930] text-[#111113] hover:opacity-90 animate-pulse"
-                : "border-[rgba(248,247,244,0.1)] hover:border-[#E35930] text-[#F8F7F4]/70 hover:text-[#E35930]"
+                ? "bg-[#E35930] border-[#E35930] text-[#FAF9F6] hover:opacity-90 animate-pulse"
+                : "border-[#111113]/10 hover:border-[#E35930] text-[#111113]/70 hover:text-[#E35930]"
             }`}
             title={isFacilitated ? t.facilitatedOff : t.facilitatedOn}
             id="access-toggle-desktop"
@@ -271,7 +271,7 @@ export default function Header({
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileOpen(!isMobileOpen)}
-          className="xl:hidden p-2 text-[#F8F7F4] hover:text-[#E35930] focus:outline-none cursor-pointer flex-shrink-0"
+          className="xl:hidden p-2 text-[#111113] hover:text-[#E35930] focus:outline-none cursor-pointer flex-shrink-0"
           id="mobile-menu-toggle"
           aria-label="Toggle menu"
         >
@@ -281,12 +281,12 @@ export default function Header({
 
       {/* Mobile Drawer */}
       {isMobileOpen && (
-        <div className="xl:hidden border-t border-[rgba(248,247,244,0.1)] bg-[#111113]/98 backdrop-blur-2xl absolute top-20 left-0 w-full shadow-lg transition-all duration-300">
+        <div className="xl:hidden border-t border-[#111113]/10 bg-[#FAF9F6]/98 backdrop-blur-2xl absolute top-20 left-0 w-full shadow-lg transition-all duration-300">
           <div className="px-4 py-4 flex flex-col gap-3">
             {/* Compact Horizontal Grid of Minimal Icons for Navigation */}
             <div className="flex flex-col gap-1.5" id="mobile-nav-container">
               <div className="flex justify-between items-center px-1">
-                <span className="text-[8px] uppercase tracking-[0.2em] text-[#F8F7F4]/40 font-mono font-bold">
+                <span className="text-[8px] uppercase tracking-[0.2em] text-[#111113]/40 font-mono font-bold">
                   {lang === "it" ? "Navigazione" : "Navigation"}
                 </span>
                 <span className="text-[9px] uppercase tracking-wider text-[#E35930] font-mono font-bold">
@@ -304,7 +304,7 @@ export default function Header({
                       className={`h-11 flex flex-col items-center justify-center transition-all rounded-sm relative cursor-pointer ${
                         isActive
                           ? "bg-[#E35930]/20 text-[#E35930] border border-[#E35930]/50"
-                          : "text-[#F8F7F4]/70 bg-[#151518]/60 border border-[rgba(248,247,244,0.06)] hover:bg-[rgba(248,247,244,0.04)]"
+                          : "text-[#111113]/70 bg-[#FAF9F6]/60 border border-[#111113]/10 hover:bg-[#111113]/5"
                       }`}
                       title={item.label}
                       aria-label={item.label}
@@ -314,7 +314,7 @@ export default function Header({
                         <img
                           src={logoImage}
                           alt=""
-                          className="w-5 h-5 rounded-full object-contain shrink-0 border border-[rgba(248,247,244,0.15)]"
+                          className="w-5 h-5 rounded-full object-contain shrink-0 border border-[#111113]/15"
                         />
                       ) : (
                         <IconComponent className="w-5 h-5 shrink-0" />
@@ -329,15 +329,15 @@ export default function Header({
             </div>
 
             {/* Mobile Accessibility & Compact Language Selector Block */}
-            <div className="flex flex-col gap-1.5 mt-1 border-t border-[rgba(248,247,244,0.08)] pt-3">
+            <div className="flex flex-col gap-1.5 mt-1 border-t border-[#111113]/10 pt-3">
               <div className="grid grid-cols-2 gap-1.5">
                 {/* Accessibility Toggle */}
                 <button
                   onClick={() => setIsFacilitated(!isFacilitated)}
                   className={`py-2 px-2.5 border rounded-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold ${
                     isFacilitated
-                      ? "bg-[#E35930] border-[#E35930] text-[#111113]"
-                      : "border-[rgba(248,247,244,0.08)] bg-[#151518]/30 text-[#F8F7F4]/80"
+                      ? "bg-[#E35930] border-[#E35930] text-[#FAF9F6]"
+                      : "border-[#111113]/10 bg-[#FAF9F6]/30 text-[#111113]/80"
                   }`}
                   id="access-toggle-mobile"
                 >
@@ -348,7 +348,7 @@ export default function Header({
                 {/* Mobile Language Trigger */}
                 <button
                   onClick={() => setIsMobileLangOpen(!isMobileLangOpen)}
-                  className="py-2 px-2.5 border border-[rgba(248,247,244,0.08)] bg-[#151518]/30 rounded-sm text-[#F8F7F4] hover:text-[#E35930] transition-all flex items-center justify-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold"
+                  className="py-2 px-2.5 border border-[#111113]/10 bg-[#FAF9F6]/30 rounded-sm text-[#111113] hover:text-[#E35930] transition-all flex items-center justify-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold"
                   id="mobile-lang-trigger"
                 >
                   <Globe className="w-3.5 h-3.5 text-[#E35930]" />
@@ -359,7 +359,7 @@ export default function Header({
 
               {/* Language Selector Dropdown Grid */}
               {isMobileLangOpen && (
-                <div className="grid grid-cols-3 gap-1 p-1.5 bg-[#151518] border border-[rgba(248,247,244,0.05)] rounded-sm transition-all">
+                <div className="grid grid-cols-3 gap-1 p-1.5 bg-[#FAF9F6] border border-[#111113]/10 rounded-sm transition-all">
                   {LANGUAGES.map((item) => {
                     const isSelected = currentGoogleLang === item.code;
                     return (
@@ -368,8 +368,8 @@ export default function Header({
                         onClick={() => selectLanguage(item.code)}
                         className={`py-1 px-1 rounded-sm border transition-all flex items-center justify-center gap-1 cursor-pointer font-mono text-[8px] uppercase tracking-wider font-semibold ${
                           isSelected
-                            ? "bg-[#E35930] border-[#E35930] text-[#111113]"
-                            : "border-[rgba(248,247,244,0.05)] text-[#F8F7F4]/70 hover:text-[#E35930]"
+                            ? "bg-[#E35930] border-[#E35930] text-[#FAF9F6]"
+                            : "border-[#111113]/10 text-[#111113]/70 hover:text-[#E35930]"
                         }`}
                       >
                         <span>{item.flag}</span>

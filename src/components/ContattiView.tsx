@@ -102,24 +102,24 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
   };
 
   return (
-    <div className="w-full bg-[#111113] text-[#F8F7F4]">
+    <div className="w-full bg-[#F8F7F4] text-[#111113]">
       {/* Header Banner */}
-      <section className="py-24 text-center relative border-b border-[rgba(248,247,244,0.1)] overflow-hidden">
+      <section className="py-24 text-center relative border-b border-[#111113]/10 overflow-hidden">
         {/* Ambient Background Slideshow */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {bgImages.map((imgUrl, idx) => (
             <div
               key={imgUrl}
               className={`absolute inset-0 bg-cover bg-center transition-all duration-[2000ms] ${
-                idx === currentBgIndex ? "opacity-40 scale-100" : "opacity-0 scale-105"
+                idx === currentBgIndex ? "opacity-20 scale-100" : "opacity-0 scale-105"
               }`}
               style={{
                 backgroundImage: `url(${imgUrl})`,
               }}
             />
           ))}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#111113]/90 via-[#111113]/80 to-[#111113]/90" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#111113]/30 via-transparent to-[#111113]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#F8F7F4]/95 via-[#F8F7F4]/80 to-[#F8F7F4]/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F8F7F4]/30 via-transparent to-[#F8F7F4]" />
         </div>
 
         <div className="max-w-2xl mx-auto px-6 space-y-4 relative z-10">
@@ -133,33 +133,33 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
           <span className="text-[10px] uppercase tracking-[0.25em] text-[#E35930] font-mono font-bold block mb-2">
             [ DISEGNA IL TUO FUTURO ]
           </span>
-          <h1 className="font-tan text-4xl font-bold tracking-wide text-[#F8F7F4] sm:text-5xl">
+          <h1 className="font-tan text-4xl font-bold tracking-wide text-[#111113] sm:text-5xl">
             Entra in Contatto
           </h1>
-          <p className="font-sans text-xs sm:text-sm text-[#F8F7F4]/70 leading-relaxed">
+          <p className="font-sans text-xs sm:text-sm text-[#111113]/70 leading-relaxed">
             Hai un'idea per il tuo sito web? Scrivimi. Analizzerò i tuoi requisiti e ti risponderò direttamente con una proposta dedicata.
           </p>
         </div>
       </section>
 
       {/* Main Content Layout */}
-      <section className="py-24 bg-[#111113]">
+      <section className="py-24 bg-[#FAF9F6]">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
           
           {/* Info Side */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
-              <h3 className="font-display text-2xl font-bold text-[#F8F7F4]">
+              <h3 className="font-display text-2xl font-bold text-[#111113]">
                 Perché Scrivermi?
               </h3>
-              <p className="text-xs sm:text-sm text-[#F8F7F4]/70 leading-relaxed font-sans">
+              <p className="text-xs sm:text-sm text-[#111113]/70 leading-relaxed font-sans">
                 Non dovrai parlare con venditori o assistenti commerciali. Analizzo personalmente ogni richiesta per offrirti la massima trasparenza tecnica e stilistica fin dal primo scambio.
               </p>
             </div>
 
             <div className="space-y-6">
               <div className="flex gap-4 items-start">
-                <div className="w-10 h-10 border border-[rgba(248,247,244,0.1)] flex items-center justify-center text-[#E35930] shrink-0">
+                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-[#E35930] shrink-0">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
@@ -168,7 +168,7 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
                   </h4>
                   <a
                     href="mailto:facilissimoweb.mc@gmail.com"
-                    className="text-sm text-[#F8F7F4] hover:underline font-mono"
+                    className="text-sm text-[#111113] hover:underline font-mono"
                   >
                     facilissimoweb.mc@gmail.com
                   </a>
@@ -176,7 +176,7 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
               </div>
 
               <div className="flex gap-4 items-start">
-                <div className="w-10 h-10 border border-[rgba(248,247,244,0.1)] flex items-center justify-center text-[#E35930] shrink-0">
+                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-[#E35930] shrink-0">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
@@ -185,7 +185,7 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
                   </h4>
                   <a
                     href="tel:+393793603321"
-                    className="text-sm text-[#F8F7F4] hover:underline font-mono"
+                    className="text-sm text-[#111113] hover:underline font-mono"
                   >
                     +39 379 360 3321
                   </a>
@@ -193,40 +193,40 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
               </div>
 
               <div className="flex gap-4 items-start">
-                <div className="w-10 h-10 border border-[rgba(248,247,244,0.1)] flex items-center justify-center text-[#E35930] shrink-0">
+                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-[#E35930] shrink-0">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
                   <h4 className="text-[10px] uppercase tracking-widest font-mono font-bold text-[#E35930] mb-1">
                     Operatività
                   </h4>
-                  <p className="text-sm text-[#F8F7F4]/70">
+                  <p className="text-sm text-[#111113]/70">
                     Macerata (Marche, Italia) — Collaborazioni e consulenze attive di persona sul territorio ed in video-call in tutta Italia.
                   </p>
                 </div>
               </div>
 
               <div className="flex gap-4 items-start">
-                <div className="w-10 h-10 border border-[rgba(248,247,244,0.1)] flex items-center justify-center text-[#E35930] shrink-0">
+                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-[#E35930] shrink-0">
                   <Calendar className="w-4 h-4" />
                 </div>
                 <div>
                   <h4 className="text-[10px] uppercase tracking-widest font-mono font-bold text-[#E35930] mb-1">
                     Risposta Garantita
                   </h4>
-                  <p className="text-sm text-[#F8F7F4]/70">
+                  <p className="text-sm text-[#111113]/70">
                     Entro 24 ore lavorative riceverai un'analisi di prefattibilità gratuita direttamente nella tua casella di posta.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-[#151518] p-6 border border-[rgba(248,247,244,0.1)] space-y-3">
-              <div className="flex items-center gap-2 text-[#F8F7F4] font-bold text-sm">
+            <div className="bg-[#F8F7F4] p-6 border border-[#111113]/10 space-y-3">
+              <div className="flex items-center gap-2 text-[#111113] font-bold text-sm">
                 <span className="w-1.5 h-1.5 bg-[#E35930]"></span>
                 <span className="font-mono text-[10px] uppercase tracking-wider font-bold">Consulenza AI Assistita</span>
               </div>
-              <p className="text-xs text-[#F8F7F4]/70 leading-relaxed">
+              <p className="text-xs text-[#111113]/70 leading-relaxed">
                 Puoi anche consultare la sezione **Chat AI** per parlare subito con il mio assistente virtuale addestrato per spiegarti ogni dettaglio su tariffe, tempi e integrazioni tecnologiche!
               </p>
             </div>
@@ -234,7 +234,7 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
 
           {/* Form Side */}
           <div className="lg:col-span-7">
-            <div className="bg-[#151518] p-8 md:p-10 border border-[rgba(248,247,244,0.1)] relative">
+            <div className="bg-[#F8F7F4] p-8 md:p-10 border border-[#111113]/10 relative">
               
               {success ? (
                 <motion.div
@@ -242,27 +242,27 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
                   animate={{ opacity: 1, scale: 1 }}
                   className="text-center py-12 space-y-6"
                 >
-                  <div className="w-12 h-12 border border-[rgba(248,247,244,0.15)] text-[#E35930] flex items-center justify-center mx-auto">
+                  <div className="w-12 h-12 border border-[#111113]/15 text-[#E35930] flex items-center justify-center mx-auto">
                     <CheckCircle className="w-6 h-6" />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="font-display text-2xl font-bold text-[#F8F7F4]">
+                    <h3 className="font-display text-2xl font-bold text-[#111113]">
                       Richiesta Inviata con Successo!
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#F8F7F4]/70 max-w-md mx-auto leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#111113]/70 max-w-md mx-auto leading-relaxed">
                       Grazie per avermi scritto. Ho registrato la tua richiesta nel sistema. Ti risponderò via email entro poche ore per fissare una video-call conoscitiva gratuita.
                     </p>
                     <div className="pt-2">
                       {emailSent ? (
-                        <span className="inline-flex items-center gap-1.5 text-[10px] font-mono text-emerald-400 uppercase tracking-wider bg-emerald-950/40 border border-emerald-800 px-3 py-1 mt-2">
+                        <span className="inline-flex items-center gap-1.5 text-[10px] font-mono text-emerald-600 uppercase tracking-wider bg-emerald-50 border border-emerald-300 px-3 py-1 mt-2">
                           ● Email recapitata con successo a facilissimoweb.mc@gmail.com
                         </span>
                       ) : (
                         <div className="space-y-1.5 mt-2">
-                          <span className="inline-flex items-center gap-1.5 text-[10px] font-mono text-amber-400 uppercase tracking-wider bg-amber-950/40 border border-amber-800 px-3 py-1">
+                          <span className="inline-flex items-center gap-1.5 text-[10px] font-mono text-amber-600 uppercase tracking-wider bg-amber-50 border border-amber-300 px-3 py-1">
                             ▲ Richiesta salvata nel database (SMTP non configurato)
                           </span>
-                          <p className="text-[10px] text-[#F8F7F4]/50 max-w-md mx-auto">
+                          <p className="text-[10px] text-[#111113]/50 max-w-md mx-auto">
                             Per abilitare l'invio reale a <strong>facilissimoweb.mc@gmail.com</strong>, configura <code>SMTP_USER</code> e <code>SMTP_PASS</code> nelle impostazioni (Secrets) di AI Studio.
                           </p>
                         </div>
@@ -271,7 +271,7 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
                   </div>
                   <button
                     onClick={() => setSuccess(false)}
-                    className="px-8 py-4 bg-[#E35930] text-[#111113] font-bold text-xs uppercase tracking-widest hover:bg-transparent hover:text-[#E35930] transition-all cursor-pointer border border-[#E35930]"
+                    className="px-8 py-4 bg-[#E35930] text-[#FAF9F6] font-bold text-xs uppercase tracking-widest hover:bg-transparent hover:text-[#E35930] transition-all cursor-pointer border border-[#E35930]"
                   >
                     Invia un altro messaggio
                   </button>
@@ -286,7 +286,7 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label htmlFor="name" className="block text-[10px] font-bold uppercase tracking-widest text-[#F8F7F4] font-mono">
+                      <label htmlFor="name" className="block text-[10px] font-bold uppercase tracking-widest text-[#111113] font-mono">
                         Nome &amp; Cognome *
                       </label>
                       <input
@@ -297,12 +297,12 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Inserisci il tuo nome"
-                        className="w-full px-4 py-3 border border-[rgba(248,247,244,0.15)] rounded-none text-sm bg-[#111113] text-[#F8F7F4] focus:outline-none focus:border-[#E35930] transition-all"
+                        className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-[#E35930] transition-all"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="email" className="block text-[10px] font-bold uppercase tracking-widest text-[#F8F7F4] font-mono">
+                      <label htmlFor="email" className="block text-[10px] font-bold uppercase tracking-widest text-[#111113] font-mono">
                         Indirizzo Email *
                       </label>
                       <input
@@ -313,14 +313,14 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="nome@azienda.it"
-                        className="w-full px-4 py-3 border border-[rgba(248,247,244,0.15)] rounded-none text-sm bg-[#111113] text-[#F8F7F4] focus:outline-none focus:border-[#E35930] transition-all"
+                        className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-[#E35930] transition-all"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label htmlFor="company" className="block text-[10px] font-bold uppercase tracking-widest text-[#F8F7F4] font-mono">
+                      <label htmlFor="company" className="block text-[10px] font-bold uppercase tracking-widest text-[#111113] font-mono">
                         Nome Azienda (Opzionale)
                       </label>
                       <input
@@ -330,12 +330,12 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
                         value={formData.company}
                         onChange={handleChange}
                         placeholder="La tua attività"
-                        className="w-full px-4 py-3 border border-[rgba(248,247,244,0.15)] rounded-none text-sm bg-[#111113] text-[#F8F7F4] focus:outline-none focus:border-[#E35930] transition-all"
+                        className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-[#E35930] transition-all"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="projectType" className="block text-[10px] font-bold uppercase tracking-widest text-[#F8F7F4] font-mono">
+                      <label htmlFor="projectType" className="block text-[10px] font-bold uppercase tracking-widest text-[#111113] font-mono">
                         Tipo di Progetto *
                       </label>
                       <select
@@ -343,7 +343,7 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
                         id="projectType"
                         value={formData.projectType}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-[rgba(248,247,244,0.15)] rounded-none text-sm bg-[#111113] text-[#F8F7F4] focus:outline-none focus:border-[#E35930] transition-all"
+                        className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-[#E35930] transition-all"
                       >
                         <option>One-Page (AI Starter)</option>
                         <option>Multi-page (AI Professional)</option>
@@ -354,7 +354,7 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="budget" className="block text-[10px] font-bold uppercase tracking-widest text-[#F8F7F4] font-mono">
+                    <label htmlFor="budget" className="block text-[10px] font-bold uppercase tracking-widest text-[#111113] font-mono">
                       Budget Stimato *
                     </label>
                     <select
@@ -362,7 +362,7 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
                       id="budget"
                       value={formData.budget}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-[rgba(248,247,244,0.15)] rounded-none text-sm bg-[#111113] text-[#F8F7F4] focus:outline-none focus:border-[#E35930] transition-all"
+                      className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-[#E35930] transition-all"
                     >
                       <option>Sotto 1.000€</option>
                       <option>1.000€ - 2.000€</option>
@@ -372,7 +372,7 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="message" className="block text-[10px] font-bold uppercase tracking-widest text-[#F8F7F4] font-mono">
+                    <label htmlFor="message" className="block text-[10px] font-bold uppercase tracking-widest text-[#111113] font-mono">
                       Dettagli del Progetto *
                     </label>
                     <textarea
@@ -383,14 +383,14 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Parlami dei tuoi obiettivi, dei servizi che offri e di come immagini il tuo nuovo sito..."
-                      className="w-full px-4 py-3 border border-[rgba(248,247,244,0.15)] rounded-none text-sm bg-[#111113] text-[#F8F7F4] focus:outline-none focus:border-[#E35930] transition-all resize-none"
+                      className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-[#E35930] transition-all resize-none"
                     ></textarea>
                   </div>
 
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-4 bg-[#E35930] text-[#111113] hover:bg-transparent hover:text-[#E35930] font-bold text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 cursor-pointer border border-[#E35930] disabled:opacity-50"
+                    className="w-full py-4 bg-[#E35930] text-[#FAF9F6] hover:bg-transparent hover:text-[#E35930] font-bold text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 cursor-pointer border border-[#E35930] disabled:opacity-50"
                   >
                     {loading ? "Invio in corso..." : "Invia Messaggio"}
                     <Send className="w-3.5 h-3.5" />
@@ -403,21 +403,21 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
       </section>
 
       {/* Real-time Submissions log (Durable verification dashboard) */}
-      <section className="py-24 bg-[#151518] border-t border-[rgba(248,247,244,0.1)]">
+      <section className="py-24 bg-[#F8F7F4] border-t border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-8">
           <div className="flex items-center gap-3">
             <Database className="w-5 h-5 text-[#E35930]" />
-            <h3 className="font-display text-xl font-bold text-[#F8F7F4]">
+            <h3 className="font-display text-xl font-bold text-[#111113]">
               Registro Richieste Recenti (In Tempo Reale)
             </h3>
           </div>
 
-          <p className="text-[10px] text-[#F8F7F4]/60 max-w-2xl font-mono uppercase tracking-wide">
+          <p className="text-[10px] text-[#111113]/60 max-w-2xl font-mono uppercase tracking-wide">
             Questo blocco si aggiorna istantaneamente interrogando le API di Facilissimo Web per dimostrare il corretto funzionamento dell'invio e della persistenza della tua richiesta.
           </p>
 
           {submissions.length === 0 ? (
-            <div className="bg-[#111113] p-8 border border-[rgba(248,247,244,0.1)] text-center text-xs text-[#F8F7F4]/60 font-mono tracking-wider uppercase">
+            <div className="bg-[#FAF9F6] p-8 border border-[#111113]/10 text-center text-xs text-[#111113]/60 font-mono tracking-wider uppercase">
               Nessuna richiesta ancora registrata. Compila il modulo sopra per vederla apparire qui sotto!
             </div>
           ) : (
@@ -427,31 +427,31 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
                   key={sub.id}
                   initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-[#111113] p-6 border border-[rgba(248,247,244,0.1)] space-y-3 transition-all hover:border-[#E35930]/40"
+                  className="bg-[#FAF9F6] p-6 border border-[#111113]/10 space-y-3 transition-all hover:border-[#E35930]/40"
                 >
                   <div className="flex justify-between items-start gap-2">
-                    <span className="font-bold text-sm text-[#F8F7F4] truncate max-w-[150px]">
+                    <span className="font-bold text-sm text-[#111113] truncate max-w-[150px]">
                       {sub.name}
                     </span>
-                    <span className="text-[9px] font-mono border border-[rgba(248,247,244,0.15)] text-[#E35930] px-2 py-0.5 uppercase">
+                    <span className="text-[9px] font-mono border border-[#111113]/15 text-[#E35930] px-2 py-0.5 uppercase">
                       ID: {sub.id}
                     </span>
                   </div>
 
-                  <div className="text-[11px] font-mono text-[#F8F7F4]/70 space-y-1">
+                  <div className="text-[11px] font-mono text-[#111113]/70 space-y-1">
                     <p className="truncate">Email: {sub.email}</p>
                     {sub.company && <p className="truncate">Azienda: {sub.company}</p>}
-                    <p className="text-[#F8F7F4] font-semibold">Budget: {sub.budget}</p>
+                    <p className="text-[#111113] font-semibold">Budget: {sub.budget}</p>
                     <p className="text-[#E35930] font-bold">Tipo: {sub.projectType}</p>
                   </div>
 
-                  <div className="pt-2 border-t border-[rgba(248,247,244,0.1)]">
-                    <div className="flex gap-1.5 items-start text-xs text-[#F8F7F4]/80 italic">
+                  <div className="pt-2 border-t border-[#111113]/10">
+                    <div className="flex gap-1.5 items-start text-xs text-[#111113]/80 italic">
                       <FileText className="w-3.5 h-3.5 text-[#E35930] shrink-0 mt-0.5" />
                       <p className="line-clamp-2 leading-relaxed">"{sub.message}"</p>
                     </div>
                   </div>
-                  <div className="text-[9px] font-mono text-[#F8F7F4]/50 text-right">
+                  <div className="text-[9px] font-mono text-[#111113]/50 text-right">
                     {new Date(sub.date).toLocaleDateString("it-IT", {
                       hour: "2-digit",
                       minute: "2-digit",

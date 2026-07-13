@@ -311,7 +311,9 @@ export default function CyberAiGuideApp({ lang = "it" }: CyberAiGuideAppProps) {
                 />
               );
             })}
-               {/* Pulsanti */}
+          </div>
+
+          {/* Pulsanti */}
           <div className="flex justify-between items-center gap-3">
             <button
               onClick={prevSlide}
@@ -364,7 +366,7 @@ export default function CyberAiGuideApp({ lang = "it" }: CyberAiGuideAppProps) {
                 <ChevronRight className="w-4 h-4" />
               </button>
             )}
-          </div>       </div>
+          </div>
         </div>
         
       </div>

@@ -494,224 +494,275 @@ export default function App() {
   const currentIndex = TABS_ORDER.indexOf(currentTab);
 
   return (
-    <div className={`min-h-screen bg-[#111113] text-[#F8F7F4] flex flex-col selection:bg-[#E35930]/20 selection:text-[#E35930] antialiased ${
+    <div className={`min-h-screen bg-[#F8F7F4] text-[#111113] flex flex-col selection:bg-[#E35930]/20 selection:text-[#E35930] antialiased ${
       readableFont ? "font-mono tracking-wide" : "font-sans"
     } ${
       isFacilitated ? "text-lg" : ""
     }`}>
-      {/* Navigation Header */}
-      <Header
-        currentTab={currentTab}
-        setCurrentTab={handleSetTab}
-        lang={lang}
-        setLang={setLang}
-        isFacilitated={isFacilitated}
-        setIsFacilitated={setIsFacilitated}
-      />
-
-      {/* Dynamic Breadcrumbs Bar - Fixed and directly attached under the Header */}
-      {(() => {
-        const breadcrumbItems = [
-          { id: "home", label: lang === "it" ? "Inizio" : "Home" }
-        ];
-        
-        if (currentTab !== "home") {
-          breadcrumbItems.push({
-            id: currentTab,
-            label: getTabLabel(currentTab),
-          });
+      {/* Desktop Left Sidebar - Hidden on mobile, flex on desktop */}
+      <aside className="hidden xl:flex w-[280px] h-screen fixed left-0 top-0 border-r border-[#111113]/10 bg-[#FAF9F6] p-10 flex-col justify-between z-30 select-none text-[#111113]">
+        <div className="space-y-16">
+          <div className="logo-block group cursor-pointer" onClick={() => handleSetTab("home")}>
+            <div className="logo-text font-display font-extrabold text-2xl tracking-tighter leading-none text-[#111113] uppercase italic">
+              Facilissimo<br />Web
+            </div>
+            <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-[#E35930] font-bold mt-2.5">
+              [ M. Teresa Rogani ]
+            </div>
+          </div>
           
-          if (currentTab === "blog" && selectedArticle) {
-            const articleTitles: Record<string, string> = {
-              "ai-act-regolamento-europeo": lang === "it" ? "L'AI Act è Legge" : "The AI Act is Law",
-              "seo-predittiva": lang === "it" ? "SEO Predittiva" : "Predictive SEO",
-              "sito-statico-vs-wordpress": lang === "it" ? "Sito Statico vs WordPress" : "Static vs WordPress",
-            };
-            const title = articleTitles[selectedArticle] || selectedArticle;
-            breadcrumbItems.push({
-              id: "article",
-              label: title,
-            });
-          }
-        }
+          <nav>
+            <ul className="space-y-5">
+              {TABS_ORDER.map((tabId) => {
+                const isActive = currentTab === tabId;
+                return (
+                  <li key={tabId}>
+                    <button
+                      onClick={() => handleSetTab(tabId)}
+                      className={`text-left font-mono text-xs font-bold uppercase tracking-widest cursor-pointer transition-all block py-1 border-b-2 ${
+                        isActive
+                          ? "text-[#E35930] border-[#E35930] translate-x-1"
+                          : "text-[#111113]/60 hover:text-[#111113] hover:translate-x-0.5 border-transparent"
+                      }`}
+                    >
+                      {getTabLabel(tabId)}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        </div>
+        
+        <div className="space-y-4">
+          <div className="text-[10px] font-mono uppercase tracking-widest text-[#E35930] font-bold">
+            [ Contatto Diretto ]
+          </div>
+          <div className="font-mono text-xs text-[#111113]/70 leading-relaxed">
+            +39 379 360 3321<br />
+            facilissimoweb.mc@gmail.com
+          </div>
+        </div>
+      </aside>
 
-        return (
-          <div 
-            className={`fixed top-20 left-0 w-full bg-[#131315]/90 border-b border-[rgba(248,247,244,0.05)] py-3 px-4 sm:px-6 xl:px-12 backdrop-blur-md z-40 select-none transition-all duration-300 ease-in-out ${
-              showBreadcrumb 
-                ? "translate-y-0 opacity-100" 
-                : "-translate-y-full opacity-0 pointer-events-none"
-            }`}
-          >
-            <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-[10px] tracking-wider uppercase font-bold text-[#F8F7F4]/60">
-              <div className="flex items-center flex-wrap gap-1.5 sm:gap-2 text-[#F8F7F4]/40">
-                <Home className="w-3.5 h-3.5 text-[#E35930] mr-1 inline shrink-0" />
-                {breadcrumbItems.map((item, index) => (
-                  <React.Fragment key={item.id}>
-                    {index > 0 && <span className="text-[#F8F7F4]/20 font-light mx-0.5 sm:mx-1 shrink-0">/</span>}
-                    {index === breadcrumbItems.length - 1 ? (
-                      <span className="text-[#E35930] font-extrabold truncate max-w-[200px] sm:max-w-none">{item.label}</span>
-                    ) : (
-                      <button
-                        onClick={() => {
-                          if (item.id === "home") {
-                            handleSetTab("home");
-                          } else {
-                            navigateTo(item.id, null, true);
-                          }
-                        }}
-                        className="text-[#F8F7F4]/60 hover:text-[#E35930] cursor-pointer transition-colors uppercase font-bold shrink-0"
-                      >
-                        {item.label}
-                      </button>
-                    )}
-                  </React.Fragment>
-                ))}
+      {/* Main Layout Shell - shifted on desktop to account for left sidebar */}
+      <div className="xl:pl-[280px] flex-grow flex flex-col min-h-screen">
+        {/* Navigation Header for mobile/tablet only */}
+        <div className="xl:hidden">
+          <Header
+            currentTab={currentTab}
+            setCurrentTab={handleSetTab}
+            lang={lang}
+            setLang={setLang}
+            isFacilitated={isFacilitated}
+            setIsFacilitated={setIsFacilitated}
+          />
+        </div>
+
+        {/* Dynamic Breadcrumbs Bar - Fixed and directly attached under the Header */}
+        {(() => {
+          const breadcrumbItems = [
+            { id: "home", label: lang === "it" ? "Inizio" : "Home" }
+          ];
+          
+          if (currentTab !== "home") {
+            breadcrumbItems.push({
+              id: currentTab,
+              label: getTabLabel(currentTab),
+            });
+            
+            if (currentTab === "blog" && selectedArticle) {
+              const articleTitles: Record<string, string> = {
+                "ai-act-regolamento-europeo": lang === "it" ? "L'AI Act è Legge" : "The AI Act is Law",
+                "seo-predittiva": lang === "it" ? "SEO Predittiva" : "Predictive SEO",
+                "sito-statico-vs-wordpress": lang === "it" ? "Sito Statico vs WordPress" : "Static vs WordPress",
+              };
+              const title = articleTitles[selectedArticle] || selectedArticle;
+              breadcrumbItems.push({
+                id: "article",
+                label: title,
+              });
+            }
+          }
+
+          return (
+            <div 
+              className={`fixed top-20 xl:top-0 xl:left-[280px] w-full xl:w-[calc(100%-280px)] bg-[#FAF9F6]/90 border-b border-[#111113]/10 py-3 px-4 sm:px-6 xl:px-12 backdrop-blur-md z-40 select-none transition-all duration-300 ease-in-out ${
+                showBreadcrumb 
+                  ? "translate-y-0 opacity-100" 
+                  : "-translate-y-full opacity-0 pointer-events-none"
+              }`}
+            >
+              <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-[10px] tracking-wider uppercase font-bold text-[#111113]/60">
+                <div className="flex items-center flex-wrap gap-1.5 sm:gap-2 text-[#111113]/40">
+                  <Home className="w-3.5 h-3.5 text-[#E35930] mr-1 inline shrink-0" />
+                  {breadcrumbItems.map((item, index) => (
+                    <React.Fragment key={item.id}>
+                      {index > 0 && <span className="text-[#111113]/20 font-light mx-0.5 sm:mx-1 shrink-0">/</span>}
+                      {index === breadcrumbItems.length - 1 ? (
+                        <span className="text-[#E35930] font-extrabold truncate max-w-[200px] sm:max-w-none">{item.label}</span>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            if (item.id === "home") {
+                              handleSetTab("home");
+                            } else {
+                              navigateTo(item.id, null, true);
+                            }
+                          }}
+                          className="text-[#111113]/60 hover:text-[#E35930] cursor-pointer transition-colors uppercase font-bold shrink-0"
+                        >
+                          {item.label}
+                        </button>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </div>
+                
+                <div className="hidden sm:flex items-center gap-4 text-[9px] uppercase font-bold text-[#111113]/40 select-none">
+                  <span>{lang === "it" ? "Posizione Attiva" : "Active Location"}</span>
+                  <span className="px-2 py-0.5 bg-[#E35930]/10 border border-[#E35930]/20 text-[#E35930] rounded-sm text-[9px]">
+                    {currentTab === "blog" && selectedArticle ? "ARTICLE_VIEW" : `${currentTab.toUpperCase()}_VIEW`}
+                  </span>
+                </div>
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* Main View Area with top offset to clear fixed header and fixed breadcrumbs bar */}
+        <main 
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          className={`flex-grow pt-32 overflow-x-hidden ${
+            highContrast ? "accessibility-high-contrast" : ""
+          } ${
+            isFacilitated ? "accessibility-facilitated-contrast" : ""
+          }`}
+        >
+          <div className="w-full">
+
+            {isFacilitated && (
+              <div className="bg-[#E35930] text-[#111113] text-center text-xs py-2 px-4 font-mono font-bold uppercase tracking-wider animate-pulse" id="facilitated-badge-banner">
+                {lang === "it"
+                  ? "Modalità Semplificata Attiva — Caratteri ingranditi e testi più facili"
+                  : "Simplified Mode Active — Larger fonts and simpler layout"}
+              </div>
+            )}
+            
+            <AnimatePresence mode="wait" custom={slideDirection}>
+              <motion.div
+                key={currentTab}
+                custom={slideDirection}
+                initial={{ opacity: 0, x: slideDirection === "left" ? 24 : -24 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: slideDirection === "left" ? -24 : 24 }}
+                transition={{ duration: 0.28, ease: "easeInOut" }}
+                className="w-full"
+              >
+                {renderActiveView()}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </main>
+
+        {/* Interactive Page-Turning Slide Navigator */}
+        <div className="w-full border-t border-[#111113]/10 bg-[#FAF9F6]/95 backdrop-blur-md py-6 px-6 relative z-30">
+          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 font-mono">
+            {/* Previous Page Button */}
+            {currentIndex > 0 ? (
+              <button
+                onClick={() => {
+                  setSlideDirection("right");
+                  setCurrentTab(TABS_ORDER[currentIndex - 1]);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="flex items-center gap-2.5 text-xs text-[#111113]/60 hover:text-[#E35930] transition-all py-2 border border-transparent hover:border-[#111113]/10 px-4 bg-transparent cursor-pointer group"
+                id="slide-nav-prev"
+              >
+                <ChevronLeft className="w-4 h-4 text-[#E35930] group-hover:-translate-x-1 transition-transform" />
+                <div className="text-left">
+                  <span className="text-[9px] block text-[#111113]/40 uppercase tracking-widest font-normal">
+                    {lang === "it" ? "Sezione Precedente" : "Previous Section"}
+                  </span>
+                  <span className="font-bold uppercase tracking-wider text-[11px] text-[#111113]/80 group-hover:text-[#E35930]">
+                    {getTabLabel(TABS_ORDER[currentIndex - 1])}
+                  </span>
+                </div>
+              </button>
+            ) : (
+              <div className="hidden sm:block w-40" />
+            )}
+
+            {/* Center Swipe Indicator & Dots */}
+            <div className="flex flex-col items-center gap-2 py-1">
+              <div className="flex items-center gap-2">
+                <span className="w-1 h-1 bg-[#E35930] rounded-full animate-ping" />
+                <span className="text-[9px] tracking-[0.25em] uppercase text-[#111113]/40 font-bold">
+                  {lang === "it" ? "Scivola o trascina per sfogliare" : "Swipe or click to slide"}
+                </span>
+                <span className="w-1 h-1 bg-[#E35930] rounded-full animate-ping" />
               </div>
               
-              <div className="hidden sm:flex items-center gap-4 text-[9px] uppercase font-bold text-[#F8F7F4]/40 select-none">
-                <span>{lang === "it" ? "Posizione Attiva" : "Active Location"}</span>
-                <span className="px-2 py-0.5 bg-[#E35930]/10 border border-[#E35930]/20 text-[#E35930] rounded-sm text-[9px]">
-                  {currentTab === "blog" && selectedArticle ? "ARTICLE_VIEW" : `${currentTab.toUpperCase()}_VIEW`}
-                </span>
+              {/* Nav dots */}
+              <div className="flex items-center gap-1.5">
+                {TABS_ORDER.map((tab, idx) => (
+                  <button
+                    key={tab}
+                    onClick={() => {
+                      const direction = idx > currentIndex ? "left" : "right";
+                      setSlideDirection(direction);
+                      setCurrentTab(tab);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    className={`h-1.5 transition-all duration-300 rounded-full cursor-pointer ${
+                      tab === currentTab ? "w-6 bg-[#E35930]" : "w-1.5 bg-[#111113]/15 hover:bg-[#E35930]/40"
+                    }`}
+                    title={getTabLabel(tab)}
+                    id={`slide-nav-dot-${tab}`}
+                  />
+                ))}
               </div>
             </div>
+
+            {/* Next Page Button */}
+            {currentIndex < TABS_ORDER.length - 1 ? (
+              <button
+                onClick={() => {
+                  setSlideDirection("left");
+                  setCurrentTab(TABS_ORDER[currentIndex + 1]);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="flex items-center gap-2.5 text-xs text-[#111113]/60 hover:text-[#E35930] transition-all py-2 border border-transparent hover:border-[#111113]/10 px-4 bg-transparent cursor-pointer text-right group"
+                id="slide-nav-next"
+              >
+                <div className="text-right">
+                  <span className="text-[9px] block text-[#111113]/40 uppercase tracking-widest font-normal">
+                    {lang === "it" ? "Prossima Sezione" : "Next Section"}
+                  </span>
+                  <span className="font-bold uppercase tracking-wider text-[11px] text-[#111113]/80 group-hover:text-[#E35930]">
+                    {getTabLabel(TABS_ORDER[currentIndex + 1])}
+                  </span>
+                </div>
+                <ChevronRight className="w-4 h-4 text-[#E35930] group-hover:translate-x-1 transition-transform" />
+              </button>
+            ) : (
+              <div className="hidden sm:block w-40" />
+            )}
           </div>
-        );
-      })()}
-
-      {/* Main View Area with top offset to clear fixed header and fixed breadcrumbs bar */}
-      <main 
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        className={`flex-grow pt-32 overflow-x-hidden ${
-          highContrast ? "accessibility-high-contrast" : ""
-        } ${
-          isFacilitated ? "accessibility-facilitated-contrast" : ""
-        }`}
-      >
-        <div className="w-full">
-
-          {isFacilitated && (
-            <div className="bg-[#E35930] text-[#111113] text-center text-xs py-2 px-4 font-mono font-bold uppercase tracking-wider animate-pulse" id="facilitated-badge-banner">
-              {lang === "it"
-                ? "Modalità Semplificata Attiva — Caratteri ingranditi e testi più facili"
-                : "Simplified Mode Active — Larger fonts and simpler layout"}
-            </div>
-          )}
-          
-          <AnimatePresence mode="wait" custom={slideDirection}>
-            <motion.div
-              key={currentTab}
-              custom={slideDirection}
-              initial={{ opacity: 0, x: slideDirection === "left" ? 24 : -24 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: slideDirection === "left" ? -24 : 24 }}
-              transition={{ duration: 0.28, ease: "easeInOut" }}
-              className="w-full"
-            >
-              {renderActiveView()}
-            </motion.div>
-          </AnimatePresence>
         </div>
-      </main>
 
-      {/* Interactive Page-Turning Slide Navigator */}
-      <div className="w-full border-t border-[rgba(248,247,244,0.06)] bg-[#131315]/95 backdrop-blur-md py-6 px-6 relative z-30">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 font-mono">
-          {/* Previous Page Button */}
-          {currentIndex > 0 ? (
-            <button
-              onClick={() => {
-                setSlideDirection("right");
-                setCurrentTab(TABS_ORDER[currentIndex - 1]);
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              className="flex items-center gap-2.5 text-xs text-[#F8F7F4]/60 hover:text-[#E35930] transition-all py-2 border border-transparent hover:border-[rgba(248,247,244,0.08)] px-4 bg-transparent cursor-pointer group"
-              id="slide-nav-prev"
-            >
-              <ChevronLeft className="w-4 h-4 text-[#E35930] group-hover:-translate-x-1 transition-transform" />
-              <div className="text-left">
-                <span className="text-[9px] block text-[#F8F7F4]/40 uppercase tracking-widest font-normal">
-                  {lang === "it" ? "Sezione Precedente" : "Previous Section"}
-                </span>
-                <span className="font-bold uppercase tracking-wider text-[11px] text-[#F8F7F4]/80 group-hover:text-[#E35930]">
-                  {getTabLabel(TABS_ORDER[currentIndex - 1])}
-                </span>
-              </div>
-            </button>
-          ) : (
-            <div className="hidden sm:block w-40" />
-          )}
-
-          {/* Center Swipe Indicator & Dots */}
-          <div className="flex flex-col items-center gap-2 py-1">
-            <div className="flex items-center gap-2">
-              <span className="w-1 h-1 bg-[#E35930] rounded-full animate-ping" />
-              <span className="text-[9px] tracking-[0.25em] uppercase text-[#F8F7F4]/40 font-bold">
-                {lang === "it" ? "Scivola o trascina per sfogliare" : "Swipe or click to slide"}
-              </span>
-              <span className="w-1 h-1 bg-[#E35930] rounded-full animate-ping" />
-            </div>
-            
-            {/* Nav dots */}
-            <div className="flex items-center gap-1.5">
-              {TABS_ORDER.map((tab, idx) => (
-                <button
-                  key={tab}
-                  onClick={() => {
-                    const direction = idx > currentIndex ? "left" : "right";
-                    setSlideDirection(direction);
-                    setCurrentTab(tab);
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  className={`h-1.5 transition-all duration-300 rounded-full cursor-pointer ${
-                    tab === currentTab ? "w-6 bg-[#E35930]" : "w-1.5 bg-[rgba(248,247,244,0.15)] hover:bg-[#E35930]/40"
-                  }`}
-                  title={getTabLabel(tab)}
-                  id={`slide-nav-dot-${tab}`}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Next Page Button */}
-          {currentIndex < TABS_ORDER.length - 1 ? (
-            <button
-              onClick={() => {
-                setSlideDirection("left");
-                setCurrentTab(TABS_ORDER[currentIndex + 1]);
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              className="flex items-center gap-2.5 text-xs text-[#F8F7F4]/60 hover:text-[#E35930] transition-all py-2 border border-transparent hover:border-[rgba(248,247,244,0.08)] px-4 bg-transparent cursor-pointer text-right group"
-              id="slide-nav-next"
-            >
-              <div className="text-right">
-                <span className="text-[9px] block text-[#F8F7F4]/40 uppercase tracking-widest font-normal">
-                  {lang === "it" ? "Prossima Sezione" : "Next Section"}
-                </span>
-                <span className="font-bold uppercase tracking-wider text-[11px] text-[#F8F7F4]/80 group-hover:text-[#E35930]">
-                  {getTabLabel(TABS_ORDER[currentIndex + 1])}
-                </span>
-              </div>
-              <ChevronRight className="w-4 h-4 text-[#E35930] group-hover:translate-x-1 transition-transform" />
-            </button>
-          ) : (
-            <div className="hidden sm:block w-40" />
-          )}
-        </div>
+        {/* Page Footer */}
+        <Footer 
+          setCurrentTab={handleSetTab} 
+          onOpenModal={setActiveModal} 
+          lang={lang} 
+          onOpenCookieSettings={() => setForceShowCookieBanner(true)} 
+          currentTab={currentTab}
+          selectedArticle={selectedArticle}
+        />
       </div>
-
-      {/* Page Footer */}
-      <Footer 
-        setCurrentTab={handleSetTab} 
-        onOpenModal={setActiveModal} 
-        lang={lang} 
-        onOpenCookieSettings={() => setForceShowCookieBanner(true)} 
-        currentTab={currentTab}
-        selectedArticle={selectedArticle}
-      />
 
       {/* Popups (Modals) */}
       <InfoModal
@@ -752,12 +803,12 @@ export default function App() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 10 }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 right-6 z-40 w-11 h-11 bg-[#151518]/95 hover:bg-[#E35930] text-[#F8F7F4] hover:text-[#111113] border border-[rgba(248,247,244,0.3)] hover:border-[#E35930] rounded-none flex items-center justify-center cursor-pointer transition-all shadow-xl font-mono text-[9px] font-bold group"
+            className="fixed bottom-6 right-6 z-40 w-11 h-11 bg-[#FAF9F6]/95 hover:bg-[#E35930] text-[#111113] hover:text-[#FAF9F6] border border-[#111113]/30 hover:border-[#E35930] rounded-none flex items-center justify-center cursor-pointer transition-all shadow-xl font-mono text-[9px] font-bold group"
             title={lang === "it" ? "Torna su" : "Back to top"}
             id="back-to-top-btn"
             aria-label={lang === "it" ? "Torna in cima alla pagina" : "Back to top"}
           >
-            <ArrowUp className="w-4 h-4 text-[#E35930] group-hover:text-[#111113] transition-colors" />
+            <ArrowUp className="w-4 h-4 text-[#E35930] group-hover:text-[#FAF9F6] transition-colors" />
           </motion.button>
         )}
       </AnimatePresence>

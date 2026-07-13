@@ -77,9 +77,9 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
   ];
 
   return (
-    <div className="w-full bg-[#111113] text-[#F8F7F4]">
+    <div className="w-full bg-[#F8F7F4] text-[#111113]">
       {/* Intro Header */}
-      <section className="py-24 relative border-b border-[rgba(248,247,244,0.1)] overflow-hidden">
+      <section className="py-24 relative border-b border-[#111113]/10 overflow-hidden">
         {/* Ambient Background Video */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <motion.div
@@ -90,7 +90,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
           >
             <video
               src="/facilissimo web (7).mp4"
-              className="absolute inset-0 w-full h-full object-cover opacity-60"
+              className="absolute inset-0 w-full h-full object-cover opacity-20"
               autoPlay
               loop
               muted
@@ -98,8 +98,8 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
             />
           </motion.div>
           {/* Balanced overlay: slightly dark on the left for text legibility, clear/transparent on the right to see the beautiful video */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#111113]/95 via-[#111113]/60 to-[#111113]/25" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#111113]/30 via-transparent to-[#111113]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#F8F7F4]/95 via-[#F8F7F4]/60 to-[#F8F7F4]/25" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F8F7F4]/30 via-transparent to-[#F8F7F4]" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
@@ -121,14 +121,14 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
               {lang === "it" ? "[ CHI C'È DIETRO FACILISSIMO WEB ]" : "[ WHO IS BEHIND FACILISSIMO WEB ]"}
             </span>
             
-            <h1 className="font-tan text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F8F7F4] tracking-wide leading-relaxed">
+            <h1 className="font-tan text-4xl sm:text-5xl lg:text-6xl font-bold text-[#111113] tracking-wide leading-relaxed">
               M. Teresa Rogani
             </h1>
             <p className="font-mono text-[10px] text-[#E35930] uppercase tracking-widest font-bold">
               {lang === "it" ? "Freelance Web Designer & Sviluppatrice AI-Powered" : "Freelance Web Designer & AI-Powered Developer"}
             </p>
 
-            <div className="space-y-4 font-sans text-xs sm:text-sm text-[#F8F7F4]/80 leading-relaxed">
+            <div className="space-y-4 font-sans text-xs sm:text-sm text-[#111113]/80 leading-relaxed">
               {isFacilitated ? (
                 <>
                   <p>
@@ -141,7 +141,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
               ) : (
                 <>
                   <p>
-                    Sono la fondatrice e <strong className="text-[#E35930]">unica titolare</strong> di Facilissimo Web. Ho creato questo studio con un'idea ben precisa: abbattere le barriere del web design tradizionale e offrire siti web ultra-professionali, veloci e ottimizzati, sfruttando le tecnologie di Intelligenza Artificiale di ultima generazione.
+                    Sono la fondatrice e <strong className="text-[#E35930]">unica titolare</strong> di Facilissimo Web. Ho creato questo studio con un'idea ben precisa: abbattere le barriere del web design tradicional e offrire siti web ultra-professionali, veloci e ottimizzati, sfruttando le tecnologie di Intelligenza Artificiale di ultima generazione.
                   </p>
                   <p>
                     A differenza delle agenzie tradizionali dove il tuo progetto passa di mano in mano, qui <strong className="text-[#E35930]">non c'è nessun team</strong>. Lavoro da sola. Questo è il mio più grande punto di forza: garantisco un canale di comunicazione diretto, trasparente ed estremamente veloce.
@@ -167,15 +167,15 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
             className="lg:col-span-6"
           >
             {/* Visual composition of Teresa / Workspace */}
-            <div className="relative w-full aspect-[4/3] overflow-hidden border border-[rgba(248,247,244,0.1)] bg-[#151518]">
+            <div className="relative w-full aspect-[4/3] overflow-hidden border border-[#111113]/10 bg-[#FAF9F6]">
               <img
                 src="/io.jpg"
                 alt="M. Teresa Rogani Freelance Web Designer"
                 className="w-full h-full object-cover opacity-95 transition-all duration-300"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#111113]/90 via-transparent to-transparent"></div>
-              <div className="absolute bottom-6 left-6 text-[#F8F7F4] space-y-1">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#F8F7F4]/90 via-transparent to-transparent"></div>
+              <div className="absolute bottom-6 left-6 text-[#111113] space-y-1">
                 <p className="font-display font-bold text-lg">M. Teresa Rogani</p>
                 <p className="text-[9px] font-mono text-[#E35930] uppercase tracking-widest font-bold">
                   Macerata (Marche), Italia
@@ -188,16 +188,16 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
       </section>
 
       {/* The Single Freelancer Advantage */}
-      <section className="py-24 bg-[#151518] border-b border-[rgba(248,247,244,0.1)]">
+      <section className="py-24 bg-[#FAF9F6] border-b border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
               {isFacilitated ? "[ I VALORI DI FACILISSIMO WEB ]" : "[ EFFICIENZA & VALORE ]"}
             </span>
-            <h2 className="font-display text-3xl font-bold tracking-wide text-[#F8F7F4]">
+            <h2 className="font-display text-3xl font-bold tracking-wide text-[#111113]">
               {isFacilitated ? "Perché lavorare con me conviene" : "Il Vantaggio del Freelance Unico"}
             </h2>
-            <p className="text-[#F8F7F4]/70 font-sans text-xs sm:text-sm">
+            <p className="text-[#111113]/70 font-sans text-xs sm:text-sm">
               {isFacilitated 
                 ? "I vantaggi di avere una sola persona esperta che segue il tuo progetto dall'inizio alla fine."
                 : "Perché collaborare con una sola persona qualificata è una scelta vincente per la tua azienda rispetto a un'agenzia elefantiaca."}
@@ -212,15 +212,15 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-8 bg-[#111113] border border-[rgba(248,247,244,0.1)] space-y-4 hover:border-[#E35930]/40 transition-all"
+                className="p-8 bg-[#F8F7F4] border border-[#111113]/10 space-y-4 hover:border-[#E35930]/40 transition-all"
               >
-                <div className="w-10 h-10 border border-[rgba(248,247,244,0.15)] flex items-center justify-center text-[#E35930] group-hover:bg-[#E35930] group-hover:text-[#111113]">
+                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-[#E35930] group-hover:bg-[#E35930] group-hover:text-[#111113]">
                   {val.icon}
                 </div>
-                <h3 className="font-display text-lg font-bold text-[#F8F7F4]">
+                <h3 className="font-display text-lg font-bold text-[#111113]">
                   {val.title}
                 </h3>
-                <p className="text-xs text-[#F8F7F4]/70 leading-relaxed font-sans">
+                <p className="text-xs text-[#111113]/70 leading-relaxed font-sans">
                   {val.desc}
                 </p>
               </motion.div>
@@ -230,7 +230,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
       </section>
 
       {/* Method / AI & Craftsmanship */}
-      <section className="py-24 bg-[#111113]">
+      <section className="py-24 bg-[#F8F7F4]">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           <motion.div
@@ -242,10 +242,10 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
               {isFacilitated ? "[ METODO DI LAVORO ]" : "[ INTELLIGENZA ARTIGIANALE ]"}
             </span>
-            <h2 className="font-display text-3xl font-bold tracking-wide text-[#F8F7F4]">
+            <h2 className="font-display text-3xl font-bold tracking-wide text-[#111113]">
               {isFacilitated ? "Grafica e Assistenza con Computer" : "Artigianato & Intelligenza Artificiale"}
             </h2>
-            <div className="space-y-4 text-xs sm:text-sm text-[#F8F7F4]/70 leading-relaxed font-sans">
+            <div className="space-y-4 text-xs sm:text-sm text-[#111113]/70 leading-relaxed font-sans">
               {isFacilitated ? (
                 <>
                   <p>
@@ -261,7 +261,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
                     Molti pensano che l'Intelligenza Artificiale sostituisca il lavoro umano. Per me, è l'esatto contrario: <strong className="text-[#E35930]">l'IA lo potenzia ed eleva ad un livello superiore</strong>.
                   </p>
                   <p>
-                    Utilizzo l'IA in ogni fase del mio flusso di lavoro per eliminare i compiti ripetitivi (como la scrittura di codice di base o la generazione di bozze provvisorie). Questo mi permette di concentrarmi completamente su ciò che conta davvero per te: <strong className="text-[#E35930]">la strategia di comunicazione, l'eleganza estetica, l'ottimizzazione dell'esperienza utente e la conversione dei clienti</strong>.
+                    Utilizzo l'IA in ogni fase del mio flusso di lavoro per eliminare i compiti ripetitivi (come la scrittura di codice di base o la generazione di bozze provvisorie). Questo mi permette di concentrarmi completamente su ciò che conta davvero per te: <strong className="text-[#E35930]">la strategia di comunicazione, l'eleganza estetica, l'ottimizzazione dell'esperienza utente e la conversione dei clienti</strong>.
                   </p>
                   <p>
                     Il risultato è un sito web che costa la metà, viene consegnato nella metà del tempo, ma vanta una qualità tecnica e grafica sbalorditiva.
@@ -279,15 +279,15 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-[#151518] p-6 border border-[rgba(248,247,244,0.1)] space-y-4 hover:border-[#E35930]/40 transition-all"
+                className="bg-[#FAF9F6] p-6 border border-[#111113]/10 space-y-4 hover:border-[#E35930]/40 transition-all"
               >
-                <div className="w-10 h-10 border border-[rgba(248,247,244,0.15)] flex items-center justify-center text-[#E35930]">
+                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-[#E35930]">
                   {cat.icon}
                 </div>
-                <h4 className="font-display font-bold text-xs text-[#F8F7F4]">
+                <h4 className="font-display font-bold text-xs text-[#111113]">
                   {cat.title}
                 </h4>
-                <ul className="space-y-2 text-[10px] text-[#F8F7F4]/70 font-mono">
+                <ul className="space-y-2 text-[10px] text-[#111113]/75 font-mono">
                   {cat.skills.map((sk) => (
                     <li key={sk} className="flex items-center gap-1.5">
                       <span className="w-1 h-1 bg-[#E35930]"></span>
@@ -303,15 +303,15 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
       </section>
 
       {/* Philosophy Call To Action */}
-      <section className="py-24 bg-[#151518] text-[#F8F7F4] text-center border-t border-[rgba(248,247,244,0.1)]">
+      <section className="py-24 bg-[#FAF9F6] text-[#111113] text-center border-t border-[#111113]/10">
         <div className="max-w-2xl mx-auto px-6 space-y-6">
           <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
             {isFacilitated ? "[ DIRETTO & VELOCE ]" : "[ DIRETTO & VELOCE ]"}
           </span>
-          <h2 className="font-display text-3xl font-bold tracking-wide text-[#F8F7F4]">
+          <h2 className="font-display text-3xl font-bold tracking-wide text-[#111113]">
             {isFacilitated ? "Vuoi creare il tuo sito con me?" : "Pronto a lavorare direttamente con me?"}
           </h2>
-          <p className="text-[#F8F7F4]/80 font-sans text-xs sm:text-sm leading-relaxed">
+          <p className="text-[#111113]/80 font-sans text-xs sm:text-sm leading-relaxed">
             {isFacilitated 
               ? "Evita le lunghe attese delle grandi agenzie e i preventivi troppo alti. Parla direttamente con me e sviluppiamo il tuo nuovo sito web."
               : "Elimina i passaggi burocratici, i preventivi gonfiati e i tempi morti di un'agenzia. Parla direttamente con me e sviluppiamo il tuo nuovo sito web in tempi record."}
