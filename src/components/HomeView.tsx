@@ -223,8 +223,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           <div className="absolute inset-0 bg-gradient-to-b from-[#111113]/30 via-transparent to-[#111113] pointer-events-none hidden lg:block" />
           
           {/* Mobile/Tablet Overlays */}
-          <div className="absolute inset-0 bg-[#567e75]/80 pointer-events-none lg:hidden" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#111113] pointer-events-none lg:hidden" />
+          <div className="absolute inset-0 bg-[#F8F7F4]/20 backdrop-blur-[2px] pointer-events-none lg:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#F8F7F4] pointer-events-none lg:hidden" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">
@@ -240,21 +240,21 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               {t.heroPreTitle}
             </span>
  
-            <h1 className="font-tan text-2xl xs:text-3xl sm:text-5xl lg:text-7xl font-bold text-[#F8F7F4] leading-[1.1] tracking-tight animate-fade-in-up delay-75 break-words">
+            <h1 className="font-tan text-2xl xs:text-3xl sm:text-5xl lg:text-7xl font-bold text-[#111113] lg:text-[#F8F7F4] leading-[1.1] tracking-tight animate-fade-in-up delay-75 break-words">
               {t.heroTitleRegular}{" "}
               <span className="italic block mt-1 font-normal text-[#E35930] font-tan break-words" style={{ fontSize: 'var(--h1-span-size, 52px)' }}>
                 {t.heroTitleItalic}
               </span>
             </h1>
  
-            <p className="font-sans text-sm sm:text-base text-[#F8F7F4]/80 max-w-xl leading-relaxed animate-fade-in-up delay-150">
+            <p className="font-sans text-sm sm:text-base text-[#111113]/80 lg:text-[#F8F7F4]/80 max-w-xl leading-relaxed animate-fade-in-up delay-150">
               {t.heroDesc}
             </p>
  
             <div className="flex flex-wrap gap-4 pt-4 animate-fade-in-up delay-200">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="editorial-button-primary flex items-center gap-2 cursor-pointer !text-[13px]"
+                className="editorial-button-primary flex items-center gap-2 cursor-pointer !text-[13px] !bg-[#111113] !text-[#F8F7F4] !border-[#111113] hover:!bg-transparent hover:!text-[#111113] lg:!bg-[#E35930] lg:!text-[#111113] lg:!border-[#E35930] lg:hover:!text-[#E35930]"
                 id="hero-cta-main"
               >
                 {t.heroBtnPrimary}
@@ -262,7 +262,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               </button>
               <button
                 onClick={() => setCurrentTab("proposte")}
-                className="editorial-button-secondary cursor-pointer"
+                className="editorial-button-secondary lg:text-[#F8F7F4] lg:border-[#F8F7F4] cursor-pointer"
                 id="hero-cta-sec"
               >
                 {t.heroBtnSecondary}
@@ -270,7 +270,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             </div>
  
             {/* Micro proof badges */}
-            <div className="flex flex-wrap items-center gap-6 pt-8 border-t border-[rgba(248,247,244,0.1)] text-[9px] uppercase tracking-widest font-mono text-[#F8F7F4]/50 max-w-lg animate-fade-in-up delay-300">
+            <div className="flex flex-wrap items-center gap-6 pt-8 border-t border-[#111113]/10 lg:border-[rgba(248,247,244,0.1)] text-[9px] uppercase tracking-widest font-mono text-[#111113]/60 lg:text-[#F8F7F4]/50 max-w-lg animate-fade-in-up delay-300">
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#E35930]" />
                 <span>{t.proofDirect}</span>
