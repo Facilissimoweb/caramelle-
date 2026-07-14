@@ -295,78 +295,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
         </div>
       </section>
 
-      {/* AI Tech Stack Marquee Section */}
-      <section className="py-12 bg-[#111113] overflow-hidden border-b border-white/5 relative">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#c48f8a]/20 to-transparent"></div>
-        
-        <div className="max-w-7xl mx-auto px-6 mb-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-center md:text-left">
-            <span className="text-[9px] font-mono tracking-[0.3em] text-[#c48f8a] font-bold uppercase block mb-1">
-              {lang === "it" ? "IL NOSTRO CO-CREATORE" : "OUR AI CO-CREATOR"}
-            </span>
-            <h3 className="font-display text-xl sm:text-2xl font-bold tracking-wide text-[#F8F7F4]">
-              {lang === "it" ? "Sinergia Uomo-Macchina" : "Human-AI Synergy"}
-            </h3>
-          </div>
-          <p className="text-[#F8F7F4]/60 text-xs max-w-md text-center md:text-right leading-relaxed font-sans">
-            {lang === "it"
-              ? "Utilizziamo i modelli generativi più avanzati al mondo come copiloti tecnici per strutturare codice privo di bug e ottimizzare la SEO semantica."
-              : "We orchestrate the world's most advanced generative models as technical copilots to structure clean code and maximize semantic SEO."}
-          </p>
-        </div>
 
-        {/* Marquee Wrapper */}
-        <div className="relative w-full overflow-hidden py-4 bg-[#151518]/50 border-y border-white/5 select-none">
-          {/* Left and Right Fade overlays for premium visual look */}
-          <div className="absolute left-0 inset-y-0 w-16 sm:w-32 bg-gradient-to-r from-[#111113] to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute right-0 inset-y-0 w-16 sm:w-32 bg-gradient-to-l from-[#111113] to-transparent z-10 pointer-events-none"></div>
-
-          <style>{`
-            @keyframes aiMarquee {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
-            }
-            .animate-ai-marquee {
-              animation: aiMarquee 35s linear infinite;
-            }
-            .animate-ai-marquee:hover {
-              animation-play-state: paused;
-            }
-          `}</style>
-
-          <div className="inline-flex whitespace-nowrap animate-ai-marquee">
-            {/* List 1 */}
-            <div className="flex gap-8 items-center pr-8">
-              {aiTools.map((tool, idx) => (
-                <div key={`t1-${idx}`} className="flex items-center gap-3 bg-[#111113] border border-white/10 px-4 py-2.5 rounded-xl text-[#F8F7F4] hover:border-[#c48f8a]/50 transition-colors duration-300">
-                  <div className="p-1.5 rounded-lg bg-white/5 shrink-0">
-                    {tool.icon}
-                  </div>
-                  <div className="text-left font-sans">
-                    <p className={`text-xs font-bold bg-gradient-to-r ${tool.color} bg-clip-text text-transparent`}>{tool.name}</p>
-                    <p className="text-[9px] text-[#F8F7F4]/40 font-mono tracking-tight mt-0.5">{tool.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* List 2 (Duplicate for loop) */}
-            <div className="flex gap-8 items-center pr-8" aria-hidden="true">
-              {aiTools.map((tool, idx) => (
-                <div key={`t2-${idx}`} className="flex items-center gap-3 bg-[#111113] border border-white/10 px-4 py-2.5 rounded-xl text-[#F8F7F4] hover:border-[#c48f8a]/50 transition-colors duration-300">
-                  <div className="p-1.5 rounded-lg bg-white/5 shrink-0">
-                    {tool.icon}
-                  </div>
-                  <div className="text-left font-sans">
-                    <p className={`text-xs font-bold bg-gradient-to-r ${tool.color} bg-clip-text text-transparent`}>{tool.name}</p>
-                    <p className="text-[9px] text-[#F8F7F4]/40 font-mono tracking-tight mt-0.5">{tool.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Services / Focus Grid */}
       <section className="py-24 bg-[#FAF9F6] border-b border-[#111113]/10">
