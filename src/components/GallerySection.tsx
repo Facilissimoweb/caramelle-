@@ -216,7 +216,7 @@ export default function GallerySection({ lang, isFacilitated }: GallerySectionPr
                 className="w-24 h-24 object-contain"
               />
             </div>
-            <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
+            <span className="text-[10px] font-mono tracking-[0.3em] text-[#c48f8a] font-bold uppercase block">
               {lang === "it" ? "[ MEDIA MANAGER & ASSETS ]" : "[ MEDIA MANAGER & ASSETS ]"}
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-wide text-[#F8F7F4]">
@@ -237,7 +237,7 @@ export default function GallerySection({ lang, isFacilitated }: GallerySectionPr
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-3 py-1.5 font-mono text-[9px] uppercase tracking-wider border transition-all cursor-pointer ${
                   selectedCategory === cat
-                    ? "bg-[#E35930] text-[#111113] border-[#E35930] font-bold"
+                    ? "bg-[#c48f8a] text-[#111113] border-[#c48f8a] font-bold"
                     : "bg-transparent text-[#F8F7F4]/60 border-[rgba(248,247,244,0.1)] hover:text-[#F8F7F4] hover:border-[#F8F7F4]/30"
                 }`}
               >
@@ -276,8 +276,8 @@ export default function GallerySection({ lang, isFacilitated }: GallerySectionPr
                 }}
                 className={`group bg-[#151518] border transition-all duration-300 flex flex-col relative ${
                   isDragging === item.id 
-                    ? "border-[#E35930] scale-[0.99] bg-[#1a1a1e]" 
-                    : "border-[rgba(248,247,244,0.1)] hover:border-[#E35930]/40"
+                    ? "border-[#c48f8a] scale-[0.99] bg-[#1a1a1e]" 
+                    : "border-[rgba(248,247,244,0.1)] hover:border-[#c48f8a]/40"
                 }`}
                 style={{ contentVisibility: "auto" }}
               >
@@ -295,7 +295,7 @@ export default function GallerySection({ lang, isFacilitated }: GallerySectionPr
 
                   {/* Drag and Drop Overly Hint */}
                   {isDragging === item.id && (
-                    <div className="absolute inset-0 bg-[#111113]/90 flex flex-col items-center justify-center text-[#E35930] z-20 animate-fade-in">
+                    <div className="absolute inset-0 bg-[#111113]/90 flex flex-col items-center justify-center text-[#c48f8a] z-20 animate-fade-in">
                       <Upload className="w-8 h-8 mb-2 animate-bounce" />
                       <span className="font-mono text-[10px] font-bold tracking-wider uppercase">
                         {lang === "it" ? "RILASCIA PER SOSTITUIRE" : "RELEASE TO REPLACE"}
@@ -305,14 +305,14 @@ export default function GallerySection({ lang, isFacilitated }: GallerySectionPr
 
                   {/* Status Indicator Bar */}
                   <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-10">
-                    <span className="bg-[#111113]/80 backdrop-blur-md text-[#E35930] px-2.5 py-1 text-[8px] font-mono tracking-widest uppercase font-bold border border-[#E35930]/30">
+                    <span className="bg-[#111113]/80 backdrop-blur-md text-[#c48f8a] px-2.5 py-1 text-[8px] font-mono tracking-widest uppercase font-bold border border-[#c48f8a]/30">
                       {item.category}
                     </span>
 
                     {/* Status Badge */}
                     <div className="flex gap-2">
                       {isCustom ? (
-                        <span className="bg-[#E35930] text-[#111113] px-2 py-0.5 text-[8px] font-mono tracking-wider font-bold rounded-sm flex items-center gap-1">
+                        <span className="bg-[#c48f8a] text-[#111113] px-2 py-0.5 text-[8px] font-mono tracking-wider font-bold rounded-sm flex items-center gap-1">
                           <CheckCircle2 className="w-3 h-3" />
                           {lang === "it" ? "CARICATO DA UTENTE" : "USER UPLOADED"}
                         </span>
@@ -344,7 +344,7 @@ export default function GallerySection({ lang, isFacilitated }: GallerySectionPr
                     <button
                       onClick={() => triggerUpload(item.id)}
                       title={lang === "it" ? "Carica foto personalizzata" : "Upload custom photo"}
-                      className="p-1.5 bg-[#111113]/90 text-[#E35930] hover:text-[#F8F7F4] border border-[#E35930]/30 hover:bg-[#E35930]/20 transition-colors rounded cursor-pointer"
+                      className="p-1.5 bg-[#111113]/90 text-[#c48f8a] hover:text-[#F8F7F4] border border-[#c48f8a]/30 hover:bg-[#c48f8a]/20 transition-colors rounded cursor-pointer"
                     >
                       <Upload className="w-3.5 h-3.5" />
                     </button>
@@ -361,7 +361,7 @@ export default function GallerySection({ lang, isFacilitated }: GallerySectionPr
                 {/* Info and Metadata Block */}
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
-                    <h3 className="font-display text-base font-bold text-[#F8F7F4] group-hover:text-[#E35930] transition-colors">
+                    <h3 className="font-display text-base font-bold text-[#F8F7F4] group-hover:text-[#c48f8a] transition-colors">
                       {item.title}
                     </h3>
                     <p className="text-[11px] text-[#F8F7F4]/60 leading-relaxed font-sans">
@@ -372,7 +372,7 @@ export default function GallerySection({ lang, isFacilitated }: GallerySectionPr
                   {/* System file path / path representation */}
                   <div className="pt-3 border-t border-[rgba(248,247,244,0.06)] flex items-center justify-between font-mono text-[9px] text-[#F8F7F4]/40">
                     <div className="flex items-center gap-1">
-                      <FolderOpen className="w-3.5 h-3.5 text-[#E35930]/50" />
+                      <FolderOpen className="w-3.5 h-3.5 text-[#c48f8a]/50" />
                       <span>{isCustom ? "localStorage://data" : `/assets/images/${item.filename}`}</span>
                     </div>
                     <div>{item.dimensions}</div>
@@ -406,7 +406,7 @@ export default function GallerySection({ lang, isFacilitated }: GallerySectionPr
               {/* Close Button */}
               <button
                 onClick={() => setLightboxItem(null)}
-                className="absolute top-4 right-4 z-10 p-2 bg-[#111113]/80 hover:bg-[#E35930] text-[#F8F7F4] hover:text-[#111113] transition-colors border border-[rgba(248,247,244,0.1)] rounded-full cursor-pointer"
+                className="absolute top-4 right-4 z-10 p-2 bg-[#111113]/80 hover:bg-[#c48f8a] text-[#F8F7F4] hover:text-[#111113] transition-colors border border-[rgba(248,247,244,0.1)] rounded-full cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -427,14 +427,14 @@ export default function GallerySection({ lang, isFacilitated }: GallerySectionPr
               <div className="p-6 border-t border-[rgba(248,247,244,0.1)] bg-[#111113] space-y-4">
                 <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2">
                   <div>
-                    <span className="text-[10px] font-mono text-[#E35930] font-bold tracking-widest uppercase">
+                    <span className="text-[10px] font-mono text-[#c48f8a] font-bold tracking-widest uppercase">
                       {lightboxItem.category}
                     </span>
                     <h3 className="font-display text-xl font-bold text-[#F8F7F4]">{lightboxItem.title}</h3>
                   </div>
                   <div className="text-right sm:text-right text-left font-mono text-[10px] text-[#F8F7F4]/50 space-y-1">
                     <div>{lang === "it" ? "Risoluzione consigliata" : "Recommended resolution"}: {lightboxItem.dimensions}</div>
-                    <div>{lang === "it" ? "Percorso asset" : "Asset path"}: <code className="bg-[#151518] px-1 py-0.5 text-[#E35930]/80">/public/assets/images/{lightboxItem.filename}</code></div>
+                    <div>{lang === "it" ? "Percorso asset" : "Asset path"}: <code className="bg-[#151518] px-1 py-0.5 text-[#c48f8a]/80">/public/assets/images/{lightboxItem.filename}</code></div>
                   </div>
                 </div>
 
@@ -448,7 +448,7 @@ export default function GallerySection({ lang, isFacilitated }: GallerySectionPr
                       triggerUpload(lightboxItem.id);
                       setLightboxItem(null);
                     }}
-                    className="px-4 py-2 border border-[#E35930]/30 hover:border-[#E35930] text-[#E35930] font-mono text-[9px] uppercase tracking-wider font-bold transition-all cursor-pointer bg-[#151518]"
+                    className="px-4 py-2 border border-[#c48f8a]/30 hover:border-[#c48f8a] text-[#c48f8a] font-mono text-[9px] uppercase tracking-wider font-bold transition-all cursor-pointer bg-[#151518]"
                   >
                     {lang === "it" ? "Carica Nuova Immagine" : "Upload New Image"}
                   </button>

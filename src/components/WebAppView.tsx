@@ -42,9 +42,9 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FAF9F6] text-[#111113] relative selection:bg-[#E35930]/20">
+    <div className="min-h-screen bg-[#FAF9F6] text-[#111113] relative selection:bg-[#c48f8a]/20">
       {/* Decorative background gradients */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#E35930]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#c48f8a]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Main Content Container */}
@@ -61,7 +61,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                   className="w-[150px] h-[150px] object-contain"
                 />
               </div>
-              <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
+              <span className="text-[10px] font-mono tracking-[0.3em] text-[#c48f8a] font-bold uppercase block">
                 {lang === "it" ? "[ DEMO LIVE INTERATTIVE ]" : "[ LIVE INTERACTIVE DEMOS ]"}
               </span>
               <h1 className="font-display text-3xl xs:text-4xl sm:text-5xl font-bold tracking-tight text-[#111113] break-words">
@@ -76,7 +76,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
             
             <button
               onClick={() => setCurrentTab("proposte")}
-              className="text-[#E35930] hover:text-[#111113] font-mono text-[10px] font-bold tracking-widest uppercase flex items-center gap-1.5 transition-all group cursor-pointer border border-[#E35930]/30 hover:border-[#E35930] px-5 py-3 rounded-none bg-transparent"
+              className="text-[#c48f8a] hover:text-[#111113] font-mono text-[10px] font-bold tracking-widest uppercase flex items-center gap-1.5 transition-all group cursor-pointer border border-[#c48f8a]/30 hover:border-[#c48f8a] px-5 py-3 rounded-none bg-transparent"
               id="webappview-view-services-btn"
             >
               {t.portfolioViewAll}
@@ -150,7 +150,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                 {/* APRI A PAGINA INTERA Button */}
                 <button
                   onClick={() => handleOpenFullScreen("gusto")}
-                  className="w-full max-w-[390px] py-3.5 px-6 border border-[#E35930] hover:bg-[#E35930] text-[#E35930] hover:text-[#FAF9F6] font-mono text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg shadow-[#E35930]/10"
+                  className="w-full max-w-[390px] py-3.5 px-6 border border-[#c48f8a] hover:bg-[#c48f8a] text-[#c48f8a] hover:text-[#FAF9F6] font-mono text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg shadow-[#c48f8a]/10"
                 >
                   <Maximize2 className="w-4 h-4 animate-pulse" />
                   {lang === "it" ? "APRI A PAGINA INTERA" : "OPEN FULL PAGE"}
@@ -224,7 +224,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                 {/* APRI A PAGINA INTERA Button */}
                 <button
                   onClick={() => handleOpenFullScreen("tattoo")}
-                  className="w-full max-w-[390px] py-3.5 px-6 border border-[#E35930] hover:bg-[#E35930] text-[#E35930] hover:text-[#FAF9F6] font-mono text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg shadow-[#E35930]/10"
+                  className="w-full max-w-[390px] py-3.5 px-6 border border-[#c48f8a] hover:bg-[#c48f8a] text-[#c48f8a] hover:text-[#FAF9F6] font-mono text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg shadow-[#c48f8a]/10"
                 >
                   <Maximize2 className="w-4 h-4 animate-pulse" />
                   {lang === "it" ? "APRI A PAGINA INTERA" : "OPEN FULL PAGE"}
@@ -298,7 +298,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                 {/* APRI A PAGINA INTERA Button */}
                 <button
                   onClick={() => handleOpenFullScreen("nido")}
-                  className="w-full max-w-[390px] py-3.5 px-6 border border-[#E35930] hover:bg-[#E35930] text-[#E35930] hover:text-[#FAF9F6] font-mono text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg shadow-[#E35930]/10"
+                  className="w-full max-w-[390px] py-3.5 px-6 border border-[#c48f8a] hover:bg-[#c48f8a] text-[#c48f8a] hover:text-[#FAF9F6] font-mono text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg shadow-[#c48f8a]/10"
                 >
                   <Maximize2 className="w-4 h-4 animate-pulse" />
                   {lang === "it" ? "APRI A PAGINA INTERA" : "OPEN FULL PAGE"}
@@ -323,7 +323,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
             {/* Top control and branding bar */}
             <div className="bg-[#FAF9F6] border-b border-[#111113]/10 px-4 sm:px-6 py-3.5 flex items-center justify-between shrink-0 select-none">
               <div className="flex items-center gap-3">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#E35930] animate-pulse"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-[#c48f8a] animate-pulse"></span>
                 <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#111113]">
                   {activeFullScreenApp === "gusto" 
                     ? (lang === "it" ? "Gusto & Passione — Demo Web App" : "Gusto & Passione — Food Delivery Web App")
@@ -339,7 +339,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
               
               <button
                 onClick={handleCloseFullScreen}
-                className="px-4 py-2 bg-[#E35930] text-[#FAF9F6] border border-[#E35930] font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-250 flex items-center gap-2 cursor-pointer"
+                className="px-4 py-2 bg-[#c48f8a] text-[#FAF9F6] border border-[#c48f8a] font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-250 flex items-center gap-2 cursor-pointer"
                 title={lang === "it" ? "Chiudi e torna al sito" : "Close and return to site"}
               >
                 <X className="w-4 h-4" />

@@ -38,7 +38,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
       privacy: {
         title: "Informativa sulla Privacy",
         facilitatedTitle: "La tua Privacy in parole semplici",
-        icon: <ShieldAlert className="w-8 h-8 text-[#E35930]" />,
+        icon: <ShieldAlert className="w-8 h-8 text-[#c48f8a]" />,
         normal: (
           <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
             <p><strong>1. Titolare del Trattamento:</strong> Il titolare del trattamento dei dati è M. Teresa Rogani, con sede e recapito email indicati nel footer di questo sito.</p>
@@ -50,7 +50,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         ),
         facilitated: (
           <div className="space-y-6 text-base text-[#F8F7F4] leading-relaxed font-sans">
-            <p className="bg-[#151518] p-4 border-l-4 border-[#E35930] text-sm">
+            <p className="bg-[#151518] p-4 border-l-4 border-[#c48f8a] text-sm">
               <strong>Promessa principale:</strong> I tuoi dati sono al sicuro. Non li do a nessuno e li uso solo per risponderti.
             </p>
             <p><strong>Chi ha i tuoi dati:</strong> M. Teresa Rogani. Se compili il modulo contatti, ricevo una mail privata con il tuo nome e la tua email.</p>
@@ -63,7 +63,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
       terms: {
         title: "Termini di Servizio",
         facilitatedTitle: "Regole del Servizio in parole semplici",
-        icon: <FileText className="w-8 h-8 text-[#E35930]" />,
+        icon: <FileText className="w-8 h-8 text-[#c48f8a]" />,
         normal: (
           <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
             <p><strong>1. Oggetto del Servizio:</strong> Facilissimo Web offre consulenza, progettazione grafica, branding e sviluppo di siti web statici e dinamici su misura, con eventuale integrazione di sistemi di Intelligenza Artificiale ed ottimizzazione SEO semantica.</p>
@@ -74,7 +74,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         ),
         facilitated: (
           <div className="space-y-6 text-base text-[#F8F7F4] leading-relaxed font-sans">
-            <p className="bg-[#151518] p-4 border-l-4 border-[#E35930] text-sm">
+            <p className="bg-[#151518] p-4 border-l-4 border-[#c48f8a] text-sm">
               <strong>Regole chiare:</strong> Svolgo la mia attività in modo onesto, trasparente e senza sorprese sui prezzi.
             </p>
             <p><strong>Come paghi:</strong> Paghi la prima metà (50%) all'inizio del lavoro per bloccare la data di consegna. Paghi la seconda metà solo quando il sito è finito, testato e pronto per essere pubblicato.</p>
@@ -87,11 +87,11 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
       ethics: {
         title: "AI Ethics & Trasparenza",
         facilitatedTitle: "Come viene usata l'Intelligenza Artificiale",
-        icon: <Sparkles className="w-8 h-8 text-[#E35930]" />,
+        icon: <Sparkles className="w-8 h-8 text-[#c48f8a]" />,
         normal: (
           <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
             <p><strong>Il Manifesto Etico di Facilissimo Web sull'Intelligenza Artificiale:</strong> Credo che l'Intelligenza Artificiale sia uno strumento straordinario per potenziare il talento umano, e non per rimpiazzarlo o generare contenuti di bassa qualità.</p>
-            <div className="bg-[#E35930]/10 border border-[#E35930]/30 p-4 text-[#F8F7F4] font-sans my-4">
+            <div className="bg-[#c48f8a]/10 border border-[#c48f8a]/30 p-4 text-[#F8F7F4] font-sans my-4">
               <strong>Dichiarazione di Co-creazione:</strong> Dichiariamo espressamente che tutti gli articoli, le immagini e i contenuti presenti su questo sito web sono stati creati ed elaborati con il coinvolgimento e l'ausilio di sistemi di Intelligenza Artificiale (AI), successivamente supervisionati, riscritti e rifiniti interamente a mano da Teresa per garantire la massima qualità e cura artigianale.
             </div>
             <p><strong>1. Trasparenza Radicale:</strong> Dichiaro apertamente che utilizzo algoritmi generativi avanzati e LLM (como i modelli Gemini di Google) esclusivamente per velocizzare la scrittura del codice ripetitivo, analizzare dati di mercato complessi e strutturare la SEO semantica iniziale.</p>
@@ -101,7 +101,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         ),
         facilitated: (
           <div className="space-y-6 text-base text-[#F8F7F4] leading-relaxed font-sans">
-            <p className="bg-[#151518] p-4 border-l-4 border-[#E35930] text-sm">
+            <p className="bg-[#151518] p-4 border-l-4 border-[#c48f8a] text-sm">
               <strong>L'impegno di Facilissimo Web:</strong> Uso la tecnologia per lavorare meglio, ma l'attention ai dettagli è sempre al 100% umana.
             </p>
             <p><strong>Come viene usata l'Intelligenza Artificiale:</strong> Mi aiuta a scrivere codice di base più velocemente e a studiare le parole chiave per Google. Questo riduce i tempi e i costi per te.</p>
@@ -114,13 +114,13 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
       sitemap: {
         title: "Mappa del Sito (Sitemap)",
         facilitatedTitle: "Le Pagine del Sito in modo semplice",
-        icon: <Compass className="w-8 h-8 text-[#E35930]" />,
+        icon: <Compass className="w-8 h-8 text-[#c48f8a]" />,
         normal: (
           <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
             <p>Questa mappa mostra l'architettura logica e la gerarchia dei contenuti presenti su <strong>Facilissimo Web</strong>, facilitando l'indicizzazione da parte dei motori di ricerca e la navigazione per tutti gli utenti:</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-[#111113]/50 p-4 border border-[rgba(248,247,244,0.08)]">
               <div className="space-y-2">
-                <h4 className="font-display font-bold text-xs uppercase tracking-wider text-[#E35930]">1. Navigazione Principale</h4>
+                <h4 className="font-display font-bold text-xs uppercase tracking-wider text-[#c48f8a]">1. Navigazione Principale</h4>
                 <ul className="space-y-1.5 pl-3 border-l border-[rgba(248,247,244,0.15)] text-[11px] font-mono">
                   <li>• <strong>Inizio (Home):</strong> Vetrina, Filosofia, SEO Predittiva e FAQ</li>
                   <li>• <strong>Chi Sono:</strong> Profilo professionale di M. Teresa Rogani</li>
@@ -130,7 +130,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
                 </ul>
               </div>
               <div className="space-y-2">
-                <h4 className="font-display font-bold text-xs uppercase tracking-wider text-[#E35930]">2. Moduli ed Utility</h4>
+                <h4 className="font-display font-bold text-xs uppercase tracking-wider text-[#c48f8a]">2. Moduli ed Utility</h4>
                 <ul className="space-y-1.5 pl-3 border-l border-[rgba(248,247,244,0.15)] text-[11px] font-mono">
                   <li>• <strong>SEO Predittiva:</strong> Sezione informativa sui trend di ricerca latenti</li>
                   <li>• <strong>Widget Accessibilità:</strong> Regolazione caratteri, contrasto e semplificazione</li>
@@ -143,12 +143,12 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         ),
         facilitated: (
           <div className="space-y-6 text-base text-[#F8F7F4] leading-relaxed font-sans">
-            <p className="bg-[#151518] p-4 border-l-4 border-[#E35930] text-sm">
+            <p className="bg-[#151518] p-4 border-l-4 border-[#c48f8a] text-sm">
               <strong>Mappa del Sito:</strong> Qui trovi l'elenco semplice di tutto quello che c'è su questo sito web.
             </p>
             <div className="space-y-4">
               <div>
-                <h4 className="font-bold text-[#E35930]">Pagine principali che puoi visitare:</h4>
+                <h4 className="font-bold text-[#c48f8a]">Pagine principali che puoi visitare:</h4>
                 <ul className="list-disc pl-5 mt-2 space-y-1.5 text-sm">
                   <li><strong>Home Page:</strong> Presentazione del mio studio, cos'è la SEO Predittiva e risposte alle domande comuni.</li>
                   <li><strong>Chi Sono:</strong> Conosci meglio me, Teresa, e come lavoro.</li>
@@ -167,7 +167,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
       privacy: {
         title: "Privacy Policy",
         facilitatedTitle: "Your Privacy in simple terms",
-        icon: <ShieldAlert className="w-8 h-8 text-[#E35930]" />,
+        icon: <ShieldAlert className="w-8 h-8 text-[#c48f8a]" />,
         normal: (
           <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
             <p><strong>1. Data Controller:</strong> The data controller is M. Teresa Rogani, with contact info specified in the footer of this website.</p>
@@ -179,7 +179,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         ),
         facilitated: (
           <div className="space-y-6 text-base text-[#F8F7F4] leading-relaxed font-sans">
-            <p className="bg-[#151518] p-4 border-l-4 border-[#E35930] text-sm">
+            <p className="bg-[#151518] p-4 border-l-4 border-[#c48f8a] text-sm">
               <strong>Promessa principale:</strong> I tuoi dati sono al sicuro con Facilissimo Web. Non li condivido mai, e li uso solo per rispondere ai tuoi messaggi.
             </p>
             <p><strong>Chi ha i tuoi dati:</strong> M. Teresa Rogani. Quando usi il modulo di contatto, ricevo una mail privata con il tuo nome e la tua email.</p>
@@ -192,7 +192,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
       terms: {
         title: "Terms of Service",
         facilitatedTitle: "Service Rules in simple terms",
-        icon: <FileText className="w-8 h-8 text-[#E35930]" />,
+        icon: <FileText className="w-8 h-8 text-[#c48f8a]" />,
         normal: (
           <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
             <p><strong>1. Subject:</strong> Facilissimo Web provides custom freelance web design, coding, branding, and smart SEO optimization services, with optional AI feature integration.</p>
@@ -203,7 +203,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         ),
         facilitated: (
           <div className="space-y-6 text-base text-[#F8F7F4] leading-relaxed font-sans">
-            <p className="bg-[#151518] p-4 border-l-4 border-[#E35930] text-sm">
+            <p className="bg-[#151518] p-4 border-l-4 border-[#c48f8a] text-sm">
               <strong>Clear Rules:</strong> I work in an honest, transparent way with zero price surprises.
             </p>
             <p><strong>How you pay:</strong> You pay the first half (50%) at the start to secure your delivery date. You pay the second half only when the website is finished, tested, and ready to go live.</p>
@@ -216,11 +216,11 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
       ethics: {
         title: "AI Ethics & Transparency",
         facilitatedTitle: "How I use Artificial Intelligence",
-        icon: <Sparkles className="w-8 h-8 text-[#E35930]" />,
+        icon: <Sparkles className="w-8 h-8 text-[#c48f8a]" />,
         normal: (
           <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
             <p><strong>Manifesto Etico di Facilissimo Web sull'Intelligenza Artificiale:</strong> Credo che l'Intelligenza Artificiale sia uno strumento straordinario per potenziare il talento umano, e non per rimpiazzarlo o generare contenuti di bassa qualità.</p>
-            <div className="bg-[#E35930]/10 border border-[#E35930]/30 p-4 text-[#F8F7F4] font-sans my-4">
+            <div className="bg-[#c48f8a]/10 border border-[#c48f8a]/30 p-4 text-[#F8F7F4] font-sans my-4">
               <strong>Co-creation Disclosure:</strong> We explicitly declare that all articles, images, and content on this website have been created with the involvement and assistance of Artificial Intelligence (AI) systems, and subsequently supervised, rewritten, and manually refined by Teresa to guarantee maximum quality and craftsmanship.
             </div>
             <p><strong>1. Trasparenza:</strong> Dichiaro apertamente che utilizzo modelli generativi avanzati (como Google Gemini) esclusivamente per velocizzare la scrittura del codice ripetitivo, analizzare dati complessi dei concorrenti e abbozzare le strutture SEO iniziali.</p>
@@ -230,7 +230,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         ),
         facilitated: (
           <div className="space-y-6 text-base text-[#F8F7F4] leading-relaxed font-sans">
-            <p className="bg-[#151518] p-4 border-l-4 border-[#E35930] text-sm">
+            <p className="bg-[#151518] p-4 border-l-4 border-[#c48f8a] text-sm">
               <strong>L'impegno di Facilissimo Web:</strong> Uso la tecnologia per lavorare più velocemente, ma l'attenzione ai dettagli è interamente frutto della mia cura artigianale.
             </p>
             <p><strong>Come uso l'AI:</strong> Mi aiuta a scrivere codice di base più velocemente e a trovare le migliori parole chiave per Google. Questo fa risparmiare tempo e mantiene bassi i costi per te.</p>
@@ -243,13 +243,13 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
       sitemap: {
         title: "Website Sitemap",
         facilitatedTitle: "Simple Website Map",
-        icon: <Compass className="w-8 h-8 text-[#E35930]" />,
+        icon: <Compass className="w-8 h-8 text-[#c48f8a]" />,
         normal: (
           <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
             <p>This sitemap illustrates the logical hierarchy and content structure of <strong>Facilissimo Web</strong>, ensuring search engines can index pages and users can browse efficiently:</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-[#111113]/50 p-4 border border-[rgba(248,247,244,0.08)]">
               <div className="space-y-2">
-                <h4 className="font-display font-bold text-xs uppercase tracking-wider text-[#E35930]">1. Core Navigation</h4>
+                <h4 className="font-display font-bold text-xs uppercase tracking-wider text-[#c48f8a]">1. Core Navigation</h4>
                 <ul className="space-y-1.5 pl-3 border-l border-[rgba(248,247,244,0.15)] text-[11px] font-mono">
                   <li>• <strong>Home:</strong> Studio intro, Predictive SEO section, FAQ accordion</li>
                   <li>• <strong>About:</strong> Professional profile of M. Teresa Rogani</li>
@@ -259,7 +259,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
                 </ul>
               </div>
               <div className="space-y-2">
-                <h4 className="font-display font-bold text-xs uppercase tracking-wider text-[#E35930]">2. Modality &amp; Preferences</h4>
+                <h4 className="font-display font-bold text-xs uppercase tracking-wider text-[#c48f8a]">2. Modality &amp; Preferences</h4>
                 <ul className="space-y-1.5 pl-3 border-l border-[rgba(248,247,244,0.15)] text-[11px] font-mono">
                   <li>• <strong>Predictive SEO:</strong> Latent intent marketing section</li>
                   <li>• <strong>Accessibility:</strong> Widget for layout zoom and high contrast</li>
@@ -272,12 +272,12 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         ),
         facilitated: (
           <div className="space-y-6 text-base text-[#F8F7F4] leading-relaxed font-sans">
-            <p className="bg-[#151518] p-4 border-l-4 border-[#E35930] text-sm">
+            <p className="bg-[#151518] p-4 border-l-4 border-[#c48f8a] text-sm">
               <strong>Sitemap:</strong> Here is a simple, easy list of everything available on this website.
             </p>
             <div className="space-y-4">
               <div>
-                <h4 className="font-bold text-[#E35930]">Main pages you can explore:</h4>
+                <h4 className="font-bold text-[#c48f8a]">Main pages you can explore:</h4>
                 <ul className="list-disc pl-5 mt-2 space-y-1.5 text-sm">
                   <li><strong>Home:</strong> My studio introduction, Predictive SEO explanation, and helpful FAQs.</li>
                   <li><strong>About Me:</strong> Read more about me, Teresa, and my working style.</li>
@@ -376,11 +376,11 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
               {/* Text-to-speech option */}
               <button
                 onClick={handleSpeak}
-                className="p-2 border border-[rgba(248,247,244,0.1)] hover:border-[#E35930] text-[#F8F7F4]/70 hover:text-[#E35930] transition-all flex items-center gap-1.5 cursor-pointer text-xs font-mono"
+                className="p-2 border border-[rgba(248,247,244,0.1)] hover:border-[#c48f8a] text-[#F8F7F4]/70 hover:text-[#c48f8a] transition-all flex items-center gap-1.5 cursor-pointer text-xs font-mono"
                 title={lang === "it" ? "Leggi ad alta voce" : "Read aloud"}
                 id="btn-speak-text"
               >
-                {isPlaying ? <VolumeX className="w-4 h-4 text-[#E35930]" /> : <Volume2 className="w-4 h-4" />}
+                {isPlaying ? <VolumeX className="w-4 h-4 text-[#c48f8a]" /> : <Volume2 className="w-4 h-4" />}
                 <span className="hidden sm:inline">
                   {isPlaying
                     ? lang === "it"
@@ -416,7 +416,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
           <div className="border-t border-[rgba(248,247,244,0.1)] pt-4 mt-6 flex justify-end shrink-0">
             <button
               onClick={onClose}
-              className={`font-mono text-[10px] uppercase font-bold tracking-widest px-5 py-2.5 bg-transparent hover:bg-[#E35930] text-[#E35930] hover:text-[#111113] border border-[#E35930] transition-all cursor-pointer ${
+              className={`font-mono text-[10px] uppercase font-bold tracking-widest px-5 py-2.5 bg-transparent hover:bg-[#c48f8a] text-[#c48f8a] hover:text-[#111113] border border-[#c48f8a] transition-all cursor-pointer ${
                 isFacilitated ? "text-xs px-6 py-3" : ""
               }`}
               id="btn-confirm-modal"

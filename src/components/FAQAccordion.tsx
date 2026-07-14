@@ -39,7 +39,7 @@ export default function FAQAccordion({
                 className="w-[150px] h-[150px] object-contain"
               />
             </div>
-            {showIcon && <HelpCircle className="w-8 h-8 text-[#E35930] mx-auto animate-pulse" id="faq-icon" />}
+            {showIcon && <HelpCircle className="w-8 h-8 text-[#c48f8a] mx-auto animate-pulse" id="faq-icon" />}
             {title && (
               <h2 className="font-display text-3xl font-bold text-[#F8F7F4]" id="faq-title">
                 {title}
@@ -68,11 +68,11 @@ export default function FAQAccordion({
                   aria-expanded={isOpen}
                   id={`faq-btn-${index}`}
                 >
-                  <span className="font-display font-semibold text-sm sm:text-base text-[#F8F7F4] pr-4 group-hover:text-[#E35930] transition-colors">
+                  <span className="font-display font-semibold text-sm sm:text-base text-[#F8F7F4] pr-4 group-hover:text-[#c48f8a] transition-colors">
                     {item.q}
                   </span>
                   <ChevronDown
-                    className={`w-4 h-4 text-[#E35930] transition-transform duration-300 shrink-0 ${
+                    className={`w-4 h-4 text-[#c48f8a] transition-transform duration-300 shrink-0 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   />

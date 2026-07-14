@@ -494,7 +494,7 @@ export default function App() {
   const currentIndex = TABS_ORDER.indexOf(currentTab);
 
   return (
-    <div className={`min-h-screen bg-[#F8F7F4] text-[#111113] flex flex-col selection:bg-[#E35930]/20 selection:text-[#E35930] antialiased ${
+    <div className={`min-h-screen bg-[#F8F7F4] text-[#111113] flex flex-col selection:bg-[#c48f8a]/20 selection:text-[#c48f8a] antialiased ${
       readableFont ? "font-mono tracking-wide" : "font-sans"
     } ${
       isFacilitated ? "text-lg" : ""
@@ -506,7 +506,7 @@ export default function App() {
             <div className="logo-text font-display font-extrabold text-2xl tracking-tighter leading-none text-[#111113] uppercase italic">
               Facilissimo<br />Web
             </div>
-            <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-[#E35930] font-bold mt-2.5">
+            <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-[#c48f8a] font-bold mt-2.5">
               [ M. Teresa Rogani ]
             </div>
           </div>
@@ -521,7 +521,7 @@ export default function App() {
                       onClick={() => handleSetTab(tabId)}
                       className={`text-left font-mono text-xs font-bold uppercase tracking-widest cursor-pointer transition-all block py-1 border-b-2 ${
                         isActive
-                          ? "text-[#E35930] border-[#E35930] translate-x-1"
+                          ? "text-[#c48f8a] border-[#c48f8a] translate-x-1"
                           : "text-[#111113]/60 hover:text-[#111113] hover:translate-x-0.5 border-transparent"
                       }`}
                     >
@@ -535,7 +535,7 @@ export default function App() {
         </div>
         
         <div className="space-y-4">
-          <div className="text-[10px] font-mono uppercase tracking-widest text-[#E35930] font-bold">
+          <div className="text-[10px] font-mono uppercase tracking-widest text-[#c48f8a] font-bold">
             [ Contatto Diretto ]
           </div>
           <div className="font-mono text-xs text-[#111113]/70 leading-relaxed">
@@ -595,12 +595,12 @@ export default function App() {
             >
               <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-[10px] tracking-wider uppercase font-bold text-[#111113]/60">
                 <div className="flex items-center flex-wrap gap-1.5 sm:gap-2 text-[#111113]/40">
-                  <Home className="w-3.5 h-3.5 text-[#E35930] mr-1 inline shrink-0" />
+                  <Home className="w-3.5 h-3.5 text-[#c48f8a] mr-1 inline shrink-0" />
                   {breadcrumbItems.map((item, index) => (
                     <React.Fragment key={item.id}>
                       {index > 0 && <span className="text-[#111113]/20 font-light mx-0.5 sm:mx-1 shrink-0">/</span>}
                       {index === breadcrumbItems.length - 1 ? (
-                        <span className="text-[#E35930] font-extrabold truncate max-w-[200px] sm:max-w-none">{item.label}</span>
+                        <span className="text-[#c48f8a] font-extrabold truncate max-w-[200px] sm:max-w-none">{item.label}</span>
                       ) : (
                         <button
                           onClick={() => {
@@ -610,7 +610,7 @@ export default function App() {
                               navigateTo(item.id, null, true);
                             }
                           }}
-                          className="text-[#111113]/60 hover:text-[#E35930] cursor-pointer transition-colors uppercase font-bold shrink-0"
+                          className="text-[#111113]/60 hover:text-[#c48f8a] cursor-pointer transition-colors uppercase font-bold shrink-0"
                         >
                           {item.label}
                         </button>
@@ -621,7 +621,7 @@ export default function App() {
                 
                 <div className="hidden sm:flex items-center gap-4 text-[9px] uppercase font-bold text-[#111113]/40 select-none">
                   <span>{lang === "it" ? "Posizione Attiva" : "Active Location"}</span>
-                  <span className="px-2 py-0.5 bg-[#E35930]/10 border border-[#E35930]/20 text-[#E35930] rounded-sm text-[9px]">
+                  <span className="px-2 py-0.5 bg-[#c48f8a]/10 border border-[#c48f8a]/20 text-[#c48f8a] rounded-sm text-[9px]">
                     {currentTab === "blog" && selectedArticle ? "ARTICLE_VIEW" : `${currentTab.toUpperCase()}_VIEW`}
                   </span>
                 </div>
@@ -644,7 +644,7 @@ export default function App() {
           <div className="w-full">
 
             {isFacilitated && (
-              <div className="bg-[#E35930] text-[#111113] text-center text-xs py-2 px-4 font-mono font-bold uppercase tracking-wider animate-pulse" id="facilitated-badge-banner">
+              <div className="bg-[#c48f8a] text-[#111113] text-center text-xs py-2 px-4 font-mono font-bold uppercase tracking-wider animate-pulse" id="facilitated-badge-banner">
                 {lang === "it"
                   ? "Modalità Semplificata Attiva — Caratteri ingranditi e testi più facili"
                   : "Simplified Mode Active — Larger fonts and simpler layout"}
@@ -678,15 +678,15 @@ export default function App() {
                   setCurrentTab(TABS_ORDER[currentIndex - 1]);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className="flex items-center gap-2.5 text-xs text-[#111113]/60 hover:text-[#E35930] transition-all py-2 border border-transparent hover:border-[#111113]/10 px-4 bg-transparent cursor-pointer group"
+                className="flex items-center gap-2.5 text-xs text-[#111113]/60 hover:text-[#c48f8a] transition-all py-2 border border-transparent hover:border-[#111113]/10 px-4 bg-transparent cursor-pointer group"
                 id="slide-nav-prev"
               >
-                <ChevronLeft className="w-4 h-4 text-[#E35930] group-hover:-translate-x-1 transition-transform" />
+                <ChevronLeft className="w-4 h-4 text-[#c48f8a] group-hover:-translate-x-1 transition-transform" />
                 <div className="text-left">
                   <span className="text-[9px] block text-[#111113]/40 uppercase tracking-widest font-normal">
                     {lang === "it" ? "Sezione Precedente" : "Previous Section"}
                   </span>
-                  <span className="font-bold uppercase tracking-wider text-[11px] text-[#111113]/80 group-hover:text-[#E35930]">
+                  <span className="font-bold uppercase tracking-wider text-[11px] text-[#111113]/80 group-hover:text-[#c48f8a]">
                     {getTabLabel(TABS_ORDER[currentIndex - 1])}
                   </span>
                 </div>
@@ -698,11 +698,11 @@ export default function App() {
             {/* Center Swipe Indicator & Dots */}
             <div className="flex flex-col items-center gap-2 py-1">
               <div className="flex items-center gap-2">
-                <span className="w-1 h-1 bg-[#E35930] rounded-full animate-ping" />
+                <span className="w-1 h-1 bg-[#c48f8a] rounded-full animate-ping" />
                 <span className="text-[9px] tracking-[0.25em] uppercase text-[#111113]/40 font-bold">
                   {lang === "it" ? "Scivola o trascina per sfogliare" : "Swipe or click to slide"}
                 </span>
-                <span className="w-1 h-1 bg-[#E35930] rounded-full animate-ping" />
+                <span className="w-1 h-1 bg-[#c48f8a] rounded-full animate-ping" />
               </div>
               
               {/* Nav dots */}
@@ -717,7 +717,7 @@ export default function App() {
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
                     className={`h-1.5 transition-all duration-300 rounded-full cursor-pointer ${
-                      tab === currentTab ? "w-6 bg-[#E35930]" : "w-1.5 bg-[#111113]/15 hover:bg-[#E35930]/40"
+                      tab === currentTab ? "w-6 bg-[#c48f8a]" : "w-1.5 bg-[#111113]/15 hover:bg-[#c48f8a]/40"
                     }`}
                     title={getTabLabel(tab)}
                     id={`slide-nav-dot-${tab}`}
@@ -734,18 +734,18 @@ export default function App() {
                   setCurrentTab(TABS_ORDER[currentIndex + 1]);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className="flex items-center gap-2.5 text-xs text-[#111113]/60 hover:text-[#E35930] transition-all py-2 border border-transparent hover:border-[#111113]/10 px-4 bg-transparent cursor-pointer text-right group"
+                className="flex items-center gap-2.5 text-xs text-[#111113]/60 hover:text-[#c48f8a] transition-all py-2 border border-transparent hover:border-[#111113]/10 px-4 bg-transparent cursor-pointer text-right group"
                 id="slide-nav-next"
               >
                 <div className="text-right">
                   <span className="text-[9px] block text-[#111113]/40 uppercase tracking-widest font-normal">
                     {lang === "it" ? "Prossima Sezione" : "Next Section"}
                   </span>
-                  <span className="font-bold uppercase tracking-wider text-[11px] text-[#111113]/80 group-hover:text-[#E35930]">
+                  <span className="font-bold uppercase tracking-wider text-[11px] text-[#111113]/80 group-hover:text-[#c48f8a]">
                     {getTabLabel(TABS_ORDER[currentIndex + 1])}
                   </span>
                 </div>
-                <ChevronRight className="w-4 h-4 text-[#E35930] group-hover:translate-x-1 transition-transform" />
+                <ChevronRight className="w-4 h-4 text-[#c48f8a] group-hover:translate-x-1 transition-transform" />
               </button>
             ) : (
               <div className="hidden sm:block w-40" />
@@ -803,12 +803,12 @@ export default function App() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 10 }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 right-6 z-40 w-11 h-11 bg-[#FAF9F6]/95 hover:bg-[#E35930] text-[#111113] hover:text-[#FAF9F6] border border-[#111113]/30 hover:border-[#E35930] rounded-none flex items-center justify-center cursor-pointer transition-all shadow-xl font-mono text-[9px] font-bold group"
+            className="fixed bottom-6 right-6 z-40 w-11 h-11 bg-[#FAF9F6]/95 hover:bg-[#c48f8a] text-[#111113] hover:text-[#FAF9F6] border border-[#111113]/30 hover:border-[#c48f8a] rounded-none flex items-center justify-center cursor-pointer transition-all shadow-xl font-mono text-[9px] font-bold group"
             title={lang === "it" ? "Torna su" : "Back to top"}
             id="back-to-top-btn"
             aria-label={lang === "it" ? "Torna in cima alla pagina" : "Back to top"}
           >
-            <ArrowUp className="w-4 h-4 text-[#E35930] group-hover:text-[#FAF9F6] transition-colors" />
+            <ArrowUp className="w-4 h-4 text-[#c48f8a] group-hover:text-[#FAF9F6] transition-colors" />
           </motion.button>
         )}
       </AnimatePresence>

@@ -173,7 +173,7 @@ export default function CyberAiGuideApp({ lang = "it" }: CyberAiGuideAppProps) {
         <div className="px-5 py-3.5 bg-[#151518] border-b border-gray-800 flex justify-between items-center z-10 select-none">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">
-              <Cpu className="w-4 h-4 text-[#E35930] animate-pulse" />
+              <Cpu className="w-4 h-4 text-[#c48f8a] animate-pulse" />
               <span className="font-bold text-gray-300 text-[10px] tracking-[0.2em] uppercase">
                 <span>SYS.FAQ_V1.0</span>
               </span>
@@ -201,7 +201,7 @@ export default function CyberAiGuideApp({ lang = "it" }: CyberAiGuideAppProps) {
         >
           {/* Sfondo Grid Cyberpunk animato */}
           <div className="absolute inset-0 opacity-10 pointer-events-none" 
-               style={{ backgroundImage: 'linear-gradient(transparent 95%, #E35930 100%), linear-gradient(90deg, transparent 95%, #E35930 100%)', backgroundSize: '25px 25px' }}>
+               style={{ backgroundImage: 'linear-gradient(transparent 95%, #c48f8a 100%), linear-gradient(90deg, transparent 95%, #c48f8a 100%)', backgroundSize: '25px 25px' }}>
           </div>
 
           {/* CRT Scanline Overlay Effect */}
@@ -232,7 +232,7 @@ export default function CyberAiGuideApp({ lang = "it" }: CyberAiGuideAppProps) {
                     
                     {imgError[slide.id] ? (
                       <div className="absolute inset-0 bg-slate-950 flex flex-col items-center justify-center p-4">
-                        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#E35930_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#c48f8a_1px,transparent_1px)] [background-size:16px_16px]"></div>
                         <Cpu className="w-8 h-8 text-gray-600 mb-2 animate-pulse" />
                         <span className="text-[9px] font-mono text-gray-500 uppercase tracking-widest">
                           <span>DATA_STREAM_OFFLINE</span>

@@ -46,7 +46,7 @@ export default function StripePaymentsDemo({ lang, isFacilitated }: StripePaymen
         {/* Left column: Explanations and Guides */}
         <div className="lg:col-span-7 space-y-6">
           <div className="space-y-2">
-            <span className="text-[10px] uppercase tracking-[0.25em] text-[#E35930] font-mono font-bold block">
+            <span className="text-[10px] uppercase tracking-[0.25em] text-[#c48f8a] font-mono font-bold block">
               {lang === "it" ? "[ GUIDA INTEGRAZIONE PAGAMENTI ]" : "[ PAYMENT INTEGRATION GUIDE ]"}
             </span>
             <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#111113] tracking-tight">
@@ -65,7 +65,7 @@ export default function StripePaymentsDemo({ lang, isFacilitated }: StripePaymen
               onClick={() => setActiveTab("link")}
               className={`pb-3 text-xs font-mono font-bold uppercase tracking-wider border-b-2 px-4 transition-all cursor-pointer ${
                 activeTab === "link"
-                  ? "border-[#E35930] text-[#E35930]"
+                  ? "border-[#c48f8a] text-[#c48f8a]"
                   : "border-transparent text-[#111113]/40 hover:text-[#111113]/70"
               }`}
             >
@@ -75,7 +75,7 @@ export default function StripePaymentsDemo({ lang, isFacilitated }: StripePaymen
               onClick={() => setActiveTab("api")}
               className={`pb-3 text-xs font-mono font-bold uppercase tracking-wider border-b-2 px-4 transition-all cursor-pointer ${
                 activeTab === "api"
-                  ? "border-[#E35930] text-[#E35930]"
+                  ? "border-[#c48f8a] text-[#c48f8a]"
                   : "border-transparent text-[#111113]/40 hover:text-[#111113]/70"
               }`}
             >
@@ -85,8 +85,8 @@ export default function StripePaymentsDemo({ lang, isFacilitated }: StripePaymen
 
           {activeTab === "link" ? (
             <div className="space-y-4 animate-fadeIn">
-              <div className="p-4 bg-[#F8F7F4] border border-[#E35930]/30 rounded-none space-y-2">
-                <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#E35930] uppercase">
+              <div className="p-4 bg-[#F8F7F4] border border-[#c48f8a]/30 rounded-none space-y-2">
+                <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#c48f8a] uppercase">
                   <Link className="w-4 h-4" />
                   <span>{lang === "it" ? "La famosa 'Stringa di Stripe'" : "The 'Stripe Link String' approach"}</span>
                 </div>
@@ -126,7 +126,7 @@ export default function StripePaymentsDemo({ lang, isFacilitated }: StripePaymen
           ) : (
             <div className="space-y-4 animate-fadeIn">
               <div className="p-4 bg-[#F8F7F4] border border-[#111113]/10 rounded-none space-y-2">
-                <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#E35930] uppercase">
+                <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#c48f8a] uppercase">
                   <Code className="w-4 h-4" />
                   <span>{lang === "it" ? "Integrazione API Completa" : "Full API/Elements Checkout"}</span>
                 </div>
@@ -172,7 +172,7 @@ export default function StripePaymentsDemo({ lang, isFacilitated }: StripePaymen
               <span>PCI-DSS Compliant</span>
             </div>
             <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase text-[#111113]/55">
-              <CreditCard className="w-3.5 h-3.5 text-[#E35930]" />
+              <CreditCard className="w-3.5 h-3.5 text-[#c48f8a]" />
               <span>Carte, Apple Pay, Google Pay</span>
             </div>
           </div>
@@ -182,7 +182,7 @@ export default function StripePaymentsDemo({ lang, isFacilitated }: StripePaymen
         <div className="lg:col-span-5 bg-[#F8F7F4] border border-[#111113]/10 p-6 relative flex flex-col justify-between">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-mono font-bold tracking-widest text-[#E35930] uppercase">
+              <span className="text-[10px] font-mono font-bold tracking-widest text-[#c48f8a] uppercase">
                 {lang === "it" ? "LIVE SIMULATOR" : "LIVE SIMULATOR"}
               </span>
               <div className="flex items-center gap-1.5 text-[10px] font-mono text-green-600">
@@ -201,7 +201,7 @@ export default function StripePaymentsDemo({ lang, isFacilitated }: StripePaymen
                     type="text"
                     value={stripeLinkInput}
                     onChange={(e) => setStripeLinkInput(e.target.value)}
-                    className="w-full bg-[#FAF9F6] border border-[#111113]/15 text-xs font-mono text-[#111113]/85 px-3 py-2.5 focus:border-[#E35930] outline-none transition-colors"
+                    className="w-full bg-[#FAF9F6] border border-[#111113]/15 text-xs font-mono text-[#111113]/85 px-3 py-2.5 focus:border-[#c48f8a] outline-none transition-colors"
                   />
                   <p className="text-[10px] text-[#111113]/40 font-mono italic">
                     {lang === "it"
@@ -211,14 +211,14 @@ export default function StripePaymentsDemo({ lang, isFacilitated }: StripePaymen
                 </div>
 
                 <div className="p-4 bg-[#FAF9F6] border border-[#111113]/10 space-y-3">
-                  <span className="text-[9px] font-mono font-bold text-[#E35930] uppercase block tracking-wider">
+                  <span className="text-[9px] font-mono font-bold text-[#c48f8a] uppercase block tracking-wider">
                     {lang === "it" ? "Anteprima Pulsante nel tuo Sito" : "Button Preview on Your Site"}
                   </span>
                   
                   {/* Styled simulated payment button */}
                   <button
                     onClick={handleStartSimulation}
-                    className="w-full py-3 bg-[#E35930] text-[#FAF9F6] font-bold text-xs uppercase tracking-widest hover:bg-transparent hover:text-[#E35930] hover:border-[#E35930] transition-all duration-300 border border-[#E35930] flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3 bg-[#c48f8a] text-[#FAF9F6] font-bold text-xs uppercase tracking-widest hover:bg-transparent hover:text-[#c48f8a] hover:border-[#c48f8a] transition-all duration-300 border border-[#c48f8a] flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <CreditCard className="w-4 h-4" />
                     <span>{lang === "it" ? "Paga con Stripe" : "Pay with Stripe"}</span>
@@ -247,7 +247,7 @@ export default function StripePaymentsDemo({ lang, isFacilitated }: StripePaymen
                       placeholder="mario.rossi@example.com"
                       value={emailInput}
                       onChange={(e) => setEmailInput(e.target.value)}
-                      className="w-full bg-[#FAF9F6] border border-[#111113]/15 text-xs px-3 py-2 outline-none focus:border-[#E35930]"
+                      className="w-full bg-[#FAF9F6] border border-[#111113]/15 text-xs px-3 py-2 outline-none focus:border-[#c48f8a]"
                     />
                   </div>
 
@@ -258,7 +258,7 @@ export default function StripePaymentsDemo({ lang, isFacilitated }: StripePaymen
                       <span className="text-[#111113]/50">{cardExpiry}</span>
                       <span className="text-[#111113]/50">{cardCvc}</span>
                     </div>
-                    <p className="text-[9px] text-[#E35930]/80 font-mono">
+                    <p className="text-[9px] text-[#c48f8a]/80 font-mono">
                       {lang === "it" ? "Simulatore: carta di prova precompilata." : "Simulator mode: prefilled test card."}
                     </p>
                   </div>
@@ -271,14 +271,14 @@ export default function StripePaymentsDemo({ lang, isFacilitated }: StripePaymen
                       placeholder="Mario Rossi"
                       value={cardName}
                       onChange={(e) => setCardName(e.target.value)}
-                      className="w-full bg-[#FAF9F6] border border-[#111113]/15 text-xs px-3 py-2 outline-none focus:border-[#E35930]"
+                      className="w-full bg-[#FAF9F6] border border-[#111113]/15 text-xs px-3 py-2 outline-none focus:border-[#c48f8a]"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isProcessing}
-                    className="w-full py-3 bg-[#E35930] text-[#FAF9F6] font-bold text-xs uppercase tracking-widest transition-all cursor-pointer border border-[#E35930] hover:bg-transparent hover:text-[#E35930] disabled:opacity-50"
+                    className="w-full py-3 bg-[#c48f8a] text-[#FAF9F6] font-bold text-xs uppercase tracking-widest transition-all cursor-pointer border border-[#c48f8a] hover:bg-transparent hover:text-[#c48f8a] disabled:opacity-50"
                   >
                     {isProcessing ? (
                       <span className="flex items-center justify-center gap-2">
@@ -294,7 +294,7 @@ export default function StripePaymentsDemo({ lang, isFacilitated }: StripePaymen
                 <button
                   type="button"
                   onClick={resetSimulation}
-                  className="w-full text-center text-[10px] font-mono uppercase text-[#111113]/40 hover:text-[#E35930] transition-colors mt-2"
+                  className="w-full text-center text-[10px] font-mono uppercase text-[#111113]/40 hover:text-[#c48f8a] transition-colors mt-2"
                 >
                   {lang === "it" ? "Annulla e Torna Indietro" : "Cancel and Go Back"}
                 </button>
@@ -323,7 +323,7 @@ export default function StripePaymentsDemo({ lang, isFacilitated }: StripePaymen
                 
                 <button
                   onClick={resetSimulation}
-                  className="px-6 py-2.5 bg-transparent text-[#E35930] border border-[#E35930]/30 hover:border-[#E35930] text-[10px] font-mono uppercase tracking-widest transition-all cursor-pointer"
+                  className="px-6 py-2.5 bg-transparent text-[#c48f8a] border border-[#c48f8a]/30 hover:border-[#c48f8a] text-[10px] font-mono uppercase tracking-widest transition-all cursor-pointer"
                 >
                   {lang === "it" ? "Ripeti Simulazione" : "Run Again"}
                 </button>

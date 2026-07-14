@@ -178,13 +178,13 @@ export default function CookieBanner({ lang, isFacilitated, forceShow = false, o
           {/* Main banner text */}
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 shrink-0 bg-[#E35930]/10 border border-[#E35930]/30 text-[#E35930] flex items-center justify-center rounded-none mt-0.5">
+              <div className="w-10 h-10 shrink-0 bg-[#c48f8a]/10 border border-[#c48f8a]/30 text-[#c48f8a] flex items-center justify-center rounded-none mt-0.5">
                 <Cookie className="w-5 h-5 animate-spin-slow" />
               </div>
               <div className="space-y-1">
                 <h4 className="font-display font-bold text-[#F8F7F4] flex items-center gap-2">
                   {lang === "it" ? "Informativa sui Cookie & Privacy GDPR" : "Cookie Consent & GDPR Privacy"}
-                  <span className="text-[9px] font-mono border border-[#E35930]/40 text-[#E35930] px-1.5 py-0.5 uppercase tracking-wide">
+                  <span className="text-[9px] font-mono border border-[#c48f8a]/40 text-[#c48f8a] px-1.5 py-0.5 uppercase tracking-wide">
                     {lang === "it" ? "Scelta Libera" : "Free Choice"}
                   </span>
                 </h4>
@@ -201,7 +201,7 @@ export default function CookieBanner({ lang, isFacilitated, forceShow = false, o
               <div className="flex flex-wrap gap-2 shrink-0 w-full md:w-auto md:justify-end">
                 <button
                   onClick={() => setIsExpanding(true)}
-                  className="px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider text-[#F8F7F4]/60 hover:text-[#E35930] border border-[rgba(248,247,244,0.1)] hover:border-[#E35930] transition-all cursor-pointer flex items-center gap-1.5"
+                  className="px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider text-[#F8F7F4]/60 hover:text-[#c48f8a] border border-[rgba(248,247,244,0.1)] hover:border-[#c48f8a] transition-all cursor-pointer flex items-center gap-1.5"
                   id="cookie-btn-customize"
                 >
                   <Settings className="w-3.5 h-3.5" />
@@ -216,7 +216,7 @@ export default function CookieBanner({ lang, isFacilitated, forceShow = false, o
                 </button>
                 <button
                   onClick={handleAcceptAll}
-                  className="px-5 py-2 bg-[#E35930] text-[#111113] text-xs font-mono font-bold uppercase tracking-widest hover:bg-transparent hover:text-[#E35930] border border-[#E35930] transition-all cursor-pointer"
+                  className="px-5 py-2 bg-[#c48f8a] text-[#111113] text-xs font-mono font-bold uppercase tracking-widest hover:bg-transparent hover:text-[#c48f8a] border border-[#c48f8a] transition-all cursor-pointer"
                   id="cookie-btn-accept-all"
                 >
                   {lang === "it" ? "Accetta Tutti" : "Accept All"}
@@ -239,7 +239,7 @@ export default function CookieBanner({ lang, isFacilitated, forceShow = false, o
                   <div className="p-4 bg-[#111113] border border-[rgba(248,247,244,0.06)] flex flex-col justify-between gap-3">
                     <div className="space-y-1.5">
                       <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#F8F7F4]/90 uppercase">
-                        <Shield className="w-4 h-4 text-[#E35930]" />
+                        <Shield className="w-4 h-4 text-[#c48f8a]" />
                         {lang === "it" ? "1. Necessari" : "1. Essential"}
                       </div>
                       <p className="text-[11px] text-[#F8F7F4]/60 leading-relaxed font-sans">
@@ -249,22 +249,22 @@ export default function CookieBanner({ lang, isFacilitated, forceShow = false, o
                       </p>
                     </div>
                     <div className="flex items-center justify-between pt-1">
-                      <span className="text-[10px] font-mono text-[#E35930] font-bold uppercase">
+                      <span className="text-[10px] font-mono text-[#c48f8a] font-bold uppercase">
                         {lang === "it" ? "Sempre Attivo" : "Always On"}
                       </span>
                       <div className="w-8 h-8 rounded-none border border-[rgba(248,247,244,0.15)] bg-white/5 flex items-center justify-center text-gray-500">
-                        <Check className="w-4 h-4 text-[#E35930]" />
+                        <Check className="w-4 h-4 text-[#c48f8a]" />
                       </div>
                     </div>
                   </div>
 
                   {/* Category 2: Google Analytics 4 */}
                   <div className={`p-4 border transition-all flex flex-col justify-between gap-3 ${
-                    prefs.ga4 ? "bg-[#111113] border-[#E35930]/30" : "bg-[#111113] border-[rgba(248,247,244,0.06)]"
+                    prefs.ga4 ? "bg-[#111113] border-[#c48f8a]/30" : "bg-[#111113] border-[rgba(248,247,244,0.06)]"
                   }`}>
                     <div className="space-y-1.5">
                       <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#F8F7F4]/90 uppercase">
-                        <BarChart3 className="w-4 h-4 text-[#E35930]" />
+                        <BarChart3 className="w-4 h-4 text-[#c48f8a]" />
                         Google Analytics 4
                       </div>
                       <p className="text-[11px] text-[#F8F7F4]/60 leading-relaxed font-sans">
@@ -277,7 +277,7 @@ export default function CookieBanner({ lang, isFacilitated, forceShow = false, o
                       <button
                         onClick={() => togglePref("ga4")}
                         className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-1 transition-all cursor-pointer ${
-                          prefs.ga4 ? "text-[#E35930]" : "text-[#F8F7F4]/50 hover:text-[#F8F7F4]"
+                          prefs.ga4 ? "text-[#c48f8a]" : "text-[#F8F7F4]/50 hover:text-[#F8F7F4]"
                         }`}
                       >
                         {prefs.ga4 ? (lang === "it" ? "Consentito" : "Allowed") : (lang === "it" ? "Disattivo" : "Disabled")}
@@ -285,12 +285,12 @@ export default function CookieBanner({ lang, isFacilitated, forceShow = false, o
                       <button
                         onClick={() => togglePref("ga4")}
                         className={`w-12 h-6 border transition-all relative flex items-center px-0.5 cursor-pointer ${
-                          prefs.ga4 ? "border-[#E35930] bg-[#E35930]/10" : "border-[rgba(248,247,244,0.15)] bg-white/5"
+                          prefs.ga4 ? "border-[#c48f8a] bg-[#c48f8a]/10" : "border-[rgba(248,247,244,0.15)] bg-white/5"
                         }`}
                         id="cookie-toggle-ga4"
                       >
                         <span className={`w-4 h-4 bg-[#F8F7F4] transition-all block ${
-                          prefs.ga4 ? "translate-x-6 bg-[#E35930]" : "translate-x-0 bg-gray-500"
+                          prefs.ga4 ? "translate-x-6 bg-[#c48f8a]" : "translate-x-0 bg-gray-500"
                         }`} />
                       </button>
                     </div>
@@ -298,11 +298,11 @@ export default function CookieBanner({ lang, isFacilitated, forceShow = false, o
 
                   {/* Category 3: Meta Pixel */}
                   <div className={`p-4 border transition-all flex flex-col justify-between gap-3 ${
-                    prefs.metaPixel ? "bg-[#111113] border-[#E35930]/30" : "bg-[#111113] border-[rgba(248,247,244,0.06)]"
+                    prefs.metaPixel ? "bg-[#111113] border-[#c48f8a]/30" : "bg-[#111113] border-[rgba(248,247,244,0.06)]"
                   }`}>
                     <div className="space-y-1.5">
                       <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#F8F7F4]/90 uppercase">
-                        <Target className="w-4 h-4 text-[#E35930]" />
+                        <Target className="w-4 h-4 text-[#c48f8a]" />
                         Meta Pixel (FB &amp; IG)
                       </div>
                       <p className="text-[11px] text-[#F8F7F4]/60 leading-relaxed font-sans">
@@ -315,7 +315,7 @@ export default function CookieBanner({ lang, isFacilitated, forceShow = false, o
                       <button
                         onClick={() => togglePref("metaPixel")}
                         className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-1 transition-all cursor-pointer ${
-                          prefs.metaPixel ? "text-[#E35930]" : "text-[#F8F7F4]/50 hover:text-[#F8F7F4]"
+                          prefs.metaPixel ? "text-[#c48f8a]" : "text-[#F8F7F4]/50 hover:text-[#F8F7F4]"
                         }`}
                       >
                         {prefs.metaPixel ? (lang === "it" ? "Consentito" : "Allowed") : (lang === "it" ? "Disattivo" : "Disabled")}
@@ -323,12 +323,12 @@ export default function CookieBanner({ lang, isFacilitated, forceShow = false, o
                       <button
                         onClick={() => togglePref("metaPixel")}
                         className={`w-12 h-6 border transition-all relative flex items-center px-0.5 cursor-pointer ${
-                          prefs.metaPixel ? "border-[#E35930] bg-[#E35930]/10" : "border-[rgba(248,247,244,0.15)] bg-white/5"
+                          prefs.metaPixel ? "border-[#c48f8a] bg-[#c48f8a]/10" : "border-[rgba(248,247,244,0.15)] bg-white/5"
                         }`}
                         id="cookie-toggle-meta"
                       >
                         <span className={`w-4 h-4 bg-[#F8F7F4] transition-all block ${
-                          prefs.metaPixel ? "translate-x-6 bg-[#E35930]" : "translate-x-0 bg-gray-500"
+                          prefs.metaPixel ? "translate-x-6 bg-[#c48f8a]" : "translate-x-0 bg-gray-500"
                         }`} />
                       </button>
                     </div>
@@ -348,20 +348,20 @@ export default function CookieBanner({ lang, isFacilitated, forceShow = false, o
                   <div className="flex gap-2 w-full sm:w-auto justify-end">
                     <button
                       onClick={handleRejectAll}
-                      className="flex-1 sm:flex-initial px-4 py-2 border border-[rgba(248,247,244,0.15)] hover:border-[#E35930] text-xs font-mono font-bold uppercase tracking-wider text-[#F8F7F4]/70 hover:text-[#E35930] transition-all cursor-pointer"
+                      className="flex-1 sm:flex-initial px-4 py-2 border border-[rgba(248,247,244,0.15)] hover:border-[#c48f8a] text-xs font-mono font-bold uppercase tracking-wider text-[#F8F7F4]/70 hover:text-[#c48f8a] transition-all cursor-pointer"
                     >
                       {lang === "it" ? "Rifiuta Tutti" : "Reject All"}
                     </button>
                     <button
                       onClick={handleSaveCustom}
-                      className="flex-1 sm:flex-initial px-5 py-2 bg-transparent hover:bg-[#E35930] text-[#E35930] hover:text-[#111113] border border-[#E35930] text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer"
+                      className="flex-1 sm:flex-initial px-5 py-2 bg-transparent hover:bg-[#c48f8a] text-[#c48f8a] hover:text-[#111113] border border-[#c48f8a] text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer"
                       id="cookie-btn-save-custom"
                     >
                       {lang === "it" ? "Salva Scelta" : "Save Selection"}
                     </button>
                     <button
                       onClick={handleAcceptAll}
-                      className="flex-1 sm:flex-initial px-5 py-2 bg-[#E35930] text-[#111113] text-xs font-mono font-bold uppercase tracking-wider hover:bg-transparent hover:text-[#E35930] border border-[#E35930] transition-all cursor-pointer"
+                      className="flex-1 sm:flex-initial px-5 py-2 bg-[#c48f8a] text-[#111113] text-xs font-mono font-bold uppercase tracking-wider hover:bg-transparent hover:text-[#c48f8a] border border-[#c48f8a] transition-all cursor-pointer"
                     >
                       {lang === "it" ? "Accetta Tutti" : "Accept All"}
                     </button>
