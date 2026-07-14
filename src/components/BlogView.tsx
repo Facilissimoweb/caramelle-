@@ -530,7 +530,7 @@ export default function BlogView({
               <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
                 {lang === "it" ? "[ TRASPARENZA E CONOSCENZA ]" : "[ INSIGHTS & UPDATES ]"}
               </span>
-              <h1 className="font-tan text-3xl sm:text-4xl lg:text-5xl font-bold tracking-wide text-[#111113]">
+              <h1 className="font-tan text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#111113] break-words">
                 {lang === "it" ? "Il Blog & News di Facilissimo Web" : "Facilissimo Web Blog & News"}
               </h1>
               <p className="text-[#111113]/70 font-sans text-xs sm:text-sm">
@@ -681,7 +681,7 @@ export default function BlogView({
                 <span className="flex items-center gap-1"><User className="w-3.5 h-3.5 text-[#E35930]" /> {currentArticle.author}</span>
               </div>
 
-              <h1 className="font-tan text-3xl sm:text-4xl lg:text-5xl font-bold tracking-wide text-[#111113] leading-tight">
+              <h1 className="font-tan text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#111113] leading-tight break-words">
                 {currentArticle.title[lang]}
               </h1>
             </div>

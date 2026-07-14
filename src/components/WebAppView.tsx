@@ -64,7 +64,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
               <span className="text-[10px] font-mono tracking-[0.3em] text-[#E35930] font-bold uppercase block">
                 {lang === "it" ? "[ DEMO LIVE INTERATTIVE ]" : "[ LIVE INTERACTIVE DEMOS ]"}
               </span>
-              <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-wide text-[#111113]">
+              <h1 className="font-display text-3xl xs:text-4xl sm:text-5xl font-bold tracking-tight text-[#111113] break-words">
                 {lang === "it" ? "Web App & Applicativi" : "Web Apps & Applications"}
               </h1>
               <p className="text-[#111113]/70 text-xs sm:text-sm leading-relaxed max-w-xl">

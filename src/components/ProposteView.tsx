@@ -216,7 +216,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
           <span className="text-[10px] uppercase tracking-[0.25em] text-[#E35930] font-mono font-bold block mb-2">
             {isFacilitated ? "[ PREZZI CHIARI ]" : "[ TRASPARENZA E PREZZI CHIARI ]"}
           </span>
-          <h1 className="font-tan text-4xl font-bold tracking-wide text-[#111113] sm:text-5xl">
+          <h1 className="font-tan text-3xl font-bold tracking-tight text-[#111113] sm:text-5xl break-words">
             {isFacilitated ? "Piani e Prezzi Chiarissimi" : "Piani e Proposte su Misura"}
           </h1>
           <p className="font-sans text-xs sm:text-sm text-[#111113]/70 leading-relaxed">
