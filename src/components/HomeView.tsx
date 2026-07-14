@@ -334,7 +334,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   </div>
                   
                   {/* Live badge */}
-                  <div className="absolute top-3 right-3 text-[7px] font-mono tracking-widest flex items-center gap-1 bg-[#F8F7F4]/90 border border-[#c48f8a]/30 px-2 py-0.5 text-[#c48f8a] font-bold">
+                  <div className="absolute top-3 right-3 text-[13px] font-mono tracking-widest flex items-center gap-1 bg-[#F8F7F4]/90 border border-[#0a0a0a] px-2 py-0.5 text-[#000000] font-bold">
                     <span>{lang === "it" ? "APRI CRITERIO" : "OPEN CRITERION"}</span>
                     <ArrowUpRight className="w-2 h-2" />
                   </div>
@@ -348,8 +348,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                         key={tag}
                         className={`px-2 py-0.5 border text-[8px] font-bold tracking-widest font-mono bg-transparent transition-all ${
                           activeFeaturePopupIndex === index
-                            ? "border-[#c48f8a] text-[#c48f8a]"
-                            : "border-[#111113]/10 text-[#c48f8a]/80 group-hover:border-[#c48f8a]/30"
+                            ? "border-[#000000] text-[#000000]"
+                            : "border-[#111113]/10 text-[#000000] group-hover:border-[#000000]/30"
                         }`}
                       >
                         {tag}
@@ -373,7 +373,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
 
                 {/* Click action text */}
                 <div className="mt-4 pt-3 border-t border-dashed border-[#111113]/10 flex items-center justify-between text-[9px] font-mono tracking-wider uppercase text-[#c48f8a]/70 group-hover:text-[#c48f8a] transition-colors">
-                  <span>{lang === "it" ? "Vedi metriche di impatto" : "See impact metrics"}</span>
+                  <span className="bg-[#030303] text-[#ffffff] text-[16px] text-left p-1">{lang === "it" ? "Vedi metriche di impatto" : "See impact metrics"}</span>
                   <ArrowRight className="w-2.5 h-2.5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </motion.div>
