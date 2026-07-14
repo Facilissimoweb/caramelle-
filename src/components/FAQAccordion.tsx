@@ -13,6 +13,7 @@ interface FAQAccordionProps {
   title?: string;
   subtitle?: string;
   showIcon?: boolean;
+  containerClassName?: string;
 }
 
 export default function FAQAccordion({
@@ -20,6 +21,7 @@ export default function FAQAccordion({
   title = "Domande Frequenti",
   subtitle = "Tutto quello che c'è da sapere sul processo creativo, la gestione del budget e la consegna dei lavori.",
   showIcon = true,
+  containerClassName = "",
 }: FAQAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -29,7 +31,7 @@ export default function FAQAccordion({
 
   return (
     <div className="w-full bg-[#111113] text-[#F8F7F4]">
-      <div className="max-w-3xl mx-auto px-6">
+      <div className={`max-w-3xl mx-auto px-6 ${containerClassName}`}>
         {(title || subtitle || showIcon) && (
           <div className="text-center mb-16 space-y-4">
             <div className="flex justify-center mb-4">

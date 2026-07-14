@@ -397,6 +397,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       {/* FAQ Section */}
       <section className="py-24 border-b border-[#111113]/10 bg-[#F8F7F4]">
         <FAQAccordion
+          containerClassName="mb-0 pb-[60px]"
           title={lang === "it" ? "Domande Frequenti" : "Frequently Asked Questions"}
           subtitle={
             lang === "it"
