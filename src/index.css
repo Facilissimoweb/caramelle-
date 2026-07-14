@@ -229,6 +229,12 @@ h1 {
   overflow-wrap: break-word;
 }
 
+@media (max-width: 480px) {
+  h1 {
+    line-height: 0.95 !important;
+  }
+}
+
 /* Fluid typography control for non-small header elements */
 h1:not(.text-xs):not(.text-sm) {
   font-size: var(--h1-font-size-base) !important;
