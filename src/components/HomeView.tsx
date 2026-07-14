@@ -226,6 +226,13 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">
           <div className="lg:col-span-8 xl:col-span-8 space-y-6">
+            <div className="flex items-center gap-2 mb-4 animate-fade-in-up">
+              <img
+                src={logoImage}
+                alt="Facilissimo Web Logo"
+                className="w-[150px] h-[150px] object-contain animate-pulse"
+              />
+            </div>
             <span className="text-[10px] uppercase tracking-[0.25em] text-[#c48f8a] font-mono font-bold block mb-2 animate-fade-in-up">
               {t.heroPreTitle}
             </span>
