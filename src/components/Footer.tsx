@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Mail, ArrowUp, Phone, MapPin, Share2, Copy, Check } from "lucide-react";
 
-const logoImage = "/f (1600 x 500 px).webp";
+const logoImage = "/f (1600 x 500 px) (1).svg";
 
 interface FooterProps {
   setCurrentTab: (tab: string) => void;

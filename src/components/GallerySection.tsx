@@ -13,7 +13,7 @@ import {
   HelpCircle
 } from "lucide-react";
 
-const logoImage = "/f (1600 x 500 px).webp";
+const logoImage = "/f (1600 x 500 px) (1).svg";
 
 interface GalleryItem {
   id: string;

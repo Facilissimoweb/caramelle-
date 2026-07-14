@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, HelpCircle } from "lucide-react";
-const logoImage = "/f (1600 x 500 px).webp";
+const logoImage = "/f (1600 x 500 px) (1).svg";
 
 interface FAQItem {
   q: string;
