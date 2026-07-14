@@ -2,7 +2,7 @@ import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { motion } from "motion/react";
 import { Mail, Send, Calendar, CheckCircle, Database, FileText, MapPin, Phone } from "lucide-react";
 import { ContactSubmission } from "../types";
-const logoImage = "/video/Progetto senza titolo (25).png";
+const logoImage = "/images/f (5).webp";
 
 interface ContattiViewProps {
   lang: "it" | "en";

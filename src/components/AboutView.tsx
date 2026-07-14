@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { ShieldCheck, Zap, Heart, Sparkles, Code, Pencil } from "lucide-react";
-const logoImage = "/video/Progetto senza titolo (25).png";
+const logoImage = "/images/f (5).webp";
 
 interface AboutViewProps {
   setCurrentTab: (tab: string) => void;

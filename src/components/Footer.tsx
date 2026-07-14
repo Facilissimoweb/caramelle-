@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Mail, ArrowUp, Phone, MapPin, Share2, Copy, Check } from "lucide-react";
 
-const logoImage = "/video/Progetto senza titolo (25).png";
+const logoImage = "/images/f (5).webp";
 
 interface FooterProps {
   setCurrentTab: (tab: string) => void;

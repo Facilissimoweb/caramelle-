@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Globe, Accessibility, Home, Code2, User2, Lightbulb, Mail, MessageSquare, BookOpen } from "lucide-react";
 import { translations } from "../translations";
 
-const logoImage = "/video/Progetto senza titolo (25).png";
+const logoImage = "/images/f (5).webp";
 
 const navIcons: Record<string, any> = {
   home: Home,

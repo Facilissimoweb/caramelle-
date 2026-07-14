@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, ReactNode } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Send, MessageSquare, AlertCircle, RefreshCw, Cpu } from "lucide-react";
 import { ChatMessage } from "../types";
-const logoImage = "/video/Progetto senza titolo (25).png";
+const logoImage = "/images/f (5).webp";
 
 interface ChatViewProps {
   lang: "it" | "en";

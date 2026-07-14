@@ -1,7 +1,7 @@
 import { useState, useEffect, ReactNode } from "react";
 import { Calendar, Clock, User, Share2, Tag, ArrowLeft, Linkedin, Twitter, Facebook, Copy, Check, ChevronRight, Bookmark, ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
-const logoImage = "/video/Progetto senza titolo (25).png";
+const logoImage = "/images/f (5).webp";
 
 interface Article {
   slug: string;
