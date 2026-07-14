@@ -6,7 +6,7 @@ import FAQAccordion from "./FAQAccordion";
 import TattooMacerataApp from "./TattooMacerataApp";
 import GustoPassioneApp from "./GustoPassioneApp";
 import NidoSogniApp from "./NidoSogniApp";
-const regeneratedHeroImage = "/assets/images/1facilissimo web .png";
+const regeneratedHeroImage = new URL("../assets/images/regenerated_image_1784027339085.png", import.meta.url).href;
 const logoImage = "/f (1600 x 500 px).webp";
 
 interface HomeViewProps {
@@ -216,7 +216,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
         </div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">
-          <div className="lg:col-span-10 xl:col-span-9 space-y-6">
+          <div className="lg:col-span-8 xl:col-span-8 space-y-6">
             <div className="flex items-center gap-2 mb-4 animate-fade-in-up">
               <img
                 src={logoImage}
@@ -271,6 +271,16 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 <CheckCircle2 className="w-3.5 h-3.5 text-[#c48f8a]" />
                 <span>{t.proofPrices}</span>
               </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-4 xl:col-span-4 flex justify-center items-center">
+            <div className="relative w-full max-w-[320px] aspect-square flex justify-center items-center">
+              <img
+                src={regeneratedHeroImage}
+                alt="Facilissimo Web Illustration"
+                className="w-full h-auto max-h-[360px] object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+              />
             </div>
           </div>
         </div>
