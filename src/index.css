@@ -20,6 +20,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&family=UnifrakturMaguntia&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
 @font-face {
@@ -221,7 +222,7 @@ body {
 }
 
 h1 {
-  font-family: "Syne", "TAN-NIMBUS", sans-serif !important;
+  font-family: "MuseoModerno", "Syne", "TAN-NIMBUS", sans-serif !important;
   line-height: 1.1;
   letter-spacing: -0.03em;
   text-transform: uppercase;
@@ -246,7 +247,7 @@ h2:not(.text-xs):not(.text-sm) {
 }
 
 h2 {
-  font-family: "Syne", "TAN-NIMBUS", sans-serif !important;
+  font-family: "MuseoModerno", "Syne", "TAN-NIMBUS", sans-serif !important;
   line-height: 1.1;
   font-weight: 800;
   letter-spacing: -0.03em;
