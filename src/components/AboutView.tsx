@@ -169,7 +169,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
             {/* Visual composition of Teresa / Workspace */}
             <div className="relative w-full aspect-[4/3] overflow-hidden border border-[#111113]/10 bg-[#FAF9F6]">
               <img
-                src="/io.jpg"
+                src="/images/IO.jpg"
                 alt="M. Teresa Rogani Freelance Web Designer"
                 className="w-full h-full object-cover opacity-95 transition-all duration-300"
                 referrerPolicy="no-referrer"
