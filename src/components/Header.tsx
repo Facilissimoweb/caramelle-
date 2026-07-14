@@ -151,7 +151,7 @@ export default function Header({
   const activeLangObj = LANGUAGES.find((l) => l.code === currentGoogleLang) || LANGUAGES[0];
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-[#F8F7F4]/60 backdrop-blur-lg z-50 border-b border-[#111113]/10 transition-all duration-300">
+    <header className="fixed top-0 left-0 w-full bg-[#c1ff72]/80 backdrop-blur-lg z-50 border-b border-[#111113]/10 transition-all duration-300">
       {/* Scroll Progress Bar */}
       <div
         className="absolute top-0 left-0 h-[3px] bg-[#E35930] transition-all duration-100 ease-out z-50"
