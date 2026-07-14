@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { Check, Box, ShieldCheck } from "lucide-react";
 import FAQAccordion from "./FAQAccordion";
 import StripePaymentsDemo from "./StripePaymentsDemo";
-const logoImage = "/images/f (5).webp";
+const logoImage = "/f (1600 x 500 px).webp";
 
 interface ProposteViewProps {
   setCurrentTab: (tab: string) => void;

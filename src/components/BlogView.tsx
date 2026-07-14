@@ -1,7 +1,7 @@
 import { useState, useEffect, ReactNode } from "react";
 import { Calendar, Clock, User, Share2, Tag, ArrowLeft, Linkedin, Twitter, Facebook, Copy, Check, ChevronRight, Bookmark, ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
-const logoImage = "/images/f (5).webp";
+const logoImage = "/f (1600 x 500 px).webp";
 
 interface Article {
   slug: string;

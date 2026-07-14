@@ -6,7 +6,7 @@ import TattooMacerataApp from "./TattooMacerataApp";
 import GustoPassioneApp from "./GustoPassioneApp";
 import NidoSogniApp from "./NidoSogniApp";
 
-const logoImage = "/images/f (5).webp";
+const logoImage = "/f (1600 x 500 px).webp";
 
 interface WebAppViewProps {
   setCurrentTab: (tab: string) => void;

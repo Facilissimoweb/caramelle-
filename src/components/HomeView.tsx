@@ -7,7 +7,7 @@ import TattooMacerataApp from "./TattooMacerataApp";
 import GustoPassioneApp from "./GustoPassioneApp";
 import NidoSogniApp from "./NidoSogniApp";
 const regeneratedHeroImage = "/assets/images/1facilissimo web .png";
-const logoImage = "/images/f (5).webp";
+const logoImage = "/f (1600 x 500 px).webp";
 
 interface HomeViewProps {
   setCurrentTab: (tab: string) => void;

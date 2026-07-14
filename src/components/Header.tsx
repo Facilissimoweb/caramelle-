@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Globe, Accessibility, Home, Code2, User2, Lightbulb, Mail, MessageSquare, BookOpen } from "lucide-react";
 import { translations } from "../translations";
 
-const logoImage = "/images/f (5).webp";
+const logoImage = "/f (1600 x 500 px).webp";
 
 const navIcons: Record<string, any> = {
   home: Home,
@@ -168,16 +168,8 @@ export default function Header({
           <img
             src={logoImage}
             alt="Facilissimo Web Logo"
-            className="w-10 h-10 object-contain rounded-full border border-[#111113]/10 group-hover:border-[#E35930] transition-colors shrink-0"
+            className="h-8 md:h-10 w-auto object-contain transition-colors shrink-0"
           />
-          <div className="flex flex-col items-start min-w-0">
-            <span className="font-display font-extrabold text-xs text-[#111113] tracking-tighter uppercase italic leading-none group-hover:text-[#E35930] transition-colors truncate">
-              Facilissimo Web
-            </span>
-            <span className="text-[9px] sm:text-[10px] text-[#E35930] tracking-[0.25em] uppercase font-mono font-bold mt-1.5 flex-shrink-0">
-              / studio
-            </span>
-          </div>
         </button>
 
         {/* Desktop Navigation */}
@@ -310,15 +302,7 @@ export default function Header({
                       aria-label={item.label}
                       id={`mobile-nav-${item.id}`}
                     >
-                      {item.id === "chi-sono" ? (
-                        <img
-                          src={logoImage}
-                          alt=""
-                          className="w-5 h-5 rounded-full object-contain shrink-0 border border-[#111113]/15"
-                        />
-                      ) : (
-                        <IconComponent className="w-5 h-5 shrink-0" />
-                      )}
+                      <IconComponent className="w-5 h-5 shrink-0" />
                       {isActive && (
                         <span className="absolute bottom-1 w-1 h-1 bg-[#E35930] rounded-full animate-pulse" />
                       )}
