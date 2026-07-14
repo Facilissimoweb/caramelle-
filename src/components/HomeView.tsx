@@ -230,7 +230,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
  
             <h1 className="font-tan text-2xl xs:text-3xl sm:text-5xl lg:text-7xl font-bold text-[#111113] leading-[1.1] tracking-tight animate-fade-in-up delay-75 break-words">
               {t.heroTitleRegular}{" "}
-              <span className="italic block mt-1 font-normal text-[#c48f8a] font-tan break-words" style={{ fontSize: 'var(--h1-span-size, 52px)' }}>
+              <span className="italic block mt-[5px] ml-0 pt-[9px] pb-[6px] pl-[18px] bg-black font-normal text-[#c48f8a] font-tan break-words" style={{ fontSize: 'var(--h1-span-size, 52px)' }}>
                 {t.heroTitleItalic}
               </span>
             </h1>
@@ -250,7 +250,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               </button>
               <button
                 onClick={() => setCurrentTab("proposte")}
-                className="editorial-button-secondary cursor-pointer"
+                className="editorial-button-secondary cursor-pointer !bg-black !text-[#c4e0ad]"
                 id="hero-cta-sec"
               >
                 {t.heroBtnSecondary}
