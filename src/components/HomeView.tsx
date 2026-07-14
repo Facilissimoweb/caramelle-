@@ -307,7 +307,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 onClick={() => handleOpenFeaturePopup(index)}
-                className={`flex flex-col border bg-[#F8F7F4] transition-all duration-300 group relative cursor-pointer overflow-hidden p-6 ${
+                className={`flex flex-col border bg-[#c1ff72] transition-all duration-300 group relative cursor-pointer overflow-hidden p-6 ${
                   activeFeaturePopupIndex === index 
                     ? "border-[#c48f8a] shadow-[0_0_25px_rgba(227,89,48,0.12)] scale-[1.01]" 
                     : "border-[#111113]/10 hover:border-[#111113]/30 hover:scale-[1.01]"
