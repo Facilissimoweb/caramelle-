@@ -214,9 +214,10 @@ body {
 }
 
 :root {
-  /* Dynamic text size controls for H1 elements to ensure fluid responsive scaling across devices */
+  /* Dynamic text size controls for H1 and H2 elements to ensure fluid responsive scaling across devices */
   --h1-font-size-base: clamp(1.6rem, 7.5vw, 4.5rem);
   --h1-span-size: clamp(1.4rem, 6vw, 52px);
+  --h2-font-size-base: clamp(1.4rem, 6.5vw, 3.5rem);
 }
 
 h1 {
@@ -230,7 +231,7 @@ h1 {
 }
 
 @media (max-width: 480px) {
-  h1 {
+  h1, h2 {
     line-height: 0.95 !important;
   }
 }
@@ -240,8 +241,13 @@ h1:not(.text-xs):not(.text-sm) {
   font-size: var(--h1-font-size-base) !important;
 }
 
+h2:not(.text-xs):not(.text-sm) {
+  font-size: var(--h2-font-size-base) !important;
+}
+
 h2 {
   font-family: "Syne", "TAN-NIMBUS", sans-serif !important;
+  line-height: 1.1;
   font-weight: 800;
   letter-spacing: -0.03em;
   text-transform: uppercase;
