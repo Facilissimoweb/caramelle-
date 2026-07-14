@@ -134,8 +134,8 @@ export default function Header({
 
   const navItems = [
     { id: "home", label: t.navInizio },
-    { id: "web-app", label: t.navWebApp },
     { id: "chi-sono", label: t.navChiSono },
+    { id: "web-app", label: t.navWebApp },
     { id: "proposte", label: t.navProposte },
     { id: "contatti", label: t.navContatti },
     { id: "chat", label: t.navChat },
@@ -275,17 +275,12 @@ export default function Header({
       {isMobileOpen && (
         <div className="xl:hidden border-t border-[#111113]/10 bg-[#FAF9F6]/98 backdrop-blur-2xl absolute top-20 left-0 w-full shadow-lg transition-all duration-300">
           <div className="px-4 py-4 flex flex-col gap-3">
-            {/* Compact Horizontal Grid of Minimal Icons for Navigation */}
-            <div className="flex flex-col gap-1.5" id="mobile-nav-container">
-              <div className="flex justify-between items-center px-1">
-                <span className="text-[8px] uppercase tracking-[0.2em] text-[#111113]/40 font-mono font-bold">
-                  {lang === "it" ? "Navigazione" : "Navigation"}
-                </span>
-                <span className="text-[9px] uppercase tracking-wider text-[#c48f8a] font-mono font-bold">
-                  {navItems.find((item) => item.id === currentTab)?.label}
-                </span>
-              </div>
-              <div className="grid grid-cols-7 gap-1" id="mobile-nav-grid">
+            {/* Classic Vertical List Navigation */}
+            <div className="flex flex-col gap-1" id="mobile-nav-container">
+              <span className="text-[9px] uppercase tracking-[0.2em] text-[#111113]/40 font-mono font-bold px-1 mb-1">
+                {lang === "it" ? "Navigazione" : "Navigation"}
+              </span>
+              <div className="flex flex-col gap-1" id="mobile-nav-list">
                 {navItems.map((item) => {
                   const isActive = currentTab === item.id;
                   const IconComponent = navIcons[item.id] || Home;
@@ -293,18 +288,21 @@ export default function Header({
                     <button
                       key={item.id}
                       onClick={() => handleNavClick(item.id)}
-                      className={`h-11 flex flex-col items-center justify-center transition-all rounded-sm relative cursor-pointer ${
+                      className={`w-full h-11 px-3 flex items-center justify-between transition-all border-l-4 cursor-pointer ${
                         isActive
-                          ? "bg-[#c48f8a]/20 text-[#c48f8a] border border-[#c48f8a]/50"
-                          : "text-[#111113]/70 bg-[#FAF9F6]/60 border border-[#111113]/10 hover:bg-[#111113]/5"
+                          ? "bg-[#c48f8a]/10 text-[#c48f8a] border-[#c48f8a] font-extrabold"
+                          : "text-[#111113]/70 bg-[#FAF9F6]/30 border-transparent hover:bg-[#111113]/5"
                       }`}
-                      title={item.label}
-                      aria-label={item.label}
                       id={`mobile-nav-${item.id}`}
                     >
-                      <IconComponent className="w-5 h-5 shrink-0" />
+                      <div className="flex items-center gap-3">
+                        <IconComponent className={`w-4 h-4 ${isActive ? "text-[#c48f8a]" : "text-[#111113]/50"}`} />
+                        <span className="uppercase tracking-[0.15em] font-bold text-[11px]" style={{ fontFamily: "var(--font-geologica), sans-serif" }}>
+                          {item.label}
+                        </span>
+                      </div>
                       {isActive && (
-                        <span className="absolute bottom-1 w-1 h-1 bg-[#c48f8a] rounded-full animate-pulse" />
+                        <span className="w-1.5 h-1.5 bg-[#c48f8a] rounded-full animate-pulse" />
                       )}
                     </button>
                   );
