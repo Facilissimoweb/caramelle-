@@ -206,16 +206,25 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           >
             <video
               src="/facilissimo web (6).mp4"
-              className="absolute inset-0 w-full h-full object-cover opacity-60"
+              className="absolute inset-0 w-full h-full object-cover opacity-60 hidden lg:block"
               autoPlay
               loop
               muted
               playsInline
             />
+            <img
+              src="/images/facilissio web siti web professionali on line prima di ieri (1).png"
+              alt="Mobile Background"
+              className="absolute inset-0 w-full h-full object-cover opacity-60 lg:hidden"
+            />
           </motion.div>
-          {/* Balanced overlay: slightly dark on the left for text legibility, clear/transparent on the right to see the beautiful video */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#111113]/95 via-[#111113]/60 to-[#111113]/25 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#111113]/30 via-transparent to-[#111113] pointer-events-none" />
+          {/* Desktop Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#111113]/95 via-[#111113]/60 to-[#111113]/25 pointer-events-none hidden lg:block" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#111113]/30 via-transparent to-[#111113] pointer-events-none hidden lg:block" />
+          
+          {/* Mobile/Tablet Overlays */}
+          <div className="absolute inset-0 bg-[#567e75]/80 pointer-events-none lg:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#111113] pointer-events-none lg:hidden" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">
