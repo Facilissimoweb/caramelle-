@@ -19,6 +19,15 @@ interface HomeViewProps {
 export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenModal }: HomeViewProps) {
   const t = translations[lang][isFacilitated ? "facilitated" : "normal"];
 
+  const aiTools = [
+    { name: "Google Gemini Ultra", desc: lang === "it" ? "Ragionamento Generativo & Codice" : "Generative Reasoning & Code", color: "from-blue-400 to-indigo-500", icon: <Cpu className="w-4 h-4 text-indigo-400" /> },
+    { name: "OpenAI GPT-4o", desc: lang === "it" ? "Sintesi Testi & Logica" : "Text Synthesis & Logic", color: "from-emerald-400 to-teal-500", icon: <Brain className="w-4 h-4 text-emerald-400" /> },
+    { name: "Anthropic Claude 3.5", desc: lang === "it" ? "Programmazione & Copywriting" : "Coding & Copywriting", color: "from-amber-400 to-orange-500", icon: <Zap className="w-4 h-4 text-amber-500" /> },
+    { name: "Midjourney v6", desc: lang === "it" ? "Asset Grafici & Concetti" : "Fine Art & Concept Assets", color: "from-purple-400 to-pink-500", icon: <Sparkles className="w-4 h-4 text-purple-400" /> },
+    { name: "DALL-E 3", desc: lang === "it" ? "Asset di Precisione" : "Precision Graphic Assets", color: "from-rose-400 to-red-500", icon: <Sparkles className="w-4 h-4 text-rose-400" /> },
+    { name: "Stable Diffusion", desc: lang === "it" ? "Generazione Visiva Custom" : "Custom Visual Generation", color: "from-cyan-400 to-blue-500", icon: <Cpu className="w-4 h-4 text-cyan-400" /> },
+  ];
+
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const [activeFullScreenApp, setActiveFullScreenApp] = useState<"gusto" | "tattoo" | "nido" | null>(null);
   const [activeFeaturePopupIndex, setActiveFeaturePopupIndex] = useState<number | null>(null);
@@ -285,7 +294,80 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           </div>
         </div>
       </section>
- 
+
+      {/* AI Tech Stack Marquee Section */}
+      <section className="py-12 bg-[#111113] overflow-hidden border-b border-white/5 relative">
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#c48f8a]/20 to-transparent"></div>
+        
+        <div className="max-w-7xl mx-auto px-6 mb-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="text-center md:text-left">
+            <span className="text-[9px] font-mono tracking-[0.3em] text-[#c48f8a] font-bold uppercase block mb-1">
+              {lang === "it" ? "IL NOSTRO CO-CREATORE" : "OUR AI CO-CREATOR"}
+            </span>
+            <h3 className="font-display text-xl sm:text-2xl font-bold tracking-wide text-[#F8F7F4]">
+              {lang === "it" ? "Sinergia Uomo-Macchina" : "Human-AI Synergy"}
+            </h3>
+          </div>
+          <p className="text-[#F8F7F4]/60 text-xs max-w-md text-center md:text-right leading-relaxed font-sans">
+            {lang === "it"
+              ? "Utilizziamo i modelli generativi più avanzati al mondo come copiloti tecnici per strutturare codice privo di bug e ottimizzare la SEO semantica."
+              : "We orchestrate the world's most advanced generative models as technical copilots to structure clean code and maximize semantic SEO."}
+          </p>
+        </div>
+
+        {/* Marquee Wrapper */}
+        <div className="relative w-full overflow-hidden py-4 bg-[#151518]/50 border-y border-white/5 select-none">
+          {/* Left and Right Fade overlays for premium visual look */}
+          <div className="absolute left-0 inset-y-0 w-16 sm:w-32 bg-gradient-to-r from-[#111113] to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute right-0 inset-y-0 w-16 sm:w-32 bg-gradient-to-l from-[#111113] to-transparent z-10 pointer-events-none"></div>
+
+          <style>{`
+            @keyframes aiMarquee {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            .animate-ai-marquee {
+              animation: aiMarquee 35s linear infinite;
+            }
+            .animate-ai-marquee:hover {
+              animation-play-state: paused;
+            }
+          `}</style>
+
+          <div className="inline-flex whitespace-nowrap animate-ai-marquee">
+            {/* List 1 */}
+            <div className="flex gap-8 items-center pr-8">
+              {aiTools.map((tool, idx) => (
+                <div key={`t1-${idx}`} className="flex items-center gap-3 bg-[#111113] border border-white/10 px-4 py-2.5 rounded-xl text-[#F8F7F4] hover:border-[#c48f8a]/50 transition-colors duration-300">
+                  <div className="p-1.5 rounded-lg bg-white/5 shrink-0">
+                    {tool.icon}
+                  </div>
+                  <div className="text-left font-sans">
+                    <p className={`text-xs font-bold bg-gradient-to-r ${tool.color} bg-clip-text text-transparent`}>{tool.name}</p>
+                    <p className="text-[9px] text-[#F8F7F4]/40 font-mono tracking-tight mt-0.5">{tool.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* List 2 (Duplicate for loop) */}
+            <div className="flex gap-8 items-center pr-8" aria-hidden="true">
+              {aiTools.map((tool, idx) => (
+                <div key={`t2-${idx}`} className="flex items-center gap-3 bg-[#111113] border border-white/10 px-4 py-2.5 rounded-xl text-[#F8F7F4] hover:border-[#c48f8a]/50 transition-colors duration-300">
+                  <div className="p-1.5 rounded-lg bg-white/5 shrink-0">
+                    {tool.icon}
+                  </div>
+                  <div className="text-left font-sans">
+                    <p className={`text-xs font-bold bg-gradient-to-r ${tool.color} bg-clip-text text-transparent`}>{tool.name}</p>
+                    <p className="text-[9px] text-[#F8F7F4]/40 font-mono tracking-tight mt-0.5">{tool.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Services / Focus Grid */}
       <section className="py-24 bg-[#FAF9F6] border-b border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -755,17 +837,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                     </div>
                   </div>
 
-                  {/* Summary Callout explaining the value */}
-                  <div className="p-6 bg-[#c48f8a]/5 border border-[#c48f8a]/20 space-y-3">
-                    <h5 className="text-xs font-mono font-bold uppercase tracking-wider text-[#c48f8a]">
-                      {lang === "it" ? "✓ Garanzia Teresa Rogani" : "✓ Teresa Rogani Promise"}
-                    </h5>
-                    <p className="text-xs text-[#F8F7F4]/70 font-sans leading-relaxed">
-                      {lang === "it" 
-                        ? "Ogni sito è costruito senza codice ridondante o temi commerciali prefabbricati. Ricevi una soluzione su misura che ti differenzia immediatamente, carica all'istante ed è predisposta per l'indicazione semantica automatica."
-                        : "Every web page is engineered from scratch, free of bloated page-builders and redundant legacy plugins. You receive a custom, high-converting digital product that loads immediately and is ready for automated semantic search ranking."}
-                    </p>
-                  </div>
+                  {/* Summary Callout explaining the value removed as requested */}
 
                 </div>
 

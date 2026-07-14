@@ -550,7 +550,7 @@ export default function GustoPassioneApp({ lang = "it" }: GustoPassioneAppProps)
   };
 
   return (
-    <div className="w-full h-full bg-zinc-50 font-sans relative flex flex-col overflow-hidden text-zinc-900">
+    <div className="w-full h-full bg-zinc-50 font-sans relative flex flex-col overflow-hidden text-zinc-900" style={{ overscrollBehaviorX: "contain" }}>
       
       {/* Dynamic Toast System */}
       <AnimatePresence>
@@ -723,7 +723,7 @@ export default function GustoPassioneApp({ lang = "it" }: GustoPassioneAppProps)
               </div>
 
               {/* Categories scroll panel */}
-              <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
+              <div className="flex gap-2 overflow-x-auto no-scrollbar py-1" style={{ overscrollBehaviorX: "contain" }}>
                 {categories.map((cat) => {
                   const isAct = cat === currentCategory;
                   const count = cat === "Tutti"
