@@ -14,6 +14,8 @@ import InfoModal from "./components/InfoModal";
 import CookieBanner from "./components/CookieBanner";
 import AccessibilityWidget from "./components/AccessibilityWidget";
 
+const logoImage = "/f (1600 x 500 px).webp";
+
 
 const SEO_METADATA: Record<string, { title: string; description: string; keywords: string; image: string }> = {
   home: {
@@ -503,8 +505,12 @@ export default function App() {
       <aside className="hidden xl:flex w-[280px] h-screen fixed left-0 top-0 border-r border-[#111113]/10 bg-[#FAF9F6] p-10 flex-col justify-between z-30 select-none text-[#111113]">
         <div className="space-y-16">
           <div className="logo-block group cursor-pointer" onClick={() => handleSetTab("home")}>
-            <div className="logo-text font-display font-extrabold text-2xl tracking-tighter leading-none text-[#111113] uppercase italic">
-              Facilissimo<br />Web
+            <div className="logo-text">
+              <img
+                src={logoImage}
+                alt="Facilissimo Web Logo"
+                className="h-10 w-auto object-contain transition-transform group-hover:scale-[1.02] duration-300"
+              />
             </div>
             <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-[#c48f8a] font-bold mt-2.5">
               [ M. Teresa Rogani ]
@@ -560,7 +566,7 @@ export default function App() {
         </div>
 
         {/* Dynamic Breadcrumbs Bar - Fixed and directly attached under the Header */}
-        {(() => {
+        {currentTab !== "home" && (() => {
           const breadcrumbItems = [
             { id: "home", label: lang === "it" ? "Inizio" : "Home" }
           ];
@@ -635,7 +641,11 @@ export default function App() {
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
-          className={`flex-grow pt-32 overflow-x-hidden ${
+          className={`flex-grow ${
+            currentTab === "home" 
+              ? "pt-20 xl:pt-0" 
+              : "pt-32 xl:pt-16"
+          } overflow-x-hidden ${
             highContrast ? "accessibility-high-contrast" : ""
           } ${
             isFacilitated ? "accessibility-facilitated-contrast" : ""

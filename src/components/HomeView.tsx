@@ -226,13 +226,6 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">
           <div className="lg:col-span-8 xl:col-span-8 space-y-6">
-            <div className="flex items-center gap-2 mb-4 animate-fade-in-up">
-              <img
-                src={logoImage}
-                alt="Facilissimo Web Logo"
-                className="w-[150px] h-[150px] object-contain animate-pulse"
-              />
-            </div>
             <span className="text-[10px] uppercase tracking-[0.25em] text-[#c48f8a] font-mono font-bold block mb-2 animate-fade-in-up">
               {t.heroPreTitle}
             </span>
@@ -301,13 +294,6 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       <section className="py-24 bg-[#FAF9F6] border-b border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <div className="flex justify-center mb-4">
-              <img
-                src={logoImage}
-                alt="Facilissimo Web Logo"
-                className="w-[150px] h-[150px] object-contain"
-              />
-            </div>
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#c48f8a] font-bold uppercase block">
               {t.approachPre}
             </span>
@@ -477,13 +463,6 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       <section className="py-24 px-6 md:px-12 bg-[#F8F7F4]">
         <div className="max-w-7xl mx-auto bg-[#FAF9F6] text-[#111113] p-12 md:p-20 relative overflow-hidden border border-[#111113]/15">
           <div className="relative z-10 text-center max-w-2xl mx-auto space-y-6">
-            <div className="flex justify-center mb-4">
-              <img
-                src={logoImage}
-                alt="Facilissimo Web Logo"
-                className="w-[150px] h-[150px] object-contain"
-              />
-            </div>
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#c48f8a] font-bold uppercase block">
               {t.ctaPre}
             </span>
