@@ -16,8 +16,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
   const [aspectRatio, setAspectRatio] = useState<"vertical" | "horizontal">("vertical");
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  const canvaEmbedUrl = "https://www.canva.com/design/DAHPcAgT_q4/pp2Mw-kRnAzmogZQ4mcDgg/view?embed";
-  const canvaDirectUrl = "https://www.canva.com/design/DAHPcAgT_q4/pp2Mw-kRnAzmogZQ4mcDgg/view?utm_content=DAHPcAgT_q4&utm_campaign=designshare&utm_medium=embeds&utm_source=link";
+  const canvaEmbedUrl = "https://www.canva.com/design/DAHPcbuC8m4/SHDh85WpbFgG_aPjdWMFPw/view?embed";
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -59,8 +58,8 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
               </h1>
               <p className="text-[#111113]/70 text-xs sm:text-sm leading-relaxed max-w-xl">
                 {lang === "it"
-                  ? "Abbiamo aggiornato questa sezione caricando il progetto interattivo in stile 'Orange, Beige & Black' di Maria Teresa Rogani. Interagisci direttamente con il simulatore sottostante."
-                  : "We updated this section by uploading Maria Teresa Rogani's interactive 'Orange, Beige & Black' project. Experience it directly inside the simulator below."}
+                  ? "Abbiamo aggiornato questa sezione caricando il progetto interattivo 'Interactive Florist Landing Page' di Maria Teresa Rogani. Interagisci direttamente con il simulatore sottostante."
+                  : "We updated this section by uploading Maria Teresa Rogani's 'Interactive Florist Landing Page' project. Experience it directly inside the simulator below."}
               </p>
             </div>
             
@@ -87,13 +86,13 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
               </div>
               
               <h3 className="font-tan text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#111113] leading-[1.1]">
-                Interactive Menu — <span className="italic font-normal text-amber-600">Orange Beige Black</span>
+                Interactive Florist Landing Page — <span className="italic font-normal text-[#c48f8a]">Dusty Pink, Dark Green, Lime Green</span>
               </h3>
               
               <p className="text-[#111113]/70 font-sans text-xs sm:text-sm leading-relaxed">
                 {lang === "it"
-                  ? "Una vetrina interattiva che incarna un'estetica calda e minimale. Ispirata ai colori dell'autunno e della terra, la combinazione arancio, beige e nero crea un contrasto eccezionale perfetto per menù moderni, cataloghi digitali d'eccellenza, o portfolio d'impatto."
-                  : "An interactive showcase embodying a warm and minimalist aesthetic. Inspired by earth tones and clean lines, the orange, beige, and black palette creates an exceptional contrast perfect for premium digital menus and portfolios."}
+                  ? "Interactive Florist Landing Page in Dusty Pink Dark Green Lime Green Soft & Clean Style di Maria Teresa Rogani. Un design pulito, delicato ed estremamente moderno creato per valorizzare ogni dettaglio floreale."
+                  : "Interactive Florist Landing Page in Dusty Pink Dark Green Lime Green Soft & Clean Style by Maria Teresa Rogani. A clean, delicate, and extremely modern design crafted to elevate every floral detail."}
               </p>
 
               <div className="space-y-4 font-sans text-xs text-[#111113]/70 leading-relaxed border-t border-[#111113]/10 pt-6">
@@ -202,7 +201,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                     src={canvaEmbedUrl} 
                     allowFullScreen={true}
                     allow="fullscreen"
-                    title="Interactive Orange Beige Black presentation"
+                    title="Interactive Florist Landing Page"
                   />
                 </div>
               </div>
@@ -240,7 +239,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
               <div className="flex items-center gap-3">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#c48f8a] animate-pulse"></span>
                 <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#111113]">
-                  Interactive Menu — Orange Beige Black
+                  Interactive Florist Landing Page
                 </span>
                 <span className="hidden sm:inline px-2.5 py-0.5 bg-[#111113]/5 border border-[#111113]/10 font-mono text-[9px] text-[#111113]/50 rounded font-bold uppercase tracking-widest">
                   {lang === "it" ? "Progetto Presentazione" : "Project Presentation"}
@@ -266,7 +265,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                   src={canvaEmbedUrl} 
                   allowFullScreen={true}
                   allow="fullscreen"
-                  title="Interactive Orange Beige Black presentation Fullscreen"
+                  title="Interactive Florist Landing Page presentation Fullscreen"
                 />
               </div>
             </div>
