@@ -319,9 +319,10 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
           <div className="pt-4">
             <button
               onClick={() => setCurrentTab("contatti")}
-              className="px-8 py-4 bg-[#a3e635] text-[#111113] font-bold text-xs uppercase tracking-widest hover:bg-transparent hover:text-[#a3e635] transition-all cursor-pointer border border-[#a3e635]"
+              className="relative inline-flex items-center justify-center px-8 py-3.5 overflow-hidden font-bold text-white rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-[0_0_20px_rgba(236,72,153,0.5)] hover:shadow-[0_0_35px_rgba(236,72,153,0.8)] focus:ring-4 focus:ring-pink-300 dark:focus:ring-pink-800 active:scale-95 duration-150 transform cursor-pointer"
             >
-              {lang === "it" ? "Avvia la collaborazione" : "Start cooperation"}
+              <span>{lang === "it" ? "Avvia la collaborazione" : "Start cooperation"}</span>
+              <Zap className="w-4 h-4 ml-2 animate-pulse" />
             </button>
           </div>
         </div>

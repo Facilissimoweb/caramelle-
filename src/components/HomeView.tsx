@@ -251,18 +251,19 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             <div className="flex flex-wrap gap-4 pt-4 animate-fade-in-up delay-200">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="editorial-button-primary flex items-center gap-2 cursor-pointer !text-[13px] !bg-[#111113] !text-[#F8F7F4] !border-[#111113] hover:!bg-transparent hover:!text-[#111113]"
+                className="relative inline-flex items-center justify-center px-8 py-3.5 overflow-hidden font-bold text-white rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-[0_0_20px_rgba(236,72,153,0.5)] hover:shadow-[0_0_35px_rgba(236,72,153,0.8)] focus:ring-4 focus:ring-pink-300 dark:focus:ring-pink-800 active:scale-95 duration-150 transform cursor-pointer"
                 id="hero-cta-main"
               >
                 {t.heroBtnPrimary}
-                <ArrowRight className="w-3.5 h-3.5" />
+                <Zap className="w-4 h-4 ml-2 animate-pulse" />
               </button>
               <button
                 onClick={() => setCurrentTab("proposte")}
-                className="editorial-button-secondary cursor-pointer !bg-black !text-[#c4e0ad]"
+                className="relative inline-flex items-center justify-center px-8 py-3.5 overflow-hidden font-bold text-white rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-[0_0_20px_rgba(236,72,153,0.5)] hover:shadow-[0_0_35px_rgba(236,72,153,0.8)] focus:ring-4 focus:ring-pink-300 dark:focus:ring-pink-800 active:scale-95 duration-150 transform cursor-pointer"
                 id="hero-cta-sec"
               >
                 {t.heroBtnSecondary}
+                <Zap className="w-4 h-4 ml-2 animate-pulse" />
               </button>
             </div>
  
@@ -513,17 +514,19 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="px-8 py-4 bg-[#a3e635] text-[#FAF9F6] font-bold text-[10px] tracking-widest uppercase hover:bg-transparent hover:text-[#a3e635] hover:border-[#a3e635] transition-all cursor-pointer border border-[#a3e635]"
+                className="relative inline-flex items-center justify-center px-8 py-3.5 overflow-hidden font-bold text-white rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-[0_0_20px_rgba(236,72,153,0.5)] hover:shadow-[0_0_35px_rgba(236,72,153,0.8)] focus:ring-4 focus:ring-pink-300 dark:focus:ring-pink-800 active:scale-95 duration-150 transform cursor-pointer"
                 id="cta-contact-btn"
               >
                 {t.ctaBtnPrimary}
+                <Zap className="w-4 h-4 ml-2 animate-pulse" />
               </button>
               <button
                 onClick={() => setCurrentTab("chat")}
-                className="px-8 py-4 bg-transparent hover:bg-[#111113]/5 border border-[#111113]/25 text-[#111113] font-bold text-[10px] tracking-widest uppercase transition-all cursor-pointer"
+                className="relative inline-flex items-center justify-center px-8 py-3.5 overflow-hidden font-bold text-white rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-[0_0_20px_rgba(236,72,153,0.5)] hover:shadow-[0_0_35px_rgba(236,72,153,0.8)] focus:ring-4 focus:ring-pink-300 dark:focus:ring-pink-800 active:scale-95 duration-150 transform cursor-pointer"
                 id="cta-chat-btn"
               >
                 {t.ctaBtnSecondary}
+                <Zap className="w-4 h-4 ml-2 animate-pulse" />
               </button>
             </div>
           </div>

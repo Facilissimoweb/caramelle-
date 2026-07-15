@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import { Check, Box, ShieldCheck } from "lucide-react";
+import { Check, Box, ShieldCheck, Zap } from "lucide-react";
 import FAQAccordion from "./FAQAccordion";
 const logoImage = "/f (1600 x 500 px).webp";
 
@@ -291,13 +291,10 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
 
                 <button
                   onClick={() => setCurrentTab("contatti")}
-                  className={`w-full py-4 px-4 text-xs font-bold uppercase tracking-widest transition-all cursor-pointer border ${
-                    tier.isPopular
-                      ? "bg-[#a3e635] text-[#111113] border-[#a3e635] hover:bg-transparent hover:text-[#a3e635]"
-                      : "bg-transparent text-[#111113] border-[#111113]/20 hover:border-[#a3e635] hover:text-[#a3e635]"
-                  }`}
+                  className="w-full relative inline-flex items-center justify-center px-8 py-3.5 overflow-hidden font-bold text-white rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-[0_0_20px_rgba(236,72,153,0.5)] hover:shadow-[0_0_35px_rgba(236,72,153,0.8)] focus:ring-4 focus:ring-pink-300 dark:focus:ring-pink-800 active:scale-95 duration-150 transform cursor-pointer"
                 >
-                  {tier.ctaText}
+                  <span>{tier.ctaText}</span>
+                  <Zap className="w-4 h-4 ml-2 animate-pulse" />
                 </button>
               </motion.div>
             ))}
@@ -359,9 +356,10 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
             <div className="pt-2">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="px-6 py-3.5 bg-[#a3e635] text-[#FAF9F6] text-xs font-bold uppercase tracking-widest border border-[#a3e635] hover:bg-transparent hover:text-[#a3e635] transition-all cursor-pointer"
+                className="relative inline-flex items-center justify-center px-8 py-3.5 overflow-hidden font-bold text-white rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-[0_0_20px_rgba(236,72,153,0.5)] hover:shadow-[0_0_35px_rgba(236,72,153,0.8)] focus:ring-4 focus:ring-pink-300 dark:focus:ring-pink-800 active:scale-95 duration-150 transform cursor-pointer"
               >
-                {lang === "it" ? "Invia una richiesta personalizzata" : "Send custom request"}
+                <span>{lang === "it" ? "Invia una richiesta personalizzata" : "Send custom request"}</span>
+                <Zap className="w-4 h-4 ml-2 animate-pulse" />
               </button>
             </div>
           </div>
