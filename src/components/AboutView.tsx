@@ -313,8 +313,8 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
           </h2>
           <p className="text-[#111113]/80 font-sans text-xs sm:text-sm leading-relaxed">
             {isFacilitated 
-              ? "Evita le lunghe attese delle grandi agenzie e i preventivi troppo alti. Parla direttamente con me e sviluppiamo il tuo nuovo sito web."
-              : "Elimina i passaggi burocratici, i preventivi gonfiati e i tempi morti di un'agenzia. Parla direttamente con me e sviluppiamo il tuo nuovo sito web in tempi record."}
+              ? "Evita le lunghe attese delle grandi agenzie e i preventivi troppo alti. Parla direttamente con me e svilupperò il tuo nuovo sito web."
+              : "Elimina i passaggi burocratici, i preventivi gonfiati e i tempi morti di un'agenzia. Parla direttamente con me e svilupperò il tuo nuovo sito web in tempi record."}
           </p>
           <div className="pt-4">
             <button

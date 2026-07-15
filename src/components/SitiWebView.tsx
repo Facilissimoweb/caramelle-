@@ -27,11 +27,11 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
           <p className="text-xs sm:text-sm text-[#111113]/70 max-w-2xl font-sans leading-relaxed">
             {isFacilitated
               ? (lang === "it" 
-                ? "Sfoglia la nostra presentazione interattiva qui sotto. Abbiamo ottimizzato lo schermo per i dispositivi mobili."
-                : "Browse our interactive presentation below. We optimized the screen for mobile devices.")
+                ? "Sfoglia la mia presentazione interattiva o i progetti web App di Facilissimo Web qui sotto. Ho ottimizzato lo schermo per i dispositivi mobili."
+                : "Browse my interactive presentation or Facilissimo Web's web App projects below. I optimized the screen for mobile devices.")
               : (lang === "it"
-                ? "Esplora il nostro approccio al web design attraverso questa presentazione interattiva in stile 'Orange, Beige & Black'. Un design pulito, minimale e moderno creato per valorizzare ogni dettaglio."
-                : "Explore our approach to web design through this interactive presentation styled in 'Orange, Beige & Black'. A clean, minimalist, and modern design crafted to elevate every detail.")}
+                ? "Esplora il mio approccio al web design e i progetti web App di Facilissimo Web attraverso questa presentazione interattiva in stile 'Orange, Beige & Black'. Un design pulito, minimale e moderno creato per valorizzare ogni dettaglio."
+                : "Explore my approach to web design and Facilissimo Web's web App projects through this interactive presentation styled in 'Orange, Beige & Black'. A clean, minimalist, and modern design crafted to elevate every detail.")}
           </p>
         </div>
 

@@ -300,15 +300,15 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-10 space-y-4">
             <span className="text-[10px] font-mono tracking-[0.3em] text-[#c48f8a] font-bold uppercase block">
-              {lang === "it" ? "[ SFOGLIA LA NOSTRA GUIDA INTERATTIVA ]" : "[ BROWSE OUR INTERACTIVE GUIDE ]"}
+              {lang === "it" ? "[ SFOGLIA LA MIA GUIDA INTERATTIVA ]" : "[ BROWSE MY INTERACTIVE GUIDE ]"}
             </span>
             <h2 className="font-tan text-3xl sm:text-4xl font-bold tracking-wide text-[#111113]">
-              {lang === "it" ? "Il Nostro Catalogo Sfogliabile" : "Our Interactive Flipbook"}
+              {lang === "it" ? "Il Mio Catalogo Sfogliabile" : "My Interactive Flipbook"}
             </h2>
             <p className="text-[#111113]/70 font-sans text-xs sm:text-sm">
               {lang === "it"
-                ? "Sfoglia direttamente online la nostra presentazione e scopri come l'intelligenza artificiale unita alla cura artigianale trasforma la tua presenza digitale."
-                : "Browse our presentation directly online and see how artificial intelligence combined with handmade craft elevates your digital presence."}
+                ? "Sfoglia direttamente online la mia presentazione e scopri come l'intelligenza artificiale unita alla cura artigianale trasforma la tua presenza digitale."
+                : "Browse my presentation directly online and see how artificial intelligence combined with handmade craft elevates your digital presence."}
             </p>
           </div>
 
@@ -444,7 +444,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               ? [
                   {
                     q: "Cos'è un sito web potenziato dall'Intelligenza Artificiale?",
-                    a: "È un sito web progettato sfruttando flussi di lavoro e algoritmi di IA avanzati per ottimizzare la stesura del codice pulito, analizzare le strutture SEO semantiche ed eliminare passaggi manuali ripetitivi. Questo consente a Facilissimo Web di consegnare siti ultra-veloci, sicuri ed estremamente performanti a una frazione del costo tradizionale.",
+                    a: "È un sito web progettato sfruttando flussi di lavoro e algoritmi di IA avanzati per ottimizzare la stesura del codice pulito, analizzare le strutture SEO semantiche ed eliminare passaggi manuali ripetitivi. Questo mi consente, attraverso i progetti Facilissimo Web, di consegnare siti ultra-veloci, sicuri ed estremamente performanti a una frazione del costo tradizionale.",
                   },
                   {
                     q: "L'Intelligenza Artificiale sostituisce il lavoro manuale del web designer?",
@@ -452,7 +452,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   },
                   {
                     q: "Quali sono i reali vantaggi in termini di tempi e di budget?",
-                    a: "Mentre un'agenzia web tradizionale impiega solitamente dai 30 ai 60 giorni per un progetto medio richiedendo budget molto elevati, i processi intelligenti di Facilissimo Web mi permettono di consegnare una Landing Page professionale in soli 7 giorni ed un sito multipagina completo in 14 giorni, riducendo i prezzi fino al 60%.",
+                    a: "Mentre un'agenzia web tradizionale impiega solitamente dai 30 ai 60 giorni per un progetto medio richiedendo budget molto elevati, i processi intelligenti e lo sviluppo in prima persona mi permettono di consegnare una Landing Page professionale in soli 7 giorni ed un sito multipagina completo in 14 giorni, riducendo i prezzi fino al 60%.",
                   },
                   {
                     q: "Il mio sito web sarà ottimizzato per posizionarsi su Google?",
@@ -460,7 +460,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   },
                   {
                     q: "Cos'è la SEO Predittiva e come funziona sul mio sito?",
-                    a: "La SEO Predittiva è un metodo avanzato che utilizza l'IA per analizzare e anticipare i futuri trend di ricerca degli utenti prima dei tuoi competitor. Nel tuo sito web Facilissimo Web integra marcatori semantici, strutture di dati Schema.org avanzate e testi ottimizzati per intercettare i bisogni latenti dei clienti (locali nelle Marche o nazionali/esteri) non appena iniziano a manifestarsi. Questo ti posiziona davanti a tutti sui motori di ricerca con mesi di anticipo.",
+                    a: "La SEO Predittiva è un metodo avanzato che utilizza l'IA per analizzare e anticipare i futuri trend di ricerca degli utenti prima dei tuoi competitor. Nel tuo sito web, come parte dei progetti Facilissimo Web, integro marcatori semantici, strutture di dati Schema.org avanzate e testi ottimizzati per intercettare i bisogni latenti dei clienti (locali nelle Marche o nazionali/esteri) non appena iniziano a manifestarsi. Questo ti posiziona davanti a tutti sui motori di ricerca con mesi di anticipo.",
                   },
                   {
                     q: "Cosa succede dopo la consegna del sito? C'è supporto gratuito?",

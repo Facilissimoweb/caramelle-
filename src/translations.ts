@@ -111,7 +111,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
 
       ctaPre: "[ INIZIA ORA ]",
       ctaTitle: "Il tuo business merita di dominare.",
-      ctaDesc: "Trasformiamo la tua visione in realtà digitale oggi, con un design d'impatto e testi scritti per convertire i tuoi contatti. Parla direttamente con me.",
+      ctaDesc: "Trasformo la tua visione in realtà digitale oggi, con un design d'impatto e testi scritti per convertire i tuoi contatti. Parla direttamente con me.",
       ctaBtnPrimary: "Parliamo del tuo progetto",
       ctaBtnSecondary: "Chatta con l'AI Assistant",
     },

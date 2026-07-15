@@ -71,8 +71,8 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
               </h1>
               <p className="text-[#111113]/70 text-xs sm:text-sm leading-relaxed max-w-xl">
                 {lang === "it"
-                  ? "Esplora le nostre creazioni interattive realizzate da Maria Teresa Rogani. Puoi testarne l'esperienza d'uso simulando diversi dispositivi direttamente qui sotto."
-                  : "Explore our interactive creations crafted by Maria Teresa Rogani. You can test the experience across different devices directly below."}
+                  ? "Esplora i miei progetti web App e le creazioni interattive realizzate da Facilissimo Web di M. Teresa Rogani. Puoi testarne l'esperienza d'uso simulando diversi dispositivi direttamente qui sotto."
+                  : "Explore my web App projects and interactive creations crafted by M. Teresa Rogani's Facilissimo Web. You can test the experience across different devices directly below."}
               </p>
             </div>
             
