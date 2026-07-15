@@ -265,8 +265,8 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated, onSel
 
       {/* Pricing Cards */}
       <section className="py-24 bg-[#FAF9F6]">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 xl:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 items-stretch">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 items-stretch">
             {tiers.map((tier, index) => (
               <motion.div
                 key={tier.id}
