@@ -570,14 +570,14 @@ export default function App() {
       isFacilitated ? "text-lg" : ""
     }`}>
       {/* Desktop Left Sidebar - Hidden on mobile, flex on desktop */}
-      <aside className="hidden xl:flex w-[280px] h-screen fixed left-0 top-0 border-r border-[#111113]/10 bg-[#d9c3c3] p-10 flex-col justify-between z-30 select-none text-[#111113]">
+      <aside className="hidden xl:flex w-[280px] h-screen fixed left-0 top-0 border-r border-white/10 bg-[#766969] p-10 flex-col justify-between z-30 select-none text-white">
         <div className="space-y-16">
           <div className="logo-block group cursor-pointer" onClick={() => handleSetTab("home")}>
             <div className="logo-text">
               <img
                 src={logoImage}
                 alt="Facilissimo Web Logo"
-                className="h-10 w-auto object-contain transition-transform group-hover:scale-[1.02] duration-300"
+                className="h-10 w-auto object-contain transition-transform group-hover:scale-[1.02] duration-300 brightness-0 invert"
               />
             </div>
             <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-[#c48f8a] font-bold mt-2.5">
@@ -596,7 +596,7 @@ export default function App() {
                       className={`text-left font-mono text-[23px] font-bold uppercase tracking-widest cursor-pointer transition-all block py-1 border-b-2 ${
                         isActive
                           ? "text-[#c48f8a] border-[#c48f8a] translate-x-1"
-                          : "text-[#111113]/60 hover:text-[#111113] hover:translate-x-0.5 border-transparent"
+                          : "text-white/60 hover:text-white hover:translate-x-0.5 border-transparent"
                       }`}
                     >
                       {getTabLabel(tabId)}
@@ -612,7 +612,7 @@ export default function App() {
           <div className="text-[10px] font-mono uppercase tracking-widest text-[#c48f8a] font-bold">
             [ Contatto Diretto ]
           </div>
-          <div className="font-mono text-xs text-[#111113]/70 leading-relaxed">
+          <div className="font-mono text-xs text-white/70 leading-relaxed">
             +39 379 360 3321<br />
             facilissimoweb.mc@gmail.com
           </div>
