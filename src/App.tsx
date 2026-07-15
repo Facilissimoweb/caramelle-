@@ -570,7 +570,7 @@ export default function App() {
       isFacilitated ? "text-lg" : ""
     }`}>
       {/* Desktop Left Sidebar - Hidden on mobile, flex on desktop */}
-      <aside className="hidden xl:flex w-[280px] h-screen fixed left-0 top-0 border-r border-[#111113]/10 bg-[#FAF9F6] p-10 flex-col justify-between z-30 select-none text-[#111113]">
+      <aside className="hidden xl:flex w-[280px] h-screen fixed left-0 top-0 border-r border-[#111113]/10 bg-[#d9c3c3] p-10 flex-col justify-between z-30 select-none text-[#111113]">
         <div className="space-y-16">
           <div className="logo-block group cursor-pointer" onClick={() => handleSetTab("home")}>
             <div className="logo-text">
@@ -593,7 +593,7 @@ export default function App() {
                   <li key={tabId}>
                     <button
                       onClick={() => handleSetTab(tabId)}
-                      className={`text-left font-mono text-xs font-bold uppercase tracking-widest cursor-pointer transition-all block py-1 border-b-2 ${
+                      className={`text-left font-mono text-[23px] font-bold uppercase tracking-widest cursor-pointer transition-all block py-1 border-b-2 ${
                         isActive
                           ? "text-[#c48f8a] border-[#c48f8a] translate-x-1"
                           : "text-[#111113]/60 hover:text-[#111113] hover:translate-x-0.5 border-transparent"

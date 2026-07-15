@@ -114,14 +114,41 @@ export default function CyberAiGuideApp({ lang = "it" }: CyberAiGuideAppProps) {
   }, [isPlaying, currentSlide]);
 
   const nextSlide = () => {
-    if (currentSlide < slides.length - 1) setCurrentSlide(currentSlide + 1);
+    setCurrentSlide((prev) => (prev < slides.length - 1 ? prev + 1 : prev));
   };
 
   const prevSlide = () => {
-    if (currentSlide > 0) setCurrentSlide(currentSlide - 1);
+    setCurrentSlide((prev) => (prev > 0 ? prev - 1 : prev));
   };
 
   const reset = () => setCurrentSlide(0);
+
+  // Keyboard navigation for arrow keys
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Ignore key events when the user is typing in form inputs or textareas
+      const activeElement = document.activeElement;
+      if (
+        activeElement &&
+        (activeElement.tagName === "INPUT" ||
+         activeElement.tagName === "TEXTAREA" ||
+         activeElement.getAttribute("contenteditable") === "true")
+      ) {
+        return;
+      }
+
+      if (event.key === "ArrowRight") {
+        nextSlide();
+      } else if (event.key === "ArrowLeft") {
+        prevSlide();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []); // Dependencies are empty because nextSlide/prevSlide use stable functional updates
 
   const isLastSlide = currentSlide === slides.length - 1;
 
