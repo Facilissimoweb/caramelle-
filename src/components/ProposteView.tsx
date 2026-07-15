@@ -309,7 +309,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
       <section className="py-24 bg-[#FAF9F6] border-y border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <span className="text-[10px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase block">
+            <span className="inline-block bg-black py-[12px] px-6 text-[12px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase">
               {isFacilitated ? "[ TUTTO INCLUSO ]" : "[ VALORE AGGIUNTO ]"}
             </span>
             <h2 className="font-display text-3xl font-bold text-[#111113] tracking-wide">

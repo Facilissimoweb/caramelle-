@@ -299,7 +299,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       <section className="py-16 sm:py-24 bg-[#F8F7F4] border-b border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-10 space-y-4">
-            <span className="text-[10px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase block">
+            <span className="inline-block bg-black py-[12px] px-6 text-[12px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase">
               {lang === "it" ? "[ SFOGLIA LA MIA GUIDA INTERATTIVA ]" : "[ BROWSE MY INTERACTIVE GUIDE ]"}
             </span>
             <h2 className="font-tan text-3xl sm:text-4xl font-bold tracking-wide text-[#111113]">
@@ -332,7 +332,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       <section className="py-24 bg-[#FAF9F6] border-b border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <span className="text-[10px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase block">
+            <span className="inline-block bg-black py-[12px] px-6 text-[12px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase">
               {t.approachPre}
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-wide text-[#111113]">
@@ -501,7 +501,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       <section className="py-24 px-6 md:px-12 bg-[#F8F7F4]">
         <div className="max-w-7xl mx-auto bg-[#FAF9F6] text-[#111113] p-12 md:p-20 relative overflow-hidden border border-[#111113]/15">
           <div className="relative z-10 text-center max-w-2xl mx-auto space-y-6">
-            <span className="text-[10px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase block">
+            <span className="inline-block bg-black py-[12px] px-6 text-[12px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase">
               {t.ctaPre}
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-wide text-[#111113]">

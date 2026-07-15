@@ -217,7 +217,7 @@ export default function GallerySection({ lang, isFacilitated }: GallerySectionPr
                 className="w-24 h-24 object-contain"
               />
             </div>
-            <span className="text-[10px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase block">
+            <span className="inline-block bg-black py-[12px] px-6 text-[12px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase">
               {lang === "it" ? "[ MEDIA MANAGER & ASSETS ]" : "[ MEDIA MANAGER & ASSETS ]"}
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-wide text-[#F8F7F4]">

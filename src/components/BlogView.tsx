@@ -527,7 +527,7 @@ export default function BlogView({
                   className="w-[150px] h-[150px] object-contain"
                 />
               </div>
-              <span className="text-[10px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase block">
+              <span className="inline-block bg-black py-[12px] px-6 text-[12px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase">
                 {lang === "it" ? "[ TRASPARENZA E CONOSCENZA ]" : "[ INSIGHTS & UPDATES ]"}
               </span>
               <h1 className="font-tan text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#111113] break-words">

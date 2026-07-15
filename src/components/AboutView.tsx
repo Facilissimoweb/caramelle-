@@ -191,7 +191,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
       <section className="py-24 bg-[#FAF9F6] border-b border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <span className="text-[10px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase block">
+            <span className="inline-block bg-black py-[12px] px-6 text-[12px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase">
               {isFacilitated ? "[ I VALORI DI FACILISSIMO WEB ]" : "[ EFFICIENZA & VALORE ]"}
             </span>
             <h2 className="font-display text-3xl font-bold tracking-wide text-[#111113]">
@@ -239,7 +239,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
             viewport={{ once: true }}
             className="lg:col-span-5 space-y-6"
           >
-            <span className="text-[10px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase block">
+            <span className="inline-block bg-black py-[12px] px-6 text-[12px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase">
               {isFacilitated ? "[ METODO DI LAVORO ]" : "[ INTELLIGENZA ARTIGIANALE ]"}
             </span>
             <h2 className="font-display text-3xl font-bold tracking-wide text-[#111113]">
@@ -305,7 +305,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
       {/* Philosophy Call To Action */}
       <section className="py-24 bg-[#FAF9F6] text-[#111113] text-center border-t border-[#111113]/10">
         <div className="max-w-2xl mx-auto px-6 space-y-6">
-          <span className="text-[10px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase block">
+          <span className="inline-block bg-black py-[12px] px-6 text-[12px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase">
             {isFacilitated ? "[ DIRETTO & VELOCE ]" : "[ DIRETTO & VELOCE ]"}
           </span>
           <h2 className="font-display text-3xl font-bold tracking-wide text-[#111113]">
