@@ -13,21 +13,21 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
   const values = isFacilitated
     ? [
         {
-          icon: <ShieldCheck className="w-5 h-5 text-[#c48f8a]" />,
+          icon: <ShieldCheck className="w-5 h-5 text-[#a3e635]" />,
           title: lang === "it" ? "Parli solo con me" : "Speak only with me",
           desc: lang === "it"
             ? "Non ci sono intermediari, segretarie o programmatori junior. Parli direttamente con me (Teresa) per ogni cosa."
             : "No managers or helpers. You speak directly with me (Teresa) for everything.",
         },
         {
-          icon: <Zap className="w-5 h-5 text-[#c48f8a]" />,
+          icon: <Zap className="w-5 h-5 text-[#a3e635]" />,
           title: lang === "it" ? "Modifiche all'istante" : "Changes instantly",
           desc: lang === "it"
             ? "Nelle agenzie ci vogliono giorni per fare modifiche. Con me, parliamo al mattino e la modifica è online al pomeriggio."
             : "Big agencies take days to approve edits. With me, we decide a change in the morning and it is online in the afternoon.",
         },
         {
-          icon: <Heart className="w-5 h-5 text-[#c48f8a]" />,
+          icon: <Heart className="w-5 h-5 text-[#a3e635]" />,
           title: lang === "it" ? "Grande risparmio" : "Great savings",
           desc: lang === "it"
             ? "Lavoro da sola e non ho uffici fisici o dipendenti da pagare. Per questo i miei prezzi sono molto più bassi delle agenzie."
@@ -36,21 +36,21 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
       ]
     : [
         {
-          icon: <ShieldCheck className="w-5 h-5 text-[#c48f8a]" />,
+          icon: <ShieldCheck className="w-5 h-5 text-[#a3e635]" />,
           title: lang === "it" ? "Interlocutore Unico" : "Single Point of Contact",
           desc: lang === "it"
             ? "Niente account manager, niente segretarie o sviluppatori junior che lavorano al tuo sito di nascosto. Parli, discuti e definisci tutto direttamente con me."
             : "No account managers, no secretaries or junior coders working on your site in secret. You talk, discuss, and define everything directly with me.",
         },
         {
-          icon: <Zap className="w-5 h-5 text-[#c48f8a]" />,
+          icon: <Zap className="w-5 h-5 text-[#a3e635]" />,
           title: lang === "it" ? "Velocità senza Burocrazia" : "No-Bureaucracy Speed",
           desc: lang === "it"
             ? "I processi decisionali in agenzia richiedono giorni. Qui possiamo decidere una modifica al mattino e vederla live nel pomeriggio."
             : "Agency approval pipelines take days. Here, we can discuss a modification in the morning and see it live in the afternoon.",
         },
         {
-          icon: <Heart className="w-5 h-5 text-[#c48f8a]" />,
+          icon: <Heart className="w-5 h-5 text-[#a3e635]" />,
           title: lang === "it" ? "Massimo Risparmio" : "Maximum Value",
           desc: lang === "it"
             ? "Lavorando da sola come freelance non ho uffici fisici imponenti o personale da stipendiare. Questo si traduce in tariffe fino a 3 volte inferiori."
@@ -60,17 +60,17 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
 
   const skillCategories = [
     {
-      icon: <Code className="w-5 h-5 text-[#c48f8a]" />,
+      icon: <Code className="w-5 h-5 text-[#a3e635]" />,
       title: lang === "it" ? "Sviluppo & Strumenti" : "Development & Tools",
       skills: ["React / Vite", "Tailwind CSS", "HTML5 & CSS3", "Express Node.js Server", "Figma", "Cursor / AI IDEs"],
     },
     {
-      icon: <Sparkles className="w-5 h-5 text-[#c48f8a]" />,
+      icon: <Sparkles className="w-5 h-5 text-[#a3e635]" />,
       title: lang === "it" ? "Integrazione IA" : "AI Integration & Prompting",
       skills: ["Gemini LLMs API", "OpenAI Advanced API", "Midjourney & Stable Diffusion", "Vector Search / Embeddings", "AI-driven Copywriting"],
     },
     {
-      icon: <Pencil className="w-5 h-5 text-[#c48f8a]" />,
+      icon: <Pencil className="w-5 h-5 text-[#a3e635]" />,
       title: lang === "it" ? "Marketing & Strategia" : "Marketing & Strategy",
       skills: ["SEO Predittiva", "Google Analytics", "Brand Identity Manuals", "CRO (Conversion Optimization)", "Copywriting Persuasivo"],
     },
@@ -117,14 +117,14 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
                 className="w-[150px] h-[150px] object-contain"
               />
             </div>
-            <span className="text-[10px] uppercase tracking-[0.25em] text-[#c48f8a] font-mono font-bold block mb-2">
+            <span className="text-[10px] uppercase tracking-[0.25em] text-[#a3e635] font-mono font-bold block mb-2">
               {lang === "it" ? "[ CHI C'È DIETRO FACILISSIMO WEB ]" : "[ WHO IS BEHIND FACILISSIMO WEB ]"}
             </span>
             
             <h1 className="font-tan text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold text-[#111113] tracking-tight leading-normal break-words">
               M. Teresa Rogani
             </h1>
-            <p className="font-mono text-[10px] text-[#c48f8a] uppercase tracking-widest font-bold">
+            <p className="font-mono text-[10px] text-[#a3e635] uppercase tracking-widest font-bold">
               {lang === "it" ? "Freelance Web Designer & Sviluppatrice AI-Powered" : "Freelance Web Designer & AI-Powered Developer"}
             </p>
 
@@ -141,10 +141,10 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
               ) : (
                 <>
                   <p>
-                    Sono la fondatrice e <strong className="text-[#c48f8a]">unica titolare</strong> di Facilissimo Web. Ho creato questo studio con un'idea ben precisa: abbattere le barriere del web design tradicional e offrire siti web ultra-professionali, veloci e ottimizzati, sfruttando le tecnologie di Intelligenza Artificiale di ultima generazione.
+                    Sono la fondatrice e <strong className="text-[#a3e635]">unica titolare</strong> di Facilissimo Web. Ho creato questo studio con un'idea ben precisa: abbattere le barriere del web design tradicional e offrire siti web ultra-professionali, veloci e ottimizzati, sfruttando le tecnologie di Intelligenza Artificiale di ultima generazione.
                   </p>
                   <p>
-                    A differenza delle agenzie tradizionali dove il tuo progetto passa di mano in mano, qui <strong className="text-[#c48f8a]">non c'è nessun team</strong>. Lavoro da sola. Questo è il mio più grande punto di forza: garantisco un canale di comunicazione diretto, trasparente ed estremamente veloce.
+                    A differenza delle agenzie tradizionali dove il tuo progetto passa di mano in mano, qui <strong className="text-[#a3e635]">non c'è nessun team</strong>. Lavoro da sola. Questo è il mio più grande punto di forza: garantisco un canale di comunicazione diretto, trasparente ed estremamente veloce.
                   </p>
                 </>
               )}
@@ -177,7 +177,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
               <div className="absolute inset-0 bg-gradient-to-t from-[#F8F7F4]/90 via-transparent to-transparent"></div>
               <div className="absolute bottom-6 left-6 text-[#111113] space-y-1">
                 <p className="font-display font-bold text-lg">M. Teresa Rogani</p>
-                <p className="text-[9px] font-mono text-[#c48f8a] uppercase tracking-widest font-bold">
+                <p className="text-[9px] font-mono text-[#a3e635] uppercase tracking-widest font-bold">
                   Macerata (Marche), Italia
                 </p>
               </div>
@@ -191,7 +191,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
       <section className="py-24 bg-[#FAF9F6] border-b border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <span className="text-[10px] font-mono tracking-[0.3em] text-[#c48f8a] font-bold uppercase block">
+            <span className="text-[10px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase block">
               {isFacilitated ? "[ I VALORI DI FACILISSIMO WEB ]" : "[ EFFICIENZA & VALORE ]"}
             </span>
             <h2 className="font-display text-3xl font-bold tracking-wide text-[#111113]">
@@ -212,9 +212,9 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-8 bg-[#F8F7F4] border border-[#111113]/10 space-y-4 hover:border-[#c48f8a]/40 transition-all"
+                className="p-8 bg-[#F8F7F4] border border-[#111113]/10 space-y-4 hover:border-[#a3e635]/40 transition-all"
               >
-                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-[#c48f8a] group-hover:bg-[#c48f8a] group-hover:text-[#111113]">
+                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-[#a3e635] group-hover:bg-[#a3e635] group-hover:text-[#111113]">
                   {val.icon}
                 </div>
                 <h3 className="font-display text-lg font-bold text-[#111113]">
@@ -239,7 +239,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
             viewport={{ once: true }}
             className="lg:col-span-5 space-y-6"
           >
-            <span className="text-[10px] font-mono tracking-[0.3em] text-[#c48f8a] font-bold uppercase block">
+            <span className="text-[10px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase block">
               {isFacilitated ? "[ METODO DI LAVORO ]" : "[ INTELLIGENZA ARTIGIANALE ]"}
             </span>
             <h2 className="font-display text-3xl font-bold tracking-wide text-[#111113]">
@@ -258,10 +258,10 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
               ) : (
                 <>
                   <p>
-                    Molti pensano che l'Intelligenza Artificiale sostituisca il lavoro umano. Per me, è l'esatto contrario: <strong className="text-[#c48f8a]">l'IA lo potenzia ed eleva ad un livello superiore</strong>.
+                    Molti pensano che l'Intelligenza Artificiale sostituisca il lavoro umano. Per me, è l'esatto contrario: <strong className="text-[#a3e635]">l'IA lo potenzia ed eleva ad un livello superiore</strong>.
                   </p>
                   <p>
-                    Utilizzo l'IA in ogni fase del mio flusso di lavoro per eliminare i compiti ripetitivi (come la scrittura di codice di base o la generazione di bozze provvisorie). Questo mi permette di concentrarmi completamente su ciò che conta davvero per te: <strong className="text-[#c48f8a]">la strategia di comunicazione, l'eleganza estetica, l'ottimizzazione dell'esperienza utente e la conversione dei clienti</strong>.
+                    Utilizzo l'IA in ogni fase del mio flusso di lavoro per eliminare i compiti ripetitivi (come la scrittura di codice di base o la generazione di bozze provvisorie). Questo mi permette di concentrarmi completamente su ciò che conta davvero per te: <strong className="text-[#a3e635]">la strategia di comunicazione, l'eleganza estetica, l'ottimizzazione dell'esperienza utente e la conversione dei clienti</strong>.
                   </p>
                   <p>
                     Il risultato è un sito web che costa la metà, viene consegnato nella metà del tempo, ma vanta una qualità tecnica e grafica sbalorditiva.
@@ -279,9 +279,9 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-[#FAF9F6] p-6 border border-[#111113]/10 space-y-4 hover:border-[#c48f8a]/40 transition-all"
+                className="bg-[#FAF9F6] p-6 border border-[#111113]/10 space-y-4 hover:border-[#a3e635]/40 transition-all"
               >
-                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-[#c48f8a]">
+                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-[#a3e635]">
                   {cat.icon}
                 </div>
                 <h4 className="font-display font-bold text-xs text-[#111113]">
@@ -290,7 +290,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
                 <ul className="space-y-2 text-[10px] text-[#111113]/75 font-mono">
                   {cat.skills.map((sk) => (
                     <li key={sk} className="flex items-center gap-1.5">
-                      <span className="w-1 h-1 bg-[#c48f8a]"></span>
+                      <span className="w-1 h-1 bg-[#a3e635]"></span>
                       <span>{sk}</span>
                     </li>
                   ))}
@@ -305,7 +305,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
       {/* Philosophy Call To Action */}
       <section className="py-24 bg-[#FAF9F6] text-[#111113] text-center border-t border-[#111113]/10">
         <div className="max-w-2xl mx-auto px-6 space-y-6">
-          <span className="text-[10px] font-mono tracking-[0.3em] text-[#c48f8a] font-bold uppercase block">
+          <span className="text-[10px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase block">
             {isFacilitated ? "[ DIRETTO & VELOCE ]" : "[ DIRETTO & VELOCE ]"}
           </span>
           <h2 className="font-display text-3xl font-bold tracking-wide text-[#111113]">
@@ -319,7 +319,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
           <div className="pt-4">
             <button
               onClick={() => setCurrentTab("contatti")}
-              className="px-8 py-4 bg-[#c48f8a] text-[#111113] font-bold text-xs uppercase tracking-widest hover:bg-transparent hover:text-[#c48f8a] transition-all cursor-pointer border border-[#c48f8a]"
+              className="px-8 py-4 bg-[#a3e635] text-[#111113] font-bold text-xs uppercase tracking-widest hover:bg-transparent hover:text-[#a3e635] transition-all cursor-pointer border border-[#a3e635]"
             >
               {lang === "it" ? "Avvia la collaborazione" : "Start cooperation"}
             </button>

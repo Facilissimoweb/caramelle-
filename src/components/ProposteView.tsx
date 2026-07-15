@@ -212,7 +212,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
               className="w-[150px] h-[150px] object-contain"
             />
           </div>
-          <span className="text-[10px] uppercase tracking-[0.25em] text-[#c48f8a] font-mono font-bold block mb-2">
+          <span className="text-[10px] uppercase tracking-[0.25em] text-[#a3e635] font-mono font-bold block mb-2">
             {isFacilitated ? "[ PREZZI CHIARI ]" : "[ TRASPARENZA E PREZZI CHIARI ]"}
           </span>
           <h1 className="font-tan text-3xl font-bold tracking-tight text-[#111113] sm:text-5xl break-words">
@@ -239,12 +239,12 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className={`relative p-8 border transition-all duration-300 flex flex-col justify-between ${
                   tier.isPopular
-                    ? "border-[#c48f8a] bg-[#111113] text-[#F8F7F4] scale-102 lg:z-10 shadow-xl"
-                    : "border-[#111113]/10 hover:border-[#c48f8a]/40 bg-[#F8F7F4] text-[#111113]"
+                    ? "border-[#a3e635] bg-[#111113] text-[#F8F7F4] scale-102 lg:z-10 shadow-xl"
+                    : "border-[#111113]/10 hover:border-[#a3e635]/40 bg-[#F8F7F4] text-[#111113]"
                 }`}
               >
                 {tier.isPopular && (
-                  <span className="absolute -top-3.5 left-6 bg-[#c48f8a] text-[#111113] px-3 py-1 text-[9px] font-mono font-bold uppercase tracking-widest">
+                  <span className="absolute -top-3.5 left-6 bg-[#a3e635] text-[#111113] px-3 py-1 text-[9px] font-mono font-bold uppercase tracking-widest">
                     {lang === "it" ? "Più Scelto" : "Most Popular"}
                   </span>
                 )}
@@ -258,7 +258,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
                       {tier.tagline}
                     </p>
                     <div className={`pt-2 border-t space-y-1 ${tier.isPopular ? "border-[rgba(248,247,244,0.1)]" : "border-[#111113]/10"}`}>
-                      <span className="text-[10px] uppercase font-mono tracking-widest text-[#c48f8a] block font-bold">
+                      <span className="text-[10px] uppercase font-mono tracking-widest text-[#a3e635] block font-bold">
                         {lang === "it" ? "A PARTIRE DA" : "STARTING FROM"}
                       </span>
                       <div className="flex items-baseline gap-1">
@@ -270,7 +270,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
                         </span>
                       </div>
                     </div>
-                    <div className="text-[10px] font-bold text-[#c48f8a] font-mono tracking-widest uppercase">
+                    <div className="text-[10px] font-bold text-[#a3e635] font-mono tracking-widest uppercase">
                       {tier.period}
                     </div>
                   </div>
@@ -282,7 +282,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
                   }`}>
                     {tier.features.map((feat) => (
                       <li key={feat} className="flex items-start gap-2.5">
-                        <Check className="w-4 h-4 text-[#c48f8a] mt-0.5 shrink-0" />
+                        <Check className="w-4 h-4 text-[#a3e635] mt-0.5 shrink-0" />
                         <span className="leading-snug">{feat}</span>
                       </li>
                     ))}
@@ -293,8 +293,8 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
                   onClick={() => setCurrentTab("contatti")}
                   className={`w-full py-4 px-4 text-xs font-bold uppercase tracking-widest transition-all cursor-pointer border ${
                     tier.isPopular
-                      ? "bg-[#c48f8a] text-[#111113] border-[#c48f8a] hover:bg-transparent hover:text-[#c48f8a]"
-                      : "bg-transparent text-[#111113] border-[#111113]/20 hover:border-[#c48f8a] hover:text-[#c48f8a]"
+                      ? "bg-[#a3e635] text-[#111113] border-[#a3e635] hover:bg-transparent hover:text-[#a3e635]"
+                      : "bg-transparent text-[#111113] border-[#111113]/20 hover:border-[#a3e635] hover:text-[#a3e635]"
                   }`}
                 >
                   {tier.ctaText}
@@ -309,7 +309,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
       <section className="py-24 bg-[#FAF9F6] border-y border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <span className="text-[10px] font-mono tracking-[0.3em] text-[#c48f8a] font-bold uppercase block">
+            <span className="text-[10px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase block">
               {isFacilitated ? "[ TUTTO INCLUSO ]" : "[ VALORE AGGIUNTO ]"}
             </span>
             <h2 className="font-display text-3xl font-bold text-[#111113] tracking-wide">
@@ -324,7 +324,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-[#111113] font-bold text-sm">
-                  <Box className="w-4 h-4 text-[#c48f8a]" />
+                  <Box className="w-4 h-4 text-[#a3e635]" />
                   <span>{lang === "it" ? "Logo e Grafica" : "Logo and Graphics"}</span>
                 </div>
                 <p className="text-xs text-[#111113]/60 leading-relaxed font-sans">
@@ -335,7 +335,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
               </div>
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-[#111113] font-bold text-sm">
-                  <ShieldCheck className="w-4 h-4 text-[#c48f8a]" />
+                  <ShieldCheck className="w-4 h-4 text-[#a3e635]" />
                   <span>{lang === "it" ? "Sicurezza e Server" : "Security & Servers"}</span>
                 </div>
                 <p className="text-xs text-[#111113]/60 leading-relaxed font-sans">
@@ -359,7 +359,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
             <div className="pt-2">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="px-6 py-3.5 bg-[#c48f8a] text-[#FAF9F6] text-xs font-bold uppercase tracking-widest border border-[#c48f8a] hover:bg-transparent hover:text-[#c48f8a] transition-all cursor-pointer"
+                className="px-6 py-3.5 bg-[#a3e635] text-[#FAF9F6] text-xs font-bold uppercase tracking-widest border border-[#a3e635] hover:bg-transparent hover:text-[#a3e635] transition-all cursor-pointer"
               >
                 {lang === "it" ? "Invia una richiesta personalizzata" : "Send custom request"}
               </button>

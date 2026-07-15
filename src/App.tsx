@@ -564,7 +564,7 @@ export default function App() {
   const currentIndex = TABS_ORDER.indexOf(currentTab);
 
   return (
-    <div className={`min-h-screen bg-[#F8F7F4] text-[#111113] flex flex-col selection:bg-[#c48f8a]/20 selection:text-[#c48f8a] antialiased ${
+    <div className={`min-h-screen bg-[#F8F7F4] text-[#111113] flex flex-col selection:bg-[#a3e635]/20 selection:text-[#a3e635] antialiased ${
       readableFont ? "font-mono tracking-wide" : "font-sans"
     } ${
       isFacilitated ? "text-lg" : ""
@@ -580,7 +580,7 @@ export default function App() {
                 className="h-10 w-auto object-contain transition-transform group-hover:scale-[1.02] duration-300 brightness-0 invert"
               />
             </div>
-            <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-[#c48f8a] font-bold mt-2.5">
+            <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-[#a3e635] font-bold mt-2.5">
               [ M. Teresa Rogani ]
             </div>
           </div>
@@ -595,7 +595,7 @@ export default function App() {
                       onClick={() => handleSetTab(tabId)}
                       className={`text-left font-mono text-[23px] font-bold uppercase tracking-widest cursor-pointer transition-all block py-1 border-b-2 ${
                         isActive
-                          ? "text-[#c48f8a] border-[#c48f8a] translate-x-1"
+                          ? "text-[#a3e635] border-[#a3e635] translate-x-1"
                           : "text-white/60 hover:text-white hover:translate-x-0.5 border-transparent"
                       }`}
                     >
@@ -609,7 +609,7 @@ export default function App() {
         </div>
         
         <div className="space-y-4">
-          <div className="text-[10px] font-mono uppercase tracking-widest text-[#c48f8a] font-bold">
+          <div className="text-[10px] font-mono uppercase tracking-widest text-[#a3e635] font-bold">
             [ Contatto Diretto ]
           </div>
           <div className="font-mono text-xs text-white/70 leading-relaxed">
@@ -669,12 +669,12 @@ export default function App() {
             >
               <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-[10px] tracking-wider uppercase font-bold text-[#111113]/60">
                 <div className="flex items-center flex-wrap gap-1.5 sm:gap-2 text-[#111113]/40">
-                  <Home className="w-3.5 h-3.5 text-[#c48f8a] mr-1 inline shrink-0" />
+                  <Home className="w-3.5 h-3.5 text-[#a3e635] mr-1 inline shrink-0" />
                   {breadcrumbItems.map((item, index) => (
                     <React.Fragment key={item.id}>
                       {index > 0 && <span className="text-[#111113]/20 font-light mx-0.5 sm:mx-1 shrink-0">/</span>}
                       {index === breadcrumbItems.length - 1 ? (
-                        <span className="text-[#c48f8a] font-extrabold truncate max-w-[200px] sm:max-w-none">{item.label}</span>
+                        <span className="text-[#a3e635] font-extrabold truncate max-w-[200px] sm:max-w-none">{item.label}</span>
                       ) : (
                         <button
                           onClick={() => {
@@ -684,7 +684,7 @@ export default function App() {
                               navigateTo(item.id, null, true);
                             }
                           }}
-                          className="text-[#111113]/60 hover:text-[#c48f8a] cursor-pointer transition-colors uppercase font-bold shrink-0"
+                          className="text-[#111113]/60 hover:text-[#a3e635] cursor-pointer transition-colors uppercase font-bold shrink-0"
                         >
                           {item.label}
                         </button>
@@ -695,7 +695,7 @@ export default function App() {
                 
                 <div className="hidden sm:flex items-center gap-4 text-[9px] uppercase font-bold text-[#111113]/40 select-none">
                   <span>{lang === "it" ? "Posizione Attiva" : "Active Location"}</span>
-                  <span className="px-2 py-0.5 bg-[#c48f8a]/10 border border-[#c48f8a]/20 text-[#c48f8a] rounded-sm text-[9px]">
+                  <span className="px-2 py-0.5 bg-[#a3e635]/10 border border-[#a3e635]/20 text-[#a3e635] rounded-sm text-[9px]">
                     {currentTab === "blog" && selectedArticle ? "ARTICLE_VIEW" : `${currentTab.toUpperCase()}_VIEW`}
                   </span>
                 </div>
@@ -722,7 +722,7 @@ export default function App() {
           <div className="w-full">
 
             {isFacilitated && (
-              <div className="bg-[#c48f8a] text-[#111113] text-center text-xs py-2 px-4 font-mono font-bold uppercase tracking-wider animate-pulse" id="facilitated-badge-banner">
+              <div className="bg-[#a3e635] text-[#111113] text-center text-xs py-2 px-4 font-mono font-bold uppercase tracking-wider animate-pulse" id="facilitated-badge-banner">
                 {lang === "it"
                   ? "Modalità Semplificata Attiva — Caratteri ingranditi e testi più facili"
                   : "Simplified Mode Active — Larger fonts and simpler layout"}
@@ -803,12 +803,12 @@ export default function App() {
               mass: 0.8
             }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 right-6 z-40 w-11 h-11 bg-[#FAF9F6]/95 hover:bg-[#c48f8a] text-[#111113] hover:text-[#FAF9F6] border border-[#111113]/30 hover:border-[#c48f8a] rounded-none flex items-center justify-center cursor-pointer transition-colors duration-300 shadow-xl font-mono text-[9px] font-bold group"
+            className="fixed bottom-6 right-6 z-40 w-11 h-11 bg-[#FAF9F6]/95 hover:bg-[#a3e635] text-[#111113] hover:text-[#FAF9F6] border border-[#111113]/30 hover:border-[#a3e635] rounded-none flex items-center justify-center cursor-pointer transition-colors duration-300 shadow-xl font-mono text-[9px] font-bold group"
             title={lang === "it" ? "Torna su" : "Back to top"}
             id="back-to-top-btn"
             aria-label={lang === "it" ? "Torna in cima alla pagina" : "Back to top"}
           >
-            <ArrowUp className="w-4 h-4 text-[#c48f8a] group-hover:text-[#FAF9F6] transition-colors duration-300" />
+            <ArrowUp className="w-4 h-4 text-[#a3e635] group-hover:text-[#FAF9F6] transition-colors duration-300" />
           </motion.button>
         )}
       </AnimatePresence>

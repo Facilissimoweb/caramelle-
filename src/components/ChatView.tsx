@@ -180,7 +180,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
         const cleanLine = line.trim().substring(2);
         content = (
           <span className="flex items-start gap-2 pl-1">
-            <span className="w-1 h-1 bg-[#c48f8a] mt-2 shrink-0"></span>
+            <span className="w-1 h-1 bg-[#a3e635] mt-2 shrink-0"></span>
             <span>{parseInlineStyles(cleanLine)}</span>
           </span>
         );
@@ -190,7 +190,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
         const cleanLine = line.substring(dotIndex + 1).trim();
         content = (
           <span className="flex items-start gap-2 pl-1">
-            <span className="text-[#c48f8a] font-bold font-mono text-xs mt-0.5 shrink-0">{num}</span>
+            <span className="text-[#a3e635] font-bold font-mono text-xs mt-0.5 shrink-0">{num}</span>
             <span>{parseInlineStyles(cleanLine)}</span>
           </span>
         );
@@ -218,7 +218,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
         parts.push(text.substring(lastIndex, match.index));
       }
       parts.push(
-        <strong key={match.index} className="font-bold text-[#c48f8a]">
+        <strong key={match.index} className="font-bold text-[#a3e635]">
           {match[1]}
         </strong>
       );
@@ -244,7 +244,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
               className="w-[150px] h-[150px] object-contain"
             />
           </div>
-          <span className="text-[10px] uppercase tracking-[0.25em] text-[#c48f8a] font-mono font-bold block mb-2">
+          <span className="text-[10px] uppercase tracking-[0.25em] text-[#a3e635] font-mono font-bold block mb-2">
             [ CHAT INTERATTIVA DIRETTA ]
           </span>
           <h1 className="font-tan text-2xl xs:text-3xl font-bold tracking-tight text-[#F8F7F4] sm:text-4xl break-words">
@@ -264,7 +264,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
           <div className="lg:col-span-4 space-y-6 lg:h-[650px] flex flex-col">
             <div className="bg-[#151518] p-6 border border-[rgba(248,247,244,0.1)] space-y-4">
               <div className="flex items-center gap-2">
-                <Cpu className="w-4 h-4 text-[#c48f8a]" />
+                <Cpu className="w-4 h-4 text-[#a3e635]" />
                 <h3 className="font-display font-bold text-xs text-[#F8F7F4] uppercase tracking-widest">
                   Tecnologia di Supporto
                 </h3>
@@ -277,7 +277,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
             {/* Quick Questions list */}
             <div className="flex-1 bg-[#151518] p-6 border border-[rgba(248,247,244,0.1)] space-y-4 flex flex-col">
               <h4 className="text-[10px] font-bold uppercase tracking-widest text-[#F8F7F4] font-mono flex items-center gap-2">
-                <MessageSquare className="w-4 h-4 text-[#c48f8a]" />
+                <MessageSquare className="w-4 h-4 text-[#a3e635]" />
                 Domande Rapide
               </h4>
               <p className="text-[11px] text-[#F8F7F4]/60 font-sans">
@@ -289,7 +289,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
                     key={q}
                     onClick={() => handleSendMessage(q)}
                     disabled={loading}
-                    className="text-left text-xs bg-[#111113] hover:bg-[#151518] border border-[rgba(248,247,244,0.1)] p-3 rounded-none text-[#F8F7F4] hover:text-[#c48f8a] hover:border-[#c48f8a]/40 transition-all cursor-pointer font-medium font-sans"
+                    className="text-left text-xs bg-[#111113] hover:bg-[#151518] border border-[rgba(248,247,244,0.1)] p-3 rounded-none text-[#F8F7F4] hover:text-[#a3e635] hover:border-[#a3e635]/40 transition-all cursor-pointer font-medium font-sans"
                   >
                     {q}
                   </button>
@@ -299,7 +299,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
 
             <button
               onClick={clearChat}
-              className="w-full py-3 border border-[rgba(248,247,244,0.15)] hover:border-[#c48f8a] text-[#F8F7F4]/70 hover:text-[#c48f8a] text-xs font-mono tracking-widest uppercase rounded-none transition-all flex items-center justify-center gap-2 cursor-pointer bg-transparent"
+              className="w-full py-3 border border-[rgba(248,247,244,0.15)] hover:border-[#a3e635] text-[#F8F7F4]/70 hover:text-[#a3e635] text-xs font-mono tracking-widest uppercase rounded-none transition-all flex items-center justify-center gap-2 cursor-pointer bg-transparent"
             >
               <RefreshCw className="w-3.5 h-3.5" />
               Reimposta Conversazione
@@ -311,19 +311,19 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
             {/* Top Workspace Bar */}
             <div className="bg-[#111113] border-b border-[rgba(248,247,244,0.1)] px-6 py-4 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-2.5 h-2.5 bg-[#c48f8a] relative">
-                  <span className="absolute inset-0 w-full h-full bg-[#c48f8a] animate-ping opacity-30"></span>
+                <div className="w-2.5 h-2.5 bg-[#a3e635] relative">
+                  <span className="absolute inset-0 w-full h-full bg-[#a3e635] animate-ping opacity-30"></span>
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-sm text-[#F8F7F4] leading-none">
                     M. Teresa Rogani
                   </h3>
-                  <p className="text-[9px] text-[#c48f8a] font-mono mt-1 uppercase tracking-widest">
+                  <p className="text-[9px] text-[#a3e635] font-mono mt-1 uppercase tracking-widest">
                     FACILISSIMO WEB
                   </p>
                 </div>
               </div>
-              <span className="text-[9px] border border-[#c48f8a]/20 text-[#c48f8a] px-2.5 py-1 font-mono font-bold uppercase tracking-widest">
+              <span className="text-[9px] border border-[#a3e635]/20 text-[#a3e635] px-2.5 py-1 font-mono font-bold uppercase tracking-widest">
                 Disponibile
               </span>
             </div>
@@ -345,7 +345,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
                           className={`p-4 rounded-none text-xs sm:text-sm font-sans leading-relaxed ${
                             isModel
                               ? "bg-[#111113] text-[#F8F7F4] border border-[rgba(248,247,244,0.1)] shadow-sm"
-                              : "bg-[#c48f8a] text-[#111113] font-medium"
+                              : "bg-[#a3e635] text-[#111113] font-medium"
                           }`}
                         >
                           <div className="space-y-1">{renderMessageText(m.text)}</div>
@@ -375,9 +375,9 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
                       Sto scrivendo...
                     </span>
                     <span className="flex gap-1">
-                      <span className="w-1 h-1 bg-[#c48f8a] animate-bounce delay-100"></span>
-                      <span className="w-1 h-1 bg-[#c48f8a] animate-bounce delay-200"></span>
-                      <span className="w-1 h-1 bg-[#c48f8a] animate-bounce delay-300"></span>
+                      <span className="w-1 h-1 bg-[#a3e635] animate-bounce delay-100"></span>
+                      <span className="w-1 h-1 bg-[#a3e635] animate-bounce delay-200"></span>
+                      <span className="w-1 h-1 bg-[#a3e635] animate-bounce delay-300"></span>
                     </span>
                   </div>
                 </motion.div>
@@ -409,12 +409,12 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
                   onChange={(e) => setInput(e.target.value)}
                   disabled={loading}
                   placeholder="Scrivi una domanda... (es. Come posso prenotare una call?)"
-                  className="flex-1 px-4 py-3 border border-[rgba(248,247,244,0.15)] rounded-none text-xs text-[#F8F7F4] placeholder-[#F8F7F4]/40 focus:outline-none focus:border-[#c48f8a] bg-transparent transition-all"
+                  className="flex-1 px-4 py-3 border border-[rgba(248,247,244,0.15)] rounded-none text-xs text-[#F8F7F4] placeholder-[#F8F7F4]/40 focus:outline-none focus:border-[#a3e635] bg-transparent transition-all"
                 />
                 <button
                   type="submit"
                   disabled={!input.trim() || loading}
-                  className="p-3 bg-[#c48f8a] hover:bg-transparent hover:text-[#c48f8a] text-[#111113] rounded-none transition-all flex items-center justify-center shrink-0 disabled:opacity-40 cursor-pointer border border-[#c48f8a]"
+                  className="p-3 bg-[#a3e635] hover:bg-transparent hover:text-[#a3e635] text-[#111113] rounded-none transition-all flex items-center justify-center shrink-0 disabled:opacity-40 cursor-pointer border border-[#a3e635]"
                   id="chat-send-btn"
                 >
                   <Send className="w-3.5 h-3.5" />

@@ -48,7 +48,7 @@
   --font-vina: "Vina Sans", sans-serif;
 
   /* Theme Palette Definitions based on the new Brutalist/Swiss design: Cream & Ink */
-  --color-primary: #c48f8a; /* orange-red/accent */
+  --color-primary: #a3e635; /* orange-red/accent */
   --color-on-primary: #F8F7F4; /* cream background */
   --color-primary-container: #FAF9F6;
   --color-on-primary-container: #111113;
@@ -60,10 +60,10 @@
   --color-secondary-fixed: #111113;
   --color-secondary-fixed-dim: #333336;
 
-  --color-tertiary: #c48f8a;
+  --color-tertiary: #a3e635;
   --color-on-tertiary: #F8F7F4;
   --color-tertiary-container: rgba(227, 89, 48, 0.08);
-  --color-on-tertiary-container: #c48f8a;
+  --color-on-tertiary-container: #a3e635;
 
   --color-background: #F8F7F4; /* cream bg */
   --color-on-background: #111113; /* ink text */
@@ -84,7 +84,7 @@
   --color-outline: rgba(17, 17, 19, 0.15);
   --color-outline-variant: rgba(17, 17, 19, 0.08);
 
-  --color-error: #c48f8a;
+  --color-error: #a3e635;
   --color-on-error: #F8F7F4;
   --color-error-container: rgba(227, 89, 48, 0.15);
   --color-on-error-container: #5A0004;
@@ -124,11 +124,11 @@
   padding: 6px 12px;
   border: 1px solid rgba(248, 247, 244, 0.15);
   background: rgba(248, 247, 244, 0.05);
-  color: #c48f8a;
+  color: #a3e635;
 }
 
 .editorial-button-primary {
-  background-color: #c48f8a;
+  background-color: #a3e635;
   color: #111113;
   font-family: var(--font-mono);
   font-size: 10px;
@@ -137,13 +137,13 @@
   letter-spacing: 0.2em;
   padding: 14px 28px;
   transition: all 0.2s ease;
-  border: 1px solid #c48f8a;
+  border: 1px solid #a3e635;
 }
 
 .editorial-button-primary:hover {
   background-color: transparent;
-  color: #c48f8a;
-  border-color: #c48f8a;
+  color: #a3e635;
+  border-color: #a3e635;
 }
 
 .editorial-button-secondary {

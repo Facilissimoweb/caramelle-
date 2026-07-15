@@ -18,7 +18,7 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
         
         {/* Page Header */}
         <div className="space-y-4 text-center lg:text-left">
-          <span className="text-[10px] uppercase tracking-[0.25em] text-[#c48f8a] font-mono font-bold block">
+          <span className="text-[10px] uppercase tracking-[0.25em] text-[#a3e635] font-mono font-bold block">
             {lang === "it" ? "[ VETRINA INTERATTIVA ]" : "[ INTERACTIVE SHOWCASE ]"}
           </span>
           <h1 className="font-tan text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#111113] leading-tight">
@@ -47,7 +47,7 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
           <div className="flex flex-col gap-4 border-b border-[#111113]/5 pb-4 px-3 sm:px-0">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
               <div className="flex items-center gap-2">
-                <Globe className="w-4 h-4 text-[#c48f8a]" />
+                <Globe className="w-4 h-4 text-[#a3e635]" />
                 <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#111113]/80">
                   {lang === "it" ? "Menù Interattivo & Presentazione" : "Interactive Menu & Presentation"}
                 </span>
@@ -64,7 +64,7 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
                   onClick={() => setAspectRatio("vertical")}
                   className={`px-3 py-1 text-xs font-mono font-bold uppercase tracking-wider rounded-sm flex items-center gap-1.5 transition-all cursor-pointer ${
                     aspectRatio === "vertical"
-                      ? "bg-[#c48f8a] text-white shadow-sm"
+                      ? "bg-[#a3e635] text-white shadow-sm"
                       : "text-[#111113]/60 hover:text-[#111113]"
                   }`}
                   title="Vertical 9:16 (Mobile)"
@@ -76,7 +76,7 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
                   onClick={() => setAspectRatio("horizontal")}
                   className={`px-3 py-1 text-xs font-mono font-bold uppercase tracking-wider rounded-sm flex items-center gap-1.5 transition-all cursor-pointer ${
                     aspectRatio === "horizontal"
-                      ? "bg-[#c48f8a] text-white shadow-sm"
+                      ? "bg-[#a3e635] text-white shadow-sm"
                       : "text-[#111113]/60 hover:text-[#111113]"
                   }`}
                   title="Horizontal 16:9 (Desktop)"
@@ -88,7 +88,7 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
                   onClick={() => setAspectRatio("square")}
                   className={`px-3 py-1 text-xs font-mono font-bold uppercase tracking-wider rounded-sm flex items-center gap-1.5 transition-all cursor-pointer ${
                     aspectRatio === "square"
-                      ? "bg-[#c48f8a] text-white shadow-sm"
+                      ? "bg-[#a3e635] text-white shadow-sm"
                       : "text-[#111113]/60 hover:text-[#111113]"
                   }`}
                   title="Square 1:1"
@@ -144,7 +144,7 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
           {/* Caption */}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center text-[10px] sm:text-[11px] font-mono text-[#111113]/60 pt-2 gap-2 px-3 sm:px-0">
             <span>
-              <span className="font-bold text-[#c48f8a]">Interactive Menu</span> in Orange Beige Black Soft &amp; Clean Style
+              <span className="font-bold text-[#a3e635]">Interactive Menu</span> in Orange Beige Black Soft &amp; Clean Style
             </span>
             <span>
               {lang === "it" ? "Creato da" : "Created by"} Maria Teresa Rogani
@@ -155,7 +155,7 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
         {/* Value Proposition Cards linked to the Canva design theme */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
           <div className="border border-[#111113]/10 p-5 bg-[#FAF9F6]/50 space-y-2">
-            <Layout className="w-5 h-5 text-[#c48f8a]" />
+            <Layout className="w-5 h-5 text-[#a3e635]" />
             <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-[#111113]">
               {lang === "it" ? "Layout Pulito & Soft" : "Clean & Soft Layout"}
             </h3>
@@ -167,7 +167,7 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
           </div>
           
           <div className="border border-[#111113]/10 p-5 bg-[#FAF9F6]/50 space-y-2">
-            <Smartphone className="w-5 h-5 text-[#c48f8a]" />
+            <Smartphone className="w-5 h-5 text-[#a3e635]" />
             <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-[#111113]">
               {lang === "it" ? "Totalmente Responsive" : "Fully Responsive"}
             </h3>
@@ -179,7 +179,7 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
           </div>
 
           <div className="border border-[#111113]/10 p-5 bg-[#FAF9F6]/50 space-y-2">
-            <Eye className="w-5 h-5 text-[#c48f8a]" />
+            <Eye className="w-5 h-5 text-[#a3e635]" />
             <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-[#111113]">
               {lang === "it" ? "Esperienza Interattiva" : "Interactive Experience"}
             </h3>

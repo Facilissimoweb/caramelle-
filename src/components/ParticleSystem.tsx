@@ -43,7 +43,7 @@ export default function ParticleSystem({ lang = "it" }: ParticleSystemProps) {
     let width = 0;
     let height = 0;
 
-    const colors = ["#c48f8a", "#F8F7F4", "#b09c85"];
+    const colors = ["#a3e635", "#F8F7F4", "#b09c85"];
 
     // Responsive Canvas Resizing using ResizeObserver
     const handleResize = (entries: ResizeObserverEntry[]) => {
@@ -327,7 +327,7 @@ export default function ParticleSystem({ lang = "it" }: ParticleSystemProps) {
             title={lang === "it" ? "Attira le particelle" : "Attract particles"}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-mono tracking-wider uppercase transition-all duration-300 cursor-pointer ${
               interactionMode === "attract"
-                ? "bg-[#c48f8a] text-[#F8F7F4] font-bold shadow-md"
+                ? "bg-[#a3e635] text-[#F8F7F4] font-bold shadow-md"
                 : "text-[#F8F7F4]/60 hover:text-[#F8F7F4] hover:bg-[rgba(248,247,244,0.05)]"
             }`}
           >
@@ -340,7 +340,7 @@ export default function ParticleSystem({ lang = "it" }: ParticleSystemProps) {
             title={lang === "it" ? "Allontana le particelle" : "Repel particles"}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-mono tracking-wider uppercase transition-all duration-300 cursor-pointer ${
               interactionMode === "scatter"
-                ? "bg-[#c48f8a] text-[#F8F7F4] font-bold shadow-md"
+                ? "bg-[#a3e635] text-[#F8F7F4] font-bold shadow-md"
                 : "text-[#F8F7F4]/60 hover:text-[#F8F7F4] hover:bg-[rgba(248,247,244,0.05)]"
             }`}
           >
