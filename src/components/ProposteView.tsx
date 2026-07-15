@@ -291,10 +291,9 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
 
                 <button
                   onClick={() => setCurrentTab("contatti")}
-                  className="w-full relative inline-flex items-center justify-center px-8 py-3.5 overflow-hidden font-bold text-white rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-[0_0_20px_rgba(236,72,153,0.5)] hover:shadow-[0_0_35px_rgba(236,72,153,0.8)] focus:ring-4 focus:ring-pink-300 dark:focus:ring-pink-800 active:scale-95 duration-150 transform cursor-pointer"
+                  className="w-full px-7 py-3 bg-gradient-to-r from-[#a7c96a] to-[#c99e97] hover:from-[#96b85a] hover:to-[#ba8d85] text-[#352e2c] font-extrabold rounded-xl shadow-lg shadow-[#c99e97]/20 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer"
                 >
                   <span>{tier.ctaText}</span>
-                  <Zap className="w-4 h-4 ml-2 animate-pulse" />
                 </button>
               </motion.div>
             ))}
@@ -356,10 +355,9 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
             <div className="pt-2">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="relative inline-flex items-center justify-center px-8 py-3.5 overflow-hidden font-bold text-white rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-[0_0_20px_rgba(236,72,153,0.5)] hover:shadow-[0_0_35px_rgba(236,72,153,0.8)] focus:ring-4 focus:ring-pink-300 dark:focus:ring-pink-800 active:scale-95 duration-150 transform cursor-pointer"
+                className="px-6 py-3 bg-[#a7c96a] hover:bg-[#96b85a] text-[#352e2c] font-bold rounded-xl shadow-[0_4px_14px_0_rgba(167,201,106,0.4)] hover:shadow-[0_6px_20px_0_rgba(167,201,106,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center justify-center space-x-2 cursor-pointer"
               >
                 <span>{lang === "it" ? "Invia una richiesta personalizzata" : "Send custom request"}</span>
-                <Zap className="w-4 h-4 ml-2 animate-pulse" />
               </button>
             </div>
           </div>
