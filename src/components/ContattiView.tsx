@@ -7,9 +7,11 @@ const logoImage = "/f (1600 x 500 px).webp";
 interface ContattiViewProps {
   lang: "it" | "en";
   isFacilitated: boolean;
+  selectedPackage?: string | null;
+  setSelectedPackage?: (pkg: string | null) => void;
 }
 
-export default function ContattiView({ lang, isFacilitated }: ContattiViewProps) {
+export default function ContattiView({ lang, isFacilitated, selectedPackage, setSelectedPackage }: ContattiViewProps) {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const bgImages = [
     "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1920",
@@ -32,6 +34,33 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
     budget: "1000€ - 2000€",
     message: "",
   });
+
+  useEffect(() => {
+    if (selectedPackage) {
+      let mappedType = "Multi-page (AI Professional)";
+      let mappedBudget = "1000€ - 2000€";
+
+      if (selectedPackage === "vetrina") {
+        mappedType = "Sito Vetrina (CMS WP)";
+        mappedBudget = "Sotto 1.000€";
+      } else if (selectedPackage === "starter") {
+        mappedType = "One-Page (AI Starter)";
+        mappedBudget = "Sotto 1.000€";
+      } else if (selectedPackage === "professional") {
+        mappedType = "Multi-page (AI Professional)";
+        mappedBudget = "1000€ - 2000€";
+      } else if (selectedPackage === "enterprise") {
+        mappedType = "E-commerce o Custom (AI Enterprise)";
+        mappedBudget = "2000€ - 4000€";
+      }
+
+      setFormData((prev) => ({
+        ...prev,
+        projectType: mappedType,
+        budget: mappedBudget,
+      }));
+    }
+  }, [selectedPackage]);
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -345,6 +374,7 @@ export default function ContattiView({ lang, isFacilitated }: ContattiViewProps)
                         onChange={handleChange}
                         className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-[#a3e635] transition-all"
                       >
+                        <option>Sito Vetrina (CMS WP)</option>
                         <option>One-Page (AI Starter)</option>
                         <option>Multi-page (AI Professional)</option>
                         <option>E-commerce o Custom (AI Enterprise)</option>

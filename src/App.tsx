@@ -152,6 +152,7 @@ const TABS_ORDER = ["home", "chi-sono", "web-app", "siti-web", "proposte", "cont
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>("home");
   const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
+  const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
   const [slideDirection, setSlideDirection] = useState<"left" | "right">("left");
   const [showBreadcrumb, setShowBreadcrumb] = useState<boolean>(true);
   const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
@@ -541,9 +542,23 @@ export default function App() {
       case "chi-sono":
         return <AboutView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} />;
       case "proposte":
-        return <ProposteView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} />;
+        return (
+          <ProposteView
+            setCurrentTab={handleSetTab}
+            lang={lang}
+            isFacilitated={isFacilitated}
+            onSelectPackage={setSelectedPackage}
+          />
+        );
       case "contatti":
-        return <ContattiView lang={lang} isFacilitated={isFacilitated} />;
+        return (
+          <ContattiView
+            lang={lang}
+            isFacilitated={isFacilitated}
+            selectedPackage={selectedPackage}
+            setSelectedPackage={setSelectedPackage}
+          />
+        );
       case "chat":
         return <ChatView lang={lang} isFacilitated={isFacilitated} />;
       case "blog":
@@ -593,7 +608,7 @@ export default function App() {
                   <li key={tabId}>
                     <button
                       onClick={() => handleSetTab(tabId)}
-                      className={`text-left font-mono text-[23px] font-bold uppercase tracking-widest cursor-pointer transition-all block py-1 border-b-2 ${
+                      className={`text-left font-mono text-[17px] font-bold uppercase tracking-widest cursor-pointer transition-all block py-1 border-b-2 ${
                         isActive
                           ? "text-[#a3e635] border-[#a3e635] translate-x-1"
                           : "text-white/60 hover:text-white hover:translate-x-0.5 border-transparent"

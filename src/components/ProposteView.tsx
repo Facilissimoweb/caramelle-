@@ -8,9 +8,10 @@ interface ProposteViewProps {
   setCurrentTab: (tab: string) => void;
   lang: "it" | "en";
   isFacilitated: boolean;
+  onSelectPackage?: (pkgId: string) => void;
 }
 
-export default function ProposteView({ setCurrentTab, lang, isFacilitated }: ProposteViewProps) {
+export default function ProposteView({ setCurrentTab, lang, isFacilitated, onSelectPackage }: ProposteViewProps) {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const bgImages = [
     "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1920",
@@ -27,6 +28,24 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
 
   const tiers = isFacilitated
     ? [
+        {
+          id: "vetrina",
+          name: "Sito Vetrina CMS WP",
+          tagline: lang === "it" ? "Sito completo con gestione facilissima su WordPress." : "Complete site with very easy WordPress management.",
+          price: "360",
+          period: lang === "it" ? "Sito con più Pagine" : "Multi-page Website",
+          features: [
+            lang === "it" ? "Sito internet completo basato su WordPress" : "Complete website based on WordPress",
+            lang === "it" ? "Più pagine (Home, Servizi, Chi Siamo, Contatti)" : "Multiple pages (Home, Services, About Us, Contacts)",
+            lang === "it" ? "Pannello di controllo facile per modificare i testi da solo" : "Easy control panel to edit texts by yourself",
+            lang === "it" ? "Grafica personalizzata adatta al tuo settore" : "Custom graphics tailored to your industry",
+            lang === "it" ? "Si vede benissimo anche su smartphone e tablet" : "Looks great also on smartphone and tablet",
+            lang === "it" ? "Collegamento immediato ai tuoi canali Social" : "Immediate links to your Social channels",
+            lang === "it" ? "Pronto e consegnato in soli 10-12 giorni" : "Ready and delivered in just 10-12 days",
+          ],
+          isPopular: false,
+          ctaText: lang === "it" ? "Scegli Sito Vetrina" : "Choose Showcase Site",
+        },
         {
           id: "starter",
           name: "AI Starter",
@@ -84,6 +103,24 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
         },
       ]
     : [
+        {
+          id: "vetrina",
+          name: "Sito Vetrina (CMS WP)",
+          tagline: "Presenza online professionale, dinamica e facilmente gestibile su WordPress.",
+          price: "360",
+          period: "Sito Multi-pagina WordPress",
+          features: [
+            "Sito Multi-pagina completo ed espandibile",
+            "Sviluppato su CMS WordPress per la massima autonomia",
+            "Layout responsive moderno e ottimizzato per mobile",
+            "Pannello di gestione contenuti intuitivo per testi/immagini",
+            "Predisposizione per futura espansione e blog integrato",
+            "SEO Base (indicizzazione su Google e schede locali)",
+            "Configurazione cookie policy e privacy GDPR-compliant",
+          ],
+          isPopular: false,
+          ctaText: "Scegli Sito Vetrina",
+        },
         {
           id: "starter",
           name: "AI Starter",
@@ -220,7 +257,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
           </h1>
           <p className="font-sans text-xs sm:text-sm text-[#111113]/70 leading-relaxed">
             {isFacilitated 
-              ? "Nessun costo nascosto o sorpresa finale. Qui trovi i miei tre piani con tutto quello che è incluso, spiegato in modo semplice."
+              ? "Nessun costo nascosto o sorpresa finale. Qui trovi i miei piani con tutto quello che è incluso, spiegato in modo semplice."
               : "Nessun preventivo gonfiato o tariffa oraria ambigua. Qui trovi pacchetti chiari, pensati per adattarsi alle reali necessità del tuo business."}
           </p>
         </div>
@@ -228,8 +265,8 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
 
       {/* Pricing Cards */}
       <section className="py-24 bg-[#FAF9F6]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 xl:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 items-stretch">
             {tiers.map((tier, index) => (
               <motion.div
                 key={tier.id}
@@ -289,8 +326,11 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
                   </ul>
                 </div>
 
-                <button
-                  onClick={() => setCurrentTab("contatti")}
+                 <button
+                  onClick={() => {
+                    if (onSelectPackage) onSelectPackage(tier.id);
+                    setCurrentTab("contatti");
+                  }}
                   className="w-full px-7 py-3 bg-gradient-to-r from-[#a7c96a] to-[#c99e97] hover:from-[#96b85a] hover:to-[#ba8d85] text-[#352e2c] font-extrabold rounded-xl shadow-lg shadow-[#c99e97]/20 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer"
                 >
                   <span>{tier.ctaText}</span>
