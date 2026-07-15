@@ -430,7 +430,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       {/* Dynamic Gallery & Media Assets - Hidden from online public view as requested */}
       {/* <GallerySection lang={lang} isFacilitated={isFacilitated} /> */}
       {/* FAQ Section */}
-      <section className="py-24 border-b border-[#111113]/10 bg-[#F8F7F4]">
+      <section className="py-24 border-b border-white/10 bg-[#544848]">
         <FAQAccordion
           containerClassName="mb-0 pb-[60px]"
           title={lang === "it" ? "Domande Frequenti" : "Frequently Asked Questions"}

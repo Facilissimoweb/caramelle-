@@ -369,7 +369,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-[#F8F7F4]">
+      <section className="py-24 bg-[#544848]">
         <FAQAccordion items={faqs} />
       </section>
     </div>

@@ -30,7 +30,7 @@ export default function FAQAccordion({
   };
 
   return (
-    <div className="w-full bg-[#111113] text-[#F8F7F4]">
+    <div className="w-full bg-[#544848] text-[#F8F7F4]">
       <div className={`max-w-3xl mx-auto px-6 ${containerClassName}`}>
         {(title || subtitle || showIcon) && (
           <div className="text-center mb-16 space-y-4">
