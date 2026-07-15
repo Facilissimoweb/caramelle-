@@ -103,20 +103,25 @@ export default function CookieBanner({ lang, isFacilitated, forceShow = false, o
 
   // Check existing consent on mount
   useEffect(() => {
-    const saved = localStorage.getItem("facilissimo-cookie-consent");
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved) as CookiePreferences;
-        setPrefs(parsed);
-        applyTrackingConsent(parsed);
-        if (!forceShow) {
-          setShowBanner(false);
+    try {
+      const saved = localStorage.getItem("facilissimo-cookie-consent");
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved) as CookiePreferences;
+          setPrefs(parsed);
+          applyTrackingConsent(parsed);
+          if (!forceShow) {
+            setShowBanner(false);
+          }
+        } catch (e) {
+          console.error("Error parsing cookie preferences", e);
+          setShowBanner(true);
         }
-      } catch (e) {
-        console.error("Error parsing cookie preferences", e);
+      } else {
         setShowBanner(true);
       }
-    } else {
+    } catch (e) {
+      console.warn("[Storage] Failed to read cookie preferences from localStorage:", e);
       setShowBanner(true);
     }
   }, []);
@@ -130,7 +135,11 @@ export default function CookieBanner({ lang, isFacilitated, forceShow = false, o
   }, [forceShow]);
 
   const savePreferences = (updatedPrefs: CookiePreferences) => {
-    localStorage.setItem("facilissimo-cookie-consent", JSON.stringify(updatedPrefs));
+    try {
+      localStorage.setItem("facilissimo-cookie-consent", JSON.stringify(updatedPrefs));
+    } catch (e) {
+      console.warn("[Storage] Failed to save cookie preferences to localStorage:", e);
+    }
     applyTrackingConsent(updatedPrefs);
     setShowBanner(false);
     setIsExpanding(false);

@@ -202,10 +202,14 @@ export default function App() {
       newHash = `#/${tab}/${articleSlug}`;
     }
 
-    if (pushHistory) {
-      window.history.pushState({ tab, articleSlug }, "", newHash);
-    } else {
-      window.history.replaceState({ tab, articleSlug }, "", newHash);
+    try {
+      if (pushHistory) {
+        window.history.pushState({ tab, articleSlug }, "", newHash);
+      } else {
+        window.history.replaceState({ tab, articleSlug }, "", newHash);
+      }
+    } catch (e) {
+      console.warn("[Router] Failed to update browser history. This usually happens when running inside a sandboxed iframe:", e);
     }
   };
 
@@ -275,24 +279,52 @@ export default function App() {
     }
   };
 
-  const [lang, setLang] = useState<"it" | "en">("it");
+  const [lang, setLang] = useState<"it" | "en">(() => {
+    try {
+      const saved = localStorage.getItem("facilissimo-lang");
+      return (saved === "en" || saved === "it") ? saved : "it";
+    } catch (e) {
+      console.warn("[Storage] Failed to read lang from localStorage:", e);
+      return "it";
+    }
+  });
   const [isFacilitated, setIsFacilitated] = useState<boolean>(() => {
-    const saved = localStorage.getItem("facilissimo-facil");
-    return saved === "true";
+    try {
+      const saved = localStorage.getItem("facilissimo-facil");
+      return saved === "true";
+    } catch (e) {
+      console.warn("[Storage] Failed to read facilissimo-facil from localStorage:", e);
+      return false;
+    }
   });
   const [activeModal, setActiveModal] = useState<"privacy" | "terms" | "ethics" | "sitemap" | null>(null);
   const [forceShowCookieBanner, setForceShowCookieBanner] = useState<boolean>(false);
   const [fontSize, setFontSize] = useState<number>(() => {
-    const saved = localStorage.getItem("facilissimo-font-size");
-    return saved ? parseInt(saved, 10) : 100;
+    try {
+      const saved = localStorage.getItem("facilissimo-font-size");
+      return saved ? parseInt(saved, 10) : 100;
+    } catch (e) {
+      console.warn("[Storage] Failed to read facilissimo-font-size from localStorage:", e);
+      return 100;
+    }
   });
   const [highContrast, setHighContrast] = useState<boolean>(() => {
-    const saved = localStorage.getItem("facilissimo-contrast");
-    return saved === "true";
+    try {
+      const saved = localStorage.getItem("facilissimo-contrast");
+      return saved === "true";
+    } catch (e) {
+      console.warn("[Storage] Failed to read facilissimo-contrast from localStorage:", e);
+      return false;
+    }
   });
   const [readableFont, setReadableFont] = useState<boolean>(() => {
-    const saved = localStorage.getItem("facilissimo-readable");
-    return saved === "true";
+    try {
+      const saved = localStorage.getItem("facilissimo-readable");
+      return saved === "true";
+    } catch (e) {
+      console.warn("[Storage] Failed to read facilissimo-readable from localStorage:", e);
+      return false;
+    }
   });
 
   // Scroll to top automatically when currentTab changes
@@ -305,70 +337,86 @@ export default function App() {
 
   // SEO Dynamic Updates
   useEffect(() => {
-    const meta = SEO_METADATA[currentTab] || SEO_METADATA.home;
-    
-    // Set Document Title
-    document.title = meta.title;
+    try {
+      const meta = SEO_METADATA[currentTab] || SEO_METADATA.home;
+      
+      // Set Document Title
+      document.title = meta.title;
 
-    // Set or Update Meta Description
-    let descTag = document.querySelector('meta[name="description"]');
-    if (!descTag) {
-      descTag = document.createElement('meta');
-      descTag.setAttribute('name', 'description');
-      document.head.appendChild(descTag);
-    }
-    descTag.setAttribute('content', meta.description);
-
-    // Set or Update Meta Keywords
-    let keywordsTag = document.querySelector('meta[name="keywords"]');
-    if (!keywordsTag) {
-      keywordsTag = document.createElement('meta');
-      keywordsTag.setAttribute('name', 'keywords');
-      document.head.appendChild(keywordsTag);
-    }
-    keywordsTag.setAttribute('content', meta.keywords);
-
-    // Build Absolute OpenGraph Image URL
-    const origin = typeof window !== "undefined" ? window.location.origin : "";
-    const ogImageUrl = meta.image.startsWith("http") ? meta.image : `${origin}${meta.image}`;
-
-    // Set or Update OpenGraph & Twitter Tags
-    const ogTags = [
-      { nameOrProperty: "property", value: "og:title", content: meta.title },
-      { nameOrProperty: "property", value: "og:description", content: meta.description },
-      { nameOrProperty: "property", value: "og:type", content: "website" },
-      { nameOrProperty: "property", value: "og:url", content: window.location.href },
-      { nameOrProperty: "property", value: "og:image", content: ogImageUrl },
-      { nameOrProperty: "name", value: "twitter:card", content: "summary_large_image" },
-      { nameOrProperty: "name", value: "twitter:title", content: meta.title },
-      { nameOrProperty: "name", value: "twitter:description", content: meta.description },
-      { nameOrProperty: "name", value: "twitter:image", content: ogImageUrl }
-    ];
-
-    ogTags.forEach(({ nameOrProperty, value, content }) => {
-      let tag = document.querySelector(`meta[${nameOrProperty}="${value}"]`);
-      if (!tag) {
-        tag = document.createElement('meta');
-        tag.setAttribute(nameOrProperty, value);
-        document.head.appendChild(tag);
+      // Set or Update Meta Description
+      let descTag = document.querySelector('meta[name="description"]');
+      if (!descTag) {
+        descTag = document.createElement('meta');
+        descTag.setAttribute('name', 'description');
+        document.head.appendChild(descTag);
       }
-      tag.setAttribute('content', content);
-    });
+      descTag.setAttribute('content', meta.description);
+
+      // Set or Update Meta Keywords
+      let keywordsTag = document.querySelector('meta[name="keywords"]');
+      if (!keywordsTag) {
+        keywordsTag = document.createElement('meta');
+        keywordsTag.setAttribute('name', 'keywords');
+        document.head.appendChild(keywordsTag);
+      }
+      keywordsTag.setAttribute('content', meta.keywords);
+
+      // Build Absolute OpenGraph Image URL
+      const origin = typeof window !== "undefined" ? window.location.origin : "";
+      const ogImageUrl = meta.image.startsWith("http") ? meta.image : `${origin}${meta.image}`;
+
+      // Set or Update OpenGraph & Twitter Tags
+      const ogTags = [
+        { nameOrProperty: "property", value: "og:title", content: meta.title },
+        { nameOrProperty: "property", value: "og:description", content: meta.description },
+        { nameOrProperty: "property", value: "og:type", content: "website" },
+        { nameOrProperty: "property", value: "og:url", content: typeof window !== "undefined" ? window.location.href : "" },
+        { nameOrProperty: "property", value: "og:image", content: ogImageUrl },
+        { nameOrProperty: "name", value: "twitter:card", content: "summary_large_image" },
+        { nameOrProperty: "name", value: "twitter:title", content: meta.title },
+        { nameOrProperty: "name", value: "twitter:description", content: meta.description },
+        { nameOrProperty: "name", value: "twitter:image", content: ogImageUrl }
+      ];
+
+      ogTags.forEach(({ nameOrProperty, value, content }) => {
+        let tag = document.querySelector(`meta[${nameOrProperty}="${value}"]`);
+        if (!tag) {
+          tag = document.createElement('meta');
+          tag.setAttribute(nameOrProperty, value);
+          document.head.appendChild(tag);
+        }
+        tag.setAttribute('content', content);
+      });
+    } catch (e) {
+      console.warn("[SEO] Failed to update SEO meta tags. This usually happens when running inside a sandboxed iframe:", e);
+    }
   }, [currentTab]);
 
   useEffect(() => {
     console.debug(`[App State Sync] Language changed to: ${lang}`);
-    localStorage.setItem("facilissimo-lang", lang);
+    try {
+      localStorage.setItem("facilissimo-lang", lang);
+    } catch (e) {
+      console.warn("[Storage] Failed to save lang to localStorage:", e);
+    }
   }, [lang]);
 
   useEffect(() => {
     console.debug(`[App State Sync] isFacilitated changed to: ${isFacilitated}`);
-    localStorage.setItem("facilissimo-facil", String(isFacilitated));
+    try {
+      localStorage.setItem("facilissimo-facil", String(isFacilitated));
+    } catch (e) {
+      console.warn("[Storage] Failed to save isFacilitated to localStorage:", e);
+    }
   }, [isFacilitated]);
 
   useEffect(() => {
     console.debug(`[App State Sync] fontSize changed to: ${fontSize}%`);
-    localStorage.setItem("facilissimo-font-size", String(fontSize));
+    try {
+      localStorage.setItem("facilissimo-font-size", String(fontSize));
+    } catch (e) {
+      console.warn("[Storage] Failed to save fontSize to localStorage:", e);
+    }
     if (typeof window !== "undefined") {
       document.documentElement.style.fontSize = `${fontSize}%`;
     }
@@ -376,12 +424,20 @@ export default function App() {
 
   useEffect(() => {
     console.debug(`[App State Sync] highContrast changed to: ${highContrast}`);
-    localStorage.setItem("facilissimo-contrast", String(highContrast));
+    try {
+      localStorage.setItem("facilissimo-contrast", String(highContrast));
+    } catch (e) {
+      console.warn("[Storage] Failed to save highContrast to localStorage:", e);
+    }
   }, [highContrast]);
 
   useEffect(() => {
     console.debug(`[App State Sync] readableFont changed to: ${readableFont}`);
-    localStorage.setItem("facilissimo-readable", String(readableFont));
+    try {
+      localStorage.setItem("facilissimo-readable", String(readableFont));
+    } catch (e) {
+      console.warn("[Storage] Failed to save readableFont to localStorage:", e);
+    }
   }, [readableFont]);
 
   // Initial call to load tracking scripts dynamically if user consent was previously given

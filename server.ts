@@ -658,8 +658,26 @@ async function setupViteOrStatic() {
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath));
-    app.get("*", (req, res) => {
+    // Serve static assets with standard caching
+    app.use(express.static(distPath, {
+      maxAge: "1d",
+      etag: true,
+    }));
+    
+    // Robust SPA fallback: only serve index.html for navigation requests, not missing assets
+    app.get("*", (req, res, next) => {
+      const ext = path.extname(req.path);
+      const isHtmlRequest = req.headers.accept && req.headers.accept.includes("text/html");
+      
+      // If it has a file extension and isn't specifically requesting HTML, let it 404
+      if (ext && !isHtmlRequest) {
+        return next();
+      }
+      
+      // Prevent browser caching of the entry point HTML to avoid stale/dev cache mismatches
+      res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+      res.setHeader("Pragma", "no-cache");
+      res.setHeader("Expires", "0");
       res.sendFile(path.join(distPath, "index.html"));
     });
   }
