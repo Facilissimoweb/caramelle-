@@ -13,7 +13,7 @@ interface WebAppViewProps {
 
 export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAppViewProps) {
   const t = translations[lang][isFacilitated ? "facilitated" : "normal"];
-  const [aspectRatio, setAspectRatio] = useState<"vertical" | "horizontal" | "square">("vertical");
+  const [aspectRatio, setAspectRatio] = useState<"vertical" | "horizontal">("vertical");
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   const canvaEmbedUrl = "https://www.canva.com/design/DAHPcAgT_q4/pp2Mw-kRnAzmogZQ4mcDgg/view?embed";
@@ -126,24 +126,14 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                 </div>
               </div>
 
-              <div className="pt-4">
-                <a
-                  href={canvaDirectUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 py-3 px-6 bg-[#111113] text-white hover:bg-[#c48f8a] transition-all font-mono text-[10px] font-bold uppercase tracking-widest cursor-pointer"
-                >
-                  <ExternalLink className="w-3.5 h-3.5" />
-                  {lang === "it" ? "Apri su Canva" : "Open on Canva"}
-                </a>
-              </div>
+              {/* No external link to keep users on the site */}
             </div>
 
             {/* Simulated Simulator Column */}
             <div className="lg:col-span-7 flex flex-col items-center gap-4 w-full">
               
               {/* Aspect Ratio Selector bar styled elegantly */}
-              <div className="flex items-center justify-between w-full max-w-[420px] bg-[#FAF9F6] border border-[#111113]/10 p-2 rounded-none">
+              <div className="flex items-center justify-between w-full max-w-[390px] bg-[#FAF9F6] border border-[#111113]/10 p-2 rounded-none">
                 <span className="text-[9px] font-mono uppercase tracking-wider text-[#111113]/50 px-2">
                   {lang === "it" ? "Formato:" : "Format:"}
                 </span>
@@ -170,17 +160,6 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                     <Monitor className="w-3 h-3" />
                     {lang === "it" ? "Orizzontale" : "Desktop"}
                   </button>
-                  <button
-                    onClick={() => setAspectRatio("square")}
-                    className={`px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all cursor-pointer ${
-                      aspectRatio === "square"
-                        ? "bg-[#c48f8a] text-white shadow-sm"
-                        : "text-[#111113]/60 hover:text-[#111113]"
-                    }`}
-                  >
-                    <Square className="w-3 h-3" />
-                    {lang === "it" ? "Quadra" : "Square"}
-                  </button>
                 </div>
               </div>
 
@@ -188,8 +167,6 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
               <div className={`w-full transition-all duration-300 ${
                 aspectRatio === "vertical" 
                   ? "max-w-[390px] border-4 border-zinc-200 bg-[#FAF9F6] rounded-[40px] p-3 shadow-xl relative" 
-                  : aspectRatio === "square" 
-                  ? "max-w-[480px] border border-[#111113]/10 p-2 bg-[#FAF9F6] shadow-md"
                   : "max-w-full border border-[#111113]/10 p-2 bg-[#FAF9F6] shadow-md"
               }`}>
                 {/* Smartphone Speaker Slot overlay only if in vertical/mobile mode */}
@@ -206,7 +183,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                     aspectRatio === "vertical" ? "rounded-[28px] border border-zinc-200" : "border border-[#111113]/5"
                   }`}
                   style={{
-                    paddingTop: aspectRatio === "vertical" ? "177.78%" : aspectRatio === "horizontal" ? "56.25%" : "100.00%",
+                    paddingTop: aspectRatio === "vertical" ? "177.78%" : "56.25%",
                     willChange: "transform"
                   }}
                 >

@@ -52,15 +52,6 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
                   {lang === "it" ? "Menù Interattivo & Presentazione" : "Interactive Menu & Presentation"}
                 </span>
               </div>
-              <a
-                href={canvaDirectUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs text-[#c48f8a] hover:text-[#111113] transition-colors font-mono font-bold uppercase tracking-wider"
-              >
-                <ExternalLink className="w-3.5 h-3.5" />
-                {lang === "it" ? "Apri a Schermo Intero" : "Open Fullscreen"}
-              </a>
             </div>
 
             {/* Layout Aspect Ratio Selector */}
@@ -156,15 +147,7 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
               <span className="font-bold text-[#c48f8a]">Interactive Menu</span> in Orange Beige Black Soft &amp; Clean Style
             </span>
             <span>
-              {lang === "it" ? "Creato da" : "Created by"}{" "}
-              <a 
-                href={canvaDirectUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="underline hover:text-[#c48f8a] transition-colors"
-              >
-                Maria Teresa Rogani
-              </a>
+              {lang === "it" ? "Creato da" : "Created by"} Maria Teresa Rogani
             </span>
           </div>
         </motion.div>
