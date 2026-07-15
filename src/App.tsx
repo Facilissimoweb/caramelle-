@@ -10,6 +10,7 @@ import ContattiView from "./components/ContattiView";
 import ChatView from "./components/ChatView";
 import BlogView from "./components/BlogView";
 import WebAppView from "./components/WebAppView";
+import SitiWebView from "./components/SitiWebView";
 import InfoModal from "./components/InfoModal";
 import CookieBanner from "./components/CookieBanner";
 import AccessibilityWidget from "./components/AccessibilityWidget";
@@ -29,6 +30,12 @@ const SEO_METADATA: Record<string, { title: string; description: string; keyword
     description: "Sperimenta le demo live interattive dei nostri applicativi mobile-first realizzati da Facilissimo Web a Macerata. Gusto & Passione, Tattoo Macerata e molto altro.",
     keywords: "web app macerata, applicativi web marche, gusto e passione, tattoo macerata, il nido dei sogni, m teresa rogani, web designer macerata",
     image: "/api/og-image?tab=web-app",
+  },
+  "siti-web": {
+    title: "Siti Web Interattivi e Presentazione — Facilissimo Web Macerata",
+    description: "Esplora i nostri siti web, presentazioni e menù interattivi realizzati su misura in stile Orange, Beige & Black da M. Teresa Rogani.",
+    keywords: "siti web macerata, canva design, menù interattivo, web designer marche, teresa rogani, portfolio interattivo",
+    image: "/api/og-image?tab=siti-web",
   },
   "chi-sono": {
     title: "Chi Sono — Facilissimo Web | Teresa Rogani Web Designer Macerata",
@@ -139,7 +146,7 @@ export const initTrackingConsentUtility = () => {
   }
 };
 
-const TABS_ORDER = ["home", "chi-sono", "web-app", "proposte", "contatti", "chat", "blog"];
+const TABS_ORDER = ["home", "chi-sono", "web-app", "siti-web", "proposte", "contatti", "chat", "blog"];
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>("home");
@@ -245,6 +252,7 @@ export default function App() {
       switch (tabId) {
         case "home": return "Home";
         case "web-app": return "Web App";
+        case "siti-web": return "Siti Web";
         case "blog": return "Blog & News";
         case "chi-sono": return "Chi Sono";
         case "proposte": return "Proposte";
@@ -256,6 +264,7 @@ export default function App() {
       switch (tabId) {
         case "home": return "Home";
         case "web-app": return "Web App";
+        case "siti-web": return "Websites";
         case "blog": return "Blog & News";
         case "chi-sono": return "About Me";
         case "proposte": return "Proposals";
@@ -470,6 +479,8 @@ export default function App() {
         return <HomeView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} onOpenModal={setActiveModal} />;
       case "web-app":
         return <WebAppView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} />;
+      case "siti-web":
+        return <SitiWebView lang={lang} isFacilitated={isFacilitated} />;
       case "chi-sono":
         return <AboutView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} />;
       case "proposte":

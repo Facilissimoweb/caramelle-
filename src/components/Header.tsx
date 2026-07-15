@@ -6,8 +6,9 @@ const logoImage = "/f (1600 x 500 px).webp";
 
 const navIcons: Record<string, any> = {
   home: Home,
-  "web-app": Code2,
   "chi-sono": User2,
+  "web-app": Code2,
+  "siti-web": Globe,
   proposte: Lightbulb,
   contatti: Mail,
   chat: MessageSquare,
@@ -136,6 +137,7 @@ export default function Header({
     { id: "home", label: t.navInizio },
     { id: "chi-sono", label: t.navChiSono },
     { id: "web-app", label: t.navWebApp },
+    { id: "siti-web", label: t.navSitiWeb },
     { id: "proposte", label: t.navProposte },
     { id: "contatti", label: t.navContatti },
     { id: "chat", label: t.navChat },

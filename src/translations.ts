@@ -2,6 +2,7 @@ export interface TranslationSet {
   // Navigation
   navInizio: string;
   navWebApp: string;
+  navSitiWeb: string;
   navChiSono: string;
   navProposte: string;
   navContatti: string;
@@ -64,6 +65,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
     normal: {
       navInizio: "Home",
       navWebApp: "Web App",
+      navSitiWeb: "Siti Web",
       navChiSono: "Chi Sono",
       navProposte: "Proposte",
       navContatti: "Contatti",
@@ -116,6 +118,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
     facilitated: {
       navInizio: "Home",
       navWebApp: "Siti Web App",
+      navSitiWeb: "Siti Web",
       navChiSono: "Chi Sono",
       navProposte: "Proposte",
       navContatti: "Contatti",
@@ -170,6 +173,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
     normal: {
       navInizio: "Start",
       navWebApp: "Web App",
+      navSitiWeb: "Websites",
       navChiSono: "About",
       navProposte: "Offers",
       navContatti: "Contact",
@@ -222,6 +226,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
     facilitated: {
       navInizio: "Start",
       navWebApp: "Web Apps",
+      navSitiWeb: "Websites",
       navChiSono: "About",
       navProposte: "Offers",
       navContatti: "Contact",
