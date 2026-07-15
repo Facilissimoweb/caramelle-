@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { Check, Box, ShieldCheck } from "lucide-react";
 import FAQAccordion from "./FAQAccordion";
-import StripePaymentsDemo from "./StripePaymentsDemo";
 const logoImage = "/f (1600 x 500 px).webp";
 
 interface ProposteViewProps {
@@ -368,9 +367,6 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated }: Pro
           </div>
         </div>
       </section>
-
-      {/* Stripe Payment Integration Guide and Sandbox Demo */}
-      <StripePaymentsDemo lang={lang} isFacilitated={isFacilitated} />
 
       {/* FAQ Section */}
       <section className="py-24 bg-[#F8F7F4]">

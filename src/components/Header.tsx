@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Globe, Accessibility, Home, Code2, User2, Lightbulb, Mail, MessageSquare, BookOpen } from "lucide-react";
 import { translations } from "../translations";
+import { safeStorage, safeCookies } from "../lib/safeStorage";
 
 const logoImage = "/f (1600 x 500 px).webp";
 
@@ -48,7 +49,7 @@ export default function Header({
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [isMobileLangOpen, setIsMobileLangOpen] = useState(false);
   const [currentGoogleLang, setCurrentGoogleLang] = useState<string>(() => {
-    return localStorage.getItem("facilissimo-google-lang") || "it";
+    return safeStorage.getItem("facilissimo-google-lang") || "it";
   });
 
   const getCookieDomains = () => {
@@ -71,15 +72,15 @@ export default function Header({
     
     // First clear any existing ones on all domains to prevent multiple stacked cookies
     for (const d of domains) {
-      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${d};`;
+      safeCookies.set(`googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${d};`);
     }
-    document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    safeCookies.set(`googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`);
 
     // Set on all domains
     for (const d of domains) {
-      document.cookie = `googtrans=${value}; path=/; domain=${d};`;
+      safeCookies.set(`googtrans=${value}; path=/; domain=${d};`);
     }
-    document.cookie = `googtrans=${value}; path=/;`;
+    safeCookies.set(`googtrans=${value}; path=/;`);
   };
 
   useEffect(() => {
@@ -99,9 +100,10 @@ export default function Header({
 
   // Ensure cookie is in sync on load (so reload behaves correctly)
   useEffect(() => {
-    const savedGoogleLang = localStorage.getItem("facilissimo-google-lang") || "it";
+    const savedGoogleLang = safeStorage.getItem("facilissimo-google-lang") || "it";
     
-    const match = document.cookie.match(new RegExp('(^| )googtrans=([^;]+)'));
+    const cookieStr = safeCookies.get();
+    const match = cookieStr.match(new RegExp('(^| )googtrans=([^;]+)'));
     const currentCookieVal = match ? decodeURIComponent(match[2]) : null;
     const expectedCookieVal = savedGoogleLang === "it" ? "/it/it" : `/it/${savedGoogleLang}`;
 
@@ -113,17 +115,48 @@ export default function Header({
       }
 
       setGoogleTranslateCookie(savedGoogleLang);
+
+      // Verify if cookie write actually had an effect (i.e., third-party cookies not blocked)
+      const testCookieStr = safeCookies.get();
+      const testMatch = testCookieStr.match(new RegExp('(^| )googtrans=([^;]+)'));
+      const testCookieVal = testMatch ? decodeURIComponent(testMatch[2]) : null;
+
+      // If cookies are completely blocked/disabled in this context, skip reload to prevent infinite loop
+      if (testCookieVal === null && currentCookieVal === null) {
+        console.warn("[Header] Cookies are blocked in this iframe. Skipping reload to prevent loop.");
+        return;
+      }
+
+      // Safeguard against reload loop with sessionStorage
+      try {
+        const count = parseInt(sessionStorage.getItem("facilissimo-reload-count") || "0", 10);
+        if (count > 2) {
+          console.warn("[Header] Translation reload loop detected and stopped.");
+          return;
+        }
+        sessionStorage.setItem("facilissimo-reload-count", String(count + 1));
+      } catch (e) {
+        // If sessionStorage is also disabled/blocked, we shouldn't risk reloading at all
+        console.warn("[Header] SessionStorage unavailable, skipping auto-reload for translation safety.");
+        return;
+      }
+
       window.location.reload();
+    } else {
+      // Reset counter on successful sync
+      try {
+        sessionStorage.setItem("facilissimo-reload-count", "0");
+      } catch {}
     }
   }, []);
 
   const selectLanguage = (code: string) => {
-    localStorage.setItem("facilissimo-google-lang", code);
+    safeStorage.setItem("facilissimo-google-lang", code);
     setCurrentGoogleLang(code);
 
     // Keep the React dictionary base as Italian to ensure high-quality source for translation
     setLang("it");
-    localStorage.setItem("facilissimo-lang", "it");
+    safeStorage.setItem("facilissimo-lang", "it");
 
     setGoogleTranslateCookie(code);
 

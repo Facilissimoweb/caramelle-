@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Cookie, Settings, Check, X, Shield, BarChart3, Target } from "lucide-react";
+import { safeStorage } from "../lib/safeStorage";
 
 declare global {
   interface Window {
@@ -104,7 +105,7 @@ export default function CookieBanner({ lang, isFacilitated, forceShow = false, o
   // Check existing consent on mount
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("facilissimo-cookie-consent");
+      const saved = safeStorage.getItem("facilissimo-cookie-consent");
       if (saved) {
         try {
           const parsed = JSON.parse(saved) as CookiePreferences;
@@ -136,7 +137,7 @@ export default function CookieBanner({ lang, isFacilitated, forceShow = false, o
 
   const savePreferences = (updatedPrefs: CookiePreferences) => {
     try {
-      localStorage.setItem("facilissimo-cookie-consent", JSON.stringify(updatedPrefs));
+      safeStorage.setItem("facilissimo-cookie-consent", JSON.stringify(updatedPrefs));
     } catch (e) {
       console.warn("[Storage] Failed to save cookie preferences to localStorage:", e);
     }

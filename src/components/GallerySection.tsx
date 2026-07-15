@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { safeStorage } from "../lib/safeStorage";
 import { 
   Upload, 
   Image as ImageIcon, 
@@ -86,7 +87,7 @@ export default function GallerySection({ lang, isFacilitated }: GallerySectionPr
   // State for user uploaded mock images (stored in state as data URLs)
   const [customImages, setCustomImages] = useState<Record<string, string>>(() => {
     try {
-      const saved = localStorage.getItem("facilissimo_gallery_custom");
+      const saved = safeStorage.getItem("facilissimo_gallery_custom");
       return saved ? JSON.parse(saved) : {};
     } catch {
       return {};
@@ -105,7 +106,7 @@ export default function GallerySection({ lang, isFacilitated }: GallerySectionPr
 
   // Save custom images to localStorage
   useEffect(() => {
-    localStorage.setItem("facilissimo_gallery_custom", JSON.stringify(customImages));
+    safeStorage.setItem("facilissimo_gallery_custom", JSON.stringify(customImages));
   }, [customImages]);
 
   // Categories

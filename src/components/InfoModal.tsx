@@ -1,6 +1,7 @@
 import { X, Volume2, VolumeX, ShieldAlert, FileText, Sparkles, Compass } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
+import { safeStorage } from "../lib/safeStorage";
 
 interface InfoModalProps {
   isOpen: boolean;
@@ -307,7 +308,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
       return;
     }
 
-    const currentGoogleLang = localStorage.getItem("facilissimo-google-lang") || "it";
+    const currentGoogleLang = safeStorage.getItem("facilissimo-google-lang") || "it";
     
     // Dynamically retrieve text from the DOM so we read the actually translated text!
     const modalBody = document.getElementById("modal-content-body");

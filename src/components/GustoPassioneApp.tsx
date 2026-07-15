@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { safeStorage } from "../lib/safeStorage";
 import {
   Pizza,
   MapPin,
@@ -263,7 +264,7 @@ export default function GustoPassioneApp({ lang = "it" }: GustoPassioneAppProps)
 
   // Initialize and load from local storage
   useEffect(() => {
-    const saved = localStorage.getItem("gusto_premium_state");
+    const saved = safeStorage.getItem("gusto_premium_state");
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -280,7 +281,7 @@ export default function GustoPassioneApp({ lang = "it" }: GustoPassioneAppProps)
 
     // Delay cookie banner slightly if not set
     const timer = setTimeout(() => {
-      const state = localStorage.getItem("gusto_premium_state");
+      const state = safeStorage.getItem("gusto_premium_state");
       if (!state) {
         setShowCookieBanner(true);
       } else {
@@ -304,7 +305,7 @@ export default function GustoPassioneApp({ lang = "it" }: GustoPassioneAppProps)
         address: addressVal !== undefined ? addressVal : checkoutAddress,
       },
     };
-    localStorage.setItem("gusto_premium_state", JSON.stringify(dataToSave));
+    safeStorage.setItem("gusto_premium_state", JSON.stringify(dataToSave));
   };
 
   // Helper trigger Toast

@@ -14,6 +14,7 @@ import SitiWebView from "./components/SitiWebView";
 import InfoModal from "./components/InfoModal";
 import CookieBanner from "./components/CookieBanner";
 import AccessibilityWidget from "./components/AccessibilityWidget";
+import { safeStorage } from "./lib/safeStorage";
 
 const logoImage = "/f (1600 x 500 px).webp";
 
@@ -82,7 +83,7 @@ declare global {
 export const initTrackingConsentUtility = () => {
   if (typeof window === "undefined") return;
 
-  const savedConsent = localStorage.getItem("facilissimo-cookie-consent");
+  const savedConsent = safeStorage.getItem("facilissimo-cookie-consent");
   if (!savedConsent) return;
 
   try {
@@ -281,7 +282,7 @@ export default function App() {
 
   const [lang, setLang] = useState<"it" | "en">(() => {
     try {
-      const saved = localStorage.getItem("facilissimo-lang");
+      const saved = safeStorage.getItem("facilissimo-lang");
       return (saved === "en" || saved === "it") ? saved : "it";
     } catch (e) {
       console.warn("[Storage] Failed to read lang from localStorage:", e);
@@ -290,7 +291,7 @@ export default function App() {
   });
   const [isFacilitated, setIsFacilitated] = useState<boolean>(() => {
     try {
-      const saved = localStorage.getItem("facilissimo-facil");
+      const saved = safeStorage.getItem("facilissimo-facil");
       return saved === "true";
     } catch (e) {
       console.warn("[Storage] Failed to read facilissimo-facil from localStorage:", e);
@@ -301,7 +302,7 @@ export default function App() {
   const [forceShowCookieBanner, setForceShowCookieBanner] = useState<boolean>(false);
   const [fontSize, setFontSize] = useState<number>(() => {
     try {
-      const saved = localStorage.getItem("facilissimo-font-size");
+      const saved = safeStorage.getItem("facilissimo-font-size");
       return saved ? parseInt(saved, 10) : 100;
     } catch (e) {
       console.warn("[Storage] Failed to read facilissimo-font-size from localStorage:", e);
@@ -310,7 +311,7 @@ export default function App() {
   });
   const [highContrast, setHighContrast] = useState<boolean>(() => {
     try {
-      const saved = localStorage.getItem("facilissimo-contrast");
+      const saved = safeStorage.getItem("facilissimo-contrast");
       return saved === "true";
     } catch (e) {
       console.warn("[Storage] Failed to read facilissimo-contrast from localStorage:", e);
@@ -319,7 +320,7 @@ export default function App() {
   });
   const [readableFont, setReadableFont] = useState<boolean>(() => {
     try {
-      const saved = localStorage.getItem("facilissimo-readable");
+      const saved = safeStorage.getItem("facilissimo-readable");
       return saved === "true";
     } catch (e) {
       console.warn("[Storage] Failed to read facilissimo-readable from localStorage:", e);
@@ -395,7 +396,7 @@ export default function App() {
   useEffect(() => {
     console.debug(`[App State Sync] Language changed to: ${lang}`);
     try {
-      localStorage.setItem("facilissimo-lang", lang);
+      safeStorage.setItem("facilissimo-lang", lang);
     } catch (e) {
       console.warn("[Storage] Failed to save lang to localStorage:", e);
     }
@@ -404,7 +405,7 @@ export default function App() {
   useEffect(() => {
     console.debug(`[App State Sync] isFacilitated changed to: ${isFacilitated}`);
     try {
-      localStorage.setItem("facilissimo-facil", String(isFacilitated));
+      safeStorage.setItem("facilissimo-facil", String(isFacilitated));
     } catch (e) {
       console.warn("[Storage] Failed to save isFacilitated to localStorage:", e);
     }
@@ -413,7 +414,7 @@ export default function App() {
   useEffect(() => {
     console.debug(`[App State Sync] fontSize changed to: ${fontSize}%`);
     try {
-      localStorage.setItem("facilissimo-font-size", String(fontSize));
+      safeStorage.setItem("facilissimo-font-size", String(fontSize));
     } catch (e) {
       console.warn("[Storage] Failed to save fontSize to localStorage:", e);
     }
@@ -425,7 +426,7 @@ export default function App() {
   useEffect(() => {
     console.debug(`[App State Sync] highContrast changed to: ${highContrast}`);
     try {
-      localStorage.setItem("facilissimo-contrast", String(highContrast));
+      safeStorage.setItem("facilissimo-contrast", String(highContrast));
     } catch (e) {
       console.warn("[Storage] Failed to save highContrast to localStorage:", e);
     }
@@ -434,7 +435,7 @@ export default function App() {
   useEffect(() => {
     console.debug(`[App State Sync] readableFont changed to: ${readableFont}`);
     try {
-      localStorage.setItem("facilissimo-readable", String(readableFont));
+      safeStorage.setItem("facilissimo-readable", String(readableFont));
     } catch (e) {
       console.warn("[Storage] Failed to save readableFont to localStorage:", e);
     }
@@ -790,16 +791,24 @@ export default function App() {
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
-            initial={{ opacity: 0, scale: 0.8, y: 10 }}
+            initial={{ opacity: 0, scale: 0.8, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 10 }}
+            exit={{ opacity: 0, scale: 0.8, y: 15 }}
+            whileHover={{ scale: 1.1, y: -3 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 260, 
+              damping: 22,
+              mass: 0.8
+            }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 right-6 z-40 w-11 h-11 bg-[#FAF9F6]/95 hover:bg-[#c48f8a] text-[#111113] hover:text-[#FAF9F6] border border-[#111113]/30 hover:border-[#c48f8a] rounded-none flex items-center justify-center cursor-pointer transition-all shadow-xl font-mono text-[9px] font-bold group"
+            className="fixed bottom-6 right-6 z-40 w-11 h-11 bg-[#FAF9F6]/95 hover:bg-[#c48f8a] text-[#111113] hover:text-[#FAF9F6] border border-[#111113]/30 hover:border-[#c48f8a] rounded-none flex items-center justify-center cursor-pointer transition-colors duration-300 shadow-xl font-mono text-[9px] font-bold group"
             title={lang === "it" ? "Torna su" : "Back to top"}
             id="back-to-top-btn"
             aria-label={lang === "it" ? "Torna in cima alla pagina" : "Back to top"}
           >
-            <ArrowUp className="w-4 h-4 text-[#c48f8a] group-hover:text-[#FAF9F6] transition-colors" />
+            <ArrowUp className="w-4 h-4 text-[#c48f8a] group-hover:text-[#FAF9F6] transition-colors duration-300" />
           </motion.button>
         )}
       </AnimatePresence>
