@@ -294,38 +294,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
         </div>
       </section>
 
-      {/* Interactive Flipbook Section */}
-      <section className="py-16 sm:py-24 bg-[#F8F7F4] border-b border-[#111113]/10">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="text-center max-w-2xl mx-auto mb-10 space-y-4">
-            <span className="inline-block bg-black py-[12px] px-6 text-[12px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase">
-              {lang === "it" ? "[ SFOGLIA LA MIA GUIDA INTERATTIVA ]" : "[ BROWSE MY INTERACTIVE GUIDE ]"}
-            </span>
-            <h2 className="font-tan text-3xl sm:text-4xl font-bold tracking-wide text-[#111113]">
-              {lang === "it" ? "Il Mio Catalogo Sfogliabile" : "My Interactive Flipbook"}
-            </h2>
-            <p className="text-[#111113]/70 font-sans text-xs sm:text-sm">
-              {lang === "it"
-                ? "Sfoglia direttamente online la mia presentazione e scopri come l'intelligenza artificiale unita alla cura artigianale trasforma la tua presenza digitale."
-                : "Browse my presentation directly online and see how artificial intelligence combined with handmade craft elevates your digital presence."}
-            </p>
-          </div>
 
-          <div className="w-full max-w-5xl mx-auto bg-white border border-[#111113]/10 p-2 sm:p-4 shadow-sm" id="flipbook-container">
-            <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] overflow-hidden bg-zinc-50">
-              <iframe 
-                allowFullScreen={true}
-                allow="autoplay; fullscreen; clipboard-write" 
-                scrolling="no" 
-                className="w-full h-full border-none"
-                src="https://heyzine.com/flip-book/ab96695ba6.html" 
-                style={{ border: "none" }}
-                title="Interactive Heyzine Flipbook Catalog"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Services / Focus Grid */}
       <section className="py-24 bg-[#FAF9F6] border-b border-[#111113]/10">
