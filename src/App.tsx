@@ -564,8 +564,11 @@ export default function App() {
                 className="h-10 w-auto object-contain transition-transform group-hover:scale-[1.02] duration-300 brightness-0 invert"
               />
             </div>
-            <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-[#a3e635] font-bold mt-2.5 cyber-glitch-text">
-              [ M. Teresa Rogani ]
+            <div 
+              className="text-[13px] uppercase tracking-[0em] text-white/90 font-black mt-2.5"
+              style={{ fontFamily: 'MuseoModerno' }}
+            >
+              Siti Web Evoluti
             </div>
           </div>
           

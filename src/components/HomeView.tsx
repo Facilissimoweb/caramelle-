@@ -622,7 +622,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             </div>
 
             {/* Premium Progress Navigation Controls */}
-            <div className="flex justify-center items-center gap-6 mt-8">
+            <div className="flex justify-center items-center gap-4 mt-8">
               <button
                 onClick={() => scrollCarousel("left")}
                 className="flex items-center justify-center w-11 h-11 rounded-full bg-[#111113] hover:bg-[#a3e635] text-[#FAF9F6] hover:text-[#111113] border border-[#111113]/10 hover:border-[#a3e635] transition-all cursor-pointer shadow-md active:scale-95"
@@ -630,9 +630,6 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
-              <span className="text-[10px] font-mono tracking-[0.2em] text-[#111113]/40 uppercase select-none">
-                {lang === "it" ? "Trascina o premi le frecce" : "Swipe or press arrows"}
-              </span>
               <button
                 onClick={() => scrollCarousel("right")}
                 className="flex items-center justify-center w-11 h-11 rounded-full bg-[#111113] hover:bg-[#a3e635] text-[#FAF9F6] hover:text-[#111113] border border-[#111113]/10 hover:border-[#a3e635] transition-all cursor-pointer shadow-md active:scale-95"

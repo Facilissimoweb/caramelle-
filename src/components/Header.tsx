@@ -200,11 +200,21 @@ export default function Header({
           className="flex items-center gap-3 text-left focus:outline-none group cursor-pointer min-w-0 cyber-glitch-logo"
           id="logo-button"
         >
-          <img
-            src={logoImage}
-            alt="Facilissimo Web Logo"
-            className="h-8 md:h-10 w-auto object-contain transition-colors shrink-0"
-          />
+          <div className="flex items-center gap-2 sm:gap-3">
+            <img
+              src={logoImage}
+              alt="Facilissimo Web Logo"
+              className="h-8 md:h-10 w-auto object-contain transition-colors shrink-0"
+            />
+            <div className="flex items-center border-l border-[#111113]/10 pl-2 sm:pl-3">
+              <span 
+                className="text-[12px] sm:text-[14px] uppercase tracking-[0em] text-[#111113] font-black leading-none"
+                style={{ fontFamily: 'MuseoModerno' }}
+              >
+                Siti Web Evoluti
+              </span>
+            </div>
+          </div>
         </button>
 
         {/* Desktop Navigation */}
