@@ -159,7 +159,7 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
               className="w-[150px] h-[150px] object-contain"
             />
           </div>
-          <span className="text-[10px] uppercase tracking-[0.25em] text-[#a3e635] font-mono font-bold block mb-2">
+          <span className="text-[13px] uppercase tracking-[0em] text-[#a3e635] font-mono font-bold block mb-2" style={{ letterSpacing: '0px' }}>
             [ DISEGNA IL TUO FUTURO ]
           </span>
           <h1 className="font-tan text-3xl font-bold tracking-tight text-[#111113] sm:text-5xl break-words">

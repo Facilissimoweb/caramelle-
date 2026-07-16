@@ -249,7 +249,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated, onSel
               className="w-[150px] h-[150px] object-contain"
             />
           </div>
-          <span className="text-[10px] uppercase tracking-[0.25em] text-[#a3e635] font-mono font-bold block mb-2">
+          <span className="text-[13px] uppercase tracking-[0em] text-[#a3e635] font-mono font-bold block mb-2" style={{ letterSpacing: '0px' }}>
             {isFacilitated ? "[ PREZZI CHIARI ]" : "[ TRASPARENZA E PREZZI CHIARI ]"}
           </span>
           <h1 className="font-tan text-3xl font-bold tracking-tight text-[#111113] sm:text-5xl break-words">
@@ -345,7 +345,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated, onSel
       <section className="py-24 bg-[#FAF9F6] border-y border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <span className="inline-block bg-black py-[12px] px-6 text-[12px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase">
+            <span className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-[#a3e635] font-bold uppercase" style={{ letterSpacing: '0px' }}>
               {isFacilitated ? "[ TUTTO INCLUSO ]" : "[ VALORE AGGIUNTO ]"}
             </span>
             <h2 className="font-display text-3xl font-bold text-[#111113] tracking-wide">

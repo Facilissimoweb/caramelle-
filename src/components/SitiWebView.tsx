@@ -18,7 +18,7 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
         
         {/* Page Header */}
         <div className="space-y-4 text-center lg:text-left">
-          <span className="text-[10px] uppercase tracking-[0.25em] text-[#a3e635] font-mono font-bold block">
+          <span className="text-[13px] uppercase tracking-[0em] text-[#a3e635] font-mono font-bold block" style={{ letterSpacing: '0px' }}>
             {lang === "it" ? "[ VETRINA INTERATTIVA ]" : "[ INTERACTIVE SHOWCASE ]"}
           </span>
           <h1 className="font-tan text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#111113] leading-tight">

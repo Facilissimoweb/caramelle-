@@ -442,7 +442,10 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 className="w-[150px] h-[150px] object-contain animate-pulse"
               />
             </div>
-            <span className="text-[10px] uppercase tracking-[0.25em] text-[#a3e635] font-mono font-bold block bg-[#0e0e0e] pt-[10px] pb-[13px] px-4 text-center mb-[25px] w-[328px] max-w-full animate-fade-in-up">
+            <span 
+              className="text-[13px] uppercase tracking-[0em] text-[#a3e635] font-mono font-bold block bg-[#0e0e0e] pt-[10px] pb-[13px] px-4 text-center mb-[25px] w-[328px] max-w-full animate-fade-in-up"
+              style={{ letterSpacing: '0px' }}
+            >
               {t.heroPreTitle}
             </span>
  
@@ -511,8 +514,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
             <span 
-              className="inline-block bg-black py-[12px] px-6 text-[12px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase"
-              style={{ textDecorationLine: "none", textAlign: "center" }}
+              className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-[#a3e635] font-bold uppercase"
+              style={{ textDecorationLine: "none", textAlign: "center", letterSpacing: "0px" }}
             >
               {t.approachPre}
             </span>
@@ -716,7 +719,10 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       <section className="py-24 px-6 md:px-12 bg-[#F8F7F4]">
         <div className="max-w-7xl mx-auto bg-[#FAF9F6] text-[#111113] p-12 md:p-20 relative overflow-hidden border border-[#111113]/15">
           <div className="relative z-10 text-center max-w-2xl mx-auto space-y-6">
-            <span className="inline-block bg-black py-[12px] px-6 text-[12px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase">
+            <span 
+              className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-[#a3e635] font-bold uppercase"
+              style={{ letterSpacing: "0px" }}
+            >
               {t.ctaPre}
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-wide text-[#111113]">

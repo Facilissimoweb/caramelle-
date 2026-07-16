@@ -244,7 +244,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
               className="w-[150px] h-[150px] object-contain"
             />
           </div>
-          <span className="text-[10px] uppercase tracking-[0.25em] text-[#a3e635] font-mono font-bold block mb-2">
+          <span className="text-[13px] uppercase tracking-[0em] text-[#a3e635] font-mono font-bold block mb-2" style={{ letterSpacing: '0px' }}>
             [ CHAT INTERATTIVA DIRETTA ]
           </span>
           <h1 className="font-tan text-2xl xs:text-3xl font-bold tracking-tight text-[#F8F7F4] sm:text-4xl break-words">

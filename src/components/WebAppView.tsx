@@ -63,7 +63,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                   className="w-[120px] sm:w-[150px] h-auto object-contain"
                 />
               </div>
-              <span className="inline-block bg-black py-[12px] px-6 text-[12px] font-mono tracking-[0.3em] text-[#a3e635] font-bold uppercase">
+              <span className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-[#a3e635] font-bold uppercase" style={{ letterSpacing: '0px' }}>
                 {lang === "it" ? "[ PROGETTI ATTIVI & INTERATTIVI ]" : "[ ACTIVE & INTERACTIVE PROJECTS ]"}
               </span>
               <h1 className="font-tan text-3xl sm:text-5xl font-bold tracking-tight text-[#111113]">

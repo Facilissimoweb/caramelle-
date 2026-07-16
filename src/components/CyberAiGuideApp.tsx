@@ -201,7 +201,7 @@ export default function CyberAiGuideApp({ lang = "it" }: CyberAiGuideAppProps) {
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">
               <Cpu className="w-4 h-4 text-[#a3e635] animate-pulse" />
-              <span className="font-bold text-gray-300 text-[10px] tracking-[0.2em] uppercase">
+              <span className="font-bold text-gray-300 text-[13px] tracking-[0em] uppercase" style={{ letterSpacing: '0px' }}>
                 <span>SYS.FAQ_V1.0</span>
               </span>
             </div>
