@@ -537,8 +537,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
 
             <div 
               ref={sliderRef}
-              className="flex gap-6 md:gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory py-2 px-1 overscroll-x-contain scrollbar-none touch-pan-x"
-              style={{ overscrollBehaviorX: "contain" }}
+              className="flex gap-6 md:gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory py-2 px-1 scrollbar-none touch-auto"
             >
               {features.map((feat, index) => (
                 <motion.div
