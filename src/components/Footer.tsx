@@ -59,7 +59,7 @@ export default function Footer({
       <div 
         className="absolute inset-0 z-0 bg-no-repeat scale-110 pointer-events-none"
         style={{ 
-          backgroundImage: "url('/images/facilissio web siti web professionali on line prima di ieri (2) (1).webp')",
+          backgroundImage: "url('/images/paggio (1).png')",
           backgroundPosition: "35% 50%",
           backgroundSize: "cover",
           transform: `translateY(${offset}px)`,
@@ -67,7 +67,7 @@ export default function Footer({
         }}
       />
       {/* Soft elegant overlay to ensure maximum readability for the text and components */}
-      <div className="absolute inset-0 bg-[#3a2221]/45 backdrop-blur-[1px] z-[1] pointer-events-none" />
+      <div className="absolute inset-0 bg-[#f37e84]/45 backdrop-blur-[2px] z-[1] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-10">
         
