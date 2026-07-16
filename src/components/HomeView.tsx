@@ -247,8 +247,9 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 onClick={() => setCurrentTab("contatti")}
                 className="px-6 py-3 bg-[#a7c96a] hover:bg-[#96b85a] text-[#352e2c] font-bold rounded-xl shadow-[0_4px_14px_0_rgba(167,201,106,0.4)] hover:shadow-[0_6px_20px_0_rgba(167,201,106,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center space-x-2 cursor-pointer"
                 id="hero-cta-main"
+                style={{ paddingLeft: "60px", paddingRight: "60px" }}
               >
-                <span>{t.heroBtnPrimary}</span>
+                <span style={{ fontSize: "20px" }}>{t.heroBtnPrimary}</span>
               </button>
               <button
                 onClick={() => setCurrentTab("proposte")}
