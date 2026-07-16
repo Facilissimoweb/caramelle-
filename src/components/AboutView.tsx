@@ -184,6 +184,55 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
             </div>
           </motion.div>
 
+          {/* Canva Presentation Project Embed */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="lg:col-span-12 mt-8 space-y-4"
+          >
+            <div className="border border-[#111113]/10 bg-white/40 p-4 sm:p-6 rounded-none shadow-sm backdrop-blur-sm">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-[#a3e635] font-mono font-bold block mb-2">
+                {lang === "it" ? "[ PRESENTAZIONE AZIENDALE INTERATTIVA ]" : "[ INTERACTIVE COMPANY PRESENTATION ]"}
+              </span>
+              <h3 className="font-display text-lg sm:text-xl font-bold text-[#111113] mb-4">
+                {lang === "it" ? "Blu Magenta — Presentazione Startup Digitale di Maria Teresa Rogani" : "Blu Magenta — Digital Startup Presentation by Maria Teresa Rogani"}
+              </h3>
+              
+              <div 
+                className="relative w-full overflow-hidden shadow-md border border-[#111113]/10"
+                style={{ 
+                  paddingTop: '56.25%', 
+                  willChange: 'transform',
+                  borderRadius: '0px'
+                }}
+              >
+                <iframe 
+                  loading="lazy" 
+                  className="absolute inset-0 w-full h-full border-none p-0 m-0"
+                  src="https://www.canva.com/design/DAGpj-wcHGM/w7EVwOLR7Myl7EsgLEuwpw/view?embed" 
+                  allowFullScreen
+                  allow="fullscreen"
+                  title="Blu Magenta Presentazione Startup Digitale"
+                />
+              </div>
+              
+              <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[9px] font-mono text-[#111113]/60 uppercase tracking-widest font-bold">
+                <span>
+                  {lang === "it" ? "Maria Teresa Rogani" : "Maria Teresa Rogani"}
+                </span>
+                <a 
+                  href="https://www.canva.com/design/DAGpj-wcHGM/w7EVwOLR7Myl7EsgLEuwpw/view?utm_content=DAGpj-wcHGM&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[#a3e635] hover:underline hover:text-[#111113] transition-colors"
+                >
+                  {lang === "it" ? "Apri Presentazione su Canva ↗" : "Open Presentation on Canva ↗"}
+                </a>
+              </div>
+            </div>
+          </motion.div>
+
         </div>
       </section>
 

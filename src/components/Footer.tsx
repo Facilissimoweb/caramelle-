@@ -31,8 +31,8 @@ export default function Footer({
       if (rect.top < windowHeight && rect.bottom > 0) {
         const visibleArea = windowHeight + rect.height;
         const progress = (windowHeight - rect.top) / visibleArea;
-        // Map progress (0 to 1) to an offset range (-45px to +45px) for gentle elegant depth
-        const parallaxVal = (progress - 0.5) * 90;
+        // Map progress (0 to 1) to an offset range (-25px to +25px) for gentle elegant depth
+        const parallaxVal = (progress - 0.5) * 50;
         setOffset(parallaxVal);
       }
     };
@@ -57,10 +57,11 @@ export default function Footer({
     >
       {/* Parallax Background Image */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-no-repeat scale-110 pointer-events-none"
+        className="absolute inset-0 z-0 bg-no-repeat scale-110 pointer-events-none"
         style={{ 
-          backgroundImage: "url('/images/s (1).webp')",
+          backgroundImage: "url('/images/facilissio web siti web professionali on line prima di ieri (2) (1).webp')",
           backgroundPosition: "35% 50%",
+          backgroundSize: "cover",
           transform: `translateY(${offset}px)`,
           willChange: "transform",
         }}
