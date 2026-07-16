@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronLeft, ChevronRight, Home, Share2, Copy, Check, ArrowUp } from "lucide-react";
+import { ChevronLeft, ChevronRight, Home, Share2, Copy, Check, ArrowUp, Accessibility } from "lucide-react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomeView from "./components/HomeView";
@@ -297,6 +297,7 @@ export default function App() {
       return false;
     }
   });
+  const [isAccessibilityOpen, setIsAccessibilityOpen] = useState<boolean>(false);
 
   // Scroll to top automatically when currentTab changes
   useEffect(() => {
@@ -580,11 +581,12 @@ export default function App() {
                   <li key={tabId}>
                     <button
                       onClick={() => handleSetTab(tabId)}
-                      className={`text-left font-mono text-[17px] font-bold uppercase tracking-widest cursor-pointer transition-all block py-1 border-b-2 ${
+                      className={`text-left uppercase tracking-[0em] font-black cursor-pointer transition-all block py-1 border-b-2 ${
                         isActive
                           ? "text-[#a3e635] border-[#a3e635] translate-x-1"
                           : "text-white/60 hover:text-white hover:translate-x-0.5 border-transparent"
                       }`}
+                      style={{ fontFamily: 'MuseoModerno', fontSize: '15px' }}
                     >
                       {getTabLabel(tabId)}
                     </button>
@@ -593,6 +595,17 @@ export default function App() {
               })}
             </ul>
           </nav>
+
+          <div className="pt-4 border-t border-white/10">
+            <button
+              onClick={() => setIsAccessibilityOpen(true)}
+              className="flex items-center gap-2.5 text-left font-mono text-[14px] font-bold uppercase tracking-widest text-white/60 hover:text-[#a3e635] transition-all cursor-pointer py-1.5"
+              id="desktop-sidebar-accessibility-btn"
+            >
+              <Accessibility className="w-4 h-4 text-[#a3e635]" />
+              <span>{lang === "it" ? "Accessibilità" : "Accessibility"}</span>
+            </button>
+          </div>
         </div>
         
         <div className="space-y-4">
@@ -617,6 +630,7 @@ export default function App() {
             setLang={setLang}
             isFacilitated={isFacilitated}
             setIsFacilitated={setIsFacilitated}
+            onOpenAccessibility={() => setIsAccessibilityOpen(true)}
           />
         </div>
 
@@ -760,6 +774,8 @@ export default function App() {
         setHighContrast={setHighContrast}
         readableFont={readableFont}
         setReadableFont={setReadableFont}
+        isOpen={isAccessibilityOpen}
+        setIsOpen={setIsAccessibilityOpen}
       />
 
       {/* Floating Back to Top Button */}

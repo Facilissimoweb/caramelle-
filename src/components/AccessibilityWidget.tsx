@@ -13,6 +13,8 @@ interface AccessibilityWidgetProps {
   setHighContrast: (val: boolean) => void;
   readableFont: boolean;
   setReadableFont: (val: boolean) => void;
+  isOpen: boolean;
+  setIsOpen: (val: boolean) => void;
 }
 
 export default function AccessibilityWidget({
@@ -26,8 +28,9 @@ export default function AccessibilityWidget({
   setHighContrast,
   readableFont,
   setReadableFont,
+  isOpen,
+  setIsOpen,
 }: AccessibilityWidgetProps) {
-  const [isOpen, setIsOpen] = useState(false);
 
   // Text-To-Speech (TTS) States
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
@@ -303,25 +306,6 @@ export default function AccessibilityWidget({
 
   return (
     <div id="accessibility-widget-root">
-      {/* Floating Trigger Button - Always visible in bottom corner */}
-      <div className="fixed bottom-6 left-6 z-40">
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={handleToggleOpen}
-          className={`w-14 h-14 rounded-full shadow-2xl flex items-center justify-center cursor-pointer transition-all border-2 ${
-            isOpen
-              ? "bg-[#a3e635] text-[#111113] border-[#a3e635] rotate-90"
-              : "bg-[#151518]/95 hover:bg-[#a3e635] text-[#F8F7F4] hover:text-[#111113] border-[rgba(248,247,244,0.3)] hover:border-[#a3e635]"
-          }`}
-          title={lang === "it" ? "Strumenti di Accessibilità" : "Accessibility Tools"}
-          id="accessibility-trigger-btn"
-          aria-label={lang === "it" ? "Strumenti di Accessibilità" : "Accessibility Tools"}
-        >
-          {isOpen ? <X className="w-6 h-6 bg-[#27f16b] p-1 rounded-full text-black" /> : <Accessibility className="w-6 h-6 bg-[#27f16b] p-1 rounded-full text-black" />}
-        </motion.button>
-      </div>
-
       {/* Full-Screen Accessibility Overlay */}
       <AnimatePresence>
         {isOpen && (

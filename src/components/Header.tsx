@@ -23,6 +23,7 @@ interface HeaderProps {
   setLang: (lang: "it" | "en") => void;
   isFacilitated: boolean;
   setIsFacilitated: (val: boolean) => void;
+  onOpenAccessibility: () => void;
 }
 
 const LANGUAGES = [
@@ -43,6 +44,7 @@ export default function Header({
   setLang,
   isFacilitated,
   setIsFacilitated,
+  onOpenAccessibility,
 }: HeaderProps) {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -200,7 +202,7 @@ export default function Header({
           className="flex items-center gap-3 text-left focus:outline-none group cursor-pointer min-w-0 cyber-glitch-logo"
           id="logo-button"
         >
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3" style={{ marginLeft: "0px", paddingLeft: "0px", marginRight: "0px" }}>
             <img
               src={logoImage}
               alt="Facilissimo Web Logo"
@@ -220,7 +222,6 @@ export default function Header({
         {/* Desktop Navigation */}
         <nav 
           className="hidden xl:flex items-center justify-center flex-1 gap-8 xl:gap-12 max-w-4xl mx-auto"
-          style={{ fontSize: "14px" }}
         >
           {navItems.map((item) => {
             const isActive = currentTab === item.id;
@@ -228,12 +229,12 @@ export default function Header({
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`uppercase tracking-[0.2em] font-bold py-1.5 border-b-2 relative cursor-pointer transition-all ${
+                className={`uppercase tracking-[0em] font-black py-1.5 border-b-2 relative cursor-pointer transition-all ${
                   isActive
                     ? "text-[#a3e635] border-[#a3e635]"
                     : "text-[#111113]/50 hover:text-[#111113] border-transparent hover:border-[#111113]/20"
                 }`}
-                style={{ fontSize: "14px" }}
+                style={{ fontFamily: 'MuseoModerno', fontSize: "15px" }}
                 id={`nav-${item.id}`}
               >
                 {item.label}
@@ -283,17 +284,13 @@ export default function Header({
 
           {/* Accessibility Toggle */}
           <button
-            onClick={() => setIsFacilitated(!isFacilitated)}
-            className={`p-2 border transition-all flex items-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold ${
-              isFacilitated
-                ? "bg-[#a3e635] border-[#a3e635] text-[#FAF9F6] hover:opacity-90 animate-pulse"
-                : "border-[#111113]/10 hover:border-[#a3e635] text-[#111113]/70 hover:text-[#a3e635]"
-            }`}
-            title={isFacilitated ? t.facilitatedOff : t.facilitatedOn}
+            onClick={onOpenAccessibility}
+            className="p-2 border border-[#111113]/10 hover:border-[#a3e635] text-[#111113]/70 hover:text-[#a3e635] transition-all flex items-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold"
+            title={lang === "it" ? "Strumenti di Accessibilità" : "Accessibility Tools"}
             id="access-toggle-desktop"
           >
-            <Accessibility className="w-3.5 h-3.5" />
-            <span>{isFacilitated ? "Std" : "Easy"}</span>
+            <Accessibility className="w-3.5 h-3.5 text-[#a3e635]" />
+            <span>{lang === "it" ? "Accessibilità" : "Accessibility"}</span>
           </button>
 
           <button
@@ -319,7 +316,7 @@ export default function Header({
       {/* Mobile Drawer */}
       {isMobileOpen && (
         <div className="xl:hidden border-t border-[#111113]/10 bg-[#FAF9F6]/98 backdrop-blur-2xl absolute top-20 left-0 w-full shadow-lg transition-all duration-300">
-          <div className="px-4 py-4 flex flex-col gap-3">
+          <div className="px-4 py-4 flex flex-col gap-3" style={{ backgroundColor: '#c99e97' }}>
             {/* Classic Vertical List Navigation */}
             <div className="flex flex-col gap-1" id="mobile-nav-container">
               <span className="text-[9px] uppercase tracking-[0.2em] text-[#111113]/40 font-mono font-bold px-1 mb-1">
@@ -342,7 +339,7 @@ export default function Header({
                     >
                       <div className="flex items-center gap-3">
                         <IconComponent className={`w-4 h-4 ${isActive ? "text-[#a3e635]" : "text-[#111113]/50"}`} />
-                        <span className="uppercase tracking-[0.15em] font-bold text-[11px]" style={{ fontFamily: "var(--font-geologica), sans-serif" }}>
+                        <span className="uppercase tracking-[0em] font-black text-[15px]" style={{ fontFamily: "MuseoModerno" }}>
                           {item.label}
                         </span>
                       </div>
@@ -360,16 +357,15 @@ export default function Header({
               <div className="grid grid-cols-2 gap-1.5">
                 {/* Accessibility Toggle */}
                 <button
-                  onClick={() => setIsFacilitated(!isFacilitated)}
-                  className={`py-2 px-2.5 border rounded-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold ${
-                    isFacilitated
-                      ? "bg-[#a3e635] border-[#a3e635] text-[#FAF9F6]"
-                      : "border-[#111113]/10 bg-[#FAF9F6]/30 text-[#111113]/80"
-                  }`}
+                  onClick={() => {
+                    setIsMobileOpen(false);
+                    onOpenAccessibility();
+                  }}
+                  className="py-2 px-2.5 border border-[#111113]/10 bg-[#FAF9F6]/30 rounded-sm text-[#111113] hover:text-[#a3e635] transition-all flex items-center justify-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold"
                   id="access-toggle-mobile"
                 >
-                  <Accessibility className="w-3.5 h-3.5" />
-                  <span>{isFacilitated ? "Std" : "Easy"}</span>
+                  <Accessibility className="w-3.5 h-3.5 text-[#a3e635]" />
+                  <span>{lang === "it" ? "Accessibilità" : "Accessibility"}</span>
                 </button>
 
                 {/* Mobile Language Trigger */}
