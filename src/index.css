@@ -229,7 +229,7 @@ body {
 }
 
 h1 {
-  font-family: "MuseoModerno", "Syne", "TAN-NIMBUS", sans-serif !important;
+  font-family: "MuseoModerno", "Syne", "TAN-NIMBUS", sans-serif;
   line-height: 1.1;
   letter-spacing: -0.03em;
   text-transform: uppercase;
@@ -240,21 +240,21 @@ h1 {
 
 @media (max-width: 480px) {
   h1, h2 {
-    line-height: 0.95 !important;
+    line-height: 0.95;
   }
 }
 
 /* Fluid typography control for non-small header elements */
 h1:not(.text-xs):not(.text-sm) {
-  font-size: var(--h1-font-size-base) !important;
+  font-size: var(--h1-font-size-base);
 }
 
 h2:not(.text-xs):not(.text-sm) {
-  font-size: var(--h2-font-size-base) !important;
+  font-size: var(--h2-font-size-base);
 }
 
 h2 {
-  font-family: "MuseoModerno", "Syne", "TAN-NIMBUS", sans-serif !important;
+  font-family: "MuseoModerno", "Syne", "TAN-NIMBUS", sans-serif;
   line-height: 1.1;
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -264,9 +264,9 @@ h2 {
 }
 
 p {
-  font-family: "Geologica", sans-serif !important;
-  font-weight: 200 !important;
-  font-size: 15px !important;
+  font-family: "Geologica", sans-serif;
+  font-weight: 200;
+  font-size: 15px;
 }
 
 .skiptranslate {
