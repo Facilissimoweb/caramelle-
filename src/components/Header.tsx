@@ -197,7 +197,7 @@ export default function Header({
         {/* Logo */}
         <button
           onClick={() => handleNavClick("home")}
-          className="flex items-center gap-3 text-left focus:outline-none group cursor-pointer min-w-0"
+          className="flex items-center gap-3 text-left focus:outline-none group cursor-pointer min-w-0 cyber-glitch-logo"
           id="logo-button"
         >
           <img

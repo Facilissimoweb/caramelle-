@@ -586,14 +586,14 @@ export default function App() {
       <aside className="hidden xl:flex w-[280px] h-screen fixed left-0 top-0 border-r border-white/10 bg-[#544848] p-10 flex-col justify-between z-30 select-none text-white">
         <div className="space-y-16">
           <div className="logo-block group cursor-pointer" onClick={() => handleSetTab("home")}>
-            <div className="logo-text">
+            <div className="logo-text cyber-glitch-logo">
               <img
                 src={logoImage}
                 alt="Facilissimo Web Logo"
                 className="h-10 w-auto object-contain transition-transform group-hover:scale-[1.02] duration-300 brightness-0 invert"
               />
             </div>
-            <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-[#a3e635] font-bold mt-2.5">
+            <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-[#a3e635] font-bold mt-2.5 cyber-glitch-text">
               [ M. Teresa Rogani ]
             </div>
           </div>
