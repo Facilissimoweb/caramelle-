@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Mail, ArrowUp, Phone, MapPin, Share2, Copy, Check } from "lucide-react";
 
 const logoImage = "/f (1600 x 500 px) (1).svg";
@@ -19,6 +19,29 @@ export default function Footer({
   selectedArticle,
 }: FooterProps) {
   const [copiedLink, setCopiedLink] = useState(false);
+  const footerRef = useRef<HTMLElement>(null);
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!footerRef.current) return;
+      const rect = footerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      if (rect.top < windowHeight && rect.bottom > 0) {
+        const visibleArea = windowHeight + rect.height;
+        const progress = (windowHeight - rect.top) / visibleArea;
+        // Map progress (0 to 1) to an offset range (-45px to +45px) for gentle elegant depth
+        const parallaxVal = (progress - 0.5) * 90;
+        setOffset(parallaxVal);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleNavClick = (tabId: string) => {
     setCurrentTab(tabId);
@@ -29,11 +52,21 @@ export default function Footer({
 
   return (
     <footer 
-      className="relative w-full border-t border-white/10 pt-16 pb-12 transition-all text-white bg-cover bg-center bg-no-repeat overflow-hidden" 
-      style={{ backgroundImage: "url('/images/s (1).webp')" }}
+      ref={footerRef}
+      className="relative w-full border-t border-white/10 pt-16 pb-12 transition-all text-white overflow-hidden" 
     >
+      {/* Parallax Background Image */}
+      <div 
+        className="absolute inset-0 z-0 bg-cover bg-no-repeat scale-110 pointer-events-none"
+        style={{ 
+          backgroundImage: "url('/images/s (1).webp')",
+          backgroundPosition: "35% 50%",
+          transform: `translateY(${offset}px)`,
+          willChange: "transform",
+        }}
+      />
       {/* Soft elegant overlay to ensure maximum readability for the text and components */}
-      <div className="absolute inset-0 bg-[#3a2221]/45 backdrop-blur-[1px] z-0" />
+      <div className="absolute inset-0 bg-[#3a2221]/45 backdrop-blur-[1px] z-[1] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-10">
         
