@@ -214,35 +214,6 @@ export default function App() {
     }
   };
 
-  // Touch Swipe Gesture Tracking for "sfogliabile scivolando"
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 60; // Next page
-    const isRightSwipe = distance < -60; // Previous page
-
-    const currentIndex = TABS_ORDER.indexOf(currentTab);
-
-    if (isLeftSwipe && currentIndex < TABS_ORDER.length - 1) {
-      navigateTo(TABS_ORDER[currentIndex + 1], null, true);
-    } else if (isRightSwipe && currentIndex > 0) {
-      navigateTo(TABS_ORDER[currentIndex - 1], null, true);
-    }
-    setTouchStart(null);
-    setTouchEnd(null);
-  };
-
   const handleSetTab = (newTab: string) => {
     if (newTab === currentTab && !selectedArticle) return;
     navigateTo(newTab, null, true);
@@ -719,9 +690,6 @@ export default function App() {
 
         {/* Main View Area with top offset to clear fixed header and fixed breadcrumbs bar */}
         <main 
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
           className={`flex-grow ${
             currentTab === "home" 
               ? "pt-20 xl:pt-0" 
