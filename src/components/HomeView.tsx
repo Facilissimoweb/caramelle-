@@ -225,7 +225,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               </span>
             </h1>
  
-            <p className="font-sans text-[22px] font-normal italic text-[#111113]/80 max-w-xl leading-relaxed animate-fade-in-up delay-150">
+            <p className="font-sans text-[23px] font-normal italic text-[#111113]/80 max-w-xl leading-relaxed animate-fade-in-up delay-150" style={{ fontSize: "23px" }}>
               {t.heroDesc}
             </p>
  

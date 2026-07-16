@@ -12,7 +12,6 @@ import BlogView from "./components/BlogView";
 import WebAppView from "./components/WebAppView";
 import SitiWebView from "./components/SitiWebView";
 import InfoModal from "./components/InfoModal";
-import CookieBanner from "./components/CookieBanner";
 import AccessibilityWidget from "./components/AccessibilityWidget";
 import { safeStorage } from "./lib/safeStorage";
 
@@ -300,7 +299,6 @@ export default function App() {
     }
   });
   const [activeModal, setActiveModal] = useState<"privacy" | "terms" | "ethics" | "sitemap" | null>(null);
-  const [forceShowCookieBanner, setForceShowCookieBanner] = useState<boolean>(false);
   const [fontSize, setFontSize] = useState<number>(() => {
     try {
       const saved = safeStorage.getItem("facilissimo-font-size");
@@ -765,7 +763,6 @@ export default function App() {
           setCurrentTab={handleSetTab} 
           onOpenModal={setActiveModal} 
           lang={lang} 
-          onOpenCookieSettings={() => setForceShowCookieBanner(true)} 
           currentTab={currentTab}
           selectedArticle={selectedArticle}
         />
@@ -778,14 +775,6 @@ export default function App() {
         onClose={() => setActiveModal(null)}
         lang={lang}
         isFacilitated={isFacilitated}
-      />
-
-      {/* Cookie Consent Banner */}
-      <CookieBanner
-        lang={lang}
-        isFacilitated={isFacilitated}
-        forceShow={forceShowCookieBanner}
-        onCloseForceShow={() => setForceShowCookieBanner(false)}
       />
 
       {/* Accessibility Floating Panel Widget */}

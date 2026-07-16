@@ -7,7 +7,6 @@ interface FooterProps {
   setCurrentTab: (tab: string) => void;
   onOpenModal: (type: "privacy" | "terms" | "ethics" | "sitemap") => void;
   lang: "it" | "en";
-  onOpenCookieSettings: () => void;
   currentTab: string;
   selectedArticle: string | null;
 }
@@ -16,7 +15,6 @@ export default function Footer({
   setCurrentTab,
   onOpenModal,
   lang,
-  onOpenCookieSettings,
   currentTab,
   selectedArticle,
 }: FooterProps) {
@@ -274,13 +272,6 @@ export default function Footer({
             id="footer-sitemap-btn"
           >
             {lang === "it" ? "Sitemap" : "Sitemap"}
-          </button>
-          <button
-            onClick={onOpenCookieSettings}
-            className="hover:text-[#a3e635] transition-colors cursor-pointer bg-transparent border-none p-0 text-xs md:text-sm uppercase tracking-wider font-mono font-bold text-[#a3e635]"
-            id="footer-cookie-btn"
-          >
-            {lang === "it" ? "Gestione Cookie" : "Cookie Preferences"}
           </button>
         </div>
         <button
