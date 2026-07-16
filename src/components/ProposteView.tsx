@@ -405,7 +405,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated, onSel
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-[#544848]">
+      <section className="py-24 bg-[#6a4948]">
         <FAQAccordion items={faqs} />
       </section>
     </div>

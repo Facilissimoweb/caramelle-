@@ -34,9 +34,9 @@ export default function FAQAccordion({
   const textColor = isDark ? "text-[#F8F7F4]" : "text-[#111113]";
   const subtitleColor = isDark ? "text-[#F8F7F4]/70" : "text-[#111113]/75";
   const answerColor = isDark ? "text-[#F8F7F4]/75" : "text-[#111113]/85";
-  const accentColor = isDark ? "text-[#a3e635]" : "text-[#544848]";
+  const accentColor = isDark ? "text-[#a3e635]" : "text-[#6a4948]";
   const borderColor = isDark ? "border-[rgba(248,247,244,0.1)]" : "border-[#111113]/10";
-  const hoverText = isDark ? "group-hover:text-[#a3e635]" : "group-hover:text-[#544848]/85";
+  const hoverText = isDark ? "group-hover:text-[#a3e635]" : "group-hover:text-[#6a4948]/85";
 
   return (
     <div className={`w-full bg-transparent ${textColor}`}>

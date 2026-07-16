@@ -555,7 +555,7 @@ export default function App() {
       isFacilitated ? "text-lg" : ""
     }`}>
       {/* Desktop Left Sidebar - Hidden on mobile, flex on desktop */}
-      <aside className="hidden xl:flex w-[280px] h-screen fixed left-0 top-0 border-r border-white/10 bg-[#544848] p-10 flex-col justify-between z-30 select-none text-white">
+      <aside className="hidden xl:flex w-[280px] h-screen fixed left-0 top-0 border-r border-white/10 bg-[#6a4948] p-10 flex-col justify-between z-30 select-none text-white">
         <div className="space-y-16">
           <div className="logo-block group cursor-pointer" onClick={() => handleSetTab("home")}>
             <div className="logo-text cyber-glitch-logo">
@@ -662,18 +662,18 @@ export default function App() {
 
           return (
             <div 
-              className={`fixed top-20 xl:top-0 xl:left-[280px] w-full xl:w-[calc(100%-280px)] bg-[#FAF9F6]/90 border-b border-[#111113]/10 py-3 px-4 sm:px-6 xl:px-12 backdrop-blur-md z-40 select-none transition-all duration-300 ease-in-out ${
+              className={`fixed top-20 xl:top-0 xl:left-[280px] w-full xl:w-[calc(100%-280px)] bg-[#6a4948] border-b border-white/10 py-3 px-4 sm:px-6 xl:px-12 backdrop-blur-md z-40 select-none transition-all duration-300 ease-in-out ${
                 showBreadcrumb 
                   ? "translate-y-0 opacity-100" 
                   : "-translate-y-full opacity-0 pointer-events-none"
               }`}
             >
-              <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-[10px] tracking-wider uppercase font-bold text-[#111113]/60">
-                <div className="flex items-center flex-wrap gap-1.5 sm:gap-2 text-[#111113]/40">
+              <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-[10px] tracking-wider uppercase font-bold text-white/70">
+                <div className="flex items-center flex-wrap gap-1.5 sm:gap-2 text-white/50">
                   <Home className="w-3.5 h-3.5 text-[#a3e635] mr-1 inline shrink-0" />
                   {breadcrumbItems.map((item, index) => (
                     <React.Fragment key={item.id}>
-                      {index > 0 && <span className="text-[#111113]/20 font-light mx-0.5 sm:mx-1 shrink-0">/</span>}
+                      {index > 0 && <span className="text-white/20 font-light mx-0.5 sm:mx-1 shrink-0">/</span>}
                       {index === breadcrumbItems.length - 1 ? (
                         <span className="text-[#a3e635] font-extrabold truncate max-w-[200px] sm:max-w-none">{item.label}</span>
                       ) : (
@@ -685,7 +685,7 @@ export default function App() {
                               navigateTo(item.id, null, true);
                             }
                           }}
-                          className="text-[#111113]/60 hover:text-[#a3e635] cursor-pointer transition-colors uppercase font-bold shrink-0"
+                          className="text-white/70 hover:text-[#a3e635] cursor-pointer transition-colors uppercase font-bold shrink-0"
                         >
                           {item.label}
                         </button>
@@ -694,7 +694,7 @@ export default function App() {
                   ))}
                 </div>
                 
-                <div className="hidden sm:flex items-center gap-4 text-[9px] uppercase font-bold text-[#111113]/40 select-none">
+                <div className="hidden sm:flex items-center gap-4 text-[9px] uppercase font-bold text-white/50 select-none">
                   <span>{lang === "it" ? "Posizione Attiva" : "Active Location"}</span>
                   <span className="px-2 py-0.5 bg-[#a3e635]/10 border border-[#a3e635]/20 text-[#a3e635] rounded-sm text-[9px]">
                     {currentTab === "blog" && selectedArticle ? "ARTICLE_VIEW" : `${currentTab.toUpperCase()}_VIEW`}
