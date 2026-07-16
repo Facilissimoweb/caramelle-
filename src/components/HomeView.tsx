@@ -204,25 +204,6 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
     <div className="w-full bg-[#F8F7F4] text-[#111113]">
       {/* Hero Section */}
       <section className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-[#111113]/10">
-        {/* Ambient Background Image */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <motion.div
-            style={{
-              y,
-              scale: 1.15,
-            }}
-            className="absolute inset-0 w-full h-full"
-          >
-            <img
-              src="/images/facilissio web siti web professionali on line prima di ieri (2) (1).webp"
-              alt="Hero Background"
-              className="absolute inset-0 w-full h-full object-cover opacity-70"
-            />
-          </motion.div>
-          {/* Light Overlay for text legibility */}
-          <div className="absolute inset-0 bg-[#F8F7F4]/40 backdrop-blur-[4px] pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#F8F7F4]/20 via-transparent to-[#F8F7F4] pointer-events-none" />
-        </div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">
           <div className="lg:col-span-8 xl:col-span-8 space-y-6">
@@ -233,7 +214,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 className="w-[150px] h-[150px] object-contain animate-pulse"
               />
             </div>
-            <span className="text-[10px] uppercase tracking-[0.25em] text-[#a3e635] font-mono font-bold block mb-2 animate-fade-in-up">
+            <span className="text-[10px] uppercase tracking-[0.25em] text-[#a3e635] font-mono font-bold block bg-[#0e0e0e] pt-[10px] pb-[13px] px-4 text-center mb-[25px] w-[328px] max-w-full animate-fade-in-up">
               {t.heroPreTitle}
             </span>
  
@@ -244,7 +225,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               </span>
             </h1>
  
-            <p className="font-sans text-sm sm:text-base text-[#111113]/80 max-w-xl leading-relaxed animate-fade-in-up delay-150">
+            <p className="font-sans text-[21px] text-[#111113]/80 max-w-xl leading-relaxed animate-fade-in-up delay-150">
               {t.heroDesc}
             </p>
  
