@@ -295,7 +295,7 @@ export default function Header({
 
           <button
             onClick={() => handleNavClick("contatti")}
-            className="px-6 py-3 bg-[#a3e635] text-[#111113] font-bold text-[10px] tracking-widest uppercase hover:bg-transparent hover:text-[#a3e635] hover:border-[#a3e635] transition-all duration-300 cursor-pointer border border-[#a3e635]"
+            className="solid-light"
             id="header-cta-btn"
           >
             {lang === "it" ? "Lavora con Me" : "Work with Me"}
@@ -407,7 +407,7 @@ export default function Header({
             {/* Compact CTA Button */}
             <button
               onClick={() => handleNavClick("contatti")}
-              className="mt-1 w-full py-2.5 bg-[#a3e635] text-[#111113] text-center text-[10px] sm:text-xs font-bold uppercase tracking-widest hover:bg-transparent hover:text-[#a3e635] transition-all duration-300 cursor-pointer border border-[#a3e635] rounded-sm"
+              className="solid-light w-full text-center"
               id="mobile-header-cta-btn"
             >
               {lang === "it" ? "Richiedi Preventivo" : "Request a Quote"}

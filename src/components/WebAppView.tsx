@@ -328,7 +328,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
             
             <button
               onClick={() => setCurrentTab("proposte")}
-              className="text-[#a3e635] hover:text-[#111113] font-mono text-[10px] font-bold tracking-widest uppercase flex items-center gap-1.5 transition-all group cursor-pointer border border-[#a3e635]/30 hover:border-[#a3e635] px-5 py-3 rounded-none bg-transparent self-stretch md:self-auto justify-center text-center"
+              className="solid-light flex items-center gap-1.5 self-stretch md:self-auto justify-center text-center"
               id="webappview-view-services-btn"
             >
               {t.portfolioViewAll}
@@ -504,9 +504,9 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                     setFloristLoaded(true);
                     setIsFullscreenFlorist(true);
                   }}
-                  className="flex-1 py-3.5 px-6 border border-[#a3e635] hover:bg-[#a3e635] text-[#a3e635] hover:text-[#FAF9F6] font-mono text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
+                  className="solid-light flex-1 flex items-center justify-center gap-2 text-center"
                 >
-                  <Maximize2 className="w-4 h-4 animate-pulse" />
+                  <Maximize2 className="w-4 h-4" />
                   {lang === "it" ? "SCHERMO INTERO" : "FULL VIEW"}
                 </button>
               </div>
@@ -686,9 +686,9 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                     setPlannerLoaded(true);
                     setIsFullscreenPlanner(true);
                   }}
-                  className="flex-1 py-3.5 px-6 border border-[#a3e635] hover:bg-[#a3e635] text-[#a3e635] hover:text-[#FAF9F6] font-mono text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
+                  className="solid-light flex-1 flex items-center justify-center gap-2 text-center"
                 >
-                  <Maximize2 className="w-4 h-4 animate-pulse" />
+                  <Maximize2 className="w-4 h-4" />
                   {lang === "it" ? "SCHERMO INTERO" : "FULL VIEW"}
                 </button>
               </div>
@@ -868,9 +868,9 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                     setMenuLoaded(true);
                     setIsFullscreenMenu(true);
                   }}
-                  className="flex-1 py-3.5 px-6 border border-[#a3e635] hover:bg-[#a3e635] text-[#a3e635] hover:text-[#FAF9F6] font-mono text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
+                  className="solid-light flex-1 flex items-center justify-center gap-2 text-center"
                 >
-                  <Maximize2 className="w-4 h-4 animate-pulse" />
+                  <Maximize2 className="w-4 h-4" />
                   {lang === "it" ? "SCHERMO INTERO" : "FULL VIEW"}
                 </button>
               </div>
@@ -906,7 +906,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
               
               <button
                 onClick={() => setIsFullscreenFlorist(false)}
-                className="px-4 py-2 bg-[#a3e635] text-[#FAF9F6] border border-[#a3e635] font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-250 flex items-center gap-2 cursor-pointer"
+                className="solid-light flex items-center gap-2 text-center"
                 title={lang === "it" ? "Chiudi" : "Close"}
               >
                 <X className="w-4 h-4" />
@@ -961,7 +961,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
               
               <button
                 onClick={() => setIsFullscreenPlanner(false)}
-                className="px-4 py-2 bg-[#a3e635] text-[#FAF9F6] border border-[#a3e635] font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-250 flex items-center gap-2 cursor-pointer"
+                className="solid-light flex items-center gap-2 text-center"
                 title={lang === "it" ? "Chiudi" : "Close"}
               >
                 <X className="w-4 h-4" />
@@ -1016,7 +1016,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
               
               <button
                 onClick={() => setIsFullscreenMenu(false)}
-                className="px-4 py-2 bg-[#a3e635] text-[#FAF9F6] border border-[#a3e635] font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-250 flex items-center gap-2 cursor-pointer"
+                className="solid-light flex items-center gap-2 text-center"
                 title={lang === "it" ? "Chiudi" : "Close"}
               >
                 <X className="w-4 h-4" />

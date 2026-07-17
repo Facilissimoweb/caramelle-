@@ -115,8 +115,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             willChange: "transform"
           }}
         />
-        {/* Soft elegant overlay to ensure maximum readability for the dark text */}
-        <div className="absolute inset-0 bg-[#F8F7F4]/80 backdrop-blur-[2px] z-0" />
+        {/* Soft elegant overlay to ensure maximum readability for the dark text without scroll stutter */}
+        <div className="absolute inset-0 bg-[#F8F7F4]/92 z-0" />
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">
           <div className="lg:col-span-8 xl:col-span-8 space-y-6">
@@ -148,7 +148,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             <div className="flex flex-wrap gap-4 pt-4 animate-fade-in-up delay-200">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="px-6 py-3 bg-[#a7c96a] hover:bg-[#96b85a] text-[#352e2c] font-bold rounded-xl shadow-[0_4px_14px_0_rgba(167,201,106,0.4)] hover:shadow-[0_6px_20px_0_rgba(167,201,106,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center space-x-2 cursor-pointer"
+                className="solid-light text-center"
                 id="hero-cta-main"
                 style={{ paddingLeft: "60px", paddingRight: "60px" }}
               >
@@ -156,7 +156,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               </button>
               <button
                 onClick={() => setCurrentTab("proposte")}
-                className="px-6 py-3 bg-[#a7c96a] hover:bg-[#96b85a] text-[#352e2c] font-bold rounded-xl shadow-[0_4px_14px_0_rgba(167,201,106,0.4)] hover:shadow-[0_6px_20px_0_rgba(167,201,106,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center space-x-2 cursor-pointer"
+                className="solid-light text-center"
                 id="hero-cta-sec"
               >
                 <span>{t.heroBtnSecondary}</span>
@@ -422,14 +422,14 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="px-6 py-3 bg-[#a7c96a] hover:bg-[#96b85a] text-[#352e2c] font-bold rounded-xl shadow-[0_4px_14px_0_rgba(167,201,106,0.4)] hover:shadow-[0_6px_20px_0_rgba(167,201,106,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center space-x-2 cursor-pointer justify-center"
+                className="solid-light flex items-center justify-center text-center"
                 id="cta-contact-btn"
               >
                 <span>{t.ctaBtnPrimary}</span>
               </button>
               <button
                 onClick={() => setCurrentTab("chat")}
-                className="px-6 py-3 bg-[#a7c96a] hover:bg-[#96b85a] text-[#352e2c] font-bold rounded-xl shadow-[0_4px_14px_0_rgba(167,201,106,0.4)] hover:shadow-[0_6px_20px_0_rgba(167,201,106,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center space-x-2 cursor-pointer justify-center"
+                className="solid-light flex items-center justify-center text-center"
                 id="cta-chat-btn"
               >
                 <span>{t.ctaBtnSecondary}</span>

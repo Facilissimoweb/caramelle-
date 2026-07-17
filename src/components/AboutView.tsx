@@ -153,7 +153,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
             <div className="flex gap-4 pt-2">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="editorial-button-primary cursor-pointer"
+                className="solid-light"
               >
                 {lang === "it" ? "Parliamo del tuo sito" : "Let's discuss your site"}
               </button>
@@ -320,7 +320,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
           <div className="pt-4">
             <button
               onClick={() => setCurrentTab("contatti")}
-              className="px-6 py-3 bg-[#a7c96a] hover:bg-[#96b85a] text-[#352e2c] font-bold rounded-xl shadow-[0_4px_14px_0_rgba(167,201,106,0.4)] hover:shadow-[0_6px_20px_0_rgba(167,201,106,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center space-x-2 cursor-pointer mx-auto"
+              className="solid-light text-center flex items-center justify-center mx-auto"
             >
               <span>{lang === "it" ? "Avvia la collaborazione" : "Start cooperation"}</span>
             </button>

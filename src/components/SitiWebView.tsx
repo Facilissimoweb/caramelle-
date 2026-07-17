@@ -90,7 +90,7 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
                 <div className="flex flex-col items-center justify-center py-6">
                   <button
                     onClick={() => setHotelLoaded(true)}
-                    className="group px-8 py-4 bg-[#a3e635] hover:bg-[#b5f846] text-black font-bold font-mono text-xs uppercase tracking-widest flex items-center gap-3 shadow-lg active:scale-95 transition-all cursor-pointer"
+                    className="solid-light group flex items-center gap-3"
                   >
                     <Play className="w-4 h-4 fill-black text-black group-hover:scale-110 transition-transform" />
                     <span>{lang === "it" ? "AVVIA DEMO INTERATTIVA" : "LAUNCH LIVE DEMO"}</span>
@@ -175,7 +175,7 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
                 <div className="flex flex-col items-center justify-center py-12">
                   <button
                     onClick={() => setPortfolioLoaded(true)}
-                    className="group px-8 py-4 bg-[#a3e635] hover:bg-[#b5f846] text-black font-bold font-mono text-xs uppercase tracking-widest flex items-center gap-3 shadow-lg active:scale-95 transition-all cursor-pointer"
+                    className="solid-light group flex items-center gap-3"
                   >
                     <Play className="w-4 h-4 fill-black text-black group-hover:scale-110 transition-transform" />
                     <span>{lang === "it" ? "SCOPRI IL PORTFOLIO" : "DISCOVER PORTFOLIO"}</span>

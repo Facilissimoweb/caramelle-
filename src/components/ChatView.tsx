@@ -299,7 +299,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
 
             <button
               onClick={clearChat}
-              className="w-full py-3 border border-[rgba(248,247,244,0.15)] hover:border-[#a3e635] text-[#F8F7F4]/70 hover:text-[#a3e635] text-xs font-mono tracking-widest uppercase rounded-none transition-all flex items-center justify-center gap-2 cursor-pointer bg-transparent"
+              className="solid-light w-full flex items-center justify-center gap-2"
             >
               <RefreshCw className="w-3.5 h-3.5" />
               Reimposta Conversazione
@@ -414,7 +414,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
                 <button
                   type="submit"
                   disabled={!input.trim() || loading}
-                  className="p-3 bg-[#a3e635] hover:bg-transparent hover:text-[#a3e635] text-[#111113] rounded-none transition-all flex items-center justify-center shrink-0 disabled:opacity-40 cursor-pointer border border-[#a3e635]"
+                  className="solid-light p-3 flex items-center justify-center shrink-0 disabled:opacity-40"
                   id="chat-send-btn"
                 >
                   <Send className="w-3.5 h-3.5" />

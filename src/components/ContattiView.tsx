@@ -280,7 +280,7 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
                   </div>
                   <button
                     onClick={() => setSuccess(false)}
-                    className="px-8 py-4 bg-[#a3e635] text-[#FAF9F6] font-bold text-xs uppercase tracking-widest hover:bg-transparent hover:text-[#a3e635] transition-all cursor-pointer border border-[#a3e635]"
+                    className="solid-light flex items-center justify-center mx-auto"
                   >
                     Invia un altro messaggio
                   </button>
@@ -400,7 +400,7 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-4 bg-[#a3e635] text-[#FAF9F6] hover:bg-transparent hover:text-[#a3e635] font-bold text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 cursor-pointer border border-[#a3e635] disabled:opacity-50"
+                    className="solid-light w-full flex items-center justify-center gap-2 text-center disabled:opacity-50"
                   >
                     {loading ? "Invio in corso..." : "Invia Messaggio"}
                     <Send className="w-3.5 h-3.5" />

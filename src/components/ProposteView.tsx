@@ -331,7 +331,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated, onSel
                     if (onSelectPackage) onSelectPackage(tier.id);
                     setCurrentTab("contatti");
                   }}
-                  className="w-full px-7 py-3 bg-gradient-to-r from-[#a7c96a] to-[#c99e97] hover:from-[#96b85a] hover:to-[#ba8d85] text-[#352e2c] font-extrabold rounded-xl shadow-lg shadow-[#c99e97]/20 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer"
+                  className="solid-light w-full text-center flex items-center justify-center"
                 >
                   <span>{tier.ctaText}</span>
                 </button>
@@ -395,7 +395,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated, onSel
             <div className="pt-2">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="px-6 py-3 bg-[#a7c96a] hover:bg-[#96b85a] text-[#352e2c] font-bold rounded-xl shadow-[0_4px_14px_0_rgba(167,201,106,0.4)] hover:shadow-[0_6px_20px_0_rgba(167,201,106,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center justify-center space-x-2 cursor-pointer"
+                className="solid-light flex items-center justify-center text-center"
               >
                 <span>{lang === "it" ? "Invia una richiesta personalizzata" : "Send custom request"}</span>
               </button>
