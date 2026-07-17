@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Sparkles, Maximize2, X, ArrowRight, Smartphone, Monitor } from "lucide-react";
+import { Sparkles, Maximize2, X, ArrowRight, Smartphone, Monitor, Play } from "lucide-react";
 import { translations } from "../translations";
 
 const logoImage = "/f (1600 x 500 px).webp";
@@ -269,12 +269,15 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
   // Independent simulator states for each project
   const [aspectRatioFlorist, setAspectRatioFlorist] = useState<"vertical" | "horizontal">("vertical");
   const [isFullscreenFlorist, setIsFullscreenFlorist] = useState(false);
+  const [floristLoaded, setFloristLoaded] = useState(false);
 
   const [aspectRatioPlanner, setAspectRatioPlanner] = useState<"vertical" | "horizontal">("vertical");
   const [isFullscreenPlanner, setIsFullscreenPlanner] = useState(false);
+  const [plannerLoaded, setPlannerLoaded] = useState(false);
 
   const [aspectRatioMenu, setAspectRatioMenu] = useState<"vertical" | "horizontal">("vertical");
   const [isFullscreenMenu, setIsFullscreenMenu] = useState(false);
+  const [menuLoaded, setMenuLoaded] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -443,30 +446,64 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                     willChange: "transform"
                   }}
                 >
-                  <iframe 
-                    loading="lazy" 
-                    style={{ 
-                      position: "absolute", 
-                      width: "100%", 
-                      height: "100%", 
-                      top: 0, 
-                      left: 0, 
-                      border: "none", 
-                      padding: 0, 
-                      margin: 0 
-                    }}
-                    src={floristEmbedUrl} 
-                    allowFullScreen={true}
-                    allow="fullscreen"
-                    title="Interactive Florist Landing Page"
-                  />
+                  {floristLoaded ? (
+                    <iframe 
+                      loading="lazy" 
+                      style={{ 
+                        position: "absolute", 
+                        width: "100%", 
+                        height: "100%", 
+                        top: 0, 
+                        left: 0, 
+                        border: "none", 
+                        padding: 0, 
+                        margin: 0 
+                      }}
+                      src={floristEmbedUrl} 
+                      allowFullScreen={true}
+                      allow="fullscreen"
+                      title="Interactive Florist Landing Page"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex flex-col justify-between p-6 text-white bg-gradient-to-br from-[#2b181a] via-[#1a0f10] to-[#140b0c] select-none cursor-pointer group/screen" onClick={() => setFloristLoaded(true)}>
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-1 text-[#a3e635]">
+                          <Sparkles className="w-3 h-3" />
+                          <span className="font-mono text-[8px] uppercase tracking-widest font-bold">Florist Landing</span>
+                        </div>
+                        <h4 className="font-tan text-lg font-bold text-[#F8F7F4]">
+                          {lang === "it" ? "Fleur & Co. Studio" : "Fleur & Co. Studio"}
+                        </h4>
+                        <p className="text-[10px] text-[#F8F7F4]/60 leading-relaxed font-sans">
+                          {lang === "it" ? "Design Botanico in Dusty Pink e Lime Green" : "Botanical Design in Dusty Pink & Lime Green"}
+                        </p>
+                      </div>
+
+                      <div className="flex flex-col items-center justify-center py-4">
+                        <div className="w-12 h-12 rounded-full bg-[#a3e635] text-black flex items-center justify-center shadow-lg group-hover/screen:scale-110 transition-transform">
+                          <Play className="w-5 h-5 fill-black text-black ml-0.5" />
+                        </div>
+                        <span className="text-[9px] font-mono tracking-widest uppercase mt-3 text-[#a3e635] font-bold">
+                          {lang === "it" ? "ATTIVA DEMO" : "TAP TO LOAD"}
+                        </span>
+                      </div>
+
+                      <div className="border-t border-white/5 pt-2 flex justify-between text-[7px] font-mono text-[#F8F7F4]/30 uppercase">
+                        <span>TAP TO INTERACT</span>
+                        <span>0.4s LOAD</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 
               {/* Action buttons */}
               <div className="flex items-center gap-3 w-full max-w-[390px]">
                 <button
-                  onClick={() => setIsFullscreenFlorist(true)}
+                  onClick={() => {
+                    setFloristLoaded(true);
+                    setIsFullscreenFlorist(true);
+                  }}
                   className="flex-1 py-3.5 px-6 border border-[#a3e635] hover:bg-[#a3e635] text-[#a3e635] hover:text-[#FAF9F6] font-mono text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
                 >
                   <Maximize2 className="w-4 h-4 animate-pulse" />
@@ -591,30 +628,64 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                     willChange: "transform"
                   }}
                 >
-                  <iframe 
-                    loading="lazy" 
-                    style={{ 
-                      position: "absolute", 
-                      width: "100%", 
-                      height: "100%", 
-                      top: 0, 
-                      left: 0, 
-                      border: "none", 
-                      padding: 0, 
-                      margin: 0 
-                    }}
-                    src={plannerEmbedUrl} 
-                    allowFullScreen={true}
-                    allow="fullscreen"
-                    title="Interactive Meal Planner"
-                  />
+                  {plannerLoaded ? (
+                    <iframe 
+                      loading="lazy" 
+                      style={{ 
+                        position: "absolute", 
+                        width: "100%", 
+                        height: "100%", 
+                        top: 0, 
+                        left: 0, 
+                        border: "none", 
+                        padding: 0, 
+                        margin: 0 
+                      }}
+                      src={plannerEmbedUrl} 
+                      allowFullScreen={true}
+                      allow="fullscreen"
+                      title="Interactive Meal Planner"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex flex-col justify-between p-6 text-white bg-gradient-to-br from-[#121214] via-[#1a1a1f] to-[#0c0c0e] select-none cursor-pointer group/screen" onClick={() => setPlannerLoaded(true)}>
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-1 text-[#e3ff54]">
+                          <Smartphone className="w-3 h-3 text-[#e3ff54]" />
+                          <span className="font-mono text-[8px] uppercase tracking-widest font-bold text-[#e3ff54]">Fitness Planner</span>
+                        </div>
+                        <h4 className="font-tan text-lg font-bold text-[#F8F7F4]">
+                          {lang === "it" ? "Daily Meal Planner" : "Daily Meal Planner"}
+                        </h4>
+                        <p className="text-[10px] text-[#F8F7F4]/60 leading-relaxed font-sans">
+                          {lang === "it" ? "Integrazione Macro Nutrienti in Giallo Neon e Grigio" : "Macronutrient Intake Tracker in Neon Yellow & Grey"}
+                        </p>
+                      </div>
+
+                      <div className="flex flex-col items-center justify-center py-4">
+                        <div className="w-12 h-12 rounded-full bg-[#a3e635] text-black flex items-center justify-center shadow-lg group-hover/screen:scale-110 transition-transform">
+                          <Play className="w-5 h-5 fill-black text-black ml-0.5" />
+                        </div>
+                        <span className="text-[9px] font-mono tracking-widest uppercase mt-3 text-[#a3e635] font-bold">
+                          {lang === "it" ? "ATTIVA PLANNER" : "TAP TO LOAD"}
+                        </span>
+                      </div>
+
+                      <div className="border-t border-white/5 pt-2 flex justify-between text-[7px] font-mono text-[#F8F7F4]/30 uppercase">
+                        <span>TAP TO INTERACT</span>
+                        <span>0.4s LOAD</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 
               {/* Action buttons */}
               <div className="flex items-center gap-3 w-full max-w-[390px]">
                 <button
-                  onClick={() => setIsFullscreenPlanner(true)}
+                  onClick={() => {
+                    setPlannerLoaded(true);
+                    setIsFullscreenPlanner(true);
+                  }}
                   className="flex-1 py-3.5 px-6 border border-[#a3e635] hover:bg-[#a3e635] text-[#a3e635] hover:text-[#FAF9F6] font-mono text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
                 >
                   <Maximize2 className="w-4 h-4 animate-pulse" />
@@ -739,30 +810,64 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                     willChange: "transform"
                   }}
                 >
-                  <iframe 
-                    loading="lazy" 
-                    style={{ 
-                      position: "absolute", 
-                      width: "100%", 
-                      height: "100%", 
-                      top: 0, 
-                      left: 0, 
-                      border: "none", 
-                      padding: 0, 
-                      margin: 0 
-                    }}
-                    src={menuEmbedUrl} 
-                    allowFullScreen={true}
-                    allow="fullscreen"
-                    title="Interactive Menu"
-                  />
+                  {menuLoaded ? (
+                    <iframe 
+                      loading="lazy" 
+                      style={{ 
+                        position: "absolute", 
+                        width: "100%", 
+                        height: "100%", 
+                        top: 0, 
+                        left: 0, 
+                        border: "none", 
+                        padding: 0, 
+                        margin: 0 
+                      }}
+                      src={menuEmbedUrl} 
+                      allowFullScreen={true}
+                      allow="fullscreen"
+                      title="Interactive Menu"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex flex-col justify-between p-6 text-[#f5ebd6] bg-gradient-to-br from-[#2d0a0d] via-[#1c0608] to-[#120405] select-none cursor-pointer group/screen" onClick={() => setMenuLoaded(true)}>
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-1 text-[#ff5126]">
+                          <Sparkles className="w-3 h-3 text-[#ff5126]" />
+                          <span className="font-mono text-[8px] uppercase tracking-widest font-bold text-[#ff5126]">Restaurant Menu</span>
+                        </div>
+                        <h4 className="font-tan text-lg font-bold text-[#f5ebd6]">
+                          {lang === "it" ? "L'Opera Gourmet" : "L'Opera Gourmet"}
+                        </h4>
+                        <p className="text-[10px] text-[#f5ebd6]/60 leading-relaxed font-sans">
+                          {lang === "it" ? "Menu Fotografico in Rosso Scuro e Arancio Brillante" : "Visual Menu Layout in Deep Red & Vivid Orange"}
+                        </p>
+                      </div>
+
+                      <div className="flex flex-col items-center justify-center py-4">
+                        <div className="w-12 h-12 rounded-full bg-[#ff5126] text-[#2d0a0d] flex items-center justify-center shadow-lg group-hover/screen:scale-110 transition-transform">
+                          <Play className="w-5 h-5 fill-[#2d0a0d] text-[#2d0a0d] ml-0.5" />
+                        </div>
+                        <span className="text-[9px] font-mono tracking-widest uppercase mt-3 text-[#ff5126] font-bold">
+                          {lang === "it" ? "AVVIA MENU" : "TAP TO LOAD"}
+                        </span>
+                      </div>
+
+                      <div className="border-t border-white/5 pt-2 flex justify-between text-[7px] font-mono text-[#f5ebd6]/30 uppercase">
+                        <span>TAP TO INTERACT</span>
+                        <span>0.4s LOAD</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 
               {/* Action buttons */}
               <div className="flex items-center gap-3 w-full max-w-[390px]">
                 <button
-                  onClick={() => setIsFullscreenMenu(true)}
+                  onClick={() => {
+                    setMenuLoaded(true);
+                    setIsFullscreenMenu(true);
+                  }}
                   className="flex-1 py-3.5 px-6 border border-[#a3e635] hover:bg-[#a3e635] text-[#a3e635] hover:text-[#FAF9F6] font-mono text-[10px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
                 >
                   <Maximize2 className="w-4 h-4 animate-pulse" />

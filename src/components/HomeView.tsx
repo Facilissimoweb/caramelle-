@@ -111,7 +111,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           style={{ 
             backgroundImage: "url('/images/s.webp')",
             y,
-            scale: 1.15
+            scale: 1.15,
+            willChange: "transform"
           }}
         />
         {/* Soft elegant overlay to ensure maximum readability for the dark text */}
@@ -228,15 +229,14 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
 
             <div 
               ref={sliderRef}
-              className="flex gap-6 md:gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory py-2 px-1 scrollbar-none touch-auto"
+              className="flex gap-6 md:gap-8 overflow-x-auto scroll-smooth snap-x snap-proximity py-2 px-1 scrollbar-none touch-pan-x touch-pan-y"
             >
               {features.map((feat, index) => (
                 <motion.div
                   key={feat.title}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4 }}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.08 }}
                   onClick={() => handleOpenFeaturePopup(index)}
                   className={`flex flex-col border bg-[#ffffff] rounded-2xl transition-all duration-300 group relative cursor-pointer overflow-hidden p-6 w-[310px] md:w-[370px] shrink-0 snap-start ${
                     activeFeaturePopupIndex === index 

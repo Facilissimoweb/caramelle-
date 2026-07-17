@@ -81,7 +81,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       heroPreTitle: "[ M. TERESA ROGANI — STUDIO ]",
       heroTitleRegular: "Siti Web Evoluti con",
       heroTitleItalic: "l'Intelligenza Artificiale",
-      heroDesc: "Progetto e sviluppo esperienze digitali moderne, performanti e su misura per far crescere il tuo brand velocemente, eliminando i costi di agenzia e ottimizzando la SEO semantica.",
+      heroDesc: "Progetto e sviluppo esperienze digitali moderne, performanti e su misura per far crescere il tuo brand velocemente.",
       heroBtnPrimary: "Lavora con me",
       heroBtnSecondary: "Scopri le proposte di Facilissimo Web",
       proofDirect: "100% DIRETTO",
