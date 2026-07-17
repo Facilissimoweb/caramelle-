@@ -1,5 +1,5 @@
 import React from "react";
-import { Hotel } from "lucide-react";
+import { Hotel, Briefcase } from "lucide-react";
 
 interface SitiWebViewProps {
   lang: "it" | "en";
@@ -35,7 +35,7 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
           <div className="flex items-center gap-2 border-b border-[#111113]/5 pb-3">
             <Hotel className="w-4 h-4 text-[#a3e635]" />
             <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#111113]/80">
-              {lang === "it" ? "PROGETTO SELEZIONATO" : "FEATURED PROJECT"}
+              {lang === "it" ? "SITO WEB HOTEL" : "HOTEL WEBSITE"}
             </span>
           </div>
 
@@ -66,6 +66,46 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[10px] font-mono text-[#111113]/60 uppercase tracking-widest font-bold pt-2">
             <span className="text-[#111113]">
               {lang === "it" ? "Sito Web Hotel in Stile Grigio Beige Nero" : "Hotel Website in Grey Beige Black Style"} di Maria Teresa Rogani
+            </span>
+          </div>
+        </div>
+
+        {/* Canva Portfolio Creative Project Embed */}
+        <div className="bg-white border border-[#111113]/10 p-4 sm:p-6 rounded-none shadow-sm space-y-4">
+          <div className="flex items-center gap-2 border-b border-[#111113]/5 pb-3">
+            <Briefcase className="w-4 h-4 text-[#a3e635]" />
+            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#111113]/80">
+              {lang === "it" ? "PORTFOLIO CREATIVO" : "CREATIVE PORTFOLIO"}
+            </span>
+          </div>
+
+          <div 
+            className="relative w-full overflow-hidden shadow-md border border-[#111113]/10"
+            style={{ 
+              paddingTop: '393.5578%', 
+              willChange: 'transform',
+              borderRadius: '8px'
+            }}
+          >
+            <iframe 
+              loading="lazy" 
+              className="absolute border-none p-0 m-0"
+              style={{
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: 'calc(100% + 46px)',
+              }}
+              src="https://www.canva.com/design/DAHPnqMeoO8/T4BCyLD4lWKQu6u4vB-7DA/view?embed" 
+              allowFullScreen
+              allow="fullscreen"
+              title="Sito Web Portfolio Creativo Freelance in Stile Audace e Sofisticato"
+            />
+          </div>
+
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[10px] font-mono text-[#111113]/60 uppercase tracking-widest font-bold pt-2">
+            <span className="text-[#111113]">
+              {lang === "it" ? "Sito Web Portfolio Creativo Freelance in Stile Audace e Sofisticato" : "Creative Freelance Portfolio Website in Bold & Sophisticated Style"} di Maria Teresa Rogani
             </span>
           </div>
         </div>

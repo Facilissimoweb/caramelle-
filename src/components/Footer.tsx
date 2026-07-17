@@ -53,7 +53,7 @@ export default function Footer({
   return (
     <footer 
       ref={footerRef}
-      className="relative w-full border-t border-white/10 pt-16 pb-12 transition-all text-white overflow-hidden bg-[#f37e84]" 
+      className="relative w-full border-t border-white/10 pt-16 pb-12 transition-all text-white overflow-hidden bg-[#6a4948]" 
     >
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-10">
         
