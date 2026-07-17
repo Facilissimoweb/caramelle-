@@ -53,22 +53,8 @@ export default function Footer({
   return (
     <footer 
       ref={footerRef}
-      className="relative w-full border-t border-white/10 pt-16 pb-12 transition-all text-white overflow-hidden" 
+      className="relative w-full border-t border-white/10 pt-16 pb-12 transition-all text-white overflow-hidden bg-[#f37e84]" 
     >
-      {/* Parallax Background Image */}
-      <div 
-        className="absolute inset-0 z-0 bg-no-repeat scale-110 pointer-events-none"
-        style={{ 
-          backgroundImage: "url('/images/paggio (1).png')",
-          backgroundPosition: "35% 50%",
-          backgroundSize: "cover",
-          transform: `translateY(${offset}px)`,
-          willChange: "transform",
-        }}
-      />
-      {/* Soft elegant overlay to ensure maximum readability for the text and components */}
-      <div className="absolute inset-0 bg-[#f37e84]/45 backdrop-blur-[2px] z-[1] pointer-events-none" />
-
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-10">
         
         {/* Brand Info */}

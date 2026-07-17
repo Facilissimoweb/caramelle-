@@ -261,6 +261,10 @@ interface WebAppViewProps {
 
 export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAppViewProps) {
   const t = translations[lang][isFacilitated ? "facilitated" : "normal"];
+
+  const floristEmbedUrl = "https://www.canva.com/design/DAHPcbuC8m4/SHDh85WpbFgG_aPjdWMFPw/view?embed";
+  const plannerEmbedUrl = "https://www.canva.com/design/DAHPcvbf6Xw/71T8NgKSR3RbbSnRYQdnKw/view?embed";
+  const menuEmbedUrl = "https://www.canva.com/design/DAHPcvucZxA/r_nqimNICuTjos8vXg6DEg/view?embed";
   
   // Independent simulator states for each project
   const [aspectRatioFlorist, setAspectRatioFlorist] = useState<"vertical" | "horizontal">("vertical");
@@ -439,7 +443,23 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                     willChange: "transform"
                   }}
                 >
-                  <FloristMockup aspect={aspectRatioFlorist} lang={lang} />
+                  <iframe 
+                    loading="lazy" 
+                    style={{ 
+                      position: "absolute", 
+                      width: "100%", 
+                      height: "100%", 
+                      top: 0, 
+                      left: 0, 
+                      border: "none", 
+                      padding: 0, 
+                      margin: 0 
+                    }}
+                    src={floristEmbedUrl} 
+                    allowFullScreen={true}
+                    allow="fullscreen"
+                    title="Interactive Florist Landing Page"
+                  />
                 </div>
               </div>
 
@@ -571,7 +591,23 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                     willChange: "transform"
                   }}
                 >
-                  <MealPlannerMockup aspect={aspectRatioPlanner} lang={lang} />
+                  <iframe 
+                    loading="lazy" 
+                    style={{ 
+                      position: "absolute", 
+                      width: "100%", 
+                      height: "100%", 
+                      top: 0, 
+                      left: 0, 
+                      border: "none", 
+                      padding: 0, 
+                      margin: 0 
+                    }}
+                    src={plannerEmbedUrl} 
+                    allowFullScreen={true}
+                    allow="fullscreen"
+                    title="Interactive Meal Planner"
+                  />
                 </div>
               </div>
 
@@ -703,7 +739,23 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                     willChange: "transform"
                   }}
                 >
-                  <MenuMockup aspect={aspectRatioMenu} lang={lang} />
+                  <iframe 
+                    loading="lazy" 
+                    style={{ 
+                      position: "absolute", 
+                      width: "100%", 
+                      height: "100%", 
+                      top: 0, 
+                      left: 0, 
+                      border: "none", 
+                      padding: 0, 
+                      margin: 0 
+                    }}
+                    src={menuEmbedUrl} 
+                    allowFullScreen={true}
+                    allow="fullscreen"
+                    title="Interactive Menu"
+                  />
                 </div>
               </div>
 
@@ -760,7 +812,23 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
             {/* Main view area */}
             <div className="flex-grow w-full bg-[#FAF9F6] flex justify-center items-center overflow-hidden p-0 sm:p-4">
               <div className="w-full h-full max-w-5xl bg-[#FAF9F6] shadow-2xl sm:border border-[#111113]/10 flex flex-col overflow-hidden relative">
-                <FloristMockup aspect="horizontal" lang={lang} />
+                <iframe 
+                  loading="lazy" 
+                  style={{ 
+                    position: "absolute", 
+                    width: "100%", 
+                    height: "100%", 
+                    top: 0, 
+                    left: 0, 
+                    border: "none", 
+                    padding: 0, 
+                    margin: 0 
+                  }}
+                  src={floristEmbedUrl} 
+                  allowFullScreen={true}
+                  allow="fullscreen"
+                  title="Interactive Florist Landing Page"
+                />
               </div>
             </div>
           </motion.div>
@@ -799,7 +867,23 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
             {/* Main view area */}
             <div className="flex-grow w-full bg-[#FAF9F6] flex justify-center items-center overflow-hidden p-0 sm:p-4">
               <div className="w-full h-full max-w-5xl bg-[#FAF9F6] shadow-2xl sm:border border-[#111113]/10 flex flex-col overflow-hidden relative">
-                <MealPlannerMockup aspect="horizontal" lang={lang} />
+                <iframe 
+                  loading="lazy" 
+                  style={{ 
+                    position: "absolute", 
+                    width: "100%", 
+                    height: "100%", 
+                    top: 0, 
+                    left: 0, 
+                    border: "none", 
+                    padding: 0, 
+                    margin: 0 
+                  }}
+                  src={plannerEmbedUrl} 
+                  allowFullScreen={true}
+                  allow="fullscreen"
+                  title="Interactive Meal Planner"
+                />
               </div>
             </div>
           </motion.div>
@@ -838,7 +922,23 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
             {/* Main view area */}
             <div className="flex-grow w-full bg-[#FAF9F6] flex justify-center items-center overflow-hidden p-0 sm:p-4">
               <div className="w-full h-full max-w-5xl bg-[#FAF9F6] shadow-2xl sm:border border-[#111113]/10 flex flex-col overflow-hidden relative">
-                <MenuMockup aspect="horizontal" lang={lang} />
+                <iframe 
+                  loading="lazy" 
+                  style={{ 
+                    position: "absolute", 
+                    width: "100%", 
+                    height: "100%", 
+                    top: 0, 
+                    left: 0, 
+                    border: "none", 
+                    padding: 0, 
+                    margin: 0 
+                  }}
+                  src={menuEmbedUrl} 
+                  allowFullScreen={true}
+                  allow="fullscreen"
+                  title="Interactive Menu"
+                />
               </div>
             </div>
           </motion.div>
