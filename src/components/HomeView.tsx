@@ -192,14 +192,11 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
 
           <div className="lg:col-span-4 xl:col-span-4 flex justify-center items-center">
             <div className="relative w-full max-w-md rounded-2xl overflow-hidden border border-[#111113]/10 bg-black/5 shadow-2xl hover:scale-[1.02] transition-transform duration-500">
-              <video
-                src="/FACILISSIMO WEB MACERATA.mp4"
+              <img
+                src="/images/facilissio web siti web professionali on line prima di ieri (2) (1).webp"
+                alt="Facilissimo Web Professionali"
+                referrerPolicy="no-referrer"
                 className="w-full h-auto object-cover rounded-2xl"
-                autoPlay
-                loop
-                muted
-                playsInline
-                controls
               />
             </div>
           </div>
