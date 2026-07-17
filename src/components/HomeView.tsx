@@ -141,14 +141,14 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               {t.heroPreTitle}
             </span>
  
-            <h1 className="font-tan text-2xl xs:text-3xl sm:text-5xl lg:text-7xl font-bold text-[#111113] leading-[1.1] tracking-tight animate-fade-in-up delay-75 break-words">
+            <h1 className="font-tan text-2xl xs:text-3xl sm:text-5xl lg:text-7xl font-bold text-[#ffffff] leading-[1.1] tracking-tight animate-fade-in-up delay-75 break-words">
               {t.heroTitleRegular}{" "}
               <span className="italic block mt-[5px] ml-0 pt-[9px] pb-[6px] pl-[18px] bg-black font-normal text-[#a3e635] font-tan break-words" style={{ fontSize: 'var(--h1-span-size, 52px)' }}>
                 {t.heroTitleItalic}
               </span>
             </h1>
  
-            <p className="font-sans text-[18px] font-normal italic text-[#111113]/80 max-w-xl leading-relaxed animate-fade-in-up delay-150" style={{ fontSize: "18px" }}>
+            <p className="font-sans text-[21px] font-bold italic text-[#ffffff] max-w-xl leading-relaxed animate-fade-in-up delay-150" style={{ fontSize: "21px" }}>
               {t.heroDesc}
             </p>
  
