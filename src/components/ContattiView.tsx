@@ -1,7 +1,7 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { motion } from "motion/react";
-import { Mail, Send, Calendar, CheckCircle, Database, FileText, MapPin, Phone } from "lucide-react";
-import { ContactSubmission } from "../types";
+import { Mail, Send, Calendar, CheckCircle, MapPin, Phone } from "lucide-react";
+
 const logoImage = "/f (1600 x 500 px).webp";
 
 interface ContattiViewProps {
@@ -66,24 +66,6 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
   const [success, setSuccess] = useState(false);
   const [emailSent, setEmailSent] = useState<boolean | null>(null);
   const [error, setError] = useState("");
-  const [submissions, setSubmissions] = useState<ContactSubmission[]>([]);
-
-  // Fetch registered submissions to prove actual backend integration
-  const fetchSubmissions = async () => {
-    try {
-      const res = await fetch("/api/contact/submissions");
-      if (res.ok) {
-        const data = await res.json();
-        setSubmissions(data);
-      }
-    } catch (err) {
-      console.error("Errore fetch submissions:", err);
-    }
-  };
-
-  useEffect(() => {
-    fetchSubmissions();
-  }, []);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -121,8 +103,6 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
         budget: "1000€ - 2000€",
         message: "",
       });
-      // Refresh database records
-      fetchSubmissions();
     } catch (err: any) {
       setError(err.message || "Impossibile inviare la richiesta.");
     } finally {
@@ -432,67 +412,6 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
         </div>
       </section>
 
-      {/* Real-time Submissions log (Durable verification dashboard) */}
-      <section className="py-24 bg-[#F8F7F4] border-t border-[#111113]/10">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-8">
-          <div className="flex items-center gap-3">
-            <Database className="w-5 h-5 text-[#a3e635]" />
-            <h3 className="font-display text-xl font-bold text-[#111113]">
-              Registro Richieste Recenti (In Tempo Reale)
-            </h3>
-          </div>
-
-          <p className="text-[10px] text-[#111113]/60 max-w-2xl font-mono uppercase tracking-wide">
-            Questo blocco si aggiorna istantaneamente interrogando le API di Facilissimo Web per dimostrare il corretto funzionamento dell'invio e della persistenza della tua richiesta.
-          </p>
-
-          {submissions.length === 0 ? (
-            <div className="bg-[#FAF9F6] p-8 border border-[#111113]/10 text-center text-xs text-[#111113]/60 font-mono tracking-wider uppercase">
-              Nessuna richiesta ancora registrata. Compila il modulo sopra per vederla apparire qui sotto!
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {submissions.map((sub) => (
-                <motion.div
-                  key={sub.id}
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="bg-[#FAF9F6] p-6 border border-[#111113]/10 space-y-3 transition-all hover:border-[#a3e635]/40"
-                >
-                  <div className="flex justify-between items-start gap-2">
-                    <span className="font-bold text-sm text-[#111113] truncate max-w-[150px]">
-                      {sub.name}
-                    </span>
-                    <span className="text-[9px] font-mono border border-[#111113]/15 text-[#a3e635] px-2 py-0.5 uppercase">
-                      ID: {sub.id}
-                    </span>
-                  </div>
-
-                  <div className="text-[11px] font-mono text-[#111113]/70 space-y-1">
-                    <p className="truncate">Email: {sub.email}</p>
-                    {sub.company && <p className="truncate">Azienda: {sub.company}</p>}
-                    <p className="text-[#111113] font-semibold">Budget: {sub.budget}</p>
-                    <p className="text-[#a3e635] font-bold">Tipo: {sub.projectType}</p>
-                  </div>
-
-                  <div className="pt-2 border-t border-[#111113]/10">
-                    <div className="flex gap-1.5 items-start text-xs text-[#111113]/80 italic">
-                      <FileText className="w-3.5 h-3.5 text-[#a3e635] shrink-0 mt-0.5" />
-                      <p className="line-clamp-2 leading-relaxed">"{sub.message}"</p>
-                    </div>
-                  </div>
-                  <div className="text-[9px] font-mono text-[#111113]/50 text-right">
-                    {new Date(sub.date).toLocaleDateString("it-IT", {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
     </div>
   );
 }
