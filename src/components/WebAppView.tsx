@@ -5,6 +5,254 @@ import { translations } from "../translations";
 
 const logoImage = "/f (1600 x 500 px).webp";
 
+interface MockupProps {
+  aspect: "vertical" | "horizontal";
+  lang: "it" | "en";
+}
+
+function FloristMockup({ aspect, lang }: MockupProps) {
+  const [selectedFlowers, setSelectedFlowers] = useState<string[]>([]);
+  const [showToast, setShowToast] = useState<string | null>(null);
+
+  const flowers = [
+    { id: "peonie", name: lang === "it" ? "Bouquet Dusty Peonies" : "Dusty Peonies Bouquet", price: "€45", color: "bg-[#e4d5d3]", desc: lang === "it" ? "Fiori freschi di stagione dai toni cipria" : "Fresh seasonal blooms in powdery pinks" },
+    { id: "green", name: lang === "it" ? "Minimal Botanical Green" : "Minimal Botanical Green", price: "€35", color: "bg-[#d3e0d8]", desc: lang === "it" ? "Eucalipto, rami e felci biologiche" : "Organic eucalyptus, branches & ferns" },
+    { id: "lime", name: lang === "it" ? "Lime & White Accent" : "Lime & White Accent", price: "€60", color: "bg-[#e6ebd9]", desc: lang === "it" ? "Rose bianche e boccioli verde acido" : "White roses with acid-green highlights" },
+  ];
+
+  const handleSelect = (name: string) => {
+    setSelectedFlowers((prev) => 
+      prev.includes(name) ? prev.filter(f => f !== name) : [...prev, name]
+    );
+    setShowToast(lang === "it" ? `${name} selezionato!` : `${name} selected!`);
+    setTimeout(() => setShowToast(null), 1500);
+  };
+
+  return (
+    <div className="absolute inset-0 bg-[#FAF2F0] text-[#1b3d2f] font-sans flex flex-col justify-between p-4 sm:p-6 select-none overflow-y-auto">
+      <div className="space-y-4">
+        <div className="flex justify-between items-center border-b border-[#1b3d2f]/10 pb-3">
+          <span className="font-serif italic text-base sm:text-lg font-bold tracking-tight">Fleur & Co.</span>
+          <span className="text-[8px] font-mono uppercase tracking-widest bg-[#1b3d2f] text-white px-2 py-0.5 rounded-none font-bold">Studio</span>
+        </div>
+
+        <div className="space-y-1.5 py-1 sm:py-2">
+          <h1 className="font-serif text-2xl sm:text-3xl leading-none font-extrabold text-[#1b3d2f]">
+            Stile <span className="italic text-[#a3e635] bg-[#1b3d2f] px-1.5 py-0.5 rounded-sm">Botanico</span>
+          </h1>
+          <p className="text-[10px] sm:text-xs text-[#1b3d2f]/70 max-w-xs leading-relaxed">
+            {lang === "it" 
+              ? "Design floreali artigianali e installazioni d'arte su misura firmati Maria Teresa Rogani."
+              : "Bespoke handcrafted floral designs and art installations by Maria Teresa Rogani."}
+          </p>
+        </div>
+
+        <div className={`grid gap-3 ${aspect === "horizontal" ? "grid-cols-3" : "grid-cols-1"}`}>
+          {flowers.map((f) => {
+            const isSelected = selectedFlowers.includes(f.name);
+            return (
+              <div 
+                key={f.id} 
+                onClick={() => handleSelect(f.name)}
+                className={`bg-white p-3 border rounded-none transition-all cursor-pointer ${
+                  isSelected ? "border-[#a3e635] shadow-md ring-1 ring-[#a3e635]" : "border-[#1b3d2f]/10 hover:border-[#1b3d2f]/30"
+                }`}
+              >
+                <div className={`aspect-[16/10] ${f.color} flex items-center justify-center font-serif text-[#1b3d2f]/40 italic text-xs mb-2 transition-all`}>
+                  {isSelected ? "✨ (selezionato)" : "Fleur & Co."}
+                </div>
+                <div className="flex justify-between items-start gap-1">
+                  <div>
+                    <h3 className="font-serif font-bold text-xs leading-tight">{f.name}</h3>
+                    <p className="text-[9px] text-[#1b3d2f]/60 mt-0.5">{f.desc}</p>
+                  </div>
+                  <span className="text-xs font-mono font-bold text-[#1b3d2f]/80 shrink-0">{f.price}</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {showToast && (
+        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 bg-[#1b3d2f] text-[#FAF2F0] px-3 py-1.5 text-[9px] font-mono tracking-wider uppercase rounded-none shadow-lg z-50">
+          {showToast}
+        </div>
+      )}
+
+      <div className="border-t border-[#1b3d2f]/10 pt-3 flex justify-between items-center text-[8px] font-mono text-[#1b3d2f]/50 gap-2 mt-4 shrink-0">
+        <span>©2026 Fleur Studio</span>
+        <span>Facilissimo Web Design</span>
+      </div>
+    </div>
+  );
+}
+
+function MealPlannerMockup({ aspect, lang }: MockupProps) {
+  const [selectedDay, setSelectedDay] = useState<number>(0);
+  const [showMacros, setShowMacros] = useState(false);
+
+  const days = [
+    { name: "LUN", meal: lang === "it" ? "Insalata di Quinoa & Pollo" : "Quinoa Salad & Grilled Chicken", cal: "520 kcal", p: "45g", c: "55g", f: "14g" },
+    { name: "MAR", meal: lang === "it" ? "Salmone al Forno con Broccoli" : "Baked Salmon & Garlic Broccoli", cal: "610 kcal", p: "48g", c: "12g", f: "34g" },
+    { name: "MER", meal: lang === "it" ? "Avocado Toast con Uova" : "Avocado Toast with Poached Eggs", cal: "450 kcal", p: "22g", c: "38g", f: "21g" },
+    { name: "GIO", meal: lang === "it" ? "Poke Bowl con Tofu Grigliato" : "Tofu Poke Bowl with Sesame Rice", cal: "490 kcal", p: "18g", c: "75g", f: "11g" },
+    { name: "VEN", meal: lang === "it" ? "Yogurt Greco con Frutti di Bosco" : "Greek Yogurt with Berries & Honey", cal: "310 kcal", p: "25g", c: "28g", f: "4g" },
+  ];
+
+  return (
+    <div className="absolute inset-0 bg-[#121214] text-gray-200 font-sans flex flex-col justify-between p-4 sm:p-6 select-none overflow-y-auto">
+      <div className="space-y-4">
+        <div className="flex justify-between items-center border-b border-white/10 pb-3">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-[#e3ff54] animate-pulse"></div>
+            <span className="font-mono text-xs uppercase tracking-widest font-extrabold text-white">Daily Planner</span>
+          </div>
+          <button 
+            onClick={() => setShowMacros(!showMacros)}
+            className="text-[8px] font-mono uppercase bg-[#f37e84]/20 hover:bg-[#f37e84]/30 text-[#f37e84] border border-[#f37e84]/30 px-2 py-0.5 font-bold transition-all cursor-pointer"
+          >
+            {showMacros ? "Nascondi Macro" : "Mostra Macro"}
+          </button>
+        </div>
+
+        <div className="bg-white/[0.03] border border-white/5 p-3.5 rounded-none flex justify-between items-center">
+          <div>
+            <h2 className="text-lg sm:text-xl font-bold text-[#e3ff54]">1,850 Kcal</h2>
+            <p className="text-[9px] text-gray-400 uppercase tracking-wider">{lang === "it" ? "Budget Energetico" : "Daily Calorie Budget"}</p>
+          </div>
+          <div className="text-right text-[10px] font-mono text-[#f37e84] space-y-0.5">
+            <div>PROTEINE: 125g</div>
+            <div>CARBOIDRATI: 180g</div>
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <h3 className="text-[9px] font-mono uppercase tracking-wider text-gray-400">
+            {lang === "it" ? "Piano Nutrizionale Giornaliero (Clicca per selezionare)" : "Daily Nutritional Plan (Click to select)"}
+          </h3>
+          <div className={`grid gap-2 ${aspect === "horizontal" ? "grid-cols-2" : "grid-cols-1"}`}>
+            {days.map((d, idx) => {
+              const isSelected = selectedDay === idx;
+              return (
+                <div 
+                  key={idx} 
+                  onClick={() => setSelectedDay(idx)}
+                  className={`border p-3 transition-all cursor-pointer ${
+                    isSelected 
+                      ? "bg-white/[0.05] border-[#e3ff54]" 
+                      : "bg-white/[0.01] border-white/5 hover:border-white/10"
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-2.5">
+                      <span className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded ${
+                        isSelected ? "bg-[#e3ff54] text-black" : "bg-white/10 text-gray-300"
+                      }`}>{d.name}</span>
+                      <div>
+                        <h4 className="text-xs font-bold text-white line-clamp-1">{d.meal}</h4>
+                        <span className="text-[8px] text-gray-400 uppercase tracking-widest">{d.cal}</span>
+                      </div>
+                    </div>
+                    {isSelected && <span className="w-1.5 h-1.5 bg-[#e3ff54] rounded-full"></span>}
+                  </div>
+
+                  {(isSelected || showMacros) && (
+                    <div className="mt-2 pt-2 border-t border-white/5 flex gap-4 text-[9px] font-mono text-[#f37e84]/90">
+                      <span>P: {d.p}</span>
+                      <span>C: {d.c}</span>
+                      <span>F: {d.f}</span>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      <div className="border-t border-white/5 pt-3 text-center text-[8px] font-mono text-gray-500 uppercase tracking-widest mt-4 shrink-0">
+        Facilissimo Web App • Design di M. Teresa Rogani
+      </div>
+    </div>
+  );
+}
+
+function MenuMockup({ aspect, lang }: MockupProps) {
+  const [selectedCategory, setSelectedCategory] = useState<"tutti" | "piatti" | "dolci">("tutti");
+  const [cartCount, setCartCount] = useState(0);
+
+  const items = [
+    { name: "Risotto Magenta", cat: "piatti", desc: lang === "it" ? "Arborio cotto a puntino con barbabietola, fonduta di caprino ed erbe aromatiche." : "Creamy arborio rice with beetroot reduction, goat cheese fondue & aromatic herbs.", price: "€18" },
+    { name: "Tataki di Tonno", cat: "piatti", desc: lang === "it" ? "Tonno in crosta di sesamo nero, crema di avocado e riduzione di agrumi freschi." : "Black sesame crusted tuna steak, avocado emulsion & citrus reduction.", price: "€24" },
+    { name: "Tartelletta al Pistacchio", cat: "dolci", desc: lang === "it" ? "Frolla friabile con ganache al pistacchio di Bronte e lamponi selvatici." : "Crispy shortcrust pastry with Bronte pistachio ganache & wild berries.", price: "€9" },
+    { name: "Mousse ai Tre Cioccolati", cat: "dolci", desc: lang === "it" ? "Bavarese al cioccolato fondente, al latte e bianco con granella di fave di cacao." : "Decadent dark, milk & white chocolate bavarian cream with cocoa nibs.", price: "€10" },
+  ];
+
+  const filteredItems = selectedCategory === "tutti" 
+    ? items 
+    : items.filter(it => it.cat === selectedCategory);
+
+  return (
+    <div className="absolute inset-0 bg-[#2d0a0d] text-[#f5ebd6] font-sans flex flex-col justify-between p-4 sm:p-6 select-none overflow-y-auto">
+      <div className="space-y-4">
+        <div className="text-center space-y-1.5 py-2 border-b border-[#f5ebd6]/10">
+          <div className="flex justify-between items-center text-[9px] font-mono tracking-widest text-[#f5ebd6]/60">
+            <span>Ristorante Gourmet</span>
+            <button 
+              onClick={() => setCartCount(c => c + 1)}
+              className="bg-[#ff5126]/20 hover:bg-[#ff5126]/40 text-[#ff5126] border border-[#ff5126]/30 px-2 py-0.5 rounded-full text-[8px] tracking-normal font-mono cursor-pointer transition-all"
+            >
+              🛒 {lang === "it" ? "Selezionati" : "Selected"}: {cartCount}
+            </button>
+          </div>
+          <h1 className="font-serif text-xl sm:text-2xl tracking-widest uppercase font-extrabold text-[#ff5126]">L'Opera</h1>
+          <p className="text-[8px] font-mono tracking-[0.25em] uppercase text-[#f5ebd6]/40">{lang === "it" ? "La Cucina di Maria Teresa Rogani" : "The Kitchen of Maria Teresa Rogani"}</p>
+        </div>
+
+        <div className="flex justify-center gap-1.5">
+          {["tutti", "piatti", "dolci"].map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat as any)}
+              className={`px-3 py-1 text-[8px] font-mono uppercase tracking-wider transition-all cursor-pointer border ${
+                selectedCategory === cat
+                  ? "bg-[#ff5126] border-[#ff5126] text-[#2d0a0d] font-bold"
+                  : "bg-transparent border-[#f5ebd6]/10 text-[#f5ebd6]/70 hover:text-[#f5ebd6]"
+              }`}
+            >
+              {cat === "tutti" ? (lang === "it" ? "Tutti" : "All") : cat.toUpperCase()}
+            </button>
+          ))}
+        </div>
+
+        <div className={`grid gap-3 ${aspect === "horizontal" ? "grid-cols-2" : "grid-cols-1"}`}>
+          {filteredItems.map((it, idx) => (
+            <div 
+              key={idx} 
+              onClick={() => setCartCount(c => c + 1)}
+              className="border border-[#f5ebd6]/10 bg-[#381114] p-3 space-y-1.5 hover:border-[#ff5126]/30 transition-all cursor-pointer relative group"
+            >
+              <div className="flex justify-between items-baseline gap-2">
+                <h3 className="font-serif font-bold text-xs text-[#f5ebd6] group-hover:text-[#ff5126] transition-colors">{it.name}</h3>
+                <span className="text-xs font-mono font-bold text-[#ff5126]">{it.price}</span>
+              </div>
+              <p className="text-[9px] text-[#f5ebd6]/75 leading-relaxed line-clamp-2">{it.desc}</p>
+              <div className="text-[7px] font-mono uppercase text-[#ff5126]/40 group-hover:text-[#ff5126]/80 text-right transition-colors">
+                {lang === "it" ? "Clicca per prenotare piatto" : "Click to book dish"}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="border-t border-[#f5ebd6]/10 pt-3 text-center text-[8px] font-mono text-[#f5ebd6]/30 uppercase tracking-[0.2em] mt-4 shrink-0">
+        Facilissimo Menu • Chef & Tech by Maria Teresa Rogani
+      </div>
+    </div>
+  );
+}
+
 interface WebAppViewProps {
   setCurrentTab: (tab: string) => void;
   lang: "it" | "en";
@@ -23,11 +271,6 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
 
   const [aspectRatioMenu, setAspectRatioMenu] = useState<"vertical" | "horizontal">("vertical");
   const [isFullscreenMenu, setIsFullscreenMenu] = useState(false);
-
-  // Hidden embeds to showcase the dynamic web applications
-  const floristEmbedUrl = "https://www.canva.com/design/DAHPcbuC8m4/SHDh85WpbFgG_aPjdWMFPw/view?embed";
-  const plannerEmbedUrl = "https://www.canva.com/design/DAHPcvbf6Xw/71T8NgKSR3RbbSnRYQdnKw/view?embed";
-  const menuEmbedUrl = "https://www.canva.com/design/DAHPcvucZxA/r_nqimNICuTjos8vXg6DEg/view?embed";
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -196,23 +439,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                     willChange: "transform"
                   }}
                 >
-                  <iframe 
-                    loading="lazy" 
-                    style={{ 
-                      position: "absolute", 
-                      width: "100%", 
-                      height: "100%", 
-                      top: 0, 
-                      left: 0, 
-                      border: "none", 
-                      padding: 0, 
-                      margin: 0 
-                    }}
-                    src={floristEmbedUrl} 
-                    allowFullScreen={true}
-                    allow="fullscreen"
-                    title="Interactive Florist Landing Page"
-                  />
+                  <FloristMockup aspect={aspectRatioFlorist} lang={lang} />
                 </div>
               </div>
 
@@ -344,23 +571,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                     willChange: "transform"
                   }}
                 >
-                  <iframe 
-                    loading="lazy" 
-                    style={{ 
-                      position: "absolute", 
-                      width: "100%", 
-                      height: "100%", 
-                      top: 0, 
-                      left: 0, 
-                      border: "none", 
-                      padding: 0, 
-                      margin: 0 
-                    }}
-                    src={plannerEmbedUrl} 
-                    allowFullScreen={true}
-                    allow="fullscreen"
-                    title="Interactive Meal Planner"
-                  />
+                  <MealPlannerMockup aspect={aspectRatioPlanner} lang={lang} />
                 </div>
               </div>
 
@@ -492,23 +703,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                     willChange: "transform"
                   }}
                 >
-                  <iframe 
-                    loading="lazy" 
-                    style={{ 
-                      position: "absolute", 
-                      width: "100%", 
-                      height: "100%", 
-                      top: 0, 
-                      left: 0, 
-                      border: "none", 
-                      padding: 0, 
-                      margin: 0 
-                    }}
-                    src={menuEmbedUrl} 
-                    allowFullScreen={true}
-                    allow="fullscreen"
-                    title="Interactive Menu"
-                  />
+                  <MenuMockup aspect={aspectRatioMenu} lang={lang} />
                 </div>
               </div>
 
@@ -565,14 +760,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
             {/* Main view area */}
             <div className="flex-grow w-full bg-[#FAF9F6] flex justify-center items-center overflow-hidden p-0 sm:p-4">
               <div className="w-full h-full max-w-5xl bg-[#FAF9F6] shadow-2xl sm:border border-[#111113]/10 flex flex-col overflow-hidden relative">
-                <iframe 
-                  loading="lazy" 
-                  className="w-full h-full border-none"
-                  src={floristEmbedUrl} 
-                  allowFullScreen={true}
-                  allow="fullscreen"
-                  title="Interactive Florist Landing Page presentation Fullscreen"
-                />
+                <FloristMockup aspect="horizontal" lang={lang} />
               </div>
             </div>
           </motion.div>
@@ -611,14 +799,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
             {/* Main view area */}
             <div className="flex-grow w-full bg-[#FAF9F6] flex justify-center items-center overflow-hidden p-0 sm:p-4">
               <div className="w-full h-full max-w-5xl bg-[#FAF9F6] shadow-2xl sm:border border-[#111113]/10 flex flex-col overflow-hidden relative">
-                <iframe 
-                  loading="lazy" 
-                  className="w-full h-full border-none"
-                  src={plannerEmbedUrl} 
-                  allowFullScreen={true}
-                  allow="fullscreen"
-                  title="Interactive Meal Planner presentation Fullscreen"
-                />
+                <MealPlannerMockup aspect="horizontal" lang={lang} />
               </div>
             </div>
           </motion.div>
@@ -657,14 +838,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
             {/* Main view area */}
             <div className="flex-grow w-full bg-[#FAF9F6] flex justify-center items-center overflow-hidden p-0 sm:p-4">
               <div className="w-full h-full max-w-5xl bg-[#FAF9F6] shadow-2xl sm:border border-[#111113]/10 flex flex-col overflow-hidden relative">
-                <iframe 
-                  loading="lazy" 
-                  className="w-full h-full border-none"
-                  src={menuEmbedUrl} 
-                  allowFullScreen={true}
-                  allow="fullscreen"
-                  title="Interactive Menu presentation Fullscreen"
-                />
+                <MenuMockup aspect="horizontal" lang={lang} />
               </div>
             </div>
           </motion.div>
