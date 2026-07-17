@@ -158,9 +158,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             <div className="flex flex-wrap gap-4 pt-4 animate-fade-in-up delay-200">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="solid-light text-center"
+                className="solid-primary text-center"
                 id="hero-cta-main"
-                style={{ paddingLeft: "60px", paddingRight: "60px" }}
               >
                 <span style={{ fontSize: "20px" }}>{t.heroBtnPrimary}</span>
               </button>

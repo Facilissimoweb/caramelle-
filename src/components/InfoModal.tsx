@@ -417,7 +417,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
           <div className="border-t border-[rgba(248,247,244,0.1)] pt-4 mt-6 flex justify-end shrink-0">
             <button
               onClick={onClose}
-              className={`font-mono text-[10px] uppercase font-bold tracking-widest px-5 py-2.5 bg-transparent hover:bg-[#a3e635] text-[#a3e635] hover:text-[#111113] border border-[#a3e635] transition-all cursor-pointer ${
+              className={`solid-primary ${
                 isFacilitated ? "text-xs px-6 py-3" : ""
               }`}
               id="btn-confirm-modal"

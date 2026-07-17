@@ -25,6 +25,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Vina+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
 @import "tailwindcss";
 
 @font-face {
@@ -442,24 +443,26 @@ img {
   animation: logo-shake 0.3s infinite linear;
 }
 
-/* Custom .solid-light style for all primary action buttons */
-.solid-light {
-  background-color: #f3f4f6 !important;
-  color: #111827 !important;
-  border: 1px solid #d1d5db !important;
+/* Custom .solid-light and .solid-primary style for all primary action buttons */
+.solid-light, .solid-primary {
+  background-color: #4f46e5 !important;
+  color: #ffffff !important;
+  border: none !important;
   padding: 10px 20px !important;
   border-radius: 4px !important;
   cursor: pointer !important;
   transition: all 0.2s !important;
-  font-family: "Bebas Neue", sans-serif !important;
+  font-family: "Oswald", sans-serif !important;
   text-transform: uppercase !important;
   font-size: 14px !important;
   letter-spacing: 0.05em !important;
+  font-weight: bold !important;
 }
 
-.solid-light:hover {
-  background-color: #e5e7eb !important;
-  color: #111827 !important;
+.solid-light:hover, .solid-primary:hover {
+  filter: brightness(1.1) !important;
+  background-color: #4f46e5 !important;
+  color: #ffffff !important;
 }
 
 
