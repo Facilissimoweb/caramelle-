@@ -555,18 +555,18 @@ export default function App() {
       isFacilitated ? "text-lg" : ""
     }`}>
       {/* Desktop Left Sidebar - Hidden on mobile, flex on desktop */}
-      <aside className="hidden xl:flex w-[280px] h-screen fixed left-0 top-0 border-r border-[#111113]/10 bg-white p-10 flex-col justify-between z-30 select-none text-[#111113]">
+      <aside className="hidden xl:flex w-[280px] h-screen fixed left-0 top-0 border-r border-white/10 bg-[#6a4948] p-10 flex-col justify-between z-30 select-none text-white">
         <div className="space-y-16">
           <div className="logo-block group cursor-pointer" onClick={() => handleSetTab("home")}>
             <div className="logo-text cyber-glitch-logo">
               <img
                 src={logoImage}
                 alt="Facilissimo Web Logo"
-                className="h-10 w-auto object-contain transition-transform group-hover:scale-[1.02] duration-300 brightness-0"
+                className="h-10 w-auto object-contain transition-transform group-hover:scale-[1.02] duration-300 brightness-0 invert"
               />
             </div>
             <div 
-              className="text-[13px] uppercase tracking-[0em] text-[#111113]/90 font-black mt-2.5"
+              className="text-[13px] uppercase tracking-[0em] text-white/90 font-black mt-2.5"
               style={{ fontFamily: 'MuseoModerno' }}
             >
               Siti Web Evoluti
@@ -583,8 +583,8 @@ export default function App() {
                       onClick={() => handleSetTab(tabId)}
                       className={`text-left uppercase tracking-[0em] font-black cursor-pointer transition-all block py-1 border-b-2 ${
                         isActive
-                          ? "text-[#4f46e5] border-[#4f46e5] translate-x-1"
-                          : "text-[#111113]/60 hover:text-[#111113] hover:translate-x-0.5 border-transparent"
+                          ? "text-[#a3e635] border-[#a3e635] translate-x-1"
+                          : "text-white/60 hover:text-white hover:translate-x-0.5 border-transparent"
                       }`}
                       style={{ fontFamily: 'MuseoModerno', fontSize: '15px' }}
                     >
@@ -596,23 +596,23 @@ export default function App() {
             </ul>
           </nav>
 
-          <div className="pt-4 border-t border-[#111113]/10">
+          <div className="pt-4 border-t border-white/10">
             <button
               onClick={() => setIsAccessibilityOpen(true)}
-              className="flex items-center gap-2.5 text-left font-mono text-[14px] font-bold uppercase tracking-widest text-[#111113]/60 hover:text-[#4f46e5] transition-all cursor-pointer py-1.5"
+              className="flex items-center gap-2.5 text-left font-mono text-[14px] font-bold uppercase tracking-widest text-white/60 hover:text-[#a3e635] transition-all cursor-pointer py-1.5"
               id="desktop-sidebar-accessibility-btn"
             >
-              <Accessibility className="w-4 h-4 text-[#4f46e5]" />
+              <Accessibility className="w-4 h-4 text-[#a3e635]" />
               <span>{lang === "it" ? "Accessibilità" : "Accessibility"}</span>
             </button>
           </div>
         </div>
         
         <div className="space-y-4">
-          <div className="text-[10px] font-mono uppercase tracking-widest text-[#4f46e5] font-bold">
+          <div className="text-[10px] font-mono uppercase tracking-widest text-[#a3e635] font-bold">
             [ Contatto Diretto ]
           </div>
-          <div className="font-mono text-xs text-[#111113]/70 leading-relaxed">
+          <div className="font-mono text-xs text-white/70 leading-relaxed">
             +39 379 360 3321<br />
             facilissimoweb.mc@gmail.com
           </div>
