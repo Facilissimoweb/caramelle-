@@ -43,7 +43,7 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
               </span>
             </div>
             <span className="text-[9px] font-mono bg-[#a3e635]/15 border border-[#a3e635]/30 text-[#111113]/70 px-2.5 py-0.5 font-bold">
-              {lang === "it" ? "CARICAMENTO OTTIMIZZATO" : "OPTIMIZED LOAD"}
+              {lang === "it" ? "INTERATTIVO" : "INTERACTIVE"}
             </span>
           </div>
 
@@ -55,60 +55,20 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
               borderRadius: '8px'
             }}
           >
-            {hotelLoaded ? (
-              <iframe 
-                loading="lazy" 
-                className="absolute border-none p-0 m-0"
-                style={{
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: 'calc(100% + 46px)',
-                }}
-                src="https://www.canva.com/design/DAHPnlKXhxI/agM-KYZyISjhjSD-XeXazg/view?embed" 
-                allowFullScreen
-                allow="fullscreen"
-                title="Sito Web Hotel in Stile Grigio Beige Nero"
-              />
-            ) : (
-              <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-12 text-white bg-gradient-to-br from-[#1c1c1f] via-[#111113] to-[#0d0d0f] select-none">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-1.5 text-[#a3e635]">
-                    <Sparkles className="w-4 h-4" />
-                    <span className="font-mono text-[9px] uppercase tracking-widest font-bold">Premium Experience</span>
-                  </div>
-                  <h3 className="font-tan text-xl sm:text-3xl font-bold text-[#F8F7F4] leading-tight">
-                    {lang === "it" ? "Sito Web Hotel Luxury" : "Luxury Hotel Website"}
-                  </h3>
-                  <p className="text-xs text-[#F8F7F4]/60 max-w-md font-sans leading-relaxed">
-                    {lang === "it"
-                      ? "Un design d'élite creato in toni grigio, beige e nero. Interfaccia ultra-veloce, ottimizzazione SEO strutturata e transizioni cinematografiche."
-                      : "An elite layout crafted in grey, beige, and black. Features ultra-fast responsiveness, structured search schemas, and cinematic transitions."}
-                  </p>
-                </div>
-
-                <div className="flex flex-col items-center justify-center py-6">
-                  <button
-                    onClick={() => setHotelLoaded(true)}
-                    className="solid-light group flex items-center gap-3"
-                  >
-                    <Play className="w-4 h-4 fill-black text-black group-hover:scale-110 transition-transform" />
-                    <span>{lang === "it" ? "AVVIA DEMO INTERATTIVA" : "LAUNCH LIVE DEMO"}</span>
-                  </button>
-                  <p className="text-[9px] text-[#F8F7F4]/40 font-mono tracking-wider uppercase mt-4">
-                    {lang === "it" ? "Clicca per caricare i dettagli completi senza rallentare il sito" : "Click to initialize rich elements with zero page-load footprint"}
-                  </p>
-                </div>
-
-                <div className="border-t border-[rgba(248,247,244,0.08)] pt-4 flex justify-between items-center text-[8px] font-mono text-[#F8F7F4]/40 tracking-wider">
-                  <span>DESIGN ARTIGIANALE BY M. TERESA ROGANI</span>
-                  <div className="flex items-center gap-1.5 text-[#a3e635]">
-                    <Cpu className="w-3 h-3" />
-                    <span>AI-READY</span>
-                  </div>
-                </div>
-              </div>
-            )}
+            <iframe 
+              loading="lazy" 
+              className="absolute border-none p-0 m-0"
+              style={{
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: 'calc(100% + 46px)',
+              }}
+              src="https://www.canva.com/design/DAHPnlKXhxI/agM-KYZyISjhjSD-XeXazg/view?embed" 
+              allowFullScreen
+              allow="fullscreen"
+              title="Sito Web Hotel in Stile Grigio Beige Nero"
+            />
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[10px] font-mono text-[#111113]/60 uppercase tracking-widest font-bold pt-2">
@@ -128,7 +88,7 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
               </span>
             </div>
             <span className="text-[9px] font-mono bg-[#a3e635]/15 border border-[#a3e635]/30 text-[#111113]/70 px-2.5 py-0.5 font-bold">
-              {lang === "it" ? "CARICAMENTO VELOCE" : "FAST LOAD ACTIVE"}
+              {lang === "it" ? "INTERATTIVO" : "INTERACTIVE"}
             </span>
           </div>
 
@@ -140,60 +100,20 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
               borderRadius: '8px'
             }}
           >
-            {portfolioLoaded ? (
-              <iframe 
-                loading="lazy" 
-                className="absolute border-none p-0 m-0"
-                style={{
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: 'calc(100% + 46px)',
-                }}
-                src="https://www.canva.com/design/DAHPnqMeoO8/T4BCyLD4lWKQu6u4vB-7DA/view?embed" 
-                allowFullScreen
-                allow="fullscreen"
-                title="Sito Web Portfolio Creativo Freelance in Stile Audace e Sofisticato"
-              />
-            ) : (
-              <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-12 text-white bg-gradient-to-br from-[#1a0a10] via-[#0d070b] to-[#121215] select-none">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-1.5 text-[#a3e635]">
-                    <Sparkles className="w-4 h-4" />
-                    <span className="font-mono text-[9px] uppercase tracking-widest font-bold">Art & Technology</span>
-                  </div>
-                  <h3 className="font-tan text-xl sm:text-3xl font-bold text-[#F8F7F4] leading-tight">
-                    {lang === "it" ? "Portfolio Creativo Freelance" : "Creative Freelance Portfolio"}
-                  </h3>
-                  <p className="text-xs text-[#F8F7F4]/60 max-w-md font-sans leading-relaxed">
-                    {lang === "it"
-                      ? "Un design audace, lussuoso e sofisticato per comunicare massima autorevolezza e originalità d'impatto visivo."
-                      : "A bold, luxurious, and sophisticated layout engineered to express unmatched authority and aesthetic power."}
-                  </p>
-                </div>
-
-                <div className="flex flex-col items-center justify-center py-12">
-                  <button
-                    onClick={() => setPortfolioLoaded(true)}
-                    className="solid-light group flex items-center gap-3"
-                  >
-                    <Play className="w-4 h-4 fill-black text-black group-hover:scale-110 transition-transform" />
-                    <span>{lang === "it" ? "SCOPRI IL PORTFOLIO" : "DISCOVER PORTFOLIO"}</span>
-                  </button>
-                  <p className="text-[9px] text-[#F8F7F4]/40 font-mono tracking-wider uppercase mt-4 text-center">
-                    {lang === "it" ? "Clicca per esplorare in tempo reale il portfolio ad alta risoluzione" : "Click to stream live high-resolution interactive showcase"}
-                  </p>
-                </div>
-
-                <div className="border-t border-[rgba(248,247,244,0.08)] pt-4 flex justify-between items-center text-[8px] font-mono text-[#F8F7F4]/40 tracking-wider">
-                  <span>FACILISSIMO WEB STUDIO • 100% SU MISURA</span>
-                  <div className="flex items-center gap-1.5 text-[#a3e635]">
-                    <Cpu className="w-3 h-3" />
-                    <span>SEO-READY</span>
-                  </div>
-                </div>
-              </div>
-            )}
+            <iframe 
+              loading="lazy" 
+              className="absolute border-none p-0 m-0"
+              style={{
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: 'calc(100% + 46px)',
+              }}
+              src="https://www.canva.com/design/DAHPnqMeoO8/T4BCyLD4lWKQu6u4vB-7DA/view?embed" 
+              allowFullScreen
+              allow="fullscreen"
+              title="Sito Web Portfolio Creativo Freelance in Stile Audace e Sofisticato"
+            />
           </div>
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[10px] font-mono text-[#111113]/60 uppercase tracking-widest font-bold pt-2">
