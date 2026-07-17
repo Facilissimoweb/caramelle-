@@ -105,18 +105,25 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       <section 
         className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-[#111113]/10"
       >
-        {/* Parallax Background Image with motion.div */}
+        {/* Parallax Background Video with motion.div */}
         <motion.div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 overflow-hidden"
           style={{ 
-            backgroundImage: "url('/images/s.webp')",
             y,
             scale: 1.15,
             willChange: "transform"
           }}
-        />
-        {/* Soft elegant overlay to ensure maximum readability for the dark text without scroll stutter */}
-        <div className="absolute inset-0 bg-[#F8F7F4]/92 z-0" />
+        >
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="/FACILISSIMO WEB MACERATA.mp4" type="video/mp4" />
+          </video>
+        </motion.div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">
           <div className="lg:col-span-8 xl:col-span-8 space-y-6">
