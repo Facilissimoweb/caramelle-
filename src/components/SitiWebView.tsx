@@ -49,7 +49,13 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
           >
             <iframe 
               loading="lazy" 
-              className="absolute inset-0 w-full h-full border-none p-0 m-0"
+              className="absolute border-none p-0 m-0"
+              style={{
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: 'calc(100% + 46px)',
+              }}
               src="https://www.canva.com/design/DAHPnlKXhxI/agM-KYZyISjhjSD-XeXazg/view?embed" 
               allowFullScreen
               allow="fullscreen"
