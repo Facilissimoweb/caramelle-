@@ -340,9 +340,9 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       {/* Dynamic Gallery & Media Assets - Hidden from online public view as requested */}
       {/* <GallerySection lang={lang} isFacilitated={isFacilitated} /> */}
       {/* FAQ Section */}
-      <section className="py-24 border-b border-[#111113]/10" style={{ backgroundColor: "#c99e97" }}>
+      <section className="py-24 border-b border-white/10 bg-[#000000]" style={{ backgroundColor: "#000000" }}>
         <FAQAccordion
-          isDark={false}
+          isDark={true}
           containerClassName="mb-0 pb-[60px]"
           title={lang === "it" ? "Domande Frequenti" : "Frequently Asked Questions"}
           subtitle={
