@@ -57,7 +57,7 @@ export interface ProjectItem {
 export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
   return [
     {
-      icon: <Zap className="w-5 h-5 text-[#a3e635]" />,
+      icon: <Zap className="w-5 h-5 text-black" />,
       title: t.feat1Title,
       description: t.feat1Desc,
       image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=800",
@@ -67,7 +67,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
         : ["Interactive Time: 0.4s", "PageSpeed Score: 99/100", "Bounce Rate: < 2%"]
     },
     {
-      icon: <Cpu className="w-5 h-5 text-[#a3e635]" />,
+      icon: <Cpu className="w-5 h-5 text-black" />,
       title: t.feat2Title,
       description: t.feat2Desc,
       image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800",
@@ -77,7 +77,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
         : ["Gemini API Pipelines", "Operational Gain: +85%", "Form Automation: 24/7"]
     },
     {
-      icon: <Brain className="w-5 h-5 text-[#a3e635]" />,
+      icon: <Brain className="w-5 h-5 text-black" />,
       title: t.feat3Title,
       description: t.feat3Desc,
       image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800",
@@ -87,7 +87,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
         : ["100% Handcrafted Code", "Brand Recall: 95%", "Optimized Mobile UX"]
     },
     {
-      icon: <TrendingUp className="w-5 h-5 text-[#a3e635]" />,
+      icon: <TrendingUp className="w-5 h-5 text-black" />,
       title: lang === "it" ? "SEO Semantica d'Avanguardia" : "State-of-the-Art Semantic SEO",
       description: lang === "it" ? "Ottimizzazione avanzata per scalare Google usando schemi semantici e risposte dirette strutturate." : "Advanced search engine dominance using structural semantic markup and query answering layouts.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
@@ -97,7 +97,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
         : ["Keywords Top 3: +120%", "Organic Traffic: 3x", "Rich Snippets Schema: 100%"]
     },
     {
-      icon: <Heart className="w-5 h-5 text-[#a3e635]" />,
+      icon: <Heart className="w-5 h-5 text-black" />,
       title: lang === "it" ? "Accessibilità Inclusiva" : "Inclusive Accessibility",
       description: lang === "it" ? "Pieno rispetto dei requisiti di accessibilità con modalità di lettura facilitata, audio-guida e contrasto ottimizzato." : "Full compliance with WCAG accessibility standards, easy-reading mode, text-to-speech, and custom high contrast.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
@@ -107,7 +107,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
         : ["Built-in Voice Reader", "WCAG Contrast: Passed", "Mobile Usability: 100/100"]
     },
     {
-      icon: <CheckCircle2 className="w-5 h-5 text-[#a3e635]" />,
+      icon: <CheckCircle2 className="w-5 h-5 text-black" />,
       title: lang === "it" ? "Sicurezza Totale & Zero Hosting" : "Bulletproof Static Security",
       description: lang === "it" ? "Siti web inattaccabili senza database vulnerabili, pronti a sopportare picchi di traffico mondiali." : "Unattackable websites with no databases to hack, built to withstand massive worldwide traffic spikes with ease.",
       image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800",
@@ -117,7 +117,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
         : ["Guaranteed Uptime: 99.99%", "SQL Vulnerability: Zero", "Global CDN: Included"]
     },
     {
-      icon: <Sparkles className="w-5 h-5 text-[#a3e635]" />,
+      icon: <Sparkles className="w-5 h-5 text-black" />,
       title: lang === "it" ? "Scrittura Orientata alla Conversione" : "Conversion-Focused Copywriting",
       description: lang === "it" ? "Testi chiari ed eleganti formulati per guidare l'utente verso il form di contatto o l'acquisto." : "Elegant, crystal-clear copywriting formulated to guide the visitor smoothly toward inquiry or purchase.",
       image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=800",
@@ -127,7 +127,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
         : ["Form Clicks: +42%", "Flesch Readability: High", "Multi-language Copy: Yes"]
     },
     {
-      icon: <BarChart3 className="w-5 h-5 text-[#a3e635]" />,
+      icon: <BarChart3 className="w-5 h-5 text-black" />,
       title: lang === "it" ? "Metriche di Privacy-First" : "Privacy-First Analytics",
       description: lang === "it" ? "Tracciamento preciso degli utenti rispettando la privacy (GDPR compliant) senza cookie invasivi." : "Precise visitor insight tracking fully in compliance with GDPR standards, without annoying cookie banners.",
       image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800",
@@ -137,7 +137,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
         : ["GDPR Compliant: 100%", "No Third-party Cookies", "Weekly Reports: Included"]
     },
     {
-      icon: <ArrowUpRight className="w-5 h-5 text-[#a3e635]" />,
+      icon: <ArrowUpRight className="w-5 h-5 text-black" />,
       title: lang === "it" ? "Sostegno e Crescita Continua" : "Continuous Support & Growth",
       description: lang === "it" ? "Nessun ticket anonimo. Parli e pianifichi direttamente con me ogni aggiornamento ed evoluzione futura." : "No anonymous support queues. Call and discuss updates directly with me as your project grows.",
       image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800",

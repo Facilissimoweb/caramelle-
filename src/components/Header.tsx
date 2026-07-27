@@ -188,10 +188,10 @@ export default function Header({
   const activeLangObj = LANGUAGES.find((l) => l.code === currentGoogleLang) || LANGUAGES[0];
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-[#c1ff72]/80 backdrop-blur-lg z-50 border-b border-[#111113]/10 transition-all duration-300">
+    <header className="fixed top-0 left-0 w-full bg-[#FAF9F6]/95 backdrop-blur-lg z-50 border-b border-[#111113]/10 transition-all duration-300">
       {/* Scroll Progress Bar */}
       <div
-        className="absolute top-0 left-0 h-[3px] bg-[#a3e635] transition-all duration-100 ease-out z-50"
+        className="absolute top-0 left-0 h-[3px] bg-black transition-all duration-100 ease-out z-50"
         style={{ width: `${scrollProgress}%` }}
         id="scroll-progress-bar"
       />
@@ -231,7 +231,7 @@ export default function Header({
                 onClick={() => handleNavClick(item.id)}
                 className={`uppercase tracking-[0em] font-black py-1.5 border-b-2 relative cursor-pointer transition-all ${
                   isActive
-                    ? "text-[#a3e635] border-[#a3e635]"
+                    ? "text-black border-black font-extrabold"
                     : "text-[#111113]/50 hover:text-[#111113] border-transparent hover:border-[#111113]/20"
                 }`}
                 style={{ fontFamily: 'MuseoModerno', fontSize: "15px" }}
@@ -249,11 +249,11 @@ export default function Header({
           <div className="relative">
             <button
               onClick={() => setIsLangOpen(!isLangOpen)}
-              className="p-2 border border-[#111113]/10 hover:border-[#a3e635] text-[#111113]/70 hover:text-[#a3e635] transition-all flex items-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold"
+              className="p-2 border border-[#111113]/10 hover:border-black text-[#111113]/70 hover:text-black transition-all flex items-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold"
               title={t.languageLabel}
               id="lang-toggle-desktop"
             >
-              <Globe className="w-3.5 h-3.5 text-[#a3e635]" />
+              <Globe className="w-3.5 h-3.5 text-black" />
               <span>
                 {activeLangObj.flag} {activeLangObj.code.toUpperCase()}
               </span>
@@ -267,9 +267,9 @@ export default function Header({
                     <button
                       key={item.code}
                       onClick={() => selectLanguage(item.code)}
-                      className={`px-4 py-2.5 text-left font-mono text-[10px] uppercase tracking-wider flex items-center gap-2.5 hover:bg-[#111113]/5 hover:text-[#a3e635] transition-all cursor-pointer ${
+                      className={`px-4 py-2.5 text-left font-mono text-[10px] uppercase tracking-wider flex items-center gap-2.5 hover:bg-[#111113]/5 hover:text-black transition-all cursor-pointer ${
                         currentGoogleLang === item.code
-                          ? "text-[#a3e635] font-extrabold bg-[#a3e635]/10"
+                          ? "text-black font-extrabold bg-black/10"
                           : "text-[#111113]/70"
                       }`}
                     >
@@ -285,11 +285,11 @@ export default function Header({
           {/* Accessibility Toggle */}
           <button
             onClick={onOpenAccessibility}
-            className="p-2 border border-[#111113]/10 hover:border-[#a3e635] text-[#111113]/70 hover:text-[#a3e635] transition-all flex items-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold"
+            className="p-2 border border-[#111113]/10 hover:border-black text-[#111113]/70 hover:text-black transition-all flex items-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold"
             title={lang === "it" ? "Strumenti di Accessibilità" : "Accessibility Tools"}
             id="access-toggle-desktop"
           >
-            <Accessibility className="w-3.5 h-3.5 text-[#a3e635]" />
+            <Accessibility className="w-3.5 h-3.5 text-black" />
             <span>{lang === "it" ? "Accessibilità" : "Accessibility"}</span>
           </button>
 
@@ -305,7 +305,7 @@ export default function Header({
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileOpen(!isMobileOpen)}
-          className="xl:hidden p-2 text-[#111113] hover:text-[#a3e635] focus:outline-none cursor-pointer flex-shrink-0"
+          className="xl:hidden p-2 text-[#111113] hover:text-black focus:outline-none cursor-pointer flex-shrink-0"
           id="mobile-menu-toggle"
           aria-label="Toggle menu"
         >
@@ -315,8 +315,8 @@ export default function Header({
 
       {/* Mobile Drawer */}
       {isMobileOpen && (
-        <div className="xl:hidden border-t border-[#111113]/10 bg-[#FAF9F6]/98 backdrop-blur-2xl absolute top-20 left-0 w-full shadow-lg transition-all duration-300">
-          <div className="px-4 py-4 flex flex-col gap-3" style={{ backgroundColor: '#c99e97' }}>
+        <div className="xl:hidden border-t border-[#111113]/10 bg-[#FAF9F6] absolute top-20 left-0 w-full shadow-lg transition-all duration-300">
+          <div className="px-4 py-4 flex flex-col gap-3 bg-[#FAF9F6]">
             {/* Classic Vertical List Navigation */}
             <div className="flex flex-col gap-1" id="mobile-nav-container">
               <span className="text-[9px] uppercase tracking-[0.2em] text-[#111113]/40 font-mono font-bold px-1 mb-1">
@@ -332,19 +332,19 @@ export default function Header({
                       onClick={() => handleNavClick(item.id)}
                       className={`w-full h-11 px-3 flex items-center justify-between transition-all border-l-4 cursor-pointer ${
                         isActive
-                          ? "bg-[#a3e635]/10 text-[#a3e635] border-[#a3e635] font-extrabold"
+                          ? "bg-black/10 text-black border-black font-extrabold"
                           : "text-[#111113]/70 bg-[#FAF9F6]/30 border-transparent hover:bg-[#111113]/5"
                       }`}
                       id={`mobile-nav-${item.id}`}
                     >
                       <div className="flex items-center gap-3">
-                        <IconComponent className={`w-4 h-4 ${isActive ? "text-[#a3e635]" : "text-[#111113]/50"}`} />
+                        <IconComponent className={`w-4 h-4 ${isActive ? "text-black" : "text-[#111113]/50"}`} />
                         <span className="uppercase tracking-[0em] font-black text-[15px]" style={{ fontFamily: "MuseoModerno" }}>
                           {item.label}
                         </span>
                       </div>
                       {isActive && (
-                        <span className="w-1.5 h-1.5 bg-[#a3e635] rounded-full animate-pulse" />
+                        <span className="w-1.5 h-1.5 bg-black rounded-full animate-pulse" />
                       )}
                     </button>
                   );
@@ -361,20 +361,20 @@ export default function Header({
                     setIsMobileOpen(false);
                     onOpenAccessibility();
                   }}
-                  className="py-2 px-2.5 border border-[#111113]/10 bg-[#FAF9F6]/30 rounded-sm text-[#111113] hover:text-[#a3e635] transition-all flex items-center justify-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold"
+                  className="py-2 px-2.5 border border-[#111113]/10 bg-[#FAF9F6]/30 rounded-sm text-[#111113] hover:text-black transition-all flex items-center justify-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold"
                   id="access-toggle-mobile"
                 >
-                  <Accessibility className="w-3.5 h-3.5 text-[#a3e635]" />
+                  <Accessibility className="w-3.5 h-3.5 text-black" />
                   <span>{lang === "it" ? "Accessibilità" : "Accessibility"}</span>
                 </button>
 
                 {/* Mobile Language Trigger */}
                 <button
                   onClick={() => setIsMobileLangOpen(!isMobileLangOpen)}
-                  className="py-2 px-2.5 border border-[#111113]/10 bg-[#FAF9F6]/30 rounded-sm text-[#111113] hover:text-[#a3e635] transition-all flex items-center justify-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold"
+                  className="py-2 px-2.5 border border-[#111113]/10 bg-[#FAF9F6]/30 rounded-sm text-[#111113] hover:text-black transition-all flex items-center justify-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold"
                   id="mobile-lang-trigger"
                 >
-                  <Globe className="w-3.5 h-3.5 text-[#a3e635]" />
+                  <Globe className="w-3.5 h-3.5 text-black" />
                   <span>{activeLangObj.flag} {activeLangObj.code.toUpperCase()}</span>
                   <span className={`text-[7px] transition-transform duration-200 ${isMobileLangOpen ? "rotate-180" : ""}`}>▼</span>
                 </button>
@@ -391,8 +391,8 @@ export default function Header({
                         onClick={() => selectLanguage(item.code)}
                         className={`py-1 px-1 rounded-sm border transition-all flex items-center justify-center gap-1 cursor-pointer font-mono text-[8px] uppercase tracking-wider font-semibold ${
                           isSelected
-                            ? "bg-[#a3e635] border-[#a3e635] text-[#FAF9F6]"
-                            : "border-[#111113]/10 text-[#111113]/70 hover:text-[#a3e635]"
+                            ? "bg-black border-black text-[#FAF9F6]"
+                            : "border-[#111113]/10 text-[#111113]/70 hover:text-black"
                         }`}
                       >
                         <span>{item.flag}</span>

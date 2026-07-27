@@ -135,18 +135,17 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               />
             </div>
             <span 
-              className="text-[13px] uppercase tracking-[0em] text-[#a3e635] font-mono font-bold block bg-[#0e0e0e] pt-[10px] pb-[13px] px-4 text-center mb-[25px] w-[328px] max-w-full animate-fade-in-up"
+              className="text-[13px] uppercase tracking-[0em] text-white font-mono font-bold block bg-[#0e0e0e] pt-[10px] pb-[13px] px-4 text-center mb-[25px] w-[328px] max-w-full animate-fade-in-up border border-white/20"
               style={{ letterSpacing: '0px' }}
             >
               {t.heroPreTitle}
             </span>
  
             <h1 
-              className="font-tan text-2xl xs:text-3xl sm:text-5xl lg:text-7xl font-bold text-[#ffffff] leading-[1.1] tracking-tight animate-fade-in-up delay-75 break-words p-4 rounded-lg"
-              style={{ backgroundColor: '#917171' }}
+              className="font-tan text-2xl xs:text-3xl sm:text-5xl lg:text-7xl font-bold text-[#ffffff] leading-[1.1] tracking-tight animate-fade-in-up delay-75 break-words p-4 rounded-lg bg-black/90 border border-white/10"
             >
               {t.heroTitleRegular}{" "}
-              <span className="italic block mt-[5px] ml-0 pt-[9px] pb-[6px] pl-[18px] bg-black font-normal text-[#a3e635] font-tan break-words" style={{ fontSize: 'var(--h1-span-size, 52px)' }}>
+              <span className="italic block mt-[5px] ml-0 pt-[9px] pb-[6px] pl-[18px] bg-white font-normal text-black font-tan break-words" style={{ fontSize: 'var(--h1-span-size, 52px)' }}>
                 {t.heroTitleItalic}
               </span>
             </h1>
@@ -175,15 +174,15 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             {/* Micro proof badges */}
             <div className="flex flex-wrap items-center gap-6 pt-8 border-t border-[#111113]/10 text-[9px] uppercase tracking-widest font-mono text-[#111113]/60 max-w-lg animate-fade-in-up delay-300">
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#a3e635]" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-black" />
                 <span>{t.proofDirect}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#a3e635]" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-black" />
                 <span>{t.proofDelivery}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#a3e635]" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-black" />
                 <span>{t.proofPrices}</span>
               </div>
             </div>
@@ -209,7 +208,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
             <span 
-              className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-[#a3e635] font-bold uppercase"
+              className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-white font-bold uppercase border border-black"
               style={{ textDecorationLine: "none", textAlign: "center", letterSpacing: "0px" }}
             >
               {t.approachPre}
@@ -246,8 +245,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   onClick={() => handleOpenFeaturePopup(index)}
                   className={`flex flex-col border bg-[#ffffff] rounded-2xl transition-all duration-300 group relative cursor-pointer overflow-hidden p-6 w-[310px] md:w-[370px] shrink-0 snap-start ${
                     activeFeaturePopupIndex === index 
-                      ? "border-[#a3e635] shadow-[0_0_30px_rgba(163,230,53,0.35)] scale-[1.01]" 
-                      : "border-[#111113]/10 shadow-sm hover:shadow-[0_15px_35px_rgba(163,230,53,0.22)] hover:border-[#a3e635]/50 hover:scale-[1.01]"
+                      ? "border-black shadow-xl scale-[1.01]" 
+                      : "border-[#111113]/10 shadow-sm hover:shadow-md hover:border-black hover:scale-[1.01]"
                   }`}
                 >
                   {/* Image Container representing each card visually */}
@@ -264,8 +263,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                     {/* Floating Icon */}
                     <div className={`absolute bottom-3 left-3 w-8 h-8 border flex items-center justify-center transition-all ${
                       activeFeaturePopupIndex === index 
-                        ? "bg-[#a3e635] text-[#FAF9F6] border-[#a3e635]" 
-                        : "bg-[#F8F7F4]/90 text-[#111113] border-[#111113]/15 group-hover:bg-[#a3e635] group-hover:text-[#FAF9F6] group-hover:border-[#a3e635]"
+                        ? "bg-black text-white border-black" 
+                        : "bg-[#F8F7F4]/90 text-[#111113] border-[#111113]/15 group-hover:bg-black group-hover:text-white group-hover:border-black"
                     }`}>
                       {feat.icon}
                     </div>
@@ -293,7 +292,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                         </span>
                       ))}
                     </div>
-                    <h3 className="font-display text-base font-bold text-[#111113] group-hover:text-[#a3e635] transition-colors">
+                    <h3 className="font-display text-base font-bold text-[#111113] group-hover:text-black transition-colors">
                       {feat.title}
                     </h3>
                   </div>
@@ -302,14 +301,14 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   <div className="mt-auto space-y-2 border-t border-[#111113]/10 pt-4">
                     {feat.highlightMetrics.map((metric, mIdx) => (
                       <div key={mIdx} className="flex items-center gap-2 text-[11px] font-sans text-[#111113]/80">
-                        <div className="w-1.5 h-1.5 bg-[#a3e635] shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-black shrink-0"></div>
                         <span className="font-medium">{metric}</span>
                       </div>
                     ))}
                   </div>
 
                   {/* Click action text */}
-                  <div className="mt-4 pt-3 border-t border-dashed border-[#111113]/10 flex items-center justify-between text-[9px] font-mono tracking-wider uppercase text-[#a3e635]/70 group-hover:text-[#a3e635] transition-colors">
+                  <div className="mt-4 pt-3 border-t border-dashed border-[#111113]/10 flex items-center justify-between text-[9px] font-mono tracking-wider uppercase text-black/70 group-hover:text-black transition-colors">
                     <span className="bg-[#030303] text-[#ffffff] text-[11px] font-bold rounded-lg text-left px-3 py-1.5">{lang === "it" ? "Vedi metriche di impatto" : "See impact metrics"}</span>
                     <ArrowRight className="w-2.5 h-2.5 group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -321,14 +320,14 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             <div className="flex justify-center items-center gap-4 mt-8">
               <button
                 onClick={() => scrollCarousel("left")}
-                className="flex items-center justify-center w-11 h-11 rounded-full bg-[#111113] hover:bg-[#a3e635] text-[#FAF9F6] hover:text-[#111113] border border-[#111113]/10 hover:border-[#a3e635] transition-all cursor-pointer shadow-md active:scale-95"
+                className="flex items-center justify-center w-11 h-11 rounded-full bg-[#111113] hover:bg-black text-[#FAF9F6] hover:text-[#FFFFFF] border border-[#111113]/10 hover:border-black transition-all cursor-pointer shadow-md active:scale-95"
                 aria-label="Scroll left"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 onClick={() => scrollCarousel("right")}
-                className="flex items-center justify-center w-11 h-11 rounded-full bg-[#111113] hover:bg-[#a3e635] text-[#FAF9F6] hover:text-[#111113] border border-[#111113]/10 hover:border-[#a3e635] transition-all cursor-pointer shadow-md active:scale-95"
+                className="flex items-center justify-center w-11 h-11 rounded-full bg-[#111113] hover:bg-black text-[#FAF9F6] hover:text-[#FFFFFF] border border-[#111113]/10 hover:border-black transition-all cursor-pointer shadow-md active:scale-95"
                 aria-label="Scroll right"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -414,7 +413,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
         <div className="max-w-7xl mx-auto bg-[#FAF9F6] text-[#111113] p-12 md:p-20 relative overflow-hidden border border-[#111113]/15">
           <div className="relative z-10 text-center max-w-2xl mx-auto space-y-6">
             <span 
-              className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-[#a3e635] font-bold uppercase"
+              className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-white font-bold uppercase border border-black"
               style={{ letterSpacing: "0px" }}
             >
               {t.ctaPre}
@@ -458,7 +457,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             {/* Top control and branding bar */}
             <div className="bg-[#151518] border-b border-[rgba(248,247,244,0.08)] px-4 sm:px-6 py-3.5 flex items-center justify-between shrink-0 select-none">
               <div className="flex items-center gap-3">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#a3e635] animate-pulse"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-white animate-pulse"></span>
                 <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#F8F7F4]/90">
                   {activeFullScreenApp === "gusto" 
                     ? (lang === "it" ? "Gusto & Passione — Demo Web App" : "Gusto & Passione — Food Delivery Web App")
@@ -474,7 +473,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               
               <button
                 onClick={handleCloseFullScreen}
-                className="px-4 py-2 bg-transparent hover:bg-[#a3e635] text-[#a3e635] hover:text-[#111113] border border-[#a3e635]/30 hover:border-[#a3e635] font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-250 flex items-center gap-2 cursor-pointer"
+                className="px-4 py-2 bg-white text-black hover:bg-black hover:text-white border border-white font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-250 flex items-center gap-2 cursor-pointer"
                 title={lang === "it" ? "Chiudi e torna al sito" : "Close and return to site"}
               >
                 <X className="w-4 h-4" />
@@ -516,7 +515,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             {/* Top control header bar */}
             <div className="sticky top-0 bg-[#0d0d0f]/90 backdrop-blur-md border-b border-[rgba(248,247,244,0.08)] px-6 sm:px-10 py-4 flex items-center justify-between shrink-0 select-none z-50">
               <div className="flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-[#a3e635] animate-ping"></span>
+                <span className="w-2 h-2 rounded-full bg-white animate-ping"></span>
                 <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#F8F7F4]/90">
                   {lang === "it" ? "METRICHE PRESTAZIONALI & CRITERI DI COSTRUZIONE" : "PERFORMANCE METRICS & BUILD STANDARDS"}
                 </span>
@@ -524,7 +523,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               
               <button
                 onClick={handleCloseFeaturePopup}
-                className="px-4 py-2 bg-transparent hover:bg-[#a3e635] text-[#a3e635] hover:text-[#111113] border border-[#a3e635]/30 hover:border-[#a3e635] font-mono text-[10px] font-bold uppercase tracking-widest transition-all flex items-center gap-2 cursor-pointer"
+                className="px-4 py-2 bg-white text-black hover:bg-black hover:text-white border border-white font-mono text-[10px] font-bold uppercase tracking-widest transition-all flex items-center gap-2 cursor-pointer"
                 title={lang === "it" ? "Chiudi" : "Close"}
               >
                 <X className="w-4 h-4" />
@@ -541,7 +540,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   
                   {/* Category and active badges */}
                   <div className="flex flex-wrap items-center gap-3">
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#a3e635]/10 border border-[#a3e635]/30 rounded text-[9px] font-mono font-bold uppercase tracking-widest text-[#a3e635]">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/30 rounded text-[9px] font-mono font-bold uppercase tracking-widest text-white">
                       {features[activeFeaturePopupIndex].tags[0]}
                     </div>
                     <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#F8F7F4]/5 border border-[rgba(248,247,244,0.1)] rounded text-[9px] font-mono tracking-widest text-[#F8F7F4]/60">
@@ -567,17 +566,17 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                     
                     {/* Glowing indicator */}
                     <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-white animate-pulse"></div>
                       <span className="font-mono text-[9px] text-[#F8F7F4]/70 tracking-widest">REALTIME PROOF OK</span>
                     </div>
 
                     {/* Scanning tech line effect */}
-                    <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#a3e635]/50 to-transparent top-1/2 -translate-y-1/2 shadow-[0_0_8px_#a3e635] opacity-40"></div>
+                    <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-white/50 to-transparent top-1/2 -translate-y-1/2 opacity-40"></div>
                   </div>
 
                   {/* Full detailed description explaining why it's critical */}
                   <div className="space-y-4">
-                    <h3 className="font-display font-bold text-sm uppercase tracking-wider text-[#a3e635]">
+                    <h3 className="font-display font-bold text-sm uppercase tracking-wider text-white">
                       {lang === "it" ? "Perché questo criterio è essenziale" : "Why this standard is vital"}
                     </h3>
                     <p className="text-sm text-[#F8F7F4]/80 leading-relaxed font-sans">
@@ -588,13 +587,13 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   {/* Key Metrics Bullet list */}
                   <div className="p-5 bg-[#151518] border border-[rgba(248,247,244,0.06)] rounded space-y-3">
                     <div className="flex items-center gap-2 text-xs font-bold text-[#F8F7F4] font-mono">
-                      <TrendingUp className="w-4 h-4 text-[#a3e635]" />
+                      <TrendingUp className="w-4 h-4 text-white" />
                       <span>{lang === "it" ? "VALUTAZIONE DI IMPATTO" : "IMPACT SCORE CARD"}</span>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                       {features[activeFeaturePopupIndex].highlightMetrics.map((met, metIdx) => (
                         <div key={metIdx} className="flex items-center gap-2 text-xs font-sans text-[#F8F7F4]/80 bg-[#111113] p-2.5 border border-[rgba(248,247,244,0.04)]">
-                          <Check className="w-3.5 h-3.5 text-[#a3e635]" />
+                          <Check className="w-3.5 h-3.5 text-white" />
                           <span>{met}</span>
                         </div>
                       ))}
@@ -607,9 +606,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   
                   {/* Huge numeric metric indicator */}
                   <div className="bg-[#151518] border border-[rgba(248,247,244,0.06)] p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#a3e635]/5 rounded-full blur-3xl -mr-10 -mt-10"></div>
                     <div>
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#a3e635] block mb-1">
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-white block mb-1">
                         {statsData[activeFeaturePopupIndex].metricLabel}
                       </span>
                       <span className="text-xs text-[#F8F7F4]/50 font-sans block">
@@ -626,7 +624,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   {/* Bar Comparison section */}
                   <div className="space-y-4">
                     <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#F8F7F4]/70 flex items-center gap-2">
-                      <BarChart3 className="w-4 h-4 text-[#a3e635]" />
+                      <BarChart3 className="w-4 h-4 text-white" />
                       {statsData[activeFeaturePopupIndex].comparisonTitle}
                     </h4>
                     
@@ -635,10 +633,10 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                         <div key={bIdx} className="space-y-2">
                           <div className="flex justify-between text-xs font-sans">
                             <span className={bar.isPrimary ? "font-bold text-[#F8F7F4] flex items-center gap-1.5" : "text-[#F8F7F4]/60"}>
-                              {bar.isPrimary && <span className="w-1.5 h-1.5 rounded-full bg-[#a3e635]"></span>}
+                              {bar.isPrimary && <span className="w-1.5 h-1.5 rounded-full bg-white"></span>}
                               {bar.label}
                             </span>
-                            <span className={bar.isPrimary ? "font-mono font-bold text-[#a3e635]" : "font-mono text-[#F8F7F4]/50"}>
+                            <span className={bar.isPrimary ? "font-mono font-bold text-white" : "font-mono text-[#F8F7F4]/50"}>
                               {bar.value}
                             </span>
                           </div>
@@ -649,7 +647,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                               transition={{ duration: 1.2, delay: 0.1 }}
                               className={`h-full rounded-full ${
                                 bar.isPrimary 
-                                  ? "bg-gradient-to-r from-[#a3e635] to-[#dcb2ad]" 
+                                  ? "bg-white" 
                                   : "bg-zinc-700"
                               }`}
                             />
@@ -670,7 +668,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                       <div className="grid grid-cols-12 bg-[#151518] border-b border-[rgba(248,247,244,0.06)] p-3.5 text-[10px] font-mono text-[#F8F7F4]/40 uppercase tracking-wider">
                         <div className="col-span-5">{lang === "it" ? "Indicatore Prestazionale" : "Performance KPI"}</div>
                         <div className="col-span-3 text-center">{lang === "it" ? "Sito Comune" : "Standard Site"}</div>
-                        <div className="col-span-4 text-right text-[#a3e635] font-bold">{lang === "it" ? "Il Mio Standard" : "My Build Criteria"}</div>
+                        <div className="col-span-4 text-right text-white font-bold">{lang === "it" ? "Il Mio Standard" : "My Build Criteria"}</div>
                       </div>
 
                       {/* Comparative Rows */}
@@ -684,9 +682,9 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                               <div className="col-span-3 text-center text-[#F8F7F4]/40 line-through">
                                 {metric.standard}
                               </div>
-                              <div className="col-span-4 text-right text-[#a3e635] font-bold font-mono flex items-center justify-end gap-1.5">
-                                <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                                <span className="bg-[#a3e635]/10 px-2.5 py-0.5 border border-[#a3e635]/20 text-[#a3e635] text-[11px] rounded">{metric.mine}</span>
+                              <div className="col-span-4 text-right text-white font-bold font-mono flex items-center justify-end gap-1.5">
+                                <Check className="w-4 h-4 text-white shrink-0" />
+                                <span className="bg-white/10 px-2.5 py-0.5 border border-white/20 text-white text-[11px] rounded">{metric.mine}</span>
                               </div>
                             </div>
                             <p className="text-[11px] text-[#F8F7F4]/50 font-sans leading-relaxed">

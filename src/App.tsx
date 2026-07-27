@@ -549,13 +549,13 @@ export default function App() {
   const currentIndex = TABS_ORDER.indexOf(currentTab);
 
   return (
-    <div className={`min-h-screen bg-[#F8F7F4] text-[#111113] flex flex-col selection:bg-[#a3e635]/20 selection:text-[#a3e635] antialiased ${
+    <div className={`min-h-screen bg-[#F8F7F4] text-[#111113] flex flex-col selection:bg-black/20 selection:text-black antialiased ${
       readableFont ? "font-mono tracking-wide" : "font-sans"
     } ${
       isFacilitated ? "text-lg" : ""
     }`}>
       {/* Desktop Left Sidebar - Hidden on mobile, flex on desktop */}
-      <aside className="hidden xl:flex w-[280px] h-screen fixed left-0 top-0 border-r border-white/10 bg-[#6a4948] p-10 flex-col justify-between z-30 select-none text-white">
+      <aside className="hidden xl:flex w-[280px] h-screen fixed left-0 top-0 border-r border-white/10 bg-[#111113] p-10 flex-col justify-between z-30 select-none text-white">
         <div className="space-y-16">
           <div className="logo-block group cursor-pointer" onClick={() => handleSetTab("home")}>
             <div className="logo-text cyber-glitch-logo">
@@ -583,7 +583,7 @@ export default function App() {
                       onClick={() => handleSetTab(tabId)}
                       className={`text-left uppercase tracking-[0em] font-black cursor-pointer transition-all block py-1 border-b-2 ${
                         isActive
-                          ? "text-[#a3e635] border-[#a3e635] translate-x-1"
+                          ? "text-white border-white translate-x-1"
                           : "text-white/60 hover:text-white hover:translate-x-0.5 border-transparent"
                       }`}
                       style={{ fontFamily: 'MuseoModerno', fontSize: '15px' }}
@@ -599,17 +599,17 @@ export default function App() {
           <div className="pt-4 border-t border-white/10">
             <button
               onClick={() => setIsAccessibilityOpen(true)}
-              className="flex items-center gap-2.5 text-left font-mono text-[14px] font-bold uppercase tracking-widest text-white/60 hover:text-[#a3e635] transition-all cursor-pointer py-1.5"
+              className="flex items-center gap-2.5 text-left font-mono text-[14px] font-bold uppercase tracking-widest text-white/60 hover:text-white transition-all cursor-pointer py-1.5"
               id="desktop-sidebar-accessibility-btn"
             >
-              <Accessibility className="w-4 h-4 text-[#a3e635]" />
+              <Accessibility className="w-4 h-4 text-white" />
               <span>{lang === "it" ? "Accessibilità" : "Accessibility"}</span>
             </button>
           </div>
         </div>
         
         <div className="space-y-4">
-          <div className="text-[10px] font-mono uppercase tracking-widest text-[#a3e635] font-bold">
+          <div className="text-[10px] font-mono uppercase tracking-widest text-white font-bold">
             [ Contatto Diretto ]
           </div>
           <div className="font-mono text-xs text-white/70 leading-relaxed">
@@ -662,7 +662,7 @@ export default function App() {
 
           return (
             <div 
-              className={`fixed top-20 xl:top-0 xl:left-[280px] w-full xl:w-[calc(100%-280px)] bg-[#6a4948] border-b border-white/10 py-3 px-4 sm:px-6 xl:px-12 backdrop-blur-md z-40 select-none transition-all duration-300 ease-in-out ${
+              className={`fixed top-20 xl:top-0 xl:left-[280px] w-full xl:w-[calc(100%-280px)] bg-[#111113] border-b border-white/10 py-3 px-4 sm:px-6 xl:px-12 backdrop-blur-md z-40 select-none transition-all duration-300 ease-in-out ${
                 showBreadcrumb 
                   ? "translate-y-0 opacity-100" 
                   : "-translate-y-full opacity-0 pointer-events-none"
@@ -670,12 +670,12 @@ export default function App() {
             >
               <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-[10px] tracking-wider uppercase font-bold text-white/70">
                 <div className="flex items-center flex-wrap gap-1.5 sm:gap-2 text-white/50">
-                  <Home className="w-3.5 h-3.5 text-[#a3e635] mr-1 inline shrink-0" />
+                  <Home className="w-3.5 h-3.5 text-white mr-1 inline shrink-0" />
                   {breadcrumbItems.map((item, index) => (
                     <React.Fragment key={item.id}>
                       {index > 0 && <span className="text-white/20 font-light mx-0.5 sm:mx-1 shrink-0">/</span>}
                       {index === breadcrumbItems.length - 1 ? (
-                        <span className="text-[#a3e635] font-extrabold truncate max-w-[200px] sm:max-w-none">{item.label}</span>
+                        <span className="text-white font-extrabold truncate max-w-[200px] sm:max-w-none">{item.label}</span>
                       ) : (
                         <button
                           onClick={() => {
@@ -685,7 +685,7 @@ export default function App() {
                               navigateTo(item.id, null, true);
                             }
                           }}
-                          className="text-white/70 hover:text-[#a3e635] cursor-pointer transition-colors uppercase font-bold shrink-0"
+                          className="text-white/70 hover:text-white cursor-pointer transition-colors uppercase font-bold shrink-0"
                         >
                           {item.label}
                         </button>
@@ -696,7 +696,7 @@ export default function App() {
                 
                 <div className="hidden sm:flex items-center gap-4 text-[9px] uppercase font-bold text-white/50 select-none">
                   <span>{lang === "it" ? "Posizione Attiva" : "Active Location"}</span>
-                  <span className="px-2 py-0.5 bg-[#a3e635]/10 border border-[#a3e635]/20 text-[#a3e635] rounded-sm text-[9px]">
+                  <span className="px-2 py-0.5 bg-white/10 border border-white/20 text-white rounded-sm text-[9px]">
                     {currentTab === "blog" && selectedArticle ? "ARTICLE_VIEW" : `${currentTab.toUpperCase()}_VIEW`}
                   </span>
                 </div>
@@ -720,7 +720,7 @@ export default function App() {
           <div className="w-full">
 
             {isFacilitated && (
-              <div className="bg-[#a3e635] text-[#111113] text-center text-xs py-2 px-4 font-mono font-bold uppercase tracking-wider animate-pulse" id="facilitated-badge-banner">
+              <div className="bg-black text-white text-center text-xs py-2 px-4 font-mono font-bold uppercase tracking-wider animate-pulse border-b border-black" id="facilitated-badge-banner">
                 {lang === "it"
                   ? "Modalità Semplificata Attiva — Caratteri ingranditi e testi più facili"
                   : "Simplified Mode Active — Larger fonts and simpler layout"}
@@ -794,12 +794,12 @@ export default function App() {
               mass: 0.8
             }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 right-6 z-40 w-11 h-11 bg-[#FAF9F6]/95 hover:bg-[#a3e635] text-[#111113] hover:text-[#FAF9F6] border border-[#111113]/30 hover:border-[#a3e635] rounded-none flex items-center justify-center cursor-pointer transition-colors duration-300 shadow-xl font-mono text-[9px] font-bold group"
+            className="fixed bottom-6 right-6 z-40 w-11 h-11 bg-[#FAF9F6]/95 hover:bg-black text-[#111113] hover:text-[#FAF9F6] border border-[#111113]/30 hover:border-black rounded-none flex items-center justify-center cursor-pointer transition-colors duration-300 shadow-xl font-mono text-[9px] font-bold group"
             title={lang === "it" ? "Torna su" : "Back to top"}
             id="back-to-top-btn"
             aria-label={lang === "it" ? "Torna in cima alla pagina" : "Back to top"}
           >
-            <ArrowUp className="w-4 h-4 text-[#a3e635] group-hover:text-[#FAF9F6] transition-colors duration-300" />
+            <ArrowUp className="w-4 h-4 text-black group-hover:text-[#FAF9F6] transition-colors duration-300" />
           </motion.button>
         )}
       </AnimatePresence>

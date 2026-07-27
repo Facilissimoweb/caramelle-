@@ -331,7 +331,7 @@ export default function AccessibilityWidget({
                 {/* Close Button Top Right */}
                 <button
                   onClick={handleClose}
-                  className="absolute top-4 right-4 sm:top-6 sm:right-6 w-12 h-12 rounded-full bg-[#111113] hover:bg-[#a3e635] text-[#F8F7F4] hover:text-[#111113] border border-[rgba(248,247,244,0.15)] hover:border-[#a3e635] flex items-center justify-center cursor-pointer transition-all shadow-lg"
+                  className="absolute top-4 right-4 sm:top-6 sm:right-6 w-12 h-12 rounded-full bg-[#111113] hover:bg-white text-[#F8F7F4] hover:text-[#111113] border border-[rgba(248,247,244,0.15)] hover:border-white flex items-center justify-center cursor-pointer transition-all shadow-lg"
                   aria-label={lang === "it" ? "Chiudi pannello" : "Close panel"}
                   id="close-accessibility-overlay"
                 >
@@ -341,7 +341,7 @@ export default function AccessibilityWidget({
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[rgba(248,247,244,0.1)] pb-6 pr-10">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-[#a3e635]/10 flex items-center justify-center text-[#a3e635]">
+                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white">
                       <Accessibility className="w-6 h-6" />
                     </div>
                     <div>
@@ -357,7 +357,7 @@ export default function AccessibilityWidget({
                   </div>
                   <button
                     onClick={resetSettings}
-                    className="flex items-center gap-2 px-4 py-2.5 bg-[#111113] hover:bg-[#a3e635] border border-[rgba(248,247,244,0.15)] text-[#F8F7F4] hover:text-[#111113] transition-colors cursor-pointer text-xs uppercase tracking-wider font-mono font-bold"
+                    className="flex items-center gap-2 px-4 py-2.5 bg-[#111113] hover:bg-white border border-[rgba(248,247,244,0.15)] text-[#F8F7F4] hover:text-[#111113] transition-colors cursor-pointer text-xs uppercase tracking-wider font-mono font-bold"
                     title={lang === "it" ? "Ripristina impostazioni predefinite" : "Reset default settings"}
                     id="reset-accessibility-btn"
                   >
@@ -370,7 +370,7 @@ export default function AccessibilityWidget({
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                   {/* Section 1: Font Size (Radio Button List) */}
                   <div className="space-y-4 bg-[#111113]/40 p-6 border border-[rgba(248,247,244,0.06)]">
-                    <div className="flex items-center gap-2.5 text-xs uppercase tracking-wider font-mono text-[#a3e635] font-extrabold">
+                    <div className="flex items-center gap-2.5 text-xs uppercase tracking-wider font-mono text-white font-extrabold">
                       <Type className="w-4 h-4" />
                       <span>{lang === "it" ? "1. Dimensione Carattere (Zoom)" : "1. Text Size (Zoom)"}</span>
                     </div>
@@ -388,13 +388,13 @@ export default function AccessibilityWidget({
                             onClick={() => handleFontSizeChange(s.value)}
                             className={`w-full text-left px-4 py-3.5 text-xs sm:text-sm font-mono flex items-center justify-between border-2 transition-all cursor-pointer ${
                               isActive
-                                ? "bg-[#a3e635]/10 border-[#a3e635] text-[#a3e635] font-bold"
+                                ? "bg-white/10 border-white text-white font-bold"
                                 : "bg-[#111113]/70 border-[rgba(248,247,244,0.1)] hover:border-[rgba(248,247,244,0.25)] text-[#F8F7F4]/80"
                             }`}
                             id={`btn-fontsize-${s.value}`}
                           >
                             <span style={{ fontSize: `${s.value}%` }}>{s.label}</span>
-                            {isActive && <Check className="w-4 h-4 text-[#a3e635]" />}
+                            {isActive && <Check className="w-4 h-4 text-white" />}
                           </button>
                         );
                       })}
@@ -406,14 +406,14 @@ export default function AccessibilityWidget({
                     {/* Toggle 2.1: Simplified Language */}
                     <div className="space-y-3 bg-[#111113]/40 p-6 border border-[rgba(248,247,244,0.06)] flex-grow">
                       <div className="flex items-center justify-between gap-4">
-                        <div className="flex items-center gap-2.5 text-xs uppercase tracking-wider font-mono text-[#a3e635] font-extrabold">
+                        <div className="flex items-center gap-2.5 text-xs uppercase tracking-wider font-mono text-white font-extrabold">
                           <BookOpen className="w-4 h-4" />
                           <span>{lang === "it" ? "2. Semplificazione Semantica" : "2. Simple Semantics"}</span>
                         </div>
                         <button
                           onClick={handleFacilitatedToggle}
                           className={`relative inline-flex h-7 w-12 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                            isFacilitated ? "bg-[#a3e635]" : "bg-[rgba(248,247,244,0.2)]"
+                            isFacilitated ? "bg-white" : "bg-[rgba(248,247,244,0.2)]"
                           }`}
                           id="toggle-facilitated-semantics"
                           role="switch"
@@ -437,14 +437,14 @@ export default function AccessibilityWidget({
                     {/* Toggle 2.2: High Contrast */}
                     <div className="space-y-3 bg-[#111113]/40 p-6 border border-[rgba(248,247,244,0.06)] flex-grow">
                       <div className="flex items-center justify-between gap-4">
-                        <div className="flex items-center gap-2.5 text-xs uppercase tracking-wider font-mono text-[#a3e635] font-extrabold">
+                        <div className="flex items-center gap-2.5 text-xs uppercase tracking-wider font-mono text-white font-extrabold">
                           <Eye className="w-4 h-4" />
                           <span>{lang === "it" ? "3. Contrasto Elevato" : "3. High Contrast"}</span>
                         </div>
                         <button
                           onClick={handleHighContrastToggle}
                           className={`relative inline-flex h-7 w-12 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                            highContrast ? "bg-[#a3e635]" : "bg-[rgba(248,247,244,0.2)]"
+                            highContrast ? "bg-white" : "bg-[rgba(248,247,244,0.2)]"
                           }`}
                           id="toggle-high-contrast"
                           role="switch"
@@ -468,14 +468,14 @@ export default function AccessibilityWidget({
                     {/* Toggle 2.3: Readable Monospace Font */}
                     <div className="space-y-3 bg-[#111113]/40 p-6 border border-[rgba(248,247,244,0.06)] flex-grow">
                       <div className="flex items-center justify-between gap-4">
-                        <div className="flex items-center gap-2.5 text-xs uppercase tracking-wider font-mono text-[#a3e635] font-extrabold">
+                        <div className="flex items-center gap-2.5 text-xs uppercase tracking-wider font-mono text-white font-extrabold">
                           <Type className="w-4 h-4" />
                           <span>{lang === "it" ? "4. Carattere Leggibile" : "4. Dyslexia Friendly Font"}</span>
                         </div>
                         <button
                           onClick={handleReadableFontToggle}
                           className={`relative inline-flex h-7 w-12 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                            readableFont ? "bg-[#a3e635]" : "bg-[rgba(248,247,244,0.2)]"
+                            readableFont ? "bg-white" : "bg-[rgba(248,247,244,0.2)]"
                           }`}
                           id="toggle-readable-font"
                           role="switch"
@@ -500,7 +500,7 @@ export default function AccessibilityWidget({
 
                 {/* Section 3: Assistente Vocale / Speech Reader */}
                 <div className="space-y-5 bg-[#111113]/40 p-6 sm:p-8 border border-[rgba(248,247,244,0.06)] mt-6 sm:mt-8">
-                  <div className="flex items-center gap-2.5 text-xs uppercase tracking-wider font-mono text-[#a3e635] font-extrabold">
+                  <div className="flex items-center gap-2.5 text-xs uppercase tracking-wider font-mono text-white font-extrabold">
                     <Volume2 className="w-4 h-4" />
                     <span>{lang === "it" ? "5. Assistente Vocale (Lettura Pagina)" : "5. Voice Assistant (Page Reader)"}</span>
                   </div>
@@ -520,7 +520,7 @@ export default function AccessibilityWidget({
                         {!isPlaying ? (
                           <button
                             onClick={handlePlaySpeech}
-                            className="flex-grow flex items-center justify-center gap-2 px-4 py-3 bg-[#a3e635] hover:bg-[#a3e635]/95 text-[#111113] hover:scale-[1.02] transition-all cursor-pointer text-xs uppercase font-mono font-bold"
+                            className="flex-grow flex items-center justify-center gap-2 px-4 py-3 bg-white hover:bg-white/90 text-[#111113] hover:scale-[1.02] transition-all cursor-pointer text-xs uppercase font-mono font-bold"
                             id="tts-play-btn"
                           >
                             <Play className="w-4 h-4 fill-current" />
@@ -529,7 +529,7 @@ export default function AccessibilityWidget({
                         ) : (
                           <button
                             onClick={handlePauseSpeech}
-                            className="flex-grow flex items-center justify-center gap-2 px-4 py-3 bg-[#a3e635] text-[#111113] hover:scale-[1.02] transition-all cursor-pointer text-xs uppercase font-mono font-bold animate-pulse"
+                            className="flex-grow flex items-center justify-center gap-2 px-4 py-3 bg-white text-[#111113] hover:scale-[1.02] transition-all cursor-pointer text-xs uppercase font-mono font-bold animate-pulse"
                             id="tts-pause-btn"
                           >
                             <Pause className="w-4 h-4 fill-current" />
@@ -540,7 +540,7 @@ export default function AccessibilityWidget({
                         {(isPlaying || isPaused || currentBlockIndex > 0) && (
                           <button
                             onClick={handleStopSpeech}
-                            className="p-3 bg-[#111113] hover:bg-[#a3e635] border border-[rgba(248,247,244,0.15)] text-[#F8F7F4] hover:text-[#111113] transition-colors cursor-pointer"
+                            className="p-3 bg-[#111113] hover:bg-white border border-[rgba(248,247,244,0.15)] text-[#F8F7F4] hover:text-[#111113] transition-colors cursor-pointer"
                             title={lang === "it" ? "Interrompi" : "Stop"}
                             id="tts-stop-btn"
                           >
@@ -590,8 +590,8 @@ export default function AccessibilityWidget({
                                           speakBlock(currentBlockIndex, textBlocks);
                                         }
                                       }}
-                                      className={`w-full text-left px-4 py-2.5 text-[11px] font-mono transition-colors flex items-center justify-between cursor-pointer hover:bg-[#a3e635]/10 hover:text-[#a3e635] ${
-                                        isSelected ? "bg-[#a3e635]/10 text-[#a3e635] font-bold" : "text-[#F8F7F4]/80"
+                                      className={`w-full text-left px-4 py-2.5 text-[11px] font-mono transition-colors flex items-center justify-between cursor-pointer hover:bg-white/10 hover:text-white ${
+                                        isSelected ? "bg-white/10 text-white font-bold" : "text-[#F8F7F4]/80"
                                       }`}
                                     >
                                       <span className="truncate">{cleanVoiceName(voice.name)}</span>
@@ -614,7 +614,7 @@ export default function AccessibilityWidget({
                     <div className="md:col-span-4 flex flex-col gap-2">
                       <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-wider font-bold">
                         <span className="text-[#F8F7F4]/40">{lang === "it" ? "Velocità di Lettura" : "Reading Speed"}</span>
-                        <span className="text-[#a3e635]">{readingSpeed === 0.95 ? (lang === "it" ? "0.95x (Consigliata)" : "0.95x (Recommended)") : `${readingSpeed.toFixed(2)}x`}</span>
+                        <span className="text-white">{readingSpeed === 0.95 ? (lang === "it" ? "0.95x (Consigliata)" : "0.95x (Recommended)") : `${readingSpeed.toFixed(2)}x`}</span>
                       </div>
                       <div className="flex items-center gap-3 py-1 px-1">
                         <span className="text-[10px] text-[#F8F7F4]/40 font-mono">0.7x</span>
@@ -632,7 +632,7 @@ export default function AccessibilityWidget({
                               speakBlock(currentBlockIndex, textBlocks);
                             }
                           }}
-                          className="flex-grow accent-[#a3e635] h-1 bg-[rgba(248,247,244,0.15)] rounded-lg appearance-none cursor-pointer"
+                          className="flex-grow accent-white h-1 bg-[rgba(248,247,244,0.15)] rounded-lg appearance-none cursor-pointer"
                         />
                         <span className="text-[10px] text-[#F8F7F4]/40 font-mono">1.3x</span>
                       </div>
@@ -657,7 +657,7 @@ export default function AccessibilityWidget({
                                 repeat: Infinity,
                                 ease: "easeInOut"
                               }}
-                              className="w-1 bg-[#a3e635]"
+                              className="w-1 bg-white"
                             />
                           ))}
                         </div>
@@ -673,7 +673,7 @@ export default function AccessibilityWidget({
                           </span>
                           <div className="w-24 bg-[rgba(248,247,244,0.1)] h-1 rounded-sm overflow-hidden">
                             <div 
-                              className="bg-[#a3e635] h-full transition-all duration-300"
+                              className="bg-white h-full transition-all duration-300"
                               style={{ width: `${((currentBlockIndex + 1) / textBlocks.length) * 100}%` }}
                             />
                           </div>
@@ -687,7 +687,7 @@ export default function AccessibilityWidget({
                 <div className="flex justify-center border-t border-[rgba(248,247,244,0.08)] pt-6 mt-6">
                   <button
                     onClick={resetSettings}
-                    className="flex items-center gap-2 px-6 py-3.5 bg-[#111113] hover:bg-[#a3e635] border border-[rgba(248,247,244,0.15)] text-[#F8F7F4] hover:text-[#111113] transition-all cursor-pointer text-xs uppercase tracking-wider font-mono font-bold"
+                    className="flex items-center gap-2 px-6 py-3.5 bg-[#111113] hover:bg-white border border-[rgba(248,247,244,0.15)] text-[#F8F7F4] hover:text-[#111113] transition-all cursor-pointer text-xs uppercase tracking-wider font-mono font-bold"
                     id="reset-accessibility-bottom-btn"
                   >
                     <RotateCcw className="w-4 h-4" />
@@ -718,9 +718,9 @@ export default function AccessibilityWidget({
             id="floating-voice-player"
           >
             <div className="flex items-center gap-2">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#a3e635] relative flex items-center justify-center">
+              <div className="w-2.5 h-2.5 rounded-full bg-white relative flex items-center justify-center">
                 {isPlaying && (
-                  <span className="absolute inset-0 rounded-full bg-[#a3e635] animate-ping opacity-75" />
+                  <span className="absolute inset-0 rounded-full bg-white animate-ping opacity-75" />
                 )}
               </div>
               <span className="text-[#F8F7F4]/70 hidden sm:inline">
@@ -729,7 +729,7 @@ export default function AccessibilityWidget({
             </div>
 
             {textBlocks.length > 0 && (
-              <span className="text-[#a3e635]">
+              <span className="text-white">
                 {currentBlockIndex + 1}/{textBlocks.length}
               </span>
             )}
@@ -740,7 +740,7 @@ export default function AccessibilityWidget({
               {isPlaying ? (
                 <button
                   onClick={handlePauseSpeech}
-                  className="p-1.5 hover:bg-[#a3e635] text-[#a3e635] hover:text-[#111113] transition-colors cursor-pointer"
+                  className="p-1.5 hover:bg-white text-white hover:text-[#111113] transition-colors cursor-pointer"
                   title={lang === "it" ? "Pausa" : "Pause"}
                 >
                   <Pause className="w-3.5 h-3.5 fill-current" />
@@ -748,7 +748,7 @@ export default function AccessibilityWidget({
               ) : (
                 <button
                   onClick={handlePlaySpeech}
-                  className="p-1.5 hover:bg-[#a3e635] text-[#a3e635] hover:text-[#111113] transition-colors cursor-pointer"
+                  className="p-1.5 hover:bg-white text-white hover:text-[#111113] transition-colors cursor-pointer"
                   title={lang === "it" ? "Riproduci" : "Play"}
                 >
                   <Play className="w-3.5 h-3.5 fill-current" />
@@ -757,7 +757,7 @@ export default function AccessibilityWidget({
 
               <button
                 onClick={handleStopSpeech}
-                className="p-1.5 hover:bg-[#a3e635] text-[#F8F7F4]/60 hover:text-[#111113] transition-colors cursor-pointer"
+                className="p-1.5 hover:bg-white text-[#F8F7F4]/60 hover:text-[#111113] transition-colors cursor-pointer"
                 title={lang === "it" ? "Interrompi" : "Stop"}
               >
                 <Square className="w-3.5 h-3.5 fill-current" />

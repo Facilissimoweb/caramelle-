@@ -249,7 +249,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated, onSel
               className="w-[150px] h-[150px] object-contain"
             />
           </div>
-          <span className="text-[13px] uppercase tracking-[0em] text-[#a3e635] font-mono font-bold block mb-2" style={{ letterSpacing: '0px' }}>
+          <span className="text-[13px] uppercase tracking-[0em] text-black font-mono font-bold block mb-2" style={{ letterSpacing: '0px' }}>
             {isFacilitated ? "[ PREZZI CHIARI ]" : "[ TRASPARENZA E PREZZI CHIARI ]"}
           </span>
           <h1 className="font-tan text-3xl font-bold tracking-tight text-[#111113] sm:text-5xl break-words">
@@ -276,12 +276,12 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated, onSel
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className={`relative p-8 border transition-all duration-300 flex flex-col justify-between ${
                   tier.isPopular
-                    ? "border-[#a3e635] bg-[#111113] text-[#F8F7F4] scale-102 lg:z-10 shadow-xl"
-                    : "border-[#111113]/10 hover:border-[#a3e635]/40 bg-[#F8F7F4] text-[#111113]"
+                    ? "border-black bg-[#111113] text-[#F8F7F4] scale-102 lg:z-10 shadow-2xl"
+                    : "border-[#111113]/10 hover:border-black/40 bg-[#F8F7F4] text-[#111113]"
                 }`}
               >
                 {tier.isPopular && (
-                  <span className="absolute -top-3.5 left-6 bg-[#a3e635] text-[#111113] px-3 py-1 text-[9px] font-mono font-bold uppercase tracking-widest">
+                  <span className="absolute -top-3.5 left-6 bg-black text-white border border-white/20 px-3 py-1 text-[9px] font-mono font-bold uppercase tracking-widest">
                     {lang === "it" ? "Più Scelto" : "Most Popular"}
                   </span>
                 )}
@@ -295,7 +295,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated, onSel
                       {tier.tagline}
                     </p>
                     <div className={`pt-2 border-t space-y-1 ${tier.isPopular ? "border-[rgba(248,247,244,0.1)]" : "border-[#111113]/10"}`}>
-                      <span className="text-[10px] uppercase font-mono tracking-widest text-[#a3e635] block font-bold">
+                      <span className={`text-[10px] uppercase font-mono tracking-widest ${tier.isPopular ? "text-white" : "text-black"} block font-bold`}>
                         {lang === "it" ? "A PARTIRE DA" : "STARTING FROM"}
                       </span>
                       <div className="flex items-baseline gap-1">
@@ -307,7 +307,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated, onSel
                         </span>
                       </div>
                     </div>
-                    <div className="text-[10px] font-bold text-[#a3e635] font-mono tracking-widest uppercase">
+                    <div className={`text-[10px] font-bold ${tier.isPopular ? "text-white" : "text-black"} font-mono tracking-widest uppercase`}>
                       {tier.period}
                     </div>
                   </div>
@@ -319,7 +319,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated, onSel
                   }`}>
                     {tier.features.map((feat) => (
                       <li key={feat} className="flex items-start gap-2.5">
-                        <Check className="w-4 h-4 text-[#a3e635] mt-0.5 shrink-0" />
+                        <Check className={`w-4 h-4 ${tier.isPopular ? "text-white" : "text-black"} mt-0.5 shrink-0`} />
                         <span className="leading-snug">{feat}</span>
                       </li>
                     ))}
@@ -345,7 +345,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated, onSel
       <section className="py-24 bg-[#FAF9F6] border-y border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <span className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-[#a3e635] font-bold uppercase" style={{ letterSpacing: '0px' }}>
+            <span className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-white font-bold uppercase" style={{ letterSpacing: '0px' }}>
               {isFacilitated ? "[ TUTTO INCLUSO ]" : "[ VALORE AGGIUNTO ]"}
             </span>
             <h2 className="font-display text-3xl font-bold text-[#111113] tracking-wide">
@@ -360,7 +360,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated, onSel
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-[#111113] font-bold text-sm">
-                  <Box className="w-4 h-4 text-[#a3e635]" />
+                  <Box className="w-4 h-4 text-black" />
                   <span>{lang === "it" ? "Logo e Grafica" : "Logo and Graphics"}</span>
                 </div>
                 <p className="text-xs text-[#111113]/60 leading-relaxed font-sans">
@@ -371,7 +371,7 @@ export default function ProposteView({ setCurrentTab, lang, isFacilitated, onSel
               </div>
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-[#111113] font-bold text-sm">
-                  <ShieldCheck className="w-4 h-4 text-[#a3e635]" />
+                  <ShieldCheck className="w-4 h-4 text-black" />
                   <span>{lang === "it" ? "Sicurezza e Server" : "Security & Servers"}</span>
                 </div>
                 <p className="text-xs text-[#111113]/60 leading-relaxed font-sans">

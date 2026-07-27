@@ -49,9 +49,9 @@
   --font-climate: "Climate Crisis", sans-serif;
   --font-vina: "Vina Sans", sans-serif;
 
-  /* Theme Palette Definitions based on the new Brutalist/Swiss design: Cream & Ink */
-  --color-primary: #a3e635; /* orange-red/accent */
-  --color-on-primary: #F8F7F4; /* cream background */
+  /* Theme Palette Definitions: Pure Black & White Monochrome */
+  --color-primary: #000000;
+  --color-on-primary: #FFFFFF;
   --color-primary-container: #FAF9F6;
   --color-on-primary-container: #111113;
 
@@ -62,10 +62,10 @@
   --color-secondary-fixed: #111113;
   --color-secondary-fixed-dim: #333336;
 
-  --color-tertiary: #a3e635;
+  --color-tertiary: #000000;
   --color-on-tertiary: #F8F7F4;
-  --color-tertiary-container: rgba(227, 89, 48, 0.08);
-  --color-on-tertiary-container: #a3e635;
+  --color-tertiary-container: rgba(0, 0, 0, 0.08);
+  --color-on-tertiary-container: #000000;
 
   --color-background: #F8F7F4; /* cream bg */
   --color-on-background: #111113; /* ink text */
@@ -86,15 +86,15 @@
   --color-outline: rgba(17, 17, 19, 0.15);
   --color-outline-variant: rgba(17, 17, 19, 0.08);
 
-  --color-error: #a3e635;
+  --color-error: #000000;
   --color-on-error: #F8F7F4;
-  --color-error-container: rgba(227, 89, 48, 0.15);
-  --color-on-error-container: #5A0004;
+  --color-error-container: rgba(0, 0, 0, 0.15);
+  --color-on-error-container: #000000;
 }
 
 /* Editorial design classes aligned with M. Teresa Rogani — Facilissimo Web Studio Dark Style */
 .accessibility-high-contrast {
-  filter: contrast(1.35) saturate(1.2) brightness(1.05);
+  filter: contrast(1.35) brightness(1.05);
 }
 
 .accessibility-facilitated-contrast {
@@ -113,8 +113,7 @@
 }
 
 .hero-gradient {
-  background: radial-gradient(circle at 75% 25%, rgba(227, 89, 48, 0.08), transparent 60%),
-              #111113;
+  background: #111113;
 }
 
 .editorial-tag {
@@ -126,12 +125,12 @@
   padding: 6px 12px;
   border: 1px solid rgba(248, 247, 244, 0.15);
   background: rgba(248, 247, 244, 0.05);
-  color: #a3e635;
+  color: #FFFFFF;
 }
 
 .editorial-button-primary {
-  background-color: #a3e635;
-  color: #111113;
+  background-color: #000000;
+  color: #FFFFFF;
   font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 700;
@@ -139,13 +138,13 @@
   letter-spacing: 0.2em;
   padding: 14px 28px;
   transition: all 0.2s ease;
-  border: 1px solid #a3e635;
+  border: 1px solid #000000;
 }
 
 .editorial-button-primary:hover {
-  background-color: transparent;
-  color: #a3e635;
-  border-color: #a3e635;
+  background-color: #FFFFFF;
+  color: #000000;
+  border-color: #000000;
 }
 
 .editorial-button-secondary {
@@ -427,7 +426,7 @@ img {
 }
 
 .cyber-glitch-logo:hover img {
-  filter: drop-shadow(-2px 0px 0px rgba(0, 255, 249, 0.7)) drop-shadow(2px 0px 0px rgba(255, 0, 193, 0.7));
+  filter: drop-shadow(-2px 0px 0px rgba(0, 0, 0, 0.4)) drop-shadow(2px 0px 0px rgba(255, 255, 255, 0.4));
   animation: logo-shake 0.2s infinite linear;
 }
 
@@ -439,15 +438,15 @@ img {
 }
 
 .cyber-glitch-text:hover {
-  text-shadow: -1px 0 rgba(0, 255, 249, 0.8), 1px 0 rgba(255, 0, 193, 0.8);
+  text-shadow: -1px 0 rgba(0, 0, 0, 0.8), 1px 0 rgba(255, 255, 255, 0.8);
   animation: logo-shake 0.3s infinite linear;
 }
 
-/* Custom .solid-light and .solid-primary style for all primary action buttons */
+/* Custom .solid-light and .solid-primary style for all primary action buttons: Pure Black & White */
 .solid-light, .solid-primary {
-  background-color: #4f46e5 !important;
+  background-color: #000000 !important;
   color: #ffffff !important;
-  border: none !important;
+  border: 1px solid #000000 !important;
   padding: 10px 20px !important;
   border-radius: 4px !important;
   cursor: pointer !important;
@@ -460,9 +459,9 @@ img {
 }
 
 .solid-light:hover, .solid-primary:hover {
-  filter: brightness(1.1) !important;
-  background-color: #4f46e5 !important;
-  color: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #000000 !important;
 }
 
 

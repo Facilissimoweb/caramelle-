@@ -16,7 +16,7 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
         
         {/* Page Header */}
         <div className="space-y-4 text-center lg:text-left">
-          <span className="text-[13px] uppercase tracking-[0em] text-[#a3e635] font-mono font-bold block" style={{ letterSpacing: '0px' }}>
+          <span className="text-[13px] uppercase tracking-[0em] text-black font-mono font-bold block" style={{ letterSpacing: '0px' }}>
             {lang === "it" ? "[ VETRINA INTERATTIVA ]" : "[ INTERACTIVE SHOWCASE ]"}
           </span>
           <h1 className="font-tan text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#111113] leading-tight">
@@ -37,12 +37,12 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
         <div className="bg-white border border-[#111113]/10 p-4 sm:p-6 rounded-none shadow-sm space-y-4">
           <div className="flex items-center justify-between border-b border-[#111113]/5 pb-3">
             <div className="flex items-center gap-2">
-              <Hotel className="w-4 h-4 text-[#a3e635]" />
+              <Hotel className="w-4 h-4 text-black" />
               <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#111113]/80">
                 {lang === "it" ? "SITO WEB HOTEL" : "HOTEL WEBSITE"}
               </span>
             </div>
-            <span className="text-[9px] font-mono bg-[#a3e635]/15 border border-[#a3e635]/30 text-[#111113]/70 px-2.5 py-0.5 font-bold">
+            <span className="text-[9px] font-mono bg-black/5 border border-black/20 text-[#111113]/80 px-2.5 py-0.5 font-bold">
               {lang === "it" ? "INTERATTIVO" : "INTERACTIVE"}
             </span>
           </div>
@@ -82,12 +82,12 @@ export default function SitiWebView({ lang, isFacilitated }: SitiWebViewProps) {
         <div className="bg-white border border-[#111113]/10 p-4 sm:p-6 rounded-none shadow-sm space-y-4">
           <div className="flex items-center justify-between border-b border-[#111113]/5 pb-3">
             <div className="flex items-center gap-2">
-              <Briefcase className="w-4 h-4 text-[#a3e635]" />
+              <Briefcase className="w-4 h-4 text-black" />
               <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#111113]/80">
                 {lang === "it" ? "PORTFOLIO CREATIVO" : "CREATIVE PORTFOLIO"}
               </span>
             </div>
-            <span className="text-[9px] font-mono bg-[#a3e635]/15 border border-[#a3e635]/30 text-[#111113]/70 px-2.5 py-0.5 font-bold">
+            <span className="text-[9px] font-mono bg-black/5 border border-black/20 text-[#111113]/80 px-2.5 py-0.5 font-bold">
               {lang === "it" ? "INTERATTIVO" : "INTERACTIVE"}
             </span>
           </div>

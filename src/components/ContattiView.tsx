@@ -139,7 +139,7 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
               className="w-[150px] h-[150px] object-contain"
             />
           </div>
-          <span className="text-[13px] uppercase tracking-[0em] text-[#a3e635] font-mono font-bold block mb-2" style={{ letterSpacing: '0px' }}>
+          <span className="text-[13px] uppercase tracking-[0em] text-black font-mono font-bold block mb-2" style={{ letterSpacing: '0px' }}>
             [ DISEGNA IL TUO FUTURO ]
           </span>
           <h1 className="font-tan text-3xl font-bold tracking-tight text-[#111113] sm:text-5xl break-words">
@@ -168,11 +168,11 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
 
             <div className="space-y-6">
               <div className="flex gap-4 items-start">
-                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-[#a3e635] shrink-0">
+                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-black shrink-0">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-[10px] uppercase tracking-widest font-mono font-bold text-[#a3e635] mb-1">
+                  <h4 className="text-[10px] uppercase tracking-widest font-mono font-bold text-black mb-1">
                     Email Diretta
                   </h4>
                   <a
@@ -185,11 +185,11 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
               </div>
 
               <div className="flex gap-4 items-start">
-                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-[#a3e635] shrink-0">
+                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-black shrink-0">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-[10px] uppercase tracking-widest font-mono font-bold text-[#a3e635] mb-1">
+                  <h4 className="text-[10px] uppercase tracking-widest font-mono font-bold text-black mb-1">
                     Telefono / WhatsApp
                   </h4>
                   <a
@@ -202,11 +202,11 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
               </div>
 
               <div className="flex gap-4 items-start">
-                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-[#a3e635] shrink-0">
+                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-black shrink-0">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-[10px] uppercase tracking-widest font-mono font-bold text-[#a3e635] mb-1">
+                  <h4 className="text-[10px] uppercase tracking-widest font-mono font-bold text-black mb-1">
                     Operatività
                   </h4>
                   <p className="text-sm text-[#111113]/70">
@@ -216,11 +216,11 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
               </div>
 
               <div className="flex gap-4 items-start">
-                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-[#a3e635] shrink-0">
+                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-black shrink-0">
                   <Calendar className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-[10px] uppercase tracking-widest font-mono font-bold text-[#a3e635] mb-1">
+                  <h4 className="text-[10px] uppercase tracking-widest font-mono font-bold text-black mb-1">
                     Risposta Garantita
                   </h4>
                   <p className="text-sm text-[#111113]/70">
@@ -232,7 +232,7 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
 
             <div className="bg-[#F8F7F4] p-6 border border-[#111113]/10 space-y-3">
               <div className="flex items-center gap-2 text-[#111113] font-bold text-sm">
-                <span className="w-1.5 h-1.5 bg-[#a3e635]"></span>
+                <span className="w-1.5 h-1.5 bg-black"></span>
                 <span className="font-mono text-[10px] uppercase tracking-wider font-bold">Consulenza AI Assistita</span>
               </div>
               <p className="text-xs text-[#111113]/70 leading-relaxed">
@@ -251,7 +251,7 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
                   animate={{ opacity: 1, scale: 1 }}
                   className="text-center py-12 space-y-6"
                 >
-                  <div className="w-12 h-12 border border-[#111113]/15 text-[#a3e635] flex items-center justify-center mx-auto">
+                  <div className="w-12 h-12 border border-[#111113]/15 text-black flex items-center justify-center mx-auto">
                     <CheckCircle className="w-6 h-6" />
                   </div>
                   <div className="space-y-2">
@@ -306,7 +306,7 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Inserisci il tuo nome"
-                        className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-[#a3e635] transition-all"
+                        className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-black transition-all"
                       />
                     </div>
 
@@ -322,7 +322,7 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="nome@azienda.it"
-                        className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-[#a3e635] transition-all"
+                        className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-black transition-all"
                       />
                     </div>
                   </div>
@@ -339,7 +339,7 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
                         value={formData.company}
                         onChange={handleChange}
                         placeholder="La tua attività"
-                        className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-[#a3e635] transition-all"
+                        className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-black transition-all"
                       />
                     </div>
 
@@ -352,7 +352,7 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
                         id="projectType"
                         value={formData.projectType}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-[#a3e635] transition-all"
+                        className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-black transition-all"
                       >
                         <option>Sito Vetrina (CMS WP)</option>
                         <option>One-Page (AI Starter)</option>
@@ -372,7 +372,7 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
                       id="budget"
                       value={formData.budget}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-[#a3e635] transition-all"
+                      className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-black transition-all"
                     >
                       <option>Sotto 1.000€</option>
                       <option>1.000€ - 2.000€</option>
@@ -393,7 +393,7 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Parlami dei tuoi obiettivi, dei servizi che offri e di come immagini il tuo nuovo sito..."
-                      className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-[#a3e635] transition-all resize-none"
+                      className="w-full px-4 py-3 border border-[#111113]/20 rounded-none text-sm bg-[#FAF9F6] text-[#111113] focus:outline-none focus:border-black transition-all resize-none"
                     ></textarea>
                   </div>
 

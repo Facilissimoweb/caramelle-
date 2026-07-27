@@ -304,8 +304,8 @@ export default function BlogView({
               La SEO tradizionale è ormai un esercizio del passato. Guardare cosa le persone hanno già cercato significa inseguire costantemente la concorrenza. La SEO Predittiva stravolge questo paradigma.
             </p>
 
-            <div className="my-8 p-6 bg-[#FAF9F6] border-l-4 border-[#a3e635] space-y-3">
-              <span className="font-mono text-xs text-[#a3e635] tracking-widest block uppercase">// IL CUORE DELLA STRATEGIA PREDITTIVA</span>
+            <div className="my-8 p-6 bg-[#FAF9F6] border-l-4 border-black space-y-3">
+              <span className="font-mono text-xs text-black tracking-widest block uppercase">// IL CUORE DELLA STRATEGIA PREDITTIVA</span>
               <p className="text-xs sm:text-sm text-[#111113]/70">
                 La SEO Predittiva, potenziata dall'Intelligenza Artificiale, analizza il comportamento in tempo reale degli utenti e l'evoluzione degli algoritmi per prevedere le tendenze di ricerca con mesi di anticipo. Questo permette a Facilissimo Web di posizionare il tuo brand prima di chiunque altro.
               </p>
@@ -315,25 +315,25 @@ export default function BlogView({
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
               <div className="p-5 border border-[#111113]/10 bg-[#FAF9F6]">
-                <span className="font-mono text-xs font-bold text-[#a3e635] block mb-2">01. Analisi dei Trend Latenti</span>
+                <span className="font-mono text-xs font-bold text-black block mb-2">01. Analisi dei Trend Latenti</span>
                 <p className="text-xs text-[#111113]/70 leading-relaxed">
                   Interrogo modelli linguistici avanzati di intelligenza artificiale per analizzare i comportamenti d'acquisto emergenti, anticipando le parole chiave specifiche che diventeranno popolari nei prossimi mesi prima dei concorrenti.
                 </p>
               </div>
               <div className="p-5 border border-[#111113]/10 bg-[#FAF9F6]">
-                <span className="font-mono text-xs font-bold text-[#a3e635] block mb-2">02. Mappatura Intenti di Ricerca</span>
+                <span className="font-mono text-xs font-bold text-black block mb-2">02. Mappatura Intenti di Ricerca</span>
                 <p className="text-xs text-[#111113]/70 leading-relaxed">
                   Raggruppo i bisogni espressi dagli utenti in "cluster semantici" ancor prima che i motori di ricerca tradizionali li classifichino, strutturando le risposte ottimali per gli utenti del tuo territorio.
                 </p>
               </div>
               <div className="p-5 border border-[#111113]/10 bg-[#FAF9F6]">
-                <span className="font-mono text-xs font-bold text-[#a3e635] block mb-2">03. Codice Leggero e Predittivo</span>
+                <span className="font-mono text-xs font-bold text-black block mb-2">03. Codice Leggero e Predittivo</span>
                 <p className="text-xs text-[#111113]/70 leading-relaxed">
                   Sviluppo l'architettura dei dati del sito in modo ultra-pulito usando i markup ufficiali (schema.org) affinché gli assistenti AI e gli algoritmi di Google e Bing leggano e riconoscano istantaneamente l'autorità del brand.
                 </p>
               </div>
               <div className="p-5 border border-[#111113]/10 bg-[#FAF9F6]">
-                <span className="font-mono text-xs font-bold text-[#a3e635] block mb-2">04. Adattamento Dinamico</span>
+                <span className="font-mono text-xs font-bold text-black block mb-2">04. Adattamento Dinamico</span>
                 <p className="text-xs text-[#111113]/70 leading-relaxed">
                   Attraverso controlli e algoritmi continui, perfeziono i contenuti e i meta-tag del tuo sito per mantenerli allineati in tempo reale con i mutamenti delle ricerche locali e nazionali.
                 </p>
@@ -363,8 +363,8 @@ export default function BlogView({
               Traditional SEO is becoming a retro-active practice. Watching what people have already searched for means constantly chasing after your competitors. Predictive SEO completely flips this model.
             </p>
 
-            <div className="my-8 p-6 bg-[#FAF9F6] border-l-4 border-[#a3e635] space-y-3">
-              <span className="font-mono text-xs text-[#a3e635] tracking-widest block uppercase">// THE HEART OF PREDICTIVE STRATEGY</span>
+            <div className="my-8 p-6 bg-[#FAF9F6] border-l-4 border-black space-y-3">
+              <span className="font-mono text-xs text-black tracking-widest block uppercase">// THE HEART OF PREDICTIVE STRATEGY</span>
               <p className="text-xs sm:text-sm text-[#111113]/70">
                 Predictive SEO, powered by Artificial Intelligence, analyzes real-time user behavior trends and search engine algorithm evolutions to predict search queries months in advance. This lets Facilissimo Web position your brand before anyone else.
               </p>
@@ -374,25 +374,25 @@ export default function BlogView({
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
               <div className="p-5 border border-[#111113]/10 bg-[#FAF9F6]">
-                <span className="font-mono text-xs font-bold text-[#a3e635] block mb-2">01. Latent Trend Analysis</span>
+                <span className="font-mono text-xs font-bold text-black block mb-2">01. Latent Trend Analysis</span>
                 <p className="text-xs text-[#111113]/70 leading-relaxed">
                   We query advanced generative language models to monitor emerging buying habits and capture highly specific search trends that will blow up in the upcoming weeks.
                 </p>
               </div>
               <div className="p-5 border border-[#111113]/10 bg-[#FAF9F6]">
-                <span className="font-mono text-xs font-bold text-[#a3e635] block mb-2">02. Search Intent Clustering</span>
+                <span className="font-mono text-xs font-bold text-black block mb-2">02. Search Intent Clustering</span>
                 <p className="text-xs text-[#111113]/70 leading-relaxed">
                   We categorize prospective client inquiries into "semantic clusters" long before generic search databases index them, optimizing the perfect answers in advance.
                 </p>
               </div>
               <div className="p-5 border border-[#111113]/10 bg-[#FAF9F6]">
-                <span className="font-mono text-xs font-bold text-[#a3e635] block mb-2">03. Pre-emptive Code Markup</span>
+                <span className="font-mono text-xs font-bold text-black block mb-2">03. Pre-emptive Code Markup</span>
                 <p className="text-xs text-[#111113]/70 leading-relaxed">
                   We construct ultra-clean HTML data schemas using official microformats (schema.org) so that Google, Bing, and AI crawlers immediately trust and credit your brand authority.
                 </p>
               </div>
               <div className="p-5 border border-[#111113]/10 bg-[#FAF9F6]">
-                <span className="font-mono text-xs font-bold text-[#a3e635] block mb-2">04. Continuous Optimization</span>
+                <span className="font-mono text-xs font-bold text-black block mb-2">04. Continuous Optimization</span>
                 <p className="text-xs text-[#111113]/70 leading-relaxed">
                   Through dynamic check-ins and automated audits, we constantly adjust meta-tags and semantic layouts to match active local and global trend updates.
                 </p>
@@ -493,7 +493,7 @@ export default function BlogView({
     <div className="w-full bg-[#F8F7F4] pb-12 text-[#111113] min-h-[80vh]">
       {/* Toast Notification */}
       {shareToast && (
-        <div className="fixed bottom-6 right-6 z-50 bg-[#a3e635] text-[#FAF9F6] font-mono text-xs font-bold px-4 py-3 shadow-[0_0_20px_rgba(227,89,48,0.3)] uppercase tracking-wider animate-bounce">
+        <div className="fixed bottom-6 right-6 z-50 bg-black text-white font-mono text-xs font-bold px-4 py-3 shadow-xl uppercase tracking-wider animate-bounce">
           {shareToast}
         </div>
       )}
@@ -527,7 +527,7 @@ export default function BlogView({
                   className="w-[150px] h-[150px] object-contain"
                 />
               </div>
-              <span className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-[#a3e635] font-bold uppercase" style={{ letterSpacing: '0px' }}>
+              <span className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-white font-bold uppercase" style={{ letterSpacing: '0px' }}>
                 {lang === "it" ? "[ TRASPARENZA E CONOSCENZA ]" : "[ INSIGHTS & UPDATES ]"}
               </span>
               <h1 className="font-tan text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#111113] break-words">
@@ -546,7 +546,7 @@ export default function BlogView({
               {/* Featured Article Card */}
             <div 
               onClick={() => setSelectedArticle(articles[0].slug)}
-              className="border border-[#111113]/10 bg-[#FAF9F6] grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden hover:border-[#a3e635]/45 hover:shadow-[0_0_30px_rgba(227,89,48,0.03)] transition-all duration-300 cursor-pointer group"
+              className="border border-[#111113]/10 bg-[#FAF9F6] grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden hover:border-black hover:shadow-md transition-all duration-300 cursor-pointer group"
             >
               <div className="lg:col-span-7 h-64 lg:h-auto relative overflow-hidden border-b lg:border-b-0 lg:border-r border-[#111113]/10">
                 <img
@@ -555,7 +555,7 @@ export default function BlogView({
                   className="w-full h-full object-cover grayscale contrast-125 group-hover:scale-102 group-hover:grayscale-0 transition-all duration-700"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute top-4 left-4 bg-[#a3e635] text-[#FAF9F6] px-3 py-1 text-[9px] font-mono tracking-widest uppercase font-bold">
+                <div className="absolute top-4 left-4 bg-black text-white px-3 py-1 text-[9px] font-mono tracking-widest uppercase font-bold">
                   {articles[0].category[lang]}
                 </div>
               </div>
@@ -563,11 +563,11 @@ export default function BlogView({
               <div className="lg:col-span-5 p-8 flex flex-col justify-between space-y-6">
                 <div className="space-y-4">
                   <div className="flex items-center gap-4 text-[10px] font-mono text-[#111113]/40">
-                    <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5 text-[#a3e635]" /> {articles[0].publishDate}</span>
-                    <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5 text-[#a3e635]" /> {articles[0].readTime[lang]}</span>
+                    <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5 text-black" /> {articles[0].publishDate}</span>
+                    <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5 text-black" /> {articles[0].readTime[lang]}</span>
                   </div>
                   
-                  <h2 className="font-display text-xl sm:text-2xl font-bold tracking-wide text-[#111113] group-hover:text-[#a3e635] transition-colors leading-snug">
+                  <h2 className="font-display text-xl sm:text-2xl font-bold tracking-wide text-[#111113] group-hover:text-black transition-colors leading-snug">
                     {articles[0].title[lang]}
                   </h2>
                   
@@ -578,14 +578,14 @@ export default function BlogView({
 
                 <div className="flex flex-wrap gap-1.5 pt-2">
                   {articles[0].tags.map((tag) => (
-                    <span key={tag} className="text-[8px] font-mono font-bold tracking-widest text-[#a3e635] border border-[#a3e635]/20 bg-transparent px-2 py-0.5 uppercase">
+                    <span key={tag} className="text-[8px] font-mono font-bold tracking-widest text-black border border-black/20 bg-transparent px-2 py-0.5 uppercase">
                       #{tag}
                     </span>
                   ))}
                 </div>
 
                 <div className="pt-4 border-t border-[#111113]/10 flex justify-between items-center">
-                  <span className="text-[#a3e635] group-hover:text-[#111113] font-mono text-[10px] font-bold tracking-widest uppercase flex items-center gap-2 transition-colors">
+                  <span className="text-black font-mono text-[10px] font-bold tracking-widest uppercase flex items-center gap-2 transition-colors">
                     {lang === "it" ? "LEGGI ARTICOLO COMPLETO" : "READ FULL ARTICLE"}
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </span>
@@ -599,7 +599,7 @@ export default function BlogView({
                 <div 
                   key={article.slug} 
                   onClick={() => setSelectedArticle(article.slug)}
-                  className="border border-[#111113]/10 bg-[#FAF9F6] overflow-hidden hover:border-[#a3e635]/45 hover:shadow-[0_0_30px_rgba(227,89,48,0.03)] transition-all duration-300 flex flex-col justify-between cursor-pointer group"
+                  className="border border-[#111113]/10 bg-[#FAF9F6] overflow-hidden hover:border-black hover:shadow-md transition-all duration-300 flex flex-col justify-between cursor-pointer group"
                 >
                   <div>
                     <div className="h-48 relative overflow-hidden border-b border-[#111113]/10">
@@ -609,18 +609,18 @@ export default function BlogView({
                         className="w-full h-full object-cover grayscale contrast-125 group-hover:scale-102 group-hover:grayscale-0 transition-all duration-700"
                         referrerPolicy="no-referrer"
                       />
-                      <div className="absolute top-4 left-4 bg-[#FAF9F6]/90 border border-[#111113]/10 text-[#a3e635] px-3 py-1 text-[9px] font-mono tracking-widest uppercase font-bold">
+                      <div className="absolute top-4 left-4 bg-[#FAF9F6]/90 border border-[#111113]/10 text-black px-3 py-1 text-[9px] font-mono tracking-widest uppercase font-bold">
                         {article.category[lang]}
                       </div>
                     </div>
                     
                     <div className="p-6 space-y-4">
                       <div className="flex items-center gap-4 text-[10px] font-mono text-[#111113]/40">
-                        <span className="flex items-center gap-1"><Calendar className="w-3 h-3 text-[#a3e635]" /> {article.publishDate}</span>
-                        <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-[#a3e635]" /> {article.readTime[lang]}</span>
+                        <span className="flex items-center gap-1"><Calendar className="w-3 h-3 text-black" /> {article.publishDate}</span>
+                        <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-black" /> {article.readTime[lang]}</span>
                       </div>
                       
-                      <h3 className="font-display text-lg font-bold text-[#111113] group-hover:text-[#a3e635] transition-colors">
+                      <h3 className="font-display text-lg font-bold text-[#111113] group-hover:text-black transition-colors">
                         {article.title[lang]}
                       </h3>
                       
@@ -640,7 +640,7 @@ export default function BlogView({
                     </div>
                     
                     <div className="pt-4 border-t border-[#111113]/10">
-                      <span className="text-[#a3e635] group-hover:text-[#111113] font-mono text-[10px] font-bold tracking-widest uppercase flex items-center gap-1.5 transition-colors">
+                      <span className="text-black font-mono text-[10px] font-bold tracking-widest uppercase flex items-center gap-1.5 transition-colors">
                         {lang === "it" ? "LEGGI ARTICOLO" : "READ ARTICLE"}
                         <ChevronRight className="w-3.5 h-3.5" />
                       </span>
@@ -663,7 +663,7 @@ export default function BlogView({
             {/* Back Button */}
             <button
               onClick={() => setSelectedArticle(null)}
-              className="group py-2.5 px-4 border border-[#111113]/15 hover:border-[#a3e635] text-[#111113]/70 hover:text-[#a3e635] transition-all flex items-center gap-2 font-mono text-xs uppercase tracking-widest font-bold cursor-pointer"
+              className="group py-2.5 px-4 border border-[#111113]/15 hover:border-black text-[#111113]/70 hover:text-black transition-all flex items-center gap-2 font-mono text-xs uppercase tracking-widest font-bold cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               <span>{lang === "it" ? "Torna al Blog" : "Back to Blog"}</span>
@@ -672,13 +672,13 @@ export default function BlogView({
             {/* Meta and Category tags */}
             <div className="space-y-4">
               <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-[#111113]/50">
-                <span className="text-[#a3e635] font-bold tracking-widest uppercase">// {currentArticle.category[lang]}</span>
+                <span className="text-black font-bold tracking-widest uppercase">// {currentArticle.category[lang]}</span>
                 <span className="w-1.5 h-1.5 bg-[#111113]/15 rounded-full"></span>
-                <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5 text-[#a3e635]" /> {currentArticle.publishDate}</span>
+                <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5 text-black" /> {currentArticle.publishDate}</span>
                 <span className="w-1.5 h-1.5 bg-[#111113]/15 rounded-full"></span>
-                <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5 text-[#a3e635]" /> {currentArticle.readTime[lang]}</span>
+                <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5 text-black" /> {currentArticle.readTime[lang]}</span>
                 <span className="w-1.5 h-1.5 bg-[#111113]/15 rounded-full"></span>
-                <span className="flex items-center gap-1"><User className="w-3.5 h-3.5 text-[#a3e635]" /> {currentArticle.author}</span>
+                <span className="flex items-center gap-1"><User className="w-3.5 h-3.5 text-black" /> {currentArticle.author}</span>
               </div>
 
               <h1 className="font-tan text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#111113] leading-tight break-words">
@@ -704,7 +704,7 @@ export default function BlogView({
                 
                 {/* Meta details */}
                 <div className="p-5 border border-[#111113]/10 bg-[#FAF9F6] space-y-4">
-                  <h4 className="font-mono text-xs font-bold text-[#a3e635] tracking-wider uppercase">// META DETAILS</h4>
+                  <h4 className="font-mono text-xs font-bold text-black tracking-wider uppercase">// META DETAILS</h4>
                   <div className="space-y-3 text-xs">
                     <div>
                       <span className="text-[#111113]/40 block font-mono">Title Meta-Tag:</span>
@@ -723,7 +723,7 @@ export default function BlogView({
 
                 {/* Article Tags */}
                 <div className="space-y-3">
-                  <h4 className="font-mono text-xs font-bold text-[#a3e635] tracking-wider uppercase flex items-center gap-1.5">
+                  <h4 className="font-mono text-xs font-bold text-black tracking-wider uppercase flex items-center gap-1.5">
                     <Tag className="w-3.5 h-3.5" />
                     <span>TAGS</span>
                   </h4>
@@ -738,37 +738,37 @@ export default function BlogView({
 
                 {/* Sharing tools */}
                 <div className="space-y-4">
-                  <h4 className="font-mono text-xs font-bold text-[#a3e635] tracking-wider uppercase flex items-center gap-1.5">
+                  <h4 className="font-mono text-xs font-bold text-black tracking-wider uppercase flex items-center gap-1.5">
                     <Share2 className="w-3.5 h-3.5" />
                     <span>{lang === "it" ? "CONDIVIDI" : "SHARE"}</span>
                   </h4>
                   <div className="flex flex-wrap lg:flex-col gap-2.5">
                     <button
                       onClick={() => triggerShare("linkedin")}
-                      className="flex items-center gap-2.5 px-4 py-2.5 bg-[#FAF9F6] hover:bg-[#a3e635]/5 border border-[#111113]/15 hover:border-[#a3e635] text-[#111113]/70 hover:text-[#a3e635] text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer flex-1 lg:flex-initial text-left"
+                      className="flex items-center gap-2.5 px-4 py-2.5 bg-[#FAF9F6] hover:bg-black/5 border border-[#111113]/15 hover:border-black text-[#111113]/70 hover:text-black text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer flex-1 lg:flex-initial text-left"
                     >
-                      <Linkedin className="w-4 h-4 text-[#a3e635]" />
+                      <Linkedin className="w-4 h-4 text-black" />
                       <span>LinkedIn</span>
                     </button>
                     <button
                       onClick={() => triggerShare("twitter")}
-                      className="flex items-center gap-2.5 px-4 py-2.5 bg-[#FAF9F6] hover:bg-[#a3e635]/5 border border-[#111113]/15 hover:border-[#a3e635] text-[#111113]/70 hover:text-[#a3e635] text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer flex-1 lg:flex-initial text-left"
+                      className="flex items-center gap-2.5 px-4 py-2.5 bg-[#FAF9F6] hover:bg-black/5 border border-[#111113]/15 hover:border-black text-[#111113]/70 hover:text-black text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer flex-1 lg:flex-initial text-left"
                     >
-                      <Twitter className="w-4 h-4 text-[#a3e635]" />
+                      <Twitter className="w-4 h-4 text-black" />
                       <span>Twitter / X</span>
                     </button>
                     <button
                       onClick={() => triggerShare("facebook")}
-                      className="flex items-center gap-2.5 px-4 py-2.5 bg-[#FAF9F6] hover:bg-[#a3e635]/5 border border-[#111113]/15 hover:border-[#a3e635] text-[#111113]/70 hover:text-[#a3e635] text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer flex-1 lg:flex-initial text-left"
+                      className="flex items-center gap-2.5 px-4 py-2.5 bg-[#FAF9F6] hover:bg-black/5 border border-[#111113]/15 hover:border-black text-[#111113]/70 hover:text-black text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer flex-1 lg:flex-initial text-left"
                     >
-                      <Facebook className="w-4 h-4 text-[#a3e635]" />
+                      <Facebook className="w-4 h-4 text-black" />
                       <span>Facebook</span>
                     </button>
                     <button
                       onClick={handleCopyLink}
-                      className="flex items-center gap-2.5 px-4 py-2.5 bg-[#FAF9F6] hover:bg-[#a3e635]/5 border border-[#111113]/15 hover:border-[#a3e635] text-[#111113]/70 hover:text-[#a3e635] text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer flex-1 lg:flex-initial text-left"
+                      className="flex items-center gap-2.5 px-4 py-2.5 bg-[#FAF9F6] hover:bg-black/5 border border-[#111113]/15 hover:border-black text-[#111113]/70 hover:text-black text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer flex-1 lg:flex-initial text-left"
                     >
-                      {copied ? <Check className="w-4 h-4 text-emerald-600 animate-pulse" /> : <Copy className="w-4 h-4 text-[#a3e635]" />}
+                      {copied ? <Check className="w-4 h-4 text-black animate-pulse" /> : <Copy className="w-4 h-4 text-black" />}
                       <span>{copied ? (lang === "it" ? "COPIATO!" : "COPIED!") : (lang === "it" ? "COPIA LINK" : "COPY LINK")}</span>
                     </button>
                   </div>
@@ -796,7 +796,7 @@ export default function BlogView({
                   </div>
                   <button
                     onClick={() => setCurrentTab("contatti")}
-                    className="px-6 py-3 bg-[#a3e635] text-[#FAF9F6] hover:bg-transparent hover:text-[#a3e635] border border-[#a3e635] font-mono text-[10px] font-bold tracking-widest uppercase transition-all cursor-pointer whitespace-nowrap shrink-0"
+                    className="solid-primary shrink-0"
                   >
                     {lang === "it" ? "PARLIAMONE" : "LET'S TALK"}
                   </button>
