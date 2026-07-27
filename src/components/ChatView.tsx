@@ -14,7 +14,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
     {
       id: "welcome",
       role: "model",
-      text: "Ciao! Sono **M. Teresa Rogani**, titolare di **Facilissimo Web**. \n\nLavoro da sola come Freelance Web Designer per garantire cura diretta, velocità e prezzi chiari per ciascuno dei clienti di Facilissimo Web. Posso spiegarti come posso aiutarti, illustrarti le proposte di Facilissimo Web (Starter, Professional, Enterprise) e guidarti nel definire il tuo nuovo sito web. \n\nCosa vorresti chiedermi oggi?",
+      text: "Ciao! Sono **M. Teresa Rogani**, titolare di **Facilissimo Web**. \n\nLavoro da sola come Freelance Web Designer per garantire cura diretta, velocità e massima trasparenza per ciascuno dei clienti di Facilissimo Web. Posso spiegarti come posso aiutarti e guidarti nel definire il tuo nuovo sito web. \n\nCosa vorresti chiedermi oggi?",
       timestamp: new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" }),
     },
   ]);
@@ -26,9 +26,9 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
   const isFirstRender = useRef(true);
 
   const quickQuestions = [
-    "Quali sono i tempi per il piano AI Professional?",
+    "Come realizzi i siti web?",
     "Lavori da sola o hai un team?",
-    "Come usi l'Intelligenza Artificiale per ridurre i costi?",
+    "Come usi l'Intelligenza Artificiale per ridurre i tempi?",
     "Che tipo di supporto tecnico offri?",
   ];
 

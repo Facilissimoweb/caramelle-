@@ -327,7 +327,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
             </div>
             
             <button
-              onClick={() => setCurrentTab("proposte")}
+              onClick={() => setCurrentTab("contatti")}
               className="solid-light flex items-center gap-1.5 self-stretch md:self-auto justify-center text-center"
               id="webappview-view-services-btn"
             >

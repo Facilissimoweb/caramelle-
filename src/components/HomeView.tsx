@@ -163,7 +163,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 <span style={{ fontSize: "20px" }}>{t.heroBtnPrimary}</span>
               </button>
               <button
-                onClick={() => setCurrentTab("proposte")}
+                onClick={() => setCurrentTab("siti-web")}
                 className="solid-light text-center"
                 id="hero-cta-sec"
               >

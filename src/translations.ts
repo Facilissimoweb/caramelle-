@@ -4,7 +4,6 @@ export interface TranslationSet {
   navWebApp: string;
   navSitiWeb: string;
   navChiSono: string;
-  navProposte: string;
   navContatti: string;
   navChat: string;
   navBlog: string;
@@ -67,7 +66,6 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       navWebApp: "Web App",
       navSitiWeb: "Siti Web",
       navChiSono: "Chi Sono",
-      navProposte: "Proposte",
       navContatti: "Contatti",
       navChat: "Chat AI",
       navBlog: "Blog & News",
@@ -83,7 +81,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       heroTitleItalic: "l'Intelligenza Artificiale",
       heroDesc: "Progetto e sviluppo esperienze digitali moderne, performanti e su misura per far crescere il tuo brand velocemente.",
       heroBtnPrimary: "Lavora con me",
-      heroBtnSecondary: "Scopri le proposte di Facilissimo Web",
+      heroBtnSecondary: "Scopri i Siti Web di Facilissimo Web",
       proofDirect: "100% DIRETTO",
       proofDelivery: "CONSEGNA IN 14 GIORNI",
       proofPrices: "PREZZI TRASPARENTI",
@@ -120,7 +118,6 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       navWebApp: "Siti Web App",
       navSitiWeb: "Siti Web",
       navChiSono: "Chi Sono",
-      navProposte: "Proposte",
       navContatti: "Contatti",
       navChat: "Chat AI",
       navBlog: "Articoli",
@@ -136,7 +133,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       heroTitleItalic: "l'Aiuto del Computer (IA)",
       heroDesc: "Creo siti internet veloci, belli e facili da usare. Lavoro da sola così parli solo con me, risparmi tempo e ricevi un sito perfetto per farti trovare su Google.",
       heroBtnPrimary: "Lavora con me",
-      heroBtnSecondary: "Scopri i prezzi",
+      heroBtnSecondary: "Scopri i miei siti web",
       proofDirect: "PARLI SOLO CON ME",
       proofDelivery: "PRONTO IN 14 GIORNI",
       proofPrices: "PREZZI CHIARI E FISSI",
@@ -175,7 +172,6 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       navWebApp: "Web App",
       navSitiWeb: "Websites",
       navChiSono: "About",
-      navProposte: "Offers",
       navContatti: "Contact",
       navChat: "AI Chat",
       navBlog: "Blog & News",
@@ -191,7 +187,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       heroTitleItalic: "Artificial Intelligence",
       heroDesc: "I design and develop modern, high-performance, and custom digital experiences to grow your brand fast, eliminating agency overheads and optimizing semantic SEO.",
       heroBtnPrimary: "Work with me",
-      heroBtnSecondary: "Explore plans of Facilissimo Web",
+      heroBtnSecondary: "Explore Websites of Facilissimo Web",
       proofDirect: "100% DIRECT",
       proofDelivery: "14-DAY DELIVERY",
       proofPrices: "TRANSPARENT PRICING",
@@ -228,7 +224,6 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       navWebApp: "Web Apps",
       navSitiWeb: "Websites",
       navChiSono: "About",
-      navProposte: "Offers",
       navContatti: "Contact",
       navChat: "AI Chat",
       navBlog: "Articles",
@@ -244,7 +239,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       heroTitleItalic: "Smart Computer Help (AI)",
       heroDesc: "I build fast, beautiful, and easy-to-use websites. I work alone, so you talk only with me. This saves you money and gets you found on Google.",
       heroBtnPrimary: "Work with me",
-      heroBtnSecondary: "See prices",
+      heroBtnSecondary: "See websites",
       proofDirect: "TALK DIRECT TO ME",
       proofDelivery: "READY IN 14 DAYS",
       proofPrices: "CLEAR FIXED PRICES",

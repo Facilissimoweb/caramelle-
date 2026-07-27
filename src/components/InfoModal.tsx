@@ -125,7 +125,6 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
                 <ul className="space-y-1.5 pl-3 border-l border-[rgba(248,247,244,0.15)] text-[11px] font-mono">
                   <li>• <strong>Inizio (Home):</strong> Vetrina, Filosofia, SEO Predittiva e FAQ</li>
                   <li>• <strong>Chi Sono:</strong> Profilo professionale di M. Teresa Rogani</li>
-                  <li>• <strong>Proposte:</strong> I 3 pacchetti di sviluppo web e prezzi trasparente</li>
                   <li>• <strong>Contatti:</strong> Modulo di preventivo rapido e contatti diretti</li>
                   <li>• <strong>Assistente Chat AI:</strong> Simulazione interattiva preventivo con IA</li>
                 </ul>
@@ -153,7 +152,6 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
                 <ul className="list-disc pl-5 mt-2 space-y-1.5 text-sm">
                   <li><strong>Home Page:</strong> Presentazione del mio studio, cos'è la SEO Predittiva e risposte alle domande comuni.</li>
                   <li><strong>Chi Sono:</strong> Conosci meglio me, Teresa, e come lavoro.</li>
-                  <li><strong>Proposte e Prezzi:</strong> Scopri i 3 pacchetti per creare il tuo sito web a prezzi chiari.</li>
                   <li><strong>Contatti:</strong> Mandami un messaggio o chiamami per iniziare il tuo progetto.</li>
                   <li><strong>Assistente AI:</strong> Parla con il mio assistente virtuale per un preventivo guidato.</li>
                 </ul>
@@ -161,7 +159,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
             </div>
           </div>
         ),
-        speechText: "Mappa del sito. Elenco delle sezioni disponibili: Home Page con presentazione e domande frequenti; Chi Sono con il mio profilo professionale; Proposte con i pacchetti di sviluppo; Contatti per richiedere preventivi; Assistente virtuale per preventivo guidato.",
+        speechText: "Mappa del sito. Elenco delle sezioni disponibili: Home Page con presentazione e domande frequenti; Chi Sono con il mio profilo professionale; Contatti per richiedere preventivi; Assistente virtuale per preventivo guidato.",
       },
     },
     en: {

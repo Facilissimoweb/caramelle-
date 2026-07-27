@@ -5,7 +5,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomeView from "./components/HomeView";
 import AboutView from "./components/AboutView";
-import ProposteView from "./components/ProposteView";
 import ContattiView from "./components/ContattiView";
 import ChatView from "./components/ChatView";
 import BlogView from "./components/BlogView";
@@ -42,12 +41,6 @@ const SEO_METADATA: Record<string, { title: string; description: string; keyword
     description: "Scopri chi c'è dietro Facilissimo Web. M. Teresa Rogani, freelance web designer and AI specialist a Macerata, Marche. Creazione siti web professionali e su misura.",
     keywords: "teresa rogani, freelance web designer macerata, ai specialist marche, realizzazione siti web professionali marche, sviluppo siti web marche",
     image: "/api/og-image?tab=chi-sono",
-  },
-  proposte: {
-    title: "Proposte e Listino Prezzi — Facilissimo Web Macerata",
-    description: "Piani e prezzi trasparenti per la creazione del tuo sito web professionale nelle Marche. Soluzioni Landing Page, siti multipagina e e-commerce con IA integrata.",
-    keywords: "prezzi siti web macerata, costo sito internet marche, preventivo sito web macerata, listino prezzi web agency macerata",
-    image: "/api/og-image?tab=proposte",
   },
   contatti: {
     title: "Contatti — Facilissimo Web | Preventivo Sito Web Macerata",
@@ -146,7 +139,7 @@ export const initTrackingConsentUtility = () => {
   }
 };
 
-const TABS_ORDER = ["home", "chi-sono", "web-app", "siti-web", "proposte", "contatti", "chat", "blog"];
+const TABS_ORDER = ["home", "chi-sono", "web-app", "siti-web", "contatti", "chat", "blog"];
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>("home");
@@ -231,7 +224,6 @@ export default function App() {
         case "siti-web": return "Siti Web";
         case "blog": return "Blog & News";
         case "chi-sono": return "Chi Sono";
-        case "proposte": return "Proposte";
         case "contatti": return "Contatti";
         case "chat": return "Assistente AI";
         default: return tabId;
@@ -243,7 +235,6 @@ export default function App() {
         case "siti-web": return "Websites";
         case "blog": return "Blog & News";
         case "chi-sono": return "About Me";
-        case "proposte": return "Proposals";
         case "contatti": return "Contact";
         case "chat": return "AI Chat";
         default: return tabId;
@@ -511,15 +502,6 @@ export default function App() {
         return <SitiWebView lang={lang} isFacilitated={isFacilitated} />;
       case "chi-sono":
         return <AboutView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} />;
-      case "proposte":
-        return (
-          <ProposteView
-            setCurrentTab={handleSetTab}
-            lang={lang}
-            isFacilitated={isFacilitated}
-            onSelectPackage={setSelectedPackage}
-          />
-        );
       case "contatti":
         return (
           <ContattiView

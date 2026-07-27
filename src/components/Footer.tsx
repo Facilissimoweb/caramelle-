@@ -138,7 +138,6 @@ export default function Footer({
             {[
               { id: "home", label: "Home" },
               { id: "chi-sono", label: "Chi Sono" },
-              { id: "proposte", label: "Proposte" },
               { id: "contatti", label: "Contatti" },
               { id: "chat", label: "Assistente Chat AI" },
               { id: "blog", label: "Blog & News" },
