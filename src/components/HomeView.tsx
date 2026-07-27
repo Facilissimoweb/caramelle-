@@ -7,7 +7,7 @@ import FAQAccordion from "./FAQAccordion";
 import TattooMacerataApp from "./TattooMacerataApp";
 import GustoPassioneApp from "./GustoPassioneApp";
 import NidoSogniApp from "./NidoSogniApp";
-const regeneratedHeroImage = new URL("../assets/images/regenerated_image_1784027339085.png", import.meta.url).href;
+const regeneratedHeroImage = new URL("../assets/images/regenerated_image_1785166657099.jpg", import.meta.url).href;
 const logoImage = "/f (1600 x 500 px).webp";
 
 interface HomeViewProps {
@@ -191,7 +191,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           <div className="lg:col-span-4 xl:col-span-4 flex justify-center items-center">
             <div className="relative w-full max-w-md rounded-2xl overflow-hidden border border-[#111113]/10 bg-black/5 shadow-2xl hover:scale-[1.02] transition-transform duration-500">
               <img
-                src="/images/facilissio web siti web professionali on line prima di ieri (2) (1).webp"
+                src={regeneratedHeroImage}
                 alt="Facilissimo Web Professionali"
                 referrerPolicy="no-referrer"
                 className="w-full h-auto object-cover rounded-2xl"
