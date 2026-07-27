@@ -14,7 +14,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
     {
       id: "welcome",
       role: "model",
-      text: "Ciao! Sono **M. Teresa Rogani**, titolare di **Facilissimo Web**. \n\nLavoro da sola come Freelance Web Designer per garantire cura diretta, velocità e massima trasparenza per ciascuno dei clienti di Facilissimo Web. Posso spiegarti come posso aiutarti e guidarti nel definire il tuo nuovo sito web. \n\nCosa vorresti chiedermi oggi?",
+      text: "Ciao! Sono l'**Assistente Virtuale di Facilissimo Web**. \n\nSono qui per fornirti informazioni sui servizi di web design, realizzazione di siti web e sviluppo web app creati da **M. Teresa Rogani**. Posso rispondere alle tue domande e guidarti nel richiedere un preventivo personalizzato per il tuo progetto. \n\nCome posso aiutarti oggi?",
       timestamp: new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" }),
     },
   ]);
@@ -245,13 +245,13 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
             />
           </div>
           <span className="text-[13px] uppercase tracking-[0em] text-white font-mono font-bold block mb-2" style={{ letterSpacing: '0px' }}>
-            [ CHAT INTERATTIVA DIRETTA ]
+            [ ASSISTENTE VIRTUALE ]
           </span>
           <h1 className="font-tan text-2xl xs:text-3xl font-bold tracking-tight text-[#F8F7F4] sm:text-4xl break-words">
-            Parla con Me
+            Assistente Facilissimo Web
           </h1>
           <p className="font-sans text-xs sm:text-sm text-[#F8F7F4]/70 max-w-lg mx-auto leading-relaxed">
-            Poni domande sul mio metodo, chiedimi una stima dei costi o qualsiasi chiarimento sul funzionamento dei servizi di Facilissimo Web. Ti rispondo all'istante!
+            Poni domande sui servizi di M. Teresa Rogani, chiedimi informazioni o indicazioni per richiedere un preventivo per il tuo nuovo sito o web app. Ti rispondo all'istante!
           </p>
         </div>
       </section>
@@ -270,7 +270,7 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
                 </h3>
               </div>
               <p className="text-xs text-[#F8F7F4]/70 leading-relaxed font-sans">
-                Questa chat interattiva risponde istantaneamente grazie a un modello AI addestrato sul mio manuale operativo, sulle mie tariffe e sulla filosofia di **Facilissimo Web**.
+                Questa chat risponde istantaneamente grazie all'**Assistente AI di Facilissimo Web**, addestrato sui servizi, sul metodo di lavoro e sulla filosofia di M. Teresa Rogani.
               </p>
             </div>
 
@@ -316,10 +316,10 @@ export default function ChatView({ lang, isFacilitated }: ChatViewProps) {
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-sm text-[#F8F7F4] leading-none">
-                    M. Teresa Rogani
+                    Assistente Facilissimo Web
                   </h3>
                   <p className="text-[9px] text-white/70 font-mono mt-1 uppercase tracking-widest">
-                    FACILISSIMO WEB
+                    SUPPORT AI • FACILISSIMO WEB
                   </p>
                 </div>
               </div>
