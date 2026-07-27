@@ -121,7 +121,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="/FACILISSIMO WEB MACERATA.mp4" type="video/mp4" />
+            <source src="/video/Photo%20booth%20(effetto%20video%20AI).mp4" type="video/mp4" />
           </video>
         </motion.div>
 
