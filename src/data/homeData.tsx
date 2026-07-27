@@ -59,12 +59,13 @@ export interface ProjectItem {
 }
 
 export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
+  const defaultCardImage = "/images/facilissimo web .png";
   return [
     {
       icon: <Zap className="w-5 h-5 text-black" />,
       title: t.feat1Title,
       description: t.feat1Desc,
-      image: featureImage1,
+      image: defaultCardImage,
       tags: lang === "it" ? ["VELOCITÀ", "SEO-DATO"] : ["SPEED", "SEO-DRIVEN"],
       highlightMetrics: lang === "it"
         ? ["Tempo di Caricamento: 0.4s", "PageSpeed Score: 99/100", "Rimbalzo Mobile: < 2%"]
@@ -74,7 +75,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
       icon: <Cpu className="w-5 h-5 text-black" />,
       title: t.feat2Title,
       description: t.feat2Desc,
-      image: featureImage2,
+      image: defaultCardImage,
       tags: lang === "it" ? ["INTEGRAZIONE IA", "AUTOMAZIONE"] : ["AI INTEGRATION", "AUTOMATION"],
       highlightMetrics: lang === "it"
         ? ["Integrazione Gemini API", "Efficienza Operativa: +85%", "Automazione Form: 24/7"]
@@ -84,7 +85,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
       icon: <Brain className="w-5 h-5 text-black" />,
       title: t.feat3Title,
       description: t.feat3Desc,
-      image: featureImage3,
+      image: defaultCardImage,
       tags: lang === "it" ? ["DESIGN PIXEL-PERFECT", "SU MISURA"] : ["PIXEL-PERFECT", "CUSTOM DESIGN"],
       highlightMetrics: lang === "it"
         ? ["100% Codice Artigianale", "Memorabilità Brand: 95%", "UX Mobile Ottimizzata"]
@@ -94,7 +95,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
       icon: <TrendingUp className="w-5 h-5 text-black" />,
       title: lang === "it" ? "SEO Semantica d'Avanguardia" : "State-of-the-Art Semantic SEO",
       description: lang === "it" ? "Ottimizzazione avanzata per scalare Google usando schemi semantici e risposte dirette strutturate." : "Advanced search engine dominance using structural semantic markup and query answering layouts.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+      image: defaultCardImage,
       tags: lang === "it" ? ["GOOGLE SEO", "VISIBILITÀ"] : ["GOOGLE SEO", "VISIBILITY"],
       highlightMetrics: lang === "it"
         ? ["Parole Chiave Top 3: +120%", "Traffico Organico: 3x", "Schema Rich Snippets: 100%"]
@@ -104,7 +105,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
       icon: <Heart className="w-5 h-5 text-black" />,
       title: lang === "it" ? "Accessibilità Inclusiva" : "Inclusive Accessibility",
       description: lang === "it" ? "Pieno rispetto dei requisiti di accessibilità con modalità di lettura facilitata, audio-guida e contrasto ottimizzato." : "Full compliance with WCAG accessibility standards, easy-reading mode, text-to-speech, and custom high contrast.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+      image: defaultCardImage,
       tags: lang === "it" ? ["ACCESSIBILITÀ", "WCAG AA"] : ["ACCESSIBILITY", "WCAG AA"],
       highlightMetrics: lang === "it"
         ? ["Lettura Vocale Integrata", "Contrasto WCAG: Superato", "Usabilità Mobile: 100/100"]
@@ -114,7 +115,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
       icon: <CheckCircle2 className="w-5 h-5 text-black" />,
       title: lang === "it" ? "Sicurezza Totale & Zero Hosting" : "Bulletproof Static Security",
       description: lang === "it" ? "Siti web inattaccabili senza database vulnerabili, pronti a sopportare picchi di traffico mondiali." : "Unattackable websites with no databases to hack, built to withstand massive worldwide traffic spikes with ease.",
-      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800",
+      image: defaultCardImage,
       tags: lang === "it" ? ["SICUREZZA", "SSL ATTIVO"] : ["SECURITY", "SSL ACTIVE"],
       highlightMetrics: lang === "it"
         ? ["Uptime Garantito: 99.99%", "Vulnerabilità SQL: Zero", "CDN Globale: Integrata"]
@@ -124,7 +125,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
       icon: <Sparkles className="w-5 h-5 text-black" />,
       title: lang === "it" ? "Scrittura Orientata alla Conversione" : "Conversion-Focused Copywriting",
       description: lang === "it" ? "Testi chiari ed eleganti formulati per guidare l'utente verso il form di contatto o l'acquisto." : "Elegant, crystal-clear copywriting formulated to guide the visitor smoothly toward inquiry or purchase.",
-      image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=800",
+      image: defaultCardImage,
       tags: lang === "it" ? ["COPYWRITING", "CONVERSIONE"] : ["COPYWRITING", "CONVERSION"],
       highlightMetrics: lang === "it"
         ? ["Click su Form: +42%", "Leggibilità Flesch: Ottima", "Testi Multi-lingua: Sì"]
@@ -134,7 +135,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
       icon: <BarChart3 className="w-5 h-5 text-black" />,
       title: lang === "it" ? "Metriche di Privacy-First" : "Privacy-First Analytics",
       description: lang === "it" ? "Tracciamento preciso degli utenti rispettando la privacy (GDPR compliant) senza cookie invasivi." : "Precise visitor insight tracking fully in compliance with GDPR standards, without annoying cookie banners.",
-      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=800",
+      image: defaultCardImage,
       tags: lang === "it" ? ["ANALYTICS", "RISERVATO"] : ["ANALYTICS", "PRIVACY"],
       highlightMetrics: lang === "it"
         ? ["GDPR Compliant: 100%", "Nessun Cookie Terzo", "Report Settimanali: Inclusi"]
@@ -144,7 +145,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
       icon: <ArrowUpRight className="w-5 h-5 text-black" />,
       title: lang === "it" ? "Sostegno e Crescita Continua" : "Continuous Support & Growth",
       description: lang === "it" ? "Nessun ticket anonimo. Parli e pianifichi direttamente con me ogni aggiornamento ed evoluzione futura." : "No anonymous support queues. Call and discuss updates directly with me as your project grows.",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800",
+      image: defaultCardImage,
       tags: lang === "it" ? ["SUPPORTO", "FLESSIBILE"] : ["SUPPORT", "FLEXIBLE"],
       highlightMetrics: lang === "it"
         ? ["Tempo di Risposta: < 2h", "Contatto Diretto Tel/Chat", "Manutenzione Attiva: Sì"]
