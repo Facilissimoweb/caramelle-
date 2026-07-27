@@ -11,6 +11,10 @@ import {
   ArrowUpRight 
 } from "lucide-react";
 
+const featureImage1 = new URL("../assets/images/regenerated_image_1785167288349.png", import.meta.url).href;
+const featureImage2 = new URL("../assets/images/regenerated_image_1785167289204.png", import.meta.url).href;
+const featureImage3 = new URL("../assets/images/regenerated_image_1785167289648.png", import.meta.url).href;
+
 export interface FeatureItem {
   icon: React.ReactNode;
   title: string;
@@ -60,7 +64,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
       icon: <Zap className="w-5 h-5 text-black" />,
       title: t.feat1Title,
       description: t.feat1Desc,
-      image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=800",
+      image: featureImage1,
       tags: lang === "it" ? ["VELOCITÀ", "SEO-DATO"] : ["SPEED", "SEO-DRIVEN"],
       highlightMetrics: lang === "it"
         ? ["Tempo di Caricamento: 0.4s", "PageSpeed Score: 99/100", "Rimbalzo Mobile: < 2%"]
@@ -70,7 +74,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
       icon: <Cpu className="w-5 h-5 text-black" />,
       title: t.feat2Title,
       description: t.feat2Desc,
-      image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800",
+      image: featureImage2,
       tags: lang === "it" ? ["INTEGRAZIONE IA", "AUTOMAZIONE"] : ["AI INTEGRATION", "AUTOMATION"],
       highlightMetrics: lang === "it"
         ? ["Integrazione Gemini API", "Efficienza Operativa: +85%", "Automazione Form: 24/7"]
@@ -80,7 +84,7 @@ export function getFeatures(lang: "it" | "en", t: any): FeatureItem[] {
       icon: <Brain className="w-5 h-5 text-black" />,
       title: t.feat3Title,
       description: t.feat3Desc,
-      image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800",
+      image: featureImage3,
       tags: lang === "it" ? ["DESIGN PIXEL-PERFECT", "SU MISURA"] : ["PIXEL-PERFECT", "CUSTOM DESIGN"],
       highlightMetrics: lang === "it"
         ? ["100% Codice Artigianale", "Memorabilità Brand: 95%", "UX Mobile Ottimizzata"]
