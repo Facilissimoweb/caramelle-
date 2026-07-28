@@ -173,6 +173,7 @@ export default function Header({
     { id: "siti-web", label: t.navSitiWeb },
     { id: "contatti", label: t.navContatti },
     { id: "blog", label: t.navBlog },
+    { id: "chat", label: t.navChat },
   ];
 
   const handleNavClick = (tabId: string) => {

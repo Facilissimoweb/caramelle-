@@ -141,6 +141,7 @@ export default function Footer({
               { id: "siti-web", label: "Proposte" },
               { id: "contatti", label: "Contatti" },
               { id: "blog", label: "Blog & News" },
+              { id: "chat", label: "Chat AI" },
             ].map((link) => (
               <li key={link.id}>
                 <button
