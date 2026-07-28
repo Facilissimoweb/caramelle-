@@ -8,6 +8,7 @@ import TattooMacerataApp from "./TattooMacerataApp";
 import GustoPassioneApp from "./GustoPassioneApp";
 import NidoSogniApp from "./NidoSogniApp";
 const regeneratedHeroImage = new URL("../assets/images/regenerated_image_1785222023722.png", import.meta.url).href;
+const regeneratedLogoImage = new URL("../assets/images/regenerated_image_1785222608486.png", import.meta.url).href;
 const logoImage = "/f (1600 x 500 px).webp";
 
 interface HomeViewProps {
@@ -129,9 +130,9 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           <div className="lg:col-span-8 xl:col-span-8 space-y-6">
             <div className="flex items-center gap-2 mb-4 animate-fade-in-up">
               <img
-                src={logoImage}
+                src={regeneratedLogoImage}
                 alt="Facilissimo Web Logo"
-                className="w-[150px] h-[150px] object-contain bg-white"
+                className="w-[150px] h-[150px] object-contain bg-white rounded-2xl shadow-md p-1 overflow-hidden"
               />
             </div>
             <span 
@@ -150,7 +151,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               </span>
             </h1>
  
-            <p className="font-sans text-[21px] font-bold italic text-[#373333] bg-white max-w-xl leading-relaxed animate-fade-in-up delay-150 ml-0 px-4 pt-3 pb-[6px] rounded-xl shadow-md" style={{ fontSize: "21px" }}>
+            <p className="font-sans text-[21px] font-bold italic text-[#373333] bg-white max-w-xl leading-relaxed animate-fade-in-up delay-150 ml-0 px-4 pt-3 pb-[6px] rounded-xl shadow-md" style={{ fontSize: "21px", fontFamily: "Arial, sans-serif" }}>
               {t.heroDesc}
             </p>
  
@@ -554,7 +555,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   </h2>
 
                   {/* Aesthetic Representation - Big Image with dynamic scanlines overlay */}
-                  <div className="relative aspect-[16/10] overflow-hidden border border-[rgba(248,247,244,0.15)] bg-zinc-950 shadow-2xl group">
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-[rgba(248,247,244,0.15)] bg-zinc-950 shadow-2xl group">
                     <img
                       src={features[activeFeaturePopupIndex].image}
                       alt={features[activeFeaturePopupIndex].title}
