@@ -57,8 +57,8 @@ export default function Footer({
     >
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-10">
         
-        {/* Brand Info */}
-        <div className="md:col-span-5 space-y-4">
+        {/* Brand Info & Studio Details */}
+        <div className="md:col-span-5 space-y-5 order-1">
           <div className="flex items-center gap-3">
             <img
               src={logoImage}
@@ -72,14 +72,15 @@ export default function Footer({
           <p className="text-xs sm:text-sm text-white/80 max-w-sm leading-relaxed font-sans">
             Siti web evoluti, veloci e performanti, progettati e sviluppati su misura grazie alla potenza dell'Intelligenza Artificiale.
           </p>
-          <div className="pt-2 text-[10px] text-white font-mono space-y-1 uppercase tracking-wider font-bold">
+
+          <address className="not-italic pt-1 text-[10px] text-white font-mono space-y-1 uppercase tracking-wider font-bold">
             <p>Studio: Facilissimo Web • M. Teresa Rogani</p>
             <p>Freelance Web Designer &amp; AI Specialist</p>
             <p className="text-white/70 flex items-center gap-1.5 normal-case font-sans">
-              <MapPin className="w-3.5 h-3.5 text-white" /> Macerata (Marche), Italia
+              <MapPin className="w-3.5 h-3.5 text-white shrink-0" /> Macerata (Marche), Italia
             </p>
             <p className="text-white/50 font-normal">P.IVA: 02136780430</p>
-          </div>
+          </address>
           
           <p className="text-[10px] text-white/60 leading-relaxed font-sans italic border-t border-white/10 pt-3 mt-3">
             {lang === "it"
@@ -87,10 +88,10 @@ export default function Footer({
               : "AI Co-created site: all articles, images, and content displayed on this website were created with the involvement of Artificial Intelligence (AI) and manually refined."}
           </p>
           
-          <div className="pt-4 space-y-2.5">
-            <span className="text-[9px] font-mono tracking-[0.2em] text-white/40 uppercase block">
+          <div className="pt-2 space-y-2.5">
+            <h3 className="text-[9px] font-mono tracking-[0.2em] text-white/50 uppercase block font-bold">
               {lang === "it" ? "METODI DI PAGAMENTO SICURI" : "SECURE PAYMENT METHODS"}
-            </span>
+            </h3>
             <div className="flex flex-wrap gap-2 pt-1">
               {/* Stripe */}
               <div className="flex items-center gap-2 px-3 py-1.5 bg-[#17171c] border border-white/10 hover:border-[#635BFF]/50 transition-all rounded-md text-[10px] font-sans font-medium text-white/90 cursor-default select-none">
@@ -129,12 +130,12 @@ export default function Footer({
           </div>
         </div>
 
-        {/* Navigation Links */}
-        <div className="md:col-span-3">
-          <h4 className="text-[10px] uppercase tracking-widest text-white font-bold mb-4 font-mono">
-            Menu Sito
-          </h4>
-          <ul className="space-y-2.5 text-xs font-mono uppercase tracking-wider">
+        {/* Navigation Links (Semantic <nav>) */}
+        <nav aria-label={lang === "it" ? "Navigazione piè di pagina" : "Footer navigation"} className="md:col-span-3 space-y-4 order-2">
+          <h3 className="text-[10px] uppercase tracking-widest text-white font-bold font-mono">
+            {lang === "it" ? "Menu Sito" : "Site Menu"}
+          </h3>
+          <ul className="space-y-3 text-xs font-mono uppercase tracking-wider">
             {[
               { id: "home", label: lang === "it" ? "Home" : "Home" },
               { id: "chi-sono", label: lang === "it" ? "Chi Sono" : "About Me" },
@@ -147,48 +148,54 @@ export default function Footer({
               <li key={link.id}>
                 <button
                   onClick={() => handleNavClick(link.id)}
-                  className="text-white/70 hover:text-white hover:underline cursor-pointer transition-colors text-left font-bold"
+                  className="text-white/80 hover:text-white hover:underline cursor-pointer transition-colors text-left font-bold py-1 flex items-center gap-1.5 min-h-[36px]"
                 >
-                  {link.label}
+                  <span className="text-amber-400 text-[10px]">›</span>
+                  <span>{link.label}</span>
                 </button>
               </li>
             ))}
           </ul>
-        </div>
+        </nav>
 
         {/* Support & Philosophy */}
-        <div className="md:col-span-4 space-y-4">
-          <h4 className="text-[10px] uppercase tracking-widest text-white font-bold mb-1 font-mono">
-            Contatto Diretto
-          </h4>
-          <p className="text-xs sm:text-sm text-white/80 leading-relaxed font-sans">
-            Nessun intermediario, nessun call center. Parli direttamente con me per ogni singola riga di codice o pixel di design.
-          </p>
-          <div className="flex flex-col gap-2.5 pt-2">
+        <div className="md:col-span-4 space-y-5 order-3">
+          <div className="space-y-2">
+            <h3 className="text-[10px] uppercase tracking-widest text-white font-bold font-mono">
+              {lang === "it" ? "Contatto Diretto" : "Direct Contact"}
+            </h3>
+            <p className="text-xs sm:text-sm text-white/80 leading-relaxed font-sans">
+              {lang === "it"
+                ? "Nessun intermediario, nessun call center. Parli direttamente con me per ogni singola riga di codice o pixel di design."
+                : "No middleman, no call centers. Speak directly with me for every line of code or pixel of design."}
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-2.5 pt-1">
             <a
               href="mailto:facilissimoweb.mc@gmail.com"
-              className="flex items-center gap-2.5 text-xs text-white hover:text-white transition-all border border-white/15 hover:border-white px-3.5 py-2.5 rounded-none w-fit font-bold"
+              className="flex items-center gap-2.5 text-xs text-white hover:text-white transition-all border border-white/20 hover:border-white px-3.5 py-3 rounded-none w-full sm:w-fit font-bold bg-[#111113] hover:bg-black"
               title="Invia Email"
             >
-              <Mail className="w-4 h-4 text-white" />
-              <span className="font-medium font-mono">facilissimoweb.mc@gmail.com</span>
+              <Mail className="w-4 h-4 text-amber-400 shrink-0" />
+              <span className="font-medium font-mono text-[11px] sm:text-xs">facilissimoweb.mc@gmail.com</span>
             </a>
             
             <a
               href="tel:+393793603321"
-              className="flex items-center gap-2.5 text-xs text-white hover:text-white transition-all border border-white/15 hover:border-white px-3.5 py-2.5 rounded-none w-fit font-bold"
+              className="flex items-center gap-2.5 text-xs text-white hover:text-white transition-all border border-white/20 hover:border-white px-3.5 py-3 rounded-none w-full sm:w-fit font-bold bg-[#111113] hover:bg-black"
               title="Chiama al Telefono"
             >
-              <Phone className="w-4 h-4 text-white" />
-              <span className="font-medium font-mono">+39 379 360 3321</span>
+              <Phone className="w-4 h-4 text-amber-400 shrink-0" />
+              <span className="font-medium font-mono text-[11px] sm:text-xs">+39 379 360 3321</span>
             </a>
           </div>
 
           {/* Dynamic Page Sharing Section inside Footer */}
-          <div className="pt-6 border-t border-white/10 mt-6 space-y-3">
-            <h5 className="text-[9px] uppercase tracking-[0.2em] text-white/40 font-bold font-mono">
+          <div className="pt-5 border-t border-white/10 mt-5 space-y-3">
+            <h4 className="text-[9px] uppercase tracking-[0.2em] text-white/50 font-bold font-mono">
               {lang === "it" ? "Condividi questa pagina" : "Share this page"}
-            </h5>
+            </h4>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
               <button
                 onClick={() => {
@@ -214,7 +221,7 @@ export default function Footer({
                     });
                   }
                 }}
-                className="flex items-center justify-center gap-2 text-[10px] text-white hover:text-white transition-all bg-[#17171c] border border-white/10 hover:border-white px-3.5 py-2 cursor-pointer uppercase font-mono font-bold"
+                className="flex items-center justify-center gap-2 text-[10px] text-white hover:text-white transition-all bg-[#17171c] border border-white/20 hover:border-white px-3.5 py-2.5 cursor-pointer uppercase font-mono font-bold"
                 id="footer-share-action-btn"
               >
                 <Share2 className="w-3.5 h-3.5 text-white" />
@@ -236,7 +243,7 @@ export default function Footer({
                     setTimeout(() => setCopiedLink(false), 2000);
                   });
                 }}
-                className="flex items-center justify-center gap-2 text-[10px] text-white hover:text-white transition-all bg-[#17171c] border border-white/10 hover:border-white px-3.5 py-2 cursor-pointer uppercase font-mono font-bold"
+                className="flex items-center justify-center gap-2 text-[10px] text-white hover:text-white transition-all bg-[#17171c] border border-white/20 hover:border-white px-3.5 py-2.5 cursor-pointer uppercase font-mono font-bold"
                 id="footer-copy-action-btn"
               >
                 {copiedLink ? (
