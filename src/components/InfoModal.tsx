@@ -124,8 +124,11 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
                 <h4 className="font-display font-bold text-xs uppercase tracking-wider text-white">1. Navigazione Principale</h4>
                 <ul className="space-y-1.5 pl-3 border-l border-[rgba(248,247,244,0.15)] text-[11px] font-mono">
                   <li>• <strong>Inizio (Home):</strong> Vetrina, Filosofia, SEO Predittiva e FAQ</li>
-                  <li>• <strong>Chi Sono:</strong> Presentazione dello studio e metodo di lavoro</li>
-                  <li>• <strong>Contatti:</strong> Modulo di preventivo rapido e contatti diretti</li>
+                  <li>• <strong>Chi Sono:</strong> Presentazione personale e metodo di lavoro artigianale</li>
+                  <li>• <strong>Proposte:</strong> Demo e progetti web interattivi su misura</li>
+                  <li>• <strong>Abbonamento:</strong> Piani gestiti WaaS con manutenzione e sicurezza incluse</li>
+                  <li>• <strong>Contatti:</strong> Modulo di preventivo rapido e recapiti diretti</li>
+                  <li>• <strong>Blog &amp; News:</strong> Articoli di approfondimento su SEO IA e strategie digitali</li>
                 </ul>
               </div>
               <div className="space-y-2">
@@ -149,10 +152,12 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
               <div>
                 <h4 className="font-bold text-white">Pagine principali che puoi visitare:</h4>
                 <ul className="list-disc pl-5 mt-2 space-y-1.5 text-sm">
-                  <li><strong>Home Page:</strong> Presentazione del mio studio, cos'è la SEO Predittiva e risposte alle domande comuni.</li>
-                  <li><strong>Chi Sono:</strong> Conosci meglio me, Teresa, e come lavoro.</li>
-                  <li><strong>Contatti:</strong> Mandami un messaggio o chiamami per iniziare il tuo progetto.</li>
-                  <li><strong>Assistente AI:</strong> Parla con il mio assistente virtuale per un preventivo guidato.</li>
+                  <li><strong>Home Page:</strong> Presentazione di Facilissimo Web, cos'è la SEO Predittiva e risposte alle domande frequenti.</li>
+                  <li><strong>Chi Sono:</strong> Conosci meglio me, Teresa, e il mio approccio di lavoro.</li>
+                  <li><strong>Proposte:</strong> Scopri ed esplora gli esempi di siti web e web app che ho realizzato.</li>
+                  <li><strong>Abbonamento:</strong> Scopri la formula gestita senza costi di sorpresa.</li>
+                  <li><strong>Contatti:</strong> Scrivimi un messaggio o chiamami per richiedere un preventivo.</li>
+                  <li><strong>Blog &amp; News:</strong> Leggi articoli e guide pratiche sull'Intelligenza Artificiale.</li>
                 </ul>
               </div>
             </div>

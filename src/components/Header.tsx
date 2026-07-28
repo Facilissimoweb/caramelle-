@@ -169,9 +169,9 @@ export default function Header({
 
   const navItems = [
     { id: "home", label: t.navInizio },
-    { id: "abbonamento", label: t.navAbbonamento },
-    { id: "siti-web", label: t.navSitiWeb },
     { id: "chi-sono", label: t.navChiSono },
+    { id: "siti-web", label: t.navSitiWeb },
+    { id: "abbonamento", label: t.navAbbonamento },
     { id: "contatti", label: t.navContatti },
     { id: "blog", label: t.navBlog },
   ];

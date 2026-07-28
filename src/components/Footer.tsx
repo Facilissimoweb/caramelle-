@@ -136,12 +136,12 @@ export default function Footer({
           </h4>
           <ul className="space-y-2.5 text-xs font-mono uppercase tracking-wider">
             {[
-              { id: "home", label: "Home" },
-              { id: "abbonamento", label: "Sito in Abbonamento" },
-              { id: "chi-sono", label: "Chi Sono" },
-              { id: "siti-web", label: "Proposte" },
-              { id: "contatti", label: "Contatti" },
-              { id: "blog", label: "Blog & News" },
+              { id: "home", label: lang === "it" ? "Home" : "Home" },
+              { id: "chi-sono", label: lang === "it" ? "Chi Sono" : "About Me" },
+              { id: "siti-web", label: lang === "it" ? "Proposte" : "Proposals" },
+              { id: "abbonamento", label: lang === "it" ? "Abbonamento" : "Subscription" },
+              { id: "contatti", label: lang === "it" ? "Contatti" : "Contact" },
+              { id: "blog", label: lang === "it" ? "Blog & News" : "Blog & News" },
             ].map((link) => (
               <li key={link.id}>
                 <button
