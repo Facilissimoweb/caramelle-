@@ -1,4 +1,5 @@
 import React from "react";
+import { WaasFlashcards } from "./WaasFlashcards";
 import { 
   Rocket, 
   AlertTriangle, 
@@ -323,6 +324,11 @@ export const SubscriptionView: React.FC<SubscriptionViewProps> = ({
             </div>
 
           </div>
+        </section>
+
+        {/* INTERACTIVE FLASHCARDS SECTION */}
+        <section className="bg-white border border-[#111113]/15 p-6 md:p-10 shadow-sm">
+          <WaasFlashcards lang={lang} />
         </section>
 
         {/* SECTION 3: SCHEDA SINTETICA DEL MODELLO */}
