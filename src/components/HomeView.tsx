@@ -131,7 +131,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               <img
                 src={logoImage}
                 alt="Facilissimo Web Logo"
-                className="w-[150px] h-[150px] object-contain animate-pulse"
+                className="w-[150px] h-[150px] object-contain bg-white"
               />
             </div>
             <span 
@@ -172,17 +172,17 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             </div>
  
             {/* Micro proof badges */}
-            <div className="flex flex-wrap items-center gap-6 pt-8 border-t border-[#111113]/10 text-[9px] uppercase tracking-widest font-mono text-[#111113]/60 max-w-lg animate-fade-in-up delay-300">
+            <div className="flex flex-wrap items-center gap-6 pt-8 border-t border-white/20 text-[9px] uppercase tracking-widest font-mono text-white max-w-lg animate-fade-in-up delay-300">
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-black" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-white" />
                 <span>{t.proofDirect}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-black" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-white" />
                 <span>{t.proofDelivery}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-black" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-white" />
                 <span>{t.proofPrices}</span>
               </div>
             </div>

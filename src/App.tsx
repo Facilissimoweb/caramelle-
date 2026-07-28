@@ -12,6 +12,7 @@ import WebAppView from "./components/WebAppView";
 import SitiWebView from "./components/SitiWebView";
 import InfoModal from "./components/InfoModal";
 import AccessibilityWidget from "./components/AccessibilityWidget";
+import { ToastContainer, ToastMessage, ToastType } from "./components/Toast";
 import { safeStorage } from "./lib/safeStorage";
 
 const logoImage = "/f (1600 x 500 px).webp";
@@ -290,6 +291,24 @@ export default function App() {
   });
   const [isAccessibilityOpen, setIsAccessibilityOpen] = useState<boolean>(false);
 
+  // Global Toast Notifications State
+  const [toasts, setToasts] = useState<ToastMessage[]>([]);
+
+  const showToast = (title: string, message?: string, type: ToastType = "success", duration = 4500) => {
+    const newToast: ToastMessage = {
+      id: Date.now().toString() + Math.random().toString(36).substring(2, 5),
+      title,
+      message,
+      type,
+      duration,
+    };
+    setToasts((prev) => [...prev.slice(-3), newToast]);
+  };
+
+  const handleDismissToast = (id: string) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
+  };
+
   // Scroll to top automatically when currentTab changes
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -509,6 +528,7 @@ export default function App() {
             isFacilitated={isFacilitated}
             selectedPackage={selectedPackage}
             setSelectedPackage={setSelectedPackage}
+            onShowToast={showToast}
           />
         );
       case "chat":
@@ -540,7 +560,7 @@ export default function App() {
       <aside className="hidden xl:flex w-[280px] h-screen fixed left-0 top-0 border-r border-white/10 bg-[#111113] p-10 flex-col justify-between z-30 select-none text-white">
         <div className="space-y-16">
           <div className="logo-block group cursor-pointer" onClick={() => handleSetTab("home")}>
-            <div className="logo-text cyber-glitch-logo">
+            <div className="logo-text">
               <img
                 src={logoImage}
                 alt="Facilissimo Web Logo"
@@ -785,6 +805,8 @@ export default function App() {
           </motion.button>
         )}
       </AnimatePresence>
+      {/* Global Toast Notifications */}
+      <ToastContainer toasts={toasts} onDismiss={handleDismissToast} />
     </div>
   );
 }

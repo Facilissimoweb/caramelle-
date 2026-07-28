@@ -9,9 +9,10 @@ interface ContattiViewProps {
   isFacilitated: boolean;
   selectedPackage?: string | null;
   setSelectedPackage?: (pkg: string | null) => void;
+  onShowToast?: (title: string, message?: string, type?: "success" | "error" | "info" | "warning") => void;
 }
 
-export default function ContattiView({ lang, isFacilitated, selectedPackage, setSelectedPackage }: ContattiViewProps) {
+export default function ContattiView({ lang, isFacilitated, selectedPackage, setSelectedPackage, onShowToast }: ContattiViewProps) {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const bgImages = [
     "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1920",
@@ -95,6 +96,15 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
       const data = await res.json();
       setSuccess(true);
       setEmailSent(data.emailSent || false);
+      
+      onShowToast?.(
+        lang === "it" ? "Richiesta Inviata con Successo!" : "Request Sent Successfully!",
+        lang === "it"
+          ? "Grazie per avermi contattato. Ho ricevuto la tua richiesta e ti risponderò entro 24 ore."
+          : "Thank you for reaching out! I have received your request and will get back to you within 24 hours.",
+        "success"
+      );
+
       setFormData({
         name: "",
         email: "",
@@ -104,7 +114,13 @@ export default function ContattiView({ lang, isFacilitated, selectedPackage, set
         message: "",
       });
     } catch (err: any) {
-      setError(err.message || "Impossibile inviare la richiesta.");
+      const errMsg = err.message || "Impossibile inviare la richiesta.";
+      setError(errMsg);
+      onShowToast?.(
+        lang === "it" ? "Errore nell'invio" : "Submission Error",
+        errMsg,
+        "error"
+      );
     } finally {
       setLoading(false);
     }
