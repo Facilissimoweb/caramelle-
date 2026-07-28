@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ArrowRight, BookOpen, Compass, Award, Palette, Layers, Cpu, Film, UserCheck } from "lucide-react";
+import { ArrowRight, BookOpen, Compass, Award, Palette, Layers, Cpu, UserCheck } from "lucide-react";
 
 const logoImage = "/f (1600 x 500 px).webp";
 
@@ -14,16 +14,16 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
     {
       num: "01",
       title: "Grammatica Visiva e Metodo Progettuale",
-      subtitle: "Diploma in Tecnico Grafico Pubblicitario",
+      subtitle: "Diploma Superiore in Grafica Pubblicitaria",
       icon: <Palette className="w-5 h-5 text-black" />,
-      desc: "Il mio percorso parte dai principi fondamentali del design sistemico e della comunicazione visiva. La formazione tecnica mi ha fornito competenze consolidate in tipografia, teoria della percezione (Gestalt), griglie compositive e gerarchia dell'informazione. Una solida struttura di base che guida tuttora la mia metodologia progettuale nella realizzazione di layout essenziali, performanti ed ergonomici.",
+      desc: "Il percorso parte dai principi fondamentali del design e della comunicazione visiva. La formazione tecnica ha fornito competenze consolidate in tipografia, teoria della percezione, griglie compositive e gerarchia dell'informazione. Una solida struttura di base che guida la metodologia progettuale nella realizzazione di layout essenziali, performanti ed ergonomici.",
     },
     {
       num: "02",
-      title: "Sintassi Narrativa e Semiotica dell'Immagine",
-      subtitle: "Laurea in Tecniche della Comunicazione Visiva — Accademia di Belle Arti di Macerata",
-      icon: <Film className="w-5 h-5 text-black" />,
-      desc: "L'approfondimento universitario ha spostato il focus sulla dimensione semiotica e narrativa dei linguaggi visivi. La laurea, completata con una tesi in Storia del Cinema, mi ha permesso di analizzare la sintassi dell'immagine in movimento, la teoria del colore, il ritmo sequenziale e la costruzione dell'inquadratura. Trasferisco questa sensibilità nel web design per strutturare percorsi di navigazione coerenti, ingaggianti e dotati di un forte impianto narrativo.",
+      title: "Sintassi Narrativa e Comunicazione Multimediale",
+      subtitle: "Laurea in Tecniche della Comunicazione Visiva Multimediale",
+      icon: <Award className="w-5 h-5 text-black" />,
+      desc: "L'approfondimento universitario ha consolidato le competenze nei linguaggi visivi e nella progettazione multimediale. La laurea in Tecniche della Comunicazione Visiva Multimediale ha fornito gli strumenti teorici e pratici per analizzare la percezione visiva, la teoria del colore e il ritmo sequenziale. Trasferisco questa sensibilità nel web design per strutturare percorsi di navigazione coerenti, ingaggianti ed efficaci.",
     },
     {
       num: "03",
@@ -56,9 +56,9 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
     },
     {
       num: "3",
-      title: "Narrazione per Immagini (Sintesi Cinematografica)",
+      title: "Sistema d'Immagine Narrativo e Comunicazione Visiva",
       icon: <Compass className="w-5 h-5 text-black" />,
-      desc: "Ogni interfaccia racconta una storia. Attingendo alla grammatica del cinema e della semiotica visiva, la gestione del colore, del ritmo e dell'inquadratura guida l'utente all'interno dell'esperienza digitale in modo fluido, naturale ed emozionalmente ingaggiante.",
+      desc: "Ogni interfaccia racconta una storia. Attingendo alla grammatica del sistema d'immagine visivo e della comunicazione multimediale, la gestione del colore, del ritmo compositivo e della sequenza guida l'utente all'interno dell'esperienza digitale in modo fluido, naturale ed efficace.",
     },
     {
       num: "4",
@@ -169,7 +169,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
               Dalla teoria della percezione all'architettura dell'interfaccia
             </h2>
             <p className="text-[#111113]/70 font-sans text-sm sm:text-base leading-relaxed">
-              Un itinerario formativo multidisciplinare che intreccia comunicazione visiva, semiotica cinematografica, analisi filosofica e sensibilità spaziale.
+              Un itinerario formativo multidisciplinare che intreccia comunicazione visiva, sistema d'immagine narrativo e multimediale, analisi filosofica e sensibilità spaziale.
             </p>
           </div>
 
