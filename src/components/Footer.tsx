@@ -140,6 +140,7 @@ export default function Footer({
               { id: "chi-sono", label: "Chi Sono" },
               { id: "siti-web", label: "Proposte" },
               { id: "contatti", label: "Contatti" },
+              { id: "chat", label: "Assistente Chat AI" },
               { id: "blog", label: "Blog & News" },
             ].map((link) => (
               <li key={link.id}>

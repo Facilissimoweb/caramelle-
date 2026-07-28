@@ -240,9 +240,6 @@ export default function FloatingChatWidget({
                   <h3 className="font-bold text-sm leading-tight text-white flex items-center gap-1.5 font-sans">
                     {lang === "it" ? "Assistente AI Facilissimo Web" : "Facilissimo Web AI Assistant"}
                   </h3>
-                  <p className="text-[10px] text-white/70 font-mono tracking-wider uppercase">
-                    {lang === "it" ? "M. Teresa Rogani • Risposta Immediata" : "M. Teresa Rogani • Instant Reply"}
-                  </p>
                 </div>
               </div>
 

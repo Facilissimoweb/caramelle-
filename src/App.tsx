@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import HomeView from "./components/HomeView";
 import AboutView from "./components/AboutView";
 import ContattiView from "./components/ContattiView";
+import ChatView from "./components/ChatView";
 import FloatingChatWidget from "./components/FloatingChatWidget";
 import BlogView from "./components/BlogView";
 import WebAppView from "./components/WebAppView";
@@ -140,7 +141,7 @@ export const initTrackingConsentUtility = () => {
   }
 };
 
-const TABS_ORDER = ["home", "chi-sono", "siti-web", "contatti", "blog"];
+const TABS_ORDER = ["home", "chi-sono", "siti-web", "contatti", "chat", "blog"];
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>("home");
@@ -531,6 +532,8 @@ export default function App() {
             onShowToast={showToast}
           />
         );
+      case "chat":
+        return <ChatView lang={lang} isFacilitated={isFacilitated} />;
       case "blog":
         return (
           <BlogView
