@@ -126,7 +126,6 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
                   <li>• <strong>Inizio (Home):</strong> Vetrina, Filosofia, SEO Predittiva e FAQ</li>
                   <li>• <strong>Chi Sono:</strong> Presentazione dello studio e metodo di lavoro</li>
                   <li>• <strong>Contatti:</strong> Modulo di preventivo rapido e contatti diretti</li>
-                  <li>• <strong>Assistente Chat AI:</strong> Chat interattiva per risposte immediate</li>
                 </ul>
               </div>
               <div className="space-y-2">

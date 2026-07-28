@@ -10,7 +10,6 @@ import FloatingChatWidget from "./components/FloatingChatWidget";
 import BlogView from "./components/BlogView";
 import WebAppView from "./components/WebAppView";
 import SitiWebView from "./components/SitiWebView";
-import { ChatView } from "./components/ChatView";
 import InfoModal from "./components/InfoModal";
 import AccessibilityWidget from "./components/AccessibilityWidget";
 import { ToastContainer, ToastMessage, ToastType } from "./components/Toast";
@@ -141,7 +140,7 @@ export const initTrackingConsentUtility = () => {
   }
 };
 
-const TABS_ORDER = ["home", "chi-sono", "siti-web", "contatti", "blog", "chat"];
+const TABS_ORDER = ["home", "chi-sono", "siti-web", "contatti", "blog"];
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>("home");
@@ -228,7 +227,6 @@ export default function App() {
         case "blog": return "Blog & News";
         case "chi-sono": return "Chi Sono";
         case "contatti": return "Contatti";
-        case "chat": return "Assistente AI";
         default: return tabId;
       }
     } else {
@@ -239,7 +237,6 @@ export default function App() {
         case "blog": return "Blog & News";
         case "chi-sono": return "About Me";
         case "contatti": return "Contact";
-        case "chat": return "AI Chat";
         default: return tabId;
       }
     }
@@ -542,8 +539,6 @@ export default function App() {
             setSelectedArticle={handleSetArticle}
           />
         );
-      case "chat":
-        return <ChatView lang={lang} isFacilitated={isFacilitated} setCurrentTab={handleSetTab} />;
       default:
         return <HomeView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} onOpenModal={setActiveModal} />;
     }
