@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import HomeView from "./components/HomeView";
 import AboutView from "./components/AboutView";
 import ContattiView from "./components/ContattiView";
-import ChatView from "./components/ChatView";
+import FloatingChatWidget from "./components/FloatingChatWidget";
 import BlogView from "./components/BlogView";
 import WebAppView from "./components/WebAppView";
 import SitiWebView from "./components/SitiWebView";
@@ -140,10 +140,11 @@ export const initTrackingConsentUtility = () => {
   }
 };
 
-const TABS_ORDER = ["home", "chi-sono", "siti-web", "contatti", "chat", "blog"];
+const TABS_ORDER = ["home", "chi-sono", "siti-web", "contatti", "blog"];
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>("home");
+  const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
   const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
   const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
   const [slideDirection, setSlideDirection] = useState<"left" | "right">("left");
@@ -514,7 +515,7 @@ export default function App() {
   const renderActiveView = () => {
     switch (currentTab) {
       case "home":
-        return <HomeView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} onOpenModal={setActiveModal} />;
+        return <HomeView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} onOpenModal={setActiveModal} onOpenChat={() => setIsChatOpen(true)} />;
       case "web-app":
       case "siti-web":
         return <SitiWebView lang={lang} isFacilitated={isFacilitated} setCurrentTab={handleSetTab} />;
@@ -530,8 +531,6 @@ export default function App() {
             onShowToast={showToast}
           />
         );
-      case "chat":
-        return <ChatView lang={lang} isFacilitated={isFacilitated} />;
       case "blog":
         return (
           <BlogView
@@ -779,6 +778,14 @@ export default function App() {
         setIsOpen={setIsAccessibilityOpen}
       />
 
+      {/* Sticky Floating Chat Nuvoletta Widget */}
+      <FloatingChatWidget
+        lang={lang}
+        isFacilitated={isFacilitated}
+        isOpen={isChatOpen}
+        setIsOpen={setIsChatOpen}
+      />
+
       {/* Floating Back to Top Button */}
       <AnimatePresence>
         {showScrollTop && (
@@ -795,7 +802,7 @@ export default function App() {
               mass: 0.8
             }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 right-6 z-40 w-11 h-11 bg-[#FAF9F6]/95 hover:bg-black text-[#111113] hover:text-[#FAF9F6] border border-[#111113]/30 hover:border-black rounded-none flex items-center justify-center cursor-pointer transition-colors duration-300 shadow-xl font-mono text-[9px] font-bold group"
+            className="fixed bottom-22 right-6 z-40 w-11 h-11 bg-[#FAF9F6]/95 hover:bg-black text-[#111113] hover:text-[#FAF9F6] border border-[#111113]/30 hover:border-black rounded-none flex items-center justify-center cursor-pointer transition-colors duration-300 shadow-xl font-mono text-[9px] font-bold group"
             title={lang === "it" ? "Torna su" : "Back to top"}
             id="back-to-top-btn"
             aria-label={lang === "it" ? "Torna in cima alla pagina" : "Back to top"}

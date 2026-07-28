@@ -16,9 +16,10 @@ interface HomeViewProps {
   lang: "it" | "en";
   isFacilitated: boolean;
   onOpenModal?: (type: "privacy" | "terms" | "ethics" | "sitemap") => void;
+  onOpenChat?: () => void;
 }
 
-export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenModal }: HomeViewProps) {
+export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenModal, onOpenChat }: HomeViewProps) {
   const t = translations[lang][isFacilitated ? "facilitated" : "normal"];
 
   const aiTools = [
@@ -434,7 +435,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 <span>{t.ctaBtnPrimary}</span>
               </button>
               <button
-                onClick={() => setCurrentTab("chat")}
+                onClick={() => onOpenChat ? onOpenChat() : setCurrentTab("contatti")}
                 className="solid-light flex items-center justify-center text-center"
                 id="cta-chat-btn"
               >
