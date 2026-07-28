@@ -170,7 +170,6 @@ export default function Header({
   const navItems = [
     { id: "home", label: t.navInizio },
     { id: "chi-sono", label: t.navChiSono },
-    { id: "web-app", label: t.navWebApp },
     { id: "siti-web", label: t.navSitiWeb },
     { id: "contatti", label: t.navContatti },
     { id: "chat", label: t.navChat },

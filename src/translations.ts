@@ -63,8 +63,8 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
   it: {
     normal: {
       navInizio: "Home",
-      navWebApp: "Web App",
-      navSitiWeb: "Siti Web",
+      navWebApp: "Proposte",
+      navSitiWeb: "Proposte",
       navChiSono: "Chi Sono",
       navContatti: "Contatti",
       navChat: "Chat AI",
@@ -115,8 +115,8 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
     },
     facilitated: {
       navInizio: "Home",
-      navWebApp: "Siti Web App",
-      navSitiWeb: "Siti Web",
+      navWebApp: "Proposte",
+      navSitiWeb: "Proposte",
       navChiSono: "Chi Sono",
       navContatti: "Contatti",
       navChat: "Chat AI",
@@ -169,8 +169,8 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
   en: {
     normal: {
       navInizio: "Start",
-      navWebApp: "Web App",
-      navSitiWeb: "Websites",
+      navWebApp: "Proposals",
+      navSitiWeb: "Proposals",
       navChiSono: "About",
       navContatti: "Contact",
       navChat: "AI Chat",
@@ -221,8 +221,8 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
     },
     facilitated: {
       navInizio: "Start",
-      navWebApp: "Web Apps",
-      navSitiWeb: "Websites",
+      navWebApp: "Proposals",
+      navSitiWeb: "Proposals",
       navChiSono: "About",
       navContatti: "Contact",
       navChat: "AI Chat",

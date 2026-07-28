@@ -314,15 +314,15 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                 />
               </div>
               <span className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-white font-bold uppercase" style={{ letterSpacing: '0px' }}>
-                {lang === "it" ? "[ PROGETTI ATTIVI & INTERATTIVI ]" : "[ ACTIVE & INTERACTIVE PROJECTS ]"}
+                {lang === "it" ? "[ PROPOSTE DIGITALI & WEB APP ]" : "[ DIGITAL PROPOSALS & WEB APPS ]"}
               </span>
               <h1 className="font-tan text-3xl sm:text-5xl font-bold tracking-tight text-[#111113]">
-                {lang === "it" ? "Web App & Progetti" : "Web Apps & Projects"}
+                {lang === "it" ? "Proposte, Web App & Progetti" : "Proposals, Web Apps & Projects"}
               </h1>
               <p className="text-[#111113]/70 text-xs sm:text-sm leading-relaxed max-w-xl">
                 {lang === "it"
-                  ? "Esplora i miei progetti web App e le creazioni interattive realizzate da Facilissimo Web di M. Teresa Rogani. Puoi testarne l'esperienza d'uso simulando diversi dispositivi direttamente qui sotto."
-                  : "Explore my web App projects and interactive creations crafted by M. Teresa Rogani's Facilissimo Web. You can test the experience across different devices directly below."}
+                  ? "Esplora le proposte digitali, le web app interattive e le creazioni su misura realizzate da Facilissimo Web di M. Teresa Rogani. Puoi testarne l'esperienza d'uso simulando diversi dispositivi direttamente qui sotto."
+                  : "Explore digital proposals, interactive web apps, and bespoke creations crafted by M. Teresa Rogani's Facilissimo Web. You can test the experience across different devices directly below."}
               </p>
             </div>
             

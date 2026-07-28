@@ -26,15 +26,15 @@ const SEO_METADATA: Record<string, { title: string; description: string; keyword
     image: "/api/og-image?tab=home",
   },
   "web-app": {
-    title: "Web App & Applicativi Interattivi — Facilissimo Web Macerata",
-    description: "Sperimenta le demo live interattive dei nostri applicativi mobile-first realizzati da Facilissimo Web a Macerata. Gusto & Passione, Tattoo Macerata e molto altro.",
-    keywords: "web app macerata, applicativi web marche, gusto e passione, tattoo macerata, il nido dei sogni, m teresa rogani, web designer macerata",
-    image: "/api/og-image?tab=web-app",
+    title: "Proposte, Web App e Siti Web — Facilissimo Web Macerata",
+    description: "Esplora le nostre proposte digitali, web app interattive e siti web realizzati da Facilissimo Web a Macerata.",
+    keywords: "proposte web macerata, web app macerata, siti web macerata, m teresa rogani, web designer macerata",
+    image: "/api/og-image?tab=siti-web",
   },
   "siti-web": {
-    title: "Siti Web Interattivi e Presentazione — Facilissimo Web Macerata",
-    description: "Esplora i nostri siti web, presentazioni e menù interattivi realizzati su misura in stile Orange, Beige & Black da M. Teresa Rogani.",
-    keywords: "siti web macerata, canva design, menù interattivo, web designer marche, teresa rogani, portfolio interattivo",
+    title: "Proposte, Web App e Siti Web — Facilissimo Web Macerata",
+    description: "Esplora le nostre proposte digitali, web app interattive e siti web realizzati da Facilissimo Web a Macerata.",
+    keywords: "proposte web macerata, web app macerata, siti web macerata, m teresa rogani, web designer macerata",
     image: "/api/og-image?tab=siti-web",
   },
   "chi-sono": {
@@ -140,7 +140,7 @@ export const initTrackingConsentUtility = () => {
   }
 };
 
-const TABS_ORDER = ["home", "chi-sono", "web-app", "siti-web", "contatti", "chat", "blog"];
+const TABS_ORDER = ["home", "chi-sono", "siti-web", "contatti", "chat", "blog"];
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>("home");
@@ -221,8 +221,8 @@ export default function App() {
     if (lang === "it") {
       switch (tabId) {
         case "home": return "Home";
-        case "web-app": return "Web App";
-        case "siti-web": return "Siti Web";
+        case "web-app": return "Proposte";
+        case "siti-web": return "Proposte";
         case "blog": return "Blog & News";
         case "chi-sono": return "Chi Sono";
         case "contatti": return "Contatti";
@@ -232,8 +232,8 @@ export default function App() {
     } else {
       switch (tabId) {
         case "home": return "Home";
-        case "web-app": return "Web App";
-        case "siti-web": return "Websites";
+        case "web-app": return "Proposals";
+        case "siti-web": return "Proposals";
         case "blog": return "Blog & News";
         case "chi-sono": return "About Me";
         case "contatti": return "Contact";
@@ -516,9 +516,8 @@ export default function App() {
       case "home":
         return <HomeView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} onOpenModal={setActiveModal} />;
       case "web-app":
-        return <WebAppView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} />;
       case "siti-web":
-        return <SitiWebView lang={lang} isFacilitated={isFacilitated} />;
+        return <SitiWebView lang={lang} isFacilitated={isFacilitated} setCurrentTab={handleSetTab} />;
       case "chi-sono":
         return <AboutView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} />;
       case "contatti":
