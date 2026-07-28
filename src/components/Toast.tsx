@@ -33,13 +33,16 @@ export function ToastContainer({ toasts, onDismiss }: ToastContainerProps) {
   );
 }
 
+interface SingleToastProps {
+  key?: React.Key;
+  toast: ToastMessage;
+  onDismiss: (id: string) => void;
+}
+
 function SingleToast({
   toast,
   onDismiss,
-}: {
-  toast: ToastMessage;
-  onDismiss: (id: string) => void;
-}) {
+}: SingleToastProps) {
   const duration = toast.duration ?? 4500;
 
   useEffect(() => {

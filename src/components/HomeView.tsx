@@ -435,7 +435,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 <span>{t.ctaBtnPrimary}</span>
               </button>
               <button
-                onClick={() => setCurrentTab("chat")}
+                onClick={() => (onOpenChat ? onOpenChat() : setCurrentTab("contatti"))}
                 className="solid-light flex items-center justify-center text-center"
                 id="cta-chat-btn"
               >
