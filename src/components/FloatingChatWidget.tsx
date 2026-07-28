@@ -21,8 +21,8 @@ export default function FloatingChatWidget({
       id: "welcome",
       role: "model",
       text: lang === "it" 
-        ? "Ciao! Sono l'**Assistente Virtuale AI di Facilissimo Web**.\n\nSono qui per darti informazioni immediate sui nostri servizi di web design, siti web evoluti e sviluppo web app su misura.\n\nCome posso aiutarti oggi?"
-        : "Hello! I am the **AI Assistant for Facilissimo Web**.\n\nI'm here to provide instant information about our web design services, custom websites, and web apps.\n\nHow can I help you today?",
+        ? "Ciao! Sono l'**Assistente Virtuale AI di Facilissimo Web**.\n\nSono qui per darti informazioni immediate sui servizi di web design, siti web evoluti e sviluppo web app su misura offerti da Teresa per Facilissimo Web.\n\nCome posso aiutarti oggi?"
+        : "Hello! I am the **AI Assistant for Facilissimo Web**.\n\nI'm here to provide instant information about Teresa's web design services, custom websites, and web apps.\n\nHow can I help you today?",
       timestamp: new Date().toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" }),
     },
   ]);

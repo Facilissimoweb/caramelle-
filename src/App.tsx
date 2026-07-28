@@ -10,6 +10,7 @@ import FloatingChatWidget from "./components/FloatingChatWidget";
 import BlogView from "./components/BlogView";
 import WebAppView from "./components/WebAppView";
 import SitiWebView from "./components/SitiWebView";
+import { SubscriptionView } from "./components/SubscriptionView";
 import InfoModal from "./components/InfoModal";
 import AccessibilityWidget from "./components/AccessibilityWidget";
 import { ToastContainer, ToastMessage, ToastType } from "./components/Toast";
@@ -25,15 +26,21 @@ const SEO_METADATA: Record<string, { title: string; description: string; keyword
     keywords: "realizzazione siti web macerata, web designer marche, siti web veloci marche, siti web economici macerata, intelligenza artificiale macerata, seo macerata, m teresa rogani",
     image: "/og-image.png",
   },
+  abbonamento: {
+    title: "Sito Web in Abbonamento (WaaS) — Facilissimo Web Macerata",
+    description: "Sito web in abbonamento mensile o annuale con gestione continua, manutenzione, aggiornamenti e hosting incluso.",
+    keywords: "sito web in abbonamento, waas, saas sito web, sito web mensile, gestione sito web macerata, abbonamento sito internet",
+    image: "/og-image.png",
+  },
   "web-app": {
     title: "Proposte, Web App e Siti Web — Facilissimo Web Macerata",
-    description: "Esplora le nostre proposte digitali, web app interattive e siti web realizzati da Facilissimo Web a Macerata.",
+    description: "Esplora le proposte digitali, web app interattive e siti web realizzati da Facilissimo Web a Macerata.",
     keywords: "proposte web macerata, web app macerata, siti web macerata, m teresa rogani, web designer macerata",
     image: "/og-image.png",
   },
   "siti-web": {
     title: "Proposte, Web App e Siti Web — Facilissimo Web Macerata",
-    description: "Esplora le nostre proposte digitali, web app interattive e siti web realizzati da Facilissimo Web a Macerata.",
+    description: "Esplora le proposte digitali, web app interattive e siti web realizzati da Facilissimo Web a Macerata.",
     keywords: "proposte web macerata, web app macerata, siti web macerata, m teresa rogani, web designer macerata",
     image: "/og-image.png",
   },
@@ -140,7 +147,7 @@ export const initTrackingConsentUtility = () => {
   }
 };
 
-const TABS_ORDER = ["home", "chi-sono", "siti-web", "contatti", "blog"];
+const TABS_ORDER = ["home", "abbonamento", "chi-sono", "siti-web", "contatti", "blog"];
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>("home");
@@ -222,6 +229,7 @@ export default function App() {
     if (lang === "it") {
       switch (tabId) {
         case "home": return "Home";
+        case "abbonamento": return "Abbonamento";
         case "web-app": return "Proposte";
         case "siti-web": return "Proposte";
         case "blog": return "Blog & News";
@@ -232,6 +240,7 @@ export default function App() {
     } else {
       switch (tabId) {
         case "home": return "Home";
+        case "abbonamento": return "Subscription";
         case "web-app": return "Proposals";
         case "siti-web": return "Proposals";
         case "blog": return "Blog & News";
@@ -514,6 +523,8 @@ export default function App() {
     switch (currentTab) {
       case "home":
         return <HomeView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} onOpenModal={setActiveModal} onOpenChat={() => setIsChatOpen(true)} />;
+      case "abbonamento":
+        return <SubscriptionView lang={lang} isFacilitated={isFacilitated} setCurrentTab={handleSetTab} />;
       case "web-app":
       case "siti-web":
         return <SitiWebView lang={lang} isFacilitated={isFacilitated} setCurrentTab={handleSetTab} />;

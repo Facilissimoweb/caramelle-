@@ -361,7 +361,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   },
                   {
                     q: "L'Intelligenza Artificiale sostituisce il lavoro manuale del web designer?",
-                    a: "Assolutamente no. L'IA funge da incredibile acceleratore e assistente tecnico. Ogni singola riga di codice, combinazione cromatica, ottimizzazione SEO e scelta visiva di design viene curata, verificata, integrata e testata a mano nel nostro studio per assicurare un risultato artigianale ed esclusivo di altissimo livello.",
+                    a: "Assolutamente no. L'IA funge da incredibile acceleratore e assistente tecnico. Ogni singola riga di codice, combinazione cromatica, ottimizzazione SEO e scelta visiva di design viene curata, verificata, integrata e testata a mano da Teresa per Facilissimo Web per assicurare un risultato artigianale ed esclusivo di altissimo livello.",
                   },
                   {
                     q: "Quali sono i reali vantaggi in termini di tempi e di budget?",
@@ -376,8 +376,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                     a: "La SEO Predittiva è un metodo avanzato che utilizza l'IA per analizzare e anticipare i futuri trend di ricerca degli utenti prima dei tuoi competitor. Nel tuo sito web, come parte dei progetti Facilissimo Web, integro marcatori semantici, strutture di dati Schema.org avanzate e testi ottimizzati per intercettare i bisogni latenti dei clienti (locali nelle Marche o nazionali/esteri) non appena iniziano a manifestarsi. Questo ti posiziona davanti a tutti sui motori di ricerca con mesi di anticipo.",
                   },
                   {
-                    q: "Cosa succede dopo la consegna del sito? C'è supporto gratuito?",
-                    a: "Una volta completato il pagamento, la proprietà del sito e di tutto il codice sorgente passa al 100% a te. Inoltre, per garantirti la massima tranquillità, ogni pacchetto include 30 giorni di assistenza tecnica gratuita e diretta per correggere bug, chiarire dubbi o effettuare piccole rifiniture.",
+                    q: "Cosa succede dopo il lancio del sito? C'è supporto e gestione?",
+                    a: "Il tuo sito web viene mantenuto attivo, sicuro e aggiornato nel tempo da Teresa e Facilissimo Web con gestione tecnica continua. Per ogni progetto offro soluzioni con supporto diretto, manutenzione e aggiornamenti periodici inclusi per garantirti zero pensieri e un sito sempre perfetto.",
                   },
                 ]
               : [
@@ -387,7 +387,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   },
                   {
                     q: "Does AI replace the manual touch of a designer?",
-                    a: "Not at all. AI acts as a powerful technical assistant. Every single line of code, color palette, SEO setting, and visual design layout is manually reviewed, integrated, and polished by hand in our studio to ensure a premium, artisan finish that fits your brand.",
+                    a: "Not at all. AI acts as a powerful technical assistant. Every single line of code, color palette, SEO setting, and visual design layout is manually reviewed, integrated, and polished by hand by Teresa at Facilissimo Web to ensure a premium, artisan finish that fits your brand.",
                   },
                   {
                     q: "What are the exact time and cost advantages?",
@@ -402,8 +402,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                     a: "Predictive SEO is an advanced method using AI to discover and anticipate user search trends before your competitors do. I build your site with precise semantic markups, schema.org schemas, and targeted content designed to catch latent user needs as they emerge. This grants your business a head start on search engine results weeks or months before others adapt.",
                   },
                   {
-                    q: "What happens after the website is delivered? Is there support?",
-                    a: "Once final payment is cleared, you receive 100% full ownership of your website and all its files. To guarantee absolute peace of mind, every project includes 30 days of free direct technical support to resolve any minor bugs, answer questions, or make small tweaks.",
+                    q: "What happens after launch? Is there support and management?",
+                    a: "Your website is continuously maintained, secured, and updated over time by Teresa at Facilissimo Web with active technical management. I offer managed solutions with direct support, maintenance, and periodic updates included so your site stays fast, modern, and worry-free.",
                   },
                 ]
           }

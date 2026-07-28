@@ -18,6 +18,31 @@ export default function SitiWebView({ lang, isFacilitated, setCurrentTab }: Siti
       <div className="bg-[#F8F7F4] pt-8 pb-16 px-4 sm:px-6 md:px-12">
         <div className="max-w-4xl mx-auto space-y-10">
           
+          {/* BANNER PROPOSTA ABBONAMENTO (WaaS / SaaS) */}
+          <div className="bg-[#111113] text-white p-6 sm:p-8 border border-black shadow-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative overflow-hidden">
+            <div className="space-y-2 relative z-10 max-w-xl">
+              <span className="inline-block px-2.5 py-0.5 bg-amber-400 text-black font-mono text-[10px] font-bold uppercase tracking-widest">
+                {lang === "it" ? "NOVITÀ FACILISSIMO WEB" : "FACILISSIMO WEB FEATURE"}
+              </span>
+              <h3 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight">
+                {lang === "it" ? "🚀 Sito Web in Abbonamento (WaaS / SaaS)" : "🚀 Website as a Service Subscription"}
+              </h3>
+              <p className="text-xs sm:text-sm text-white/80 font-sans leading-relaxed">
+                {lang === "it"
+                  ? "Un sito web moderno e sempre aggiornato, senza l'ansia della gestione tecnica e con manutenzione inclusa mese dopo mese."
+                  : "A modern, lightweight website continuously updated and actively managed month after month."}
+              </p>
+            </div>
+            {setCurrentTab && (
+              <button
+                onClick={() => setCurrentTab("abbonamento")}
+                className="shrink-0 px-6 py-3 bg-white text-[#111113] font-mono text-xs uppercase tracking-wider font-bold hover:bg-amber-400 transition-colors shadow-sm"
+              >
+                {lang === "it" ? "Scopri la Proposta →" : "Explore Offer →"}
+              </button>
+            )}
+          </div>
+
           {/* Section Divider Header */}
           <div className="border-t-2 border-black/10 pt-12 space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-black text-white text-[11px] font-mono font-bold uppercase tracking-wider">

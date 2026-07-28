@@ -43,7 +43,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         normal: (
           <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
             <p><strong>1. Titolare del Trattamento:</strong> Il titolare del trattamento dei dati è Facilissimo Web Studio di M. Teresa Rogani, con recapiti indicati nel footer di questo sito.</p>
-            <p><strong>2. Tipologia di dati raccolti:</strong> Raccogliamo esclusivamente i dati inseriti volontariamente dall'utente attraverso il modulo di contatto (Nome, Email, Azienda, Tipologia di progetto, Budget stimato e Messaggio privato). Non utilizziamo cookie di profilazione di terze parti né vendiamo dati a soggetti esterni.</p>
+            <p><strong>2. Tipologia di dati raccolti:</strong> Raccolgo esclusivamente i dati inseriti volontariamente dall'utente attraverso il modulo di contatto (Nome, Email, Azienda, Tipologia di progetto, Budget stimato e Messaggio privato). Non utilizzo cookie di profilazione di terze parti né vendo dati a soggetti esterni.</p>
             <p><strong>3. Finalità del trattamento:</strong> I dati raccolti sono trattati al solo scopo di formulare preventivi, rispondere a richieste di informazioni e gestire i rapporti pre-contrattuali o contrattuali di collaborazione professionale freelancing.</p>
             <p><strong>4. Base giuridica e Conservazione:</strong> Il trattamento si basa sul consenso dell'interessato o sull'esecuzione di misure pre-contrattuali. I dati saranno conservati per il tempo strettamente necessario all'evasione della richiesta o per gli adempimenti previsti dalla legge (massimo 10 anni in caso di instaurazione del rapporto contrattuale).</p>
             <p><strong>5. Diritti dell'utente:</strong> Ai sensi del Regolamento GDPR, l'utente ha il diritto in qualsiasi momento di accedere, rettificare, revocare o richiedere la cancellazione totale dei propri dati personali scrivendo direttamente a: <em>facilissimoweb.mc@gmail.com</em>.</p>
@@ -52,11 +52,11 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         facilitated: (
           <div className="space-y-6 text-base text-[#F8F7F4] leading-relaxed font-sans">
             <p className="bg-[#151518] p-4 border-l-4 border-white text-sm">
-              <strong>Promessa principale:</strong> I tuoi dati sono al sicuro. Non li diamo a nessuno e li usiamo solo per risponderti.
+              <strong>Promessa principale:</strong> I tuoi dati sono al sicuro. Non li do a nessuno e li uso solo per risponderti.
             </p>
-            <p><strong>Chi ha i tuoi dati:</strong> Facilissimo Web. Se compili il modulo contatti, riceviamo una mail con il tuo nome e la tua email.</p>
+            <p><strong>Chi ha i tuoi dati:</strong> Facilissimo Web. Se compili il modulo contatti, ricevo una mail con il tuo nome e la tua email.</p>
             <p><strong>Perché servono:</strong> Solo per risponderti, capire che tipo di sito web desideri e farti un preventivo preciso.</p>
-            <p><strong>Cancellazione veloce:</strong> Se vuoi che cancelliamo la tua email o i tuoi messaggi, ti basta inviarci un messaggio e rimuoveremo tutto all'istante.</p>
+            <p><strong>Cancellazione veloce:</strong> Se vuoi che cancelli la tua email o i tuoi messaggi, ti basta inviarmi un messaggio e rimuoverò tutto all'istante.</p>
           </div>
         ),
         speechText: "Informativa sulla Privacy. I tuoi dati personali sono al sicuro. Raccolgo solo nome e mail quando mi contatti per rispondere alle tue richieste. Non vendo i tuoi dati a nessuno. Puoi chiederne la cancellazione in ogni momento.",
@@ -67,10 +67,10 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         icon: <FileText className="w-8 h-8 text-white" />,
         normal: (
           <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
-            <p><strong>1. Oggetto del Servizio:</strong> Facilissimo Web offre consulenza, progettazione grafica, branding e sviluppo di siti web statici e dinamici su misura, con eventuale integrazione di sistemi di Intelligenza Artificiale ed ottimizzazione SEO semantica.</p>
-            <p><strong>2. Modalità di Pagamento:</strong> Salvo accordi differenti scritti, le prestazioni professionali prevedono il versamento di un acconto pari al 50% all'accettazione del preventivo e il restante 50% alla consegna e pubblicazione del sito web.</p>
-            <p><strong>3. Proprietà Intellettuale:</strong> Tutti i diritti di proprietà intellettuale relativi al design, al codice sorgente e ai contenuti approvati vengono interamente trasferiti al cliente al saldo dell'ultima fattura. Il cliente dichiara di possedere i diritti per immagini e testi forniti per la pubblicazione.</p>
-            <p><strong>4. Garanzia e Supporto Post-Vendita:</strong> Ogni sito web consegnato include un periodo di garanzia tecnica di 30 giorni consecutivi per la correzione di eventuali bug o errori di codice, senza alcun costo aggiuntivo.</p>
+            <p><strong>1. Oggetto del Servizio:</strong> Facilissimo Web offre consulenza, progettazione grafica, branding e sviluppo di siti web moderni, con integrazione di sistemi di Intelligenza Artificiale, ottimizzazione SEO e opzioni di gestione continua in abbonamento (WaaS/SaaS).</p>
+            <p><strong>2. Modalità di Pagamento:</strong> I servizi prevedono un piano chiaro con quota iniziale di setup ed eventuale canone di gestione mensile o annuale senza costi nascosti o sorprese improvvise.</p>
+            <p><strong>3. Diritti sui Contenuti e Servizio Gestito:</strong> Il cliente mantiene la piena titolarità di tutti i marchi, loghi, testi e materiali forniti. La piattaforma e l'infrastruttura tecnica vengono erogate e mantenute attive da Facilissimo Web con hosting e sicurezza continuativi.</p>
+            <p><strong>4. Manutenzione e Gestione Continua:</strong> Ogni progetto in abbonamento include gestione server, aggiornamenti tecnici, backup periodici e supporto diretto per modifiche e contenuti.</p>
           </div>
         ),
         facilitated: (
@@ -78,12 +78,12 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
             <p className="bg-[#151518] p-4 border-l-4 border-white text-sm">
               <strong>Regole chiare:</strong> Svolgo la mia attività in modo onesto, trasparente e senza sorprese sui prezzi.
             </p>
-            <p><strong>Come paghi:</strong> Paghi la prima metà (50%) all'inizio del lavoro per bloccare la data di consegna. Paghi la seconda metà solo quando il sito è finito, testato e pronto per essere pubblicato.</p>
-            <p><strong>Il sito è tuo:</strong> Quando paghi il saldo finale, il sito diventa al 100% di tua proprietà. Ti do tutte le password e il codice.</p>
-            <p><strong>Assistenza inclusa:</strong> Per il primo mese dopo il lancio, se c'è un problema o un errore nel sito, lo sistemo gratis all'istante.</p>
+            <p><strong>Come paghi:</strong> Paghi la quota iniziale per lo sviluppo e l'abbonamento mensile/annuale per mantenere il sito sempre attivo e curato.</p>
+            <p><strong>Servizio sempre curato:</strong> I tuoi testi e loghi restano tuoi. La gestione tecnica e la sicurezza sono sempre a cura di Teresa per Facilissimo Web.</p>
+            <p><strong>Assistenza inclusa:</strong> Per qualsiasi modifica o aggiornamento ai contenuti, il supporto è sempre incluso nel tuo abbonamento.</p>
           </div>
         ),
-        speechText: "Termini di Servizio. Paghi il cinquanta percento all'inizio e il restante cinquanta percento solo quando il sito è completato. Quando il pagamento è saldato, il sito internet diventa interamente tuo. Hai trenta giorni di assistenza gratuita inclusa.",
+        speechText: "Termini di Servizio. I contenuti e i marchi appartengono al cliente. Il sito web e la gestione tecnica vengono curati continuamente con il servizio in abbonamento di Facilissimo Web per garantirti massima sicurezza e aggiornamenti trasparenti.",
       },
       ethics: {
         title: "AI Ethics & Trasparenza",
@@ -91,23 +91,23 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         icon: <Sparkles className="w-8 h-8 text-white" />,
         normal: (
           <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
-            <p><strong>Il Manifesto Etico di Facilissimo Web sull'Intelligenza Artificiale:</strong> Crediamo che l'Intelligenza Artificiale sia uno strumento straordinario per potenziare il talento umano, e non per rimpiazzarlo o generare contenuti di bassa qualità.</p>
+            <p><strong>Il Manifesto Etico di Facilissimo Web sull'Intelligenza Artificiale:</strong> In Facilissimo Web l'Intelligenza Artificiale è uno strumento straordinario per potenziare il talento umano, e non per rimpiazzarlo o generare contenuti di bassa qualità.</p>
             <div className="bg-white/10 border border-white/30 p-4 text-[#F8F7F4] font-sans my-4">
-              <strong>Dichiarazione di Co-creazione:</strong> Dichiariamo espressamente che tutti gli articoli, le immagini e i contenuti presenti su questo sito web sono stati creati ed elaborati con l'ausilio di sistemi di Intelligenza Artificiale (AI), successivamente supervisionati, riscritti e rifiniti a mano per garantire la massima qualità e cura artigianale.
+              <strong>Dichiarazione di Co-creazione:</strong> Dichiaro espressamente che tutti gli articoli, le immagini e i contenuti presenti su questo sito web sono stati creati ed elaborati con l'ausilio di sistemi di Intelligenza Artificiale (AI), successivamente supervisionati, riscritti e rifiniti a mano per garantire la massima qualità e cura artigianale.
             </div>
-            <p><strong>1. Trasparenza Radicale:</strong> Utilizziamo algoritmi generativi avanzati e LLM (come i modelli Gemini di Google) esclusivamente per velocizzare la scrittura del codice ripetitivo, analizzare dati di mercato complessi e strutturare la SEO semantica iniziale.</p>
+            <p><strong>1. Trasparenza Radicale:</strong> Utilizzo algoritmi generativi avanzati e LLM (come i modelli Gemini di Google) esclusivamente per velocizzare la scrittura del codice ripetitivo, analizzare dati di mercato complessi e strutturare la SEO semantica iniziale.</p>
             <p><strong>2. Controllo e Supervisione Umana (Human-in-the-Loop):</strong> Nessun sito web viene mai generato interamente da una macchina. Ogni singola riga di codice, struttura di database, layout visivo e micro-animazione è interamente revisionata, rifinita e validata manualmente per garantire la massima eccellenza artigianale.</p>
-            <p><strong>3. Rispetto del Diritto d'Autore:</strong> Non utilizziamo strumenti di generazione di immagini o testi che violino il copyright. Forniamo solo contenuti testuali unici e veritieri, rifiutando la creazione di spam o "slop" generati in massa.</p>
+            <p><strong>3. Rispetto del Diritto d'Autore:</strong> Non utilizzo strumenti di generazione di immagini o testi che violino il copyright. Fornisco solo contenuti testuali unici e veritieri, rifiutando la creazione di spam o "slop" generati in massa.</p>
           </div>
         ),
         facilitated: (
           <div className="space-y-6 text-base text-[#F8F7F4] leading-relaxed font-sans">
             <p className="bg-[#151518] p-4 border-l-4 border-white text-sm">
-              <strong>L'impegno di Facilissimo Web:</strong> Usiamo la tecnologia per lavorare meglio, ma l'attenzione ai dettagli è sempre al 100% umana.
+              <strong>L'impegno di Facilissimo Web:</strong> Uso la tecnologia per lavorare meglio, ma l'attenzione ai dettagli è sempre al 100% umana.
             </p>
-            <p><strong>Come viene usata l'Intelligenza Artificiale:</strong> Ci aiuta a scrivere codice di base più velocemente e a studiare le parole chiave per Google. Questo riduce i tempi e i costi per te.</p>
-            <p><strong>Lavorazione Artigianale:</strong> Controlliamo, scriviamo e progettiamo ogni pixel a mano. Nessun sito è fatto in modo automatico o freddo.</p>
-            <p><strong>Contenuti veri:</strong> Scriviamo testi reali, interessanti e corretti per farti trovare dai clienti su internet. Niente fuffa o testi noiosi scritti a caso dai robot.</p>
+            <p><strong>Come viene usata l'Intelligenza Artificiale:</strong> Mi aiuta a scrivere codice di base più velocemente e a studiare le parole chiave per Google. Questo riduce i tempi e i costi per te.</p>
+            <p><strong>Lavorazione Artigianale:</strong> Controllo, scrivo e progetto ogni pixel a mano. Nessun sito è fatto in modo automatico o freddo.</p>
+            <p><strong>Contenuti veri:</strong> Scrivo testi reali, interessanti e corretti per farti trovare dai clienti su internet. Niente fuffa o testi noiosi scritti a caso dai robot.</p>
           </div>
         ),
         speechText: "Manifesto sull'Intelligenza Artificiale. Uso l'intelligenza artificiale per eliminare i compiti ripetitivi e abbassare i costi per te. Ogni dettaglio visivo e riga di codice viene però controllato e rifinito a mano per garantire la massima qualità e cura.",

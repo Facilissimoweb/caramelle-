@@ -137,6 +137,7 @@ export default function Footer({
           <ul className="space-y-2.5 text-xs font-mono uppercase tracking-wider">
             {[
               { id: "home", label: "Home" },
+              { id: "abbonamento", label: "Sito in Abbonamento" },
               { id: "chi-sono", label: "Chi Sono" },
               { id: "siti-web", label: "Proposte" },
               { id: "contatti", label: "Contatti" },
