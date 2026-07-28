@@ -168,7 +168,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 className="solid-light text-center"
                 id="hero-cta-sec"
               >
-                <span>{t.heroBtnSecondary}</span>
+                <span style={{ fontSize: "20px" }}>{t.heroBtnSecondary}</span>
               </button>
             </div>
  
