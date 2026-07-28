@@ -207,16 +207,16 @@ export default function App() {
     setCurrentTab(tab);
     setSelectedArticle(articleSlug);
 
-    let newHash = `#/${tab}`;
+    let newUrl = tab === "home" ? "/" : `/${tab}`;
     if (tab === "blog" && articleSlug) {
-      newHash = `#/${tab}/${articleSlug}`;
+      newUrl = `/blog/${articleSlug}`;
     }
 
     try {
       if (pushHistory) {
-        window.history.pushState({ tab, articleSlug }, "", newHash);
+        window.history.pushState({ tab, articleSlug }, "", newUrl);
       } else {
-        window.history.replaceState({ tab, articleSlug }, "", newHash);
+        window.history.replaceState({ tab, articleSlug }, "", newUrl);
       }
     } catch (e) {
       console.warn("[Router] Failed to update browser history. This usually happens when running inside a sandboxed iframe:", e);
@@ -444,28 +444,58 @@ export default function App() {
     initTrackingConsentUtility();
   }, []);
 
-  // URL Hash Sync Effect (Router for deep linking & back gesture support)
+  // URL Router Sync Effect (Router for clean paths, deep linking, hash & back gesture support)
   useEffect(() => {
     const handleUrlSync = () => {
-      const hash = window.location.hash;
-      const cleanHash = hash.replace(/^#\/?/, ""); // e.g. "blog/ai-act-regolamento-europeo"
+      const hash = window.location.hash.replace(/^#\/?/, ""); // e.g. "blog/slug"
+      const pathname = window.location.pathname.replace(/^\//, ""); // e.g. "blog/slug" or "chi-sono"
+      
+      let targetTab = "home";
+      let targetArticle: string | null = null;
 
-      if (!cleanHash) {
-        navigateTo("home", null, false);
-        return;
+      // 1. Check Search Query Params (e.g. ?article=slug or ?tab=blog)
+      try {
+        const searchParams = new URLSearchParams(window.location.search);
+        const queryArticle = searchParams.get("article");
+        const queryTab = searchParams.get("tab");
+
+        if (queryArticle) {
+          targetTab = "blog";
+          targetArticle = queryArticle;
+        } else if (queryTab && TABS_ORDER.includes(queryTab)) {
+          targetTab = queryTab;
+        }
+      } catch (e) {
+        console.warn("[Router] Search params parsing error:", e);
       }
 
-      if (cleanHash.startsWith("blog/")) {
-        const slug = cleanHash.substring("blog/".length);
-        navigateTo("blog", slug, false);
-      } else {
-        const tab = cleanHash.split("?")[0];
-        if (TABS_ORDER.includes(tab)) {
-          navigateTo(tab, null, false);
+      // If no search params found, check Hash Route
+      if (targetTab === "home" && !targetArticle && hash) {
+        if (hash.startsWith("blog/")) {
+          targetTab = "blog";
+          targetArticle = hash.substring("blog/".length);
         } else {
-          navigateTo("home", null, false);
+          const tab = hash.split("/")[0].split("?")[0];
+          if (TABS_ORDER.includes(tab)) {
+            targetTab = tab;
+          }
         }
       }
+
+      // If still home, check Pathname Route (e.g. /blog/ai-act-regolamento-europeo or /chi-sono)
+      if (targetTab === "home" && !targetArticle && pathname) {
+        if (pathname.startsWith("blog/")) {
+          targetTab = "blog";
+          targetArticle = pathname.substring("blog/".length);
+        } else {
+          const tab = pathname.split("/")[0];
+          if (TABS_ORDER.includes(tab)) {
+            targetTab = tab;
+          }
+        }
+      }
+
+      navigateTo(targetTab, targetArticle, false);
     };
 
     // Run on initial load

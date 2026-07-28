@@ -199,11 +199,13 @@ export default function Footer({
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
               <button
                 onClick={() => {
-                  let targetUrl = window.location.origin + window.location.pathname;
+                  let targetUrl = window.location.origin;
                   if (currentTab === "blog" && selectedArticle) {
-                    targetUrl += `#/blog/${selectedArticle}`;
+                    targetUrl += `/blog/${selectedArticle}`;
+                  } else if (currentTab === "home") {
+                    targetUrl += "/";
                   } else {
-                    targetUrl += `#/${currentTab}`;
+                    targetUrl += `/${currentTab}`;
                   }
 
                   if (navigator.share) {
@@ -232,11 +234,13 @@ export default function Footer({
 
               <button
                 onClick={() => {
-                  let targetUrl = window.location.origin + window.location.pathname;
+                  let targetUrl = window.location.origin;
                   if (currentTab === "blog" && selectedArticle) {
-                    targetUrl += `#/blog/${selectedArticle}`;
+                    targetUrl += `/blog/${selectedArticle}`;
+                  } else if (currentTab === "home") {
+                    targetUrl += "/";
                   } else {
-                    targetUrl += `#/${currentTab}`;
+                    targetUrl += `/${currentTab}`;
                   }
                   navigator.clipboard.writeText(targetUrl).then(() => {
                     setCopiedLink(true);
