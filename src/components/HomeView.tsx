@@ -361,7 +361,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   },
                   {
                     q: "L'Intelligenza Artificiale sostituisce il lavoro manuale del web designer?",
-                    a: "Assolutamente no. L'IA funge da incredibile acceleratore e assistente tecnico. Ogni singola riga di codice, combinazione cromatica, ottimizzazione SEO e scelta visiva di design viene curata, verificata, integrata e testata a mano da Teresa per Facilissimo Web per assicurare un risultato artigianale ed esclusivo di altissimo livello.",
+                    a: "Assolutamente no. L'IA funge da incredibile acceleratore e assistente tecnico. Ogni singola riga di codice, combinazione cromatica, ottimizzazione SEO e scelta visiva di design viene curata, verificata, integrata e testata a mano da me (M. Teresa Rogani, fondatrice di Facilissimo Web) per assicurare un risultato artigianale ed esclusivo di altissimo livello.",
                   },
                   {
                     q: "Quali sono i reali vantaggi in termini di tempi e di budget?",
@@ -377,7 +377,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   },
                   {
                     q: "Cosa succede dopo il lancio del sito? C'è supporto e gestione?",
-                    a: "Il tuo sito web viene mantenuto attivo, sicuro e aggiornato nel tempo da Teresa e Facilissimo Web con gestione tecnica continua. Per ogni progetto offro soluzioni con supporto diretto, manutenzione e aggiornamenti periodici inclusi per garantirti zero pensieri e un sito sempre perfetto.",
+                    a: "Il tuo sito web viene mantenuto attivo, sicuro e aggiornato nel tempo direttamente da me con gestione tecnica continua per Facilissimo Web. Per ogni progetto offro soluzioni con supporto diretto, manutenzione e aggiornamenti periodici inclusi per garantirti zero pensieri e un sito sempre perfetto.",
                   },
                 ]
               : [
@@ -387,7 +387,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   },
                   {
                     q: "Does AI replace the manual touch of a designer?",
-                    a: "Not at all. AI acts as a powerful technical assistant. Every single line of code, color palette, SEO setting, and visual design layout is manually reviewed, integrated, and polished by hand by Teresa at Facilissimo Web to ensure a premium, artisan finish that fits your brand.",
+                    a: "Not at all. AI acts as a powerful technical assistant. Every single line of code, color palette, SEO setting, and visual design layout is manually reviewed, integrated, and polished by hand by M. Teresa Rogani (founder of Facilissimo Web) to ensure a premium, artisan finish that fits your brand.",
                   },
                   {
                     q: "What are the exact time and cost advantages?",
@@ -403,7 +403,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   },
                   {
                     q: "What happens after launch? Is there support and management?",
-                    a: "Your website is continuously maintained, secured, and updated over time by Teresa at Facilissimo Web with active technical management. I offer managed solutions with direct support, maintenance, and periodic updates included so your site stays fast, modern, and worry-free.",
+                    a: "Your website is continuously maintained, secured, and updated over time directly by me for Facilissimo Web with active technical management. I offer managed solutions with direct support, maintenance, and periodic updates included so your site stays fast, modern, and worry-free.",
                   },
                 ]
           }

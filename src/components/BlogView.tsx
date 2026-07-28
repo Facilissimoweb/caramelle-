@@ -204,7 +204,7 @@ export default function BlogView({
             <div className="mt-8 pt-6 border-t border-[#111113]/10 bg-[#FAF9F6] p-6 space-y-3">
               <h4 className="font-display font-bold text-base text-[#111113]">Approfondisci l'argomento con me</h4>
               <p className="text-xs text-[#111113]/75">
-                Se vuoi approfondire l'argomento, possiamo concentrarci su un aspetto specifico. Ad esempio, preferisci analizzare l'impatto della legge sul copyright per gli artisti, capire quali sono le sanzioni per le aziende o approfondire i sistemi ad alto rischio? Parliamone direttamente via chat o contatti!
+                Se vuoi approfondire l'argomento, posso concentrarmi su un aspetto specifico per la tua attività. Ad esempio, preferisci analizzare l'impatto della legge sul copyright per gli artisti, capire quali sono le sanzioni per le aziende o approfondire i sistemi ad alto rischio? Scrivimi direttamente via chat o contatti!
               </p>
             </div>
           </div>

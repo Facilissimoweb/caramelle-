@@ -79,7 +79,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
               <strong>Regole chiare:</strong> Svolgo la mia attività in modo onesto, trasparente e senza sorprese sui prezzi.
             </p>
             <p><strong>Come paghi:</strong> Paghi la quota iniziale per lo sviluppo e l'abbonamento mensile/annuale per mantenere il sito sempre attivo e curato.</p>
-            <p><strong>Servizio sempre curato:</strong> I tuoi testi e loghi restano tuoi. La gestione tecnica e la sicurezza sono sempre a cura di Teresa per Facilissimo Web.</p>
+            <p><strong>Servizio sempre curato:</strong> I tuoi testi e loghi restano tuoi. La gestione tecnica e la sicurezza sono sempre a cura di Facilissimo Web (M. Teresa Rogani).</p>
             <p><strong>Assistenza inclusa:</strong> Per qualsiasi modifica o aggiornamento ai contenuti, il supporto è sempre incluso nel tuo abbonamento.</p>
           </div>
         ),
