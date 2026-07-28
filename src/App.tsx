@@ -147,7 +147,7 @@ export const initTrackingConsentUtility = () => {
   }
 };
 
-const TABS_ORDER = ["home", "abbonamento", "chi-sono", "siti-web", "contatti", "blog"];
+const TABS_ORDER = ["home", "chi-sono", "siti-web", "abbonamento", "contatti", "blog"];
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>("home");
