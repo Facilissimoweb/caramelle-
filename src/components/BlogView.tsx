@@ -1,7 +1,17 @@
 import { useState, useEffect, ReactNode } from "react";
-import { Calendar, Clock, User, Share2, Tag, ArrowLeft, Linkedin, Twitter, Facebook, Copy, Check, ChevronRight, Bookmark, ArrowUpRight } from "lucide-react";
+import { Calendar, Clock, User, Share2, Tag, ArrowLeft, Linkedin, Twitter, Facebook, Copy, Check, ChevronRight, Bookmark, ArrowUpRight, ShieldAlert, Sparkles, Zap, ArrowRight, Rocket, MessageSquare, Scale, Brain } from "lucide-react";
 import { motion } from "motion/react";
 const logoImage = "/f (1600 x 500 px).webp";
+
+interface ArticleCTA {
+  badge: Record<"it" | "en", string>;
+  title: Record<"it" | "en", string>;
+  titleHighlight: Record<"it" | "en", string>;
+  description: Record<"it" | "en", string>;
+  buttonText: Record<"it" | "en", string>;
+  targetTab: string;
+  themeStyle: "warning" | "cyber" | "speed";
+}
 
 interface Article {
   slug: string;
@@ -16,6 +26,7 @@ interface Article {
   content: Record<"it" | "en", ReactNode>;
   metaTitle: Record<"it" | "en", string>;
   metaDescription: Record<"it" | "en", string>;
+  cta: ArticleCTA;
 }
 
 interface BlogViewProps {
@@ -201,10 +212,15 @@ export default function BlogView({
               Per garantire il rispetto delle regole, l'Unione Europea ha previsto un sistema sanzionatorio estremamente severo, con multe che possono raggiungere i 35 milioni di euro o fino al 7% del fatturato globale annuo delle aziende inadempienti. L'applicazione del regolamento è strutturata in modo progressivo, concedendo a imprese e sviluppatori il tempo necessario per adeguarsi ai nuovi standard e garantire una transizione fluida verso un'interazione con l'IA che sia, prima di tutto, sicura e antropocentrica.
             </p>
             
-            <div className="mt-8 pt-6 border-t border-[#111113]/10 bg-[#FAF9F6] p-6 space-y-3">
-              <h4 className="font-display font-bold text-base text-[#111113]">Approfondisci l'argomento con me</h4>
-              <p className="text-xs text-[#111113]/75">
-                Se vuoi approfondire l'argomento, posso concentrarmi su un aspetto specifico per la tua attività. Ad esempio, preferisci analizzare l'impatto della legge sul copyright per gli artisti, capire quali sono le sanzioni per le aziende o approfondire i sistemi ad alto rischio? Scrivimi direttamente via chat o contatti!
+            <div className="mt-8 p-6 border-l-4 border-amber-500 bg-amber-500/10 space-y-3">
+              <div className="flex items-center gap-2">
+                <ShieldAlert className="w-4 h-4 text-amber-600" />
+                <span className="font-mono text-xs font-bold text-amber-800 uppercase tracking-wider">
+                  // NOTA DI CONFORMITÀ LEGALE PER LA TUA ATTIVITÀ
+                </span>
+              </div>
+              <p className="text-xs text-[#111113]/85 leading-relaxed font-medium">
+                Hai dubbi su come l'AI Act si applichi al tuo sito web, ai tuoi form di contatto o agli assistenti virtuali? Analizzo direttamente le tue tecnologie per darti la certezza di operare nel pieno rispetto delle normative europee.
               </p>
             </div>
           </div>
@@ -257,14 +273,43 @@ export default function BlogView({
               To ensure compliance, the EU has established massive fines—up to 35 million Euros or up to 7% of global annual turnover for non-compliant companies. The rollout is progressive, allowing developers and organizations sufficient time to adjust to the high standards and achieve a human-centric relationship with AI.
             </p>
             
-            <div className="mt-8 pt-6 border-t border-[#111113]/10 bg-[#FAF9F6] p-6 space-y-3">
-              <h4 className="font-display font-bold text-base text-[#111113]">Delve deeper into this with me</h4>
-              <p className="text-xs text-[#111113]/75">
-                If you want to delve deeper into this topic, we can focus on a specific aspect. For instance, would you prefer to analyze the impact of the copyright law for artists, understand corporate fines, or explore high-risk systems? Let's discuss it directly via chat or contacts!
+            <div className="mt-8 p-6 border-l-4 border-amber-500 bg-amber-500/10 space-y-3">
+              <div className="flex items-center gap-2">
+                <ShieldAlert className="w-4 h-4 text-amber-600" />
+                <span className="font-mono text-xs font-bold text-amber-800 uppercase tracking-wider">
+                  // COMPLIANCE NOTE FOR YOUR BUSINESS
+                </span>
+              </div>
+              <p className="text-xs text-[#111113]/85 leading-relaxed font-medium">
+                Unsure if your website, forms, or AI tools meet the new requirements? Let me review your digital setup to ensure full compliance with European AI Act mandates.
               </p>
             </div>
           </div>
         )
+      },
+      cta: {
+        badge: {
+          it: "[ CHECK CONFORMITÀ AI ACT & NORMATIVA UE ]",
+          en: "[ EU AI ACT & LEGALITY CHECK ]"
+        },
+        title: {
+          it: "Il tuo sito o il tuo chatbot rispetta le regole dell'AI Act Europeo?",
+          en: "Does your website or AI chatbot comply with the European AI Act?"
+        },
+        titleHighlight: {
+          it: "Metti al sicuro la tua attività da sanzioni fino al 7% del fatturato.",
+          en: "Protect your business from penalties up to 7% of annual revenue."
+        },
+        description: {
+          it: "Valutiamo insieme la categoria di rischio delle tecnologie sul tuo sito (trasparenza, copyright, privacy e assistenti virtuali). Integriamo le soluzioni tecniche e la documentazione a norma con la massima trasparenza.",
+          en: "Let's assess your website's AI risk category (transparency, copyright, privacy & virtual assistants). We integrate necessary technical solutions and disclosures seamlessly."
+        },
+        buttonText: {
+          it: "RICHIEDI AUDIT DI CONFORMITÀ GRATUITO",
+          en: "REQUEST FREE COMPLIANCE AUDIT"
+        },
+        targetTab: "contatti",
+        themeStyle: "warning"
       }
     },
     {
@@ -355,6 +400,18 @@ export default function BlogView({
             <p>
               I siti web "predittivi" di Facilissimo Web sono scritti in codice leggerissimo, con dati strutturati puliti e risposte ottimizzate per essere citate come fonti autorevoli dalle risposte generate da questi motori del futuro.
             </p>
+
+            <div className="mt-8 p-6 border-l-4 border-indigo-600 bg-indigo-50/60 space-y-3">
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-indigo-600" />
+                <span className="font-mono text-xs font-bold text-indigo-900 uppercase tracking-wider">
+                  // OPPORTUNITÀ PREDITTIVA PER IL TUO BRAND LOCALE
+                </span>
+              </div>
+              <p className="text-xs text-[#111113]/85 leading-relaxed font-medium">
+                Vuoi capire quali domande latenti faranno i tuoi clienti di Macerata, delle Marche o in Italia nelle prossime settimane? Analizzo le tendenze del tuo settore per posizionarti come punto di riferimento prima che lo facciano i tuoi concorrenti.
+              </p>
+            </div>
           </div>
         ),
         en: (
@@ -414,8 +471,44 @@ export default function BlogView({
             <p>
               Our lightweight, pre-optimized "predictive" websites are crafted with structural precision, structured microdata, and concise answer blocks designed specifically to be retrieved and referenced by generative search models.
             </p>
+
+            <div className="mt-8 p-6 border-l-4 border-indigo-600 bg-indigo-50/60 space-y-3">
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-indigo-600" />
+                <span className="font-mono text-xs font-bold text-indigo-900 uppercase tracking-wider">
+                  // PREDICTIVE OPPORTUNITY FOR YOUR BRAND
+                </span>
+              </div>
+              <p className="text-xs text-[#111113]/85 leading-relaxed font-medium">
+                Want to identify latent queries your clients will search next month? Let me build a customized semantic strategy for your niche to capture leads before competitors do.
+              </p>
+            </div>
           </div>
         )
+      },
+      cta: {
+        badge: {
+          it: "[ POSIZIONAMENTO NEI MOTORI AI & LOCALE ]",
+          en: "[ AI ENGINES & LOCAL RANKING ]"
+        },
+        title: {
+          it: "Fatti consigliare da Perplexity, ChatGPT e Gemini prima dei tuoi concorrenti",
+          en: "Get recommended by Perplexity, ChatGPT and Gemini before your rivals"
+        },
+        titleHighlight: {
+          it: "Domina la ricerca del futuro a Macerata, nelle Marche e in tutta Italia.",
+          en: "Dominate future search queries locally and across Italy."
+        },
+        description: {
+          it: "I motori di ricerca tradizionali cedono il passo alle risposte generate dall'IA. Con l'architettura semantica e la SEO Predittiva di Facilissimo Web, strutturiamo il tuo codice affinché le intelligenze artificiali riconoscano e citino il tuo brand come prima scelta.",
+          en: "Traditional search is evolving into generative AI responses. With Facilissimo Web's semantic architecture and Predictive SEO, we format your code so AI models cite your business as top authority."
+        },
+        buttonText: {
+          it: "SBLOCCA LA TUA STRATEGIA PREDITTIVA",
+          en: "UNLOCK YOUR PREDICTIVE STRATEGY"
+        },
+        targetTab: "contatti",
+        themeStyle: "cyber"
       }
     },
     {
@@ -464,6 +557,18 @@ export default function BlogView({
               <li><strong>Costi di Hosting Azzerati:</strong> I siti statici sono ospitati su reti CDN ultra-rapide e ad altissima affidabilità a un costo infinitesimale rispetto ai server necessari per WordPress.</li>
               <li><strong>SEO Naturale:</strong> Google premia attivamente i siti web veloci e leggeri. Un sito su misura raggiunge facilmente il punteggio massimo di 100/100 nei test di velocità di Google PageSpeed.</li>
             </ul>
+
+            <div className="mt-8 p-6 border-l-4 border-emerald-600 bg-emerald-50/60 space-y-3">
+              <div className="flex items-center gap-2">
+                <Zap className="w-4 h-4 text-emerald-600" />
+                <span className="font-mono text-xs font-bold text-emerald-900 uppercase tracking-wider">
+                  // BENCHMARK VELOCITÀ SITO GRATUITO
+                </span>
+              </div>
+              <p className="text-xs text-[#111113]/85 leading-relaxed font-medium">
+                Vuoi sapere quanto stia davvero penalizzando le tue conversioni la lentezza del tuo attuale sito? Scrivimi l'URL della tua pagina e calcolerò il potenziale di velocizzazione in codice puro o tramite la nostra soluzione Chiavi in Mano.
+              </p>
+            </div>
           </div>
         ),
         en: (
@@ -481,8 +586,44 @@ export default function BlogView({
               <li><strong>Zero High Hosting Fees:</strong> Light static files are hosted on blazing-fast global CDNs for pennies compared to expensive WordPress server setups.</li>
               <li><strong>Native SEO Dominance:</strong> Google actively elevates faster pages. Custom-coded sites naturally reach 100/100 performance scores on official Google PageSpeed indices.</li>
             </ul>
+
+            <div className="mt-8 p-6 border-l-4 border-emerald-600 bg-emerald-50/60 space-y-3">
+              <div className="flex items-center gap-2">
+                <Zap className="w-4 h-4 text-emerald-600" />
+                <span className="font-mono text-xs font-bold text-emerald-900 uppercase tracking-wider">
+                  // FREE SPEED BENCHMARK
+                </span>
+              </div>
+              <p className="text-xs text-[#111113]/85 leading-relaxed font-medium">
+                Want to know how much site slowness is hurting your conversions? Share your current URL and I'll calculate the speed boost attainable with custom static code or our Turnkey package.
+              </p>
+            </div>
           </div>
         )
+      },
+      cta: {
+        badge: {
+          it: "[ PERFORMANCE 100/100 & VELOCITÀ ASSOLUTA ]",
+          en: "[ 100/100 PERFORMANCE & ABSOLUTE SPEED ]"
+        },
+        title: {
+          it: "Stanco di perdere il 50% dei clienti a causa di un sito lento o di plugin WordPress rotti?",
+          en: "Tired of losing 50% of clients due to a slow site or broken WordPress plugins?"
+        },
+        titleHighlight: {
+          it: "Sito in codice puro a caricamento istantaneo o Soluzione Chiavi in Mano su Cloud.",
+          en: "Instant custom static site or Turnkey Cloud solution."
+        },
+        description: {
+          it: "Fai fare un salto di qualità alla tua presenza online: scopri i nostri siti in codice ultra-leggero con punteggio 100/100 su Google PageSpeed oppure la nostra formula 'Sito Chiavi in Mano' gestita su Hostinger. Velocità record, zero costi inutili e sicurezza totale.",
+          en: "Upgrade your online presence: discover our custom lightweight code sites scoring 100/100 on Google PageSpeed or our Turnkey package. Record speed, zero bloated costs, total safety."
+        },
+        buttonText: {
+          it: "SCOPRI LE SOLUZIONI AD ALTE PRESTAZIONI",
+          en: "EXPLORE HIGH PERFORMANCE SOLUTIONS"
+        },
+        targetTab: "turnkey-wordpress",
+        themeStyle: "speed"
       }
     }
   ];
@@ -782,24 +923,75 @@ export default function BlogView({
                   {currentArticle.content[lang]}
                 </article>
 
-                {/* Footer of the article with CTA */}
-                <div className="mt-12 p-8 border border-[#111113]/10 bg-[#FAF9F6] flex flex-col md:flex-row justify-between items-center gap-6">
-                  <div className="space-y-2 text-center md:text-left">
-                    <h3 className="font-display font-bold text-lg text-[#111113]">
-                      {lang === "it" ? "Vuoi applicare la SEO Predittiva al tuo sito?" : "Want to apply Predictive SEO to your site?"}
-                    </h3>
-                    <p className="text-xs text-[#111113]/60 font-sans">
-                      {lang === "it" 
-                        ? "Progetto strategie semantiche su misura per darti un vantaggio duraturo sulla concorrenza." 
-                        : "Facilissimo Web designs custom semantic strategies to grant your business a long-lasting advantage."}
-                    </p>
+                {/* Footer of the article with Dynamic CTA */}
+                <div className={`mt-12 p-8 md:p-10 border transition-all shadow-xl relative overflow-hidden ${
+                  currentArticle.cta.themeStyle === "warning"
+                    ? "bg-gradient-to-br from-[#181512] via-[#111113] to-[#1C160C] border-amber-500/40 text-white"
+                    : currentArticle.cta.themeStyle === "cyber"
+                    ? "bg-gradient-to-br from-[#0F0E17] via-[#111113] to-[#1A182E] border-indigo-500/40 text-white"
+                    : "bg-gradient-to-br from-[#0B1510] via-[#111113] to-[#0D1F17] border-emerald-500/40 text-white"
+                }`}>
+                  {/* Glow Accents */}
+                  <div className={`absolute -top-24 -right-24 w-64 h-64 rounded-full blur-3xl opacity-20 pointer-events-none ${
+                    currentArticle.cta.themeStyle === "warning"
+                      ? "bg-amber-500"
+                      : currentArticle.cta.themeStyle === "cyber"
+                      ? "bg-indigo-500"
+                      : "bg-emerald-500"
+                  }`}></div>
+
+                  <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+                    <div className="space-y-3 max-w-2xl">
+                      <div className="flex items-center gap-2">
+                        {currentArticle.cta.themeStyle === "warning" && <ShieldAlert className="w-4 h-4 text-amber-400 shrink-0" />}
+                        {currentArticle.cta.themeStyle === "cyber" && <Sparkles className="w-4 h-4 text-indigo-400 shrink-0" />}
+                        {currentArticle.cta.themeStyle === "speed" && <Zap className="w-4 h-4 text-emerald-400 shrink-0" />}
+                        <span className={`font-mono text-[10px] tracking-widest uppercase font-bold px-2.5 py-0.5 border ${
+                          currentArticle.cta.themeStyle === "warning"
+                            ? "border-amber-500/30 text-amber-300 bg-amber-500/10"
+                            : currentArticle.cta.themeStyle === "cyber"
+                            ? "border-indigo-500/30 text-indigo-300 bg-indigo-500/10"
+                            : "border-emerald-500/30 text-emerald-300 bg-emerald-500/10"
+                        }`}>
+                          {currentArticle.cta.badge[lang]}
+                        </span>
+                      </div>
+
+                      <h3 className="font-display font-bold text-xl sm:text-2xl text-white leading-tight">
+                        {currentArticle.cta.title[lang]}
+                      </h3>
+
+                      <p className={`font-sans text-xs sm:text-sm font-semibold ${
+                        currentArticle.cta.themeStyle === "warning"
+                          ? "text-amber-200/90"
+                          : currentArticle.cta.themeStyle === "cyber"
+                          ? "text-indigo-200/90"
+                          : "text-emerald-200/90"
+                      }`}>
+                        {currentArticle.cta.titleHighlight[lang]}
+                      </p>
+
+                      <p className="text-xs sm:text-sm text-gray-300 font-sans leading-relaxed">
+                        {currentArticle.cta.description[lang]}
+                      </p>
+                    </div>
+
+                    <div className="shrink-0 w-full lg:w-auto pt-2 lg:pt-0">
+                      <button
+                        onClick={() => setCurrentTab(currentArticle.cta.targetTab)}
+                        className={`w-full lg:w-auto px-6 py-4 font-mono text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer shadow-lg hover:scale-102 ${
+                          currentArticle.cta.themeStyle === "warning"
+                            ? "bg-amber-400 text-black hover:bg-amber-300 border border-amber-300"
+                            : currentArticle.cta.themeStyle === "cyber"
+                            ? "bg-white text-black hover:bg-indigo-50 border border-white"
+                            : "bg-emerald-400 text-black hover:bg-emerald-300 border border-emerald-300"
+                        }`}
+                      >
+                        <span>{currentArticle.cta.buttonText[lang]}</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
-                  <button
-                    onClick={() => setCurrentTab("contatti")}
-                    className="solid-primary shrink-0"
-                  >
-                    {lang === "it" ? "PARLIAMONE" : "LET'S TALK"}
-                  </button>
                 </div>
               </div>
             </div>
