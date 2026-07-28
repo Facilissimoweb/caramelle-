@@ -126,6 +126,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
                   <li>• <strong>Inizio (Home):</strong> Vetrina, Filosofia, SEO Predittiva e FAQ</li>
                   <li>• <strong>Chi Sono:</strong> Presentazione personale e metodo di lavoro artigianale</li>
                   <li>• <strong>Proposte:</strong> Demo e progetti web interattivi su misura</li>
+                  <li>• <strong>Chiavi in Mano:</strong> Sito completo ospitato su Hostinger con CMS WordPress</li>
                   <li>• <strong>Abbonamento:</strong> Piani gestiti WaaS con manutenzione e sicurezza incluse</li>
                   <li>• <strong>Contatti:</strong> Modulo di preventivo rapido e recapiti diretti</li>
                   <li>• <strong>Blog &amp; News:</strong> Articoli di approfondimento su SEO IA e strategie digitali</li>

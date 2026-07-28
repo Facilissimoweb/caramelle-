@@ -139,6 +139,7 @@ export default function Footer({
               { id: "home", label: lang === "it" ? "Home" : "Home" },
               { id: "chi-sono", label: lang === "it" ? "Chi Sono" : "About Me" },
               { id: "siti-web", label: lang === "it" ? "Proposte" : "Proposals" },
+              { id: "chiavi-in-mano", label: lang === "it" ? "Chiavi in Mano" : "Turnkey Site" },
               { id: "abbonamento", label: lang === "it" ? "Abbonamento" : "Subscription" },
               { id: "contatti", label: lang === "it" ? "Contatti" : "Contact" },
               { id: "blog", label: lang === "it" ? "Blog & News" : "Blog & News" },

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Globe, Accessibility, Home, Code2, User2, Lightbulb, Mail, MessageSquare, BookOpen } from "lucide-react";
+import { Menu, X, Globe, Accessibility, Home, Code2, User2, Lightbulb, Mail, MessageSquare, BookOpen, Key } from "lucide-react";
 import { translations } from "../translations";
 import { safeStorage, safeCookies } from "../lib/safeStorage";
 
@@ -10,6 +10,8 @@ const navIcons: Record<string, any> = {
   "chi-sono": User2,
   "web-app": Code2,
   "siti-web": Globe,
+  "chiavi-in-mano": Key,
+  abbonamento: Key,
   contatti: Mail,
   chat: MessageSquare,
   blog: BookOpen,
@@ -171,6 +173,7 @@ export default function Header({
     { id: "home", label: t.navInizio },
     { id: "chi-sono", label: t.navChiSono },
     { id: "siti-web", label: t.navSitiWeb },
+    { id: "chiavi-in-mano", label: t.navChiaviInMano },
     { id: "abbonamento", label: t.navAbbonamento },
     { id: "contatti", label: t.navContatti },
     { id: "blog", label: t.navBlog },

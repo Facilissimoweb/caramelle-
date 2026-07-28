@@ -11,6 +11,7 @@ import BlogView from "./components/BlogView";
 import WebAppView from "./components/WebAppView";
 import SitiWebView from "./components/SitiWebView";
 import { SubscriptionView } from "./components/SubscriptionView";
+import TurnkeyWordpressView from "./components/TurnkeyWordpressView";
 import InfoModal from "./components/InfoModal";
 import AccessibilityWidget from "./components/AccessibilityWidget";
 import { ToastContainer, ToastMessage, ToastType } from "./components/Toast";
@@ -42,6 +43,12 @@ const SEO_METADATA: Record<string, { title: string; description: string; keyword
     title: "Proposte, Web App e Siti Web — Facilissimo Web Macerata",
     description: "Esplora le proposte digitali, web app interattive e siti web realizzati da Facilissimo Web a Macerata.",
     keywords: "proposte web macerata, web app macerata, siti web macerata, m teresa rogani, web designer macerata",
+    image: "/og-image.png",
+  },
+  "chiavi-in-mano": {
+    title: "Sito Web Chiavi in Mano WordPress & Hostinger — Facilissimo Web",
+    description: "Sito web professionale chiavi in mano completo e subito pronto all'uso. Ospitato su server Cloud Hostinger con CMS WordPress.",
+    keywords: "sito web chiavi in mano, wordpress hostinger, sito wordpress macerata, hostinger cloud hosting, facilissimo web chiavi in mano",
     image: "/og-image.png",
   },
   "chi-sono": {
@@ -147,7 +154,7 @@ export const initTrackingConsentUtility = () => {
   }
 };
 
-const TABS_ORDER = ["home", "chi-sono", "siti-web", "abbonamento", "contatti", "blog"];
+const TABS_ORDER = ["home", "chi-sono", "siti-web", "chiavi-in-mano", "abbonamento", "contatti", "blog"];
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>("home");
@@ -230,6 +237,7 @@ export default function App() {
       switch (tabId) {
         case "home": return "Home";
         case "abbonamento": return "Abbonamento";
+        case "chiavi-in-mano": return "Chiavi in Mano";
         case "web-app": return "Proposte";
         case "siti-web": return "Proposte";
         case "blog": return "Blog & News";
@@ -241,6 +249,7 @@ export default function App() {
       switch (tabId) {
         case "home": return "Home";
         case "abbonamento": return "Subscription";
+        case "chiavi-in-mano": return "Turnkey Site";
         case "web-app": return "Proposals";
         case "siti-web": return "Proposals";
         case "blog": return "Blog & News";
@@ -525,6 +534,8 @@ export default function App() {
         return <HomeView setCurrentTab={handleSetTab} lang={lang} isFacilitated={isFacilitated} onOpenModal={setActiveModal} onOpenChat={() => setIsChatOpen(true)} />;
       case "abbonamento":
         return <SubscriptionView lang={lang} isFacilitated={isFacilitated} setCurrentTab={handleSetTab} />;
+      case "chiavi-in-mano":
+        return <TurnkeyWordpressView lang={lang} isFacilitated={isFacilitated} setCurrentTab={handleSetTab} />;
       case "web-app":
       case "siti-web":
         return <SitiWebView lang={lang} isFacilitated={isFacilitated} setCurrentTab={handleSetTab} />;
