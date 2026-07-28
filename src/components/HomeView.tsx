@@ -7,7 +7,7 @@ import FAQAccordion from "./FAQAccordion";
 import TattooMacerataApp from "./TattooMacerataApp";
 import GustoPassioneApp from "./GustoPassioneApp";
 import NidoSogniApp from "./NidoSogniApp";
-const regeneratedHeroImage = new URL("../assets/images/regenerated_image_1785166657099.jpg", import.meta.url).href;
+const regeneratedHeroImage = new URL("../assets/images/regenerated_image_1785222023722.png", import.meta.url).href;
 const logoImage = "/f (1600 x 500 px).webp";
 
 interface HomeViewProps {
