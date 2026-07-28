@@ -53,7 +53,13 @@ export default function FloatingChatWidget({
     if (isOpen) {
       setTimeout(scrollToBottom, 100);
       setShowTooltip(false);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
     }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, [isOpen, messages, loading]);
 
   const handleSendMessage = async (textToSend: string) => {
@@ -216,151 +222,161 @@ export default function FloatingChatWidget({
 
   return (
     <>
-      {/* FLOATING STICKY CHAT POPUP WINDOW */}
+      {/* FLOATING STICKY CHAT FULL PAGE WINDOW */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="fixed bottom-20 right-3 sm:right-6 z-50 w-[calc(100vw-1.5rem)] sm:w-[410px] h-[580px] max-h-[80vh] bg-white border border-[#111113] shadow-2xl rounded-2xl flex flex-col overflow-hidden text-[#111113]"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 15 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[100] w-full h-full min-h-[100vh] bg-[#F8F7F4] flex flex-col overflow-hidden text-[#111113]"
             id="floating-chat-window"
           >
-            {/* Window Header */}
-            <div className="bg-[#111113] text-[#FAF9F6] p-4 flex items-center justify-between border-b border-white/10 shrink-0">
-              <div className="flex items-center gap-3">
+            {/* Full Page Header */}
+            <div className="bg-[#111113] text-[#FAF9F6] px-4 py-3.5 sm:px-8 sm:py-5 flex items-center justify-between border-b border-white/10 shrink-0 shadow-md">
+              <div className="flex items-center gap-3 sm:gap-4">
                 <div className="relative">
-                  <div className="w-9 h-9 rounded-full bg-white text-black font-bold flex items-center justify-center font-tan border border-white/30">
-                    <Sparkles className="w-4 h-4 text-black" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white text-black font-bold flex items-center justify-center font-tan border border-white/30 shadow-md">
+                    <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-black" />
                   </div>
-                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-[#111113]"></span>
+                  <span className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 rounded-full border-2 border-[#111113]"></span>
                 </div>
                 <div>
-                  <h3 className="font-bold text-sm leading-tight text-white flex items-center gap-1.5 font-sans">
+                  <h3 className="font-bold text-base sm:text-xl leading-tight text-white flex items-center gap-2 font-sans">
                     {lang === "it" ? "Assistente AI Facilissimo Web" : "Facilissimo Web AI Assistant"}
                   </h3>
+                  <p className="text-xs text-white/70 font-mono tracking-wider uppercase mt-0.5">
+                    {lang === "it" ? "M. Teresa Rogani • Risposta Immediata" : "M. Teresa Rogani • Instant Reply"}
+                  </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-2">
                 <button
                   onClick={clearChat}
                   title={lang === "it" ? "Azzera Chat" : "Reset Chat"}
-                  className="p-1.5 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                  className="flex items-center gap-1.5 px-3 py-2 bg-white/10 hover:bg-white/20 text-white text-xs font-mono rounded-xl transition-colors border border-white/20 cursor-pointer"
                 >
-                  <RefreshCw className="w-4 h-4" />
+                  <RefreshCw className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">{lang === "it" ? "Azzera" : "Reset"}</span>
                 </button>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-1.5 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                  className="flex items-center gap-1.5 px-3 py-2 bg-white text-black hover:bg-white/90 text-xs font-bold font-sans rounded-xl transition-colors cursor-pointer"
                   aria-label="Chiudi chat"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4" />
+                  <span>{lang === "it" ? "Chiudi" : "Close"}</span>
                 </button>
               </div>
             </div>
 
-            {/* Chat Messages Body */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#F8F7F4] text-xs sm:text-sm">
-              {messages.map((msg) => (
-                <div
-                  key={msg.id}
-                  className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"}`}
-                >
-                  <div className="flex items-center gap-1.5 mb-1 text-[10px] font-mono text-[#111113]/60 px-1">
-                    {msg.role === "model" ? (
-                      <span className="font-bold text-black flex items-center gap-1">
-                        <Bot className="w-3 h-3 text-black" />
-                        Assistente AI
-                      </span>
-                    ) : (
-                      <span className="font-bold">Tu</span>
-                    )}
-                    <span>• {msg.timestamp}</span>
-                  </div>
-
+            {/* Chat Messages Body - Full width centered max-w-4xl */}
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 bg-[#F8F7F4] text-sm sm:text-base">
+              <div className="max-w-4xl mx-auto w-full space-y-5">
+                {messages.map((msg) => (
                   <div
-                    className={`max-w-[88%] p-3.5 rounded-2xl text-xs sm:text-sm leading-relaxed shadow-sm ${
-                      msg.role === "user"
-                        ? "bg-[#111113] text-white rounded-br-none"
-                        : "bg-white text-[#111113] border border-black/10 rounded-bl-none font-sans"
-                    }`}
+                    key={msg.id}
+                    className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"}`}
                   >
-                    {renderMessageText(msg.text)}
+                    <div className="flex items-center gap-2 mb-1 text-xs font-mono text-[#111113]/60 px-1">
+                      {msg.role === "model" ? (
+                        <span className="font-bold text-black flex items-center gap-1.5">
+                          <Bot className="w-4 h-4 text-black" />
+                          Assistente AI
+                        </span>
+                      ) : (
+                        <span className="font-bold">Tu</span>
+                      )}
+                      <span>• {msg.timestamp}</span>
+                    </div>
+
+                    <div
+                      className={`max-w-[92%] sm:max-w-[85%] p-4 sm:p-5 rounded-2xl text-sm sm:text-base leading-relaxed shadow-xs ${
+                        msg.role === "user"
+                          ? "bg-[#111113] text-white rounded-br-none"
+                          : "bg-white text-[#111113] border border-black/10 rounded-bl-none font-sans"
+                      }`}
+                    >
+                      {renderMessageText(msg.text)}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
 
-              {loading && (
-                <div className="flex items-center gap-2 text-xs font-mono text-black/70 bg-white border border-black/10 p-3 rounded-2xl w-fit">
-                  <div className="w-2 h-2 bg-black rounded-full animate-bounce" />
-                  <div className="w-2 h-2 bg-black rounded-full animate-bounce [animation-delay:0.2s]" />
-                  <div className="w-2 h-2 bg-black rounded-full animate-bounce [animation-delay:0.4s]" />
-                  <span className="ml-1 text-[11px] font-bold">
-                    {lang === "it" ? "L'IA sta elaborando..." : "AI is thinking..."}
-                  </span>
-                </div>
-              )}
-
-              {error && (
-                <div className="flex items-center gap-2 p-3 bg-red-50 text-red-700 border border-red-200 rounded-xl text-xs">
-                  <AlertCircle className="w-4 h-4 shrink-0" />
-                  <span>{error}</span>
-                </div>
-              )}
-
-              {/* Quick Questions Chips */}
-              {messages.length <= 2 && !loading && (
-                <div className="pt-2 border-t border-black/5">
-                  <p className="text-[10px] font-mono uppercase tracking-wider text-black/60 mb-2 font-bold">
-                    {lang === "it" ? "Domande frequenti suggerite:" : "Suggested questions:"}
-                  </p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {quickQuestions.map((q, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => handleSendMessage(q)}
-                        className="text-[11px] bg-white hover:bg-black hover:text-white text-[#111113] border border-black/20 rounded-full px-3 py-1 font-medium transition-all text-left shadow-2xs cursor-pointer"
-                      >
-                        {q}
-                      </button>
-                    ))}
+                {loading && (
+                  <div className="flex items-center gap-3 text-sm font-mono text-black/70 bg-white border border-black/10 p-4 rounded-2xl w-fit shadow-xs">
+                    <div className="w-2.5 h-2.5 bg-black rounded-full animate-bounce" />
+                    <div className="w-2.5 h-2.5 bg-black rounded-full animate-bounce [animation-delay:0.2s]" />
+                    <div className="w-2.5 h-2.5 bg-black rounded-full animate-bounce [animation-delay:0.4s]" />
+                    <span className="ml-2 font-bold text-xs">
+                      {lang === "it" ? "L'IA sta elaborando la risposta..." : "AI is thinking..."}
+                    </span>
                   </div>
-                </div>
-              )}
+                )}
 
-              <div ref={chatEndRef} />
+                {error && (
+                  <div className="flex items-center gap-2 p-4 bg-red-50 text-red-700 border border-red-200 rounded-xl text-sm">
+                    <AlertCircle className="w-5 h-5 shrink-0" />
+                    <span>{error}</span>
+                  </div>
+                )}
+
+                {/* Quick Questions Chips */}
+                {messages.length <= 2 && !loading && (
+                  <div className="pt-4 border-t border-black/10 mt-6">
+                    <p className="text-xs font-mono uppercase tracking-wider text-black/60 mb-3 font-bold">
+                      {lang === "it" ? "Domande frequenti suggerite:" : "Suggested questions:"}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {quickQuestions.map((q, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => handleSendMessage(q)}
+                          className="text-xs sm:text-sm bg-white hover:bg-black hover:text-white text-[#111113] border border-black/20 rounded-full px-4 py-2 font-medium transition-all text-left shadow-2xs cursor-pointer"
+                        >
+                          {q}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div ref={chatEndRef} />
+              </div>
             </div>
 
-            {/* Input Footer */}
-            <div className="p-3 bg-white border-t border-black/10 shrink-0">
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  handleSendMessage(input);
-                }}
-                className="flex items-center gap-2"
-              >
-                <input
-                  type="text"
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  placeholder={lang === "it" ? "Fai una domanda all'Assistente AI..." : "Ask AI Assistant a question..."}
-                  disabled={loading}
-                  className="flex-1 bg-[#F8F7F4] border border-black/20 text-[#111113] text-xs sm:text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-black transition-colors placeholder:text-black/40 font-sans"
-                />
-                <button
-                  type="submit"
-                  disabled={!input.trim() || loading}
-                  className="bg-black hover:bg-black/80 disabled:opacity-40 text-white p-2.5 rounded-xl transition-all cursor-pointer flex items-center justify-center shrink-0"
+            {/* Full Width Footer Input Bar */}
+            <div className="p-4 sm:p-5 bg-white border-t border-black/10 shrink-0 shadow-lg">
+              <div className="max-w-4xl mx-auto w-full">
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    handleSendMessage(input);
+                  }}
+                  className="flex items-center gap-3"
                 >
-                  <Send className="w-4 h-4" />
-                </button>
-              </form>
-              <p className="text-[9px] font-mono text-center text-black/50 mt-2">
-                {lang === "it" ? "Sviluppato da Facilissimo Web • M. Teresa Rogani" : "Powered by Facilissimo Web • M. Teresa Rogani"}
-              </p>
+                  <input
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    placeholder={lang === "it" ? "Fai una domanda all'Assistente AI..." : "Ask AI Assistant a question..."}
+                    disabled={loading}
+                    className="flex-1 bg-[#F8F7F4] border border-black/20 text-[#111113] text-sm sm:text-base rounded-2xl px-4 py-3.5 focus:outline-none focus:border-black transition-colors placeholder:text-black/40 font-sans"
+                  />
+                  <button
+                    type="submit"
+                    disabled={!input.trim() || loading}
+                    className="bg-black hover:bg-black/80 disabled:opacity-40 text-white px-5 py-3.5 rounded-2xl transition-all cursor-pointer flex items-center gap-2 font-bold text-sm shrink-0"
+                  >
+                    <Send className="w-4 h-4" />
+                    <span className="hidden sm:inline">{lang === "it" ? "Invia" : "Send"}</span>
+                  </button>
+                </form>
+                <p className="text-xs font-mono text-center text-black/50 mt-3">
+                  {lang === "it" ? "Sviluppato da Facilissimo Web • M. Teresa Rogani" : "Powered by Facilissimo Web • M. Teresa Rogani"}
+                </p>
+              </div>
             </div>
           </motion.div>
         )}
