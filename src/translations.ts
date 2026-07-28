@@ -103,7 +103,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       portfolioVisitSite: "Visita il Sito Web →",
       portfolioCaseStudy: "Dettagli Case Study →",
 
-      testimonialQuote: `"Lavorare con Teresa Rogani è stato fantastico. Essendo l'unico interlocutore, le decisioni vengono prese all'istante, la sua consulenza sulla SEO IA ha fatto decollare le nostre vendite e il sito è stato consegnato in sole due settimane."`,
+      testimonialQuote: `"Lavorare con Facilissimo Web è stato fantastico. Essendo un referente diretto e reattivo, le decisioni vengono prese all'istante, la consulenza sulla SEO IA ha fatto decollare le nostre vendite e il sito è stato consegnato in sole due settimane."`,
       testimonialAuthor: "Alessandro Bianchi",
       testimonialRole: "CEO, Innova Solutions",
 
@@ -155,7 +155,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       portfolioVisitSite: "Visita il Sito Web →",
       portfolioCaseStudy: "Leggi i Dettagli →",
 
-      testimonialQuote: `"Lavorare con Teresa Rogani è stato fantastico. Parli direttamente con lei, risponde subito alle chiamate e ha creato il nostro sito in sole due settimane aumentando le vendite."`,
+      testimonialQuote: `"Lavorare con Facilissimo Web è stato fantastico. Risposte immediate alle chiamate, supporto diretto e il nostro sito è stato realizzato in sole due settimane aumentando le vendite."`,
       testimonialAuthor: "Alessandro Bianchi",
       testimonialRole: "Amministratore, Innova Solutions",
 
@@ -209,7 +209,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       portfolioVisitSite: "Visit Website →",
       portfolioCaseStudy: "Case Study Details →",
 
-      testimonialQuote: `"Working with Teresa Rogani was fantastic. Being the sole point of contact, decisions are made instantly, her AI SEO consulting boosted our sales, and the site was delivered in just two weeks."`,
+      testimonialQuote: `"Working with Facilissimo Web was fantastic. Decisions were made instantly, their AI SEO consulting boosted our sales, and the site was delivered in just two weeks."`,
       testimonialAuthor: "Alessandro Bianchi",
       testimonialRole: "CEO, Innova Solutions",
 
@@ -261,7 +261,7 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       portfolioVisitSite: "Visit Website →",
       portfolioCaseStudy: "Read Details →",
 
-      testimonialQuote: `"Working with Teresa Rogani was fantastic. You talk directly with her, she answers quickly, and created our site in just two weeks."`,
+      testimonialQuote: `"Working with Facilissimo Web was fantastic. Fast communication, direct support, and our site was ready in just two weeks."`,
       testimonialAuthor: "Alessandro Bianchi",
       testimonialRole: "Manager, Innova Solutions",
 

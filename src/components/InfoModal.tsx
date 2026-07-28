@@ -42,7 +42,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         icon: <ShieldAlert className="w-8 h-8 text-white" />,
         normal: (
           <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
-            <p><strong>1. Titolare del Trattamento:</strong> Il titolare del trattamento dei dati è M. Teresa Rogani, con sede e recapito email indicati nel footer di questo sito.</p>
+            <p><strong>1. Titolare del Trattamento:</strong> Il titolare del trattamento dei dati è Facilissimo Web Studio di M. Teresa Rogani, con recapiti indicati nel footer di questo sito.</p>
             <p><strong>2. Tipologia di dati raccolti:</strong> Raccogliamo esclusivamente i dati inseriti volontariamente dall'utente attraverso il modulo di contatto (Nome, Email, Azienda, Tipologia di progetto, Budget stimato e Messaggio privato). Non utilizziamo cookie di profilazione di terze parti né vendiamo dati a soggetti esterni.</p>
             <p><strong>3. Finalità del trattamento:</strong> I dati raccolti sono trattati al solo scopo di formulare preventivi, rispondere a richieste di informazioni e gestire i rapporti pre-contrattuali o contrattuali di collaborazione professionale freelancing.</p>
             <p><strong>4. Base giuridica e Conservazione:</strong> Il trattamento si basa sul consenso dell'interessato o sull'esecuzione di misure pre-contrattuali. I dati saranno conservati per il tempo strettamente necessario all'evasione della richiesta o per gli adempimenti previsti dalla legge (massimo 10 anni in caso di instaurazione del rapporto contrattuale).</p>
@@ -52,11 +52,11 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         facilitated: (
           <div className="space-y-6 text-base text-[#F8F7F4] leading-relaxed font-sans">
             <p className="bg-[#151518] p-4 border-l-4 border-white text-sm">
-              <strong>Promessa principale:</strong> I tuoi dati sono al sicuro. Non li do a nessuno e li uso solo per risponderti.
+              <strong>Promessa principale:</strong> I tuoi dati sono al sicuro. Non li diamo a nessuno e li usiamo solo per risponderti.
             </p>
-            <p><strong>Chi ha i tuoi dati:</strong> M. Teresa Rogani. Se compili il modulo contatti, ricevo una mail privata con il tuo nome e la tua email.</p>
+            <p><strong>Chi ha i tuoi dati:</strong> Facilissimo Web. Se compili il modulo contatti, riceviamo una mail con il tuo nome e la tua email.</p>
             <p><strong>Perché servono:</strong> Solo per risponderti, capire che tipo di sito web desideri e farti un preventivo preciso.</p>
-            <p><strong>Cancellazione veloce:</strong> Se vuoi che cancelli la tua email o i tuoi messaggi, ti basta inviarmi un messaggio veloce e farò sparire tutto all'istante.</p>
+            <p><strong>Cancellazione veloce:</strong> Se vuoi che cancelliamo la tua email o i tuoi messaggi, ti basta inviarci un messaggio e rimuoveremo tutto all'istante.</p>
           </div>
         ),
         speechText: "Informativa sulla Privacy. I tuoi dati personali sono al sicuro. Raccolgo solo nome e mail quando mi contatti per rispondere alle tue richieste. Non vendo i tuoi dati a nessuno. Puoi chiederne la cancellazione in ogni momento.",
@@ -91,26 +91,26 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         icon: <Sparkles className="w-8 h-8 text-white" />,
         normal: (
           <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
-            <p><strong>Il Manifesto Etico di Facilissimo Web sull'Intelligenza Artificiale:</strong> Credo che l'Intelligenza Artificiale sia uno strumento straordinario per potenziare il talento umano, e non per rimpiazzarlo o generare contenuti di bassa qualità.</p>
+            <p><strong>Il Manifesto Etico di Facilissimo Web sull'Intelligenza Artificiale:</strong> Crediamo che l'Intelligenza Artificiale sia uno strumento straordinario per potenziare il talento umano, e non per rimpiazzarlo o generare contenuti di bassa qualità.</p>
             <div className="bg-white/10 border border-white/30 p-4 text-[#F8F7F4] font-sans my-4">
-              <strong>Dichiarazione di Co-creazione:</strong> Dichiariamo espressamente che tutti gli articoli, le immagini e i contenuti presenti su questo sito web sono stati creati ed elaborati con il coinvolgimento e l'ausilio di sistemi di Intelligenza Artificiale (AI), successivamente supervisionati, riscritti e rifiniti interamente a mano da Teresa per garantire la massima qualità e cura artigianale.
+              <strong>Dichiarazione di Co-creazione:</strong> Dichiariamo espressamente che tutti gli articoli, le immagini e i contenuti presenti su questo sito web sono stati creati ed elaborati con l'ausilio di sistemi di Intelligenza Artificiale (AI), successivamente supervisionati, riscritti e rifiniti a mano per garantire la massima qualità e cura artigianale.
             </div>
-            <p><strong>1. Trasparenza Radicale:</strong> Dichiaro apertamente che utilizzo algoritmi generativi avanzati e LLM (como i modelli Gemini di Google) esclusivamente per velocizzare la scrittura del codice ripetitivo, analizzare dati di mercato complessi e strutturare la SEO semantica iniziale.</p>
-            <p><strong>2. Controllo e Supervisione Umana (Human-in-the-Loop):</strong> Nessun sito web viene mai generato interamente da una macchina. Ogni singola riga di codice, struttura di database, layout visivo e micro-animazione è interamente revisionata, rifinita e validata manualmente da M. Teresa Rogani per garantire la massima eccellenza artigianale.</p>
-            <p><strong>3. Rispetto del Diritto d'Autore:</strong> Non utilizzo strumenti di generazione di immagini o testi che violino il copyright. Fornisco solo contenuti testuali unici e veritieri, rifiutando la creazione di spam o "slop" generati in massa.</p>
+            <p><strong>1. Trasparenza Radicale:</strong> Utilizziamo algoritmi generativi avanzati e LLM (come i modelli Gemini di Google) esclusivamente per velocizzare la scrittura del codice ripetitivo, analizzare dati di mercato complessi e strutturare la SEO semantica iniziale.</p>
+            <p><strong>2. Controllo e Supervisione Umana (Human-in-the-Loop):</strong> Nessun sito web viene mai generato interamente da una macchina. Ogni singola riga di codice, struttura di database, layout visivo e micro-animazione è interamente revisionata, rifinita e validata manualmente per garantire la massima eccellenza artigianale.</p>
+            <p><strong>3. Rispetto del Diritto d'Autore:</strong> Non utilizziamo strumenti di generazione di immagini o testi che violino il copyright. Forniamo solo contenuti testuali unici e veritieri, rifiutando la creazione di spam o "slop" generati in massa.</p>
           </div>
         ),
         facilitated: (
           <div className="space-y-6 text-base text-[#F8F7F4] leading-relaxed font-sans">
             <p className="bg-[#151518] p-4 border-l-4 border-white text-sm">
-              <strong>L'impegno di Facilissimo Web:</strong> Uso la tecnologia per lavorare meglio, ma l'attention ai dettagli è sempre al 100% umana.
+              <strong>L'impegno di Facilissimo Web:</strong> Usiamo la tecnologia per lavorare meglio, ma l'attenzione ai dettagli è sempre al 100% umana.
             </p>
-            <p><strong>Come viene usata l'Intelligenza Artificiale:</strong> Mi aiuta a scrivere codice di base più velocemente e a studiare le parole chiave per Google. Questo riduce i tempi e i costi per te.</p>
-            <p><strong>Chi fa il lavoro vero:</strong> Teresa controlla, scrive e progetta ogni pixel a mano. Nessun sito è fatto in modo automatico o freddo.</p>
-            <p><strong>Contenuti veri:</strong> Scrivo testi reali, interessanti e corretti per farti trovare dai clienti su internet. Niente fuffa o testi noiosi scritti a caso dai robot.</p>
+            <p><strong>Come viene usata l'Intelligenza Artificiale:</strong> Ci aiuta a scrivere codice di base più velocemente e a studiare le parole chiave per Google. Questo riduce i tempi e i costi per te.</p>
+            <p><strong>Lavorazione Artigianale:</strong> Controlliamo, scriviamo e progettiamo ogni pixel a mano. Nessun sito è fatto in modo automatico o freddo.</p>
+            <p><strong>Contenuti veri:</strong> Scriviamo testi reali, interessanti e corretti per farti trovare dai clienti su internet. Niente fuffa o testi noiosi scritti a caso dai robot.</p>
           </div>
         ),
-        speechText: "Manifesto sull'Intelligenza Artificiale. Uso l'intelligenza artificiale per eliminare i compiti ripetitivi e abbassare i costi per te. Ogni dettaglio visivo e riga di codice viene però controllato, rifinito e testato a mano da Teresa per garantire la massima qualità e cura.",
+        speechText: "Manifesto sull'Intelligenza Artificiale. Uso l'intelligenza artificiale per eliminare i compiti ripetitivi e abbassare i costi per te. Ogni dettaglio visivo e riga di codice viene però controllato e rifinito a mano per garantire la massima qualità e cura.",
       },
       sitemap: {
         title: "Mappa del Sito (Sitemap)",
@@ -124,9 +124,9 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
                 <h4 className="font-display font-bold text-xs uppercase tracking-wider text-white">1. Navigazione Principale</h4>
                 <ul className="space-y-1.5 pl-3 border-l border-[rgba(248,247,244,0.15)] text-[11px] font-mono">
                   <li>• <strong>Inizio (Home):</strong> Vetrina, Filosofia, SEO Predittiva e FAQ</li>
-                  <li>• <strong>Chi Sono:</strong> Profilo professionale di M. Teresa Rogani</li>
+                  <li>• <strong>Chi Sono:</strong> Presentazione dello studio e metodo di lavoro</li>
                   <li>• <strong>Contatti:</strong> Modulo di preventivo rapido e contatti diretti</li>
-                  <li>• <strong>Assistente Chat AI:</strong> Simulazione interattiva preventivo con IA</li>
+                  <li>• <strong>Assistente Chat AI:</strong> Chat interattiva per risposte immediate</li>
                 </ul>
               </div>
               <div className="space-y-2">
@@ -169,7 +169,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         icon: <ShieldAlert className="w-8 h-8 text-white" />,
         normal: (
           <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
-            <p><strong>1. Data Controller:</strong> The data controller is M. Teresa Rogani, with contact info specified in the footer of this website.</p>
+            <p><strong>1. Data Controller:</strong> The data controller is Facilissimo Web Studio di M. Teresa Rogani, with contact info specified in the footer of this website.</p>
             <p><strong>2. Types of Data Collected:</strong> We exclusively collect data voluntarily submitted via the contact form (Name, Email, Company, Project Type, Estimated Budget, and Private Message). We do not use third-party profiling cookies or sell data to third parties.</p>
             <p><strong>3. Purpose of Processing:</strong> Collected data is processed solely for preparing estimates, answering information requests, and managing pre-contractual and contractual relations.</p>
             <p><strong>4. Retention Period:</strong> Data is kept only as long as necessary to process your request or satisfy legal obligations (maximum 10 years if a contract is signed).</p>
@@ -179,14 +179,14 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         facilitated: (
           <div className="space-y-6 text-base text-[#F8F7F4] leading-relaxed font-sans">
             <p className="bg-[#151518] p-4 border-l-4 border-white text-sm">
-              <strong>Promessa principale:</strong> I tuoi dati sono al sicuro con Facilissimo Web. Non li condivido mai, e li uso solo per rispondere ai tuoi messaggi.
+              <strong>Main Promise:</strong> Your data is safe with Facilissimo Web. We never share it, and use it only to answer your messages.
             </p>
-            <p><strong>Chi ha i tuoi dati:</strong> M. Teresa Rogani. Quando usi il modulo di contatto, ricevo una mail privata con il tuo nome e la tua email.</p>
-            <p><strong>Perché servono:</strong> Solo per risponderti, capire che tipo di sito web desideri e farti un preventivo preciso.</p>
-            <p><strong>Fast Deletion:</strong> If you want me to delete your messages or contact info, just send a quick request and I will erase everything immediately.</p>
+            <p><strong>Who receives your data:</strong> Facilissimo Web. When you submit the contact form, we receive a private email with your name and email address.</p>
+            <p><strong>Why we need it:</strong> Only to reply, understand your project needs, and send you a custom proposal.</p>
+            <p><strong>Fast Deletion:</strong> If you want us to delete your messages or contact info, send a quick request and we will erase everything immediately.</p>
           </div>
         ),
-        speechText: "Privacy Policy. Your personal data is safe. Facilissimo Web only collects name and email when you write to me to answer your inquiries. I do not sell your data. You can ask me to delete it at any time.",
+        speechText: "Privacy Policy. Your personal data is safe. Facilissimo Web only collects name and email when you write to us to answer your inquiries. We do not sell your data.",
       },
       terms: {
         title: "Terms of Service",
@@ -194,7 +194,7 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         icon: <FileText className="w-8 h-8 text-white" />,
         normal: (
           <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
-            <p><strong>1. Subject:</strong> Facilissimo Web provides custom freelance web design, coding, branding, and smart SEO optimization services, with optional AI feature integration.</p>
+            <p><strong>1. Subject:</strong> Facilissimo Web provides custom web design, coding, branding, and smart SEO optimization services, with optional AI feature integration.</p>
             <p><strong>2. Payment Terms:</strong> Unless agreed otherwise in writing, services require a 50% deposit upon proposal acceptance, and the remaining 50% upon final website delivery and publication.</p>
             <p><strong>3. Intellectual Property:</strong> All intellectual property rights regarding design, code, and approved copy transfer fully to the client upon final payment. The client warrants they own the rights to any texts and assets provided.</p>
             <p><strong>4. Support and Warranty:</strong> Every delivered website includes a 30-day technical warranty to fix bugs or coding errors at no extra cost.</p>
@@ -203,41 +203,41 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
         facilitated: (
           <div className="space-y-6 text-base text-[#F8F7F4] leading-relaxed font-sans">
             <p className="bg-[#151518] p-4 border-l-4 border-white text-sm">
-              <strong>Clear Rules:</strong> I work in an honest, transparent way with zero price surprises.
+              <strong>Clear Rules:</strong> We work in an honest, transparent way with zero price surprises.
             </p>
             <p><strong>How you pay:</strong> You pay the first half (50%) at the start to secure your delivery date. You pay the second half only when the website is finished, tested, and ready to go live.</p>
-            <p><strong>You own everything:</strong> Upon final payment, the website is 100% yours. I transfer all files, code, and password access directly to you.</p>
-            <p><strong>Free Support:</strong> For the first month after launch, if any bug or issue appears on the site, I will fix it immediately for free.</p>
+            <p><strong>You own everything:</strong> Upon final payment, the website is 100% yours. We transfer all files, code, and password access directly to you.</p>
+            <p><strong>Free Support:</strong> For the first month after launch, if any bug or issue appears on the site, we fix it immediately for free.</p>
           </div>
         ),
         speechText: "Terms of Service. You pay fifty percent at the beginning and fifty percent when the website is done. Once paid, the website is completely yours, and you receive thirty days of free support.",
       },
       ethics: {
         title: "AI Ethics & Transparency",
-        facilitatedTitle: "How I use Artificial Intelligence",
+        facilitatedTitle: "How we use Artificial Intelligence",
         icon: <Sparkles className="w-8 h-8 text-white" />,
         normal: (
           <div className="space-y-6 text-sm text-[#F8F7F4]/85 leading-relaxed font-sans">
-            <p><strong>Manifesto Etico di Facilissimo Web sull'Intelligenza Artificiale:</strong> Credo che l'Intelligenza Artificiale sia uno strumento straordinario per potenziare il talento umano, e non per rimpiazzarlo o generare contenuti di bassa qualità.</p>
+            <p><strong>Facilissimo Web AI Ethics Manifesto:</strong> We believe Artificial Intelligence is an extraordinary tool to empower human talent, not to replace it or generate low-quality content.</p>
             <div className="bg-white/10 border border-white/30 p-4 text-[#F8F7F4] font-sans my-4">
-              <strong>Co-creation Disclosure:</strong> We explicitly declare that all articles, images, and content on this website have been created with the involvement and assistance of Artificial Intelligence (AI) systems, and subsequently supervised, rewritten, and manually refined by Teresa to guarantee maximum quality and craftsmanship.
+              <strong>Co-creation Disclosure:</strong> We explicitly declare that all articles, images, and content on this website have been created with the assistance of Artificial Intelligence (AI) systems, and subsequently supervised, rewritten, and manually refined by hand to guarantee maximum craftsmanship.
             </div>
-            <p><strong>1. Trasparenza:</strong> Dichiaro apertamente che utilizzo modelli generativi avanzati (como Google Gemini) esclusivamente per velocizzare la scrittura del codice ripetitivo, analizzare dati complessi dei concorrenti e abbozzare le strutture SEO iniziali.</p>
-            <p><strong>2. Supervisione Umana:</strong> Nessun sito viene mai creato interamente dalle macchine. Ogni linea di codice, schema di database, elemento visivo e animazione viene revisionato, rifinito e testato manualmente da M. Teresa Rogani.</p>
-            <p><strong>3. Correttezza professionale:</strong> Non utilizzo strumenti che violano il diritto d'autore. Offro grafiche e testi unici e di alta qualità, rifiutando attivamente la generazione automatica di spam o contenuti 'slop' scadenti.</p>
+            <p><strong>1. Transparency:</strong> We use advanced generative models (like Google Gemini) exclusively to speed up repetitive code, analyze market data, and draft initial SEO structures.</p>
+            <p><strong>2. Human Supervision:</strong> No website is ever created entirely by machines. Every line of code, database schema, visual element, and micro-animation is manually reviewed, refined, and tested by hand.</p>
+            <p><strong>3. Integrity:</strong> We do not use tools that infringe copyright. We offer unique, high-quality graphics and copy, actively refusing automated spam or poor quality 'slop'.</p>
           </div>
         ),
         facilitated: (
           <div className="space-y-6 text-base text-[#F8F7F4] leading-relaxed font-sans">
             <p className="bg-[#151518] p-4 border-l-4 border-white text-sm">
-              <strong>L'impegno di Facilissimo Web:</strong> Uso la tecnologia per lavorare più velocemente, ma l'attenzione ai dettagli è interamente frutto della mia cura artigianale.
+              <strong>Facilissimo Web Commitment:</strong> We use technology to work faster, but attention to detail remains 100% human-crafted.
             </p>
-            <p><strong>Come uso l'AI:</strong> Mi aiuta a scrivere codice di base più velocemente e a trovare le migliori parole chiave per Google. Questo fa risparmiare tempo e mantiene bassi i costi per te.</p>
-            <p><strong>Chi fa il lavoro vero:</strong> Teresa progetta e scrive ogni singolo pixel e riga di codice. Nessun sito viene fatto in automatico da robot.</p>
-            <p><strong>Testi veri:</strong> Scrivo testi originali, chiari e persuasivi per farti trovare dai clienti. Nessun blocco di testo noioso o finto generato da robot.</p>
+            <p><strong>How we use AI:</strong> It helps us write foundational code faster and find search keywords for Google. This saves time and keeps costs lower for you.</p>
+            <p><strong>Artisanal Quality:</strong> We review, write, and design every single pixel and line of code by hand.</p>
+            <p><strong>Real Content:</strong> We craft clear, persuasive, original text to help your clients find you. No boring robot text blocks.</p>
           </div>
         ),
-        speechText: "AI Ethics. I use artificial intelligence to speed up basic coding and keep prices low. Every visual detail and final script is crafted, tested, and perfected by hand by Teresa for premium quality.",
+        speechText: "AI Ethics. We use artificial intelligence to speed up basic coding and keep prices low. Every visual detail and final script is crafted, tested, and perfected by hand for premium quality.",
       },
       sitemap: {
         title: "Website Sitemap",
@@ -251,10 +251,10 @@ export default function InfoModal({ isOpen, type, onClose, lang, isFacilitated }
                 <h4 className="font-display font-bold text-xs uppercase tracking-wider text-white">1. Core Navigation</h4>
                 <ul className="space-y-1.5 pl-3 border-l border-[rgba(248,247,244,0.15)] text-[11px] font-mono">
                   <li>• <strong>Home:</strong> Studio intro, Predictive SEO section, FAQ accordion</li>
-                  <li>• <strong>About:</strong> Professional profile of M. Teresa Rogani</li>
+                  <li>• <strong>About:</strong> Studio profile and design approach</li>
                   <li>• <strong>Proposals:</strong> 3 specific website packages and pricing models</li>
                   <li>• <strong>Contact:</strong> Estimate forms and direct communication info</li>
-                  <li>• <strong>AI Assistant Chat:</strong> Interactive guidance and AI-powered quote planner</li>
+                  <li>• <strong>AI Assistant Chat:</strong> Interactive guidance and AI-powered quote helper</li>
                 </ul>
               </div>
               <div className="space-y-2">

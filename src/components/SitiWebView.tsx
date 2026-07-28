@@ -76,7 +76,7 @@ export default function SitiWebView({ lang, isFacilitated, setCurrentTab }: Siti
 
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[10px] font-mono text-[#111113]/60 uppercase tracking-widest font-bold pt-2">
               <span className="text-[#111113]">
-                {lang === "it" ? "Sito Web Hotel in Stile Grigio Beige Nero" : "Hotel Website in Grey Beige Black Style"} di Maria Teresa Rogani
+                {lang === "it" ? "Sito Web Hotel in Stile Grigio Beige Nero" : "Hotel Website in Grey Beige Black Style"}
               </span>
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function SitiWebView({ lang, isFacilitated, setCurrentTab }: Siti
 
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[10px] font-mono text-[#111113]/60 uppercase tracking-widest font-bold pt-2">
               <span className="text-[#111113]">
-                {lang === "it" ? "Sito Web Portfolio Creativo Freelance in Stile Audace e Sofisticato" : "Creative Freelance Portfolio Website in Bold & Sophisticated Style"} di Maria Teresa Rogani
+                {lang === "it" ? "Sito Web Portfolio Creativo Freelance in Stile Audace e Sofisticato" : "Creative Freelance Portfolio Website in Bold & Sophisticated Style"}
               </span>
             </div>
           </div>

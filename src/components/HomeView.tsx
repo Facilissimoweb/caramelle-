@@ -361,7 +361,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   },
                   {
                     q: "L'Intelligenza Artificiale sostituisce il lavoro manuale del web designer?",
-                    a: "Assolutamente no. L'IA funge da incredibile acceleratore e assistente tecnico. Ogni singola riga di codice, combinazione cromatica, ottimizzazione SEO e scelta visiva di design viene curata, verificata, integrata e testata a mano da me (Teresa) per assicurare un risultato artigianale ed esclusivo di altissimo livello.",
+                    a: "Assolutamente no. L'IA funge da incredibile acceleratore e assistente tecnico. Ogni singola riga di codice, combinazione cromatica, ottimizzazione SEO e scelta visiva di design viene curata, verificata, integrata e testata a mano nel nostro studio per assicurare un risultato artigianale ed esclusivo di altissimo livello.",
                   },
                   {
                     q: "Quali sono i reali vantaggi in termini di tempi e di budget?",
@@ -387,7 +387,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   },
                   {
                     q: "Does AI replace the manual touch of a designer?",
-                    a: "Not at all. AI acts as a powerful technical assistant. Every single line of code, color palette, SEO setting, and visual design layout is manually reviewed, integrated, and polished by hand by me (Teresa) to ensure a premium, artisan finish that fits your brand.",
+                    a: "Not at all. AI acts as a powerful technical assistant. Every single line of code, color palette, SEO setting, and visual design layout is manually reviewed, integrated, and polished by hand in our studio to ensure a premium, artisan finish that fits your brand.",
                   },
                   {
                     q: "What are the exact time and cost advantages?",

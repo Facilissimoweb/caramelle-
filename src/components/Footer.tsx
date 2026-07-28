@@ -73,7 +73,7 @@ export default function Footer({
             Siti web evoluti, veloci e performanti, progettati e sviluppati su misura grazie alla potenza dell'Intelligenza Artificiale.
           </p>
           <div className="pt-2 text-[10px] text-white font-mono space-y-1 uppercase tracking-wider font-bold">
-            <p>Titolare: M. Teresa Rogani</p>
+            <p>Studio: Facilissimo Web • M. Teresa Rogani</p>
             <p>Freelance Web Designer &amp; AI Specialist</p>
             <p className="text-white/70 flex items-center gap-1.5 normal-case font-sans">
               <MapPin className="w-3.5 h-3.5 text-white" /> Macerata (Marche), Italia
@@ -267,7 +267,7 @@ export default function Footer({
       {/* Under Footer */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 mt-12 pt-8 border-t border-white/10 flex flex-col lg:flex-row justify-between items-center gap-6 text-xs text-white/50 font-mono">
         <div className="text-center lg:text-left">
-          © {currentYear} Facilissimo Web di M. Teresa Rogani. Tutti i diritti riservati.
+          © {currentYear} Facilissimo Web. Tutti i diritti riservati.
         </div>
         <div className="flex flex-wrap justify-center gap-4 sm:gap-6 uppercase tracking-wider text-xs md:text-sm">
           <button

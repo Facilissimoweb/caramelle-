@@ -21,7 +21,7 @@ const logoImage = "/f (1600 x 500 px).webp";
 const SEO_METADATA: Record<string, { title: string; description: string; keywords: string; image: string }> = {
   home: {
     title: "Facilissimo Web — Realizzazione Siti Web Macerata e Marche",
-    description: "Studio Facilissimo Web a Macerata (Marche). Progettazione e realizzazione siti web veloci, moderni e ottimizzati SEO con Intelligenza Artificiale di M. Teresa Rogani.",
+    description: "Studio Facilissimo Web a Macerata (Marche). Progettazione e realizzazione siti web veloci, moderni e ottimizzati SEO con Intelligenza Artificiale.",
     keywords: "realizzazione siti web macerata, web designer marche, siti web veloci marche, siti web economici macerata, intelligenza artificiale macerata, seo macerata, m teresa rogani",
     image: "/api/og-image?tab=home",
   },

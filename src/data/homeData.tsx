@@ -359,7 +359,7 @@ export function getStatsData(lang: "it" | "en"): StatItem[] {
         : "No automated queues, call centers, or forgotten support tickets. When you need a fast update, custom feature, or technical consult, you call and message me directly. This ensures immediate turnaround times and agile decision making as your project scales up.",
       comparisonTitle: lang === "it" ? "Tempo medio di risoluzione richieste (Ore)" : "Average Ticket Resolution Time (Hours)",
       bars: [
-        { label: lang === "it" ? "Il Mio Criterio (Contatto Diretto con Teresa)" : "My Build Criteria (Direct Line with Teresa)", value: "Entro 2 ore", percentage: 10, isPrimary: true },
+        { label: lang === "it" ? "Facilissimo Web (Contatto Diretto)" : "Facilissimo Web (Direct Line)", value: "Entro 2 ore", percentage: 10, isPrimary: true },
         { label: lang === "it" ? "Agenzia Web Classica (Code d'attesa)" : "Traditional Web Agency (Support Queues)", value: "24-48 ore", percentage: 100, isPrimary: false },
       ],
       metricsList: lang === "it" ? [
