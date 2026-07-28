@@ -254,7 +254,7 @@ function MenuMockup({ aspect, lang }: MockupProps) {
 }
 
 interface WebAppViewProps {
-  setCurrentTab: (tab: string) => void;
+  setCurrentTab?: (tab: string) => void;
   lang: "it" | "en";
   isFacilitated: boolean;
 }
@@ -327,11 +327,11 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
             </div>
             
             <button
-              onClick={() => setCurrentTab("contatti")}
-              className="solid-light flex items-center gap-1.5 self-stretch md:self-auto justify-center text-center"
+              onClick={() => setCurrentTab ? setCurrentTab("contatti") : null}
+              className="solid-light flex items-center gap-1.5 self-stretch md:self-auto justify-center text-center font-bold tracking-wider"
               id="webappview-view-services-btn"
             >
-              {t.portfolioViewAll}
+              <span>{lang === "it" ? "CONTATTI" : "CONTACT"}</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
