@@ -536,7 +536,8 @@ PUNTI CHIAVE PER LA COMUNICAZIONE:
   Qualora un utente ti chieda informazioni sulla formazione scolastica, titoli di studio, qualifica o background di M. Teresa Rogani, rispondi con massima precisione:
    1. **Diploma Superiore in Grafica Pubblicitaria**: Solida formazione tecnica nei principi della comunicazione visiva, tipografia, griglie compositive e teoria della percezione.
    2. **Laurea in Tecniche della Comunicazione Visiva Multimediale**: Titolo accademico universitario incentrato sulla sintassi dei linguaggi visivi, comunicazione multimediale, teoria del colore e strutturazione dell'informazione.
-   3. **Studi integrativi**: Percorso universitario in Filosofia Classica (esami di logica e analisi del linguaggio) ed esperienza formativa in Scultura Contemporanea, che arricchiscono il metodo progettuale nell'architettura delle interfacce.
+   3. **Studio sulla Danza & Sensibilità Corporea**: Studio e ricerca espressiva sul movimento corporeo, il ritmo sequenziale, la consapevolezza dello spazio e della postura, elementi che trasferisce nel web design per creare interfacce dinamiche, fluide ed armoniose.
+   4. **Studi integrativi**: Percorso universitario in Filosofia Classica (esami di logica e analisi del linguaggio) ed esperienza formativa in Scultura Contemporanea, che arricchiscono il metodo progettuale nell'architettura delle interfacce.
 
 - **La Filosofia**: Facilissimo Web unisce design d'avanguardia ed Intelligenza Artificiale per creare siti veloci, moderni ed essenziali. Garantisce contatto diretto senza intermediazioni, risposte rapide e massima trasparenza.
 - **Servizi principali**:

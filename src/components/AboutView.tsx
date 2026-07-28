@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
-import { ArrowRight, BookOpen, Compass, Award, Palette, Layers, Cpu, UserCheck } from "lucide-react";
+import { ArrowRight, BookOpen, Compass, Award, Palette, Layers, Cpu, UserCheck, Activity, Sparkles } from "lucide-react";
 
 const logoImage = "/f (1600 x 500 px).webp";
+const studioDanzaImage = "/images/studio_danza.png";
 
 interface AboutViewProps {
   setCurrentTab: (tab: string) => void;
@@ -207,6 +208,79 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Studio sulla Danza & Sensibilità Corporea */}
+      <section className="py-20 md:py-24 bg-[#18181B] text-[#FAF9F6] border-b border-[#111113]/10 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-6 space-y-6"
+          >
+            <div className="flex items-center gap-2">
+              <Activity className="w-4 h-4 text-emerald-400" />
+              <span className="text-[12px] uppercase tracking-[0em] text-white font-mono font-bold block" style={{ letterSpacing: '0px' }}>
+                [ ESPRESSIONE CORPOREA & MOVIMENTO ]
+              </span>
+            </div>
+
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
+              Studio sulla Danza e Dinamica dello Spazio
+            </h2>
+
+            <p className="font-mono text-xs text-emerald-300/90 uppercase tracking-widest font-bold">
+              Movimento, Ritmo Sequenziale e Presenza nell'Interfaccia
+            </p>
+
+            <div className="space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed font-sans">
+              <p>
+                Lo studio e la pratica della danza rappresentano una componente fondamentale del mio percorso espressivo e progettuale. Il movimento corporeo insegna la gestione del ritmo, della postura, dell'equilibrio e dell'occupazione dello spazio in relazione al tempo e alla presenza.
+              </p>
+              <p>
+                Trasferisco questa sensibilità nel web design: un'interfaccia non è mai un elemento statico, ma un'esperienza dinamica in cui il flusso di navigazione, la cadenza degli elementi e le transizioni visive accompagnano l'utente in modo fluido, organico ed emozionalmente armonioso.
+              </p>
+            </div>
+
+            <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono text-gray-400 border-t border-white/10">
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-emerald-400" />
+                <span>Consapevolezza dello Spazio</span>
+              </div>
+              <div className="w-1 h-1 bg-white/30 rounded-full hidden sm:block" />
+              <div className="flex items-center gap-2">
+                <Activity className="w-4 h-4 text-emerald-400" />
+                <span>Ritmo & Armonia Visiva</span>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-6"
+          >
+            <div className="relative w-full aspect-[1/1] overflow-hidden border border-white/20 bg-black shadow-2xl group">
+              <img
+                src={studioDanzaImage}
+                alt="Studio sulla danza - M. Teresa Rogani"
+                className="w-full h-full object-cover opacity-90 transition-all duration-700 group-hover:scale-105"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+              <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                <p className="font-display font-bold text-lg text-emerald-300">Studio sulla Danza</p>
+                <p className="text-[11px] font-mono text-gray-300 uppercase tracking-wider">
+                  Espressione corporea, ritmo e consapevolezza spaziale
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
