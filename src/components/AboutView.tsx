@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import { ShieldCheck, Zap, Heart, Sparkles, Code, Pencil } from "lucide-react";
+import { ArrowRight, BookOpen, Compass, Award, Palette, Layers, Cpu, Film, UserCheck } from "lucide-react";
+
 const logoImage = "/f (1600 x 500 px).webp";
 
 interface AboutViewProps {
@@ -10,77 +10,69 @@ interface AboutViewProps {
 }
 
 export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutViewProps) {
-  const values = isFacilitated
-    ? [
-        {
-          icon: <ShieldCheck className="w-5 h-5 text-black" />,
-          title: lang === "it" ? "Parli solo con me" : "Speak only with me",
-          desc: lang === "it"
-            ? "Non ci sono intermediari, segretarie o programmatori junior. Parli direttamente con me (Teresa) per ogni cosa."
-            : "No managers or helpers. You speak directly with me (Teresa) for everything.",
-        },
-        {
-          icon: <Zap className="w-5 h-5 text-black" />,
-          title: lang === "it" ? "Modifiche all'istante" : "Changes instantly",
-          desc: lang === "it"
-            ? "Nelle agenzie ci vogliono giorni per fare modifiche. Con me, parliamo al mattino e la modifica è online al pomeriggio."
-            : "Big agencies take days to approve edits. With me, we decide a change in the morning and it is online in the afternoon.",
-        },
-        {
-          icon: <Heart className="w-5 h-5 text-black" />,
-          title: lang === "it" ? "Grande risparmio" : "Great savings",
-          desc: lang === "it"
-            ? "Lavoro da sola e non ho uffici fisici o dipendenti da pagare. Per questo i miei prezzi sono molto più bassi delle agenzie."
-            : "I work by myself with no office rent. That is why my prices are much lower than big agencies.",
-        },
-      ]
-    : [
-        {
-          icon: <ShieldCheck className="w-5 h-5 text-black" />,
-          title: lang === "it" ? "Interlocutore Unico" : "Single Point of Contact",
-          desc: lang === "it"
-            ? "Niente account manager, niente segretarie o sviluppatori junior che lavorano al tuo sito di nascosto. Parli, discuti e definisci tutto direttamente con me."
-            : "No account managers, no secretaries or junior coders working on your site in secret. You talk, discuss, and define everything directly with me.",
-        },
-        {
-          icon: <Zap className="w-5 h-5 text-black" />,
-          title: lang === "it" ? "Velocità senza Burocrazia" : "No-Bureaucracy Speed",
-          desc: lang === "it"
-            ? "I processi decisionali in agenzia richiedono giorni. Qui possiamo decidere una modifica al mattino e vederla live nel pomeriggio."
-            : "Agency approval pipelines take days. Here, we can discuss a modification in the morning and see it live in the afternoon.",
-        },
-        {
-          icon: <Heart className="w-5 h-5 text-black" />,
-          title: lang === "it" ? "Massimo Risparmio" : "Maximum Value",
-          desc: lang === "it"
-            ? "Lavorando da sola come freelance non ho uffici fisici imponenti o personale da stipendiare. Questo si traduce in tariffe fino a 3 volte inferiori."
-            : "Working alone as a freelance developer, I don't run hefty physical offices or maintain auxiliary staff. This means rates up to 3 times lower.",
-        },
-      ];
+  const formationSteps = [
+    {
+      num: "01",
+      title: "Grammatica Visiva e Metodo Progettuale",
+      subtitle: "Diploma in Tecnico Grafico Pubblicitario",
+      icon: <Palette className="w-5 h-5 text-black" />,
+      desc: "Il mio percorso parte dai principi fondamentali del design sistemico e della comunicazione visiva. La formazione tecnica mi ha fornito competenze consolidate in tipografia, teoria della percezione (Gestalt), griglie compositive e gerarchia dell'informazione. Una solida struttura di base che guida tuttora la mia metodologia progettuale nella realizzazione di layout essenziali, performanti ed ergonomici.",
+    },
+    {
+      num: "02",
+      title: "Sintassi Narrativa e Semiotica dell'Immagine",
+      subtitle: "Laurea in Tecniche della Comunicazione Visiva — Accademia di Belle Arti di Macerata",
+      icon: <Film className="w-5 h-5 text-black" />,
+      desc: "L'approfondimento universitario ha spostato il focus sulla dimensione semiotica e narrativa dei linguaggi visivi. La laurea, completata con una tesi in Storia del Cinema, mi ha permesso di analizzare la sintassi dell'immagine in movimento, la teoria del colore, il ritmo sequenziale e la costruzione dell'inquadratura. Trasferisco questa sensibilità nel web design per strutturare percorsi di navigazione coerenti, ingaggianti e dotati di un forte impianto narrativo.",
+    },
+    {
+      num: "03",
+      title: "Logica Concettuale e Analisi del Linguaggio",
+      subtitle: "Percorso Universitario in Filosofia Classica — Università di Macerata (Incompiuto)",
+      icon: <BookOpen className="w-5 h-5 text-black" />,
+      desc: "L'interesse per l'origine del linguaggio e la struttura del pensiero mi ha spinta ad affrontare una parentesi di studi filosofici. Anche se ho poi interrotto il corso di laurea, il superamento di diversi esami di logica e filosofia ha affinato la mia capacità analitica, il rigore concettuale e la sintesi. In ambito lavorativo, questo background si traduce nell'ascolto analitico dei bisogni del committente e in un'architettura dell'informazione limpida e priva di ridondanze.",
+    },
+    {
+      num: "04",
+      title: "Spazialità e Materialità dell'Interfaccia",
+      subtitle: "Esperienza Formativa in Scultura Contemporanea — Accademia di Belle Arti (Non conclusa)",
+      icon: <Layers className="w-5 h-5 text-black" />,
+      desc: "Il periodo di ricerca artistica all'interno del corso di Scultura Contemporanea, al fianco di figure come Franko B, pur non essendosi concluso con il diploma specialistico, è stato un importante banco di prova concettuale. Mi ha lasciato una forte consapevolezza del corpo, dello spazio e dell'interazione, guidandomi oggi a progettare le interfacce web non come meri elementi grafici bidimensionali, ma come veri e propri spazi di esperienza e presenza per l'utente.",
+    },
+  ];
 
-  const skillCategories = [
+  const valuesGuida = [
     {
-      icon: <Code className="w-5 h-5 text-black" />,
-      title: lang === "it" ? "Sviluppo & Strumenti" : "Development & Tools",
-      skills: ["React / Vite", "Tailwind CSS", "HTML5 & CSS3", "Express Node.js Server", "Figma", "Cursor / AI IDEs"],
+      num: "1",
+      title: "Rigore Strutturale e Sintassi Visiva",
+      icon: <Award className="w-5 h-5 text-black" />,
+      desc: "Il design parte dal metodo. Dalla tipografia alla griglia compositiva, fino alla teoria della percezione, ogni elemento della pagina risponde a precise regole di gerarchia ed ergonomia visiva. La pulizia di un layout è il risultato di un progetto studiato per eliminare il superfluo e valorizzare l'essenziale.",
     },
     {
-      icon: <Sparkles className="w-5 h-5 text-black" />,
-      title: lang === "it" ? "Integrazione IA" : "AI Integration & Prompting",
-      skills: ["Gemini LLMs API", "OpenAI Advanced API", "Midjourney & Stable Diffusion", "Vector Search / Embeddings", "AI-driven Copywriting"],
+      num: "2",
+      title: "Architettura del Pensiero e Ascolto Analitico",
+      icon: <Cpu className="w-5 h-5 text-black" />,
+      desc: "Prima di disegnare, occorre comprendere. L'attitudine all'analisi e alla logica concettuale mi permette di decomporre le esigenze del committente, decodificare i messaggi e tradurli in un'architettura dell'informazione limpida e coerente. L'ascolto profondo è la prima fase di ogni processo progettuale.",
     },
     {
-      icon: <Pencil className="w-5 h-5 text-black" />,
-      title: lang === "it" ? "Marketing & Strategia" : "Marketing & Strategy",
-      skills: ["SEO Predittiva", "Google Analytics", "Brand Identity Manuals", "CRO (Conversion Optimization)", "Copywriting Persuasivo"],
+      num: "3",
+      title: "Narrazione per Immagini (Sintesi Cinematografica)",
+      icon: <Compass className="w-5 h-5 text-black" />,
+      desc: "Ogni interfaccia racconta una storia. Attingendo alla grammatica del cinema e della semiotica visiva, la gestione del colore, del ritmo e dell'inquadratura guida l'utente all'interno dell'esperienza digitale in modo fluido, naturale ed emozionalmente ingaggiante.",
+    },
+    {
+      num: "4",
+      title: "Presenza e Dimensione Umana",
+      icon: <UserCheck className="w-5 h-5 text-black" />,
+      desc: "L'interfaccia non è un semplice schermo bidimensionale, ma uno spazio di relazione. Dalle esperienze artistiche e performative porto nel web la consapevolezza del corpo, della spazialità e della percezione: il digitale è progettato da un essere umano per altri esseri umani, mettendo sempre al centro l'esperienza reale dell'utente.",
     },
   ];
 
   return (
     <div className="w-full bg-[#F8F7F4] text-[#111113]">
-      {/* Intro Header */}
-      <section className="py-24 relative border-b border-[#111113]/10 overflow-hidden">
-        {/* Ambient Background Video */}
+      {/* Intro Hero Section */}
+      <section className="py-20 md:py-24 relative border-b border-[#111113]/10 overflow-hidden">
+        {/* Ambient Video Background */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <motion.div
             initial={{ opacity: 0 }}
@@ -90,31 +82,29 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
           >
             <video
               src="/facilissimo web (7).mp4"
-              className="absolute inset-0 w-full h-full object-cover opacity-20"
+              className="absolute inset-0 w-full h-full object-cover opacity-15"
               autoPlay
               loop
               muted
               playsInline
             />
           </motion.div>
-          {/* Balanced overlay: slightly dark on the left for text legibility, clear/transparent on the right to see the beautiful video */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#F8F7F4]/95 via-[#F8F7F4]/60 to-[#F8F7F4]/25" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#F8F7F4]/95 via-[#F8F7F4]/70 to-[#F8F7F4]/30" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#F8F7F4]/30 via-transparent to-[#F8F7F4]" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-          
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
             className="lg:col-span-6 space-y-6"
           >
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center gap-2 mb-2">
               <img
                 src={logoImage}
                 alt="Facilissimo Web Logo"
-                className="w-[150px] h-[150px] object-contain"
+                className="w-[140px] h-[140px] object-contain"
               />
             </div>
             <span className="text-[13px] uppercase tracking-[0em] text-black font-mono font-bold block mb-2" style={{ letterSpacing: '0px' }}>
@@ -124,38 +114,21 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
             <h1 className="font-tan text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold text-[#111113] tracking-tight leading-normal break-words">
               M. Teresa Rogani
             </h1>
-            <p className="font-mono text-[10px] text-black uppercase tracking-widest font-bold">
-              {lang === "it" ? "Freelance Web Designer & Sviluppatrice AI-Powered" : "Freelance Web Designer & AI-Powered Developer"}
+            <p className="font-mono text-xs text-black uppercase tracking-widest font-bold">
+              Web Designer & Progettista di Interfacce Visive
             </p>
 
-            <div className="space-y-4 font-sans text-xs sm:text-sm text-[#111113]/80 leading-relaxed">
-              {isFacilitated ? (
-                <>
-                  <p>
-                    Sono Teresa Rogani e sono l'<strong>unica titolare</strong> di Facilissimo Web. Ho creato questo studio per realizzare siti internet professionali, veloci ed economici usando l'intelligenza artificiale per aiutarmi nel codice.
-                  </p>
-                  <p>
-                    Qui <strong>non c'è nessun team</strong> o intermediario. Lavoro da sola così parli solo con chi fa il lavoro. Questo ti garantisce risposte immediate e un servizio trasparente e affidabile.
-                  </p>
-                </>
-              ) : (
-                <>
-                  <p>
-                    Sono la fondatrice e <strong className="text-black font-bold border-b border-black">unica titolare</strong> di Facilissimo Web. Ho creato questo studio con un'idea ben precisa: abbattere le barriere del web design tradicional e offrire siti web ultra-professionali, veloci e ottimizzati, sfruttando le tecnologie di Intelligenza Artificiale di ultima generazione.
-                  </p>
-                  <p>
-                    A differenza delle agenzie tradizionali dove il tuo progetto passa di mano in mano, qui <strong className="text-black font-bold border-b border-black">non c'è nessun team</strong>. Lavoro da sola. Questo è il mio più grande punto di forza: garantisco un canale di comunicazione diretto, trasparente ed estremamente veloce.
-                  </p>
-                </>
-              )}
-            </div>
+            <p className="text-sm sm:text-base text-[#111113]/80 leading-relaxed font-sans border-l-2 border-black pl-4 py-1 italic">
+              "Progetto architetture visive ed esperienziali che uniscono la sintassi dell'immagine, il rigore analitico e la centralità della presenza umana."
+            </p>
 
-            <div className="flex gap-4 pt-2">
+            <div className="flex gap-4 pt-4">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="solid-light"
+                className="solid-light flex items-center gap-2"
               >
-                {lang === "it" ? "Parliamo del tuo sito" : "Let's discuss your site"}
+                <span>{lang === "it" ? "Contattami ora" : "Contact me now"}</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </motion.div>
@@ -166,8 +139,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
             transition={{ duration: 0.7, delay: 0.2 }}
             className="lg:col-span-6"
           >
-            {/* Visual composition of Teresa / Workspace */}
-            <div className="relative w-full aspect-[4/3] overflow-hidden border border-[#111113]/10 bg-[#FAF9F6]">
+            <div className="relative w-full aspect-[4/3] overflow-hidden border border-[#111113]/20 bg-[#FAF9F6] shadow-xl">
               <img
                 src="/images/IO.jpg"
                 alt="M. Teresa Rogani Freelance Web Designer"
@@ -177,152 +149,151 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
               <div className="absolute inset-0 bg-gradient-to-t from-[#F8F7F4]/90 via-transparent to-transparent"></div>
               <div className="absolute bottom-6 left-6 text-[#111113] space-y-1">
                 <p className="font-display font-bold text-lg">M. Teresa Rogani</p>
-                <p className="text-[9px] font-mono text-black uppercase tracking-widest font-bold">
+                <p className="text-[10px] font-mono text-black uppercase tracking-widest font-bold">
                   Macerata (Marche), Italia
                 </p>
               </div>
             </div>
           </motion.div>
-
-
         </div>
       </section>
 
-      {/* The Single Freelancer Advantage */}
-      <section className="py-24 bg-[#FAF9F6] border-b border-[#111113]/10">
+      {/* 1-4 Percorso Formativo e Metodo Progettuale */}
+      <section className="py-20 md:py-24 bg-[#FAF9F6] border-b border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <span className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-white font-bold uppercase" style={{ letterSpacing: '0px' }}>
-              {isFacilitated ? "[ I VALORI DI FACILISSIMO WEB ]" : "[ EFFICIENZA & VALORE ]"}
+          <div className="max-w-3xl mb-16 space-y-4">
+            <span className="inline-block bg-black py-2.5 px-5 text-xs font-mono tracking-[0em] text-white font-bold uppercase" style={{ letterSpacing: '0px' }}>
+              [ PERCORSO FORMATIVO E METODO PROGETTUALE ]
             </span>
-            <h2 className="font-display text-3xl font-bold tracking-wide text-[#111113]">
-              {isFacilitated ? "Perché lavorare con me conviene" : "Il Vantaggio del Freelance Unico"}
+            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#111113]">
+              Dalla teoria della percezione all'architettura dell'interfaccia
             </h2>
-            <p className="text-[#111113]/70 font-sans text-xs sm:text-sm">
-              {isFacilitated 
-                ? "I vantaggi di avere una sola persona esperta che segue il tuo progetto dall'inizio alla fine."
-                : "Perché collaborare con una sola persona qualificata è una scelta vincente per la tua azienda rispetto a un'agenzia elefantiaca."}
+            <p className="text-[#111113]/70 font-sans text-sm sm:text-base leading-relaxed">
+              Un itinerario formativo multidisciplinare che intreccia comunicazione visiva, semiotica cinematografica, analisi filosofica e sensibilità spaziale.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {values.map((val, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {formationSteps.map((step, idx) => (
               <motion.div
-                key={val.title}
+                key={step.num}
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-8 bg-[#F8F7F4] border border-[#111113]/10 space-y-4 hover:border-black/40 transition-all"
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="p-8 bg-[#F8F7F4] border border-[#111113]/15 space-y-4 hover:border-black transition-all shadow-xs flex flex-col justify-between"
               >
-                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-black group-hover:bg-black group-hover:text-white">
-                  {val.icon}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between border-b border-black/10 pb-3">
+                    <span className="font-mono text-2xl font-bold text-black">{step.num}.</span>
+                    <div className="w-9 h-9 border border-black/20 flex items-center justify-center bg-white rounded-lg">
+                      {step.icon}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="font-display text-xl font-bold text-[#111113] leading-snug">
+                      {step.title}
+                    </h3>
+                    <p className="text-xs font-mono font-bold text-black/70 mt-1 uppercase tracking-wider">
+                      {step.subtitle}
+                    </p>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-[#111113]/80 leading-relaxed font-sans pt-2">
+                    {step.desc}
+                  </p>
                 </div>
-                <h3 className="font-display text-lg font-bold text-[#111113]">
-                  {val.title}
-                </h3>
-                <p className="text-xs text-[#111113]/70 leading-relaxed font-sans">
-                  {val.desc}
-                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Method / AI & Craftsmanship */}
-      <section className="py-24 bg-[#F8F7F4]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-5 space-y-6"
-          >
-            <span className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-white font-bold uppercase" style={{ letterSpacing: '0px' }}>
-              {isFacilitated ? "[ METODO DI LAVORO ]" : "[ INTELLIGENZA ARTIGIANALE ]"}
-            </span>
-            <h2 className="font-display text-3xl font-bold tracking-wide text-[#111113]">
-              {isFacilitated ? "Grafica e Assistenza con Computer" : "Artigianato & Intelligenza Artificiale"}
-            </h2>
-            <div className="space-y-4 text-xs sm:text-sm text-[#111113]/70 leading-relaxed font-sans">
-              {isFacilitated ? (
-                <>
-                  <p>
-                    Uso l'Intelligenza Artificiale per velocizzare la parte noiosa del codice. Questo mi permette di dedicare tutto il tempo a quello che conta di più per te: <strong>la grafica su misura, la facilità d'uso del sito e la scrittura di testi semplici per convincere i clienti</strong>.
-                  </p>
-                  <p>
-                    In questo modo ottieni un sito web moderno, curato in ogni dettaglio, pronto in soli 14 giorni e con una spesa molto contenuta.
-                  </p>
-                </>
-              ) : (
-                <>
-                  <p>
-                    Molti pensano che l'Intelligenza Artificiale sostituisca il lavoro umano. Per me, è l'esatto contrario: <strong className="text-black font-bold border-b border-black">l'IA lo potenzia ed eleva ad un livello superiore</strong>.
-                  </p>
-                  <p>
-                    Utilizzo l'IA in ogni fase del mio flusso di lavoro per eliminare i compiti ripetitivi (come la scrittura di codice di base o la generazione di bozze provvisorie). Questo mi permette di concentrarmi completamente su ciò che conta davvero per te: <strong className="text-black font-bold border-b border-black">la strategia di comunicazione, l'eleganza estetica, l'ottimizzazione dell'esperienza utente e la conversione dei clienti</strong>.
-                  </p>
-                  <p>
-                    Il risultato è un sito web che costa la metà, viene consegnato nella metà del tempo, ma vanta una qualità tecnica e grafica sbalorditiva.
-                  </p>
-                </>
-              )}
-            </div>
-          </motion.div>
-
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {skillCategories.map((cat, index) => (
-              <motion.div
-                key={cat.title}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-[#FAF9F6] p-6 border border-[#111113]/10 space-y-4 hover:border-black/40 transition-all"
-              >
-                <div className="w-10 h-10 border border-[#111113]/15 flex items-center justify-center text-black">
-                  {cat.icon}
-                </div>
-                <h4 className="font-display font-bold text-xs text-[#111113]">
-                  {cat.title}
-                </h4>
-                <ul className="space-y-2 text-[10px] text-[#111113]/75 font-mono">
-                  {cat.skills.map((sk) => (
-                    <li key={sk} className="flex items-center gap-1.5">
-                      <span className="w-1 h-1 bg-black"></span>
-                      <span>{sk}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* Philosophy Call To Action */}
-      <section className="py-24 bg-[#FAF9F6] text-[#111113] text-center border-t border-[#111113]/10">
-        <div className="max-w-2xl mx-auto px-6 space-y-6">
-          <span className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-white font-bold uppercase" style={{ letterSpacing: '0px' }}>
-            {isFacilitated ? "[ DIRETTO & VELOCE ]" : "[ DIRETTO & VELOCE ]"}
+      {/* Vision Statement Section */}
+      <section className="py-20 md:py-24 bg-[#111113] text-[#FAF9F6] relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-6 md:px-12 text-center space-y-8 relative z-10">
+          <span className="inline-block bg-white text-black py-2 px-5 text-xs font-mono font-bold tracking-[0em] uppercase" style={{ letterSpacing: '0px' }}>
+            [ VISION ]
           </span>
-          <h2 className="font-display text-3xl font-bold tracking-wide text-[#111113]">
-            {isFacilitated ? "Vuoi creare il tuo sito con me?" : "Pronto a lavorare direttamente con me?"}
+
+          <blockquote className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-snug tracking-tight">
+            "Trasformare la complessità in chiarezza attraverso un design visivo rigoroso, consapevole e orientato all'esperienza."
+          </blockquote>
+
+          <div className="w-16 h-0.5 bg-white/30 mx-auto" />
+
+          <p className="text-sm sm:text-base text-white/80 leading-relaxed font-sans max-w-3xl mx-auto">
+            Credo in un web e in una comunicazione dove l'estetica non è mai un fine a se stesso, ma la conseguenza naturale di una struttura logica solida. Il mio obiettivo è progettare architetture visive ed esperienziali che uniscano la sintassi dell'immagine, il rigore analitico e la centralità della presenza umana, offrendo soluzioni digitali essenziali, performanti e capaci di raccontare un'identità senza ridondanze.
+          </p>
+        </div>
+      </section>
+
+      {/* Valori Guida */}
+      <section className="py-20 md:py-24 bg-[#F8F7F4] border-t border-[#111113]/10">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="max-w-3xl mb-16 space-y-4">
+            <span className="inline-block bg-black py-2.5 px-5 text-xs font-mono tracking-[0em] text-white font-bold uppercase" style={{ letterSpacing: '0px' }}>
+              [ VALORI GUIDA ]
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#111113]">
+              I quattro pilastri del mio approccio progettuale
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {valuesGuida.map((val, idx) => (
+              <motion.div
+                key={val.num}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="bg-[#FAF9F6] p-6 border border-[#111113]/15 space-y-4 hover:border-black transition-all flex flex-col justify-between"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xl font-bold text-black border-b-2 border-black pb-0.5">
+                      0{val.num}
+                    </span>
+                    <div className="w-8 h-8 border border-black/15 flex items-center justify-center bg-white rounded-md">
+                      {val.icon}
+                    </div>
+                  </div>
+
+                  <h3 className="font-display text-base font-bold text-[#111113]">
+                    {val.title}
+                  </h3>
+
+                  <p className="text-xs text-[#111113]/80 leading-relaxed font-sans">
+                    {val.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final Call to Action */}
+      <section className="py-20 bg-[#FAF9F6] text-[#111113] text-center border-t border-[#111113]/10">
+        <div className="max-w-2xl mx-auto px-6 space-y-6">
+          <span className="inline-block bg-black py-2.5 px-5 text-xs font-mono tracking-[0em] text-white font-bold uppercase" style={{ letterSpacing: '0px' }}>
+            [ PROGETTIAMO INSIEME ]
+          </span>
+          <h2 className="font-display text-3xl font-bold tracking-tight text-[#111113]">
+            Vuoi realizzare un progetto web chiaro, elegante e performante?
           </h2>
           <p className="text-[#111113]/80 font-sans text-xs sm:text-sm leading-relaxed">
-            {isFacilitated 
-              ? "Evita le lunghe attese delle grandi agenzie e i preventivi troppo alti. Parla direttamente con me e svilupperò il tuo nuovo sito web."
-              : "Elimina i passaggi burocratici, i preventivi gonfiati e i tempi morti di un'agenzia. Parla direttamente con me e svilupperò il tuo nuovo sito web in tempi record."}
+            Parla direttamente con me. Analizzeremo i tuoi obiettivi e struttureremo un'architettura digitale su misura per la tua attività.
           </p>
-          <div className="pt-4">
+          <div className="pt-2">
             <button
               onClick={() => setCurrentTab("contatti")}
-              className="solid-light text-center flex items-center justify-center mx-auto"
+              className="solid-light text-center flex items-center justify-center mx-auto gap-2"
             >
-              <span>{lang === "it" ? "Avvia la collaborazione" : "Start cooperation"}</span>
+              <span>{lang === "it" ? "Inizia la collaborazione" : "Start collaboration"}</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>
