@@ -16,6 +16,7 @@ import InfoModal from "./components/InfoModal";
 import AccessibilityWidget from "./components/AccessibilityWidget";
 import CookieBanner from "./components/CookieBanner";
 import RightSidebar from "./components/RightSidebar";
+import FlagIcon from "./components/FlagIcon";
 import { ToastContainer, ToastMessage, ToastType } from "./components/Toast";
 import { safeStorage, safeCookies } from "./lib/safeStorage";
 
@@ -165,6 +166,8 @@ const LANGUAGES = [
   { code: "pt", label: "Português", flag: "🇵🇹" },
   { code: "ru", label: "Русский", flag: "🇷🇺" },
   { code: "zh-CN", label: "简体中文", flag: "🇨🇳" },
+  { code: "ar", label: "العربية", flag: "🇸🇦" },
+  { code: "ja", label: "日本語", flag: "🇯🇵" },
 ];
 
 const getCookieDomains = () => {
@@ -712,9 +715,11 @@ export default function App() {
                 id="desktop-sidebar-lang-btn"
                 title={lang === "it" ? "Cambia Lingua" : "Change Language"}
               >
-                <Globe className="w-4 h-4 text-white shrink-0" />
-                <span>
-                  {activeSidebarLangObj.flag} {activeSidebarLangObj.code.toUpperCase()} — {lang === "it" ? "Lingua" : "Language"}
+                <FlagIcon code={activeSidebarLangObj.code} className="w-5 h-3.5 rounded-xs shadow-sm shrink-0 border border-white/20" />
+                <span className="flex items-center gap-1.5">
+                  <span className="text-white">{activeSidebarLangObj.code.toUpperCase()}</span>
+                  <span className="text-white/40 font-normal">—</span>
+                  <span className="text-white/80">{lang === "it" ? "Lingua" : "Language"}</span>
                 </span>
               </button>
 
@@ -726,13 +731,13 @@ export default function App() {
                       <button
                         key={item.code}
                         onClick={() => handleSidebarSelectLanguage(item.code)}
-                        className={`px-4 py-2 text-left font-mono text-xs uppercase tracking-wider flex items-center gap-2.5 hover:bg-white/10 hover:text-white transition-all cursor-pointer ${
+                        className={`px-4 py-2 text-left font-mono text-xs uppercase tracking-wider flex items-center gap-3 hover:bg-white/10 hover:text-white transition-all cursor-pointer ${
                           currentSidebarLang === item.code
                             ? "text-amber-400 font-extrabold bg-white/10"
                             : "text-white/70"
                         }`}
                       >
-                        <span className="text-sm">{item.flag}</span>
+                        <FlagIcon code={item.code} className="w-5 h-3.5 rounded-xs shadow-xs shrink-0 border border-white/20" />
                         <span>{item.label}</span>
                       </button>
                     ))}

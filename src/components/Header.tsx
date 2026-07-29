@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Globe, Accessibility, Home, Code2, User2, Lightbulb, Mail, MessageSquare, BookOpen, Key } from "lucide-react";
 import { translations } from "../translations";
 import { safeStorage, safeCookies } from "../lib/safeStorage";
+import FlagIcon from "./FlagIcon";
 
 const logoImage = "/f (1600 x 500 px).webp";
 
@@ -36,6 +37,8 @@ const LANGUAGES = [
   { code: "pt", label: "Português", flag: "🇵🇹" },
   { code: "ru", label: "Русский", flag: "🇷🇺" },
   { code: "zh-CN", label: "简体中文", flag: "🇨🇳" },
+  { code: "ar", label: "العربية", flag: "🇸🇦" },
+  { code: "ja", label: "日本語", flag: "🇯🇵" },
 ];
 
 export default function Header({
@@ -252,10 +255,8 @@ export default function Header({
               title={t.languageLabel}
               id="lang-toggle-desktop"
             >
-              <Globe className="w-3.5 h-3.5 text-black" />
-              <span>
-                {activeLangObj.flag} {activeLangObj.code.toUpperCase()}
-              </span>
+              <FlagIcon code={activeLangObj.code} className="w-4 h-3 rounded-xs shadow-xs border border-black/10 shrink-0" />
+              <span>{activeLangObj.code.toUpperCase()}</span>
             </button>
 
             {isLangOpen && (
@@ -272,7 +273,7 @@ export default function Header({
                           : "text-[#111113]/75"
                       }`}
                     >
-                      <span className="text-base leading-none shrink-0">{item.flag}</span>
+                      <FlagIcon code={item.code} className="w-4 h-3 rounded-xs shadow-xs border border-black/10 shrink-0" />
                       <span className="truncate">{item.label}</span>
                     </button>
                   ))}
@@ -373,8 +374,8 @@ export default function Header({
                   className="py-2 px-2.5 border border-[#111113]/10 bg-[#FAF9F6]/30 rounded-sm text-[#111113] hover:text-black transition-all flex items-center justify-center gap-1.5 cursor-pointer font-mono text-[9px] uppercase tracking-widest font-bold"
                   id="mobile-lang-trigger"
                 >
-                  <Globe className="w-3.5 h-3.5 text-black" />
-                  <span>{activeLangObj.flag} {activeLangObj.code.toUpperCase()}</span>
+                  <FlagIcon code={activeLangObj.code} className="w-3.5 h-2.5 rounded-xs shadow-xs border border-black/10 shrink-0" />
+                  <span>{activeLangObj.code.toUpperCase()}</span>
                   <span className={`text-[7px] transition-transform duration-200 ${isMobileLangOpen ? "rotate-180" : ""}`}>▼</span>
                 </button>
               </div>
@@ -388,13 +389,13 @@ export default function Header({
                       <button
                         key={item.code}
                         onClick={() => selectLanguage(item.code)}
-                        className={`py-1 px-1 rounded-sm border transition-all flex items-center justify-center gap-1 cursor-pointer font-mono text-[8px] uppercase tracking-wider font-semibold ${
+                        className={`py-1.5 px-1 rounded-sm border transition-all flex items-center justify-center gap-1.5 cursor-pointer font-mono text-[8px] uppercase tracking-wider font-semibold ${
                           isSelected
                             ? "bg-black border-black text-[#FAF9F6]"
                             : "border-[#111113]/10 text-[#111113]/70 hover:text-black"
                         }`}
                       >
-                        <span>{item.flag}</span>
+                        <FlagIcon code={item.code} className="w-3.5 h-2.5 rounded-xs shadow-xs border border-black/10 shrink-0" />
                         <span>{item.code.toUpperCase()}</span>
                       </button>
                     );
