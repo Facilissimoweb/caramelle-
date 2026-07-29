@@ -24,11 +24,23 @@ export const CookieBanner: React.FC<CookieBannerProps> = ({ lang, isFacilitated 
         return () => clearTimeout(timer);
       } else {
         const parsed = JSON.parse(saved);
-        setGa4Accepted(!!parsed.ga4);
-        setMetaAccepted(!!parsed.metaPixel);
+        const savedTime = parsed.timestamp ? new Date(parsed.timestamp).getTime() : 0;
+        const now = Date.now();
+        const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000;
+
+        // If 24 hours have passed since last consent, re-activate banner
+        if (!savedTime || (now - savedTime >= TWENTY_FOUR_HOURS)) {
+          const timer = setTimeout(() => setIsVisible(true), 1000);
+          return () => clearTimeout(timer);
+        } else {
+          setGa4Accepted(!!parsed.ga4);
+          setMetaAccepted(!!parsed.metaPixel);
+        }
       }
     } catch (e) {
       console.warn("Failed to parse cookie preferences:", e);
+      const timer = setTimeout(() => setIsVisible(true), 1000);
+      return () => clearTimeout(timer);
     }
   }, []);
 
