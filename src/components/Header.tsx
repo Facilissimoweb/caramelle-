@@ -261,19 +261,19 @@ export default function Header({
             {isLangOpen && (
               <>
                 <div className="fixed inset-0 z-40" onClick={() => setIsLangOpen(false)} />
-                <div className="absolute right-0 mt-2 w-44 bg-[#F8F7F4]/98 backdrop-blur-md border border-[#111113]/15 shadow-2xl z-50 flex flex-col py-1.5">
+                <div className="absolute right-0 mt-2 w-48 bg-[#FAF9F6] border border-[#111113]/15 shadow-2xl z-50 flex flex-col py-1.5 rounded-sm">
                   {LANGUAGES.map((item) => (
                     <button
                       key={item.code}
                       onClick={() => selectLanguage(item.code)}
-                      className={`px-4 py-2.5 text-left font-mono text-[10px] uppercase tracking-wider flex items-center gap-2.5 hover:bg-[#111113]/5 hover:text-black transition-all cursor-pointer ${
+                      className={`px-3.5 py-2 text-left font-mono text-[11px] uppercase tracking-wider flex items-center gap-2.5 hover:bg-[#111113]/5 hover:text-black transition-all cursor-pointer ${
                         currentGoogleLang === item.code
                           ? "text-black font-extrabold bg-black/10"
-                          : "text-[#111113]/70"
+                          : "text-[#111113]/75"
                       }`}
                     >
-                      <span className="text-sm">{item.flag}</span>
-                      <span>{item.label}</span>
+                      <span className="text-base leading-none shrink-0">{item.flag}</span>
+                      <span className="truncate">{item.label}</span>
                     </button>
                   ))}
                 </div>

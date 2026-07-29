@@ -15,6 +15,7 @@ import TurnkeyWordpressView from "./components/TurnkeyWordpressView";
 import InfoModal from "./components/InfoModal";
 import AccessibilityWidget from "./components/AccessibilityWidget";
 import CookieBanner from "./components/CookieBanner";
+import RightSidebar from "./components/RightSidebar";
 import { ToastContainer, ToastMessage, ToastType } from "./components/Toast";
 import { safeStorage, safeCookies } from "./lib/safeStorage";
 
@@ -763,8 +764,15 @@ export default function App() {
         </div>
       </aside>
 
-      {/* Main Layout Shell - shifted on desktop to account for left sidebar */}
-      <div className="xl:pl-[280px] flex-grow flex flex-col min-h-screen">
+      {/* Desktop Right Sidebar - Hidden until 2xl screens (large desktop displays) */}
+      <RightSidebar
+        lang={lang}
+        setCurrentTab={handleSetTab}
+        onOpenChat={() => setIsChatOpen(true)}
+      />
+
+      {/* Main Layout Shell - shifted on desktop to account for left and right sidebars */}
+      <div className="xl:pl-[280px] 2xl:pr-[240px] flex-grow flex flex-col min-h-screen">
         {/* Navigation Header for mobile/tablet only */}
         <div className="xl:hidden">
           <Header
@@ -806,7 +814,7 @@ export default function App() {
 
           return (
             <div 
-              className={`fixed top-20 xl:top-0 xl:left-[280px] w-full xl:w-[calc(100%-280px)] bg-[#111113] border-b border-white/10 py-3 px-4 sm:px-6 xl:px-12 backdrop-blur-md z-40 select-none transition-all duration-300 ease-in-out ${
+              className={`fixed top-20 xl:top-0 xl:left-[280px] w-full xl:w-[calc(100%-280px)] 2xl:w-[calc(100%-520px)] bg-[#111113] border-b border-white/10 py-3 px-4 sm:px-6 xl:px-12 backdrop-blur-md z-40 select-none transition-all duration-300 ease-in-out ${
                 showBreadcrumb 
                   ? "translate-y-0 opacity-100" 
                   : "-translate-y-full opacity-0 pointer-events-none"
