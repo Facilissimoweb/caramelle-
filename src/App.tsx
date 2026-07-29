@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ChevronLeft, ChevronRight, Home, Share2, Copy, Check, ArrowUp, Accessibility } from "lucide-react";
+import { ChevronLeft, ChevronRight, Home, Share2, Copy, Check, ArrowUp, Accessibility, Globe } from "lucide-react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomeView from "./components/HomeView";
@@ -16,7 +16,7 @@ import InfoModal from "./components/InfoModal";
 import AccessibilityWidget from "./components/AccessibilityWidget";
 import CookieBanner from "./components/CookieBanner";
 import { ToastContainer, ToastMessage, ToastType } from "./components/Toast";
-import { safeStorage } from "./lib/safeStorage";
+import { safeStorage, safeCookies } from "./lib/safeStorage";
 
 const logoImage = "/f (1600 x 500 px).webp";
 
@@ -155,10 +155,65 @@ export const initTrackingConsentUtility = () => {
   }
 };
 
+const LANGUAGES = [
+  { code: "it", label: "Italiano", flag: "🇮🇹" },
+  { code: "en", label: "English", flag: "🇬🇧" },
+  { code: "fr", label: "Français", flag: "🇫🇷" },
+  { code: "de", label: "Deutsch", flag: "🇩🇪" },
+  { code: "es", label: "Español", flag: "🇪🇸" },
+  { code: "pt", label: "Português", flag: "🇵🇹" },
+  { code: "ru", label: "Русский", flag: "🇷🇺" },
+  { code: "zh-CN", label: "简体中文", flag: "🇨🇳" },
+];
+
+const getCookieDomains = () => {
+  if (typeof window === "undefined") return [];
+  const hostname = window.location.hostname;
+  const domains = [hostname, `.${hostname}`];
+  const parts = hostname.split(".");
+  for (let i = 1; i < parts.length; i++) {
+    const d = parts.slice(i).join(".");
+    if (d && d !== "com" && d !== "app" && d !== "net" && d !== "org") {
+      domains.push(d);
+      domains.push(`.${d}`);
+    }
+  }
+  return Array.from(new Set(domains));
+};
+
+const setGoogleTranslateCookie = (code: string) => {
+  const value = code === "it" ? "/it/it" : `/it/${code}`;
+  const domains = getCookieDomains();
+  for (const d of domains) {
+    safeCookies.set(`googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${d};`);
+  }
+  safeCookies.set(`googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`);
+
+  for (const d of domains) {
+    safeCookies.set(`googtrans=${value}; path=/; domain=${d};`);
+  }
+  safeCookies.set(`googtrans=${value}; path=/;`);
+};
+
 const TABS_ORDER = ["home", "chi-sono", "siti-web", "chiavi-in-mano", "contatti", "blog"];
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>("home");
+  const [isSidebarLangOpen, setIsSidebarLangOpen] = useState(false);
+  const [currentSidebarLang, setCurrentSidebarLang] = useState<string>(() => {
+    return safeStorage.getItem("facilissimo-google-lang") || "it";
+  });
+
+  const handleSidebarSelectLanguage = (code: string) => {
+    safeStorage.setItem("facilissimo-google-lang", code);
+    setCurrentSidebarLang(code);
+    safeStorage.setItem("facilissimo-lang", "it");
+    setGoogleTranslateCookie(code);
+    setIsSidebarLangOpen(false);
+    window.location.reload();
+  };
+
+  const activeSidebarLangObj = LANGUAGES.find((l) => l.code === currentSidebarLang) || LANGUAGES[0];
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
   const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
   const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
@@ -647,7 +702,45 @@ export default function App() {
             </ul>
           </nav>
 
-          <div className="pt-4 border-t border-white/10">
+          <div className="pt-4 border-t border-white/10 space-y-2">
+            {/* Language Switcher Button with Globe Icon */}
+            <div className="relative">
+              <button
+                onClick={() => setIsSidebarLangOpen(!isSidebarLangOpen)}
+                className="flex items-center gap-2.5 text-left font-mono text-[14px] font-bold uppercase tracking-widest text-white/60 hover:text-white transition-all cursor-pointer py-1.5 w-full"
+                id="desktop-sidebar-lang-btn"
+                title={lang === "it" ? "Cambia Lingua" : "Change Language"}
+              >
+                <Globe className="w-4 h-4 text-white shrink-0" />
+                <span>
+                  {activeSidebarLangObj.flag} {activeSidebarLangObj.code.toUpperCase()} — {lang === "it" ? "Lingua" : "Language"}
+                </span>
+              </button>
+
+              {isSidebarLangOpen && (
+                <>
+                  <div className="fixed inset-0 z-40" onClick={() => setIsSidebarLangOpen(false)} />
+                  <div className="absolute left-0 bottom-full mb-2 w-56 bg-[#18181b] border border-white/20 shadow-2xl z-50 flex flex-col py-1.5 rounded-sm">
+                    {LANGUAGES.map((item) => (
+                      <button
+                        key={item.code}
+                        onClick={() => handleSidebarSelectLanguage(item.code)}
+                        className={`px-4 py-2 text-left font-mono text-xs uppercase tracking-wider flex items-center gap-2.5 hover:bg-white/10 hover:text-white transition-all cursor-pointer ${
+                          currentSidebarLang === item.code
+                            ? "text-amber-400 font-extrabold bg-white/10"
+                            : "text-white/70"
+                        }`}
+                      >
+                        <span className="text-sm">{item.flag}</span>
+                        <span>{item.label}</span>
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Accessibility Button */}
             <button
               onClick={() => setIsAccessibilityOpen(true)}
               className="flex items-center gap-2.5 text-left font-mono text-[14px] font-bold uppercase tracking-widest text-white/60 hover:text-white transition-all cursor-pointer py-1.5"
