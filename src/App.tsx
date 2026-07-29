@@ -23,60 +23,62 @@ import { safeStorage, safeCookies } from "./lib/safeStorage";
 const logoImage = "/f (1600 x 500 px).webp";
 
 
+const defaultShareImage = "/images/facilissio web siti web professionali on line prima di ieri (2) (1).webp";
+
 const SEO_METADATA: Record<string, { title: string; description: string; keywords: string; image: string }> = {
   home: {
     title: "Facilissimo Web — Realizzazione Siti Web Macerata e Marche",
     description: "Studio Facilissimo Web a Macerata (Marche). Progettazione e realizzazione siti web veloci, moderni e ottimizzati SEO con Intelligenza Artificiale.",
     keywords: "realizzazione siti web macerata, web designer marche, siti web veloci marche, siti web economici macerata, intelligenza artificiale macerata, seo macerata, m teresa rogani",
-    image: "/og-image.png",
+    image: defaultShareImage,
   },
   abbonamento: {
     title: "Sito Web in Abbonamento (WaaS) — Facilissimo Web Macerata",
     description: "Sito web in abbonamento mensile o annuale con gestione continua, manutenzione, aggiornamenti e hosting incluso.",
     keywords: "sito web in abbonamento, waas, saas sito web, sito web mensile, gestione sito web macerata, abbonamento sito internet",
-    image: "/og-image.png",
+    image: defaultShareImage,
   },
   "web-app": {
     title: "Proposte, Web App e Siti Web — Facilissimo Web Macerata",
     description: "Esplora le proposte digitali, web app interattive e siti web realizzati da Facilissimo Web a Macerata.",
     keywords: "proposte web macerata, web app macerata, siti web macerata, m teresa rogani, web designer macerata",
-    image: "/og-image.png",
+    image: defaultShareImage,
   },
   "siti-web": {
     title: "Proposte, Web App e Siti Web — Facilissimo Web Macerata",
     description: "Esplora le proposte digitali, web app interattive e siti web realizzati da Facilissimo Web a Macerata.",
     keywords: "proposte web macerata, web app macerata, siti web macerata, m teresa rogani, web designer macerata",
-    image: "/og-image.png",
+    image: defaultShareImage,
   },
   "chiavi-in-mano": {
     title: "Sito Web Chiavi in Mano WordPress & Hostinger — Facilissimo Web",
     description: "Sito web professionale chiavi in mano completo e subito pronto all'uso. Ospitato su server Cloud Hostinger con CMS WordPress.",
     keywords: "sito web chiavi in mano, wordpress hostinger, sito wordpress macerata, hostinger cloud hosting, facilissimo web chiavi in mano",
-    image: "/og-image.png",
+    image: defaultShareImage,
   },
   "chi-sono": {
     title: "Chi Sono — Facilissimo Web | Teresa Rogani Web Designer Macerata",
     description: "Scopri chi c'è dietro Facilissimo Web. M. Teresa Rogani, freelance web designer and AI specialist a Macerata, Marche. Creazione siti web professionali e su misura.",
     keywords: "teresa rogani, freelance web designer macerata, ai specialist marche, realizzazione siti web professionali marche, sviluppo siti web marche",
-    image: "/og-image.png",
+    image: defaultShareImage,
   },
   contatti: {
     title: "Contatti — Facilissimo Web | Preventivo Sito Web Macerata",
     description: "Richiedi un preventivo gratuito per il tuo nuovo sito web a Macerata e nelle Marche. Scrivi a facilissimoweb.mc@gmail.com o chiama il +39 379 360 3321.",
     keywords: "contatti web designer macerata, telefono facilissimo web, email facilissimo web, preventivo sito internet macerata",
-    image: "/og-image.png",
+    image: defaultShareImage,
   },
   chat: {
     title: "Assistente AI Live — Facilissimo Web Macerata",
     description: "Parla subito con l'Assistente Virtuale di Facilissimo Web basato su IA. Ricevi risposte istantanee su servizi, tempi e prezzi per siti web a Macerata e nelle Marche.",
     keywords: "chat ai macerata, assistente virtuale marche, intelligenza artificiale assistente, consulenza ai marche",
-    image: "/og-image.png",
+    image: defaultShareImage,
   },
   blog: {
     title: "Blog & News — Facilissimo Web | SEO Predittiva e IA",
     description: "Leggi gli articoli di approfondimento su SEO Predittiva, Web Design con Intelligenza Artificiale e strategie digitali per microimprese a Macerata e nelle Marche.",
     keywords: "seo predittiva, blog intelligenza artificiale, web design marche, teresa rogani blog, novità seo ia, blog facilissimo web",
-    image: "/og-image.png",
+    image: defaultShareImage,
   },
 };
 
