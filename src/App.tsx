@@ -14,6 +14,7 @@ import { SubscriptionView } from "./components/SubscriptionView";
 import TurnkeyWordpressView from "./components/TurnkeyWordpressView";
 import InfoModal from "./components/InfoModal";
 import AccessibilityWidget from "./components/AccessibilityWidget";
+import CookieBanner from "./components/CookieBanner";
 import { ToastContainer, ToastMessage, ToastType } from "./components/Toast";
 import { safeStorage } from "./lib/safeStorage";
 
@@ -861,6 +862,9 @@ export default function App() {
           </motion.button>
         )}
       </AnimatePresence>
+      {/* Cookie & Tracking Consent Banner (GA4) */}
+      <CookieBanner lang={lang} isFacilitated={isFacilitated} />
+
       {/* Global Toast Notifications */}
       <ToastContainer toasts={toasts} onDismiss={handleDismissToast} />
     </div>

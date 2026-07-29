@@ -310,6 +310,20 @@ export default function Footer({
           >
             {lang === "it" ? "Sitemap" : "Sitemap"}
           </button>
+          <button
+            onClick={() => {
+              try {
+                localStorage.removeItem("facilissimo-cookie-consent");
+                window.location.reload();
+              } catch (e) {
+                console.warn(e);
+              }
+            }}
+            className="hover:text-amber-400 transition-colors cursor-pointer bg-transparent border-none p-0 text-xs md:text-sm uppercase tracking-wider font-mono font-bold text-amber-400/90"
+            id="footer-cookies-btn"
+          >
+            {lang === "it" ? "Gestisci Cookie (GA4)" : "Cookie Settings (GA4)"}
+          </button>
         </div>
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
