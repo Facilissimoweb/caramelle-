@@ -174,7 +174,6 @@ export default function Header({
     { id: "chi-sono", label: t.navChiSono },
     { id: "siti-web", label: t.navSitiWeb },
     { id: "chiavi-in-mano", label: t.navChiaviInMano },
-    { id: "abbonamento", label: t.navAbbonamento },
     { id: "contatti", label: t.navContatti },
     { id: "blog", label: t.navBlog },
   ];

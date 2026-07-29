@@ -2,15 +2,14 @@ import React from "react";
 import { 
   Key, 
   CheckCircle2, 
-  Sliders, 
-  ShieldCheck, 
-  Rocket, 
   ArrowRight,
   Sparkles,
-  Layers,
-  Search,
-  Lock,
-  MousePointerClick
+  ShieldCheck,
+  RefreshCw,
+  Zap,
+  HelpCircle,
+  Clock,
+  Layers
 } from "lucide-react";
 
 interface TurnkeyWordpressViewProps {
@@ -22,7 +21,7 @@ interface TurnkeyWordpressViewProps {
 export default function TurnkeyWordpressView({ lang, setCurrentTab }: TurnkeyWordpressViewProps) {
   const isIt = lang === "it";
 
-  const handleContactClick = () => {
+  const handleContactClick = (packageName?: string) => {
     if (setCurrentTab) {
       setCurrentTab("contatti");
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -30,9 +29,9 @@ export default function TurnkeyWordpressView({ lang, setCurrentTab }: TurnkeyWor
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#F8F7F4] text-[#111113] pb-24">
-      {/* HERO BANNER SECTION */}
-      <section className="relative bg-[#111113] text-white pt-16 pb-20 px-4 sm:px-6 xl:px-12 overflow-hidden border-b border-black">
+    <div className="w-full min-h-screen bg-[#F8F7F4] text-[#111113] pb-24 selection:bg-black selection:text-white">
+      {/* HERO SECTION */}
+      <section className="relative bg-[#111113] text-white pt-16 pb-16 px-4 sm:px-6 xl:px-12 border-b border-black">
         <div 
           className="absolute inset-0 opacity-10 pointer-events-none"
           style={{
@@ -41,282 +40,356 @@ export default function TurnkeyWordpressView({ lang, setCurrentTab }: TurnkeyWor
           }}
         />
 
-        <div className="max-w-4xl mx-auto space-y-6 relative z-10 text-center sm:text-left">
+        <div className="max-w-4xl mx-auto space-y-5 relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-400 text-black text-[11px] font-mono font-bold uppercase tracking-widest">
-            <Key className="w-3.5 h-3.5" />
-            <span>{isIt ? "SOLUZIONE CHIAVI IN MANO • WORDPRESS" : "TURNKEY SOLUTION • WORDPRESS"}</span>
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>{isIt ? "CONFRONTO MODELLI DI SERVIZIO" : "SERVICE MODELS COMPARISON"}</span>
           </div>
 
-          <div className="space-y-3">
-            <h1 className="font-tan text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
-              {isIt ? "Sito Web Chiavi in Mano" : "Turnkey Professional Website"}
-            </h1>
-            <p className="font-display text-lg sm:text-2xl text-amber-300 font-semibold tracking-tight">
-              {isIt 
-                ? "Autonomia, Proprietà 100% e Crescita Senza Limiti" 
-                : "Full Autonomy, 100% Ownership & Unlimited Growth"}
-            </p>
-          </div>
+          <h1 className="font-tan text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
+            {isIt ? "Sito Web: Chiavi in Mano o In Abbonamento?" : "Website: Turnkey or Subscription?"}
+          </h1>
 
-          <p className="text-sm sm:text-base text-white/80 max-w-2xl leading-relaxed font-sans font-light">
+          <p className="text-sm sm:text-base text-white/80 max-w-2xl mx-auto leading-relaxed font-sans font-light">
             {isIt
-              ? "Tutto ciò che ti serve per portare la tua attività online con standard professionali: semplice da gestire, completamente tuo e progettato per scalare nel tempo."
-              : "Everything you need to take your business online with professional standards: easy to manage, 100% yours, and built to scale over time."}
+              ? "Due formule trasparenti per la tua presenza online. Confronta le differenze a colpo d'occhio e scegli la soluzione ideale per la tua attività."
+              : "Two transparent approaches for your online presence. Compare differences at a glance and choose what fits best."}
           </p>
-
-          <div className="pt-2 flex flex-wrap gap-4 justify-center sm:justify-start">
-            <button
-              onClick={handleContactClick}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-amber-400 hover:bg-amber-300 text-black font-bold text-sm tracking-wide transition-all shadow-md active:scale-98"
-            >
-              <span>{isIt ? "Richiedi un Preventivo" : "Request a Quote"}</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
         </div>
       </section>
 
-      {/* 3 BLOCCHI DI SINTESI */}
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 xl:px-12 pt-12 space-y-10">
+      {/* MAIN CONTENT: ULTRA-SYNTHETIC COMPARISON */}
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 xl:px-12 pt-12 space-y-12">
 
-        {/* BLOCCO 1: PIENA AUTONOMIA E FACILITÀ DI GESTIONE */}
+        {/* SIDE-BY-SIDE CARDS COMPARISON */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+
+          {/* CARD 1: CHIAVI IN MANO */}
+          <div className="bg-white border-2 border-[#111113] p-6 sm:p-8 flex flex-col justify-between shadow-md relative group hover:shadow-xl transition-all">
+            <div className="space-y-6">
+              <div className="flex items-center justify-between border-b border-[#111113]/10 pb-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-9 h-9 bg-black text-amber-400 font-mono font-bold flex items-center justify-center shrink-0">
+                    <Key className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono font-bold text-amber-600 uppercase tracking-widest block">
+                      {isIt ? "ACQUISTO UNA TANTUM" : "ONE-TIME PURCHASE"}
+                    </span>
+                    <h2 className="font-display text-xl sm:text-2xl font-bold text-[#111113]">
+                      {isIt ? "Chiavi in Mano" : "Turnkey Website"}
+                    </h2>
+                  </div>
+                </div>
+                <span className="text-xs font-mono font-bold bg-[#111113] text-white px-2.5 py-1">
+                  0 Canoni
+                </span>
+              </div>
+
+              <p className="text-sm text-[#111113]/80 leading-relaxed font-sans">
+                {isIt
+                  ? "Sito WordPress completo e subito pronto all'uso su hosting Hostinger. Paghi una sola volta, il sito è tuo al 100% e lo gestisci in totale autonomia."
+                  : "Complete WordPress site hosted on Cloud Hostinger. One-time payment, 100% your property, managed independently."}
+              </p>
+
+              <div className="space-y-3 pt-2">
+                <div className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span className="text-xs sm:text-sm font-medium text-[#111113]">
+                    <strong>{isIt ? "Proprietà Totale (100%):" : "100% Code Ownership:"}</strong> {isIt ? "Nessun vincolo o piattaforma chiusa." : "No vendor lock-in or proprietary code."}
+                  </span>
+                </div>
+
+                <div className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span className="text-xs sm:text-sm font-medium text-[#111113]">
+                    <strong>{isIt ? "Autonomia WordPress:" : "WordPress Autonomy:"}</strong> {isIt ? "Gestisci testi e immagini facilmente da solo." : "Edit copy & images easily on your own."}
+                  </span>
+                </div>
+
+                <div className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span className="text-xs sm:text-sm font-medium text-[#111113]">
+                    <strong>{isIt ? "Zero Canoni Mensili:" : "Zero Monthly Fees:"}</strong> {isIt ? "Nessun abbonamento ricorsivo obbligatorio." : "No mandatory recurring subscriptions."}
+                  </span>
+                </div>
+
+                <div className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span className="text-xs sm:text-sm font-medium text-[#111113]">
+                    <strong>{isIt ? "Cloud Hostinger:" : "Cloud Hostinger:"}</strong> {isIt ? "Infrastruttura veloce, sicura e scalabile." : "Fast, secure & scalable server setup."}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-8 border-t border-[#111113]/10 mt-6 space-y-4">
+              <div className="bg-[#FAF9F6] p-3 border border-[#111113]/10 text-xs font-mono text-[#111113]/80">
+                👉 <strong>{isIt ? "A chi conviene:" : "Best for:"}</strong> {isIt ? "Chi desidera possedere il sito e gestirlo senza costi fissi mensili." : "Anyone who wants full site ownership with zero ongoing monthly fees."}
+              </div>
+
+              <button
+                onClick={() => handleContactClick("chiavi-in-mano")}
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 bg-[#111113] hover:bg-black text-white font-bold text-xs uppercase font-mono tracking-wider transition-all"
+              >
+                <span>{isIt ? "Scegli Chiavi in Mano" : "Choose Turnkey Site"}</span>
+                <ArrowRight className="w-4 h-4 text-amber-400" />
+              </button>
+            </div>
+          </div>
+
+          {/* CARD 2: IN ABBONAMENTO */}
+          <div className="bg-[#111113] text-white border-2 border-black p-6 sm:p-8 flex flex-col justify-between shadow-md relative group hover:shadow-xl transition-all">
+            <div className="space-y-6">
+              <div className="flex items-center justify-between border-b border-white/15 pb-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-9 h-9 bg-amber-400 text-black font-mono font-bold flex items-center justify-center shrink-0">
+                    <RefreshCw className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono font-bold text-amber-400 uppercase tracking-widest block">
+                      {isIt ? "CANONE CONTINUO (WaaS)" : "MONTHLY / YEARLY CARE"}
+                    </span>
+                    <h2 className="font-display text-xl sm:text-2xl font-bold text-white">
+                      {isIt ? "In Abbonamento" : "Subscription Model"}
+                    </h2>
+                  </div>
+                </div>
+                <span className="text-xs font-mono font-bold bg-amber-400 text-black px-2.5 py-1">
+                  Tutto Incluso
+                </span>
+              </div>
+
+              <p className="text-sm text-white/80 leading-relaxed font-sans">
+                {isIt
+                  ? "Sito web evoluto con affiancamento costante. Zero grandi costi iniziali, hosting e manutenzione inclusi, modifiche e aggiornamenti sempre garantiti."
+                  : "Evolving website with continuous managed care. No heavy upfront costs, hosting & maintenance included, hassle-free updates."}
+              </p>
+
+              <div className="space-y-3 pt-2">
+                <div className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                  <span className="text-xs sm:text-sm font-medium text-white/90">
+                    <strong>{isIt ? "Zero Ansia Tecnica:" : "Zero Tech Stress:"}</strong> {isIt ? "Server, sicurezza, backup e aggiornamenti curati per te." : "Server, security, backups & updates handled for you."}
+                  </span>
+                </div>
+
+                <div className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                  <span className="text-xs sm:text-sm font-medium text-white/90">
+                    <strong>{isIt ? "Modifiche Incluse:" : "Content Tweaks Included:"}</strong> {isIt ? "Aggiungi testi, foto o prezzi senza preventivi extra." : "Update text, photos or services without extra quotes."}
+                  </span>
+                </div>
+
+                <div className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                  <span className="text-xs sm:text-sm font-medium text-white/90">
+                    <strong>{isIt ? "Sito Mai Obsoleto:" : "Never Outdated:"}</strong> {isIt ? "Evoluzione grafica e funzionale continua nel tempo." : "Continuous visual & functional enhancements over time."}
+                  </span>
+                </div>
+
+                <div className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                  <span className="text-xs sm:text-sm font-medium text-white/90">
+                    <strong>{isIt ? "Assistenza Diretta:" : "Direct Support:"}</strong> {isIt ? "Supporto telefonico ed email senza intermediari." : "Direct phone and email support with M. Teresa Rogani."}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-8 border-t border-white/15 mt-6 space-y-4">
+              <div className="bg-white/10 p-3 border border-white/15 text-xs font-mono text-white/90">
+                👉 <strong>{isIt ? "A chi conviene:" : "Best for:"}</strong> {isIt ? "Chi desidera un investimento iniziale contenuto e la tranquillità della gestione continua." : "Businesses wanting low entry cost and zero technical worries."}
+              </div>
+
+              <button
+                onClick={() => handleContactClick("abbonamento")}
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 bg-amber-400 hover:bg-amber-300 text-black font-bold text-xs uppercase font-mono tracking-wider transition-all"
+              >
+                <span>{isIt ? "Scegli Abbonamento" : "Choose Subscription"}</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        {/* COMPARISON TABLE */}
         <section className="bg-white border border-[#111113]/15 p-6 sm:p-10 shadow-sm space-y-6">
-          <div className="flex items-center gap-3 border-b border-[#111113]/10 pb-4">
-            <div className="w-10 h-10 bg-black text-amber-400 font-mono text-base font-bold flex items-center justify-center shrink-0">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-[#111113]/10">
+            <div>
+              <span className="text-[10px] font-mono uppercase tracking-widest text-amber-600 font-bold">
+                {isIt ? "TABELLA COMPARATIVA" : "COMPARISON MATRIX"}
+              </span>
+              <h2 className="font-display text-2xl font-bold text-[#111113]">
+                {isIt ? "Confronto Diretto a Colpo d'Occhio" : "Direct Side-by-Side Comparison"}
+              </h2>
+            </div>
+            <span className="text-xs font-mono text-[#111113]/60 uppercase">
+              {isIt ? "Consegna in 14 Giorni per entrambi" : "14-Day Delivery for Both"}
+            </span>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse font-sans text-xs sm:text-sm">
+              <thead>
+                <tr className="bg-[#111113] text-white font-mono text-xs uppercase tracking-wider">
+                  <th className="p-3.5 font-bold border border-[#111113] w-1/3">
+                    {isIt ? "Caratteristica" : "Feature"}
+                  </th>
+                  <th className="p-3.5 font-bold border border-[#111113] text-amber-400 w-1/3">
+                    {isIt ? "Chiavi in Mano (Una Tantum)" : "Turnkey (One-off)"}
+                  </th>
+                  <th className="p-3.5 font-bold border border-[#111113] text-amber-400 w-1/3">
+                    {isIt ? "In Abbonamento (SaaS)" : "Subscription (Care)"}
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#111113]/10">
+                <tr className="hover:bg-[#FAF9F6]">
+                  <td className="p-3.5 font-bold font-mono text-[#111113] border border-[#111113]/15">
+                    {isIt ? "Costo Iniziale" : "Upfront Cost"}
+                  </td>
+                  <td className="p-3.5 border border-[#111113]/15">
+                    {isIt ? "Investimento una tantum" : "One-time initial fee"}
+                  </td>
+                  <td className="p-3.5 font-medium text-emerald-800 bg-emerald-50/50 border border-[#111113]/15">
+                    {isIt ? "Ridotto / Basso costo d'ingresso" : "Low entry investment"}
+                  </td>
+                </tr>
+
+                <tr className="hover:bg-[#FAF9F6]">
+                  <td className="p-3.5 font-bold font-mono text-[#111113] border border-[#111113]/15">
+                    {isIt ? "Canone Ricorrente" : "Ongoing Fees"}
+                  </td>
+                  <td className="p-3.5 font-medium text-emerald-800 bg-emerald-50/50 border border-[#111113]/15">
+                    {isIt ? "Nessuno (€0 al mese)" : "None (€0/month)"}
+                  </td>
+                  <td className="p-3.5 border border-[#111113]/15">
+                    {isIt ? "Canone mensile o annuale" : "Monthly or annual plan"}
+                  </td>
+                </tr>
+
+                <tr className="hover:bg-[#FAF9F6]">
+                  <td className="p-3.5 font-bold font-mono text-[#111113] border border-[#111113]/15">
+                    {isIt ? "Proprietà del Sito" : "Code Ownership"}
+                  </td>
+                  <td className="p-3.5 font-bold text-[#111113] border border-[#111113]/15">
+                    {isIt ? "100% Tuo fin dal primo giorno" : "100% Yours from day one"}
+                  </td>
+                  <td className="p-3.5 border border-[#111113]/15">
+                    {isIt ? "Incluso con il servizio attivo" : "Included while plan is active"}
+                  </td>
+                </tr>
+
+                <tr className="hover:bg-[#FAF9F6]">
+                  <td className="p-3.5 font-bold font-mono text-[#111113] border border-[#111113]/15">
+                    {isIt ? "Gestione Tecnica & Backup" : "Tech Maintenance & Backups"}
+                  </td>
+                  <td className="p-3.5 border border-[#111113]/15">
+                    {isIt ? "In autonomia con WordPress" : "Self-managed via WordPress"}
+                  </td>
+                  <td className="p-3.5 font-bold text-amber-800 bg-amber-50/50 border border-[#111113]/15">
+                    {isIt ? "100% Inclusa e Gestita dallo Studio" : "100% Handled by the Studio"}
+                  </td>
+                </tr>
+
+                <tr className="hover:bg-[#FAF9F6]">
+                  <td className="p-3.5 font-bold font-mono text-[#111113] border border-[#111113]/15">
+                    {isIt ? "Aggiornamenti & Modifiche" : "Updates & Modifications"}
+                  </td>
+                  <td className="p-3.5 border border-[#111113]/15">
+                    {isIt ? "Fai-da-te semplice da bacheca" : "Do-it-yourself via admin panel"}
+                  </td>
+                  <td className="p-3.5 font-bold text-amber-800 bg-amber-50/50 border border-[#111113]/15">
+                    {isIt ? "Inclusi senza costi aggiuntivi" : "Included without extra fees"}
+                  </td>
+                </tr>
+
+                <tr className="hover:bg-[#FAF9F6]">
+                  <td className="p-3.5 font-bold font-mono text-[#111113] border border-[#111113]/15">
+                    {isIt ? "Hosting & Sicurezza" : "Hosting & Security"}
+                  </td>
+                  <td className="p-3.5 border border-[#111113]/15">
+                    {isIt ? "Su tuo piano Cloud Hostinger" : "On your Cloud Hostinger plan"}
+                  </td>
+                  <td className="p-3.5 border border-[#111113]/15">
+                    {isIt ? "Inclusi nel canone" : "Included in your subscription"}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* 3 SINTESI FONDAMENTALI */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="bg-white border border-[#111113]/15 p-6 space-y-2">
+            <div className="w-8 h-8 bg-[#111113] text-amber-400 font-mono font-bold flex items-center justify-center text-xs">
               01
             </div>
-            <div>
-              <span className="text-[10px] font-mono font-bold text-[#111113]/60 uppercase tracking-widest block">
-                {isIt ? "GESTIONE SEMPLICE & AUTONOMA" : "EASY & AUTONOMOUS MANAGEMENT"}
-              </span>
-              <h2 className="font-display text-xl sm:text-2xl font-bold text-[#111113] tracking-tight">
-                {isIt ? "1. Piena Autonomia e Facilità di Gestione" : "1. Full Autonomy and Easy Management"}
-              </h2>
-            </div>
+            <h3 className="font-display font-bold text-base text-[#111113]">
+              {isIt ? "Qualità & Design Identici" : "Identical Quality & Craft"}
+            </h3>
+            <p className="text-xs text-[#111113]/75 leading-relaxed font-sans">
+              {isIt
+                ? "Sia con Chiavi in Mano che in Abbonamento ricevi un sito moderno, veloce, responsive e curato da M. Teresa Rogani."
+                : "Regardless of the plan, you get a modern, fast, responsive site crafted directly by M. Teresa Rogani."}
+            </p>
           </div>
 
-          <p className="text-sm text-[#111113]/80 leading-relaxed font-sans">
-            {isIt 
-              ? "Il pannello di controllo WordPress è progettato per chi non ha competenze tecniche. La gestione quotidiana dei contenuti non richiede la scrittura di codice ed è estremamente intuitiva."
-              : "The WordPress control panel is designed for non-technical users. Daily content management requires no code writing and is completely intuitive."}
-          </p>
-
-          <div className="grid sm:grid-cols-2 gap-4 pt-2">
-            <div className="bg-[#FAF9F6] border border-[#111113]/10 p-4 space-y-1.5">
-              <div className="flex items-center gap-2 text-[#111113] font-bold text-sm font-display">
-                <Sliders className="w-4 h-4 text-amber-600 shrink-0" />
-                <span>{isIt ? "Editor Visivo a Blocchi" : "Visual Block Editor"}</span>
-              </div>
-              <p className="text-xs text-[#111113]/70 font-sans leading-relaxed">
-                {isIt 
-                  ? "Modifichi testi, immagini e layout vedendo in tempo reale l'aspetto finale della pagina."
-                  : "Edit text, images, and layouts while seeing the real-time final appearance."}
-              </p>
-            </div>
-
-            <div className="bg-[#FAF9F6] border border-[#111113]/10 p-4 space-y-1.5">
-              <div className="flex items-center gap-2 text-[#111113] font-bold text-sm font-display">
-                <MousePointerClick className="w-4 h-4 text-amber-600 shrink-0" />
-                <span>{isIt ? "Gestione Media Drag-and-Drop" : "Intuitive Media Drag & Drop"}</span>
-              </div>
-              <p className="text-xs text-[#111113]/70 font-sans leading-relaxed">
-                {isIt 
-                  ? "Carichi immagini, documenti PDF e video semplicemente trascinandoli nella bacheca."
-                  : "Upload images, PDF documents, and videos simply by dragging and dropping."}
-              </p>
-            </div>
-
-            <div className="bg-[#FAF9F6] border border-[#111113]/10 p-4 space-y-1.5">
-              <div className="flex items-center gap-2 text-[#111113] font-bold text-sm font-display">
-                <Lock className="w-4 h-4 text-amber-600 shrink-0" />
-                <span>{isIt ? "Ruoli Utente Personalizzati" : "Custom User Roles"}</span>
-              </div>
-              <p className="text-xs text-[#111113]/70 font-sans leading-relaxed">
-                {isIt 
-                  ? "Crea accessi limitati per i collaboratori (es. inserimento articoli o ordini) senza esporre impostazioni sensibili."
-                  : "Create limited access accounts for staff (e.g. blog or order management) without exposing sensitive settings."}
-              </p>
-            </div>
-
-            <div className="bg-[#FAF9F6] border border-[#111113]/10 p-4 space-y-1.5">
-              <div className="flex items-center gap-2 text-[#111113] font-bold text-sm font-display">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>{isIt ? "Aggiornamenti in 1 Clic" : "One-Click Safe Updates"}</span>
-              </div>
-              <p className="text-xs text-[#111113]/70 font-sans leading-relaxed">
-                {isIt 
-                  ? "La piattaforma e i suoi componenti si aggiornano in modo sicuro e guidato direttamente dalla bacheca."
-                  : "The platform and plugins update securely directly from your admin dashboard."}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* BLOCCO 2: PROPRIETÀ TOTALE E ASSENZA DI VINCOLI */}
-        <section className="bg-white border border-[#111113]/15 p-6 sm:p-10 shadow-sm space-y-6">
-          <div className="flex items-center gap-3 border-b border-[#111113]/10 pb-4">
-            <div className="w-10 h-10 bg-black text-amber-400 font-mono text-base font-bold flex items-center justify-center shrink-0">
+          <div className="bg-white border border-[#111113]/15 p-6 space-y-2">
+            <div className="w-8 h-8 bg-[#111113] text-amber-400 font-mono font-bold flex items-center justify-center text-xs">
               02
             </div>
-            <div>
-              <span className="text-[10px] font-mono font-bold text-[#111113]/60 uppercase tracking-widest block">
-                {isIt ? "LIBERTÀ & PROPRIETÀ" : "100% OWNERSHIP & FREEDOM"}
-              </span>
-              <h2 className="font-display text-xl sm:text-2xl font-bold text-[#111113] tracking-tight">
-                {isIt ? "2. Proprietà Totale e Assenza di Vincoli" : "2. Complete Ownership & Zero Lock-in"}
-              </h2>
-            </div>
+            <h3 className="font-display font-bold text-base text-[#111113]">
+              {isIt ? "Trasparenza al 100%" : "100% Pricing Transparency"}
+            </h3>
+            <p className="text-xs text-[#111113]/75 leading-relaxed font-sans">
+              {isIt
+                ? "Nessuna sorpresa, nessun costo nascosto. Sai esattamente cosa ottieni e quali sono le condizioni fin dal giorno zero."
+                : "No hidden costs or fine print. Clear scope and transparent conditions from day zero."}
+            </p>
           </div>
 
-          <p className="text-sm text-[#111113]/80 leading-relaxed font-sans">
-            {isIt 
-              ? "A differenza delle piattaforme proprietarie chiuse (Shopify, Wix) o dei codici vincolanti legati a una singola agenzia, WordPress ti garantisce la massima libertà sul tuo patrimonio digitale."
-              : "Unlike closed proprietary SaaS platforms (Shopify, Wix) or vendor lock-in code, WordPress guarantees total freedom over your digital assets."}
-          </p>
-
-          <div className="grid sm:grid-cols-3 gap-4 pt-2">
-            <div className="bg-[#FAF9F6] border border-[#111113]/10 p-4 space-y-2">
-              <ShieldCheck className="w-5 h-5 text-emerald-700" />
-              <h3 className="font-display font-bold text-sm text-[#111113]">
-                {isIt ? "Proprietà del Codice 100%" : "100% Code Ownership"}
-              </h3>
-              <p className="text-xs text-[#111113]/70 font-sans leading-relaxed">
-                {isIt 
-                  ? "Il sito è tuo al 100%. Puoi scaricare backup completi e trasferire database e file dove preferisci."
-                  : "The site is 100% yours. Download full backups and move files and databases anywhere."}
-              </p>
-            </div>
-
-            <div className="bg-[#FAF9F6] border border-[#111113]/10 p-4 space-y-2">
-              <Layers className="w-5 h-5 text-emerald-700" />
-              <h3 className="font-display font-bold text-sm text-[#111113]">
-                {isIt ? "Libertà di Hosting" : "Hosting Freedom"}
-              </h3>
-              <p className="text-xs text-[#111113]/70 font-sans leading-relaxed">
-                {isIt 
-                  ? "Scegli liberamente qualsiasi fornitore sul mercato, senza canoni vincolanti o costrizioni proprietarie."
-                  : "Choose any hosting provider on the market, optimizing your annual operational costs."}
-              </p>
-            </div>
-
-            <div className="bg-[#FAF9F6] border border-[#111113]/10 p-4 space-y-2">
-              <Sparkles className="w-5 h-5 text-emerald-700" />
-              <h3 className="font-display font-bold text-sm text-[#111113]">
-                {isIt ? "Ampia Rete di Professionisti" : "Global Developer Ecosystem"}
-              </h3>
-              <p className="text-xs text-[#111113]/70 font-sans leading-relaxed">
-                {isIt 
-                  ? "Troverai sempre migliaia di esperti pronti a subentrare o ad ampliare il tuo progetto senza rifare nulla da capo."
-                  : "Thousands of developers worldwide can maintain or update your site without starting from scratch."}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* BLOCCO 3: MODULARITÀ, ESPANDIBILITÀ ED EFFICIENZA SEO */}
-        <section className="bg-white border border-[#111113]/15 p-6 sm:p-10 shadow-sm space-y-6">
-          <div className="flex items-center gap-3 border-b border-[#111113]/10 pb-4">
-            <div className="w-10 h-10 bg-black text-amber-400 font-mono text-base font-bold flex items-center justify-center shrink-0">
+          <div className="bg-white border border-[#111113]/15 p-6 space-y-2">
+            <div className="w-8 h-8 bg-[#111113] text-amber-400 font-mono font-bold flex items-center justify-center text-xs">
               03
             </div>
-            <div>
-              <span className="text-[10px] font-mono font-bold text-[#111113]/60 uppercase tracking-widest block">
-                {isIt ? "CRESCITA & MARKETING" : "GROWTH & SEO MARKETING"}
-              </span>
-              <h2 className="font-display text-xl sm:text-2xl font-bold text-[#111113] tracking-tight">
-                {isIt ? "3. Modularità, Espandibilità e Predisposizione SEO" : "3. Scalability, Modular Extensions & Native SEO"}
-              </h2>
-            </div>
+            <h3 className="font-display font-bold text-base text-[#111113]">
+              {isIt ? "Consegna in 14 Giorni" : "Ready in 14 Days"}
+            </h3>
+            <p className="text-xs text-[#111113]/75 leading-relaxed font-sans">
+              {isIt
+                ? "Tempi certi e rapidi. Il tuo sito sarà online e operativo nei motori di ricerca in sole due settimane."
+                : "Certain and rapid timelines. Your site goes online and ready for sales in just two weeks."}
+            </p>
           </div>
+        </div>
 
-          <p className="text-sm text-[#111113]/80 leading-relaxed font-sans">
-            {isIt 
-              ? "Un sito chiavi in mano risponde alle esigenze attuali ma cresce assieme al tuo business, con una struttura nativamente ottimizzata per i motori di ricerca come Google."
-              : "A turnkey website solves present needs while scaling alongside your business, natively structured to rank on Google."}
-          </p>
-
-          <div className="grid sm:grid-cols-2 gap-4 pt-2">
-            <div className="bg-[#FAF9F6] border border-[#111113]/10 p-4 space-y-1.5">
-              <div className="flex items-center gap-2 text-[#111113] font-bold text-sm font-display">
-                <Rocket className="w-4 h-4 text-blue-600 shrink-0" />
-                <span>{isIt ? "Integrazione E-Commerce & Funzioni" : "E-Commerce & Advanced Features"}</span>
-              </div>
-              <p className="text-xs text-[#111113]/70 font-sans leading-relaxed">
-                {isIt 
-                  ? "Trasforma il sito vetrina in uno store WooCommerce, oppure aggiungi aree riservate, cataloghi e corsi online."
-                  : "Turn your showcase site into a WooCommerce store, or integrate private client areas and courses."}
-              </p>
-            </div>
-
-            <div className="bg-[#FAF9F6] border border-[#111113]/10 p-4 space-y-1.5">
-              <div className="flex items-center gap-2 text-[#111113] font-bold text-sm font-display">
-                <Layers className="w-4 h-4 text-blue-600 shrink-0" />
-                <span>{isIt ? "Automazione Contatti & CRM" : "Contact Automation & CRM"}</span>
-              </div>
-              <p className="text-xs text-[#111113]/70 font-sans leading-relaxed">
-                {isIt 
-                  ? "Collega sistemi di prenotazione, chat in tempo reale e piattaforme email marketing senza stravolgere la grafica."
-                  : "Connect booking calendars, live chat, and email marketing without breaking the site design."}
-              </p>
-            </div>
-
-            <div className="bg-[#FAF9F6] border border-[#111113]/10 p-4 space-y-1.5">
-              <div className="flex items-center gap-2 text-[#111113] font-bold text-sm font-display">
-                <Search className="w-4 h-4 text-blue-600 shrink-0" />
-                <span>{isIt ? "Codice Pulito & Strumenti SEO" : "Clean Code & SEO Optimization"}</span>
-              </div>
-              <p className="text-xs text-[#111113]/70 font-sans leading-relaxed">
-                {isIt 
-                  ? "Struttura interna predisposta per l'indicizzazione rapida su Google e gestione guidata di meta tag e parole chiave."
-                  : "Clean underlying codebase for quick Google crawling and guided keyword optimization."}
-              </p>
-            </div>
-
-            <div className="bg-[#FAF9F6] border border-[#111113]/10 p-4 space-y-1.5">
-              <div className="flex items-center gap-2 text-[#111113] font-bold text-sm font-display">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>{isIt ? "Velocità & Prestazioni Integrate" : "Fast Speed & Caching"}</span>
-              </div>
-              <p className="text-xs text-[#111113]/70 font-sans leading-relaxed">
-                {isIt 
-                  ? "Sistemi di memorizzazione dati (caching) e compressione immagini integrati per tempi di caricamento fulminei."
-                  : "Integrated caching mechanisms and automatic image optimization for lightning speed."}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* CALL TO ACTION FINAL BLOCK */}
+        {/* BOTTOM CALL TO ACTION */}
         <section className="bg-[#111113] text-white p-8 sm:p-12 border border-black text-center space-y-6 shadow-md relative overflow-hidden">
-          <div 
-            className="absolute inset-0 opacity-10 pointer-events-none"
-            style={{
-              backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
-              backgroundSize: "20px 20px"
-            }}
-          />
-
           <div className="relative z-10 space-y-4 max-w-2xl mx-auto">
             <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400 bg-white/10 px-3 py-1 font-bold">
-              {isIt ? "PRONTO A COMINCIARE?" : "READY TO START?"}
+              {isIt ? "PARLIAMO DEL TUO PROGETTO" : "DISCUSS YOUR PROJECT"}
             </span>
 
             <h2 className="font-tan text-2xl sm:text-4xl font-bold text-white tracking-tight">
-              {isIt ? "Richiedi ora il tuo Sito Chiavi in Mano" : "Get Your Turnkey Website Delivered"}
+              {isIt ? "Non sai quale formula scegliere?" : "Unsure Which Option Fits You Best?"}
             </h2>
 
             <p className="text-xs sm:text-sm text-white/80 font-sans leading-relaxed">
               {isIt 
-                ? "Raccontaci il tuo progetto e ricevi un'analisi chiara, tempi trasparenti e la garanzia di un risultato professionale curato nei dettagli." 
-                : "Tell us about your project and get a clear analysis, transparent delivery roadmap, and artisan quality."}
+                ? "Scrivimi per valutare insieme le tue esigenze: ti consiglierò la formula più conveniente ed efficace per il tuo business." 
+                : "Get in touch to review your goals together: I will recommend the most cost-effective path for your goals."}
             </p>
 
             <div className="pt-2 flex justify-center">
               <button
-                onClick={handleContactClick}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-amber-400 hover:bg-amber-300 text-black font-bold text-sm tracking-wide transition-all shadow-lg active:scale-98"
+                onClick={() => handleContactClick()}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-amber-400 hover:bg-amber-300 text-black font-bold text-xs uppercase font-mono tracking-wider transition-all shadow-lg active:scale-98 cursor-pointer"
               >
-                <span>{isIt ? "Contattaci per una Consulenza Gratis" : "Contact Us for a Free Consultation"}</span>
+                <span>{isIt ? "Richiedi una Consulenza Gratuita" : "Request Free Consultation"}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

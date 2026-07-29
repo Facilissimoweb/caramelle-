@@ -154,7 +154,7 @@ export const initTrackingConsentUtility = () => {
   }
 };
 
-const TABS_ORDER = ["home", "chi-sono", "siti-web", "chiavi-in-mano", "abbonamento", "contatti", "blog"];
+const TABS_ORDER = ["home", "chi-sono", "siti-web", "chiavi-in-mano", "contatti", "blog"];
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>("home");
@@ -236,8 +236,8 @@ export default function App() {
     if (lang === "it") {
       switch (tabId) {
         case "home": return "Home";
-        case "abbonamento": return "Abbonamento";
-        case "chiavi-in-mano": return "Chiavi in Mano";
+        case "abbonamento": return "Sito & Abbonamento";
+        case "chiavi-in-mano": return "Sito & Abbonamento";
         case "web-app": return "Proposte";
         case "siti-web": return "Proposte";
         case "blog": return "Blog & News";
@@ -248,8 +248,8 @@ export default function App() {
     } else {
       switch (tabId) {
         case "home": return "Home";
-        case "abbonamento": return "Subscription";
-        case "chiavi-in-mano": return "Turnkey Site";
+        case "abbonamento": return "Turnkey & Subscription";
+        case "chiavi-in-mano": return "Turnkey & Subscription";
         case "web-app": return "Proposals";
         case "siti-web": return "Proposals";
         case "blog": return "Blog & News";
