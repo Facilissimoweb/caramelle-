@@ -9,7 +9,7 @@ interface RightSidebarProps {
 export default function RightSidebar({}: RightSidebarProps) {
   return (
     <aside 
-      className="hidden 2xl:flex w-[240px] h-screen fixed right-0 top-0 border-l border-[#111113]/15 bg-[#111113] flex-col justify-center items-center z-30 select-none overflow-hidden"
+      className="hidden 2xl:flex w-[240px] h-screen fixed right-0 top-0 border-l border-white bg-[#111113] flex-col justify-center items-center z-30 select-none overflow-hidden"
       id="desktop-right-sidebar"
     >
       <div className="relative w-full h-full flex items-center justify-center bg-black">
