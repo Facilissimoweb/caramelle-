@@ -141,14 +141,13 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
           >
             <div className="relative w-full aspect-[4/3] overflow-hidden border border-[#111113]/20 bg-[#FAF9F6] shadow-xl">
               <img
-                src="/images/IO.jpg"
-                alt="M. Teresa Rogani Freelance Web Designer"
+                src="/images/facilissimo web (8).png"
+                alt="Facilissimo Web Freelance Web Designer"
                 className="w-full h-full object-cover opacity-95 transition-all duration-300"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#F8F7F4]/90 via-transparent to-transparent"></div>
               <div className="absolute bottom-6 left-6 text-[#111113] space-y-1">
-                <p className="font-display font-bold text-lg">M. Teresa Rogani</p>
                 <p className="text-[10px] font-mono text-black uppercase tracking-widest font-bold">
                   Macerata (Marche), Italia
                 </p>
