@@ -1119,6 +1119,22 @@ export default function BlogView({
 
   const currentArticle = selectedArticle ? articles.find((a) => a.slug === selectedArticle) : null;
 
+  const relatedArticles = currentArticle
+    ? articles
+        .filter((a) => a.slug !== currentArticle.slug)
+        .map((a) => {
+          const currentTagSet = new Set(currentArticle.tags.map((t) => t.toLowerCase().trim()));
+          const matchingTags = a.tags.filter((t) => currentTagSet.has(t.toLowerCase().trim()));
+          let score = matchingTags.length * 2;
+          if (a.category.it === currentArticle.category.it) {
+            score += 1;
+          }
+          return { article: a, score, matchingTags };
+        })
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 3)
+    : [];
+
   return (
     <div className="w-full bg-[#F8F7F4] pb-12 text-[#111113] min-h-[80vh]">
       {/* Toast Notification */}
@@ -1484,6 +1500,105 @@ export default function BlogView({
                 </div>
               </div>
             </div>
+
+            {/* Dynamic Related Articles Section */}
+            {relatedArticles.length > 0 && (
+              <div className="mt-16 pt-12 border-t-2 border-[#111113]/10 space-y-8">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2 font-mono text-xs font-bold text-black uppercase tracking-widest">
+                      <Sparkles className="w-4 h-4 text-amber-500" />
+                      <span>// {lang === "it" ? "NAVIGAZIONE ED APPROFONDIMENTI" : "RECOMMENDED READINGS"}</span>
+                    </div>
+                    <h3 className="font-display font-bold text-2xl sm:text-3xl text-[#111113]">
+                      {lang === "it" ? "Articoli Correlati" : "Related Articles"}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#111113]/60 font-sans">
+                      {lang === "it"
+                        ? "Continua la lettura con approfondimenti selezionati per affinità di argomenti e tag:"
+                        : "Continue reading with selected insights based on topic and tag affinity:"}
+                    </p>
+                  </div>
+
+                  <button
+                    onClick={() => setSelectedArticle(null)}
+                    className="self-start sm:self-auto px-4 py-2 border border-[#111113]/20 hover:border-black text-[#111113]/70 hover:text-black font-mono text-xs font-bold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-2 shrink-0"
+                  >
+                    <span>{lang === "it" ? "Tutti gli articoli" : "All articles"}</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {relatedArticles.map(({ article, matchingTags }) => (
+                    <div
+                      key={article.slug}
+                      onClick={() => setSelectedArticle(article.slug)}
+                      className="border border-[#111113]/10 bg-[#FAF9F6] overflow-hidden hover:border-black hover:shadow-lg transition-all duration-300 flex flex-col justify-between cursor-pointer group"
+                    >
+                      <div>
+                        <div className="h-40 relative overflow-hidden border-b border-[#111113]/10">
+                          <img
+                            src={article.coverImage}
+                            alt={article.title[lang]}
+                            className="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700"
+                            referrerPolicy="no-referrer"
+                          />
+                          <div className="absolute top-3 left-3 bg-[#FAF9F6]/90 border border-[#111113]/10 text-black px-2.5 py-0.5 text-[9px] font-mono tracking-widest uppercase font-bold">
+                            {article.category[lang]}
+                          </div>
+                        </div>
+
+                        <div className="p-5 space-y-3">
+                          <div className="flex items-center gap-3 text-[10px] font-mono text-[#111113]/40">
+                            <span className="flex items-center gap-1"><Calendar className="w-3 h-3 text-black" /> {article.publishDate}</span>
+                            <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-black" /> {article.readTime[lang]}</span>
+                          </div>
+
+                          <h4 className="font-display text-base font-bold text-[#111113] group-hover:text-black transition-colors leading-snug line-clamp-2">
+                            {article.title[lang]}
+                          </h4>
+
+                          <p className="text-xs text-[#111113]/60 font-sans leading-relaxed line-clamp-2">
+                            {article.description[lang]}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="p-5 pt-0 space-y-3">
+                        <div className="flex flex-wrap gap-1 pt-1">
+                          {article.tags.slice(0, 3).map((tag) => {
+                            const isMatch = matchingTags.includes(tag);
+                            return (
+                              <span
+                                key={tag}
+                                className={`text-[8px] font-mono font-bold tracking-widest px-1.5 py-0.5 uppercase border ${
+                                  isMatch
+                                    ? "bg-amber-400/20 border-amber-500/50 text-amber-900"
+                                    : "text-[#111113]/40 border-[#111113]/10"
+                                }`}
+                              >
+                                #{tag}
+                              </span>
+                            );
+                          })}
+                          {article.tags.length > 3 && (
+                            <span className="text-[8px] font-mono text-[#111113]/40 px-1 py-0.5">
+                              +{article.tags.length - 3}
+                            </span>
+                          )}
+                        </div>
+
+                        <div className="pt-3 border-t border-[#111113]/10 flex items-center justify-between text-black font-mono text-[10px] font-bold tracking-widest uppercase group-hover:translate-x-0.5 transition-transform">
+                          <span>{lang === "it" ? "LEGGI ORA" : "READ NOW"}</span>
+                          <ChevronRight className="w-3.5 h-3.5 text-black" />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </motion.div>
         </div>
       )}
