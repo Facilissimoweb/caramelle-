@@ -81,8 +81,8 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       stopListening: "Interrompi lettura",
 
       heroPreTitle: "[ M. TERESA ROGANI — STUDIO ]",
-      heroTitleRegular: "Siti Web Evoluti con",
-      heroTitleItalic: "l'Intelligenza Artificiale",
+      heroTitleRegular: "SITI WEB EVOLUTI",
+      heroTitleItalic: "",
       heroDesc: "Progetto e sviluppo esperienze digitali moderne, performanti e su misura per far crescere il tuo brand velocemente.",
       heroBtnPrimary: "COLLABORIAMO",
       heroBtnSecondary: "PROPOSTE",
@@ -135,8 +135,8 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       stopListening: "Smetti di leggere",
 
       heroPreTitle: "[ M. TERESA ROGANI — STUDIO ]",
-      heroTitleRegular: "Siti Web Semplici con",
-      heroTitleItalic: "l'Aiuto del Computer (IA)",
+      heroTitleRegular: "SITI WEB EVOLUTI",
+      heroTitleItalic: "",
       heroDesc: "Creo siti internet veloci, belli e facili da usare. Lavoro da sola così parli solo con me, risparmi tempo e ricevi un sito perfetto per farti trovare su Google.",
       heroBtnPrimary: "COLLABORIAMO",
       heroBtnSecondary: "PROPOSTE",
@@ -191,8 +191,8 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       stopListening: "Stop listening",
 
       heroPreTitle: "[ M. TERESA ROGANI — STUDIO ]",
-      heroTitleRegular: "Advanced Websites with",
-      heroTitleItalic: "Artificial Intelligence",
+      heroTitleRegular: "SITI WEB EVOLUTI",
+      heroTitleItalic: "",
       heroDesc: "I design and develop modern, high-performance, and custom digital experiences to grow your brand fast, eliminating agency overheads and optimizing semantic SEO.",
       heroBtnPrimary: "LET'S COLLABORATE",
       heroBtnSecondary: "PROPOSALS",
@@ -245,8 +245,8 @@ export const translations: Record<"it" | "en", { normal: TranslationSet; facilit
       stopListening: "Stop reading",
 
       heroPreTitle: "[ M. TERESA ROGANI — STUDIO ]",
-      heroTitleRegular: "Simple Websites with",
-      heroTitleItalic: "Smart Computer Help (AI)",
+      heroTitleRegular: "SITI WEB EVOLUTI",
+      heroTitleItalic: "",
       heroDesc: "I build fast, beautiful, and easy-to-use websites. I work alone, so you talk only with me. This saves you money and gets you found on Google.",
       heroBtnPrimary: "LET'S COLLABORATE",
       heroBtnSecondary: "PROPOSALS",
