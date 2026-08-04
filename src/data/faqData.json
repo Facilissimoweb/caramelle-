@@ -1,0 +1,140 @@
+{
+  "it": {
+    "title": "Domande Frequenti (FAQ)",
+    "subtitle": "Tutto quello che c'è da sapere sul processo di lavoro, tempi, costi e gestione del tuo sito web evoluto.",
+    "categories": [
+      {
+        "id": "generale",
+        "name": "Generale & Metodo",
+        "items": [
+          {
+            "id": "faq-1",
+            "q": "Con chi lavorerò durante il progetto?",
+            "a": "Lavorerai direttamente ed esclusivamente con me, M. Teresa Rogani. Non ci sono intermediari, account manager o passaggi di consegne a terzi: questo garantisce comunicazione diretta, risposte rapide e massima coerenza progettuale."
+          },
+          {
+            "id": "faq-2",
+            "q": "Quanto tempo occorre per realizzare un sito web?",
+            "a": "I tempi variano in base alla complessità. In media, una landing page o sito vetrina avanzato richiede tra le 2 e le 4 settimane, mentre web app o portali personalizzati richiedono tra le 4 e le 8 settimane."
+          },
+          {
+            "id": "faq-3",
+            "q": "I siti web che realizzi sono ottimizzati per i dispositivi mobili?",
+            "a": "Assolutamente sì. Tutti i progetti sono concepiti secondo una logica responsive ed ergonomica mobile-first, garantendo un'esperienza di navigazione eccellente su smartphone, tablet e desktop."
+          }
+        ]
+      },
+      {
+        "id": "servizi",
+        "name": "Servizi & Tecnologie",
+        "items": [
+          {
+            "id": "faq-4",
+            "q": "Quali tecnologie utilizzi per lo sviluppo?",
+            "a": "Utilizzo stack moderni e ad alte prestazioni come React, TypeScript, Tailwind CSS per web app su misura, oppure WordPress in versione personalizzata altamente ottimizzata quando è richiesto un CMS per la gestione autonoma dei contenuti."
+          },
+          {
+            "id": "faq-5",
+            "q": "Il mio sito sarà posizionato su Google (SEO)?",
+            "a": "Ogni progetto include un'ottimizzazione SEO semantica di base: struttura HTML5 corretta, meta tag dinamici, Open Graph per la condivisione social, sitemap XML, velocità di caricamento elevata e tempi di risposta ottimali."
+          },
+          {
+            "id": "faq-6",
+            "q": "È inclusa la conformità GDPR e la gestione cookie?",
+            "a": "Sì. Tutti i siti integrano banner di gestione del consenso cookie con opzioni di accettazione/rifiuto selettivo, blocco dei tracker preventivo e predisposizione per Privacy e Cookie Policy."
+          }
+        ]
+      },
+      {
+        "id": "costi",
+        "name": "Costi & Manutenzione",
+        "items": [
+          {
+            "id": "faq-7",
+            "q": "Come funziona la preventivazione e il pagamento?",
+            "a": "Fornisco preventivi chiari e trasparenti a prezzo fisso prima di iniziare. Di norma la modalità prevede un acconto iniziale alla stipula e il saldo alla consegna e pubblicazione del sito."
+          },
+          {
+            "id": "faq-8",
+            "q": "Offri assistenza e manutenzione dopo il lancio?",
+            "a": "Sì, offro piani di manutenzione e supporto continuo per aggiornamenti di sicurezza, monitoraggio delle prestazioni, backup periodici e piccole modifiche ai contenuti."
+          },
+          {
+            "id": "faq-9",
+            "q": "Sarò autonomo nella gestione dei testi e delle immagini?",
+            "a": "Certamente. Al termine del progetto fornisco una guida personalizzata o un breve percorso di affiancamento per permetterti di aggiornare contenuti e immagini in totale autonomia."
+          }
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "Frequently Asked Questions (FAQ)",
+    "subtitle": "Everything you need to know about the workflow, timeline, costs, and management of your advanced website.",
+    "categories": [
+      {
+        "id": "general",
+        "name": "General & Method",
+        "items": [
+          {
+            "id": "faq-1",
+            "q": "Who will I work with during the project?",
+            "a": "You will work directly and exclusively with me, M. Teresa Rogani. There are no intermediaries or account managers, ensuring direct communication, quick answers, and complete project consistency."
+          },
+          {
+            "id": "faq-2",
+            "q": "How long does it take to build a website?",
+            "a": "Timelines depend on project complexity. On average, a landing page or showcase site takes 2 to 4 weeks, while custom web applications take 4 to 8 weeks."
+          },
+          {
+            "id": "faq-3",
+            "q": "Are the websites optimized for mobile devices?",
+            "a": "Absolutely. Every project is built with a responsive, mobile-first design ensuring smooth navigation across smartphones, tablets, and desktop computers."
+          }
+        ]
+      },
+      {
+        "id": "services",
+        "name": "Services & Tech Stack",
+        "items": [
+          {
+            "id": "faq-4",
+            "q": "What technologies do you use?",
+            "a": "I use modern high-performance stacks including React, TypeScript, and Tailwind CSS for custom web applications, or optimized custom WordPress setups when self-managed CMS features are required."
+          },
+          {
+            "id": "faq-5",
+            "q": "Will my website be search-engine optimized (SEO)?",
+            "a": "Every project includes fundamental semantic SEO optimization: proper HTML5 structure, dynamic meta tags, Open Graph tags, XML sitemap, fast loading speeds, and optimal response times."
+          },
+          {
+            "id": "faq-6",
+            "q": "Is GDPR and cookie compliance included?",
+            "a": "Yes. All sites feature consent management banners with selective accept/reject options, preventive tracker blocking, and privacy policy integration."
+          }
+        ]
+      },
+      {
+        "id": "pricing",
+        "name": "Costs & Maintenance",
+        "items": [
+          {
+            "id": "faq-7",
+            "q": "How does pricing and payment work?",
+            "a": "I provide clear, transparent fixed-price quotes before starting. Typically, payments are structured with an initial deposit upon agreement and the final balance upon delivery and launch."
+          },
+          {
+            "id": "faq-8",
+            "q": "Do you provide post-launch support and maintenance?",
+            "a": "Yes, I offer ongoing maintenance and support plans covering security updates, performance monitoring, regular backups, and content updates."
+          },
+          {
+            "id": "faq-9",
+            "q": "Will I be able to edit text and images independently?",
+            "a": "Certainly. Upon completion, I provide a customized guide or walkthrough session so you can update text and images independently with ease."
+          }
+        ]
+      }
+    ]
+  }
+}

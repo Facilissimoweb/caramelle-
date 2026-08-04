@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { ArrowRight, BookOpen, Compass, Award, Palette, Layers, Cpu, UserCheck } from "lucide-react";
+import FAQSection from "./FAQSection";
 
 const logoImage = "/f (1600 x 500 px).webp";
 
@@ -273,6 +274,9 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQSection lang={lang} />
 
       {/* Final Call to Action */}
       <section className="py-20 bg-[#FAF9F6] text-[#111113] text-center border-t border-[#111113]/10">

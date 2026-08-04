@@ -7,7 +7,6 @@ import FAQAccordion from "./FAQAccordion";
 import TattooMacerataApp from "./TattooMacerataApp";
 import GustoPassioneApp from "./GustoPassioneApp";
 import NidoSogniApp from "./NidoSogniApp";
-import VantaBackground from "./VantaBackground";
 const regeneratedHeroImage = new URL("../assets/images/regenerated_image_1785222023722.png", import.meta.url).href;
 const regeneratedLogoImage = new URL("../assets/images/regenerated_image_1785222608486.png", import.meta.url).href;
 const logoImage = "/f (1600 x 500 px).webp";
@@ -106,22 +105,11 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
     <div className="w-full bg-[#F8F7F4] text-[#111113]">
       {/* Hero Section */}
       <section 
-        className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-[#111113]/10 bg-[#08080a]"
+        className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-[#111113]/10"
       >
-        {/* Interactive 3D Vanta.js HALO Background (Anello di luce fluida) */}
-        <VantaBackground 
-          effectType="halo"
-          baseColor={0x151c38}
-          color={0x00d4ff}
-          backgroundColor={0x07070a}
-          amplitudeFactor={1.5}
-          size={1.5}
-          className="absolute inset-0 w-full h-full z-0 opacity-90"
-        />
-
         {/* Parallax Background Video with motion.div */}
         <motion.div 
-          className="absolute inset-0 overflow-hidden opacity-25 pointer-events-none mix-blend-screen z-0"
+          className="absolute inset-0 overflow-hidden"
           style={{ 
             y,
             scale: 1.15,
@@ -133,7 +121,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             loop
             muted
             playsInline
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-20"
           >
             <source src="/video/Photo%20booth%20(effetto%20video%20AI).mp4" type="video/mp4" />
           </video>
