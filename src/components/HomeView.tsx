@@ -108,15 +108,15 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       <section 
         className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-[#111113]/10 bg-[#08080a]"
       >
-        {/* Interactive 3D Vanta.js Background */}
+        {/* Interactive 3D Vanta.js HALO Background (Anello di luce fluida) */}
         <VantaBackground 
-          effectType="net"
-          color={0xffffff}
-          backgroundColor={0x0b0b0e}
-          points={14.0}
-          maxDistance={22.0}
-          spacing={16.0}
-          className="absolute inset-0 w-full h-full z-0 opacity-80"
+          effectType="halo"
+          baseColor={0x151c38}
+          color={0x00d4ff}
+          backgroundColor={0x07070a}
+          amplitudeFactor={1.5}
+          size={1.5}
+          className="absolute inset-0 w-full h-full z-0 opacity-90"
         />
 
         {/* Parallax Background Video with motion.div */}
