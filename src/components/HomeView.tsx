@@ -7,6 +7,7 @@ import FAQAccordion from "./FAQAccordion";
 import TattooMacerataApp from "./TattooMacerataApp";
 import GustoPassioneApp from "./GustoPassioneApp";
 import NidoSogniApp from "./NidoSogniApp";
+import VantaBackground from "./VantaBackground";
 const regeneratedHeroImage = new URL("../assets/images/regenerated_image_1785222023722.png", import.meta.url).href;
 const regeneratedLogoImage = new URL("../assets/images/regenerated_image_1785222608486.png", import.meta.url).href;
 const logoImage = "/f (1600 x 500 px).webp";
@@ -105,11 +106,22 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
     <div className="w-full bg-[#F8F7F4] text-[#111113]">
       {/* Hero Section */}
       <section 
-        className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-[#111113]/10"
+        className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-[#111113]/10 bg-[#08080a]"
       >
+        {/* Interactive 3D Vanta.js Background */}
+        <VantaBackground 
+          effectType="net"
+          color={0xffffff}
+          backgroundColor={0x0b0b0e}
+          points={14.0}
+          maxDistance={22.0}
+          spacing={16.0}
+          className="absolute inset-0 w-full h-full z-0 opacity-80"
+        />
+
         {/* Parallax Background Video with motion.div */}
         <motion.div 
-          className="absolute inset-0 overflow-hidden"
+          className="absolute inset-0 overflow-hidden opacity-25 pointer-events-none mix-blend-screen z-0"
           style={{ 
             y,
             scale: 1.15,
