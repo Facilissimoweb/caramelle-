@@ -105,7 +105,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
     <div className="w-full bg-[#F8F7F4] text-[#111113]">
       {/* Hero Section */}
       <section 
-        className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-[#111113]/10"
+        className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-white/10 bg-[#0a0a0c]"
       >
         {/* Parallax Background Video with motion.div */}
         <motion.div 
@@ -121,11 +121,14 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             loop
             muted
             playsInline
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover opacity-40"
           >
             <source src="/video/Photo%20booth%20(effetto%20video%20AI).mp4" type="video/mp4" />
           </video>
         </motion.div>
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/65 to-black/85 pointer-events-none z-0" />
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">
           <div className="lg:col-span-8 xl:col-span-8 space-y-6">
