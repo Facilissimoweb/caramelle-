@@ -211,8 +211,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           <div className="lg:col-span-4 xl:col-span-4 flex justify-center items-center">
             <div className="relative w-full max-w-md rounded-2xl overflow-hidden border border-[#111113]/10 bg-black/5 shadow-2xl hover:scale-[1.02] transition-transform duration-500">
               <img
-                src={regeneratedHeroImage}
-                alt="Facilissimo Web Professionali"
+                src="/images/facilissimo%20web%20logo%20e%20insalata.png"
+                alt="Facilissimo Web"
                 referrerPolicy="no-referrer"
                 className="w-full h-auto object-cover rounded-2xl"
               />
