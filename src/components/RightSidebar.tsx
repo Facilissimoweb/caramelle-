@@ -13,18 +13,11 @@ export default function RightSidebar({}: RightSidebarProps) {
       id="desktop-right-sidebar"
     >
       <div className="relative w-full h-full flex items-center justify-center bg-black">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/f (1600 x 500 px).webp"
+        <img
+          src="/images/facilissimo%20web%20di%20maria%20teresa%20rogani%20.png"
+          alt="Facilissimo Web di Maria Teresa Rogani"
           className="w-full h-full object-cover"
-        >
-          <source src="/FACILISSIMO WEB MACERATA (1).mp4" type="video/mp4" />
-          <source src="/FACILISSIMO WEB MACERATA.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        />
       </div>
     </aside>
   );
