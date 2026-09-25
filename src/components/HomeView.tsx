@@ -229,8 +229,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
             <span 
-              className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-white font-bold uppercase border border-black"
-              style={{ textDecorationLine: "none", textAlign: "center", letterSpacing: "0px" }}
+              className="inline-block py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-white font-bold uppercase border"
+              style={{ textDecorationLine: "none", textAlign: "center", letterSpacing: "0px", backgroundColor: "#624369", borderColor: "#624369" }}
             >
               {t.approachPre}
             </span>
@@ -434,8 +434,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
         <div className="max-w-7xl mx-auto bg-[#FAF9F6] text-[#111113] p-12 md:p-20 relative overflow-hidden border border-[#111113]/15">
           <div className="relative z-10 text-center max-w-2xl mx-auto space-y-6">
             <span 
-              className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-white font-bold uppercase border border-black"
-              style={{ letterSpacing: "0px" }}
+              className="inline-block py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-white font-bold uppercase border"
+              style={{ letterSpacing: "0px", backgroundColor: "#624369", borderColor: "#624369" }}
             >
               {t.ctaPre}
             </span>

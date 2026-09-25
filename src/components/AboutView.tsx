@@ -162,7 +162,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
       <section className="py-20 md:py-24 bg-[#FAF9F6] border-b border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="max-w-3xl mb-16 space-y-4">
-            <span className="inline-block bg-black py-2.5 px-5 text-xs font-mono tracking-[0em] text-white font-bold uppercase" style={{ letterSpacing: '0px' }}>
+            <span className="inline-block py-2.5 px-5 text-xs font-mono tracking-[0em] text-white font-bold uppercase border" style={{ letterSpacing: '0px', backgroundColor: '#624369', borderColor: '#624369' }}>
               [ PERCORSO FORMATIVO E METODO PROGETTUALE ]
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#111113]">
@@ -233,7 +233,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
       <section className="py-20 md:py-24 bg-[#F8F7F4] border-t border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="max-w-3xl mb-16 space-y-4">
-            <span className="inline-block bg-black py-2.5 px-5 text-xs font-mono tracking-[0em] text-white font-bold uppercase" style={{ letterSpacing: '0px' }}>
+            <span className="inline-block py-2.5 px-5 text-xs font-mono tracking-[0em] text-white font-bold uppercase border" style={{ letterSpacing: '0px', backgroundColor: '#624369', borderColor: '#624369' }}>
               [ VALORI GUIDA ]
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#111113]">
@@ -281,7 +281,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
       {/* Final Call to Action */}
       <section className="py-20 bg-[#FAF9F6] text-[#111113] text-center border-t border-[#111113]/10">
         <div className="max-w-2xl mx-auto px-6 space-y-6">
-          <span className="inline-block bg-black py-2.5 px-5 text-xs font-mono tracking-[0em] text-white font-bold uppercase" style={{ letterSpacing: '0px' }}>
+          <span className="inline-block py-2.5 px-5 text-xs font-mono tracking-[0em] text-white font-bold uppercase border" style={{ letterSpacing: '0px', backgroundColor: '#624369', borderColor: '#624369' }}>
             [ PROGETTIAMO INSIEME ]
           </span>
           <h2 className="font-display text-3xl font-bold tracking-tight text-[#111113]">

@@ -217,7 +217,7 @@ export default function GallerySection({ lang, isFacilitated }: GallerySectionPr
                 className="w-24 h-24 object-contain"
               />
             </div>
-            <span className="inline-block bg-black py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-white font-bold uppercase" style={{ letterSpacing: '0px' }}>
+            <span className="inline-block py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-white font-bold uppercase border" style={{ letterSpacing: '0px', backgroundColor: '#624369', borderColor: '#624369' }}>
               {lang === "it" ? "[ MEDIA MANAGER & ASSETS ]" : "[ MEDIA MANAGER & ASSETS ]"}
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-wide text-[#F8F7F4]">
