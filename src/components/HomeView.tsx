@@ -103,13 +103,13 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       {/* Hero Section */}
       <section 
         className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-white/10 bg-[#0a0a0c] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/danza.jpg')" }}
+        style={{ backgroundImage: "url('/images/facilissimo%20web%20siti%20web%20.png')" }}
       >
         {/* Background Image layer */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           <img
-            src="/images/danza.jpg"
-            alt="Sfondo danza"
+            src="/images/facilissimo%20web%20siti%20web%20.png"
+            alt="Facilissimo Web Siti Web"
             className="w-full h-full object-cover object-center opacity-75"
             loading="eager"
           />
