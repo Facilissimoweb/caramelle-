@@ -128,20 +128,20 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
           <img
             src="/images/facilissimo%20web%20di%20maria%20teresa%20rogani%20.png"
             alt="Facilissimo Web di Maria Teresa Rogani"
-            className="w-full h-full object-cover object-center opacity-75 block xl:hidden"
+            className="w-full h-full object-cover object-center opacity-100 block xl:hidden"
             loading="eager"
           />
           {/* Desktop background */}
           <img
             src="/images/facilissimo%20web%20siti%20web%20.png"
             alt="Facilissimo Web Siti Web"
-            className="w-full h-full object-cover object-center opacity-75 hidden xl:block"
+            className="w-full h-full object-cover object-center opacity-100 hidden xl:block"
             loading="eager"
           />
         </motion.div>
 
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/80 pointer-events-none z-0" />
+        {/* Minimal Subtle Overlay */}
+        <div className="absolute inset-0 bg-black/10 pointer-events-none z-0" />
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">
           <div className="lg:col-span-8 xl:col-span-8 space-y-6">
