@@ -276,6 +276,8 @@ p {
 
 #hero-cta-main {
   font-size: 13px !important;
+  background-color: #624369 !important;
+  border-color: #624369 !important;
 }
 
 /* Cyberpunk scanline CRT overlay animation */

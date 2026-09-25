@@ -153,8 +153,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               />
             </div>
             <span 
-              className="text-[13px] uppercase tracking-[0em] text-white font-mono font-bold block bg-[#0e0e0e] pt-[10px] pb-[13px] px-4 text-center mb-[25px] w-[328px] max-w-full animate-fade-in-up border border-white/20"
-              style={{ letterSpacing: '0px' }}
+              className="text-[13px] uppercase tracking-[0em] text-white font-mono font-bold block pt-[10px] pb-[13px] px-4 text-center mb-[25px] w-[328px] max-w-full animate-fade-in-up border border-white/20"
+              style={{ letterSpacing: '0px', backgroundColor: '#624369' }}
             >
               {t.heroPreTitle}
             </span>
@@ -179,6 +179,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                 onClick={() => setCurrentTab("contatti")}
                 className="solid-primary text-center"
                 id="hero-cta-main"
+                style={{ backgroundColor: "#624369", borderColor: "#624369" }}
               >
                 <span style={{ fontSize: "20px" }}>{t.heroBtnPrimary}</span>
               </button>
@@ -360,7 +361,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       {/* Dynamic Gallery & Media Assets - Hidden from online public view as requested */}
       {/* <GallerySection lang={lang} isFacilitated={isFacilitated} /> */}
       {/* FAQ Section */}
-      <section className="py-24 border-b border-white/10 bg-[#111113]" style={{ backgroundColor: "#111113" }}>
+      <section className="py-24 border-b border-white/10 bg-[#624369]" style={{ backgroundColor: "#624369" }}>
         <FAQAccordion
           isDark={true}
           containerClassName="mb-0 pb-[60px]"

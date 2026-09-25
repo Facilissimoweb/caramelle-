@@ -39,8 +39,8 @@ export default function FAQAccordion({
   const hoverText = isDark ? "group-hover:text-white" : "group-hover:text-black";
 
   return (
-    <div className={`w-full bg-transparent ${textColor}`}>
-      <div className={`max-w-3xl mx-auto px-6 ${containerClassName}`}>
+    <div className={`w-full ${textColor}`} style={{ backgroundColor: "#624369" }}>
+      <div className={`max-w-3xl mx-auto px-6 ${containerClassName}`} style={{ backgroundColor: "#624369" }}>
         {(title || subtitle || showIcon) && (
           <div className="text-center mb-16 space-y-4">
             <div className="flex justify-center mb-4">
