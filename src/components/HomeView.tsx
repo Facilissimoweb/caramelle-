@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { Brain, Cpu, Zap, ArrowRight, ArrowLeft, ChevronLeft, ChevronRight, Heart, CheckCircle2, Sparkles, Maximize2, X, TrendingUp, BarChart3, ArrowUpRight, Check } from "lucide-react";
 import { translations } from "../translations";
 import { getFeatures, getStatsData, getProjects } from "../data/homeData";
@@ -80,9 +80,6 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
     };
   }, []);
 
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 1000], [0, 250]);
-
   const bgImages = [
     "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1920",
     "https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&q=80&w=1920",
@@ -105,30 +102,21 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
     <div className="w-full bg-[#F8F7F4] text-[#111113]">
       {/* Hero Section */}
       <section 
-        className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-white/10 bg-[#0a0a0c]"
+        className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-white/10 bg-[#0a0a0c] bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/images/danza.jpg')" }}
       >
-        {/* Parallax Background Video with motion.div */}
-        <motion.div 
-          className="absolute inset-0 overflow-hidden"
-          style={{ 
-            y,
-            scale: 1.15,
-            willChange: "transform"
-          }}
-        >
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover opacity-40"
-          >
-            <source src="/video/Photo%20booth%20(effetto%20video%20AI).mp4" type="video/mp4" />
-          </video>
-        </motion.div>
+        {/* Background Image layer */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          <img
+            src="/images/danza.jpg"
+            alt="Sfondo danza"
+            className="w-full h-full object-cover object-center opacity-75"
+            loading="eager"
+          />
+        </div>
 
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/65 to-black/85 pointer-events-none z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/80 pointer-events-none z-0" />
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">
           <div className="lg:col-span-8 xl:col-span-8 space-y-6">
