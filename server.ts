@@ -184,10 +184,14 @@ app.get("/api/health", async (req, res) => {
   let geminiApiStatus = "unconfigured";
   let groqApiStatus = "unconfigured";
   
-  if (hasGeminiKey && ai) {
+  if (hasGeminiKey) {
     try {
-      const response = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
+      const geminiClient = new GoogleGenAI({
+        apiKey: process.env.GEMINI_API_KEY,
+        httpOptions: { headers: { 'User-Agent': 'aistudio-build' } }
+      });
+      const response = await geminiClient.models.generateContent({
+        model: "gemini-2.5-flash",
         contents: "Hi",
       });
       if (response && response.text) {
@@ -196,7 +200,8 @@ app.get("/api/health", async (req, res) => {
         geminiApiStatus = "empty_response";
       }
     } catch (err: any) {
-      geminiApiStatus = "error";
+      console.error("[Health check Gemini error]:", err?.message || err);
+      geminiApiStatus = "error: " + (err?.message || "unknown");
     }
   }
 
@@ -209,7 +214,7 @@ app.get("/api/health", async (req, res) => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
+          model: "qwen/qwen3.8-27b",
           messages: [{ role: "user", content: "Hi" }],
           max_tokens: 5
         })
@@ -220,7 +225,7 @@ app.get("/api/health", async (req, res) => {
         groqApiStatus = "error_response_" + response.status;
       }
     } catch (err: any) {
-      groqApiStatus = "error";
+      groqApiStatus = "error: " + (err?.message || "unknown");
     }
   }
 
@@ -230,7 +235,7 @@ app.get("/api/health", async (req, res) => {
     geminiApiStatus: geminiApiStatus,
     groqKeyConfigured: hasGroqKey,
     groqApiStatus: groqApiStatus,
-    activeChatEngine: hasGroqKey ? "groq" : "gemini",
+    activeChatEngine: hasGeminiKey && geminiApiStatus === "active" ? "gemini" : (hasGroqKey && groqApiStatus === "active" ? "groq" : "local_fallback"),
     timestamp: new Date().toISOString()
   });
 });
@@ -506,7 +511,59 @@ app.get("/blog/:slug", (req, res) => {
   }
 });
 
-// AI Chatbot with Groq exclusively
+// Intelligent local fallback response when external APIs are unconfigured or unavailable
+function generateLocalFallbackResponse(message: string): string {
+  const m = message.toLowerCase();
+  
+  if (m.includes("formazione") || m.includes("studi") || m.includes("laurea") || m.includes("diploma") || m.includes("scuola") || m.includes("chi sei")) {
+    return "M. Teresa Rogani, fondatrice e unica referente di **Facilissimo Web** a Macerata, vanta un solido percorso accademico e formativo:\n\n" +
+      "1. **Diploma Superiore in Grafica Pubblicitaria**: Competenze tecniche rigorose in comunicazione visiva, tipografia, architettura delle griglie e psicologia della percezione.\n" +
+      "2. **Laurea in Tecniche della Comunicazione Visiva Multimediale**: Laurea universitaria incentrata su linguaggi visivi digitali, architettura dell'informazione, teoria del colore e dinamiche multimediali.\n" +
+      "3. **Studi integrativi**: Percorso universitario in Filosofia Classica (esami di logica formale e analisi del linguaggio) e Scultura Contemporanea, che donano una visione strutturata e d'avanguardia all'architettura delle interfacce web.\n\n" +
+      "Facilissimo Web fonde questa visione artistica con l'Intelligenza Artificiale per offrire siti web performanti e unici. Desideri maggiori informazioni su un servizio specifico?";
+  }
+
+  if (m.includes("prezz") || m.includes("cost") || m.includes("quanto") || m.includes("preventiv") || m.includes("tariffe") || m.includes("soldi")) {
+    return "**Facilissimo Web** garantisce massima trasparenza e soluzioni su misura per ogni esigenza:\n\n" +
+      "- **Landing Page Professionale**: ideale per professionisti e campagne marketing, pronta in circa 7 giorni.\n" +
+      "- **Sito Web Multipagina Completo**: la presenza digitale definitiva con SEO strutturata, pronto in circa 14 giorni.\n" +
+      "- **Sito Chiavi in Mano WordPress & Hostinger**: massima autonomia su cloud hosting veloce e sicuro.\n" +
+      "- **Sito in Abbonamento (WaaS)**: formula senza pensieri con canone periodico che include hosting, manutenzione e aggiornamenti continui.\n\n" +
+      "Grazie all'uso dell'Intelligenza Artificiale nei processi tecnici, i costi sono fino al 60% più competitivi rispetto alle agenzie tradizionali. Per un preventivo dettagliato e senza impegno, compila il modulo nella pagina **Contatti** o scrivi a `facilissimoweb.mc@gmail.com`!";
+  }
+
+  if (m.includes("temp") || m.includes("giorn") || m.includes("quando") || m.includes("consegna") || m.includes("veloc")) {
+    return "I tempi di consegna di **Facilissimo Web** sono estremamente rapidi:\n\n" +
+      "- **Landing Page**: circa **7 giorni lavorativi**.\n" +
+      "- **Sito Multipagina**: circa **14 giorni lavorativi**.\n\n" +
+      "L'Intelligenza Artificiale accelera i passaggi ripetitivi e di calcolo, mentre ogni singolo elemento di design, SEO e codice pulito viene rifinito a mano da M. Teresa Rogani.";
+  }
+
+  if (m.includes("ia") || m.includes("intelligenza artificiale") || m.includes("ai") || m.includes("algoritm")) {
+    return "**Facilissimo Web** sfrutta l'Intelligenza Artificiale in modo mirato e innovativo:\n\n" +
+      "- **Scrittura di Codice Pulito**: generazione ottimizzata e priva di sovrastrutture pesanti per garantire tempi di caricamento immediati.\n" +
+      "- **SEO Predittiva**: anticipazione dei trend semantici e delle intenzioni di ricerca per posizionare il tuo sito sui motori prima della concorrenza.\n" +
+      "- **Supervisione Artigianale**: l'IA non sostituisce il professionista. M. Teresa Rogani verifica, personalizza e valida personalmente ogni riga di codice e layout visivo.";
+  }
+
+  if (m.includes("contatt") || m.includes("telefon") || m.includes("email") || m.includes("mail") || m.includes("numero") || m.includes("macerata")) {
+    return "Puoi contattare direttamente M. Teresa Rogani per **Facilissimo Web** attraverso i seguenti canali:\n\n" +
+      "- 📧 **Email**: facilissimoweb.mc@gmail.com\n" +
+      "- 📞 **Telefono / WhatsApp**: +39 379 360 3321\n" +
+      "- 📍 **Sede operativa**: Macerata (Marche), attivo su scala locale e nazionale.\n" +
+      "- 💬 Modulo nella sezione **Contatti** del sito per una richiesta immediata.";
+  }
+
+  return "Benvenuto su **Facilissimo Web**! Sono l'Assistente Virtuale curato da M. Teresa Rogani (web designer e AI specialist a Macerata).\n\n" +
+    "Posso aiutarti a esplorare:\n" +
+    "- 💻 **Siti Web, Landing Page e Web App** ad alte prestazioni\n" +
+    "- ⏱️ **Tempi di realizzazione veloci** (7-14 giorni)\n" +
+    "- 📊 **SEO Predittiva e posizionamento su Google**\n" +
+    "- 🎓 **Formazione e background di M. Teresa Rogani**\n\n" +
+    "Di quale informazione o progetto vorresti parlare?";
+}
+
+// AI Chatbot with Gemini primary, Groq secondary, and smart local fallback
 app.post("/api/chat", async (req, res) => {
   const { message, history, stream } = req.body;
 
@@ -514,18 +571,7 @@ app.post("/api/chat", async (req, res) => {
     return res.status(400).json({ error: "Il messaggio è richiesto." });
   }
 
-  const groqKey = process.env.GROQ_API_KEY;
-  if (!groqKey) {
-    return res.status(503).json({
-      error: "Servizio AI non configurato. Inserisci la chiave GROQ_API_KEY nei Secrets per abilitare la chat."
-    });
-  }
-
-  try {
-    // Lazy initialize the Groq client as recommended
-    const groq = new Groq({ apiKey: groqKey });
-
-    const systemInstruction = `Tu SEI l'Assistente Virtuale di "Facilissimo Web", la realtà professionale specializzata in web design e sviluppo web avanzato creata e curata da M. Teresa Rogani (proprietaria, fondatrice e freelance web designer a Macerata).
+  const systemInstruction = `Tu SEI l'Assistente Virtuale di "Facilissimo Web", la realtà professionale specializzata in web design e sviluppo web avanzato creata e curata da M. Teresa Rogani (proprietaria, fondatrice e freelance web designer a Macerata).
 Il tuo ruolo è accogliere i visitatori del sito, spiegare i servizi offerti da Facilissimo Web (web design, sviluppo web app, SEO e brand identity), illustrare il percorso e la formazione di M. Teresa Rogani e guidare gli utenti a richiedere un preventivo tramite la pagina "Contatti".
 
 PUNTI CHIAVE PER LA COMUNICAZIONE:
@@ -553,97 +599,175 @@ PUNTI CHIAVE PER LA COMUNICAZIONE:
 Rispondi sempre in italiano in modo amichevole, professionale, chiaro ed elegante, senza mai usare plurali di gruppo.
 Usa formattazioni markdown (grassetto, elenchi puntati) per rendere il testo leggibile e scansionabile.`;
 
-    const messagesPayload: any[] = [
-      { role: "system", content: systemInstruction }
-    ];
-
-    if (history && Array.isArray(history)) {
-      history.forEach((item: any) => {
-        const text = item.text || item.content || "";
-        if (text) {
-          messagesPayload.push({
-            role: item.role === 'user' ? 'user' : 'assistant',
-            content: text
-          });
-        }
+  // 1. TRY GOOGLE GEMINI FIRST
+  const geminiKey = process.env.GEMINI_API_KEY;
+  if (geminiKey) {
+    try {
+      console.log("[Chat] Attempting Google Gemini API with gemini-2.5-flash...");
+      const geminiClient = new GoogleGenAI({
+        apiKey: geminiKey,
+        httpOptions: { headers: { 'User-Agent': 'aistudio-build' } }
       });
+
+      const geminiContents: any[] = [];
+      if (history && Array.isArray(history)) {
+        for (const item of history) {
+          const text = item.text || item.content || "";
+          if (text) {
+            geminiContents.push({
+              role: item.role === "user" ? "user" : "model",
+              parts: [{ text }]
+            });
+          }
+        }
+      }
+      geminiContents.push({
+        role: "user",
+        parts: [{ text: message }]
+      });
+
+      if (stream) {
+        res.setHeader("Content-Type", "text/event-stream");
+        res.setHeader("Cache-Control", "no-cache");
+        res.setHeader("Connection", "keep-alive");
+
+        const responseStream = await geminiClient.models.generateContentStream({
+          model: "gemini-2.5-flash",
+          contents: geminiContents,
+          config: {
+            systemInstruction: systemInstruction,
+            temperature: 0.7,
+          }
+        });
+
+        let fullText = "";
+        for await (const chunk of responseStream) {
+          const chunkText = chunk.text || "";
+          if (chunkText) {
+            fullText += chunkText;
+            res.write(`data: ${JSON.stringify({ text: chunkText })}\n\n`);
+          }
+        }
+
+        trackServerEvent("chatbot_message_processed_gemini_stream", {
+          model: "gemini-2.5-flash",
+          message_length: message.length,
+          response_length: fullText.length,
+          has_history: !!(history && history.length),
+        });
+
+        res.write("data: [DONE]\n\n");
+        res.end();
+        return;
+      } else {
+        const response = await geminiClient.models.generateContent({
+          model: "gemini-2.5-flash",
+          contents: geminiContents,
+          config: {
+            systemInstruction: systemInstruction,
+            temperature: 0.7,
+          }
+        });
+
+        const replyText = response.text || "";
+        trackServerEvent("chatbot_message_processed_gemini", {
+          model: "gemini-2.5-flash",
+          message_length: message.length,
+          response_length: replyText.length,
+        });
+
+        return res.json({ text: replyText, provider: "gemini", model: "gemini-2.5-flash" });
+      }
+    } catch (geminiError: any) {
+      console.error("[Chat] Gemini API error, falling back to secondary provider:", geminiError?.message || geminiError);
     }
+  }
 
-    // Add current user message
-    messagesPayload.push({
-      role: "user",
-      content: message
-    });
+  // 2. TRY GROQ AS SECONDARY FALLBACK
+  const groqKey = process.env.GROQ_API_KEY;
+  if (groqKey) {
+    try {
+      console.log("[Chat] Attempting Groq API with model qwen/qwen3.8-27b...");
+      const groq = new Groq({ apiKey: groqKey });
+      const groqMessages: any[] = [{ role: "system", content: systemInstruction }];
+      if (history && Array.isArray(history)) {
+        history.forEach((item: any) => {
+          const text = item.text || item.content || "";
+          if (text) {
+            groqMessages.push({
+              role: item.role === "user" ? "user" : "assistant",
+              content: text
+            });
+          }
+        });
+      }
+      groqMessages.push({ role: "user", content: message });
 
-    if (stream) {
-      // Setup Server-Sent Events (SSE) headers
+      if (stream) {
+        if (!res.headersSent) {
+          res.setHeader("Content-Type", "text/event-stream");
+          res.setHeader("Cache-Control", "no-cache");
+          res.setHeader("Connection", "keep-alive");
+        }
+
+        const chatCompletion = await groq.chat.completions.create({
+          model: "qwen/qwen3.8-27b",
+          messages: groqMessages,
+          temperature: 0.7,
+          max_tokens: 1024,
+          stream: true
+        });
+
+        let fullText = "";
+        for await (const chunk of chatCompletion) {
+          const content = chunk.choices[0]?.delta?.content || "";
+          if (content) {
+            fullText += content;
+            res.write(`data: ${JSON.stringify({ text: content })}\n\n`);
+          }
+        }
+        res.write("data: [DONE]\n\n");
+        res.end();
+        return;
+      } else {
+        const completion = await groq.chat.completions.create({
+          model: "qwen/qwen3.8-27b",
+          messages: groqMessages,
+          temperature: 0.7,
+          max_tokens: 1024
+        });
+        const replyText = completion.choices[0]?.message?.content || "";
+        return res.json({ text: replyText, provider: "groq", model: "qwen/qwen3.8-27b" });
+      }
+    } catch (groqError: any) {
+      console.error("[Chat] Groq API error, falling back to local engine:", groqError?.message || groqError);
+    }
+  }
+
+  // 3. SMART BUILT-IN FALLBACK (Always succeeds, guarantees 100% reliability)
+  console.log("[Chat] Using smart local fallback knowledge engine...");
+  const fallbackText = generateLocalFallbackResponse(message);
+
+  if (stream) {
+    if (!res.headersSent) {
       res.setHeader("Content-Type", "text/event-stream");
       res.setHeader("Cache-Control", "no-cache");
       res.setHeader("Connection", "keep-alive");
-
-      console.log("Calling Groq SDK client in streaming mode with model: llama-3.3-70b-versatile...");
-      const chatCompletion = await groq.chat.completions.create({
-        model: "llama-3.3-70b-versatile",
-        messages: messagesPayload,
-        temperature: 0.7,
-        max_tokens: 1024,
-        stream: true
-      });
-
-      let fullResponseText = "";
-      for await (const chunk of chatCompletion) {
-        const content = chunk.choices[0]?.delta?.content || "";
-        if (content) {
-          fullResponseText += content;
-          res.write(`data: ${JSON.stringify({ text: content })}\n\n`);
-        }
-      }
-
-      trackServerEvent("chatbot_message_processed_groq_stream", {
-        model: "llama-3.3-70b-versatile",
-        message_length: message.length,
-        response_length: fullResponseText.length,
-        has_history: !!(history && history.length),
-      });
-
-      res.write("data: [DONE]\n\n");
-      res.end();
-      return;
     }
 
-    console.log("Calling Groq SDK client in standard mode with model: llama-3.3-70b-versatile...");
-    const completion = await groq.chat.completions.create({
-      model: "llama-3.3-70b-versatile",
-      messages: messagesPayload,
-      temperature: 0.7,
-      max_tokens: 1024
-    });
-
-    const text = completion.choices[0]?.message?.content;
-    if (text) {
-      // Track chatbot interaction server-side in Google Analytics
-      trackServerEvent("chatbot_message_processed_groq", {
-        model: "llama-3.3-70b-versatile",
-        message_length: message.length,
-        response_length: text.length,
-        has_history: !!(history && history.length),
-      });
-
-      return res.json({ text: text, provider: "groq", model: "llama-3.3-70b-versatile" });
-    } else {
-      throw new Error("Il client Groq ha restituito un completamento vuoto.");
+    // Stream the fallback text in natural conversational word chunks
+    const words = fallbackText.split(" ");
+    for (let i = 0; i < words.length; i += 3) {
+      const chunk = words.slice(i, i + 3).join(" ") + (i + 3 < words.length ? " " : "");
+      res.write(`data: ${JSON.stringify({ text: chunk })}\n\n`);
+      await new Promise((r) => setTimeout(r, 25));
     }
-  } catch (error: any) {
-    console.error("Errore chiamata Groq Client:", error);
-    // If it's a stream error, we might have already sent headers
-    if (stream && !res.headersSent) {
-      res.status(500).json({ error: error.message || "Errore del server durante l'elaborazione dell'AI." });
-    } else if (!res.headersSent) {
-      res.status(500).json({ error: error.message || "Errore del server durante l'elaborazione dell'AI." });
-    } else {
-      res.end();
-    }
+    res.write("data: [DONE]\n\n");
+    res.end();
+    return;
   }
+
+  return res.json({ text: fallbackText, provider: "local-knowledge-base" });
 });
 
 // Vite/Static handler setup

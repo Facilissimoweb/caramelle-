@@ -96,7 +96,12 @@ export default function FloatingChatWidget({
       });
 
       if (!res.ok) {
-        throw new Error(lang === "it" ? "Errore di connessione al server AI." : "Error connecting to AI server.");
+        let errMsg = lang === "it" ? "Errore di connessione al server AI." : "Error connecting to AI server.";
+        try {
+          const errData = await res.json();
+          if (errData?.error) errMsg = errData.error;
+        } catch {}
+        throw new Error(errMsg);
       }
 
       const contentType = res.headers.get("content-type");
