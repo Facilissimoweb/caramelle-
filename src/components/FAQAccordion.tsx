@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronDown, HelpCircle } from "lucide-react";
-const logoImage = "/f (1600 x 500 px) (1).svg";
+const logoImage = new URL("../assets/images/regenerated_image_1785222608486.png", import.meta.url).href;
 
 interface FAQItem {
   q: string;
@@ -47,7 +47,7 @@ export default function FAQAccordion({
               <img
                 src={logoImage}
                 alt="Facilissimo Web Logo"
-                className="w-[150px] h-[150px] object-contain"
+                className="w-[150px] h-[150px] object-contain rounded-2xl overflow-hidden bg-white shadow-md p-1"
               />
             </div>
             {showIcon && <HelpCircle className={`w-8 h-8 ${accentColor} mx-auto animate-pulse`} id="faq-icon" />}

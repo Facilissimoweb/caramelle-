@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import { Brain, Cpu, Zap, ArrowRight, ArrowLeft, ChevronLeft, ChevronRight, Heart, CheckCircle2, Sparkles, Maximize2, X, TrendingUp, BarChart3, ArrowUpRight, Check } from "lucide-react";
 import { translations } from "../translations";
 import { getFeatures, getStatsData, getProjects } from "../data/homeData";
@@ -98,22 +98,47 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
   const statsData = getStatsData(lang);
   const projects = getProjects(lang);
 
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+
+  // Significant parallax displacement and smooth scale depth
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "35%"]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1.08, 1.25]);
+
   return (
     <div className="w-full bg-[#F8F7F4] text-[#111113]">
       {/* Hero Section */}
       <section 
-        className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-white/10 bg-[#0a0a0c] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/facilissimo%20web%20siti%20web%20.png')" }}
+        ref={heroRef}
+        className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-white/10 bg-[#0a0a0c]"
       >
-        {/* Background Image layer */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {/* Parallax Background Image layer */}
+        <motion.div 
+          className="absolute -inset-y-32 inset-x-0 overflow-hidden pointer-events-none z-0"
+          style={{ 
+            y: bgY,
+            scale: bgScale,
+            willChange: "transform"
+          }}
+        >
+          {/* Mobile & Tablet background */}
+          <img
+            src="/images/facilissimo%20web%20di%20maria%20teresa%20rogani%20.png"
+            alt="Facilissimo Web di Maria Teresa Rogani"
+            className="w-full h-full object-cover object-center opacity-75 block xl:hidden"
+            loading="eager"
+          />
+          {/* Desktop background */}
           <img
             src="/images/facilissimo%20web%20siti%20web%20.png"
             alt="Facilissimo Web Siti Web"
-            className="w-full h-full object-cover object-center opacity-75"
+            className="w-full h-full object-cover object-center opacity-75 hidden xl:block"
             loading="eager"
           />
-        </div>
+        </motion.div>
 
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/80 pointer-events-none z-0" />
