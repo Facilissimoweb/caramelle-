@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { Brain, Cpu, Zap, ArrowRight, ArrowLeft, ChevronLeft, ChevronRight, Heart, CheckCircle2, Sparkles, Maximize2, X, TrendingUp, BarChart3, ArrowUpRight, Check } from "lucide-react";
 import { translations } from "../translations";
 import { getFeatures, getStatsData, getProjects } from "../data/homeData";
@@ -99,13 +99,6 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
   const projects = getProjects(lang);
 
   const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"]
-  });
-
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "28%"]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1.08, 1.2]);
 
   return (
     <div className="w-full bg-[#F8F7F4] text-[#111113]">
@@ -114,24 +107,6 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
         ref={heroRef}
         className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-white/10 bg-[#0a0a0c]"
       >
-        {/* Parallax Background Image with slight blur and smooth depth */}
-        <motion.div 
-          className="absolute -inset-y-28 inset-x-0 overflow-hidden pointer-events-none z-0"
-          style={{ 
-            y: bgY,
-            scale: bgScale,
-            willChange: "transform"
-          }}
-        >
-          <img
-            src="/images/facilissio%20web%20siti%20web%20professionali%20on%20line%20prima%20di%20ieri%20(2)%20(1).webp"
-            alt="Facilissimo Web"
-            className="w-full h-full object-cover object-center"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-black/45 pointer-events-none" />
-        </motion.div>
-
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">
           <div className="lg:col-span-8 xl:col-span-8 space-y-6">
             <div className="flex items-center gap-2 mb-4 animate-fade-in-up">
