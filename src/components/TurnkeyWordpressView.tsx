@@ -130,7 +130,7 @@ export default function TurnkeyWordpressView({ lang, setCurrentTab }: TurnkeyWor
 
               <button
                 onClick={() => handleContactClick("chiavi-in-mano")}
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 bg-[#111113] hover:bg-black text-white font-bold text-xs uppercase font-mono tracking-wider transition-all"
+                className="btn-portal w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-white font-bold text-sm uppercase transition-all"
               >
                 <span>{isIt ? "Scegli Chiavi in Mano" : "Choose Turnkey Site"}</span>
                 <ArrowRight className="w-4 h-4 text-amber-400" />
@@ -204,7 +204,7 @@ export default function TurnkeyWordpressView({ lang, setCurrentTab }: TurnkeyWor
 
               <button
                 onClick={() => handleContactClick("abbonamento")}
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 bg-amber-400 hover:bg-amber-300 text-black font-bold text-xs uppercase font-mono tracking-wider transition-all"
+                className="btn-portal w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-white font-bold text-sm uppercase transition-all"
               >
                 <span>{isIt ? "Scegli Abbonamento" : "Choose Subscription"}</span>
                 <ArrowRight className="w-4 h-4" />
@@ -387,7 +387,7 @@ export default function TurnkeyWordpressView({ lang, setCurrentTab }: TurnkeyWor
             <div className="pt-2 flex justify-center">
               <button
                 onClick={() => handleContactClick()}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-amber-400 hover:bg-amber-300 text-black font-bold text-xs uppercase font-mono tracking-wider transition-all shadow-lg active:scale-98 cursor-pointer"
+                className="btn-portal inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-white font-bold text-sm uppercase transition-all shadow-lg active:scale-98 cursor-pointer"
               >
                 <span>{isIt ? "Richiedi una Consulenza Gratuita" : "Request Free Consultation"}</span>
                 <ArrowRight className="w-4 h-4" />

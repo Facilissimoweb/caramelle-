@@ -190,24 +190,19 @@ export default function Header({
   const activeLangObj = LANGUAGES.find((l) => l.code === currentGoogleLang) || LANGUAGES[0];
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-[#FAF9F6]/40 backdrop-blur-md z-50 border-b border-[#111113]/10 transition-all duration-300">
+    <header className="fixed top-0 left-0 w-full bg-white backdrop-blur-md z-50 border-b border-[#111113]/10 transition-all duration-300">
       {/* Scroll Progress Bar */}
       <div
         className="absolute top-0 left-0 h-[3px] bg-black transition-all duration-100 ease-out z-50"
         style={{ width: `${scrollProgress}%` }}
         id="scroll-progress-bar"
       />
-      <div className="relative w-full px-4 sm:px-6 xl:px-12 h-20 flex justify-between items-center gap-4 sm:gap-6 overflow-hidden">
-        {/* Background Image with pronounced blur */}
-        <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-          <img
-            src="/images/facilissimo%20web%20di%20maria%20teresa%20rogani%20.png"
-            alt=""
-            aria-hidden="true"
-            className="w-full h-full object-cover filter blur-[32px] scale-150 opacity-80"
-          />
-          <div className="absolute inset-0 bg-[#FAF9F6]/65 backdrop-blur-md" />
-        </div>
+      <div 
+        className="relative w-full px-4 sm:px-6 xl:px-12 h-20 flex justify-between items-center gap-4 sm:gap-6 overflow-hidden bg-white"
+        style={{ backgroundColor: "#ffffff" }}
+      >
+        {/* Background Overlay */}
+        <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none bg-white" style={{ backgroundColor: "#ffffff" }} />
         {/* Logo */}
         <button
           onClick={() => handleNavClick("home")}
@@ -305,7 +300,7 @@ export default function Header({
 
           <button
             onClick={() => handleNavClick("contatti")}
-            className="solid-light"
+            className="btn-portal solid-light px-8 py-4 rounded-full text-white font-bold text-sm uppercase"
             id="header-cta-btn"
           >
             {lang === "it" ? "Lavora con Me" : "Work with Me"}
@@ -417,7 +412,7 @@ export default function Header({
             {/* Compact CTA Button */}
             <button
               onClick={() => handleNavClick("contatti")}
-              className="solid-light w-full text-center"
+              className="btn-portal solid-light px-8 py-4 rounded-full text-white font-bold text-sm uppercase w-full text-center"
               id="mobile-header-cta-btn"
             >
               {lang === "it" ? "Richiedi Preventivo" : "Request a Quote"}

@@ -104,9 +104,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
     offset: ["start start", "end start"]
   });
 
-  // Significant parallax displacement and smooth scale depth
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "35%"]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1.08, 1.25]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "28%"]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1.08, 1.2]);
 
   return (
     <div className="w-full bg-[#F8F7F4] text-[#111113]">
@@ -115,33 +114,23 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
         ref={heroRef}
         className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-white/10 bg-[#0a0a0c]"
       >
-        {/* Parallax Background Image layer */}
+        {/* Parallax Background Image with slight blur and smooth depth */}
         <motion.div 
-          className="absolute -inset-y-32 inset-x-0 overflow-hidden pointer-events-none z-0"
+          className="absolute -inset-y-28 inset-x-0 overflow-hidden pointer-events-none z-0"
           style={{ 
             y: bgY,
             scale: bgScale,
             willChange: "transform"
           }}
         >
-          {/* Mobile & Tablet background */}
           <img
-            src="/images/facilissimo%20web%20di%20maria%20teresa%20rogani%20.png"
-            alt="Facilissimo Web di Maria Teresa Rogani"
-            className="w-full h-full object-cover object-center opacity-100 block xl:hidden"
+            src="/images/facilissio%20web%20siti%20web%20professionali%20on%20line%20prima%20di%20ieri%20(2)%20(1).webp"
+            alt="Facilissimo Web"
+            className="w-full h-full object-cover object-center"
             loading="eager"
           />
-          {/* Desktop background */}
-          <img
-            src="/images/facilissimo%20web%20siti%20web%20.png"
-            alt="Facilissimo Web Siti Web"
-            className="w-full h-full object-cover object-center opacity-100 hidden xl:block"
-            loading="eager"
-          />
+          <div className="absolute inset-0 bg-black/45 pointer-events-none" />
         </motion.div>
-
-        {/* Minimal Subtle Overlay */}
-        <div className="absolute inset-0 bg-black/10 pointer-events-none z-0" />
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">
           <div className="lg:col-span-8 xl:col-span-8 space-y-6">
@@ -153,8 +142,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
               />
             </div>
             <span 
-              className="text-[13px] uppercase tracking-[0em] text-white font-mono font-bold block pt-[10px] pb-[13px] px-4 text-center mb-[25px] w-[328px] max-w-full animate-fade-in-up border border-white/20"
-              style={{ letterSpacing: '0px', backgroundColor: '#624369' }}
+              className="text-[13px] uppercase tracking-[0em] text-black font-mono font-bold block pt-[10px] pb-[13px] px-4 text-center mb-[25px] w-[328px] max-w-full animate-fade-in-up border border-white"
+              style={{ letterSpacing: '0px', backgroundColor: '#ffffff', borderColor: '#ffffff', color: '#000000' }}
             >
               {t.heroPreTitle}
             </span>
@@ -177,18 +166,17 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             <div className="flex flex-wrap gap-4 pt-4 animate-fade-in-up delay-200">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="solid-primary text-center"
+                className="btn-portal solid-primary text-center px-8 py-4 rounded-full text-white font-bold text-sm uppercase"
                 id="hero-cta-main"
-                style={{ backgroundColor: "#624369", borderColor: "#624369" }}
               >
-                <span style={{ fontSize: "20px" }}>{t.heroBtnPrimary}</span>
+                <span>{t.heroBtnPrimary}</span>
               </button>
               <button
                 onClick={() => setCurrentTab("siti-web")}
-                className="solid-light text-center"
+                className="btn-portal solid-light text-center px-8 py-4 rounded-full text-white font-bold text-sm uppercase"
                 id="hero-cta-sec"
               >
-                <span style={{ fontSize: "20px" }}>{t.heroBtnSecondary}</span>
+                <span>{t.heroBtnSecondary}</span>
               </button>
             </div>
  
@@ -448,14 +436,14 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="solid-light flex items-center justify-center text-center"
+                className="btn-portal solid-light px-8 py-4 rounded-full text-white font-bold text-sm uppercase flex items-center justify-center text-center"
                 id="cta-contact-btn"
               >
                 <span>{t.ctaBtnPrimary}</span>
               </button>
               <button
                 onClick={() => (onOpenChat ? onOpenChat() : setCurrentTab("contatti"))}
-                className="solid-light flex items-center justify-center text-center"
+                className="btn-portal solid-light px-8 py-4 rounded-full text-white font-bold text-sm uppercase flex items-center justify-center text-center"
                 id="cta-chat-btn"
               >
                 <span>{t.ctaBtnSecondary}</span>

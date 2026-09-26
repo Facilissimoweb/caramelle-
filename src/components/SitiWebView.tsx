@@ -36,7 +36,7 @@ export default function SitiWebView({ lang, isFacilitated, setCurrentTab }: Siti
             {setCurrentTab && (
               <button
                 onClick={() => setCurrentTab("chiavi-in-mano")}
-                className="shrink-0 px-6 py-3 bg-black text-white font-mono text-xs uppercase tracking-wider font-bold hover:bg-white hover:text-black transition-colors shadow-sm cursor-pointer"
+                className="btn-portal px-8 py-4 rounded-full text-white font-bold text-sm uppercase shrink-0 shadow-sm cursor-pointer"
               >
                 {lang === "it" ? "Scopri Chiavi in Mano →" : "Explore Turnkey →"}
               </button>
@@ -61,7 +61,7 @@ export default function SitiWebView({ lang, isFacilitated, setCurrentTab }: Siti
             {setCurrentTab && (
               <button
                 onClick={() => setCurrentTab("abbonamento")}
-                className="shrink-0 px-6 py-3 bg-white text-[#111113] font-mono text-xs uppercase tracking-wider font-bold hover:bg-amber-400 transition-colors shadow-sm cursor-pointer"
+                className="btn-portal px-8 py-4 rounded-full text-white font-bold text-sm uppercase shrink-0 shadow-sm cursor-pointer"
               >
                 {lang === "it" ? "Scopri la Proposta →" : "Explore Offer →"}
               </button>

@@ -126,7 +126,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
             <div className="flex gap-4 pt-4">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="solid-light flex items-center gap-2"
+                className="btn-portal solid-light px-8 py-4 rounded-full text-white font-bold text-sm uppercase flex items-center gap-2"
               >
                 <span>{lang === "it" ? "Contattami ora" : "Contact me now"}</span>
                 <ArrowRight className="w-4 h-4" />
@@ -293,7 +293,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
           <div className="pt-2">
             <button
               onClick={() => setCurrentTab("contatti")}
-              className="solid-light text-center flex items-center justify-center mx-auto gap-2"
+              className="btn-portal solid-light px-8 py-4 rounded-full text-white font-bold text-sm uppercase text-center flex items-center justify-center mx-auto gap-2"
             >
               <span>{lang === "it" ? "Inizia la collaborazione" : "Start collaboration"}</span>
               <ArrowRight className="w-4 h-4" />
