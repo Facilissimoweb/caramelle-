@@ -313,7 +313,7 @@ export default function WebAppView({ setCurrentTab, lang, isFacilitated }: WebAp
                   className="w-[120px] sm:w-[150px] h-auto object-contain"
                 />
               </div>
-              <span className="inline-block py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-white font-bold uppercase border" style={{ letterSpacing: '0px', backgroundColor: '#624369', borderColor: '#624369' }}>
+              <span className="inline-block py-[10px] px-6 text-[13px] font-mono tracking-[0.05em] text-white font-bold uppercase border rounded-md" style={{ letterSpacing: '0.05em', backgroundColor: '#0f172a', borderColor: '#1e293b' }}>
                 {lang === "it" ? "[ PROPOSTE DIGITALI & WEB APP ]" : "[ DIGITAL PROPOSALS & WEB APPS ]"}
               </span>
               <h1 className="font-tan text-3xl sm:text-5xl font-bold tracking-tight text-[#111113]">

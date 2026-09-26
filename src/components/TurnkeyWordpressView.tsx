@@ -65,7 +65,7 @@ export default function TurnkeyWordpressView({ lang, setCurrentTab }: TurnkeyWor
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
 
           {/* CARD 1: CHIAVI IN MANO */}
-          <div className="bg-white border-2 border-[#111113] p-6 sm:p-8 flex flex-col justify-between shadow-md relative group hover:shadow-xl transition-all">
+          <div className="paper-card bg-white border-2 border-[#111113] p-6 sm:p-8 flex flex-col justify-between shadow-md relative group hover:shadow-xl transition-all">
             <div className="space-y-6">
               <div className="flex items-center justify-between border-b border-[#111113]/10 pb-4">
                 <div className="flex items-center gap-2">
@@ -130,16 +130,16 @@ export default function TurnkeyWordpressView({ lang, setCurrentTab }: TurnkeyWor
 
               <button
                 onClick={() => handleContactClick("chiavi-in-mano")}
-                className="btn-portal w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-white font-bold text-sm uppercase transition-all"
+                className="btn-portal solid-light w-full"
               >
                 <span>{isIt ? "Scegli Chiavi in Mano" : "Choose Turnkey Site"}</span>
-                <ArrowRight className="w-4 h-4 text-amber-400" />
+                <ArrowRight className="w-4 h-4 ml-1" />
               </button>
             </div>
           </div>
 
           {/* CARD 2: IN ABBONAMENTO */}
-          <div className="bg-[#111113] text-white border-2 border-black p-6 sm:p-8 flex flex-col justify-between shadow-md relative group hover:shadow-xl transition-all">
+          <div className="paper-card bg-[#111113] text-white border-2 border-black p-6 sm:p-8 flex flex-col justify-between shadow-md relative group hover:shadow-xl transition-all">
             <div className="space-y-6">
               <div className="flex items-center justify-between border-b border-white/15 pb-4">
                 <div className="flex items-center gap-2">
@@ -204,10 +204,10 @@ export default function TurnkeyWordpressView({ lang, setCurrentTab }: TurnkeyWor
 
               <button
                 onClick={() => handleContactClick("abbonamento")}
-                className="btn-portal w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-white font-bold text-sm uppercase transition-all"
+                className="btn-portal solid-primary w-full"
               >
                 <span>{isIt ? "Scegli Abbonamento" : "Choose Subscription"}</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 ml-1" />
               </button>
             </div>
           </div>
@@ -387,10 +387,10 @@ export default function TurnkeyWordpressView({ lang, setCurrentTab }: TurnkeyWor
             <div className="pt-2 flex justify-center">
               <button
                 onClick={() => handleContactClick()}
-                className="btn-portal inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-white font-bold text-sm uppercase transition-all shadow-lg active:scale-98 cursor-pointer"
+                className="btn-portal solid-light mx-auto"
               >
                 <span>{isIt ? "Richiedi una Consulenza Gratuita" : "Request Free Consultation"}</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 ml-1" />
               </button>
             </div>
           </div>

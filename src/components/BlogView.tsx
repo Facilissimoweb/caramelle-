@@ -1173,7 +1173,7 @@ export default function BlogView({
                   className="w-[150px] h-[150px] object-contain"
                 />
               </div>
-              <span className="inline-block py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-white font-bold uppercase border" style={{ letterSpacing: '0px', backgroundColor: '#624369', borderColor: '#624369' }}>
+              <span className="inline-block py-[10px] px-6 text-[13px] font-mono tracking-[0.05em] text-white font-bold uppercase border rounded-md" style={{ letterSpacing: '0.05em', backgroundColor: '#0f172a', borderColor: '#1e293b' }}>
                 {lang === "it" ? "[ TRASPARENZA E CONOSCENZA ]" : "[ INSIGHTS & UPDATES ]"}
               </span>
               <h1 className="font-tan text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#111113] break-words">
@@ -1192,7 +1192,7 @@ export default function BlogView({
               {/* Featured Article Card */}
             <div 
               onClick={() => setSelectedArticle(articles[0].slug)}
-              className="border border-[#111113]/10 bg-[#FAF9F6] grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden hover:border-black hover:shadow-md transition-all duration-300 cursor-pointer group"
+              className="paper-card border border-[#111113]/10 bg-[#FAF9F6] grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden hover:border-black hover:shadow-md transition-all duration-300 cursor-pointer group"
             >
               <div className="lg:col-span-7 h-64 lg:h-auto relative overflow-hidden border-b lg:border-b-0 lg:border-r border-[#111113]/10">
                 <img
@@ -1245,7 +1245,7 @@ export default function BlogView({
                 <div 
                   key={article.slug} 
                   onClick={() => setSelectedArticle(article.slug)}
-                  className="border border-[#111113]/10 bg-[#FAF9F6] overflow-hidden hover:border-black hover:shadow-md transition-all duration-300 flex flex-col justify-between cursor-pointer group"
+                  className="paper-card border border-[#111113]/10 bg-[#FAF9F6] overflow-hidden hover:border-black hover:shadow-md transition-all duration-300 flex flex-col justify-between cursor-pointer group"
                 >
                   <div>
                     <div className="h-48 relative overflow-hidden border-b border-[#111113]/10">

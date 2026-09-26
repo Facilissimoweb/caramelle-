@@ -126,7 +126,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
             <div className="flex gap-4 pt-4">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="btn-portal solid-light px-8 py-4 rounded-full text-white font-bold text-sm uppercase flex items-center gap-2"
+                className="btn-portal solid-light"
               >
                 <span>{lang === "it" ? "Contattami ora" : "Contact me now"}</span>
                 <ArrowRight className="w-4 h-4" />
@@ -162,7 +162,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
       <section className="py-20 md:py-24 bg-[#FAF9F6] border-b border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="max-w-3xl mb-16 space-y-4">
-            <span className="inline-block py-2.5 px-5 text-xs font-mono tracking-[0em] text-white font-bold uppercase border" style={{ letterSpacing: '0px', backgroundColor: '#624369', borderColor: '#624369' }}>
+            <span className="inline-block py-2.5 px-5 text-xs font-mono tracking-[0.05em] text-white font-bold uppercase border rounded-md" style={{ letterSpacing: '0.05em', backgroundColor: '#0f172a', borderColor: '#1e293b' }}>
               [ PERCORSO FORMATIVO E METODO PROGETTUALE ]
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#111113]">
@@ -233,7 +233,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
       <section className="py-20 md:py-24 bg-[#F8F7F4] border-t border-[#111113]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="max-w-3xl mb-16 space-y-4">
-            <span className="inline-block py-2.5 px-5 text-xs font-mono tracking-[0em] text-white font-bold uppercase border" style={{ letterSpacing: '0px', backgroundColor: '#624369', borderColor: '#624369' }}>
+            <span className="inline-block py-2.5 px-5 text-xs font-mono tracking-[0.05em] text-white font-bold uppercase border rounded-md" style={{ letterSpacing: '0.05em', backgroundColor: '#0f172a', borderColor: '#1e293b' }}>
               [ VALORI GUIDA ]
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-[#111113]">
@@ -249,7 +249,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="bg-[#FAF9F6] p-6 border border-[#111113]/15 space-y-4 hover:border-black transition-all flex flex-col justify-between"
+                className="paper-card bg-[#FAF9F6] p-6 border border-[#111113]/15 space-y-4 hover:border-black transition-all flex flex-col justify-between rounded-xl"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
@@ -281,7 +281,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
       {/* Final Call to Action */}
       <section className="py-20 bg-[#FAF9F6] text-[#111113] text-center border-t border-[#111113]/10">
         <div className="max-w-2xl mx-auto px-6 space-y-6">
-          <span className="inline-block py-2.5 px-5 text-xs font-mono tracking-[0em] text-white font-bold uppercase border" style={{ letterSpacing: '0px', backgroundColor: '#624369', borderColor: '#624369' }}>
+          <span className="inline-block py-2.5 px-5 text-xs font-mono tracking-[0.05em] text-white font-bold uppercase border rounded-md" style={{ letterSpacing: '0.05em', backgroundColor: '#0f172a', borderColor: '#1e293b' }}>
             [ PROGETTIAMO INSIEME ]
           </span>
           <h2 className="font-display text-3xl font-bold tracking-tight text-[#111113]">
@@ -293,7 +293,7 @@ export default function AboutView({ setCurrentTab, lang, isFacilitated }: AboutV
           <div className="pt-2">
             <button
               onClick={() => setCurrentTab("contatti")}
-              className="btn-portal solid-light px-8 py-4 rounded-full text-white font-bold text-sm uppercase text-center flex items-center justify-center mx-auto gap-2"
+              className="btn-portal solid-light mx-auto"
             >
               <span>{lang === "it" ? "Inizia la collaborazione" : "Start collaboration"}</span>
               <ArrowRight className="w-4 h-4" />

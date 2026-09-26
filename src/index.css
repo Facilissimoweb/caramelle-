@@ -442,105 +442,150 @@ img {
   animation: logo-shake 0.3s infinite linear;
 }
 
-/* Portal Button Gradient Animation */
-@keyframes gradientX {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
+/* ==========================================================================
+   Refined High-End Editorial Buttons (Stile Editoriale Elegante & Discreto)
+   ========================================================================== */
 
 .btn-portal,
 .solid-light,
 .solid-primary,
 .editorial-button-primary {
-  position: relative !important;
-  background: #0f172a !important;
-  color: #ffffff !important;
-  border-radius: 9999px !important;
-  border: none !important;
-  z-index: 1 !important;
-  font-family: "Oswald", sans-serif !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  font-size: 14px !important;
-  letter-spacing: 0.05em !important;
-  cursor: pointer !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 12px 28px !important;
-  transition: transform 0.2s ease, opacity 0.2s ease !important;
-  overflow: visible !important;
-  text-decoration: none !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 13.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  line-height: 1.2;
 }
 
-.btn-portal > *,
-.solid-light > *,
-.solid-primary > *,
-.editorial-button-primary > * {
+/* Micro-interaction for arrow/icons inside buttons */
+.btn-portal svg,
+.solid-light svg,
+.solid-primary svg,
+.editorial-button-primary svg {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-portal:hover svg,
+.solid-light:hover svg,
+.solid-primary:hover svg,
+.editorial-button-primary:hover svg {
+  transform: translateX(3px);
+}
+
+/* Primary Button: Pure Crisp White with Dark Obsidian Text (Prestigious Hero Contrast) */
+.solid-primary,
+.btn-portal.solid-primary,
+.editorial-button-primary {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08) !important;
+}
+
+.solid-primary:hover,
+.btn-portal.solid-primary:hover,
+.editorial-button-primary:hover {
+  background: #f8fafc !important;
+  color: #020617 !important;
+  border-color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.solid-primary:active,
+.btn-portal.solid-primary:active,
+.editorial-button-primary:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Secondary & Standard Portal Button: Deep Slate Obsidian with Satin Hairline Border */
+.solid-light,
+.btn-portal.solid-light,
+.btn-portal {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.2) !important;
+}
+
+.solid-light:hover,
+.btn-portal.solid-light:hover,
+.btn-portal:hover {
+  background: #1e293b !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.32) !important;
+}
+
+.solid-light:active,
+.btn-portal.solid-light:active,
+.btn-portal:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2) !important;
+}
+
+/* ==========================================================================
+   Editorial Paper Grain Textures (Carta Pregiata & Grana Tattile Editoriale)
+   ========================================================================== */
+
+/* Global Paper Grain Texture Overlay */
+.editorial-grain-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 45;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='editorialNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23editorialNoise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  mix-blend-mode: multiply;
+}
+
+/* Card-Level Tactile Grain for Main Cards, Panels & Boxes */
+.paper-card,
+.card-grain,
+.editorial-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.paper-card::before,
+.card-grain::before,
+.editorial-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='cardPaperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23cardPaperNoise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+
+/* Ensure contents of paper cards stay above the grain texture */
+.paper-card > *,
+.card-grain > *,
+.editorial-card > * {
   position: relative;
   z-index: 2;
 }
 
-.btn-portal::before,
-.solid-light::before,
-.solid-primary::before,
-.editorial-button-primary::before {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  background: linear-gradient(90deg, #00f3ff, #ff0055, #ffe600, #00f3ff);
-  background-size: 300%;
-  border-radius: 9999px;
-  z-index: -2;
-  animation: gradientX 4s linear infinite;
-  filter: blur(6px);
-  opacity: 0.7;
-  transition: opacity 0.3s ease, filter 0.3s ease;
-  pointer-events: none;
-}
-
-.btn-portal::after,
-.solid-light::after,
-.solid-primary::after,
-.editorial-button-primary::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: #0f172a;
-  border-radius: 9999px;
-  z-index: -1;
-  pointer-events: none;
-}
-
-.btn-portal:hover::before,
-.solid-light:hover::before,
-.solid-primary:hover::before,
-.editorial-button-primary:hover::before {
-  opacity: 1;
-  filter: blur(8px);
-}
-
-.btn-portal:hover,
-.solid-light:hover,
-.solid-primary:hover,
-.editorial-button-primary:hover {
-  transform: translateY(-1px);
-}
-
-.btn-portal:active,
-.solid-light:active,
-.solid-primary:active,
-.editorial-button-primary:active {
-  transform: scale(0.97);
-}
 
 
 

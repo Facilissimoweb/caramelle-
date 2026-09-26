@@ -666,6 +666,9 @@ export default function App() {
     } ${
       isFacilitated ? "text-lg" : ""
     }`}>
+      {/* Global Editorial Paper Grain Texture */}
+      <div className="editorial-grain-overlay" aria-hidden="true" />
+
       {/* Desktop Left Sidebar - Hidden on mobile, flex on desktop */}
       <aside className="hidden xl:flex w-[280px] h-screen fixed left-0 top-0 border-r border-white/10 bg-[#111113] p-10 flex-col justify-between z-30 select-none text-white">
         <div className="space-y-16">

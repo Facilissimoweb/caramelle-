@@ -105,80 +105,103 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
       {/* Hero Section */}
       <section 
         ref={heroRef}
-        className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-36 overflow-hidden border-b border-white/10 bg-[#0a0a0c]"
+        className="relative min-h-[90vh] lg:min-h-screen flex items-center py-20 lg:py-32 overflow-hidden border-b border-white/10 bg-[#111113]"
+        style={{
+          backgroundColor: "#111113"
+        }}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full relative z-10">
-          <div className="lg:col-span-8 xl:col-span-8 space-y-6">
-            <div className="flex items-center gap-2 mb-4 animate-fade-in-up">
-              <img
-                src={regeneratedLogoImage}
-                alt="Facilissimo Web Logo"
-                className="w-[150px] h-[150px] object-contain bg-white rounded-2xl shadow-md p-1 overflow-hidden"
-              />
+        {/* Subtle architectural grid pattern overlay */}
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-[0.035]"
+          style={{
+            backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
+            backgroundSize: '48px 48px'
+          }}
+          aria-hidden="true"
+        />
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center w-full relative z-10">
+          <div className="lg:col-span-7 xl:col-span-8 space-y-7">
+            
+            {/* Studio Badge & Logo Header */}
+            <div className="flex flex-wrap items-center gap-4 animate-fade-in-up">
+              <div className="relative group">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300" />
+                <img
+                  src={regeneratedLogoImage}
+                  alt="Facilissimo Web Logo"
+                  className="relative w-16 h-16 sm:w-20 sm:h-20 object-contain bg-white rounded-2xl shadow-xl p-1.5 border border-white/40 transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+
+              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-slate-700/70 bg-slate-800/50 backdrop-blur-md shadow-inner">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-sm shadow-emerald-400/50" />
+                <span className="text-[11px] sm:text-xs uppercase tracking-widest text-slate-300 font-mono font-medium">
+                  {t.heroPreTitle}
+                </span>
+              </div>
             </div>
-            <span 
-              className="text-[13px] uppercase tracking-[0em] text-black font-mono font-bold block pt-[10px] pb-[13px] px-4 text-center mb-[25px] w-[328px] max-w-full animate-fade-in-up border border-white"
-              style={{ letterSpacing: '0px', backgroundColor: '#ffffff', borderColor: '#ffffff', color: '#000000' }}
-            >
-              {t.heroPreTitle}
-            </span>
- 
-            <h1 
-              className="font-tan text-2xl xs:text-3xl sm:text-5xl lg:text-7xl font-bold text-[#ffffff] leading-[1.1] tracking-tight animate-fade-in-up delay-75 break-words p-4 rounded-lg bg-black/90 border border-white/10"
-            >
+
+            {/* Main Title - Pure Sculptural Editorial Typography */}
+            <h1 className="font-tan text-4xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight animate-fade-in-up delay-75 break-words drop-shadow-sm">
               {t.heroTitleRegular}
               {t.heroTitleItalic ? (
-                <span className="italic block mt-[5px] ml-0 pt-[9px] pb-[6px] pl-[18px] bg-white font-normal text-black font-tan break-words rounded-lg" style={{ fontSize: 'var(--h1-span-size, 52px)' }}>
+                <span className="italic block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-100 via-rose-100 to-indigo-200 font-serif font-light text-3xl sm:text-5xl lg:text-6xl">
                   {t.heroTitleItalic}
                 </span>
               ) : null}
             </h1>
- 
-            <p className="font-sans text-[21px] font-bold italic text-[#373333] bg-white max-w-xl leading-relaxed animate-fade-in-up delay-150 ml-0 px-4 pt-3 pb-[6px] rounded-xl shadow-md" style={{ fontSize: "21px", fontFamily: "Arial, sans-serif", fontWeight: "bold" }}>
+
+            {/* Lead Description */}
+            <p className="font-sans text-base sm:text-lg lg:text-xl text-slate-300/90 font-light leading-relaxed max-w-2xl animate-fade-in-up delay-150">
               {t.heroDesc}
             </p>
- 
-            <div className="flex flex-wrap gap-4 pt-4 animate-fade-in-up delay-200">
+
+            {/* Call To Action Buttons */}
+            <div className="flex flex-wrap items-center gap-4 pt-2 animate-fade-in-up delay-200">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="btn-portal solid-primary text-center px-8 py-4 rounded-full text-white font-bold text-sm uppercase"
+                className="btn-portal solid-primary"
                 id="hero-cta-main"
               >
                 <span>{t.heroBtnPrimary}</span>
+                <ArrowRight className="w-4 h-4 ml-1" />
               </button>
               <button
                 onClick={() => setCurrentTab("siti-web")}
-                className="btn-portal solid-light text-center px-8 py-4 rounded-full text-white font-bold text-sm uppercase"
+                className="btn-portal solid-light"
                 id="hero-cta-sec"
               >
                 <span>{t.heroBtnSecondary}</span>
               </button>
             </div>
- 
-            {/* Micro proof badges */}
-            <div className="flex flex-wrap items-center gap-6 pt-8 border-t border-white/20 text-[9px] uppercase tracking-widest font-mono text-white max-w-lg animate-fade-in-up delay-300">
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-white" />
-                <span>{t.proofDirect}</span>
+
+            {/* Micro Proof Badges */}
+            <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-slate-800/80 text-[10px] sm:text-[11px] uppercase tracking-wider font-mono text-slate-400 max-w-xl animate-fade-in-up delay-300">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span className="text-slate-300">{t.proofDirect}</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-white" />
-                <span>{t.proofDelivery}</span>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span className="text-slate-300">{t.proofDelivery}</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-white" />
-                <span>{t.proofPrices}</span>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span className="text-slate-300">{t.proofPrices}</span>
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-4 xl:col-span-4 flex justify-center items-center">
-            <div className="relative w-full max-w-md rounded-2xl overflow-hidden border border-[#111113]/10 bg-black/5 shadow-2xl hover:scale-[1.02] transition-transform duration-500">
+          {/* Right Column Showcase Visual */}
+          <div className="lg:col-span-5 xl:col-span-4 flex justify-center items-center">
+            <div className="relative w-full max-w-md rounded-2xl overflow-hidden border border-slate-700/60 bg-slate-900/60 shadow-2xl shadow-indigo-950/50 backdrop-blur-sm hover:scale-[1.02] transition-transform duration-500 group">
+              <div className="absolute inset-0 bg-gradient-to-tr from-slate-950/40 via-transparent to-white/5 pointer-events-none z-10" />
               <img
                 src="/images/facilissimo%20web%20(12).png"
                 alt="Facilissimo Web"
                 referrerPolicy="no-referrer"
-                className="w-full h-auto object-cover rounded-2xl"
+                className="w-full h-auto object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700"
               />
             </div>
           </div>
@@ -192,8 +215,8 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
             <span 
-              className="inline-block py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-white font-bold uppercase border"
-              style={{ textDecorationLine: "none", textAlign: "center", letterSpacing: "0px", backgroundColor: "#624369", borderColor: "#624369" }}
+              className="inline-block py-[10px] px-6 text-[13px] font-mono tracking-[0.05em] text-white font-bold uppercase rounded-md shadow-sm border border-slate-700"
+              style={{ textDecorationLine: "none", textAlign: "center", letterSpacing: "0.05em", backgroundColor: "#0f172a", borderColor: "#1e293b" }}
             >
               {t.approachPre}
             </span>
@@ -227,7 +250,7 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.08 }}
                   onClick={() => handleOpenFeaturePopup(index)}
-                  className={`flex flex-col border bg-[#ffffff] rounded-2xl transition-all duration-300 group relative cursor-pointer overflow-hidden p-6 w-[310px] md:w-[370px] shrink-0 snap-start ${
+                  className={`paper-card flex flex-col border bg-[#ffffff] rounded-2xl transition-all duration-300 group relative cursor-pointer overflow-hidden p-6 w-[310px] md:w-[370px] shrink-0 snap-start ${
                     activeFeaturePopupIndex === index 
                       ? "border-black shadow-xl scale-[1.01]" 
                       : "border-[#111113]/10 shadow-sm hover:shadow-md hover:border-black hover:scale-[1.01]"
@@ -394,11 +417,11 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
 
       {/* Call To Action Section */}
       <section className="py-24 px-6 md:px-12 bg-[#F8F7F4]">
-        <div className="max-w-7xl mx-auto bg-[#FAF9F6] text-[#111113] p-12 md:p-20 relative overflow-hidden border border-[#111113]/15">
+        <div className="paper-card max-w-7xl mx-auto bg-[#FAF9F6] text-[#111113] p-12 md:p-20 relative overflow-hidden border border-[#111113]/15">
           <div className="relative z-10 text-center max-w-2xl mx-auto space-y-6">
             <span 
-              className="inline-block py-[12px] px-6 text-[13px] font-mono tracking-[0em] text-white font-bold uppercase border"
-              style={{ letterSpacing: "0px", backgroundColor: "#624369", borderColor: "#624369" }}
+              className="inline-block py-[10px] px-6 text-[13px] font-mono tracking-[0.05em] text-white font-bold uppercase rounded-md shadow-sm border border-slate-700"
+              style={{ letterSpacing: "0.05em", backgroundColor: "#0f172a", borderColor: "#1e293b" }}
             >
               {t.ctaPre}
             </span>
@@ -411,14 +434,15 @@ export default function HomeView({ setCurrentTab, lang, isFacilitated, onOpenMod
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
               <button
                 onClick={() => setCurrentTab("contatti")}
-                className="btn-portal solid-light px-8 py-4 rounded-full text-white font-bold text-sm uppercase flex items-center justify-center text-center"
+                className="btn-portal solid-light"
                 id="cta-contact-btn"
               >
                 <span>{t.ctaBtnPrimary}</span>
+                <ArrowRight className="w-4 h-4 ml-1" />
               </button>
               <button
                 onClick={() => (onOpenChat ? onOpenChat() : setCurrentTab("contatti"))}
-                className="btn-portal solid-light px-8 py-4 rounded-full text-white font-bold text-sm uppercase flex items-center justify-center text-center"
+                className="btn-portal solid-light"
                 id="cta-chat-btn"
               >
                 <span>{t.ctaBtnSecondary}</span>
